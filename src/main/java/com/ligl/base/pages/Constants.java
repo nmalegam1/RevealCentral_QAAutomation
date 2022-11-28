@@ -1,0 +1,42 @@
+package com.ligl.base.pages;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.How;
+
+
+public class Constants {
+	public static final String GRIDRUN = "N";
+
+	public static final String ID="id";
+	public static final String NAME="name";
+	public static final String XPATH="XPATH";
+	public static final String CSS="CSS";
+
+	public static final String DATE_MONTH_YEAR = "span.sCalMon";
+	public static final By DATE_MONTH_YEAR_LOCATOR=By.cssSelector(DATE_MONTH_YEAR);
+	
+	public static final String DATE_MONTH_FORWARD = "span.calNav.dRgt";
+	public static final By DATE_MONTH_FORWARD_LOCATOR=By.cssSelector(DATE_MONTH_FORWARD);
+	
+	public static final String DATE_MONTH_BACKWARD = "span.calNav.dLft";
+	public static final By DATE_MONTH_BACKWARD_LOCATOR=By.cssSelector(DATE_MONTH_BACKWARD);
+
+	// titles
+	public static final String HOME_PAGE_TITLE = "Cases | Ligl";
+	
+	// report path
+	public static final String REPORTS_PATH = System.getProperty("user.dir")+"//reports//";
+	public static final How CSS_SEL = How.CSS;
+	
+	// sheet names
+	public static final String TEST_DATA_SHEET = "TestData";
+	public static final String TEST_STATUS_SHEET = "TestStatus";
+	
+	//col names
+	public static final Object COL_SUBJECT = "Subject";
+	public static final Object COL_DATE = "Date";
+	public static final String TCID = "TCID";
+	public static final String RUNMODE = "Runmode";
+
+}
