@@ -39,7 +39,8 @@ public class LoginPage extends LiglBasePage {
 			//log("Click SignIn button");
 			signInBtn.click();
 			getSession().log_Pass("Clicked signin button");
-			waitForPageToLoad();
+			Thread.sleep(2000);
+			/*waitForPageToLoad();
 			//Check the URL Name
 			if (getCurrentDriver().getTitle().contains("Entity Select")) {
 				log_Info("EntityPage Loaded");
@@ -49,8 +50,25 @@ public class LoginPage extends LiglBasePage {
 				//getDriver().waitForAngularRequestsToComplete();
 				log_Info("DefaultLandingPage Loaded");
 				return new DefaultLandingPage();
+			}*/
+			if (getCurrentDriver().getTitle().contains("Entity Select")) {
+				//String url=getCurrentDriver().getCurrentUrl();
+				log_Info("EntityPage Loaded");
+				//waitForPageToLoad();
+				String entity="usa";
+				System.out.println("Entity : "+entity);
+				if(entity.contains("usa"))
+				{
+					getCurrentDriver().findElement(By.xpath("//a[@id='entity']/span[contains(text(),'USA')]")).click();
+					getDriver().waitForAngularRequestsToComplete();
+					//Thread.sleep(3000);
+					return new DefaultLandingPage();
+				}else if (entity.contains("ind")){
+					getCurrentDriver().findElement(By.xpath("//a[@id='entity']/span[contains(text(),'IND')]")).click();
+					return new DefaultLandingPage();
+				}
 			}
-			//return new DefaultLandingPage();
+			return new DefaultLandingPage();
 		} catch (Exception | Error ex) {
 			log_Error(ex.getMessage());
 			throw new Exception("login failed", ex);
