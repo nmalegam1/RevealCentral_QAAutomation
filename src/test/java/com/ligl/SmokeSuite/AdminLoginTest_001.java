@@ -21,6 +21,7 @@ public class AdminLoginTest_001 extends TestBase {
                 //skip - testng
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
+
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
@@ -28,6 +29,7 @@ public class AdminLoginTest_001 extends TestBase {
                     .validateAdminRole()
                     .getHeader()
                     .logout();
+
         }catch (Exception ex){
             session.log_Error("AdminLoginTest_001 Failed");
             throw new Exception("AdminLoginTest_001 Failed", ex);

@@ -2,7 +2,9 @@ package com.ligl.base.pages;
 
 import com.ligl.pages.DashboardPage;
 import com.ligl.pages.LeftMenu;
+import com.ligl.pages.casemanagement.CaseCustodiansPage;
 import com.ligl.session.LiglTestSession;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -37,25 +39,33 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage submitUsername(String userid) {
 		return null;
-		
+
 	}
 	public ILiglPage submitPassword(String userid) {
 		return null;
 	}
 
+	@Override
 	public IWebConnector validator(boolean stopExecution) {
-		   // update the flag in web layer
-		    getSession().getCon().setStopExecution(stopExecution);
-			return getSession().getCon();
+		// update the flag in web layer
+		getSession().getCon().setStopExecution(stopExecution);
+		return getSession().getCon();
 	}
 
-	public ILiglPage logout() {
+	public ILiglPage logout() throws Exception {
 		return null;
 	}
 
 	public ILiglPage login(String userName, String password) throws Exception {
 		return null;
 	}
+	public ILiglPage createNewCounselForSelectedOutsideCounsel(String PartyNew,String OptionFromLawFirmDropDwn,String FirstName,String LastName) throws Exception {
+		return null;
+	}
+
+	public ILiglPage searchcase(String casename) throws Exception {return null;}
+
+	public ILiglPage GoToCase(String CaseName) throws Exception {return null;}
 
 	public ILiglPage adminLogin(String userName, String password, String entity) throws Exception{return null;}
 	public ILiglPage validateAdminRole() throws Exception {return null;}
@@ -69,19 +79,19 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage SSOLogin(String userName, String password) throws InterruptedException {
 		return null;
 	}
-	
+
 	public LiglTestSession getSession() {
 		return (LiglTestSession)Reporter.getCurrentTestResult().getTestContext().getAttribute("session");
 	}
-	
+
 	public IWebConnector getDriver() {
 		return getSession().getCon();
 	}
-	
+
 	public EventFiringWebDriver getCurrentDriver() {
 		return getSession().getCon().getCurrentDriver();
 	}
-	
+
 	public void log_Info(String message) {
 		getSession().log_Info(message);
 	}
@@ -112,41 +122,295 @@ public class LiglBasePage implements ILiglPage {
 	public LeftMenu getLeftMenu() {
 		return null;
 	}
-    
-    public void selectDateFromCalendar(String date) {
-    }
+	public ILiglPage sendingCaseCustodianForApproval(String Employee1,String BatchNAME,String USER,String EMAIL) throws Exception{
+		return null;
+	}
+	public ILiglPage validateDSIForCustodians(String Employee1) throws Exception{
+		return null;
+	}
+	public ILiglPage goToCaseManagement() throws InterruptedException{
+		return null;
+	}
+	public ILiglPage verifyingEditBtn() throws Exception{
+		return null;
+	}
+	public ILiglPage navigateToCustodiansPage() throws Exception { return  null;}
+
+	public ILiglPage navigateToLegalHoldPage()  { return  null;}
+
+	public ILiglPage goToSecurityPage() throws InterruptedException{
+		return null;
+	}
+	public ILiglPage sendingCaseForSingleApproval(String BatchNAME,String USER,String EMAIL) throws Exception{
+		return null;
+	}
+
+	public ILiglPage goToLegalHoldPage() throws Exception {return null;}
+	public ILiglPage navigateToDataSourcesPage() throws Exception { return  null;}
+	public void selectDateFromCalendar(String date) {
+	}
+
+	public ILiglPage addCustodianToCase(String Email1,String Employee1) throws Exception {
+		return null;
+	}
+	public ILiglPage addDataSources() throws Exception {
+		return null;
+	}
+	public ILiglPage validateCaseNotinitiatedState() throws Exception{
+		return null;
+	}
+	public ILiglPage validateCustodianAfterApproved(String Employee1) throws Exception{
+		return null;
+	}
+	public ILiglPage validateCasePendingForApprovalState() throws Exception{
+		return null;
+	}
+	public ILiglPage validateCaseRejectedState() throws Exception{
+		return null;
+	}
+	public ILiglPage verifyColumnsInCustodianGrid() throws Exception{
+		return null;
+	}
+	public ILiglPage goToCaseCounselPage() throws Exception {
+		return null;
+	}
+	public ILiglPage addCustodiansToCaseThroughFilters(String Employee1,String Employee2) throws Exception {
+		return null;
+	}
+	public ILiglPage validatingCustodians(String Employee1) throws Exception {
+		return null;
+	}
+	public ILiglPage addInhouseCounselToCase(String Email1, String CounselName) throws Exception {
+		return null;
+	}
+	public ILiglPage deleteInhouseCounselFromCase() throws Exception {
+		return null;
+	}
+	public ILiglPage createNewInHouseCounselForEnterpriseParty(String PartyName,String FirstName,String LastName) throws Exception {
+		return null;
+	}
+	public ILiglPage addOneMoreInhouseCounselToCase(String Email2,String CounselName1) throws Exception {
+		return null;
+	}
+	public ILiglPage navigateToDateRangesPage () throws Exception {
+		return null;
+	}
+	public ILiglPage addDateRanges(String StartDate1 ,String EndDate1,String DescriptionBox) throws Exception {
+		return null;
+	}
+	public ILiglPage validatingDateRanges() throws Exception {
+		return null;
+	}
+	public ILiglPage navigateToKeyWordsPage() throws Exception {
+		return null;
+	}
+
+	public ILiglPage addKeywordsByBasic(String Keywords1) throws Exception {
+		return null;
+	}
+	public ILiglPage addKeywordsByCustom(String Keywords1,String DataSource1) throws Exception {
+		return null;
+	}
+	public ILiglPage validatingUpdatedStatus(String StatusDropDown1) throws Exception{
+		return null;
+	}
+	public ILiglPage verifyingTheStatusDropDownForACase(String StatusDropDown1) throws Exception{
+		return null;
+	}
+	public ILiglPage validateInhouseCounsel() throws Exception{
+		return null;
+	}
+	public ILiglPage approvingRejectedCase(String CaseNameApprove ) throws Exception{
+		return null;
+	}
+	public ILiglPage verifyingApproveStatus() throws Exception{
+		return  null;
+	}
+	public ILiglPage approvingCaseSingleApprover(String CaseNameApprove) throws Exception{
+		return null;
+	}
+	public ILiglPage goToCasePage() throws Exception {
+		return null;
+	}
+	public ILiglPage verifyingCaseFieldsAreEditable(String CaseTypeDrpDwn,String CaseName1,String CaseSettingTemplateDrpDwn) throws Exception{
+		return null;
+	}
+	public ILiglPage verifyingCaseFieldsAreEdited(String CaseTypeDrpDwn,String CaseName1,String CaseSettingTemplateDrpDwn) throws Exception{
+		return null;
+	}
+	public ILiglPage verifyingCaseFieldsAreNonEditable() throws Exception{
+		return null;
+	}
+	public ILiglPage sendingCaseForApproval() throws Exception{
+		return null;
+	}
+	public ILiglPage enableAndDisableKeywords(String Status1) throws Exception{
+		return null;
+	}
+	public ILiglPage validateEnableAndDisableKeywords(String Status2) throws Exception{
+		return null;
+	}
+	public ILiglPage enableAndDisableDateRanges(String Status1) throws Exception{
+		return null;
+	}
+	public ILiglPage validateEnableAndDisableDateRanges(String Status2) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateOutSideCounsel() throws Exception{
+		return null;
+	}
+	public ILiglPage validateNewOutSideCounselAdded(String OutSideCounsel) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validatingKeywords() throws Exception {
+		return null;
+	}
+	public ILiglPage searchingAddedOutsideCounsel(String OutSideCounsel) throws Exception{
+		return null;
+	}
+	public ILiglPage searchingContact(String ContactName) throws Exception{
+		return null;
+	}
+	public ILiglPage validatingContactAddedForParty(String ContactName) throws Exception{
+		return null;
+	}
+	public ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB,String PartyType,String Description) throws Exception {
+		return null;
+	}
+	public ILiglPage validatingContactsAfterDeletingFromParty() throws Exception{
+		return null;
+	}
+	public ILiglPage validatingKeywordsByKeywordType() throws Exception {
+		return null;
+	}
+	public ILiglPage searchingInHouseCounsel(String PartyName,String CounselName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateAddedInHouseCounsel(String CounselName) throws Exception{
+		return null;
+	}
+	public ILiglPage searchingOutSideCounsel(String PartyNew,String OptionFromLawFirmDropDwn) throws Exception{
+		return null;
+	}
+	public ILiglPage validateProsecutors(String AvailableProsecutor1,String AvailableProsecutor2,String AvailableProsecutor3,String AvailableProsecutor4) throws Exception{
+		return null;
+	}
+	public ILiglPage validateOneOrMoreInhouseCounsel(String CounselName,String CounselName1) throws Exception{
+		return null;
+	}
+	public ILiglPage validateAddedOutsideCounsel(String OutSideCounselName) throws Exception{
+		return null;
+	}
+	public ILiglPage goToApprovalPage(){
+		return null;
+	}
+	public ILiglPage createOtherPartyNewOutsideCounsel(String PartyName,String NameTextBox,String PartyDrpDwn,String Description,String Status,String FirstName,String LastName) throws Exception {
+		return null;
+	}
+	public  ILiglPage addingNewParty(String PartyName,String PartyType,String Description) throws Exception {
+		return null;
+	}
+	public ILiglPage validateAddedNewOutsideCounsel(String OutsideCounsel,String NameTextBox) throws Exception{
+		return null;
+	}
+	public ILiglPage searchingParty() throws Exception {
+		return null;
+	}
+	public ILiglPage addingExistingParty(String PartyNameA,String PartyNew) throws Exception {
+		return null;
+	}
+	public ILiglPage sendingLegalHoldForApproval() throws Exception {
+		return null;
+	}
+	public ILiglPage checkLHNForCustodians(String LHN,String Employee1) throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkDSIForCustodians(String Employee1) throws Exception{
+		return null;
+	}
+	public ILiglPage goToDataManagement() throws Exception{
+		return null;
+	}
+	public ILiglPage validateCustodianBeforeApproved() throws Exception{
+		return null;
+	}
+	public ILiglPage approvingLegalHold() throws InterruptedException {
+		return null;
+	}
+	public ILiglPage creatingNewTemplate() throws Exception {
+		return null;
+	}
+	public  ILiglPage goToAdministrationPage() throws InterruptedException {
+		return null;
+	}
+	public ILiglPage goToAdminLeftMenu() throws Exception {
+		return null;
+	}
+	public ILiglPage addDeleteOutsideCounselToCase(String OptionFromLawFirmDropDwn , String SelectAvailableLawfirm) throws Exception {
+		return null;
+	}
+	public ILiglPage createNewOutsideCounselToCase(String PartyLawFirm,String FirstName,String LastName) throws Exception {
+		return null;
+	}
+	public ILiglPage createNewContactForSelectedParty(String PartyNew,String FirstName ,String LastName) throws Exception {
+		return null;
+	}
+	public ILiglPage goToOtherPartyPage () throws Exception {
+		return null;
+	}
+
+	public ILiglPage navigateToCourtPage () throws Exception {
+		return null;
+	}
+	public ILiglPage addCourtToCase(String AvailableCourt) throws Exception {
+		return null;
+	}
+	public ILiglPage searchingAddedCourt(String AvailableCourt) throws Exception {
+		return null;
+	}
+	public ILiglPage navigateAndAddProsecutor(String AvailableCourt,String AvailableProsecutor1,String AvailableProsecutor2,String AvailableProsecutor3,String AvailableProsecutor4) throws Exception {
+		return null;
+	}
+
+	public ILiglPage deleteContactsAddedForParty(String PartyNew, String ContactName) throws Exception {
+		return null;
+	}
 
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;
 		// check for pageload 100% - 20 secs
 		while(i!=10){
-		String state = (String)js.executeScript("return document.readyState;");
-		System.out.println(state);
+			String state = (String)js.executeScript("return document.readyState;");
+			System.out.println(state);
 
-		if(state.equals("complete"))
-			break;
-		else
-			wait(2);
+			if(state.equals("complete"))
+				break;
+			else
+				wait(2);
 
-		i++;
+			i++;
 		}
 		// check for jquery/ajax status - 20 secs
 		i=1;
 		while(i!=10){
-	
+
 			Long d= (Long) js.executeScript("return jQuery.active;");
 			System.out.println(d);
 			if(d.longValue() == 0 )
-			 	break;
+				break;
 			else
-				 wait(2);
-			 i++;
-				
-			}
-		
+				wait(2);
+			i++;
+
 		}
-	
+
+	}
+
 	public void wait(int time) {
 		try {
 			Thread.sleep(time*1000);
@@ -155,5 +419,5 @@ public class LiglBasePage implements ILiglPage {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

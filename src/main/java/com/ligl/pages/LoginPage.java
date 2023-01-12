@@ -40,6 +40,7 @@ public class LoginPage extends LiglBasePage {
 			signInBtn.click();
 			getSession().log_Pass("Clicked signin button");
 			Thread.sleep(2000);
+			getDriver().waitForAngularRequestsToComplete();
 			/*waitForPageToLoad();
 			//Check the URL Name
 			if (getCurrentDriver().getTitle().contains("Entity Select")) {
@@ -51,7 +52,7 @@ public class LoginPage extends LiglBasePage {
 				log_Info("DefaultLandingPage Loaded");
 				return new DefaultLandingPage();
 			}*/
-			if (getCurrentDriver().getTitle().contains("Entity Select")) {
+			if (getCurrentDriver().getTitle().contains("Legal Entity Select | Vertical")) {
 				//String url=getCurrentDriver().getCurrentUrl();
 				log_Info("EntityPage Loaded");
 				//waitForPageToLoad();
@@ -59,16 +60,16 @@ public class LoginPage extends LiglBasePage {
 				System.out.println("Entity : "+entity);
 				if(entity.contains("usa"))
 				{
-					getCurrentDriver().findElement(By.xpath("//a[@id='entity']/span[contains(text(),'USA')]")).click();
+					getCurrentDriver().findElement(By.xpath("//span[contains(text(),'USA')]")).click();
 					getDriver().waitForAngularRequestsToComplete();
-					//Thread.sleep(3000);
 					return new DefaultLandingPage();
 				}else if (entity.contains("ind")){
-					getCurrentDriver().findElement(By.xpath("//a[@id='entity']/span[contains(text(),'IND')]")).click();
+					getCurrentDriver().findElement(By.xpath("//span[contains(text(),'IND')]")).click();
 					return new DefaultLandingPage();
 				}
 			}
 			return new DefaultLandingPage();
+
 		} catch (Exception | Error ex) {
 			log_Error(ex.getMessage());
 			throw new Exception("login failed", ex);
