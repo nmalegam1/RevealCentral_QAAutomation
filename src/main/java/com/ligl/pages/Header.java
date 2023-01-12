@@ -1,6 +1,8 @@
 package com.ligl.pages;
 
 import com.ligl.base.pages.ILiglPage;
+import com.ligl.pages.administration.ContactMasterPage;
+import com.ligl.pages.casemanagement.CaseSummaryPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,24 +33,54 @@ public class Header extends LiglBasePage {
 	@FindBy(xpath="//a[@data-action='userLogout']")
 	public WebElement logoutLink;
 
+	@FindBy(xpath = "//a[@id='approval-tab']")
+	public WebElement approvalTab;
+
+	@FindBy(xpath = "//a[@title='Administration']")
+	public WebElement AdministrationTab;
+
 	public Header(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
-	
-	public ILiglPage logout() {
-		getDriver().waitForelementToBeClickable(userNameLink);
-		userNameLink.click();
-		getSession().log_Pass("Clicked Username link");
-		getDriver().waitForelementToBeClickable(logoutLink);
-		logoutLink.click();
-		getSession().log_Pass("Clicked logout link");
-		waitForPageToLoad();
-		getSession().log_Pass("logout successful");
-		return new LiglBasePage();
+
+	public ILiglPage logout() throws Exception {
+
+		try {
+
+
+			getDriver().waitForelementToBeClickable(userNameLink);
+			userNameLink.click();
+			getSession().log_Pass("Clicked Username link");
+			getDriver().waitForelementToBeClickable(logoutLink);
+			logoutLink.click();
+			getSession().log_Pass("Clicked logout link");
+			waitForPageToLoad();
+			getSession().log_Pass("logout successful");
+			return new LiglBasePage();
+
+		}catch (Exception | Error ex){
+			log_Error(ex.getMessage());
+			throw new Exception("logout() Failed",ex);
+		}
 	}
-	
+	public ILiglPage goToApprovalPage(){
+		approvalTab.click();
+		return new ApprovalPage();
+	}
+
+	public ILiglPage goToCasePage() throws Exception {
+
+		Thread.sleep(5000);
+		caseTab.click();
+		return new DefaultLandingPage();
+	}
+	public ILiglPage goToAdministrationPage() {
+		AdministrationTab.click();
+		return new ContactMasterPage();
+	}
+
 	public ILiglPage create(String elementText) {
-		
+
 		/*addIcon.click();
 		if(elementText.equals("lead")) {
 			submenuLead.click();
