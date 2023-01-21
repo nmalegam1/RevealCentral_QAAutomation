@@ -138,6 +138,10 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage navigateToLegalHoldPage()  { return  null;}
 
+	public ILiglPage sendingCaseForDualApproval(String BatchNAME,String USER1,String USER2,String EMAIL,String Employee1,String SubType) throws Exception{
+		return null;
+	}
+
 	public ILiglPage goToSecurityPage() throws InterruptedException{
 		return null;
 	}
@@ -165,6 +169,9 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validateCasePendingForApprovalState() throws Exception{
 		return null;
 	}
+	public ILiglPage verifyApprovalHistoryStatus(String AssignedUser1,String Status1,String Status2,String AssignedUser2) throws Exception{
+		return  null;
+	}
 	public ILiglPage validateCaseRejectedState() throws Exception{
 		return null;
 	}
@@ -172,6 +179,15 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 	public ILiglPage goToCaseCounselPage() throws Exception {
+		return null;
+	}
+	public ILiglPage verifyApprovalHistoryStatusRejected(String AssignedUser1,String Status3,String AssignedUser2,String Status1) throws Exception{
+		return null;
+	}
+	public ILiglPage sendingCaseForDualApprovalLinearType(String Employee1,String GmailCheck,String GoogleDriveCheck,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception{
+		return null;
+	}
+	public ILiglPage rejectingTheCase(String CaseNameApprove) throws Exception{
 		return null;
 	}
 	public ILiglPage addCustodiansToCaseThroughFilters(String Employee1,String Employee2) throws Exception {

@@ -83,6 +83,10 @@ public interface ILiglPage {
 
     ILiglPage goToCaseManagement() throws InterruptedException;
 
+    ILiglPage verifyApprovalHistoryStatus(String AssignedUser1,String Status1,String Status2,String AssignedUser2) throws Exception;
+
+    ILiglPage sendingCaseForDualApproval(String BatchNAME,String USER1,String USER2,String EMAIL,String Employee1,String SubType) throws Exception;
+
     ILiglPage verifyingEditBtn() throws Exception;
     ILiglPage sendingCaseCustodianForApproval(String Employee1,String BatchNAME,String USER,String EMAIL) throws Exception;
 
@@ -92,7 +96,13 @@ public interface ILiglPage {
 
     ILiglPage validateCasePendingForApprovalState() throws Exception;
 
+    ILiglPage verifyApprovalHistoryStatusRejected(String AssignedUser1,String Status3,String AssignedUser2,String Status1) throws Exception;
+
+    ILiglPage rejectingTheCase(String CaseNameApprove) throws Exception;
+
     ILiglPage enableAndDisableKeywords(String Status1) throws Exception;
+
+    ILiglPage sendingCaseForDualApprovalLinearType(String Employee1,String GmailCheck,String GoogleDriveCheck,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception;
 
     ILiglPage validateCaseRejectedState() throws Exception;
 
