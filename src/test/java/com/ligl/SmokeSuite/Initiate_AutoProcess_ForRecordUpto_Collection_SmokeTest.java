@@ -38,6 +38,7 @@ public class Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTest extends Tes
                     .getLeftMenu().goToDataManagementSummary()
                     .waitAndvalidateForRecordToCompleteCollection(data.get("CollectionStatus"));
 
+
         } catch (Exception ex) {
             session.log_Error("Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTest Failed");
             throw new Exception("Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTest Failed", ex);

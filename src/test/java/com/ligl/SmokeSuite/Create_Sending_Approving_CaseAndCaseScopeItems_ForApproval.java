@@ -40,6 +40,7 @@ public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApproval extends 
                     .getHeader()
                     .goToApprovalPage()
                     .approvingCaseSingleApprover(data.get("CaseNameApprove"))
+
                     .logout();
 
         }catch (Exception ex){
