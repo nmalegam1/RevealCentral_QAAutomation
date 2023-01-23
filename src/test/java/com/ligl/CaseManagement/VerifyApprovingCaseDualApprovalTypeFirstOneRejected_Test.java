@@ -33,7 +33,7 @@ public class VerifyApprovingCaseDualApprovalTypeFirstOneRejected_Test extends Te
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
-                    .addCustodianToCase(data.get("Email1"), data.get("Employee1"))
+                    .addCustodianToCase(data.get("Email1"))
                     .getLeftMenu()
                     .goToSecurityPage().validateCaseNotinitiatedState()
                     .sendingCaseForDualApproval(data.get("BatchNAME"), data.get("USER1"), data.get("USER2"), data.get("EMAIL"), data.get("Employee1"), data.get("SubType") )

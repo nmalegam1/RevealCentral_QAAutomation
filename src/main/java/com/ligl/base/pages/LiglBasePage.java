@@ -69,7 +69,7 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage adminLogin(String userName, String password, String entity) throws Exception{return null;}
 	public ILiglPage validateAdminRole() throws Exception {return null;}
-	public ILiglPage createNewCase(Hashtable<String,String> data){
+	public ILiglPage createNewCase(Hashtable<String,String> data) throws Exception {
 		return null;
 	}
 
@@ -148,13 +148,34 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage sendingCaseForSingleApproval(String BatchNAME,String USER,String EMAIL) throws Exception{
 		return null;
 	}
+	public ILiglPage goToDSIPage() throws Exception{
+		return null;
+	}
+	public ILiglPage sendingCaseForApprovalWithScopeItems(String Employee1,String GmailCheck,String BatchNAME,String USER ,String EMAIL) throws Exception{
+		return  null;
+	}
+	public ILiglPage waitAndvalidateForRecordToCompleteCollection(String status)throws Exception{
+		return  null;
+	}
+	public ILiglPage goToDataManagementSummary() throws Exception{
+		return  null;
+	}
+	public ILiglPage addDataSourceRecordToDSIGrid(String cust,String datasource,String DataHold) throws Exception{
+		return  null;
+	}
+	public ILiglPage automateRecordInDSI()throws Exception{
+		return  null;
+	}
+	public ILiglPage addDataSource(String DataSource) throws Exception{
+		return  null;
+	}
 
 	public ILiglPage goToLegalHoldPage() throws Exception {return null;}
 	public ILiglPage navigateToDataSourcesPage() throws Exception { return  null;}
 	public void selectDateFromCalendar(String date) {
 	}
 
-	public ILiglPage addCustodianToCase(String Email1,String Employee1) throws Exception {
+	public ILiglPage addCustodianToCase(String Email1) throws Exception {
 		return null;
 	}
 	public ILiglPage addDataSources() throws Exception {

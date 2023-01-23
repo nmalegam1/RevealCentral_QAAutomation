@@ -27,7 +27,7 @@ public interface ILiglPage {
     ILiglPage navigateSSOLoginPage();
     ILiglPage SSOLogin(String userName, String password) throws InterruptedException;
     ILiglPage selectEntity(String entity);
-    ILiglPage createNewCase(Hashtable<String,String> data);
+    ILiglPage createNewCase(Hashtable<String,String> data) throws Exception;
     ILiglPage clickClearFilterBtn();
     // Ligl - session pages
     ILiglPage logout() throws Exception;
@@ -57,12 +57,24 @@ public interface ILiglPage {
 
     ILiglPage goToDataManagement() throws Exception;
 
-    ILiglPage addCustodianToCase(String Email1,String Employee1) throws Exception;
+    ILiglPage addDataSource(String DataSource) throws Exception;
+
+    ILiglPage addCustodianToCase(String Email1) throws Exception;
+
+    ILiglPage addDataSourceRecordToDSIGrid(String cust,String datasource,String DataHold) throws Exception;
 
     ILiglPage addDataSources() throws Exception;
+    ILiglPage automateRecordInDSI()throws Exception;
+    ILiglPage goToDSIPage() throws Exception;
+
+    ILiglPage waitAndvalidateForRecordToCompleteCollection(String status)throws Exception;
+
+    ILiglPage sendingCaseForApprovalWithScopeItems(String Employee1,String GmailCheck,String BatchNAME,String USER ,String EMAIL) throws Exception;
     ILiglPage navigateToDataSourcesPage() throws Exception;
 
     ILiglPage goToApprovalPage();
+
+    ILiglPage goToDataManagementSummary() throws Exception;
 
     ILiglPage sendingLegalHoldForApproval() throws Exception;
     ILiglPage approvingLegalHold() throws InterruptedException;

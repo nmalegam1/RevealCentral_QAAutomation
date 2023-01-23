@@ -1,4 +1,4 @@
-package com.ligl.CaseManagement;
+package com.ligl.SmokeSuite;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -8,12 +8,13 @@ import com.ligl.util.DataUtil;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 
+import javax.xml.crypto.Data;
 import java.util.Hashtable;
 
-public class VerifyDateRangesFunctionalityOfEnableDisableBtn_Test extends TestBase {
+public class Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTest extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
-    public void VerifyDateRangesFunctionalityOfEnableDisableBtn_Test(Hashtable<String, String> data) throws Exception {
+    public void Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTest(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -31,22 +32,15 @@ public class VerifyDateRangesFunctionalityOfEnableDisableBtn_Test extends TestBa
                     .login(data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
-                    .navigateToCustodiansPage()
-                    .addCustodianToCase(data.get("Employee1"))
-                    .getLeftMenu()
-                    .navigateToDataSourcesPage()
-                    .addDataSources()
-                    .getLeftMenu().navigateToDateRangesPage()
-                    .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))
-                    .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))
-                    .enableAndDisableDateRanges(data.get("Status1"))
-                    .validateEnableAndDisableDateRanges(data.get("Status2"));
-
-
+                    .goToDSIPage()
+                    .addDataSourceRecordToDSIGrid(data.get("Custodian"),data.get("DataSource"), data.get("DataHold"))
+                    .automateRecordInDSI()
+                    .getLeftMenu().goToDataManagementSummary()
+                    .waitAndvalidateForRecordToCompleteCollection(data.get("CollectionStatus"));
 
         } catch (Exception ex) {
-            session.log_Error("VerifyDateRangesFunctionalityOfEnableDisableBtn_Test Failed");
-            throw new Exception("VerifyDateRangesFunctionalityOfEnableDisableBtn_Test", ex);
+            session.log_Error("Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTest Failed");
+            throw new Exception("Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTest Failed", ex);
         } finally {
             session.end();
         }

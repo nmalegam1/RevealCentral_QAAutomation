@@ -34,7 +34,7 @@ public class VerifyApprovingCaseDualApprovalLinearTypeBothApproved_Test extends 
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
-                    .addCustodianToCase(data.get("Email1"), data.get("Employee1"))
+                    .addCustodianToCase(data.get("Email1"))
                     .getLeftMenu()
                     .navigateToDataSourcesPage()
                     .addDataSources()

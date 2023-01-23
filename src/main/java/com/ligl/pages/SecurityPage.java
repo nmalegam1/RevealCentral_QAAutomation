@@ -68,7 +68,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[@class='approval-history-body']/table/tbody/tr[position()=2]/td[position()=2]")
     WebElement StatusOfUser1;
 
-    @FindBy(id = "btn-nextlhnTemp")
+    @FindBy(xpath = "//button[contains(text(),'Next')]")
     WebElement NextBtn;
 
     @FindBy(xpath = "//div[text()='Gmail(Not-initiated)']//../..//div[@class='sourceChkbxDiv']")
@@ -548,6 +548,78 @@ public class SecurityPage extends LiglBaseSessionPage {
         }catch (Exception | Error ex){
             log_Error(ex.getMessage());
             throw new Exception("sendingCaseForSingleApproval() Failed",ex);
+        }
+    }
+
+    public ILiglPage sendingCaseForApprovalWithScopeItems(String Employee1,String GmailCheck,String BatchNAME,String USER ,String EMAIL) throws Exception {
+
+
+        try {
+
+            log_Info("Click on Send For Approval Button");
+            getDriver().waitForelementToBeClickable(SendForApprovalBtn);
+            Thread.sleep(3000);
+            SendForApprovalBtn.click();
+            log_Info("Clicked on Send For Approval Button");
+
+            log_Info("Click on Custodian Check Box");
+            Thread.sleep(3000);
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + Employee1 + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            log_Info("Clicked on Custodian Check Box");
+
+            log_Info("Click on Next Button");
+            getDriver().waitForelementToBeClickable(NextBtn);
+            Thread.sleep(5000);
+            NextBtn.click();
+            log_Info("Clicked on Next Button");
+
+            log_Info("Click on Gmail Checkbox");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//div[text()='" + GmailCheck + "']//../..//div[@class='sourceChkbxDiv']")).click();
+            log_Info("Clicked on Gmail Checkbox");
+
+
+            log_Info("Click on Request For Approval Tab");
+            getDriver().waitForelementToBeClickable(RATab);
+            Thread.sleep(3000);
+            RATab.click();
+            log_Info("Clicked on Request For Approval Tab");
+
+            log_Info("Click on Batch Name");
+            getDriver().waitForelementToBeClickable(BatchName);
+            Thread.sleep(3000);
+            BatchName.sendKeys(BatchNAME);
+
+
+            log_Info("Click on Email Template Drop down");
+            getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
+            Thread.sleep(5000);
+            TemplateNameDrpDwn.sendKeys(EMAIL);
+            Thread.sleep(3000);
+            TemplateNameDrpDwn.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Email Template Drop down");
+            log_Info("Click on Select Approval  Drop down");
+            getDriver().waitForelementToBeClickable(SelectApprovalDrpDwn);
+            SelectApprovalDrpDwn.sendKeys(USER);
+            Thread.sleep(3000);
+            SelectApprovalDrpDwn.sendKeys(Keys.ENTER);
+
+            log_Info("Click on Send For Approval Button");
+            getDriver().waitForelementToBeClickable(SendApprovalBtn);
+            Thread.sleep(3000);
+            SendApprovalBtn.click();
+            log_Info("Clicked on Send For Approval Button");
+            log_Info("Check The Status Of Case , It Should Be In Pending State");
+            boolean a2 = PendingStatus.isDisplayed();
+            System.out.println(a2);
+            Thread.sleep(3000);
+            Assert.assertEquals(true, a2);
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("sendingCaseForSingleApproval() Failed", ex);
+
         }
     }
 }
