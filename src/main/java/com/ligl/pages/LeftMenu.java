@@ -4,6 +4,8 @@ import com.ligl.base.pages.ILiglPage;
 import com.ligl.base.pages.LiglBasePage;
 import com.ligl.pages.casemanagement.*;
 import com.ligl.pages.datamanagement.DMCollectionsPage;
+import com.ligl.pages.datamanagement.DMDSIPage;
+import com.ligl.pages.datamanagement.DMSummaryPage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -77,6 +79,28 @@ public class LeftMenu extends LiglBasePage {
         return new LegalHoldPage();
     }
 
+    public ILiglPage goToDSIPage() throws Exception {
+
+        try {
+
+            log_Info("Click on Data Management");
+            getDriver().waitForelementToBeClickable(DataManagement);
+            Thread.sleep(5000);
+            DataManagement.click();
+            getSession().log_Pass("Clicked on Data Management");
+
+            log_Info("Click on Identification");
+            getDriver().waitForelementToBeClickable(Identification);
+            Thread.sleep(5000);
+            Identification.click();
+            getSession().log_Pass("Clicked on Identification");
+            return new DMDSIPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("goToDSIPage() Failed ", ex);
+        }
+    }
     public ILiglPage goToCaseManagementSummary() throws InterruptedException {
         caseManagementSummaryLink.click();
         return new CaseSummaryPage();
@@ -313,5 +337,22 @@ public class LeftMenu extends LiglBasePage {
 
         }
 
+    }
+
+    public ILiglPage goToDataManagementSummary() throws Exception {
+
+        try {
+            log_Info("Click on goToDataManagementSummary");
+            getDriver().waitForelementToBeClickable(DataManagement);
+            Thread.sleep(5000);
+            DataManagement.click();
+            getSession().log_Pass("Clicked on Data Management");
+
+            return new DMSummaryPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("goToDataManagement() Failed ", ex);
+        }
     }
 }

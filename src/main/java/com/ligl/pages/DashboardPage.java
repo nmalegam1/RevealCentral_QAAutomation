@@ -8,7 +8,7 @@ public class DashboardPage extends LiglBaseSessionPage {
 
     public ILiglPage validateAdminRole() throws Exception {
         try {
-            if (getCurrentDriver().getCurrentUrl().contains("caseinsights")) {
+            if (getCurrentDriver().getCurrentUrl().contains("Case Insights | Vertical")) {
                 log_Pass("Dashboard page is loaded default for Admin Role");
             }
             return new DashboardPage();

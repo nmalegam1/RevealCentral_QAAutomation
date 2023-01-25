@@ -32,7 +32,7 @@ public class VerifyDateRangesFunctionalityOfEnableDisableBtn_Test extends TestBa
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
-                    .addCustodianToCase(data.get("Employee1"), data.get("Employee2"))
+                    .addCustodianToCase(data.get("Employee1"))
                     .getLeftMenu()
                     .navigateToDataSourcesPage()
                     .addDataSources()

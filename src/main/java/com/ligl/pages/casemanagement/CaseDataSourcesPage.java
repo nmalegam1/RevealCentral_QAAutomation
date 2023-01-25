@@ -2,6 +2,7 @@ package com.ligl.pages.casemanagement;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -16,7 +17,7 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage
     @FindBy (xpath = "//div[text()='Gmail']//../..//div[@class='sourceChkbxDiv']")
     WebElement Gmail;
 
-    @FindBy (id="save-btn")
+    @FindBy (xpath="//button[contains(text(),Save) and @type='submit']")
     WebElement SaveBtn;
 
     @FindBy(xpath = "//span[@title='Case Management']")
@@ -67,4 +68,31 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage
         }
     }
 
+
+    public ILiglPage addDataSource(String DataSource) throws Exception {
+
+        try {
+            log_Info("addDataSources() Started");
+            log_Info("Click on checkbox");
+            //getDriver().waitForelementToBeClickable(Gmail);
+            Thread.sleep(2000);
+            getCurrentDriver().findElement(By.xpath("//div[text()='"+DataSource+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            log_Info("Clicked on checkbox");
+            Thread.sleep(2000);
+            ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", SaveBtn);
+            log_Info("Click on SaveBtn");
+            getDriver().waitForelementToBeClickable(SaveBtn);
+            SaveBtn.click();
+            log_Info("Clicked on SaveBtn");
+            getSession().log_Pass("Added DataSources To Case ");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", DSHeading);
+
+            return new CaseDataSourcesPage();
+
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("addDataSources() Failed",ex);
+        }
+    }
 }

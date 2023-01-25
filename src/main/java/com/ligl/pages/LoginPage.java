@@ -102,16 +102,16 @@ public class LoginPage extends LiglBasePage {
 				//waitForPageToLoad();
 
 				System.out.println("Entity : "+entity);
-					if(entity.contains("usa"))
-					{
-						getCurrentDriver().findElement(By.xpath("//a[@id='entity']/span[contains(text(),'USA')]")).click();
-						getDriver().waitForAngularRequestsToComplete();
-						//Thread.sleep(3000);
-						return new DashboardPage();
-					}else if (entity.contains("ind")){
-						getCurrentDriver().findElement(By.xpath("//a[@id='entity']/span[contains(text(),'IND')]")).click();
-						return new DashboardPage();
-					}
+				if(entity.contains("usa"))
+				{
+					getCurrentDriver().findElement(By.xpath("//span[contains(text(),'USA')]")).click();
+					getDriver().waitForAngularRequestsToComplete();
+					//Thread.sleep(3000);
+					return new DashboardPage();
+				}else if (entity.contains("ind")){
+					getCurrentDriver().findElement(By.xpath("//span[contains(text(),'IND')]")).click();
+					return new DashboardPage();
+				}
 			} else if (getCurrentDriver().getCurrentUrl().contains("dashboard/caseinsights")) {
 				//getDriver().waitForVisibilityOfElementLocated(By.xpath("//div[@class='ag-center-cols-container']"));
 				//getDriver().waitForAngularRequestsToComplete();

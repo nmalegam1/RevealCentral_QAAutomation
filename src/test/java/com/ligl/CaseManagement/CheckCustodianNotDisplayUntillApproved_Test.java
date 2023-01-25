@@ -33,7 +33,7 @@ public class CheckCustodianNotDisplayUntillApproved_Test extends TestBase
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
-                    .addCustodianToCase(data.get("Email1"), data.get("Employee1"))
+                    .addCustodianToCase(data.get("Email1"))
                     .getLeftMenu().goToLegalHoldPage().checkLHNForCustodians(data.get("LHN"), data.get("Employee1"))
                     .validateCustodianBeforeApproved()
                     .getLeftMenu().goToDataManagement().checkDSIForCustodians(data.get("Employee1"))

@@ -56,7 +56,7 @@ public class Header extends LiglBasePage {
 			getSession().log_Pass("Clicked logout link");
 			waitForPageToLoad();
 			getSession().log_Pass("logout successful");
-			return new LiglBasePage();
+			return new LoginPage();
 
 		}catch (Exception | Error ex){
 			log_Error(ex.getMessage());

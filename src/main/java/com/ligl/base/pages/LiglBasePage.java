@@ -69,7 +69,7 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage adminLogin(String userName, String password, String entity) throws Exception{return null;}
 	public ILiglPage validateAdminRole() throws Exception {return null;}
-	public ILiglPage createNewCase(Hashtable<String,String> data){
+	public ILiglPage createNewCase(Hashtable<String,String> data) throws Exception {
 		return null;
 	}
 
@@ -138,11 +138,36 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage navigateToLegalHoldPage()  { return  null;}
 
+	public ILiglPage sendingCaseForDualApproval(String BatchNAME,String USER1,String USER2,String EMAIL,String Employee1,String SubType) throws Exception{
+		return null;
+	}
+
 	public ILiglPage goToSecurityPage() throws InterruptedException{
 		return null;
 	}
 	public ILiglPage sendingCaseForSingleApproval(String BatchNAME,String USER,String EMAIL) throws Exception{
 		return null;
+	}
+	public ILiglPage goToDSIPage() throws Exception{
+		return null;
+	}
+	public ILiglPage sendingCaseForApprovalWithScopeItems(String Employee1,String GmailCheck,String BatchNAME,String USER ,String EMAIL) throws Exception{
+		return  null;
+	}
+	public ILiglPage waitAndvalidateForRecordToCompleteCollection(String status)throws Exception{
+		return  null;
+	}
+	public ILiglPage goToDataManagementSummary() throws Exception{
+		return  null;
+	}
+	public ILiglPage addDataSourceRecordToDSIGrid(String cust,String datasource,String DataHold) throws Exception{
+		return  null;
+	}
+	public ILiglPage automateRecordInDSI()throws Exception{
+		return  null;
+	}
+	public ILiglPage addDataSource(String DataSource) throws Exception{
+		return  null;
 	}
 
 	public ILiglPage goToLegalHoldPage() throws Exception {return null;}
@@ -150,7 +175,7 @@ public class LiglBasePage implements ILiglPage {
 	public void selectDateFromCalendar(String date) {
 	}
 
-	public ILiglPage addCustodianToCase(String Email1,String Employee1) throws Exception {
+	public ILiglPage addCustodianToCase(String Email1) throws Exception {
 		return null;
 	}
 	public ILiglPage addDataSources() throws Exception {
@@ -165,6 +190,9 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validateCasePendingForApprovalState() throws Exception{
 		return null;
 	}
+	public ILiglPage verifyApprovalHistoryStatus(String AssignedUser1,String Status1,String Status2,String AssignedUser2) throws Exception{
+		return  null;
+	}
 	public ILiglPage validateCaseRejectedState() throws Exception{
 		return null;
 	}
@@ -172,6 +200,15 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 	public ILiglPage goToCaseCounselPage() throws Exception {
+		return null;
+	}
+	public ILiglPage verifyApprovalHistoryStatusRejected(String AssignedUser1,String Status3,String AssignedUser2,String Status1) throws Exception{
+		return null;
+	}
+	public ILiglPage sendingCaseForDualApprovalLinearType(String Employee1,String GmailCheck,String GoogleDriveCheck,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception{
+		return null;
+	}
+	public ILiglPage rejectingTheCase(String CaseNameApprove) throws Exception{
 		return null;
 	}
 	public ILiglPage addCustodiansToCaseThroughFilters(String Employee1,String Employee2) throws Exception {
