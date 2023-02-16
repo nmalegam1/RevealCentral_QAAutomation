@@ -77,6 +77,9 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[text()='Google Drive(Not-initiated)']//../..//div[@class='sourceChkbxDiv']")
     WebElement GoogleDriveCheckBox;
 
+    @FindBy(xpath = "//span[@title='KW1']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")
+    WebElement Keyword1;
+
 
 
 
@@ -451,7 +454,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     // Verify The Case Status When Dual Approval Is Selected - Linear Type
 
-    public ILiglPage sendingCaseForDualApprovalLinearType(String Employee1,String GmailCheck,String GoogleDriveCheck,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception {
+    public ILiglPage sendingCaseForDualApprovalLinearType(String Employee1,String GmailCheck,String GoogleDriveCheck,String BatchNAME,String EMAIL,String USER1,String USER2,String SubType) throws Exception {
 
         try {
 
@@ -496,16 +499,26 @@ public class SecurityPage extends LiglBaseSessionPage {
             BatchName.sendKeys(BatchNAME);
             log_Info("Clicked on Batch Name");
 
+
             log_Info("Click on Dual Approval Tab");
             getDriver().waitForelementToBeClickable(DualApproval);
             Thread.sleep(3000);
             DualApproval.click();
             log_Info("Clicked on Dual Approval Tab");
 
+            log_Info("Click on Email Template Drop down");
+            getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
+            Thread.sleep(5000);
+            TemplateNameDrpDwn.sendKeys(EMAIL);
+            Thread.sleep(3000);
+            TemplateNameDrpDwn.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Email Template Drop down");
+
             log_Info("Click on Select Approval1  Drop down");
             getDriver().waitForelementToBeClickable(SelectorApprover1);
             Thread.sleep(3000);
             SelectorApprover1.sendKeys(USER1);
+            Thread.sleep(3000);
             SelectorApprover1.sendKeys(Keys.ENTER);
             log_Info("Clicked on Select Approval1  Drop down");
 
@@ -513,22 +526,17 @@ public class SecurityPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(SelectorApprover2);
             Thread.sleep(3000);
             SelectorApprover2.sendKeys(USER2);
+            Thread.sleep(3000);
             SelectorApprover2.sendKeys(Keys.ENTER);
             log_Info("Clicked on Select Approval2  Drop down");
 
-            log_Info("Click on Select Approval2  Drop down");
+            log_Info("Click on Approver SubType  Drop down");
             getDriver().waitForelementToBeClickable(ApprovalSubType);
             Thread.sleep(3000);
             ApprovalSubType.sendKeys(SubType);
             ApprovalSubType.sendKeys(Keys.ENTER);
-            log_Info("Clicked on Select Approval2  Drop down");
+            log_Info("Clicked on Approver SubType  Drop down");
 
-            log_Info("Click on Email Template Drop down");
-            getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
-            Thread.sleep(5000);
-            TemplateNameDrpDwn.sendKeys(EMAIL);
-            TemplateNameDrpDwn.sendKeys(Keys.ENTER);
-            log_Info("Clicked on Email Template Drop down");
 
             log_Info("Click on Send For Approval Button");
             getDriver().waitForelementToBeClickable(SendApprovalBtn);
@@ -622,4 +630,312 @@ public class SecurityPage extends LiglBaseSessionPage {
 
         }
     }
-}
+
+
+    public ILiglPage sendingCaseForDualApprovalEitherType(String Employee1,String GmailCheck,String GoogleDriveCheck,String DateRange1,String DateRange2,String Keywords1,String Keywords2,String BatchNAME,String EMAIL,String USER1,String USER2,String SubType) throws Exception {
+
+        try {
+
+
+            log_Info("Click on Send For Approval Button");
+            getDriver().waitForelementToBeClickable(SendForApprovalBtn);
+            Thread.sleep(3000);
+            SendForApprovalBtn.click();
+            log_Info("Clicked on Send For Approval Button");
+
+            log_Info("Click on Custodian Check Box");
+            Thread.sleep(3000);
+            getCurrentDriver().findElement(By.xpath("//span[@title='"+Employee1+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            log_Info("Clicked on Custodian Check Box");
+
+            log_Info("Click on Next Button");
+            getDriver().waitForelementToBeClickable(NextBtn);
+            Thread.sleep(5000);
+            NextBtn.click();
+            log_Info("Clicked on Next Button");
+
+            log_Info("Click on Gmail Checkbox");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//div[text()='"+GmailCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            log_Info("Clicked on Gmail Checkbox");
+
+            log_Info("Click on Google Drive Checkbox");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//div[text()='"+GoogleDriveCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            log_Info("Clicked on Google Drive Checkbox");
+
+            log_Info("Click on Next Button");
+            getDriver().waitForelementToBeClickable(NextBtn);
+            Thread.sleep(5000);
+            NextBtn.click();
+            log_Info("Clicked on Next Button");
+
+            log_Info("Click on Date Range1");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//span[@title='"+DateRange1+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            log_Info("Clicked on Date Range1");
+
+            log_Info("Click on Date Range2");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//span[@title='"+DateRange2+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            log_Info("Clicked on Date Range2");
+
+            log_Info("Click on Next Button");
+            getDriver().waitForelementToBeClickable(NextBtn);
+            Thread.sleep(5000);
+            NextBtn.click();
+            log_Info("Clicked on Next Button");
+
+            log_Info("Click on Keyword 1");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//span[@title='"+Keywords1+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            log_Info("Clicked on Keyword 1");
+
+            log_Info("Click on Keyword2");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//span[@title='"+Keywords2+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            log_Info("Clicked on Keyword2");
+
+
+            log_Info("Click on Next Button");
+            getDriver().waitForelementToBeClickable(NextBtn);
+            Thread.sleep(5000);
+            NextBtn.click();
+            log_Info("Clicked on Next Button");
+
+
+            log_Info("Click on Batch Name");
+            getDriver().waitForelementToBeClickable(BatchName);
+            Thread.sleep(3000);
+            BatchName.sendKeys(BatchNAME);
+            log_Info("Clicked on Batch Name");
+
+
+            log_Info("Click on Dual Approval Tab");
+            getDriver().waitForelementToBeClickable(DualApproval);
+            Thread.sleep(3000);
+            DualApproval.click();
+            log_Info("Clicked on Dual Approval Tab");
+
+            log_Info("Click on Email Template Drop down");
+            getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
+            Thread.sleep(5000);
+            TemplateNameDrpDwn.sendKeys(EMAIL);
+            Thread.sleep(3000);
+            TemplateNameDrpDwn.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Email Template Drop down");
+
+            log_Info("Click on Select Approval1  Drop down");
+            getDriver().waitForelementToBeClickable(SelectorApprover1);
+            Thread.sleep(3000);
+            SelectorApprover1.sendKeys(USER1);
+            Thread.sleep(3000);
+            SelectorApprover1.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Select Approval1  Drop down");
+
+            log_Info("Click on Select Approval2  Drop down");
+            getDriver().waitForelementToBeClickable(SelectorApprover2);
+            Thread.sleep(3000);
+            SelectorApprover2.sendKeys(USER2);
+            Thread.sleep(3000);
+            SelectorApprover2.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Select Approval2  Drop down");
+
+            log_Info("Click on Approver SubType  Drop down");
+            getDriver().waitForelementToBeClickable(ApprovalSubType);
+            Thread.sleep(3000);
+            ApprovalSubType.sendKeys(SubType);
+            ApprovalSubType.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Approver SubType  Drop down");
+
+
+            log_Info("Click on Send For Approval Button");
+            getDriver().waitForelementToBeClickable(SendApprovalBtn);
+            Thread.sleep(3000);
+            SendApprovalBtn.click();
+            log_Info("Clicked on Send For Approval Button");
+
+
+            log_Info("Check The Status Of Case , It Should Be In Pending State");
+            boolean a2 = PendingStatus.isDisplayed();
+            System.out.println(a2);
+            Thread.sleep(3000);
+            Assert.assertEquals(true, a2);
+            return new SecurityPage();
+
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("sendingCaseForDualApprovalEitherType() Failed",ex);
+        }
+    }
+
+
+    // Sending Case For Approval Single Approval Type
+
+    public ILiglPage sendingCaseForApprovalAfterAddingScopeItems(String BatchNAME,String USER ,String EMAIL) throws Exception {
+
+
+        try {
+
+
+            log_Info("Click on Request For Approval Tab");
+            getDriver().waitForelementToBeClickable(RATab);
+            Thread.sleep(3000);
+            RATab.click();
+            log_Info("Clicked on Request For Approval Tab");
+
+            log_Info("Click on Batch Name");
+            getDriver().waitForelementToBeClickable(BatchName);
+            Thread.sleep(3000);
+            BatchName.sendKeys(BatchNAME);
+
+            log_Info("Click on Email Template Drop down");
+            getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
+            Thread.sleep(5000);
+            TemplateNameDrpDwn.sendKeys(EMAIL);
+            Thread.sleep(3000);
+            TemplateNameDrpDwn.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Email Template Drop down");
+            log_Info("Click on Select Approval  Drop down");
+            getDriver().waitForelementToBeClickable(SelectApprovalDrpDwn);
+            SelectApprovalDrpDwn.sendKeys(USER);
+            Thread.sleep(3000);
+            SelectApprovalDrpDwn.sendKeys(Keys.ENTER);
+
+            log_Info("Click on Send For Approval Button");
+            getDriver().waitForelementToBeClickable(SendApprovalBtn);
+            Thread.sleep(3000);
+            SendApprovalBtn.click();
+            log_Info("Clicked on Send For Approval Button");
+            log_Info("Check The Status Of Case , It Should Be In Pending State");
+            boolean a2 = PendingStatus.isDisplayed();
+            System.out.println(a2);
+            Thread.sleep(3000);
+            Assert.assertEquals(true, a2);
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("sendingCaseForSingleApproval() Failed", ex);
+
+        }
+    }
+
+
+    public ILiglPage clickOnSendForApprovalButton() throws Exception {
+
+
+        try {
+
+            log_Info("Click on Send For Approval Button");
+            getDriver().waitForelementToBeClickable(SendForApprovalBtn);
+            Thread.sleep(3000);
+            SendForApprovalBtn.click();
+            log_Info("Clicked on Send For Approval Button");
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnSendForApprovalButton()  Failed", ex);
+
+        }
+    }
+
+    public ILiglPage clickOnCustodianCheckBoxForApproval(String Emp1) throws Exception {
+
+
+        try {
+
+            log_Info("Click on Custodian Check Box");
+            Thread.sleep(3000);
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + Emp1 + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            log_Info("Clicked on Custodian Check Box");
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnCustodianCheckBoxForApproval()  Failed", ex);
+
+        }
+    }
+
+
+    public ILiglPage clickOnNextButtonForApproval() throws Exception {
+
+
+        try {
+
+            log_Info("Click on Next Button");
+            getDriver().waitForelementToBeClickable(NextBtn);
+            Thread.sleep(5000);
+            NextBtn.click();
+            log_Info("Clicked on Next Button");
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnNextButtonForApproval()  Failed", ex);
+
+        }
+    }
+
+    public ILiglPage clickOnDataSourceCheckBoxForApproval(String DataSource1) throws Exception {
+
+
+        try {
+
+            log_Info("Click on The Required DataSource Checkbox");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//div[text()='" + DataSource1 + "']//../..//div[@class='sourceChkbxDiv']")).click();
+            log_Info("Click on The Required DataSource Checkbox");
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnNextButtonForApproval()  Failed", ex);
+
+        }
+    }
+
+    // Date Ranges
+
+    public ILiglPage clickOnDateRangesCheckBoxForApproval(String DateRange) throws Exception {
+
+
+        try {
+
+            log_Info("Click on The Required DateRange Checkbox");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + DateRange + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            log_Info("Clicked on The Required DateRange Checkbox");
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnDateRangesCheckBoxForApproval()  Failed", ex);
+
+        }
+    }
+
+    //Keywords
+
+    public ILiglPage clickOnKeywordsCheckBoxForApproval(String KeyWords) throws Exception {
+
+
+        try {
+
+            log_Info("Click on The Required Keywords Checkbox");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + KeyWords + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            log_Info("Clicked on The Required keywords Checkbox");
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnKeywordsCheckBoxForApproval()  Failed", ex);
+
+        }
+    }
+
+    }

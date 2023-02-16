@@ -25,7 +25,7 @@ public interface ILiglPage {
     ILiglPage login(String userName, String password) throws Exception;
     ILiglPage adminLogin(String userName, String password, String entity) throws Exception;
     ILiglPage navigateSSOLoginPage();
-    ILiglPage SSOLogin(String userName, String password) throws InterruptedException;
+    ILiglPage SSOLogin(String userName, String password,String Entity) throws InterruptedException;
     ILiglPage selectEntity(String entity);
     ILiglPage createNewCase(Hashtable<String,String> data) throws Exception;
     ILiglPage clickClearFilterBtn();
@@ -43,7 +43,9 @@ public interface ILiglPage {
     ILiglPage navigateToCustodiansPage() throws Exception;
 
     ILiglPage navigateToLegalHoldPage();
-    ILiglPage goToLegalHoldPage() throws Exception;
+
+
+    ILiglPage goToPMSummaryPage() throws Exception;
 
     ILiglPage checkLHNForCustodians(String LHN,String Employee1) throws Exception;
 
@@ -61,7 +63,7 @@ public interface ILiglPage {
 
     ILiglPage addCustodianToCase(String Email1) throws Exception;
 
-    ILiglPage addDataSourceRecordToDSIGrid(String cust,String datasource,String DataHold) throws Exception;
+    ILiglPage addDataSourceRecordToDSIGrid(String cust,String datasource,String DataHold,String DateRanges,String Keywords) throws Exception;
 
     ILiglPage addDataSources() throws Exception;
     ILiglPage automateRecordInDSI()throws Exception;
@@ -114,9 +116,11 @@ public interface ILiglPage {
 
     ILiglPage enableAndDisableKeywords(String Status1) throws Exception;
 
-    ILiglPage sendingCaseForDualApprovalLinearType(String Employee1,String GmailCheck,String GoogleDriveCheck,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception;
+    ILiglPage sendingCaseForDualApprovalLinearType(String Employee1,String GmailCheck,String GoogleDriveCheck,String BatchNAME,String EMAIL,String USER1,String USER2,String SubType) throws Exception;
 
     ILiglPage validateCaseRejectedState() throws Exception;
+
+    ILiglPage sendingCaseForDualApprovalEitherType(String Employee1,String GmailCheck,String GoogleDriveCheck,String DateRange1,String DateRange2,String Keywords1,String Keywords2,String BatchNAME,String EMAIL,String USER1,String USER2,String SubType) throws Exception;
 
     ILiglPage validateDSIForCustodians(String Employee1) throws Exception;
 
@@ -227,5 +231,62 @@ public interface ILiglPage {
 
     ILiglPage validateAddedNewOutsideCounsel(String OutsideCounsel, String NameTextBox) throws Exception;
 
+    // Actions For Adding An Employee To Custodian
+
+    ILiglPage addCustodianToCaseAtOneTime(String Email1) throws Exception;
+
+    ILiglPage clickOnFilterButtonOnly() throws Exception;
+
+    ILiglPage clickOnTheCutsodianCheckBox(String Emp1) throws Exception;
+
+    ILiglPage clickOnAddToCaseButton() throws Exception;
+
+    ILiglPage performClearAction(String Email2) throws Exception;
+
+    // Adding Data Sources To The Custodian
+
+    ILiglPage addingDataSource(String DataSource) throws Exception;
+
+    ILiglPage clickOnSaveButton() throws Exception;
+
+    // Adding Records To DSI Page
+
+    ILiglPage searchAccountEmailRecordInDSI(String Email1) throws Exception;
+
+    ILiglPage searchAccountEmailOneMoreTime() throws Exception;
+
+    ILiglPage clickOnCheckBoxOfCustodian() throws Exception;
+
+    ILiglPage sendingAccountEmailOneMorTime(String Email2) throws Exception;
+
+    ILiglPage clickOnAutomateButton() throws Exception;
+
+
+    // Approving Case With Custodian And Datasources
+
+    ILiglPage sendingCaseForApprovalAfterAddingScopeItems(String BatchNAME,String USER ,String EMAIL) throws Exception;
+
+    ILiglPage clickOnSendForApprovalButton() throws Exception;
+
+    ILiglPage clickOnCustodianCheckBoxForApproval(String Emp1) throws Exception;
+
+    ILiglPage clickOnNextButtonForApproval() throws Exception;
+
+    ILiglPage clickOnDataSourceCheckBoxForApproval(String DataSource1) throws Exception;
+
+    ILiglPage viewCase() throws Exception;
+
+
+    // Smoke Suite Methods
+
+    ILiglPage validateAndWaitForRecordsToCompleteCollection(String CollectionStatus) throws Exception;
+
+    ILiglPage validateAndWaitForRecordsToCompleteProcessing(String Processingstatus)throws Exception;
+
+    ILiglPage clickOnDateRangesCheckBoxForApproval(String DateRange) throws Exception;
+
+    ILiglPage clickOnKeywordsCheckBoxForApproval(String KeyWords) throws Exception;
+
+    ILiglPage addDataSourceRecordToDSIGridUptoCollection(String cust, String datasource, String DataHold) throws Exception;
 
 }

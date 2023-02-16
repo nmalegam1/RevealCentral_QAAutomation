@@ -14,7 +14,10 @@ public class SSOLoginPage extends LiglBasePage {
     WebElement nextBtn;
 
     @Override
-    public ILiglPage SSOLogin(String userName, String password) throws InterruptedException {
+    public ILiglPage SSOLogin(String userName, String password,String Entity) throws InterruptedException {
+
+
+
         log_Info("Enter SSO UserName");
         userNameTxt.sendKeys(userName);
         getSession().log_Pass("Entered SSO username");
@@ -28,18 +31,12 @@ public class SSOLoginPage extends LiglBasePage {
         Thread.sleep(10000);
 
         if (getCurrentDriver().getTitle().contains("Legal Entity Select | Vertical")) {
-            //String url=getCurrentDriver().getCurrentUrl();
             log_Info("EntityPage Loaded");
-            //waitForPageToLoad();
-            String entity="usa";
-            System.out.println("Entity : "+entity);
-            if(entity.contains("usa"))
+            System.out.println("Entity : "+Entity);
+            if(Entity.contains(Entity))
             {
-                getCurrentDriver().findElement(By.xpath("//span[contains(text(),'USA')]")).click();
+                getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Entity+"')]")).click();
                 getDriver().waitForAngularRequestsToComplete();
-                return new DefaultLandingPage();
-            }else if (entity.contains("ind")){
-                getCurrentDriver().findElement(By.xpath("//span[contains(text(),'IND')]")).click();
                 return new DefaultLandingPage();
             }
         }

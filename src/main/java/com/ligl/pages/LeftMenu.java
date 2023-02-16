@@ -6,6 +6,7 @@ import com.ligl.pages.casemanagement.*;
 import com.ligl.pages.datamanagement.DMCollectionsPage;
 import com.ligl.pages.datamanagement.DMDSIPage;
 import com.ligl.pages.datamanagement.DMSummaryPage;
+import com.ligl.pages.processmanagement.PMSummaryPage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,7 +56,7 @@ public class LeftMenu extends LiglBasePage {
     @FindBy(xpath = "//span[@title='Court']")
     WebElement Court;
 
-    @FindBy(xpath = "//span[@title='Key Words']")
+    @FindBy(xpath = "//span[@title='Keywords']")
     WebElement Keywords;
 
     @FindBy(xpath = "//div[contains(text(),'Select Data Source(s)')]")
@@ -67,6 +68,10 @@ public class LeftMenu extends LiglBasePage {
     @FindBy(xpath = "//span[@title='Identification']")
     WebElement Identification;
 
+    @FindBy(xpath = "//span[@title='Process Management']")
+    WebElement ProcessManagement;
+
+
 
 
     public LeftMenu(WebDriver driver) {
@@ -74,7 +79,7 @@ public class LeftMenu extends LiglBasePage {
     }
 
 
-    public ILiglPage goToLegalHoldPage() {
+    public ILiglPage navigateToLegalHoldPage() {
         LegalHoldBtn.click();
         return new LegalHoldPage();
     }
@@ -91,8 +96,8 @@ public class LeftMenu extends LiglBasePage {
 
             log_Info("Click on Identification");
             getDriver().waitForelementToBeClickable(Identification);
-            Thread.sleep(5000);
             Identification.click();
+            Thread.sleep(5000);
             getSession().log_Pass("Clicked on Identification");
             return new DMDSIPage();
 
@@ -353,6 +358,23 @@ public class LeftMenu extends LiglBasePage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("goToDataManagement() Failed ", ex);
+        }
+    }
+
+    public ILiglPage goToPMSummaryPage() throws Exception {
+
+        try {
+
+            log_Info("Click on Process Management");
+            getDriver().waitForelementToBeClickable(ProcessManagement);
+            Thread.sleep(5000);
+            ProcessManagement.click();
+            Thread.sleep(3000);
+            return new PMSummaryPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("goToPMSummaryPage() Failed ", ex);
         }
     }
 }

@@ -76,9 +76,15 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage navigateSSOLoginPage(){
 		return null;
 	}
-	public ILiglPage SSOLogin(String userName, String password) throws InterruptedException {
+	public ILiglPage SSOLogin(String userName, String password,String Entity) throws InterruptedException {
 		return null;
 	}
+
+	public ILiglPage goToPMSummaryPage() throws Exception{
+		return null;
+	}
+
+
 
 	public LiglTestSession getSession() {
 		return (LiglTestSession)Reporter.getCurrentTestResult().getTestContext().getAttribute("session");
@@ -160,7 +166,7 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage goToDataManagementSummary() throws Exception{
 		return  null;
 	}
-	public ILiglPage addDataSourceRecordToDSIGrid(String cust,String datasource,String DataHold) throws Exception{
+	public ILiglPage addDataSourceRecordToDSIGrid(String cust,String datasource,String DataHold,String DateRanges,String Keywords) throws Exception{
 		return  null;
 	}
 	public ILiglPage automateRecordInDSI()throws Exception{
@@ -205,10 +211,14 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage verifyApprovalHistoryStatusRejected(String AssignedUser1,String Status3,String AssignedUser2,String Status1) throws Exception{
 		return null;
 	}
-	public ILiglPage sendingCaseForDualApprovalLinearType(String Employee1,String GmailCheck,String GoogleDriveCheck,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception{
+	public ILiglPage sendingCaseForDualApprovalLinearType(String Employee1,String GmailCheck,String GoogleDriveCheck,String BatchNAME,String EMAIL,String USER1,String USER2,String SubType) throws Exception{
 		return null;
 	}
 	public ILiglPage rejectingTheCase(String CaseNameApprove) throws Exception{
+		return null;
+	}
+
+	public ILiglPage sendingCaseForDualApprovalEitherType(String Employee1,String GmailCheck,String GoogleDriveCheck,String DateRange1,String DateRange2,String Keywords1,String Keywords2,String BatchNAME,String EMAIL,String USER1,String USER2,String SubType) throws Exception{
 		return null;
 	}
 	public ILiglPage addCustodiansToCaseThroughFilters(String Employee1,String Employee2) throws Exception {
@@ -417,6 +427,90 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
+	// Actions For Adding An Employee To Custodian
+
+	public ILiglPage addCustodianToCaseAtOneTime(String Email1) throws Exception{
+		return  null;
+	}
+	public ILiglPage clickOnFilterButtonOnly() throws Exception{
+		return  null;
+	}
+	public ILiglPage clickOnTheCutsodianCheckBox(String Emp1) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnAddToCaseButton() throws Exception{
+		return null;
+	}
+	public ILiglPage performClearAction(String Email2) throws Exception{
+		return null;
+	}
+
+	// Adding Data Sources To The Custodian
+
+	public ILiglPage addingDataSource(String DataSource) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnSaveButton() throws Exception{
+		return null;
+	}
+
+	// Adding Records To DSI Page
+
+	public ILiglPage searchAccountEmailRecordInDSI(String Email1) throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchAccountEmailOneMoreTime() throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnCheckBoxOfCustodian() throws Exception{
+		return null;
+	}
+	public ILiglPage sendingAccountEmailOneMorTime(String Email2) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnAutomateButton() throws Exception{
+		return null;
+	}
+	// Approving Case With Custodian And Datasources
+
+	public ILiglPage sendingCaseForApprovalAfterAddingScopeItems(String BatchNAME,String USER ,String EMAIL) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnSendForApprovalButton() throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnCustodianCheckBoxForApproval(String Emp1) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnNextButtonForApproval() throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnDataSourceCheckBoxForApproval(String DataSource1) throws Exception{
+		return null;
+	}
+	public ILiglPage viewCase() throws Exception{
+		return null;
+	}
+
+	// Smoke Suite Methods
+
+	public ILiglPage validateAndWaitForRecordsToCompleteProcessing(String Processingstatus)throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateAndWaitForRecordsToCompleteCollection(String CollectionStatus) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnDateRangesCheckBoxForApproval(String DateRange) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnKeywordsCheckBoxForApproval(String KeyWords) throws Exception{
+		return null;
+	}
+	public ILiglPage addDataSourceRecordToDSIGridUptoCollection(String cust, String datasource, String DataHold) throws Exception{
+		return null;
+	}
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;

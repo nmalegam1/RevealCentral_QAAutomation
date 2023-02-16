@@ -38,10 +38,15 @@ public class Header extends LiglBasePage {
 
 	@FindBy(xpath = "//a[@title='Administration']")
 	public WebElement AdministrationTab;
+	@FindBy(xpath = "//a[@ng-click='vmBase.resetMouseHoverPopUp()']")
+	public WebElement SwitchCaseTab;
+	@FindBy(id="view-case")
+	public WebElement ViewCaseBtn;
 
 	public Header(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
+
 
 	public ILiglPage logout() throws Exception {
 
@@ -63,6 +68,24 @@ public class Header extends LiglBasePage {
 			throw new Exception("logout() Failed",ex);
 		}
 	}
+
+	public ILiglPage viewCase() throws Exception{
+
+		try{
+
+			log_Info("switchCase() Started");
+			SwitchCaseTab.click();
+			Thread.sleep(2000);
+			ViewCaseBtn.click();
+			return new CaseSummaryPage();
+
+		}catch (Exception ex){
+			throw new Exception("Exception in switchCase()");
+		}
+	}
+
+
+
 	public ILiglPage goToApprovalPage(){
 		approvalTab.click();
 		return new ApprovalPage();

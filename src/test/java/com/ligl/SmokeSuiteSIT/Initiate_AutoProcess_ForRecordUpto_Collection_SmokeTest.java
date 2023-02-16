@@ -1,4 +1,4 @@
-package com.ligl.SmokeSuite;
+package com.ligl.SmokeSuiteSIT;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -8,7 +8,6 @@ import com.ligl.util.DataUtil;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 
-import javax.xml.crypto.Data;
 import java.util.Hashtable;
 
 public class Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTest extends TestBase {
@@ -27,13 +26,15 @@ public class Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTest extends Tes
 
 
             ILiglPage page = new LaunchPage()
+
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"))
+                    .navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToDSIPage()
-                    .addDataSourceRecordToDSIGrid(data.get("Custodian"),data.get("DataSource"), data.get("DataHold"))
+                    .addDataSourceRecordToDSIGridUptoCollection(data.get("Custodian"),data.get("DataSource"), data.get("DataHold"))
                     .automateRecordInDSI()
                     .getLeftMenu().goToDataManagementSummary()
                     .waitAndvalidateForRecordToCompleteCollection(data.get("CollectionStatus"));

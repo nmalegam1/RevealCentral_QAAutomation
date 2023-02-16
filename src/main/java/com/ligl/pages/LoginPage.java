@@ -77,9 +77,11 @@ public class LoginPage extends LiglBasePage {
 	}
 
 	@Override
-	public ILiglPage adminLogin(String userName, String password, String entity) throws Exception {// 20 elements
+	public ILiglPage adminLogin(String userName, String password, String entity) throws Exception {
+
 		try {
-			//log("Enter UserName");
+
+
 			log_Info("Enter User Name");
 			getDriver().waitForelementToBeClickable(userNameTxt);
 			userNameTxt.sendKeys(userName);
@@ -95,21 +97,14 @@ public class LoginPage extends LiglBasePage {
 			getSession().log_Pass("Clicked signin button");
 			getDriver().waitForAngularRequestsToComplete();
 			Thread.sleep(2000);
-			//Check the URL Name
-			if (getCurrentDriver().getTitle().contains("Entity Select")) {
-				//String url=getCurrentDriver().getCurrentUrl();
-				log_Info("EntityPage Loaded");
-				//waitForPageToLoad();
 
+			if (getCurrentDriver().getTitle().contains("Legal Entity Select | Vertical")) {
+				log_Info("EntityPage Loaded");
 				System.out.println("Entity : "+entity);
-				if(entity.contains("usa"))
+				if(entity.contains(entity))
 				{
-					getCurrentDriver().findElement(By.xpath("//span[contains(text(),'USA')]")).click();
+					getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+entity+"')]")).click();
 					getDriver().waitForAngularRequestsToComplete();
-					//Thread.sleep(3000);
-					return new DashboardPage();
-				}else if (entity.contains("ind")){
-					getCurrentDriver().findElement(By.xpath("//span[contains(text(),'IND')]")).click();
 					return new DashboardPage();
 				}
 			} else if (getCurrentDriver().getCurrentUrl().contains("dashboard/caseinsights")) {

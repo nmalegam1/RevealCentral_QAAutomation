@@ -1,9 +1,10 @@
 package com.ligl.session;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
-
+import java.util.Properties;
 import com.ligl.base.pages.ILiglPage;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -24,10 +25,39 @@ public class LiglTestSession {
 	ExtentReports reports;
 	ExtentTest test ;
 	boolean executeListener;
-	
-	public LiglTestSession() {
+
+	Properties prop1;
+	Properties prop2;
+
+
+
+
+
+
+
+	public LiglTestSession()throws Exception  {
+
 		con = new LiglDriver();
-	}
+		try {
+ prop1 = new Properties();
+ prop2 = new Properties();
+ FileInputStream fs1 = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\smoke.properties");
+ prop1.load(fs1);
+ FileInputStream fs2 = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\regression.properties");
+ prop2.load(fs2);
+ }catch (Exception e)
+ {
+ e.printStackTrace();
+ }
+}
+
+public String getSmokeData(String td) {
+	return (String) prop1.get(td);
+}
+public String getRegressionData(String td)
+ {
+	return (String) prop2.get(td);
+ }
 	
 	public void init(String testName) {
 		setExecuteListener(true);
