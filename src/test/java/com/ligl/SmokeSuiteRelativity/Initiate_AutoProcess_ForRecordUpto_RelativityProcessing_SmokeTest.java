@@ -33,7 +33,7 @@ public class Initiate_AutoProcess_ForRecordUpto_RelativityProcessing_SmokeTest e
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    /*.getLeftMenu()
+                    .getLeftMenu()
                     .goToDSIPage()
                     .addDataSourceRecordToDSIGrid(data.get("Emp1"),data.get("Datasource1"), data.get("DataHold"),data.get("DateRange1"), data.get("KeyWords1"))
                     .addDataSourceRecordToDSIGrid(data.get("Emp2"),data.get("Datasource2"), data.get("DataHold"),data.get("DateRange2"), data.get("KeyWords2"))
@@ -43,7 +43,7 @@ public class Initiate_AutoProcess_ForRecordUpto_RelativityProcessing_SmokeTest e
                     .sendingAccountEmailOneMorTime(data.get("Email2"))
                     .clickOnCheckBoxOfCustodian()
                     .searchAccountEmailOneMoreTime()
-                    .clickOnAutomateButton()*/
+                    .clickOnAutomateButton()
                     .getLeftMenu().goToDataManagementSummary()
                     .validateAndWaitForRecordsToCompleteCollection(data.get("CollectionStatus"))
                     .getLeftMenu().goToPMSummaryPage()

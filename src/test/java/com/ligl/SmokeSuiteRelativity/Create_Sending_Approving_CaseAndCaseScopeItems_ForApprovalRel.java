@@ -22,13 +22,14 @@ public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalRel exten
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
 
+            // Create A Case And Sending For Approval - NUIX
+
             ILiglPage page = new LaunchPage()
 
                     .openBrowser("chrome")
                     .navigateURL()
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
-                    /*.searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))*/
                     .createNewCase(data)
                     .getLeftMenu()
                     .navigateToCustodiansPage()

@@ -23,48 +23,29 @@ public class LoginPage extends LiglBasePage {
 	WebElement ssoSignInBtn;
 
 	@Override
-	public ILiglPage login(String userName, String password) throws Exception {// 20 elements
+	public ILiglPage login(String userName, String password,String Entity) throws Exception {// 20 elements
 		try {
-			//log("Enter UserName");
+
 			log_Info("Enter User Name");
 			getDriver().waitForelementToBeClickable(userNameTxt);
 			userNameTxt.sendKeys(userName);
 			getSession().log_Pass("user name entered");
 			log_Info("Enter Password");
-			//getSession().failTest("failed action");
 			getDriver().waitForelementToBeClickable(passwordTxt);
 			passwordTxt.sendKeys(password);
 			log_Pass("password entered");
-			//getSession().log_Pass("password entered");
-			//log("Click SignIn button");
 			signInBtn.click();
 			getSession().log_Pass("Clicked signin button");
 			Thread.sleep(2000);
 			getDriver().waitForAngularRequestsToComplete();
-			/*waitForPageToLoad();
-			//Check the URL Name
-			if (getCurrentDriver().getTitle().contains("Entity Select")) {
+
+			if (getCurrentDriver().getTitle().contains("Legal Entity Select | Ligl")) {
 				log_Info("EntityPage Loaded");
-				return new EntitySelectPage();
-			} else //if (getCurrentDriver().getTitle().contains("Cases | Ligl")) {
-			{	getDriver().waitForVisibilityOfElementLocated(By.xpath("//div[@class='ag-center-cols-container']"));
-				//getDriver().waitForAngularRequestsToComplete();
-				log_Info("DefaultLandingPage Loaded");
-				return new DefaultLandingPage();
-			}*/
-			if (getCurrentDriver().getTitle().contains("Legal Entity Select | Vertical")) {
-				//String url=getCurrentDriver().getCurrentUrl();
-				log_Info("EntityPage Loaded");
-				//waitForPageToLoad();
-				String entity="usa";
-				System.out.println("Entity : "+entity);
-				if(entity.contains("usa"))
+				System.out.println("Entity : "+Entity);
+				if(Entity.contains(Entity))
 				{
-					getCurrentDriver().findElement(By.xpath("//span[contains(text(),'USA')]")).click();
+					getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Entity+"')]")).click();
 					getDriver().waitForAngularRequestsToComplete();
-					return new DefaultLandingPage();
-				}else if (entity.contains("ind")){
-					getCurrentDriver().findElement(By.xpath("//span[contains(text(),'IND')]")).click();
 					return new DefaultLandingPage();
 				}
 			}

@@ -24,7 +24,7 @@ public class Initiate_AutoProcess_ForRecordUpto_NuixProcessing_SmokeTest extends
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
 
-        // Initiating The Auto Process For A record In Nuix Processing
+        // Initiating The Auto Process For A record In Nuix Processing Upto Hosting
 
             ILiglPage page = new LaunchPage()
 

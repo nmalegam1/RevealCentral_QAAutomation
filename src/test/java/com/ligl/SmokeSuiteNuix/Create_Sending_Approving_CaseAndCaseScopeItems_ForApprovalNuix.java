@@ -22,6 +22,9 @@ public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalNuix exte
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
 
+                // Create A Case And Sending For Approval
+
+
             ILiglPage page = new LaunchPage()
 
                     .openBrowser("chrome")

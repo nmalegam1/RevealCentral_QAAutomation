@@ -17,7 +17,7 @@ public class TestBase {
 	//public Xls_Reader xls = new Xls_Reader(System.getProperty("user.dir")+"//TestData.xlsx");
 	
 	@BeforeMethod
-	public void init(ITestResult result) {
+	public void init(ITestResult result) throws Exception {
 		System.out.println("@BeforeMethod");
 		testName = result.getMethod().getMethodName().toUpperCase();
 		System.out.println(testName);

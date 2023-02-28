@@ -24,6 +24,7 @@ public class Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTestNuix extends
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
 
+            // Initiate Auto Process UpTo Collection
 
             ILiglPage page = new LaunchPage()
 

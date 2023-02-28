@@ -22,7 +22,7 @@ public interface ILiglPage {
     IWebConnector validator(boolean flagAssertionType);
 
     ILiglPage validateAdminRole() throws Exception;
-    ILiglPage login(String userName, String password) throws Exception;
+    ILiglPage login(String userName, String password,String Entity) throws Exception;
     ILiglPage adminLogin(String userName, String password, String entity) throws Exception;
     ILiglPage navigateSSOLoginPage();
     ILiglPage SSOLogin(String userName, String password,String Entity) throws InterruptedException;

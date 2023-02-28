@@ -22,6 +22,8 @@ public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalCollectio
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
 
+            //Create A Case And Sending For Approval - Nuix
+
             ILiglPage page = new LaunchPage()
 
                     .openBrowser("chrome")
@@ -42,6 +44,13 @@ public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalCollectio
                     .addingDataSource(data.get("Datasource1"))
                     .addingDataSource(data.get("Datasource2"))
                     .clickOnSaveButton()
+                    .getLeftMenu()
+                    .navigateToDateRangesPage()
+                    .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))
+                    .addDateRanges(data.get("StartDate2"), data.get("EndDate2"), data.get("DescriptionBox"))
+                    .getLeftMenu().navigateToKeyWordsPage()
+                    .addKeywordsByBasic(data.get("Keywords1"))
+                    .addKeywordsByBasic(data.get("Keywords2"))
                     .getLeftMenu()
                     .goToSecurityPage()
                     .clickOnSendForApprovalButton()

@@ -56,7 +56,7 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
-	public ILiglPage login(String userName, String password) throws Exception {
+	public ILiglPage login(String userName, String password,String Entity) throws Exception {
 		return null;
 	}
 	public ILiglPage createNewCounselForSelectedOutsideCounsel(String PartyNew,String OptionFromLawFirmDropDwn,String FirstName,String LastName) throws Exception {

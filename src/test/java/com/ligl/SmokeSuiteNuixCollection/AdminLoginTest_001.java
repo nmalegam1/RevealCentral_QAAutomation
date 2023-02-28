@@ -22,6 +22,8 @@ public class AdminLoginTest_001 extends TestBase {
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
 
+            // Normal Admin Login Test Case For User Having Admin Role
+
             ILiglPage page = new LaunchPage()
 
                     .openBrowser("chrome")

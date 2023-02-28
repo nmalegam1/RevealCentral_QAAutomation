@@ -12,8 +12,9 @@ public class LaunchPage extends LiglBasePage {
     
 	public ILiglPage navigateURL() {
 		log_Info("Navigaing to Application URL");
-		getDriver().navigate(System.getProperty("appURL"));
-		getSession().log_Pass("Navigated to "+ System.getProperty("appURL") );
+//		getDriver().navigate(getSession().ge.getProperty("appURL"));
+		getDriver().navigate(getSession().getSmokeData("URL"));
+		getSession().log_Pass("Navigated to "+ getSession().getSmokeData("URL"));
 		waitForPageToLoad();
 		return new LoginPage();
 	}
