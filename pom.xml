@@ -101,7 +101,6 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M4</version>
 				<configuration>
-
 					<suiteXmlFiles>
 						<suiteXmlFile>src/test/resources/SmokeSuite.xml</suiteXmlFile>
 
