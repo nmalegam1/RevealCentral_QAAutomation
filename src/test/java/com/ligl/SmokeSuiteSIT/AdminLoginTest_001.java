@@ -1,4 +1,4 @@
-package com.ligl.SmokeSuite;
+package com.ligl.SmokeSuiteSIT;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -25,7 +25,7 @@ public class AdminLoginTest_001 extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .adminLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .validateAdminRole()
                     .getHeader()
                     .logout();

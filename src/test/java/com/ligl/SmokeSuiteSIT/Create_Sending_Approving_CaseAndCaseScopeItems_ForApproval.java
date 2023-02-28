@@ -1,4 +1,4 @@
-package com.ligl.SmokeSuite;
+package com.ligl.SmokeSuiteSIT;
 
         import com.ligl.base.TestBase;
         import com.ligl.base.pages.ILiglPage;
@@ -23,10 +23,11 @@ public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApproval extends 
             }
 
             ILiglPage page = new LaunchPage()
+
                     .openBrowser("chrome")
                     .navigateURL()
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"))
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .createNewCase(data)
                     .getLeftMenu()
                     .navigateToCustodiansPage()
@@ -40,7 +41,6 @@ public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApproval extends 
                     .getHeader()
                     .goToApprovalPage()
                     .approvingCaseSingleApprover(data.get("CaseNameApprove"))
-
                     .logout();
 
         }catch (Exception ex){

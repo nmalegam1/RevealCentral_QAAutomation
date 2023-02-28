@@ -8,16 +8,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class CaseDataSourcesPage extends LiglBaseSessionPage
-{
+public class CaseDataSourcesPage extends LiglBaseSessionPage {
 
-    @FindBy (xpath = "//div[text()='Google Drive']//../..//div[@class='sourceChkbxDiv']")
+    @FindBy(xpath = "//div[text()='Google Drive']//../..//div[@class='sourceChkbxDiv']")
     WebElement GoogleDrive;
 
-    @FindBy (xpath = "//div[text()='Gmail']//../..//div[@class='sourceChkbxDiv']")
+    @FindBy(xpath = "//div[text()='Gmail']//../..//div[@class='sourceChkbxDiv']")
     WebElement Gmail;
 
-    @FindBy (xpath="//button[contains(text(),Save) and @type='submit']")
+    @FindBy(xpath = "//button[contains(text(),Save) and @type='submit']")
     WebElement SaveBtn;
 
     @FindBy(xpath = "//span[@title='Case Management']")
@@ -25,8 +24,6 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage
 
     @FindBy(xpath = "//h1[contains(text(),'Select Data Source(s)')]")
     WebElement DSHeading;
-
-
 
 
     public ILiglPage addDataSources() throws Exception {
@@ -62,9 +59,9 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage
             return new CaseDataSourcesPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("addDataSources() Failed",ex);
+            throw new Exception("addDataSources() Failed", ex);
         }
     }
 
@@ -76,10 +73,10 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage
             log_Info("Click on checkbox");
             //getDriver().waitForelementToBeClickable(Gmail);
             Thread.sleep(2000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+DataSource+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.xpath("//div[text()='" + DataSource + "']//../..//div[@class='sourceChkbxDiv']")).click();
             log_Info("Clicked on checkbox");
             Thread.sleep(2000);
-            ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", SaveBtn);
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", SaveBtn);
             log_Info("Click on SaveBtn");
             getDriver().waitForelementToBeClickable(SaveBtn);
             SaveBtn.click();
@@ -90,9 +87,53 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage
             return new CaseDataSourcesPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("addDataSources() Failed",ex);
+            throw new Exception("addDataSources() Failed", ex);
         }
+    }
+
+    // Adding DataSource To The Selected Custodian - ReUsable Method
+
+    public ILiglPage addingDataSource(String DataSource) throws Exception {
+
+        try {
+
+            log_Info("addingDataSource() Started");
+            log_Info("Click on checkbox");
+            Thread.sleep(2000);
+            getCurrentDriver().findElement(By.xpath("//div[text()='" + DataSource + "']//../..//div[@class='sourceChkbxDiv']")).click();
+            log_Info("Clicked on checkbox");
+            Thread.sleep(2000);
+            return new CaseDataSourcesPage();
+
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("addingDataSource() Failed", ex);
+        }
+    }
+
+    public ILiglPage clickOnSaveButton() throws Exception {
+
+        try {
+
+            log_Info("clickOnSaveButton() Started");
+            Thread.sleep(5000);
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", SaveBtn);
+            log_Info("Click on SaveBtn");
+            getDriver().waitForelementToBeClickable(SaveBtn);
+            SaveBtn.click();
+            Thread.sleep(2000);
+            log_Info("Clicked on SaveBtn");
+            getSession().log_Pass("Added DataSources To Case ");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", DSHeading);
+            return new CaseDataSourcesPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnSaveButton() Failed", ex);
+        }
+
     }
 }

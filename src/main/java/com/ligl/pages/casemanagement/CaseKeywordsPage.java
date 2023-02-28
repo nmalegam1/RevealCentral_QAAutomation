@@ -120,6 +120,8 @@ public class CaseKeywordsPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(SelectDataSourceDrpDwn);
             Thread.sleep(5000);
             SelectDataSourceDrpDwn.sendKeys(DataSource1);
+            Thread.sleep(3000);
+            SelectDataSourceDrpDwn.sendKeys(Keys.ENTER);
             getSession().log_Pass("Clicked on Select Data Source Drop Down");
 
             log_Info("Click on Save Btn");

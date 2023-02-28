@@ -18,13 +18,13 @@ public class CaseDateRangesPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//*[@id='description']")
     WebElement Description;
 
-    @FindBy(xpath = "//*[@id='startDate']")
+    @FindBy(xpath = "//input[@name='startDate']")
     WebElement StartDate;
 
-    @FindBy(xpath = "//*[@id='endDate']")
+    @FindBy(xpath = "//input[@name='endDate']")
     WebElement EndDate;
 
-    @FindBy(id="save-btn")
+    @FindBy(xpath = "//button[contains(text(),' Save ')]")
     WebElement SaveBtn;
 
     @FindBy(xpath = "//span[@title='DR1']")

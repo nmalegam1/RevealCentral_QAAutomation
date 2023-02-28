@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Smoke Suite In Nuix Processing Up To Collection">
+    <test name="AdminLoginTest_001">
+    <classes>
+        <class name="com.ligl.SmokeSuiteNuixCollection.AdminLoginTest_001"/>
+    </classes>
+    </test> <!-- Test -->
+    <test name="Create A Case Adding Scope Items And Approving The Case">
+        <classes>
+            <class name="com.ligl.SmokeSuiteNuixCollection.Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalCollection"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Initiate Auto Process For Records In Nuix Processing">
+        <classes>
+            <class name="com.ligl.SmokeSuiteNuixCollection.Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTestNuix"/>
+        </classes>
+    </test>
+
+</suite> <!-- Suite -->
