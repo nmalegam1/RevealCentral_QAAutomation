@@ -58,7 +58,11 @@ public abstract class LiglValidationDriver implements IWebConnector {
 		
 		return getSession().getCurrentPage();
 	}
-	
+
+	public void waitUntilSpinnerIsClosed()
+	{
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='ag-overlay ag-hidden']")));}
 
 	
 	public ILiglPage validateElementNotPresence(By locator) {

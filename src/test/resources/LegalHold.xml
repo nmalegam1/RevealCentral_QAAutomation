@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="LegalHold">
+    <test name="LH Reassign functionality">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_42960_VerifyReassignLHFunctionality"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="LH Approval page Redesign">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_44414_ReDesignOfLHApprovalPage"/>
+        </classes>
+    </test>
+    <test name="Verifying Copyees list">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_37153_152_151_VerifyCopyeesListBasedOnActionInLH"/>
+        </classes>
+    </test>
+    <test name="Acknowledging Legal hold from My Holds grid and Grid data Validation">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_49664_49665_LHAckFromMyHoldsGridAndValidationOfData"/>
+        </classes>
+    </test>
+    <test name="Stakeholder Creation By Selecting Category dropdown value From LegalHold">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold"/>
+        </classes>
+    </test>
+    <test name="Verify Send Button Functionality In Test Mail Popup">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_27959_VerifySendButtonFunctionalityInTestMailPopup"/>
+        </classes>
+    </test>
+    <test name="Verify Default Template In Release Popup">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_26247_VerifyDefaultTemplateInReleasePopup"/>
+        </classes>
+    </test>
+    <test name="LegalHoldNotesCreateAndEdit">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_56517_56518_LegalHoldNotesCreateAndEdit"/>
+        </classes>
+    </test>
+    <test name="Legal Hold creation when On Fly edit config is False">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_56147_LHCreateWhenOnFlyIsFalse"/>
+        </classes>
+    </test>
+    <test name="Legal Hold edit when On Fly edit config is False">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_56146_LHEditWhenOnFlyIsFalse"/>
+        </classes>
+    </test>
+</suite>
