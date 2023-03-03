@@ -55,8 +55,7 @@ public class LiglBaseSessionPage extends LiglBasePage {
 		return null;
 	}
 
-	public ILiglPage goToLegalHoldPage() {return null;}
-	public ILiglPage approvingLegalHold() throws InterruptedException {
+	public ILiglPage approvingLegalHold() throws Exception {
 		return null;
 	}
 

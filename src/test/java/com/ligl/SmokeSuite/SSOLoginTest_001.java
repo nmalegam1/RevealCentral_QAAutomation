@@ -25,7 +25,7 @@ public class SSOLoginTest_001 extends TestBase {
                     .openBrowser("chrome")
                     .navigateURL()
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"))
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .getHeader().logout();
         } catch (Exception ex) {
             session.log_Error("NormalLoginTest_001 Failed");

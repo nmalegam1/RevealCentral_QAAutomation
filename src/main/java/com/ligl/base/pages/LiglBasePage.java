@@ -76,7 +76,14 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage navigateSSOLoginPage(){
 		return null;
 	}
-	public ILiglPage SSOLogin(String userName, String password) throws InterruptedException {
+	public ILiglPage SSOLogin(String userName, String password,String Entity) throws InterruptedException {
+		return null;
+	}
+	public ILiglPage clickActionOnResponseDocument() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnActionDropDownAndRun(String Action1) throws Exception{
 		return null;
 	}
 
@@ -375,7 +382,7 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validateCustodianBeforeApproved() throws Exception{
 		return null;
 	}
-	public ILiglPage approvingLegalHold() throws InterruptedException {
+	public ILiglPage approvingLegalHold() throws Exception {
 		return null;
 	}
 	public ILiglPage creatingNewTemplate() throws Exception {
@@ -416,6 +423,120 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage deleteContactsAddedForParty(String PartyNew, String ContactName) throws Exception {
 		return null;
 	}
+
+	public ILiglPage searchRequiredLegalHoldName(String LHname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage goToRequiredLegalHoldName(String LHname) throws Exception{
+		return null;
+	}
+	public ILiglPage verifyColumnsInLHNCustodianGrid() throws Exception{
+		return null;
+	}
+	public ILiglPage verifyColumnsInLHNStakeHolderGrid() throws Exception{
+		return null;
+	}
+	public ILiglPage searchActionThroughEmail(String Email1) throws Exception{
+		return null;
+	}
+	public ILiglPage verifySentByAndSentOnData(String Sentby ,String Senton) throws Exception{
+		return null;
+	}
+	public ILiglPage switchOnToTheStakeHolderTab() throws Exception{
+		return null;
+	}
+	public ILiglPage validateRecordWhenLHNStatusIsInNotintiatedState(String status) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnActionDropDownAndRunInStakeHolder(String Action1) throws Exception{
+		return null;
+	}
+	public ILiglPage validateLHNStatus(String LHNStatus) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnRefreshButton() throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnRefreshButtonStakeHolder() throws Exception{
+		return null;
+	}
+	public ILiglPage selectTemplateAndClickOnSendBtn(String Template1) throws Exception{
+		return null;
+	}
+
+	public ILiglPage createNewLegalHold(String LegalHoldname,String CustodianTemplate,String CustodianQuestionaireTemplate,String StakeHolderTemplate,String StakeHolderQueTemplate) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnEditButtonInLHNGrid() throws Exception{
+		return null;
+	}
+	public ILiglPage clearActionInLegalHold() throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnAddNewLegalHoldButton() throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnRefreshButtonLHGrid() throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnRemainderButtonInRemainderConfigTab(String LegalHoldname,String CustodianTemplate,String StakeHolderTemplate) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnEscalationButtonInEscalationConfigTab(String LegalHoldname,String CustodianTemplate,String StakeHolderTemplate) throws Exception{
+		return null;
+	}
+	public ILiglPage navigateToEscalationAndRemainder() throws Exception{
+		return null;
+	}
+	public ILiglPage validateEscalationAndRemainderDefaultValues() throws Exception{
+		return null;
+	}
+	public ILiglPage viewCase() throws Exception{
+		return null;
+	}
+	public ILiglPage createLegalHoldUptoEscalation(String LegalHoldname, String CustodianTemplate, String StakeHolderTemplate) throws Exception{
+		return null;
+	}
+
+	public ILiglPage editEscalationAndRemainderConfigValues(String Remainderdays, String Remaindermails, String Remainderfrequency,String Escalationdays, String Escalationmails, String Escalationfrequency) throws Exception{
+		return null;
+	}
+
+	public ILiglPage navigateToEmployeeMasterPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchThroughEmail(String Employee) throws Exception{
+		return null;
+	}
+
+	public ILiglPage performEditAction(String EmployeeName) throws Exception{
+		return null;
+	}
+	public ILiglPage editEmployeeStatus(String Estatus) throws Exception{
+		return null;
+	}
+ public ILiglPage clickOnSendButton() throws Exception{
+		return null;
+ }
+ public ILiglPage createNewLegalHoldByStartDateEndDateNumberOfDays(String LegalHoldname, String CustodianTemplate, String StakeHolderTemplate,String Startdate,String Enddate,String Days) throws Exception{
+		return null;
+ }
+
+ public ILiglPage createNewLegalHoldByDateRangeKeyWords(String LegalHoldname, String CustodianTemplate, String StakeHolderTemplate,String Startdate,String Enddate,String Days,String keywords) throws Exception{
+		return null;
+ }
+
+ public ILiglPage checkWhetherLHDetailsWithPreviewOptionDisplayInTheGrid(String CaseNameApprove,String keywords) throws Exception{
+		return null;
+ }
+
+ public ILiglPage checkTheLHPopUpDetailsInDisabledCondition() throws Exception{
+		return  null;
+ }
+
+
 
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
