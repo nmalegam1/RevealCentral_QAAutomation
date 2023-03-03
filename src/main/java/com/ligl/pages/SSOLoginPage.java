@@ -13,11 +13,9 @@ public class SSOLoginPage extends LiglBasePage {
     @FindBy(id="idSIButton9")
     WebElement nextBtn;
 
-    @Override
-    public ILiglPage SSOLogin(String userName, String password,String Entity) throws InterruptedException {
-
-
-
+   // @Overridepublic
+    public ILiglPage SSOLogin(String userName, String password,String Entity) throws InterruptedException
+    {
         log_Info("Enter SSO UserName");
         userNameTxt.sendKeys(userName);
         getSession().log_Pass("Entered SSO username");
@@ -29,8 +27,8 @@ public class SSOLoginPage extends LiglBasePage {
         getCurrentDriver().findElement(By.xpath("//input[@value='Yes']")).click();
         getSession().log_Pass("Clicked Yes button in confirmation window");
         Thread.sleep(10000);
-
-        if (getCurrentDriver().getTitle().contains("Legal Entity Select | Vertical")) {
+        if (getCurrentDriver().getTitle().contains("Legal Entity Select | Vertical"))
+        {
             log_Info("EntityPage Loaded");
             System.out.println("Entity : "+Entity);
             if(Entity.contains(Entity))
