@@ -74,7 +74,7 @@ public class LeftMenu extends LiglBasePage {
     }
 
 
-    public ILiglPage goToLegalHoldPage() {
+    public ILiglPage navigateToLegalHoldPage() {
         LegalHoldBtn.click();
         return new LegalHoldPage();
     }

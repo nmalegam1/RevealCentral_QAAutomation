@@ -28,7 +28,7 @@ public interface IWebConnector{
 	void validateLogin();
 	ILiglPage validateElementPresence(By locator);
 	void waitForAngularRequestsToComplete();
-
+	public void waitUntilSpinnerIsClosed();
 	void waitForVisibilityOfElementLocated(By locator);
 	void waitForelementToBeClickable(WebElement element);
 }

@@ -13,8 +13,9 @@ public class SSOLoginPage extends LiglBasePage {
     @FindBy(id="idSIButton9")
     WebElement nextBtn;
 
-    @Override
-    public ILiglPage SSOLogin(String userName, String password) throws InterruptedException {
+   // @Overridepublic
+    public ILiglPage SSOLogin(String userName, String password,String Entity) throws InterruptedException
+    {
         log_Info("Enter SSO UserName");
         userNameTxt.sendKeys(userName);
         getSession().log_Pass("Entered SSO username");
@@ -26,20 +27,14 @@ public class SSOLoginPage extends LiglBasePage {
         getCurrentDriver().findElement(By.xpath("//input[@value='Yes']")).click();
         getSession().log_Pass("Clicked Yes button in confirmation window");
         Thread.sleep(10000);
-
-        if (getCurrentDriver().getTitle().contains("Legal Entity Select | Vertical")) {
-            //String url=getCurrentDriver().getCurrentUrl();
+        if (getCurrentDriver().getTitle().contains("Legal Entity Select | Vertical"))
+        {
             log_Info("EntityPage Loaded");
-            //waitForPageToLoad();
-            String entity="usa";
-            System.out.println("Entity : "+entity);
-            if(entity.contains("usa"))
+            System.out.println("Entity : "+Entity);
+            if(Entity.contains(Entity))
             {
-                getCurrentDriver().findElement(By.xpath("//span[contains(text(),'USA')]")).click();
+                getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Entity+"')]")).click();
                 getDriver().waitForAngularRequestsToComplete();
-                return new DefaultLandingPage();
-            }else if (entity.contains("ind")){
-                getCurrentDriver().findElement(By.xpath("//span[contains(text(),'IND')]")).click();
                 return new DefaultLandingPage();
             }
         }

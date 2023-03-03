@@ -25,7 +25,7 @@ public interface ILiglPage {
     ILiglPage login(String userName, String password) throws Exception;
     ILiglPage adminLogin(String userName, String password, String entity) throws Exception;
     ILiglPage navigateSSOLoginPage();
-    ILiglPage SSOLogin(String userName, String password) throws InterruptedException;
+    ILiglPage SSOLogin(String userName, String password,String Entity) throws InterruptedException;
     ILiglPage selectEntity(String entity);
     ILiglPage createNewCase(Hashtable<String,String> data) throws Exception;
     ILiglPage clickClearFilterBtn();
@@ -227,5 +227,70 @@ public interface ILiglPage {
 
     ILiglPage validateAddedNewOutsideCounsel(String OutsideCounsel, String NameTextBox) throws Exception;
 
+    ILiglPage validateLHStatus(String Status) throws Exception;
 
+    ILiglPage searchRequiredLegalHoldName(String LHname) throws Exception;
+
+    ILiglPage clickOnLHCheckbox(String LHname) throws Exception;
+
+    ILiglPage clickOnActionDropDownAndRun(String Action1) throws Exception;
+
+    ILiglPage selectTemplateAndApproverAndClickOnSendBtn(String Template1,String ApproverName) throws Exception;
+
+    ILiglPage validateSSCopyeesList() throws Exception;
+
+    ILiglPage clickOnApprovedLH(String LHname) throws Exception;
+
+    ILiglPage searchRequiredLHNStatus(String Status) throws Exception;
+
+    ILiglPage clickOnRefreshButton() throws Exception;
+
+    ILiglPage copyeeSScancelBtnClick() throws Exception;
+
+    ILiglPage copyeeReleaseCancelBtnClick() throws Exception;
+
+    ILiglPage validateRCopyeesList() throws Exception;
+
+    ILiglPage clickOnPendingLHNameInAppPage(String CaseLHname) throws Exception;
+
+    ILiglPage validateCaseLHDetailsInAppPage(String OnlyLHname) throws Exception;
+
+    ILiglPage clickOnApproveBtnInAppPage() throws Exception;
+
+    ILiglPage myHoldsAcknowledgeLink() throws Exception;
+
+    ILiglPage switchOnToTheStakeHolderTab() throws Exception;
+
+    ILiglPage clickOnCreateStakeHolderBtnInLH(String FirstName,String LastName,String StakeDepartment,String StakeEmailID,String StakeCategoryValue) throws Exception;
+
+    ILiglPage searchStakeholderEmailFromLHNGrid(String StakeEmailID) throws Exception;
+
+    ILiglPage verifyStakeholderEmailIsDisplayed(String StakeEmailID) throws Exception;
+
+    ILiglPage validateDisplayOfDefaultTemplateInLHReleasePopup(String DefaultTemplate) throws Exception;
+
+    ILiglPage secondSearch(String LHname) throws Exception;
+
+    ILiglPage sendBtnInTestMail() throws Exception;
+
+    ILiglPage validateMyHoldsGridData() throws Exception;
+
+    ILiglPage legalHoldNotes() throws Exception;
+
+    ILiglPage createNewNotes(String RequestBy,String NotesContent) throws Exception;
+
+    ILiglPage validateDataInNotesGrid(String desc) throws Exception;
+
+    ILiglPage editNotes(String RequestBy,String NotesDescription) throws Exception;
+
+    ILiglPage clickOnAddNewLegalHoldButton() throws Exception;
+
+    ILiglPage verifyCreatedLegalHoldIsDisplayed(String LHname) throws Exception;
+
+    ILiglPage clickOnLegalholdGridRefreshButton() throws Exception;
+
+    ILiglPage verifyEditedLegalHoldIsDisplayed(String LHname) throws Exception;
+
+    ILiglPage editLegalHoldWhenOnFlyIsFalse(String EditedLegalHoldname,String CustodianQTemplate,String LHname) throws Exception;
+    ILiglPage createNewLegalHoldWhenOnFlyIsFalse(String LegalHoldname, String CustodianTemplate, String CustodianQuestionaireTemplate, String StakeHolderTemplate, String StakeHolderQueTemplate) throws Exception;
 }

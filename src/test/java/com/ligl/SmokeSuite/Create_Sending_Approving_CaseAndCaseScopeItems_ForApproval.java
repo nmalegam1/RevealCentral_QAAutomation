@@ -26,7 +26,7 @@ public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApproval extends 
                     .openBrowser("chrome")
                     .navigateURL()
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"))
+                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
                     .createNewCase(data)
                     .getLeftMenu()
                     .navigateToCustodiansPage()

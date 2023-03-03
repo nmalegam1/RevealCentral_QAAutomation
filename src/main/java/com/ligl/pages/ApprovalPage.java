@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class ApprovalPage extends LiglBaseSessionPage {
 
@@ -41,6 +42,12 @@ public class ApprovalPage extends LiglBaseSessionPage {
 
     @FindBy(id = "appr-reject-btn")
     WebElement RejectBtn;
+
+    @FindBy(xpath = "//mat-panel-title[contains(text(),'Case Details')]")
+    WebElement CaseDetails;
+
+    @FindBy(xpath = "//mat-panel-title[contains(text(),' Legal Hold Details ')]")
+    WebElement CaseLHDetails;
 
 
     // Approving The Legal Hold
@@ -170,5 +177,85 @@ public class ApprovalPage extends LiglBaseSessionPage {
             throw new Exception("rejectingTheCase() Failed ", ex);
         }
     }
+
+    public ILiglPage clickOnPendingLHNameInAppPage(String CaseLHname) throws Exception {
+        try {
+            log_Info("Check Pending Approval Legal hold name");
+            Thread.sleep(10000);
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + CaseLHname + "')]")).click();
+            Thread.sleep(10000);
+            log_Info("Pending Approval Legal hold name checked");
+            return new ApprovalPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnPendingLHNameInAppPage() Failed", ex);
+        }
+    }
+
+
+        public ILiglPage validateCaseLHDetailsInAppPage(String OnlyLHname) throws Exception {
+            try {
+                Thread.sleep(5000);
+                log_Info("Click on Case Details Accordion");
+                getDriver().waitForelementToBeClickable(CaseDetails);
+                waitForPageToLoad();
+                Thread.sleep(5000);
+                CaseDetails.click();
+                getSession().log_Pass("Clicked on Case Details Accordion");
+                Thread.sleep(5000);
+                log_Info("Click on Legal hold Details Accordion");
+                getDriver().waitForelementToBeClickable(CaseLHDetails);
+                waitForPageToLoad();
+                Thread.sleep(5000);
+                CaseLHDetails.click();
+                getSession().log_Pass("Clicked on Legal hold Details Accordion");
+                Thread.sleep(5000);
+
+                log_Info("Click on Legal hold Name in LH Details Accordion");
+                boolean a1 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+OnlyLHname+"')]")).isDisplayed();
+                System.out.println(a1);
+                Thread.sleep(5000);
+                Assert.assertEquals(true, a1);
+
+                log_Info("Clicked on Legal hold Name in LH Details Accordion");
+
+                return  new ApprovalPage();
+            }
+            catch (Exception | Error ex)
+            {
+                log_Error(ex.getMessage());
+                throw new Exception("validateCaseLHDetailsInAppPage() Failed", ex);
+            }
+    }
+
+
+
+    public ILiglPage clickOnApproveBtnInAppPage() throws Exception {
+        try {
+            log_Info("Click on Approve Button");
+            waitForPageToLoad();
+            getDriver().waitForelementToBeClickable(ApproveBtn);
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", ApproveBtn);
+            ApproveBtn.click();
+            getSession().log_Pass("Clicked on Approve Button");
+
+            log_Info("Click on Save Button");
+            getDriver().waitForelementToBeClickable(SaveBtn);
+            waitForPageToLoad();
+            Thread.sleep(5000);
+            SaveBtn.click();
+            getSession().log_Pass("Clicked on Save Button");
+
+            return  new ApprovalPage();
+        }
+        catch (Exception | Error ex)
+        {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnApproveBtnInAppPage() Failed", ex);
+        }
+    }
+
+
+
 
 }

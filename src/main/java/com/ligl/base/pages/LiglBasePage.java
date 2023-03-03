@@ -76,7 +76,7 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage navigateSSOLoginPage(){
 		return null;
 	}
-	public ILiglPage SSOLogin(String userName, String password) throws InterruptedException {
+	public ILiglPage SSOLogin(String userName, String password,String Entity) throws InterruptedException {
 		return null;
 	}
 
@@ -416,6 +416,141 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage deleteContactsAddedForParty(String PartyNew, String ContactName) throws Exception {
 		return null;
 	}
+
+	public ILiglPage validateLHStatus(String Status) throws Exception{
+		return null;
+	}
+	public ILiglPage searchRequiredLegalHoldName(String LHname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnLHCheckbox(String LHname) throws Exception{
+		return null;
+	}
+
+	public  ILiglPage clickOnActionDropDownAndRun(String Action1) throws Exception{
+		return null;
+	}
+
+	public ILiglPage selectTemplateAndApproverAndClickOnSendBtn(String Template1,String ApproverName) throws Exception{
+		return null;
+	}
+	public ILiglPage validateSSCopyeesList() throws Exception{
+		return  null;
+	}
+
+	public ILiglPage clickOnApprovedLH(String LHname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchRequiredLHNStatus(String Status) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnRefreshButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage copyeeSScancelBtnClick() throws Exception{
+		return null;
+	}
+
+	public ILiglPage copyeeReleaseCancelBtnClick() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateRCopyeesList() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnPendingLHNameInAppPage(String CaseLHname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateCaseLHDetailsInAppPage(String OnlyLHname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnApproveBtnInAppPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage myHoldsAcknowledgeLink() throws Exception{
+		return null;
+	}
+
+	public ILiglPage switchOnToTheStakeHolderTab() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnCreateStakeHolderBtnInLH(String FirstName,String LastName,String StakeDepartment,String StakeEmailID,String StakeCategoryValue) throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchStakeholderEmailFromLHNGrid(String StakeEmailID) throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyStakeholderEmailIsDisplayed(String StakeEmailID) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateDisplayOfDefaultTemplateInLHReleasePopup(String DefaultTemplate) throws Exception{
+		return null;
+	}
+
+	public ILiglPage secondSearch(String LHname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage sendBtnInTestMail() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateMyHoldsGridData() throws Exception{
+		return null;
+	}
+
+	public ILiglPage legalHoldNotes() throws Exception{
+		return null;
+	}
+
+	public ILiglPage createNewNotes(String RequestBy,String NotesContent) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateDataInNotesGrid(String desc) throws Exception{
+		return null;
+	}
+
+	public ILiglPage editNotes(String RequestBy,String NotesDescription) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnAddNewLegalHoldButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage createNewLegalHoldWhenOnFlyIsFalse(String LegalHoldname, String CustodianTemplate, String CustodianQuestionaireTemplate, String StakeHolderTemplate, String StakeHolderQueTemplate) throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyCreatedLegalHoldIsDisplayed(String LHname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage editLegalHoldWhenOnFlyIsFalse(String EditedLegalHoldname,String CustodianQTemplate,String LHname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnLegalholdGridRefreshButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyEditedLegalHoldIsDisplayed(String LHname) throws Exception{
+		return null;
+	}
+
 
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();

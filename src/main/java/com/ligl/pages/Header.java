@@ -39,6 +39,9 @@ public class Header extends LiglBasePage {
 	@FindBy(xpath = "//a[@title='Administration']")
 	public WebElement AdministrationTab;
 
+	@FindBy(id="custodianprofile-tab")
+	public WebElement myHoldsTab;
+
 	public Header(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
@@ -100,6 +103,11 @@ public class Header extends LiglBasePage {
 	public ILiglPage goToAboutPage() {
 		aboutTab.click();
 		return new AboutPage();
+	}
+
+	public ILiglPage goToMyHoldsPage(){
+		myHoldsTab.click();
+		return new MyHoldsPage();
 	}
 
 }
