@@ -82,6 +82,68 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(id = "btn-refresh")
     WebElement refreshBtn;
 
+    @FindBy(id="CaseListColumns")
+    WebElement ChooseColumnsMenuCase;
+
+    @FindBy(xpath = "//input[@aria-label='Filter Columns Input']")
+    WebElement ChooseColumnsSearch;
+    @FindBy(xpath = "//span[contains(text(),'Approval Type')]")
+    WebElement ApprovalTypeCol;
+
+    @FindBy(xpath = "//span[contains(text(),'Approved Or Rejected By')]")
+    WebElement ApprovedOrRejectedByCol;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='ApprovedRejectedBy']//span[@class='ellipsisAgGrid']")
+    WebElement ApprovedOrRejectedByColData;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='ApprovalType']//span[@class='ellipsisAgGrid']")
+    WebElement ApprovalTypeColData;
+
+    @FindBy(id="btn-custom")
+    WebElement MoreBtn;
+
+    @FindBy(id="Column2")
+    WebElement AdditionalField1;
+
+    @FindBy(xpath = "//div[@id='Column3']//span[@class='label-txt ng-star-inserted']")
+    WebElement AdditionalField2;
+
+    @FindBy(xpath = "//div[@id='Column5']//span[@class='label-txt ng-star-inserted']")
+    WebElement AdditionalField3;
+
+    @FindBy(xpath = "//div[@id='Column31']//span[@class='label-txt ng-star-inserted']")
+    WebElement AdditionalField4;
+
+    @FindBy(id="Column10")
+    WebElement AdditionalField5;
+
+    @FindBy(id="btn-create-cancel")
+    WebElement CancelBtn;
+
+    @FindBy(xpath = "//button[contains(text(),'Yes')]")
+    WebElement CancelYesBtn;
+    @FindBy(xpath = "//div[@col-id='Column31']")
+    WebElement AdditionalField4InGrid;
+
+    @FindBy(xpath = "//div[@col-id='Column5']")
+    WebElement AdditionalField3InGrid;
+
+    @FindBy(xpath = "//div[@col-id='Column3']")
+    WebElement AdditionalField2InGrid;
+
+    @FindBy(xpath = "//div[@col-id='Column2']")
+    WebElement AdditionalField1InGrid;
+
+    @FindBy(xpath = "//div[@col-id='Column10']")
+    WebElement AdditionalField5InGrid;
+
+    @FindBy(xpath = "//span[contains(text(),'Created By Name')]")
+    WebElement CreatedByCol;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='CreatedByName']//span[@class='ellipsisAgGrid']")
+    WebElement CreatedByColData;
+
+
 
 
     //Create NewCase
@@ -237,6 +299,197 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Error(ex.getMessage());
             throw new Exception("GoToCase() Failed ",ex);
         }
+    }
+
+    public ILiglPage verifyCreatedByColDataInCaseGrid(String CreatedByName) throws Exception {
+
+        try {
+            log_Info("verifyCreatedByColDataInCaseGrid() started");
+            ChooseColumnsMenuCase.click();
+            log_Info("Searching for Created By column");
+            ChooseColumnsSearch.sendKeys("Created By Name");
+            Thread.sleep(2000);
+            CreatedByCol.click();
+            log_Info("Created By column is selected");
+            ChooseColumnsSearch.clear();
+            log_Info("Cleared search input");
+            ChooseColumnsMenuCase.click();
+
+            CaseNameHeader.click();
+            getDriver().waitUntilSpinnerIsClosed();
+            for (int i = 0; i < 8; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
+            String s = CreatedByColData.getText();
+            Assert.assertEquals(s,CreatedByName);
+            log_Info("Created By Column data is displaying as expected");
+            return this;
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyCreatedByColDataInCaseGrid() Failed",ex);
+        }
+
+    }
+
+    public ILiglPage clickAndChooseColumnsInCaseGrid() throws Exception {
+
+        try {
+            log_Info("Clicking on Choose columns");
+            ChooseColumnsMenuCase.click();
+            log_Info("Searching for Approval type column");
+            ChooseColumnsSearch.sendKeys("Approval Type");
+            Thread.sleep(2000);
+            ApprovalTypeCol.click();
+            log_Info("Approval type column is selected");
+            ChooseColumnsSearch.clear();
+            log_Info("Cleared search input");
+            log_Info("Searching for Approved Or Rejected By column");
+            ChooseColumnsSearch.sendKeys("Approved Or Rejected By");
+            Thread.sleep(2000);
+            ApprovedOrRejectedByCol.click();
+            log_Info("Approved Or Rejected By column is selected");
+            ChooseColumnsSearch.clear();
+            log_Info("Again cleared search input");
+            ChooseColumnsMenuCase.click();
+            log_Info("Closing Choose columns");
+            ChooseColumnsMenuCase.click();
+            return this;
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickAndChooseColumnsInCaseGrid() Failed",ex);
+        }
+
+    }
+
+    public ILiglPage verifyChooseColumnsDataInCaseGrid(String ApprovedOrRejectedExpected, String ApprovalTypeExpected) throws Exception {
+
+        try {
+            log_Info("verifyChooseColumnsDataInCaseGrid() started");
+            String a = ApprovedOrRejectedByColData.getText();
+            Assert.assertEquals(a,ApprovedOrRejectedExpected);
+            log_Info("Approved or Rejected By Column data is displaying as expected");
+
+            String b = ApprovalTypeColData.getText();
+            Assert.assertEquals(b,ApprovalTypeExpected);
+            log_Info("Approval Type Column data is displaying as expected");
+            log_Pass("verifyChooseColumnsDataInCaseGrid() completed");
+            return this;
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyChooseColumnsDataInCaseGrid() Failed",ex);
+        }
+
+    }
+
+    public ILiglPage verifyAdditionalFieldsInCasePopup(String AddField1,String AddField2,String AddField3,String AddField5) throws Exception {
+
+        try {
+            log_Info("verifyAdditionalFieldsInCasePopup() started");
+            createCaseBtn.click();
+            log_Info("Clicked button in create case popup");
+            Thread.sleep(2000);
+            MoreBtn.click();
+            Thread.sleep(2000);
+            log_Info("Check The Column names In The Create Case popup");
+            boolean c1 = AdditionalField1.isDisplayed();
+            boolean c2 = AdditionalField2.isDisplayed();
+            boolean c3 = AdditionalField3.isDisplayed();
+            boolean c4 = AdditionalField4.isDisplayed();
+            boolean c5 = AdditionalField5.isDisplayed();
+
+            System.out.println(c1);
+            System.out.println(c2);
+            System.out.println(c3);
+            System.out.println(c4);
+            System.out.println(c5);
+
+            Thread.sleep(5000);
+
+            Assert.assertEquals(true, c1);
+            Assert.assertEquals(true, c2);
+            Assert.assertEquals(true, c3);
+            Assert.assertEquals(true, c4);
+            Assert.assertEquals(true, c5);
+            log_Info("Additional Columns are displaying in The Create Case popup");
+            CancelBtn.click();
+            log_Info("Clicked Cancel button in create case popup");
+            CancelYesBtn.click();
+            log_Info("Clicked Yes button after clicking Cancel button in create case popup");
+            Thread.sleep(5000);
+            log_Info("Case list grid is loaded");
+
+            ChooseColumnsMenuCase.click();
+            ChooseColumnsSearch.sendKeys(AddField1);
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + AddField1 + "')]/ancestor::div[@role='treeitem']//input")).click();
+            log_Info("AddField1 is checked");
+            ChooseColumnsSearch.clear();
+            Thread.sleep(3000);
+
+            ChooseColumnsSearch.sendKeys(AddField2);
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + AddField2 + "')]/ancestor::div[@role='treeitem']//input")).click();
+            log_Info("AddField2 is checked");
+            ChooseColumnsSearch.clear();
+            Thread.sleep(3000);
+
+            ChooseColumnsSearch.sendKeys(AddField3);
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+ AddField3 + "')]/ancestor::div[@role='treeitem']//input")).click();
+            log_Info("AddField3 is checked");
+            ChooseColumnsSearch.clear();
+            Thread.sleep(5000);
+
+            ChooseColumnsSearch.sendKeys(AddField5);
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+AddField5 + "')]/ancestor::div[@role='treeitem']//input")).click();
+            log_Info("AddField5 is checked");
+            ChooseColumnsSearch.clear();
+            Thread.sleep(3000);
+
+            ChooseColumnsMenuCase.click();
+            log_Info("Closed Choose columns menu");
+
+            boolean a4 = AdditionalField4InGrid.isDisplayed();
+            System.out.println(a4);
+            Assert.assertEquals(true, a4);
+            log_Info("Additional Field4 is displaying in case grid");
+
+            boolean a5 = AdditionalField5InGrid.isDisplayed();
+            System.out.println(a5);
+            Assert.assertEquals(true, a5);
+            log_Info("Additional Field5 is displaying in case grid");
+
+            CaseNameHeader.click();
+            getDriver().waitUntilSpinnerIsClosed();
+            for (int i = 0; i < 11; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
+            boolean a3 = AdditionalField3InGrid.isDisplayed();
+            System.out.println(a3);
+            Assert.assertEquals(true, a3);
+            log_Info("Additional Field3 is displaying in case grid");
+
+            boolean a1 = AdditionalField1InGrid.isDisplayed();
+            System.out.println(a1);
+            Assert.assertEquals(true, a1);
+            log_Info("Additional Field1 is displaying in case grid");
+
+            boolean a2 = AdditionalField2InGrid.isDisplayed();
+            System.out.println(a2);
+            Assert.assertEquals(true, a2);
+            log_Info("Additional Field2 is displaying in case grid");
+            log_Pass("verifyAdditionalFieldsInCasePopup() completed successfully");
+            return this;
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyAdditionalFieldsInCasePopup() Failed",ex);
+        }
+
     }
 
 }

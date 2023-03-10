@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class CreateNewInhouseCounselEnterpriseParty_Test extends TestBase {
+public class TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
-    public void CreateNewInhouseCounselEnterpriseParty_Test(Hashtable<String, String> data) throws Exception {
+    public void TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -28,21 +28,16 @@ public class CreateNewInhouseCounselEnterpriseParty_Test extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
-                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToOtherPartyPage()
-                    .addingNewParty(data.get("PartyName"),data.get("PartyType"), data.get("Description"),data.get("Status"))
-                    .searchingParty()
-                    .createNewInHouseCounselForEnterpriseParty(data.get("PartyName"), data.get("FirstName"), data.get("LastName") )
-                    .searchingInHouseCounsel(data.get("PartyName"), data.get("CounselName"))
-                    .validateAddedInHouseCounsel(data.get("CounselName"));
-
-
+                    .navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    .searchcase(data.get("CaseName"))
+                    .clickAndChooseColumnsInCaseGrid()
+                    .verifyChooseColumnsDataInCaseGrid(data.get("ApprovedBySingle"),data.get("ApprovalTypeSingle"));
 
 
         } catch (Exception ex) {
-            session.log_Error("CreateNewInhouseCounselEnterpriseParty_Test Failed");
-            throw new Exception("CreateNewInhouseCounselEnterpriseParty_Test Failed", ex);
+            session.log_Error("TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected Failed");
+            throw new Exception("TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected Failed", ex);
         } finally {
             session.end();
         }

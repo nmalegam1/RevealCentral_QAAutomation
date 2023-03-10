@@ -187,7 +187,7 @@ public interface ILiglPage {
 
     ILiglPage createOtherPartyNewOutsideCounsel(String PartyName,String NameTextBox,String PartyDrpDwn,String Description,String Status,String FirstName,String LastName) throws Exception;
 
-    ILiglPage addingNewParty(String PartyName,String PartyType,String Description) throws Exception;
+    ILiglPage addingNewParty(String PartyName, String PartyType, String Status, String Description) throws Exception;
     ILiglPage addingExistingParty(String PartyNameA,String PartyNew) throws Exception;
 
     ILiglPage searchingParty() throws Exception;
@@ -381,4 +381,47 @@ public interface ILiglPage {
     ILiglPage editLegalHoldWhenOnFlyIsFalse(String EditedLegalHoldname,String CustodianQTemplate,String LHname) throws Exception;
     ILiglPage createNewLegalHoldWhenOnFlyIsFalse(String LegalHoldname, String CustodianTemplate, String CustodianQuestionaireTemplate, String StakeHolderTemplate, String StakeHolderQueTemplate) throws Exception;
 
-   }
+    ILiglPage validateAddedCourts(String CourtAdded) throws Exception;
+
+    ILiglPage clickOnCourtName(String CourtName1) throws Exception;
+
+    ILiglPage clickOnAddJudgeButton() throws Exception;
+
+    ILiglPage addExistingJudgesToCourt(String Judge) throws Exception;
+
+    ILiglPage validateAddedJudges(String Judge) throws Exception;
+
+    ILiglPage validateCreatedCase(String CaseName) throws Exception;
+
+    ILiglPage searchRequiredCaseDocument(String CaseDocument) throws Exception;
+
+    ILiglPage clickOnCaseDocument(String CaseDocument) throws Exception;
+
+    ILiglPage deletingAddedParty(String PartyName) throws Exception;
+
+    ILiglPage validatedeletedparty(String PartyName) throws Exception;
+
+    ILiglPage verifyProvidingCaseAccessToUsersInSecurityUsersDropdown(String Name) throws Exception;
+
+    ILiglPage searchRequiredFullNameInUsersDropdown(String Fullname) throws Exception;
+
+    ILiglPage verifyAdditionalColumnsInCustodianGrid() throws Exception;
+
+    ILiglPage verifyCreatedByColDataInCaseGrid(String CreatedByName) throws Exception;
+
+    ILiglPage clickAndChooseColumnsInCaseGrid() throws Exception;
+
+    ILiglPage verifyChooseColumnsDataInCaseGrid(String ApprovedOrRejectedExpected, String ApprovalTypeExpected) throws Exception;
+
+    ILiglPage verifyAdditionalFieldsInCasePopup(String AddField1,String AddField2,String AddField3,String AddField5) throws Exception;
+
+    ILiglPage searchRequiredApprovalBatchName(String AppBatchname) throws Exception;
+
+    ILiglPage verifyColumnsDatainAdditionalScopeApprovalGrid(String ApprovalBatchNameExpected,String CustodiansCountExpected,String DatasourcesCountExpected,String KeywordsCountExpected,String DateRangesCountExpected,String ApprovalStatusColumnExpected,String ApprovalTypeExpected,String ApprovalUsersExpected,String ApprovedOrRejectedOnExpected) throws Exception;
+
+    ILiglPage verifyNonApprovedScopeInCustomTab(String Custodian,String Datasource,String Daterange,String Keyword) throws Exception;
+
+    ILiglPage navigateToNotesHistoryPage() throws Exception;
+
+    ILiglPage verifyColumnsInNotesHistoryGrid() throws Exception;
+}

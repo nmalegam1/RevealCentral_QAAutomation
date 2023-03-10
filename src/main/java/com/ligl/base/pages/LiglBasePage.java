@@ -388,7 +388,7 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage createOtherPartyNewOutsideCounsel(String PartyName,String NameTextBox,String PartyDrpDwn,String Description,String Status,String FirstName,String LastName) throws Exception {
 		return null;
 	}
-	public  ILiglPage addingNewParty(String PartyName,String PartyType,String Description) throws Exception {
+	public ILiglPage addingNewParty(String PartyName, String PartyType, String Status, String Description) throws Exception {
 		return null;
 	}
 	public ILiglPage validateAddedNewOutsideCounsel(String OutsideCounsel,String NameTextBox) throws Exception{
@@ -677,7 +677,94 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage verifyEditedLegalHoldIsDisplayed(String LHname) throws Exception{
 		return null;
 	}
-	public void waitForPageToLoad(){
+
+	public ILiglPage validateAddedCourts(String CourtAdded) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnCourtName(String CourtName1) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnAddJudgeButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage addExistingJudgesToCourt(String Judge) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateAddedJudges(String Judge) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateCreatedCase(String CaseName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchRequiredCaseDocument(String CaseDocument) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnCaseDocument(String CaseDocument) throws Exception{
+		return null;
+	}
+
+	public ILiglPage deletingAddedParty(String PartyName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validatedeletedparty(String PartyName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyProvidingCaseAccessToUsersInSecurityUsersDropdown(String Name) throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchRequiredFullNameInUsersDropdown(String Fullname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyAdditionalColumnsInCustodianGrid() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyCreatedByColDataInCaseGrid(String CreatedByName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickAndChooseColumnsInCaseGrid() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyChooseColumnsDataInCaseGrid(String ApprovedOrRejectedExpected, String ApprovalTypeExpected) throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyAdditionalFieldsInCasePopup(String AddField1,String AddField2,String AddField3,String AddField5) throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchRequiredApprovalBatchName(String AppBatchname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyColumnsDatainAdditionalScopeApprovalGrid(String ApprovalBatchNameExpected,String CustodiansCountExpected,String DatasourcesCountExpected,String KeywordsCountExpected,String DateRangesCountExpected,String ApprovalStatusColumnExpected,String ApprovalTypeExpected,String ApprovalUsersExpected,String ApprovedOrRejectedOnExpected) throws Exception {
+		return null;
+	}
+
+	public ILiglPage navigateToNotesHistoryPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyColumnsInNotesHistoryGrid() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyNonApprovedScopeInCustomTab(String Custodian,String Datasource,String Daterange,String Keyword) throws Exception{
+		return null;
+	}
+		public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;
 		// check for pageload 100% - 20 secs

@@ -41,6 +41,9 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[contains(text(),'Yes')]")
     WebElement YesBtn;
 
+    @FindBy (xpath = "//span//div[@class='case-name-div']")
+    WebElement CaseNameValidation;
+
 
     public ILiglPage verifyingTheStatusDropDownForACase(String StatusDropDown1) throws Exception {
 
@@ -229,6 +232,18 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("verifyingEditBtn() Failed", ex);
+        }
+    }
+
+    public ILiglPage validateCreatedCase(String CaseName) throws Exception
+    {
+        try {
+            String casename = CaseNameValidation.getText();
+            Assert.assertEquals(CaseName, casename);
+            return new CaseSummaryPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateCreatedCase() Failed", ex);
         }
     }
 }

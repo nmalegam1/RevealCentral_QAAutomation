@@ -16,7 +16,7 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
 
     //   1.Adding Court To A Case
 
-    @FindBy(id = "add-case-doc-btn")
+    @FindBy(id = "add-case-doc-btn-court")
     WebElement AddCourtBtn;
 
     @FindBy(xpath = "//mat-icon[contains(text(),'keyboard_arrow_right')]")
@@ -60,6 +60,27 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//span[contains(text(),'Prosecutor/Advocacy')]/ancestor::div[@ref='eLabel']")
     WebElement ProsecutorHeader;
+
+    @FindBy(xpath="//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='PartyName']//span[@class='ellipsisAgGrid']")
+    WebElement CourtNameColData;
+
+    @FindBy(xpath="//button[contains(text(),'Judge')]")
+    WebElement AddJudgeBtn;
+
+    @FindBy(css = "input[placeholder='Filter...']")
+    WebElement SearchBar;
+
+    @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
+    WebElement Filter;
+
+    @FindBy(xpath="//span[contains(text(),'Jury')]/ancestor::div[@ref='eLabel']/span")
+    WebElement JudgeHeader;
+
+    @FindBy(xpath="//span[contains(text(),'Jury')]/ancestor::div[@ref='eLabel']/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
+    WebElement JudgeMenu;
+
+    @FindBy(xpath="//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='ContactName']//span[@class='ellipsisAgGrid']")
+    WebElement JudgeNameColData;
 
 
     //  10.Adding Particular Court To Case Through Add Court Button
@@ -236,6 +257,123 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("validateProsecutors() Failed", ex);
+        }
+    }
+
+    public ILiglPage validateAddedCourts(String CourtAdded) throws Exception{
+
+        try {
+            log_Info("validateAddedCourts() started");
+            searchingAddedCourt(CourtAdded);
+            log_Info("Filtered Added court to case");
+            String test=CourtNameColData.getText();
+            Assert.assertEquals(test,CourtAdded);
+            log_Info("Added court is displaying in grid");
+            log_Info("validateAddedCourts() completed");
+            return new CaseCourtListPage();
+
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateAddedCourts() Failed", ex);
+        }
+    }
+
+    public ILiglPage clickOnCourtName(String CourtName1) throws Exception {
+
+        try {
+
+
+            log_Info("clickOnCourtName() started");
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + CourtName1 + "')]")).click();
+            Thread.sleep(5000);
+            log_Info("Clicked on Court Name");
+            log_Info("clickOnCourtName() completed");
+            return new CaseCourtListPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnCourtName Failed",ex);
+        }
+    }
+
+    public ILiglPage clickOnAddJudgeButton() throws Exception {
+
+        try {
+
+
+            log_Info("clickOnAddJudgeButton() started");
+            getDriver().waitForelementToBeClickable(AddJudgeBtn);
+            Thread.sleep(3000);
+            AddJudgeBtn.click();
+            log_Info("Clicked on Add AddJudge Button");
+            return new CaseCourtListPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("AddJudgeBtn Failed",ex);
+        }
+    }
+
+    public ILiglPage addExistingJudgesToCourt(String Judge) throws Exception {
+
+        try {
+            log_Info("addExistingJudgesToCourt() started");
+            getCurrentDriver().findElement(By.xpath("//div[contains(text(),'"+Judge+"')]")).click();
+            Thread.sleep(3000);
+            getDriver().waitForelementToBeClickable(LeftArrow);
+            Thread.sleep(2000);
+            LeftArrow.click();
+            log_Info("Clicked on Add Left Arrow Button");
+            SaveBtn.click();
+            log_Info("Clicked Save button");
+            return new CaseCourtListPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("navigateAndAddJudge() Failed",ex);
+        }
+    }
+
+    public ILiglPage validateAddedJudges(String Judge) throws Exception{
+
+        try {
+            log_Info("validateAddedJudges() started");
+            searchRequiredJudge(Judge);
+            log_Info("Filtered Added court to case");
+            String test=JudgeNameColData.getText();
+            Assert.assertEquals(test,Judge);
+            log_Info("Added judge is displaying in grid");
+            log_Info("validateAddedJudges() completed");
+            return new CaseCourtListPage();
+
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateAddedJudges() Failed", ex);
+        }
+    }
+    public ILiglPage searchRequiredJudge(String AvailableJudge) throws Exception {
+
+        try {
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(JudgeHeader).perform();
+            log_Info("Hovered on Name Header");
+            Thread.sleep(5000);
+            JudgeMenu.click();
+            getDriver().waitForelementToBeClickable(Filter);
+            Thread.sleep(5000);
+            Filter.click();
+            getDriver().waitForelementToBeClickable(SearchBar);
+            Thread.sleep(5000);
+            SearchBar.sendKeys(AvailableJudge);
+            log_Info("Entered Judge Name in search bar");
+            Thread.sleep(5000);
+            return new CaseCourtListPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("searchRequiredJudge() Failed",ex);
         }
     }
 
