@@ -69,6 +69,12 @@ public class LeftMenu extends LiglBasePage {
     @FindBy(xpath = "//span[@title='Process Management']")
     WebElement ProcessManagement;
 
+    @FindBy(xpath = "//span[@title='Documents']")
+    WebElement CaseDocument;
+
+    @FindBy(xpath = "//span[@title='History']")
+    WebElement History;
+
 
     public LeftMenu(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -544,6 +550,68 @@ public class LeftMenu extends LiglBasePage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("goToPMSummaryPage() Failed ", ex);
+        }
+    }
+
+    public ILiglPage goToCaseDocument() throws Exception {
+
+        try {
+            getDriver().waitForelementToBeClickable(CaseDocument);
+            CaseDocument.click();
+            Thread.sleep(5000);
+            log_Info("Clicked on Case Document");
+            return new CaseDocumentsPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("goToCaseDocument() Failed ", ex);
+        }
+    }
+
+    public ILiglPage navigateToNotesHistoryPage() throws Exception {
+
+        try {
+
+            try {
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                if (caseMgmt2.isEnabled()) {
+
+                    log_Info("Click on Case Management");
+                    getDriver().waitForelementToBeClickable(CaseManage);
+                    CaseManage.click();
+                    getSession().log_Pass("Case Management clicked");
+
+                    log_Info("Click on History tab ");
+                    getDriver().waitForelementToBeClickable(History);
+                    Thread.sleep(5000);
+                    History.click();
+                    getSession().log_Pass("Notes History tab clicked");
+
+
+                }
+            } catch (NoSuchElementException e) {
+
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+
+                if (caseMgmt1.isDisplayed()) {
+
+                    log_Info("Click on History tab ");
+                    getDriver().waitForelementToBeClickable(History);
+                    Thread.sleep(5000);
+                    History.click();
+                    getSession().log_Pass("Notes History tab clicked");
+
+                }
+
+
+
+            }
+            return new CaseNotesHistoryPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("navigateToNotesHistoryPage() Failed", ex);
+
         }
     }
 }

@@ -13,6 +13,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.security.InvalidKeyException;
 
@@ -76,6 +78,12 @@ public class DMDSIPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//input[@placeholder='Filter...']")
     WebElement Searchbar;
+
+    @FindBy(id="dsi-custdaterange-id")
+    WebElement CustomDRDropdown;
+
+    @FindBy(id="dsi-custkeyword-id")
+    WebElement CustomKWDropdown;
 
 
     public ILiglPage addDataSourceRecordToDSIGrid(String cust, String datasource, String DataHold,String DateRanges,String Keywords) throws Exception {
@@ -422,4 +430,131 @@ public class DMDSIPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage verifyNonApprovedScopeInCustomTab(String Custodian,String Datasource,String Daterange,String Keyword) throws Exception
+    {
+
+        try {
+
+            log_Info("verifyNonApprovedScopeInCustomTab() Started");
+            AddDSBtn.click();
+            log_Info("Add Datasource button clicked");
+            Thread.sleep(5000);
+            CustomTab.click();
+            log_Info("Custom tab is clicked");
+            Thread.sleep(5000);
+
+            CustDropDown.click();
+            Thread.sleep(5000);
+
+            log_Info("Custodian dropdown clicked");
+            log_Info("Started Non-Approved Custodian validation in Custodian dropdown");
+            boolean temp1 =false;
+            WebElement test1=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-custodian-panel']"));
+            List<WebElement> listItem1=test1.findElements(By.tagName("mat-option"));
+            for(int i = 0; i<  listItem1.size(); i++)
+            {
+                String actualValue=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-custodian-panel']//mat-option["+(i+1)+"]//span[@class='mat-option-text']")).getText();
+                if(actualValue.equalsIgnoreCase(Custodian))
+                {
+                    temp1=true;
+                    break;
+                }
+            }
+            if(temp1==true)
+                System.out.println("Non-Approved Custodian is displaying in dropdown-Not Expected");
+            else
+                System.out.println("Non-Approved Custodian is not displaying in dropdown-Expected");
+            log_Info("Completed Non-Approved Custodian validation in Custodian dropdown");
+
+
+            CustDropDown.sendKeys(Keys.ENTER);
+            Thread.sleep(5000);
+
+            CustomTab.click();
+            Thread.sleep(5000);
+
+            CustomDSTDropdown.click();
+            Thread.sleep(5000);
+            log_Info("Datasource dropdown clicked");
+
+            log_Info("Started Non-Approved Datasource validation in Custodian dropdown");
+            boolean temp2 =false;
+            WebElement test2=getCurrentDriver().findElement(By.xpath("//div[@id='datasourcetype-id-panel']"));
+            List<WebElement> listItem2=test2.findElements(By.tagName("mat-option"));
+            for(int i = 0; i<  listItem2.size(); i++)
+            {
+                String actualValue=getCurrentDriver().findElement(By.xpath("//div[@id='datasourcetype-id-panel']//mat-option["+(i+1)+"]//span[@class='mat-option-text']")).getText();
+                if(actualValue.equalsIgnoreCase(Datasource))
+                {
+                    temp2=true;
+                    break;
+                }
+            }
+            if(temp2==true)
+                System.out.println("Non-Approved Datasource is displaying in dropdown-Not Expected");
+            else
+                System.out.println("Non-Approved Datasource is not displaying in dropdown-Expected");
+            log_Info("Completed Non-Approved Datasource validation in Custodian dropdown");
+
+            CustomDSTDropdown.sendKeys(Keys.ENTER);
+            Thread.sleep(5000);
+
+            CustomTab.click();
+            Thread.sleep(5000);
+
+            CustomDRDropdown.click();
+            log_Info("Daterange dropdown clicked");
+            log_Info("Started Non-Approved Dateranges validation in Custodian dropdown");
+            boolean temp3 =false;
+            WebElement test3=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-custdaterange-id-panel']"));
+            List<WebElement> listItem3=test3.findElements(By.tagName("mat-option"));
+            for(int i = 0; i<  listItem3.size(); i++)
+            {
+                String actualValue=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-custdaterange-id-panel']//mat-option["+(i+1)+"]//span[@class='mat-option-text']")).getText();
+                if(actualValue.equalsIgnoreCase(Daterange))
+                {
+                    temp3=true;
+                    break;
+                }
+            }
+            if(temp3==true)
+                System.out.println("Non-Approved Dateranges is displaying in dropdown-Not Expected");
+            else
+                System.out.println("Non-Approved Dateranges is not displaying in dropdown-Expected");
+            log_Info("Completed Non-Approved Dateranges validation in Custodian dropdown");
+            CustomDRDropdown.sendKeys(Keys.ENTER);
+            Thread.sleep(5000);
+            CustomTab.click();
+
+            CustomKWDropdown.click();
+            log_Info("Keyword dropdown clicked");
+            log_Info("Started Non-Approved Keywords validation in Custodian dropdown");
+            boolean temp4 =false;
+            WebElement test4=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-custkeyword-id-panel']"));
+            List<WebElement> listItem4=test4.findElements(By.tagName("mat-option"));
+            for(int i = 0; i<  listItem4.size(); i++)
+            {
+                String actualValue=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-custkeyword-id-panel']//mat-option["+(i+1)+"]//span[@class='mat-option-text']")).getText();
+                if(actualValue.equalsIgnoreCase(Keyword))
+                {
+                    temp4=true;
+                    break;
+                }
+            }
+            if(temp4==true)
+                System.out.println("Non-Approved Keywords is displaying in dropdown-Not Expected");
+            else
+                System.out.println("Non-Approved Keywords is not displaying in dropdown-Expected");
+            log_Info("Completed Non-Approved Keywords validation in Custodian dropdown");
+            Thread.sleep(5000);
+
+            log_Pass("verifyNonApprovedScopeInCustomTab() Completed Successfully");
+
+            return new DMDSIPage();
+
+        }catch(Exception ex){
+            log_Error("verifyNonApprovedScopeInCustomTab() Failed");
+            throw new Exception("Exception in verifyNonApprovedScopeInCustomTab()",ex);
+        }
+    }
 }

@@ -50,6 +50,12 @@ public class Header extends LiglBasePage {
 	@FindBy(id = "switch-case")
 	public WebElement SwitchCaseBtn;
 
+	@FindBy(xpath = "//*[@id=\"layout\"]/app-navigation/div/nav/div[2]/a/span/span")
+	WebElement ClickonCaseName;
+
+	@FindBy(xpath = "//*[@id=\"switch-case\"]/span")
+	WebElement SwitchCase;
+
 	public Header(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
@@ -160,6 +166,31 @@ public class Header extends LiglBasePage {
 	public ILiglPage goToMyHoldsPage(){
 		myHoldsTab.click();
 		return new MyHoldsPage();
+	}
+
+	public ILiglPage switchCaseFunctionality() throws Exception {
+
+		try{
+			log_Info("switchCaseFunctionality() started");
+			log_Info("Click On The Case Name For Switch");
+			getDriver().waitForelementToBeClickable(ClickonCaseName);
+			Thread.sleep(5000);
+			ClickonCaseName.click();
+			log_Info("Clicked On The Case Name For Switch");
+			getDriver().waitForelementToBeClickable(SwitchCase);
+			Thread.sleep(3000);
+			SwitchCase.click();
+			getSession().log_Pass("Clicked On The Switch Case Icon");
+			Thread.sleep(5000);
+			return new DefaultLandingPage();
+
+
+
+		}catch (Exception | Error ex){
+			log_Error(ex.getMessage());
+			throw new Exception("switchCaseFunctionality() Failed",ex);
+
+		}
 	}
 
 }

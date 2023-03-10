@@ -141,10 +141,22 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Law Firm')]/ancestor::div[@ref='eLabel']/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
     WebElement OutSideCounselLawFirmMenu;
 
+    @FindBy(id = "party-add-select-status")
+    WebElement PartyStatusDrpdwn;
+
+    @FindBy(xpath = "//i[@class='lnr lnr-trash']")
+    WebElement DeleteIcon;
+
+    @FindBy(xpath = "//input[@placeholder='Filter...']")
+    WebElement PartySearchBar;
+
+    @FindBy(xpath = "//div[contains(text(),' No data available...')]")
+    WebElement NodataAvailable;
+
 
     // Process Of Searching A Particular Party Through Filter
 
-    public ILiglPage searchingParty() throws Exception {
+    public ILiglPage searchingParty(String PartyName) throws Exception {
 
         try {
 
@@ -158,12 +170,14 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             log_Info("click on Party menu icon");
             MenuIcon.click();
             log_Info("clicked on Party menu icon");
-
             log_Info("Click on Filter");
             getDriver().waitForelementToBeClickable(FilterIcon);
             Thread.sleep(5000);
             FilterIcon.click();
             log_Info("Filter Clicked");
+            getDriver().waitForelementToBeClickable(SearchBarIcon);
+            Thread.sleep(5000);
+            SearchBarIcon.sendKeys(PartyName);
             return new CaseOtherPartyPage();
 
         } catch (Exception | Error ex) {
@@ -176,7 +190,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
 
     //  Process Of Creating New Party Through Other Party
 
-    public ILiglPage addingNewParty(String PartyName,String PartyType,String Description) throws Exception {
+    public ILiglPage addingNewParty(String PartyName, String PartyType, String Status, String Description) throws Exception {
 
         try {
 
@@ -205,15 +219,24 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(PartyTypeDrpDwn);
             Thread.sleep(5000);
             PartyTypeDrpDwn.sendKeys(PartyType);
+            Thread.sleep(3000);
             PartyTypeDrpDwn.sendKeys(Keys.ENTER);
             getSession().log_Pass("Clicked on Party Type Drop Down");
+            Thread.sleep(8000);
 
+            getDriver().waitForelementToBeClickable(PartyStatusDrpdwn);
+            Thread.sleep(5000);
+            PartyStatusDrpdwn.sendKeys(Status);
+            Thread.sleep(3000);
+            PartyStatusDrpdwn.sendKeys(Keys.ENTER);
+            getSession().log_Pass("Clicked on Status");
 
             log_Info("Click on Description TextBox");
             getDriver().waitForelementToBeClickable(DescriptionTextBox);
             Thread.sleep(5000);
             DescriptionTextBox.sendKeys(Description);
             getSession().log_Pass("Clicked on Description TextBox");
+
 
             log_Info("Click On create button");
             getDriver().waitForelementToBeClickable(CreateButton);
@@ -1004,4 +1027,50 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             throw new Exception("validateAddedInHouseCounsel() Failed",ex);
         }
     }
+
+    public ILiglPage deletingAddedParty(String PartyName) throws Exception {
+        try {
+            searchingParty(PartyName);
+            Thread.sleep(5000);
+            getDriver().waitForelementToBeClickable(DeleteIcon);
+            Thread.sleep(3000);
+            DeleteIcon.click();
+            getSession().log_Pass("Delete Icon clicked");
+            getDriver().waitForelementToBeClickable(YesBtn);
+            Thread.sleep(3000);
+            YesBtn.click();
+            getSession().log_Pass("Delete Icon clicked");
+            return new CaseOtherPartyPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("click on party delete icon Failed", ex);
+        }
+
+    }
+
+    public ILiglPage validatedeletedparty(String PartyName) throws Exception
+    {
+        try {
+
+            log_Info("Hover on Name Header");
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(PartyHeader).perform();
+            log_Info("Hovered on Name Header");
+            Thread.sleep(5000);
+            log_Info("click on Party menu icon");
+            MenuIcon.click();
+            log_Info("clicked on Party menu icon");
+            PartySearchBar.clear();
+            PartySearchBar.sendKeys(PartyName);
+            NodataAvailable.isDisplayed();
+            return new CaseOtherPartyPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("searchingParty() Failed", ex);
+
+        }
+    }
+
 }

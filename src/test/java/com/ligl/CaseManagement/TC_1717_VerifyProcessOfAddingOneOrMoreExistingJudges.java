@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class CreateNewInhouseCounselEnterpriseParty_Test extends TestBase {
+public class TC_1717_VerifyProcessOfAddingOneOrMoreExistingJudges extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
-    public void CreateNewInhouseCounselEnterpriseParty_Test(Hashtable<String, String> data) throws Exception {
+    public void TC_1717_VerifyProcessOfAddingOneOrMoreExistingJudges(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -28,22 +28,23 @@ public class CreateNewInhouseCounselEnterpriseParty_Test extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToOtherPartyPage()
-                    .addingNewParty(data.get("PartyName"),data.get("PartyType"), data.get("Description"),data.get("Status"))
-                    .searchingParty()
-                    .createNewInHouseCounselForEnterpriseParty(data.get("PartyName"), data.get("FirstName"), data.get("LastName") )
-                    .searchingInHouseCounsel(data.get("PartyName"), data.get("CounselName"))
-                    .validateAddedInHouseCounsel(data.get("CounselName"));
-
-
-
+                    .getLeftMenu().navigateToCourtPage()
+                    .addCourtToCase(data.get("CourtName1"))
+                    .clickOnCourtName(data.get("CourtName1"))
+                    .clickOnAddJudgeButton()
+                    .addExistingJudgesToCourt(data.get("Judge1"))
+                    .clickOnAddJudgeButton()
+                    .addExistingJudgesToCourt(data.get("Judge2"))
+                    .validateAddedJudges(data.get("Judge1"));
 
         } catch (Exception ex) {
-            session.log_Error("CreateNewInhouseCounselEnterpriseParty_Test Failed");
-            throw new Exception("CreateNewInhouseCounselEnterpriseParty_Test Failed", ex);
-        } finally {
+            session.log_Error("TC_1717_VerifyProcessOfAddingOneOrMoreExistingJudges Failed");
+            throw new Exception("TC_1717_VerifyProcessOfAddingOneOrMoreExistingJudges Failed", ex);
+        } finally
+        {
             session.end();
         }
     }

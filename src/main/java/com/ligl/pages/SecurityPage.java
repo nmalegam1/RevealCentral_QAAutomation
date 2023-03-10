@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
@@ -72,6 +73,109 @@ public class SecurityPage extends LiglBaseSessionPage {
     WebElement NextBtn;
     @FindBy(id="On-Prem-button")
     WebElement OnpremDSTab;
+
+    @FindBy(id="edit-btn")
+    WebElement EditBtn;
+
+    @FindBy(id="user-button")
+    WebElement UsersTab;
+
+    @FindBy(id="users-access-permissions-save-btn")
+    WebElement AddUserBtn;
+
+    @FindBy(xpath = "//mat-select[@id='FullName']")
+    WebElement FullNameDropdown;
+
+    @FindBy(xpath = "//input[@placeholder='Search']")
+    WebElement FullNameDropdownTypeText;
+    @FindBy(id="send-approval-btn")
+    WebElement AddBtn;
+
+    @FindBy(xpath = "//span[contains(text(),'Full Name')]")
+    WebElement FullNameCol;
+
+    @FindBy(xpath = "//span[contains(text(),'Full Name')]/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span[@class='ag-icon ag-icon-menu']")
+    WebElement FullNameMenu;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='User.FullName']//span[@class='ellipsisAgGrid']")
+    WebElement FullNameColData;
+
+    @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
+    WebElement Filter;
+
+    @FindBy(xpath = "//input[@placeholder='Filter...']")
+    WebElement Searchbar;
+
+    @FindBy(xpath = "//span[contains(text(),'Approval Batch Name')]/ancestor::div[@ref='eLabel']/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
+    WebElement AppBatchNameMenu;
+
+    @FindBy(xpath = "//span[contains(text(),'Approval Batch Name')]")
+    WebElement ApprovalBatchName;
+
+    @FindBy(xpath = "//span[contains(text(),'Custodians Count')]")
+    WebElement CustodiansCount;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='CustodiansCount']//span[@class='ellipsisAgGrid']")
+    WebElement CustodiansCountColData;
+
+    @FindBy(xpath = "//span[contains(text(),'Data Sources Count')]")
+    WebElement DatasourcesCount;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DataSourcesCount']//span[@class='ellipsisAgGrid']")
+    WebElement DatasourcesCountColData;
+
+    @FindBy(xpath = "//span[contains(text(),'Keywords Count')]")
+    WebElement KeywordsCount;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='KeywordsCount']//span[@class='ellipsisAgGrid']")
+    WebElement KeywordsCountColData;
+
+    @FindBy(xpath = "//span[contains(text(),'Date Ranges Count')]")
+    WebElement DateRangesCount;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DateRangesCount']//span[@class='ellipsisAgGrid']")
+    WebElement DateRangesCountColData;
+
+    @FindBy(xpath = "//span[contains(text(),'Approval Status')]")
+    WebElement ApprovalStatusColumn;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='ApprovalStatusName']//span[@class='ellipsisAgGrid']")
+    WebElement ApprovalStatusColumnData;
+
+    @FindBy(xpath = "//span[contains(text(),'Approval Type')]")
+    WebElement ApprovalType;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='ApprovalTypeName']//span[@class='ellipsisAgGrid']")
+    WebElement ApprovalTypeColData;
+
+    @FindBy(xpath = "//span[contains(text(),'Approval Users')]")
+    WebElement ApprovalUsers;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='ApprovalUsers']//span[@class='ellipsisAgGrid']")
+    WebElement ApprovalUsersColData;
+
+    @FindBy(xpath = "//span[contains(text(),'Approved/Rejected On')]")
+    WebElement ApprovedOrRejectedOn;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='ApprovedOn']//span[@class='ag-cell-value']")
+    WebElement ApprovedOrRejectedOnColData;
+
+    @FindBy(xpath = "//input[@aria-label='Filter Columns Input']")
+    WebElement ChooseColumnsSearch;
+
+    @FindBy(id="Columns")
+    WebElement ChooseColumnsMenu;
+
+    @FindBy(xpath = "//span[contains(text(),'Approval Batch Name')]")
+    WebElement ApprovalBatchNameHeader;
+
+    @FindBy(xpath = "//span[contains(text(),'Approval Users')]")
+    WebElement ApprovalUsersHeader;
+
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='ApprovalBatchName']//span[@class='ellipsisAgGrid']")
+    WebElement ApprovalBatchNameColData;
+
+
 
 
 
@@ -941,6 +1045,203 @@ public class SecurityPage extends LiglBaseSessionPage {
             log_Error(ex.getMessage());
             throw new Exception("clickOnKeywordsCheckBoxForApproval()  Failed", ex);
 
+        }
+    }
+
+    public ILiglPage verifyProvidingCaseAccessToUsersInSecurityUsersDropdown(String Name) throws Exception {
+        try {
+            log_Info("verifyUnavailabilityOfInActiveUsersInSecurityUsersDropdown() Started");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", EditBtn);
+            log_Info("Scrolled down to View/Modify Permissions grid");
+            UsersTab.click();
+            log_Info("Clicked Users Tab");
+            EditBtn.click();
+            log_Info("Clicked Edit button");
+            AddUserBtn.click();
+            log_Info("Clicked AddUser button");
+
+            Thread.sleep(10000);
+
+            getDriver().waitUntilSpinnerIsClosed();
+
+            getDriver().waitForelementToBeClickable(FullNameDropdown);
+            Thread.sleep(5000);
+            FullNameDropdown.click();
+            Thread.sleep(5000);
+            FullNameDropdownTypeText.sendKeys(Name);
+            Thread.sleep(5000);
+            FullNameDropdownTypeText.sendKeys(Keys.ENTER);
+
+
+
+            log_Info("Entered Full name of User");
+            AddBtn.click();
+            log_Info("Clicked Add Button and Popup closed");
+            Thread.sleep(5000);
+            searchRequiredFullNameInUsersDropdown(Name);
+            log_Info("Filtered Full name in Full name column in grid");
+            Thread.sleep(5000);
+            log_Info("Getting the Full name column data");
+            String FName=FullNameColData.getText();
+            Thread.sleep(3000);
+            Assert.assertEquals(FName,Name);
+            log_Info("User is successfully displaying in grid, Case Access is provided to user");
+            log_Pass("verifyUnavailabilityOfInActiveUsersInSecurityUsersDropdown() completed successfully");
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyUnavailabilityOfInActiveUsersInSecurityUsersDropdown() Failed", ex);    }}
+
+    public ILiglPage searchRequiredFullNameInUsersDropdown(String Fullname) throws Exception {
+        try {
+            log_Info("searchRequiredFullNameInUsersDropdown() Started");
+            log_Info("Hover on Name Header");
+            Thread.sleep(5000);
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(FullNameCol).perform();
+            log_Info("Hovered on Name Header");
+            Thread.sleep(5000);
+            log_Info("Click On Full Name Menu");
+            FullNameMenu.click();
+            Thread.sleep(5000);
+            log_Info("Clicked On Full Name Menu");
+            log_Info("Click on Filter");
+            Thread.sleep(5000);
+            Filter.click();
+            Thread.sleep(5000);
+            log_Info("Filter Clicked");
+            log_Info("Enter Full name In The Search Bar");
+            Searchbar.sendKeys(Fullname);
+            Thread.sleep(5000);
+            log_Info("Entered Full name In The Search Bar");
+            log_Pass("searchRequiredFullNameInUsersDropdown() Completed");
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("searchRequiredFullNameInUsersDropdown() Failed", ex);    }}
+
+    public ILiglPage searchRequiredApprovalBatchName(String AppBatchname) throws Exception {
+        try {
+            log_Info("searchRequiredApprovalBatchName() Started");
+            log_Info("Hover on Name Header");
+            Thread.sleep(5000);
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(ApprovalBatchName).perform();
+            log_Info("Hovered on Name Header");
+            Thread.sleep(5000);
+            log_Info("Click On Approval Batch Name Menu");
+            AppBatchNameMenu.click();
+            Thread.sleep(5000);
+            log_Info("Clicked On Approval Batch Name Menu");
+            log_Info("Click on Filter");
+            Thread.sleep(5000);
+            Filter.click();
+            Thread.sleep(5000);
+            log_Info("Filter Clicked");
+            log_Info("Enter Approval Batch name In The Search Bar");
+            Searchbar.sendKeys(AppBatchname);
+            Thread.sleep(5000);
+            log_Info("Entered Approval Batch In The Search Bar");
+            log_Pass("searchRequiredApprovalBatchName() Completed");
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("searchRequiredApprovalBatchName() Failed", ex);    }}
+
+    public ILiglPage verifyColumnsDatainAdditionalScopeApprovalGrid(String ApprovalBatchNameExpected,String CustodiansCountExpected,String DatasourcesCountExpected,String KeywordsCountExpected,String DateRangesCountExpected,String ApprovalStatusColumnExpected,String ApprovalTypeExpected,String ApprovalUsersExpected,String ApprovedOrRejectedOnExpected) throws Exception {
+
+        try {
+            log_Info("Checking the Column names are displaying in Additional Scope Approval Grid in Security Page");
+
+            String a = ApprovalBatchNameColData.getText();
+            Assert.assertEquals(a,ApprovalBatchNameExpected);
+            log_Info("ApprovalBatchName Column data is displaying as expected");
+            Thread.sleep(2000);
+
+
+            String b = CustodiansCountColData.getText();
+            Assert.assertEquals(b,CustodiansCountExpected);
+            log_Info("CustodiansCount Column data is displaying as expected");
+            Thread.sleep(2000);
+
+            String c = DatasourcesCountColData.getText();
+            Assert.assertEquals(c,DatasourcesCountExpected);
+            log_Info("DatasourcesCount Column data is displaying as expected");
+            Thread.sleep(2000);
+
+            String d = KeywordsCountColData.getText();
+            Assert.assertEquals(d,KeywordsCountExpected);
+            log_Info("ApprovalBatchName Column data is displaying as expected");
+            Thread.sleep(2000);
+
+            String e = DateRangesCountColData.getText();
+            Assert.assertEquals(e,DateRangesCountExpected);
+            log_Info("ApprovalBatchName Column data is displaying as expected");
+            Thread.sleep(2000);
+
+            String f = ApprovalStatusColumnData.getText();
+            Assert.assertEquals(f,ApprovalStatusColumnExpected);
+            log_Info("ApprovalStatus Column data is displaying as expected");
+            Thread.sleep(2000);
+
+            String g = ApprovalTypeColData.getText();
+            Assert.assertEquals(g,ApprovalTypeExpected);
+            log_Info("ApprovalType Column data is displaying as expected");
+            Thread.sleep(2000);
+
+            log_Info("Selecting 2 optional columns from choose columns");
+            ChooseColumnsMenu.click();
+            ChooseColumnsSearch.sendKeys("Approval Users");
+            Thread.sleep(1000);
+            ApprovalUsers.click();
+            log_Info("Approval users column is selected and displaying in grid");
+            ChooseColumnsSearch.clear();
+            Thread.sleep(5000);
+
+            ChooseColumnsSearch.sendKeys("Approved/Rejected On");
+            Thread.sleep(1000);
+            ApprovedOrRejectedOn.click();
+            log_Info("Approved or Rejected On column is selected and displaying in grid");
+            ChooseColumnsSearch.clear();
+            ChooseColumnsMenu.click();
+            Thread.sleep(5000);
+
+            ApprovalBatchNameHeader.click();
+            getDriver().waitUntilSpinnerIsClosed();
+            for (int i = 0; i < 7; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
+            Thread.sleep(3000);
+            String h = ApprovalUsersColData.getText();
+            Assert.assertEquals(h,ApprovalUsersExpected);
+            log_Info("Approval users column data is displaying as expected in grid");
+            Thread.sleep(3000);
+
+            ApprovalUsersHeader.click();
+            getDriver().waitUntilSpinnerIsClosed();
+            for (int i = 0; i < 1; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
+            Thread.sleep(3000);
+            String i = ApprovedOrRejectedOnColData.getText();
+            Assert.assertEquals(i,ApprovedOrRejectedOnExpected);
+            log_Info("Approved or Rejected By Column data is displaying as expected");
+
+            log_Pass("verifyColumnsDatainAdditionalScopeApprovalGrid() validated successfully");
+
+            return new SecurityPage();
+
+        }
+        catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyColumnsDatainAdditionalScopeApprovalGrid()", ex);
         }
     }
 

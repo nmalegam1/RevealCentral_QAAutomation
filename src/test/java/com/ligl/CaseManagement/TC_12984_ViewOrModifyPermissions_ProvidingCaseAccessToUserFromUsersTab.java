@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class CreateNewOutsideCounselOtherParty_Test extends TestBase {
+public class TC_12984_ViewOrModifyPermissions_ProvidingCaseAccessToUserFromUsersTab extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
-    public void CreateNewOutsideCounselOtherParty_Test(Hashtable<String, String> data) throws Exception {
+    public void TC_12984_ViewOrModifyPermissions_ProvidingCaseAccessToUserFromUsersTab(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -24,24 +24,19 @@ public class CreateNewOutsideCounselOtherParty_Test extends TestBase {
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
 
-
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToOtherPartyPage()
-                    .addingNewParty(data.get("PartyName"),data.get("PartyType"), data.get("Description"),data.get("Status"))
-                    .searchingParty()
-                    .createOtherPartyNewOutsideCounsel(data.get("PartyName"), data.get("NameTextBox"),data.get("PartyDrpDwn"), data.get("Description"), data.get("Status"),data.get("FirstName"),data.get("LastName"))
-                    .validateAddedNewOutsideCounsel(data.get("OutsideCounsel"), data.get("NameTextBox"));
+                    .getLeftMenu().goToSecurityPage()
+                    .verifyProvidingCaseAccessToUsersInSecurityUsersDropdown(data.get("UserFullName"));
 
-
-
-
-        } catch (Exception ex) {
-            session.log_Error("CreateNewOutsideCounselOtherParty_Test Failed");
-            throw new Exception("CreateNewOutsideCounselOtherParty_Test Failed", ex);
+        }
+        catch (Exception ex) {
+            session.log_Error("TC_12984_ViewOrModifyPermissions_ProvidingCaseAccessToUserFromUsersTab Failed");
+            throw new Exception("TC_12984_ViewOrModifyPermissions_ProvidingCaseAccessToUserFromUsersTab Failed", ex);
         } finally {
             session.end();
         }
