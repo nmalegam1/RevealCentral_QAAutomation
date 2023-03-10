@@ -56,9 +56,18 @@ public class MyHoldsPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//button[contains(text(),'Yes')]")
     WebElement AckYesBtn;
-
+    @FindBy(xpath = "//span[contains(text(),'Legal Hold Name')]/ancestor::div/span[@ref='eMenu']")
+    WebElement LHNNameHeader;
     @FindBy(id = "btn-refresh")
     WebElement RefreshBtn;
+    @FindBy(xpath = "//span[contains(text(),'Case Name')]/ancestor::div/span[@ref='eMenu']")
+    WebElement CaseNamHeader;
+    @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
+    WebElement CaseNameFilter;
+    @FindBy(css = "input[placeholder='Filter...']")
+    WebElement CaseSearchBar;
+    @FindBy(xpath = "//div[@col-id='AcknowledgementDrivenType' and @role='gridcell']//span[@class='ellipsisAgGrid']")
+    WebElement ACKMode;
     public ILiglPage searchRequiredLegalHoldName(String LHname) throws Exception {
         try {
 
@@ -153,7 +162,79 @@ public class MyHoldsPage extends LiglBaseSessionPage {
         {
             log_Error(ex.getMessage());
             throw new Exception("clickOnRefreshButton() Failed", ex);    }}
+    public ILiglPage firstSearch() throws InterruptedException {
+        log_Info("firstSearch() Started");
+        Thread.sleep(3000);
+        CaseNamHeader.click();
+        CaseNameFilter.click();
+        CaseSearchBar.clear();
+        CaseSearchBar.sendKeys("");
+        return this;
+    }
 
+    public ILiglPage checkAckModeColumn(String CaseName,String LHN,String Ackmode)throws Exception{
+        try{
+            log_Info("checkAckModeColumn() Started");
+            RefreshBtn.click();
+            caseNameSearch("QA_Feb_06");
+            Thread.sleep(5000);
+            RefreshBtn.click();
+            Thread.sleep(3000);
+            legalHoldSearch(LHN);
+            Thread.sleep(3000);
+            RefreshBtn.click();
+            Thread.sleep(3000);
+            Actions ac=new Actions(getCurrentDriver());
+            getCurrentDriver().findElement(By.xpath("//div[@col-id='Comments']//span[@class='ellipsisAgGrid']")).click();
+
+            for (int i = 0; i < 6; i++) {
+                ac.sendKeys(Keys.TAB).perform();
+            }
+            String acm1=ACKMode.getText();
+            Thread.sleep(3000);
+            getCurrentDriver().findElement(By.xpath("//div[@col-id='Comments']//span[@class='ellipsisAgGrid']")).click();
+
+            for (int i = 0; i < 6; i++) {
+                ac.sendKeys(Keys.ARROW_LEFT).perform();
+            }
+            Assert.assertEquals(acm1,Ackmode);
+
+            log_Pass("Acknowledge Mode is Updated Correctly");
+
+            return new MyHoldsPage();
+        }catch (Exception ex){
+            log_Error("checkAckModeColumn() Failed");
+            throw new Exception("Exception in checkAckModeColumn()",ex);
+        }
+    }
+
+    public ILiglPage caseNameSearch(String Case)throws Exception{
+        try {
+            log_Info("caseNameSearch() Started");
+            CaseNamHeader.click();
+
+            CaseSearchBar.clear();
+            CaseSearchBar.sendKeys(Case);
+
+            return new MyHoldsPage();
+        }catch (Exception ex){
+            log_Error("caseNameSearch() Failed");
+            throw new Exception("Exception in caseNameSearch()",ex);
+        }
+    }
+    public ILiglPage legalHoldSearch(String LHN)throws Exception{
+        try{
+            log_Info("legalHoldSearch() Started");
+            LHNNameHeader.click();
+            //CaseNameFilter.click();
+            CaseSearchBar.clear();
+            CaseSearchBar.sendKeys(LHN);
+            return new MyHoldsPage();
+        }catch(Exception ex){
+            log_Error("legalHoldSearch() Failed");
+            throw new Exception("Exception in legalHoldSearch()",ex);
+        }
+    }
 
     public ILiglPage validateMyHoldsGridData() throws Exception {
         try {
