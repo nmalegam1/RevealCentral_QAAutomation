@@ -61,6 +61,18 @@ public class DMDSIPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
     WebElement Filter;
+    @FindBy(id = "Custom-button")
+    WebElement CustomTab;
+    @FindBy(id = "source-path")
+    WebElement SourcePath;
+    @FindBy(id="datasourcetype-id")
+    WebElement CustomDSTDropdown;
+    @FindBy(xpath = "//button[contains(text(),'Save')]")
+    WebElement CustomSaveBtn;
+    @FindBy(xpath = "//button[contains(text(),'Proceed')]")
+    WebElement CustomProceedBtn;
+    @FindBy(id="btn-ok")
+    WebElement ConfirmationBtn;
 
     @FindBy(xpath = "//input[@placeholder='Filter...']")
     WebElement Searchbar;
@@ -150,6 +162,51 @@ public class DMDSIPage extends LiglBaseSessionPage {
         } catch (Exception ex) {
             log_Error("addDataSourceRecordToDSIGrid() Failed");
             throw new Exception("Exception in addDataSourceRecordToDSIGrid()", ex);
+        }
+    }
+
+    public ILiglPage addingDSToDSIThroughCustom(String cust, String datasource,String sourcepath,String DataHold)throws Exception{
+        try{
+            log_Info("addingDSToDSIThroughCustom() Started");
+            Thread.sleep(3000);
+            AddDSBtn.click();
+            CustomTab.click();
+            Thread.sleep(5000);
+            CustDropDown.click();
+            Thread.sleep(2000);
+            CustDropDown.sendKeys(cust);
+            Thread.sleep(3000);
+            CustDropDown.sendKeys(Keys.ENTER);
+            Thread.sleep(5000);
+            CustomDSTDropdown.click();
+            Thread.sleep(5000);
+            CustomDSTDropdown.sendKeys(datasource);
+            Thread.sleep(3000);
+            CustomDSTDropdown.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+            SourcePath.sendKeys(sourcepath);
+            Thread.sleep(3000);
+            DataHoldScopeDD.click();
+            Thread.sleep(3000);
+            DataHoldScopeDD.sendKeys(DataHold);
+            Thread.sleep(3000);
+            DataHoldScopeDD.sendKeys(Keys.ENTER);
+            Thread.sleep(2000);
+
+
+
+
+            CustomSaveBtn.click();
+            Thread.sleep(2000);
+            CustomProceedBtn.click();
+            Thread.sleep(2000);
+            ConfirmationBtn.click();
+
+
+            return new DMDSIPage();
+        }catch(Exception ex){
+            log_Error("addingDSToDSIThroughCustom() Failed");
+            throw new Exception("Exception in addingDSToDSIThroughCustom()",ex);
         }
     }
 

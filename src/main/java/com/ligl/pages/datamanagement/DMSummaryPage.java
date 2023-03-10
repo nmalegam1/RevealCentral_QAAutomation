@@ -105,40 +105,28 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             Outer:
 
 
-            for (int i = 1; i <= 90; i++) {
+            for (int i = 1; i <= 120; i++) {
 
                 try {
 
                     Thread.sleep(30000);
-
-
                     for (int j = 0; j < listItem.size(); j++) {
                         String actualValue = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
 
                         if (actualValue.equalsIgnoreCase(CollectionStatus)) {
-
                             y++;
-
                         }
-
-                        else if (actualValue.contains("Failed")) {
+                        if (actualValue.contains("Failed")) {
                             y++;
                             z++;
                         }
-
-
-                        else if(listItem.size() == y){
+                        if(listItem.size() == y){
                             getSession().takeScreenShot();
                             break Outer;
-
                         }
-
                     }
-
                     z=0;
                     y=0;
-
-
                     RefreshBtn.click();
 
                 } catch (Exception e) {

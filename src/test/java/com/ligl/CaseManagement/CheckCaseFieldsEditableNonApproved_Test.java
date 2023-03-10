@@ -27,7 +27,7 @@ public class CheckCaseFieldsEditableNonApproved_Test extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"))
+                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .verifyingCaseFieldsAreEditable(data.get("CaseTypeDrpDwn"), data.get("CaseName1"),data.get("CaseSettingTemplateDrpDwn") )
                     .verifyingCaseFieldsAreEdited(data.get("CaseTypeDrpDwn"), data.get("CaseName1"),data.get("CaseSettingTemplateDrpDwn"));

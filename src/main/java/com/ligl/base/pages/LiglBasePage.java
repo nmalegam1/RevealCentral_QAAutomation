@@ -29,6 +29,7 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
+	public ILiglPage addOnpremDataSource(String s)throws Exception{return null;}
 	public void quit() {
 		// TODO Auto-generated method stub
 	}
@@ -41,6 +42,8 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 
 	}
+	public ILiglPage selectOnpremDataSourceForApproval(String s)throws Exception{return null;}
+	public ILiglPage addingDSToDSIThroughCustom(String s1,String s2,String s3,String s4)throws Exception{return null;}
 	public ILiglPage submitPassword(String userid) {
 		return null;
 	}

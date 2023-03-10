@@ -28,7 +28,7 @@ public class CreatingNewTemplate_Test extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"))
+                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .getHeader()
                     .goToAdministrationPage()
                     .goToAdminLeftMenu()

@@ -18,6 +18,7 @@ public interface ILiglPage {
     ILiglPage navigateURL();
     ILiglPage submitUsername(String userid);
     ILiglPage submitPassword(String userid);
+    ILiglPage addOnpremDataSource(String s)throws Exception;
 
     IWebConnector validator(boolean flagAssertionType);
 
@@ -46,6 +47,8 @@ public interface ILiglPage {
 
 
     ILiglPage goToPMSummaryPage() throws Exception;
+    ILiglPage selectOnpremDataSourceForApproval(String s)throws Exception;
+    ILiglPage addingDSToDSIThroughCustom(String s1,String s2,String s3,String s4)throws Exception;
 
     ILiglPage checkLHNForCustodians(String LHN,String Employee1) throws Exception;
 

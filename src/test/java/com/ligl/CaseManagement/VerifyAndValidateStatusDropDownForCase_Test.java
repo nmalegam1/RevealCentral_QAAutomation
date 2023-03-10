@@ -28,7 +28,7 @@ public class VerifyAndValidateStatusDropDownForCase_Test extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"))
+                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .verifyingTheStatusDropDownForACase(data.get("StatusDrpDwn"))
                     .validatingUpdatedStatus(data.get("StatusDrpDwn"));
