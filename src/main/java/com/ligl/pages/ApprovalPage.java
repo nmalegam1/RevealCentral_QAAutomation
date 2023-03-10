@@ -49,6 +49,17 @@ public class ApprovalPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//mat-panel-title[contains(text(),' Legal Hold Details ')]")
     WebElement CaseLHDetails;
 
+    @FindBy(xpath = "//mat-panel-title[contains(text(),'Legal Hold Details')]")
+    WebElement LegalHoldDetailsAccordion;
+
+    @FindBy(xpath = "//mat-panel-title[contains(text(),' Approval History ')]")
+    WebElement ApprovalHistoryAccordion;
+
+    @FindBy(xpath = "//a[contains(text(),'View')]")
+    WebElement ViewBtn;
+
+    @FindBy(xpath = "//button[contains(text(),'Close')]")
+    WebElement CloseBtn;
 
     // Approving The Legal Hold
 
