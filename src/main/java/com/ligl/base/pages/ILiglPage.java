@@ -424,4 +424,107 @@ public interface ILiglPage {
     ILiglPage navigateToNotesHistoryPage() throws Exception;
 
     ILiglPage verifyColumnsInNotesHistoryGrid() throws Exception;
+
+    ILiglPage goToRequiredLegalHoldName(String LHname) throws Exception;
+
+    ILiglPage verifyColumnsInLHNCustodianGrid() throws Exception;
+
+    ILiglPage verifyColumnsInLHNStakeHolderGrid() throws Exception;
+
+    ILiglPage searchActionThroughEmail(String Email1) throws Exception;
+
+    ILiglPage verifySentByAndSentOnData(String Sentby ,String Senton) throws Exception;
+
+    ILiglPage clickActionOnResponseDocument() throws Exception;
+
+    ILiglPage validateRecordWhenLHNStatusIsInNotintiatedState(String status) throws Exception;
+
+    ILiglPage clickOnActionDropDownAndRunInStakeHolder(String Action1) throws Exception;
+
+    ILiglPage validateLHNStatus(String LHNStatus) throws Exception;
+
+    ILiglPage selectTemplateAndClickOnSendBtn(String Template1) throws Exception;
+
+    ILiglPage clickOnRefreshButtonStakeHolder() throws Exception;
+
+    ILiglPage createNewLegalHold(String LegalHoldname, String CustodianTemplate, String CustodianQuestionaireTemplate, String StakeHolderTemplate, String StakeHolderQueTemplate) throws Exception;
+
+    ILiglPage clickOnEditButtonInLHNGrid() throws Exception;
+
+    ILiglPage clearActionInLegalHold() throws Exception;
+
+    ILiglPage clickOnRefreshButtonLHGrid() throws Exception;
+
+    ILiglPage clickOnRemainderButtonInRemainderConfigTab(String LegalHoldname, String CustodianTemplate, String StakeHolderTemplate) throws Exception;
+
+    ILiglPage clickOnEscalationButtonInEscalationConfigTab(String LegalHoldname, String CustodianTemplate, String StakeHolderTemplate) throws Exception;
+
+    ILiglPage navigateToEmployeeMasterPage() throws Exception;
+
+    ILiglPage validateEscalationAndRemainderDefaultValues() throws Exception;
+
+    ILiglPage navigateToEscalationAndRemainder() throws Exception;
+
+    ILiglPage createLegalHoldUptoEscalation(String LegalHoldname, String CustodianTemplate, String StakeHolderTemplate) throws Exception;
+
+    ILiglPage editEscalationAndRemainderConfigValues(String Remainderdays, String Remaindermails, String Remainderfrequency,String Escalationdays, String Escalationmails, String Escalationfrequency) throws Exception;
+
+
+    ILiglPage clickOnSendButton() throws Exception;
+
+    ILiglPage searchThroughEmail(String Email) throws Exception;
+
+    ILiglPage performEditAction(String EmployeeName) throws Exception;
+
+    ILiglPage editEmployeeStatus(String Estatus) throws Exception;
+
+    ILiglPage createNewLegalHoldByStartDateEndDateNumberOfDays(String LegalHoldname, String CustodianTemplate, String StakeHolderTemplate,String Startdate,String Enddate,String Days) throws Exception;
+
+    ILiglPage clickOnChooseColumnMenu() throws Exception;
+
+    ILiglPage searchTheColumnsInColumnMenuInLHGrid(String Column) throws Exception;
+
+    ILiglPage selectTheColumnCheckBox(String COLUMN) throws Exception;
+
+    ILiglPage validateTheDRandKWInDisableMode() throws Exception;
+
+    ILiglPage enterKeyWords(String keywords) throws Exception;
+
+    ILiglPage enterDateRanges(String Startdate,String Enddate,String Days) throws Exception;
+
+    ILiglPage clickOnSaveBtn() throws Exception;
+
+    ILiglPage clickOnStakeHolderNoticeTemplate(String StakeHolderTemplate,String StakeHolderQueTemplate) throws Exception;
+
+    ILiglPage clickOnNextBtn6() throws Exception;
+
+    ILiglPage clickOnNextBtn5() throws Exception;
+
+    ILiglPage clickOnNextBtn4() throws Exception;
+
+    ILiglPage clickOnNextBtn3() throws Exception;
+
+    ILiglPage clickOnNextBtn2() throws Exception;
+
+    ILiglPage clickOnNextBtn1() throws Exception;
+
+    ILiglPage enterCustodianNoticeTemplate(String CustodianTemplate,String CustodianQuestionaireTemplate) throws Exception;
+
+    ILiglPage enterNameOfTheLH(String LegalHoldname) throws Exception;
+
+    ILiglPage clickOnTheDownloadLHNLink() throws Exception;
+
+    ILiglPage validateTheButtonsInDisableMode() throws Exception;
+
+    ILiglPage validateTheColumnsNames() throws Exception;
+
+    ILiglPage clearActionInLHColumnMenu() throws Exception;
+
+    ILiglPage checkWhetherLHDetailsWithPreviewOptionDisplayInTheGrid(String CaseNameApprove,String keywords) throws Exception;
+
+    ILiglPage checkTheLHPopUpDetailsInDisabledCondition() throws Exception;
+
+    ILiglPage createNewLHBySelectingTemplateOnFlyEdit(String LegalHoldname, String CustodianTemplate, String NewtempName,String subject,String content)throws Exception;
+
+    ILiglPage createNewLegalHoldByDateRangeKeyWords(String LegalHoldname, String CustodianTemplate, String StakeHolderTemplate,String Startdate,String Enddate,String Days,String keywords) throws Exception;
 }
