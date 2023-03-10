@@ -3,6 +3,7 @@ package com.ligl.pages;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.administration.ContactMasterPage;
 import com.ligl.pages.casemanagement.CaseSummaryPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,7 +36,8 @@ public class Header extends LiglBasePage {
 
 	@FindBy(xpath = "//a[@id='approval-tab']")
 	public WebElement approvalTab;
-
+	@FindBy(id="user-profile")
+	public WebElement UserProfiles;
 	@FindBy(xpath = "//a[@title='Administration']")
 	public WebElement AdministrationTab;
 	@FindBy(xpath = "//a[@ng-click='vmBase.resetMouseHoverPopUp()']")
@@ -45,6 +47,8 @@ public class Header extends LiglBasePage {
 
 	@FindBy(id="custodianprofile-tab")
 	public WebElement myHoldsTab;
+	@FindBy(id = "switch-case")
+	public WebElement SwitchCaseBtn;
 
 	public Header(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -86,8 +90,33 @@ public class Header extends LiglBasePage {
 			throw new Exception("Exception in switchCase()");
 		}
 	}
-
-
+	public ILiglPage switchCase() throws Exception{
+		try{
+			log_Info("switchCase() Started");
+			Thread.sleep(2000);
+			SwitchCaseTab.click();
+			Thread.sleep(2000);
+			SwitchCaseBtn.click();
+			Thread.sleep(5000);
+			return new DefaultLandingPage();
+		}catch (Exception ex){
+			throw new Exception("Exception in switchCase()");
+		}
+	}
+	public ILiglPage checkLoggedInUser(String Username,String role) throws Exception{
+		try{
+			log_Info("checkLoggedInUser() Started");
+			UserProfiles.click();
+			Thread.sleep(3000);
+			getCurrentDriver().findElement(By.xpath("//div[@aria-labelledby='profileDropdown']//p[@title='"+Username+"']")).isDisplayed();
+			getCurrentDriver().findElement(By.xpath("//div[@aria-labelledby='profileDropdown']//p[contains(text(),'"+role+"')]")).isDisplayed();
+			log_Pass("LoggedIn User Role Name And Role are checked");
+			return new MyHoldsPage();
+		}catch (Exception ex){
+			log_Error("checkLoggedInUser() Failed");
+			throw new Exception("Exception in checkLoggedInUser()",ex);
+		}
+	}
 
 	public ILiglPage goToApprovalPage(){
 		approvalTab.click();

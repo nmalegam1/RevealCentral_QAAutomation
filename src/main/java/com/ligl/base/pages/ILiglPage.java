@@ -19,8 +19,10 @@ public interface ILiglPage {
     ILiglPage submitUsername(String userid);
     ILiglPage submitPassword(String userid);
     ILiglPage addOnpremDataSource(String s)throws Exception;
+    ILiglPage goToEmployeeMasterpage()throws Exception;
 
     IWebConnector validator(boolean flagAssertionType);
+    ILiglPage goToUsersRoles()throws Exception;
 
     ILiglPage validateAdminRole() throws Exception;
     ILiglPage login(String userName, String password,String Entity) throws Exception;
@@ -35,6 +37,7 @@ public interface ILiglPage {
 
     ILiglPage validateCaseNotinitiatedState() throws Exception;
     void log_Info(String message);
+    ILiglPage checkCustodianRoleInUserCreationPopUp(String s)throws Exception;
     void log_Pass(String message);
     void log_Error(String message);
     ILiglPage validateIntermediatePageOptions();
@@ -47,9 +50,29 @@ public interface ILiglPage {
 
 
     ILiglPage goToPMSummaryPage() throws Exception;
+    ILiglPage sendLHNToApproval(String s1,String s2,String s3,String s4)throws Exception;
+    ILiglPage goToLegalHold(String s)throws  Exception;
+    ILiglPage resendLHN(String s1,String s2)throws Exception;
+    ILiglPage firstSearch()throws InterruptedException;
+    ILiglPage checkAckModeColumn(String s1,String s2,String s3)throws Exception;
     ILiglPage selectOnpremDataSourceForApproval(String s)throws Exception;
+    ILiglPage editExistingLHNWithOnFlyEditOfCustTemp(String s1,String s2,String s3,String s4)throws Exception;
     ILiglPage addingDSToDSIThroughCustom(String s1,String s2,String s3,String s4)throws Exception;
-
+    ILiglPage searchLHNThroughEmail(String s)throws Exception;
+    ILiglPage sendStealthMode()throws Exception;
+    ILiglPage verifyCustodianInterviewTranscriptNotes()throws Exception;
+    ILiglPage createLHNAfterFirstLHNWith_KW_DR_AndCheckKW_DR_Disabled(String s1,String s2,String s3,String s4,String s5,String s6,String s7,String s8,String s9,String s10)throws Exception;
+    public ILiglPage editLHNAfterFirstLHNWith_KW_DR_AndCheckKW_DR_Editable(String s1,String s2,String s3,String s4,String s5,String s6,String s7,String s8,String s9,String s10)throws Exception;
+    ILiglPage verifyLHKWCreatedInFirstLHDisplayeingInLHsCreatedLater(String s1,String s2,String s3,String s5,String s4,String s6)throws Exception;
+    ILiglPage selectLHN(String s)throws Exception;
+    ILiglPage verifyColumnsInLegalHoldGrid()throws Exception;
+    ILiglPage editLHNCreatedWithDRKW(String s1,String s2,String s3,String s4,String s5,String s6)throws Exception;
+    ILiglPage refreshLHN()throws InterruptedException;
+    ILiglPage verifyRecordStatusOfLHN(String s)throws Exception;
+    ILiglPage verifyFieldsInAddLegalHoldModel(String s1,String s2)throws Exception;
+    ILiglPage checkUnableToSetStealthModeToDeactiveCust(String s)throws Exception;
+    ILiglPage verifyRecordStatusInLHN(String s)throws Exception;
+    ILiglPage checkReportingManagerFieldinAdditionalFields(String s)throws  Exception;
     ILiglPage checkLHNForCustodians(String LHN,String Employee1) throws Exception;
 
     void selectDateFromCalendar(String date);

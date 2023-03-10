@@ -13,6 +13,7 @@ import org.testng.Reporter;
 import com.ligl.pages.Header;
 import com.ligl.web.IWebConnector;
 
+import java.awt.*;
 import java.util.Hashtable;
 
 public class LiglBasePage implements ILiglPage {
@@ -42,6 +43,8 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 
 	}
+	public ILiglPage goToUsersRoles()throws Exception{return null;}
+	public ILiglPage goToEmployeeMasterpage()throws Exception{return null;}
 	public ILiglPage selectOnpremDataSourceForApproval(String s)throws Exception{return null;}
 	public ILiglPage addingDSToDSIThroughCustom(String s1,String s2,String s3,String s4)throws Exception{return null;}
 	public ILiglPage submitPassword(String userid) {
@@ -59,16 +62,20 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
+	public ILiglPage checkCustodianRoleInUserCreationPopUp(String s)throws Exception{return null;}
 	public ILiglPage login(String userName, String password,String Entity) throws Exception {
 		return null;
 	}
 	public ILiglPage createNewCounselForSelectedOutsideCounsel(String PartyNew,String OptionFromLawFirmDropDwn,String FirstName,String LastName) throws Exception {
 		return null;
 	}
-
+	public ILiglPage sendLHNToApproval(String s1,String s2,String s3,String s4)throws Exception{return null;}
 	public ILiglPage searchcase(String casename) throws Exception {return null;}
 
 	public ILiglPage GoToCase(String CaseName) throws Exception {return null;}
+	public ILiglPage goToLegalHold(String s)throws  Exception{return null;}
+	public ILiglPage firstSearch()throws InterruptedException{return null;}
+	public ILiglPage resendLHN(String s1,String s2)throws Exception{return null;}
 
 	public ILiglPage adminLogin(String userName, String password, String entity) throws Exception{return null;}
 	public ILiglPage validateAdminRole() throws Exception {return null;}
@@ -282,9 +289,30 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage goToCasePage() throws Exception {
 		return null;
 	}
+	public ILiglPage checkAckModeColumn(String s1, String s2,String s3)throws Exception{return null;}
 	public ILiglPage verifyingCaseFieldsAreEditable(String CaseTypeDrpDwn,String CaseName1,String CaseSettingTemplateDrpDwn) throws Exception{
 		return null;
 	}
+	public  ILiglPage sendStealthMode()throws Exception{return null;}
+	public ILiglPage selectLHN(String s)throws Exception{return null;}
+	public  ILiglPage verifyRecordStatusOfLHN(String s)throws Exception{return null;}
+	public ILiglPage refreshLHN()throws InterruptedException{return null;}
+	public ILiglPage verifyColumnsInLegalHoldGrid()throws Exception{return null;}
+	public ILiglPage verifyCustodianInterviewTranscriptNotes()throws Exception{return null;}
+	public ILiglPage createLHNAfterFirstLHNWith_KW_DR_AndCheckKW_DR_Disabled(String s1,String s2,String s3,String s4,String s5,String s6,String s7,String s8,String s9,String s10)throws Exception{
+		return null;
+	}
+	public ILiglPage editLHNAfterFirstLHNWith_KW_DR_AndCheckKW_DR_Editable(String s1,String s2,String s3,String s4,String s5,String s6,String s7,String s8,String s9,String s10)throws Exception{
+		return null;
+	}
+	public ILiglPage verifyLHKWCreatedInFirstLHDisplayeingInLHsCreatedLater(String s1,String s2,String s3,String s5,String s4,String s6)throws Exception{return null;}
+	public     ILiglPage editLHNCreatedWithDRKW(String s1,String s2,String s3,String s4,String s5,String s6)throws Exception{return null;}
+	public ILiglPage verifyFieldsInAddLegalHoldModel(String s1,String s2)throws Exception{return null;}
+	public ILiglPage checkUnableToSetStealthModeToDeactiveCust(String s)throws Exception{return null;}
+	public ILiglPage checkReportingManagerFieldinAdditionalFields(String s)throws  Exception{return null;}
+	public  ILiglPage verifyRecordStatusInLHN(String s)throws Exception{return null;}
+	public ILiglPage searchLHNThroughEmail(String s)throws Exception{return null;}
+	public ILiglPage editExistingLHNWithOnFlyEditOfCustTemp(String s1,String s2,String s3,String s4)throws Exception{return null;}
 	public ILiglPage verifyingCaseFieldsAreEdited(String CaseTypeDrpDwn,String CaseName1,String CaseSettingTemplateDrpDwn) throws Exception{
 		return null;
 	}
