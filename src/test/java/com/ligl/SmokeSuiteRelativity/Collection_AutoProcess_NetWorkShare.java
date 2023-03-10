@@ -1,4 +1,4 @@
-package com.ligl.CaseManagement;
+package com.ligl.SmokeSuiteRelativity;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class VerifyColumnsAvailableInCustodianGrid_Test extends TestBase {
+public class Collection_AutoProcess_NetWorkShare extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
-    public void VerifyColumnsAvailableInCustodianGrid_Test(Hashtable<String, String> data) throws Exception {
+    public void Collection_AutoProcess_NetWorkShare(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -23,23 +23,30 @@ public class VerifyColumnsAvailableInCustodianGrid_Test extends TestBase {
                 // skip-testng
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
-            // Create new template using +template button for case approval category
+
+            // Initiate Auto Process UpTo Collection
 
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
-                    .navigateToCustodiansPage()
-                    .verifyColumnsInCustodianGrid();
-
+                    .goToDSIPage()
+                    .addingDSToDSIThroughCustom(data.get("Emp"),data.get("Datasource"),data.get("SourcePath"), data.get("DataHold"))
+                    .searchAccountEmailRecordInDSI(data.get("Email"))
+                    .automateRecordInDSI()
+                    .getLeftMenu().goToDataManagementSummary()
+                    .validateAndWaitForRecordsToCompleteCollection(data.get("CollectionStatus"))
+                    .logout();
 
         } catch (Exception ex) {
-            session.log_Error("VerifyColumnsAvailableInCustodianGrid_Test Failed");
-            throw new Exception("VerifyColumnsAvailableInCustodianGrid_Test Failed", ex);
+            session.log_Error("Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTestNuix Failed");
+            throw new Exception("Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTestNuix Failed", ex);
         } finally {
             session.end();
         }
     }
 }
+

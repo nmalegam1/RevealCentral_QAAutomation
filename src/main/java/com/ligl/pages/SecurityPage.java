@@ -70,15 +70,8 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//button[contains(text(),'Next')]")
     WebElement NextBtn;
-
-    @FindBy(xpath = "//div[text()='Gmail(Not-initiated)']//../..//div[@class='sourceChkbxDiv']")
-    WebElement GmailCheckBox;
-
-    @FindBy(xpath = "//div[text()='Google Drive(Not-initiated)']//../..//div[@class='sourceChkbxDiv']")
-    WebElement GoogleDriveCheckBox;
-
-    @FindBy(xpath = "//span[@title='KW1']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")
-    WebElement Keyword1;
+    @FindBy(id="On-Prem-button")
+    WebElement OnpremDSTab;
 
 
 
@@ -122,6 +115,19 @@ public class SecurityPage extends LiglBaseSessionPage {
         }catch (Exception | Error ex){
             log_Error(ex.getMessage());
             throw new Exception("sendingCaseForApproval() Failed",ex);
+        }
+    }
+    public ILiglPage selectOnpremDataSourceForApproval(String DataSource)throws Exception{
+        try{
+            log_Info("selectOnpremDataSourceForApproval() Started");
+            OnpremDSTab.click();
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//div[text()='" + DataSource + "']//../..//div[@class='sourceChkbxDiv']")).click();
+            log_Info("Click on The Required DataSource Checkbox");
+            return new SecurityPage();
+        }catch (Exception ex){
+            log_Error(ex.getMessage());
+            throw new Exception("selectOnpremDataSourceForApproval()  Failed", ex);
         }
     }
 

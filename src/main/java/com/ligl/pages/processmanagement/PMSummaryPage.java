@@ -57,7 +57,7 @@ public class PMSummaryPage extends LiglBaseSessionPage {
             Outer:
 
 
-            for (int i = 1; i <= 90; i++) {
+            for (int i = 1; i <= 120; i++) {
 
                 try {
 
@@ -72,14 +72,11 @@ public class PMSummaryPage extends LiglBaseSessionPage {
                             y++;
 
                         }
-
-                        else if (actualValue.contains("Failed")) {
+                        if (actualValue.contains("Failed")) {
                             y++;
                             z++;
                         }
-
-
-                        else if(listItem.size() == y){
+                        if(listItem.size()/2 == y){
                             getSession().takeScreenShot();
                             break Outer;
 

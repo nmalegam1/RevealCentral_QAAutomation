@@ -24,6 +24,8 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//h1[contains(text(),'Select Data Source(s)')]")
     WebElement DSHeading;
+    @FindBy(id = "On-Prem-button")
+    WebElement OnpremDS;
 
 
     public ILiglPage addDataSources() throws Exception {
@@ -65,6 +67,23 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage addOnpremDataSource(String DataSource)throws Exception{
+        try{
+            log_Info("addOnpremDataSource() Started");
+            OnpremDS.click();
+            getCurrentDriver().findElement(By.xpath("//div[text()='" + DataSource + "']//../..//div[@class='sourceChkbxDiv']")).click();
+            log_Info("Data Source is selected");
+            Thread.sleep(5000);
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", SaveBtn);
+            log_Info("Click on SaveBtn");
+            getDriver().waitForelementToBeClickable(SaveBtn);
+            SaveBtn.click();
+            return new CaseDataSourcesPage();
+        }catch (Exception ex){
+            log_Error(ex.getMessage());
+            throw new Exception("addOnpremDataSource() Failed", ex);
+        }
+    }
 
     public ILiglPage addDataSource(String DataSource) throws Exception {
 
