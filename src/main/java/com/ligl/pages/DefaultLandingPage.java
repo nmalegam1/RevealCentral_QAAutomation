@@ -346,14 +346,14 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             CaseName.sendKeys(data.get("CaseName"));
 
 
-           /* log_Info("Enter Work Flow Template");
+            log_Info("Enter Work Flow Template");
             getDriver().waitForelementToBeClickable(WFT);
             WFT.click();
             Thread.sleep(3000);
             WFTText.sendKeys(data.get("WFT"));
             Thread.sleep(3000);
             WFTText.sendKeys(Keys.ENTER);
-            Thread.sleep(3000);*/
+            Thread.sleep(3000);
 
             log_Info("Enter Case Settings Template");
             getDriver().waitForelementToBeClickable(CST);
