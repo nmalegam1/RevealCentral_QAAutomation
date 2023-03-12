@@ -368,7 +368,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(Entity);
             Entity.click();
             Thread.sleep(3000);
-            EntityText.sendKeys(data.get("CaseEntity"));
+            EntityText.sendKeys(data.get("Entity"));
             Thread.sleep(3000);
             EntityText.sendKeys(Keys.ENTER);
             Thread.sleep(3000);

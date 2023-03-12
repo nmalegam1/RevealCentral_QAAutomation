@@ -60,13 +60,13 @@ public class LeftMenu extends LiglBasePage {
     @FindBy(css="span[title='Documents']")
     WebElement Documents;
 
-    @FindBy(xpath = "//span[@title='Data Management']")
+    @FindBy(xpath = "//span[@title='Data Management Summary']")
     WebElement DataManagement;
 
     @FindBy(xpath = "//span[@title='Identification']")
     WebElement Identification;
 
-    @FindBy(xpath = "//span[@title='Process Management']")
+    @FindBy(xpath = "//span[@title='Process Management Summary']")
     WebElement ProcessManagement;
 
     @FindBy(xpath = "//span[@title='Documents']")
