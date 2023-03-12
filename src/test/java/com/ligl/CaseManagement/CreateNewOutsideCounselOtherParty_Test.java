@@ -32,7 +32,7 @@ public class CreateNewOutsideCounselOtherParty_Test extends TestBase {
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToOtherPartyPage()
                     .addingNewParty(data.get("PartyName"),data.get("PartyType"), data.get("Description"),data.get("Status"))
-                    .searchingParty()
+                    .searchingParty(data.get("PartyName"))
                     .createOtherPartyNewOutsideCounsel(data.get("PartyName"), data.get("NameTextBox"),data.get("PartyDrpDwn"), data.get("Description"), data.get("Status"),data.get("FirstName"),data.get("LastName"))
                     .validateAddedNewOutsideCounsel(data.get("OutsideCounsel"), data.get("NameTextBox"));
 

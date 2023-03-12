@@ -488,9 +488,27 @@ public class LegalHoldPage extends LiglBasePage {
 
     @FindBy(xpath = "//span[contains(text(),'Download LHN')]")
     WebElement DownloadLHN;
+    @FindBy(xpath = "//span[@title='SendLHToCust']")
+    WebElement LHN;
+    @FindBy(id="lhncustActions")
+    WebElement SelectAction;
 
     // Sending Legal Hold For Approval
 
+    public ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException {
+        log_Info("Click on LHN ");
+        Thread.sleep(15000);
+        LHN.click();
+        waitForPageToLoad();
+
+        getCurrentDriver().findElement(By.xpath("//span[@title='"+CustName+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+        SelectAction.click();
+        SelectAction.sendKeys("Send");
+        SelectAction.sendKeys(Keys.ENTER);
+        RunBtn.click();
+        Thread.sleep(3000);
+        return new LegalHoldPage();
+    }
     public ILiglPage sendingLegalHoldForApproval() throws InterruptedException {
 
 

@@ -39,7 +39,7 @@ public class LoginPage extends LiglBasePage {
 			Thread.sleep(2000);
 			getDriver().waitForAngularRequestsToComplete();
 
-			if (getCurrentDriver().getTitle().contains("Legal Entity Select | Ligl")) {
+			if (getCurrentDriver().getCurrentUrl().contains("legalentity")) {
 				log_Info("EntityPage Loaded");
 				System.out.println("Entity : "+Entity);
 				if(Entity.contains(Entity))
@@ -79,7 +79,7 @@ public class LoginPage extends LiglBasePage {
 			getDriver().waitForAngularRequestsToComplete();
 			Thread.sleep(2000);
 
-			if (getCurrentDriver().getTitle().contains("Legal Entity Select | Vertical")) {
+			if (getCurrentDriver().getCurrentUrl().contains("legalentity")) {
 				log_Info("EntityPage Loaded");
 				System.out.println("Entity : "+entity);
 				if(entity.contains(entity))

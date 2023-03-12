@@ -43,6 +43,130 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
 
     @FindBy (xpath = "//span//div[@class='case-name-div']")
     WebElement CaseNameValidation;
+    @FindBy(id="btn-edit")
+    WebElement EditCase;
+    @FindBy(id="input-due-date")
+    WebElement DueDate;
+    @FindBy(xpath = "//button[contains(text(),'Save')]")
+    WebElement EditSave;
+    @FindBy(id = "input-dynamic-column-1")
+    WebElement CostCentre;
+    @FindBy(id="input-dynamic-column-2")
+    WebElement CaseAlias;
+    @FindBy(id="select-dynamic-column-3")
+    WebElement AddDropDown;
+    @FindBy(id="btn-custom")
+    WebElement MoreBtn;
+    @FindBy(id="btn-more")
+    WebElement MoreBtnCS;
+    @FindBy(xpath="//div[@id='select-workflow-template-panel']//input[@type='text']")
+    WebElement WFTText;
+    @FindBy(id="select-workflow-template")
+    WebElement WFT;
+
+
+    /**
+     * Method to Check the Additional Fields are Editable
+     * @param costCentre
+     * @param caseAlias
+     * @param drpDownVal
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage editAdditionalFields(String costCentre,String caseAlias,String drpDownVal) throws Exception{
+        try{
+            log_Info("editAdditionalFields() Started");
+            EditCase.click();
+            MoreBtn.click();
+            Thread.sleep(3000);
+            CostCentre.clear();
+            CostCentre.sendKeys(costCentre);
+            Thread.sleep(3000);
+            CaseAlias.clear();
+            CaseAlias.sendKeys(caseAlias);
+            Thread.sleep(3000);
+            /*AddDropDown.click();
+            Thread.sleep(2000);
+            AddDropDown.sendKeys(drpDownVal);
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+drpDownVal+"')]")).click();*/
+
+            AddDropDown.click();
+            Thread.sleep(5000);
+            AddDropDown.sendKeys(Keys.ENTER);
+
+            Thread.sleep(3000);
+            log_Info("Click Save Button");
+            EditSave.click();
+            log_Pass("Save button Clicked");
+            Thread.sleep(5000);
+            MoreBtnCS.click();
+            String newCostCentre=getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+costCentre+"')]")).getText();
+            Assert.assertEquals(newCostCentre,costCentre);
+            log_Pass("Work Flow Template Edited Successfully");
+            String newCaseAlias=getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+caseAlias+"')]")).getText();
+            Assert.assertEquals(newCaseAlias,caseAlias);
+            log_Pass("Work Flow Template Edited Successfully");
+            Thread.sleep(3000);
+            ///String newAddDPVal=getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+drpDownVal+"')]")).getText();
+            //Assert.assertEquals(newAddDPVal,drpDownVal);
+            //log_Pass("Work Flow Template Edited Successfully");
+            return new CaseSummaryPage();
+        }catch (Exception ex){
+            log_Error("editAdditionalFields() Failed");
+            throw new Exception("Exception in editAdditionalFields()");
+        }
+    }
+
+    /**
+     * Method to check the edit of WFT irrespective of Case Approval Status
+     * @param wft
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage editWFT(String wft) throws Exception{
+        try{
+            log_Info("editWFT() Started");
+            EditCase.click();
+            log_Info("Enter Work Flow Template");
+            getDriver().waitForelementToBeClickable(WFT);
+            WFT.click();
+            Thread.sleep(3000);
+            WFTText.sendKeys(wft);
+            Thread.sleep(3000);
+            //WFTText.sendKeys(Keys.ENTER);
+            log_Info("Click Save Button");
+            SaveBtn.click();
+            Thread.sleep(8000);
+            log_Pass("Save button Clicked");
+            String WorkFlowTemp=getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+wft+"')]")).getText();
+            Assert.assertEquals(WorkFlowTemp,wft);
+            log_Pass("Work Flow Template Edited Successfully");
+            return new CaseSummaryPage();
+        }catch (Exception ex){
+            throw new Exception("Exception in editWFT()",ex);
+        }
+    }
+    /**
+     * Method to Check Due Date Field IsOptional in Edit case
+     * @return CaseSummaryPage()
+     * @throws Exception
+     */
+    public ILiglPage editDueDate(String dueDate) throws Exception{
+        try{
+            log_Info("editDueDate() Started");
+            Thread.sleep(3000);
+            EditCase.click();
+            String dueDateNew=dueDate.replace("-","");
+            DueDate.sendKeys(dueDateNew);
+            //getCurrentDriver().findElement(By.cssSelector("button[aria-label='"+dueDateNew+"']")).click();
+            DueDate.clear();
+            SaveBtn.click();
+            log_Pass("Case Created and Edited With out filling DueDate Field");
+            return new CaseSummaryPage();
+        }catch(Exception ex){
+            throw new Exception("editDueDate() id Failed",ex);
+        }
+    }
 
 
     public ILiglPage verifyingTheStatusDropDownForACase(String StatusDropDown1) throws Exception {

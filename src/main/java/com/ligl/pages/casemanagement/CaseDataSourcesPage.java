@@ -7,20 +7,17 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class CaseDataSourcesPage extends LiglBaseSessionPage {
-
-    @FindBy(xpath = "//div[text()='Google Drive']//../..//div[@class='sourceChkbxDiv']")
-    WebElement GoogleDrive;
-
-    @FindBy(xpath = "//div[text()='Gmail']//../..//div[@class='sourceChkbxDiv']")
-    WebElement Gmail;
 
     @FindBy(xpath = "//button[contains(text(),Save) and @type='submit']")
     WebElement SaveBtn;
 
     @FindBy(xpath = "//span[@title='Case Management']")
     WebElement CaseManage;
+    @FindBy(id = "edit-btn")
+    WebElement Edit;
 
     @FindBy(xpath = "//h1[contains(text(),'Select Data Source(s)')]")
     WebElement DSHeading;
@@ -28,44 +25,67 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage {
     WebElement OnpremDS;
 
 
-    public ILiglPage addDataSources() throws Exception {
+    public ILiglPage addDataSources(String DataSource1) throws Exception {
 
         try {
-
-            log_Info("Click on Google Drive checkbox");
-            getDriver().waitForelementToBeClickable(GoogleDrive);
-            Thread.sleep(3000);
-            GoogleDrive.click();
-            log_Info("Clicked on Google Drive checkbox");
-
-
-            log_Info("Click on Gmail checkbox");
-            getDriver().waitForelementToBeClickable(Gmail);
-            Thread.sleep(3000);
-            Gmail.click();
-            log_Info("Clicked on Gmail checkbox");
-
-            JavascriptExecutor js = (JavascriptExecutor) getCurrentDriver();
-            Thread.sleep(3000);
-            js.executeScript("window.scroll(0,1000)");
-
-
+            log_Info("addDataSources() Started");
+            log_Info("Click on checkbox");
+            //getDriver().waitForelementToBeClickable(Gmail);
+            Thread.sleep(2000);
+            getCurrentDriver().findElement(By.xpath("//div[text()='"+DataSource1+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            log_Info("Clicked on checkbox");
+            Thread.sleep(2000);
+            ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", SaveBtn);
             log_Info("Click on SaveBtn");
             getDriver().waitForelementToBeClickable(SaveBtn);
-            Thread.sleep(3000);
             SaveBtn.click();
             log_Info("Clicked on SaveBtn");
             getSession().log_Pass("Added DataSources To Case ");
-
-            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", DSHeading);
             return new CaseDataSourcesPage();
 
-
-        } catch (Exception | Error ex) {
+        }catch (Exception | Error ex){
             log_Error(ex.getMessage());
-            throw new Exception("addDataSources() Failed", ex);
+            throw new Exception("addDataSources() Failed",ex);
         }
     }
+
+    /**
+     * Method to Edit the Data Sources
+     * @param DataSource1
+     * @param DataSource2
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage editDataSources(String DataSource1,String DataSource2) throws Exception {
+        try {
+            log_Info("editDataSources() Started");
+            log_Info("check element available");
+            ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", Edit);
+            Edit.isDisplayed();
+            Edit.isEnabled();
+            log_Info("Click on edit button");
+            Thread.sleep(3000);
+            Edit.click();
+            ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", getCurrentDriver().findElement(By.id("Cloud-button")));
+            Thread.sleep(3000);
+            getCurrentDriver().findElement(By.xpath("//div[text()='"+DataSource2+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            String isChecked =getCurrentDriver().findElement(By.xpath("//div[text()='"+DataSource1+"']//../..//div[@class='sourceChkbxDiv']//input")).getAttribute("aria-checked");
+            System.out.println(isChecked);
+            Thread.sleep(3000);
+            Assert.assertEquals("true" , isChecked);
+            /*if(*//*Assert.assertEquals("true" , isChecked))
+                log_Info("Previously Selected DataSources are not unchecking");
+            else
+                log_Info("Previously Selected DataSources are unchecking");*/
+            SaveBtn.click();
+            return new CaseDataSourcesPage();
+        }
+        catch (Exception ex){
+            log_Error(ex.getMessage());
+            throw new Exception("EditDataSource Failed");
+        }
+    }
+
 
     public ILiglPage addOnpremDataSource(String DataSource)throws Exception{
         try{

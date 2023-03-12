@@ -33,7 +33,7 @@ public class TC_7129_CreateNewCounselSelectedOutsideCounsel extends TestBase {
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToOtherPartyPage()
                     .addingExistingParty(data.get("PartyNameA"),data.get("PartyNew"))
-                    .searchingParty()
+                    .searchingParty(data.get("PartyName"))
                     .createNewCounselForSelectedOutsideCounsel(data.get("PartyNew"),data.get("OptionFromLawFirmDropDwn"),data.get("FirstName"),data.get("LastName"))
                     .searchingOutSideCounsel(data.get("PartyNew"),data.get("OptionFromLawFirmDropDwn"))
                     .validateAddedOutsideCounsel(data.get("OutSideCounselName"));

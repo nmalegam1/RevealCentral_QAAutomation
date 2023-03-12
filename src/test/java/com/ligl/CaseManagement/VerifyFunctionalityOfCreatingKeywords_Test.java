@@ -35,7 +35,7 @@ public class VerifyFunctionalityOfCreatingKeywords_Test extends TestBase {
                     .addCustodianToCase(data.get("Employee1"))
                     .getLeftMenu()
                     .navigateToDataSourcesPage()
-                    .addDataSources()
+                    .addDataSources(data.get("DataSource1"))
                     .getLeftMenu().navigateToKeyWordsPage()
                     .addKeywordsByBasic(data.get("Keywords1"))
                     .addKeywordsByBasic(data.get("Keywords1"))

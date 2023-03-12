@@ -37,7 +37,7 @@ public class TC_52336_VerifyApprovingCaseDualApprovalEitherTypeFirstOneRejected 
                     .addCustodianToCase(data.get("Email1"))
                     .getLeftMenu()
                     .navigateToDataSourcesPage()
-                    .addDataSources()
+                    .addDataSources(data.get("DataSource1"))
                     .getLeftMenu().navigateToDateRangesPage()
                     .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))
                     .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))

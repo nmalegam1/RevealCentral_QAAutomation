@@ -195,9 +195,14 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage addCustodianToCase(String Email1) throws Exception {
 		return null;
 	}
-	public ILiglPage addDataSources() throws Exception {
+	public ILiglPage addDataSources(String s) throws Exception {
 		return null;
 	}
+	public ILiglPage validatePartyCreatedOrNot(String s)throws Exception{return null;}
+	public ILiglPage addingNewParty(String s1,String s2,String s3)throws Exception{return null;}
+	public ILiglPage createAndValidatePartyCreatedOrNot(String s1,String s2,String s3)throws Exception{return null;}
+	public ILiglPage validateCustodianAddedToGrid(String s)throws Exception{return null;}
+	public ILiglPage editDataSources(String s1,String s2)throws Exception{return null;}
 	public ILiglPage validateCaseNotinitiatedState() throws Exception{
 		return null;
 	}
@@ -395,12 +400,44 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validateAddedNewOutsideCounsel(String OutsideCounsel,String NameTextBox) throws Exception{
 		return null;
 	}
-	public ILiglPage searchingParty() throws Exception {
+	public ILiglPage searchingParty(String s) throws Exception {
 		return null;
 	}
+	public ILiglPage searchCourt(String s)throws Exception{return null;}
+	public ILiglPage createNewJudge(String s1,String s2)throws Exception{return null;}
+	public ILiglPage validateJudgeAddedToGrid(String s1,String s2)throws Exception{return null;}
+	public  ILiglPage datesIssuedFields(String s1,String s2,String s3,String s4)throws Exception{return null;}
+	public ILiglPage cancelInEditDocument(String s)throws Exception{return null;}
+	public ILiglPage updateInEditDocument(String s)throws Exception{return null;}
+	public ILiglPage addExistingContact(String s)throws Exception{return null;}
+	public ILiglPage approvalHistoryCheck(String s1,String s2)throws Exception{return null;}
+	public ILiglPage selectRecordInApprovalRequestsGrid(String s)throws Exception{return null;}
+	public ILiglPage approveCase(String s)throws Exception{return null;}
+	public ILiglPage sendRejectedCaseApproval()throws Exception{return null;}
+	public ILiglPage checkRegionIsMandatory(Hashtable<String,String> data) throws Exception{return null;}
+	public ILiglPage editWFT(String wft) throws Exception{return null;}
+	public ILiglPage revokeCase() throws Exception{return null;}
+	public ILiglPage navigateToProsecutor()throws Exception{return null;}
+	public ILiglPage createNewProsecutor(String CounselFN,String CounselLN) throws Exception{return null;}
+	public ILiglPage validateProsecutorAddedToGrid(String FirstName,String LastName) throws Exception{return null;}
+	public ILiglPage searchProsecutor(String s1, String s2) throws Exception{return null;}
+	public  ILiglPage deleteProsecutor(String FirstName, String LastName) throws Exception{return null;}
+	public ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException{return null;}
+	public ILiglPage activeInactiveCustodians(String s1,String s2)throws Exception{return null;}
+	public ILiglPage deActivateActiveCustodian(String s1,String s2)throws Exception{return null;}
+	public ILiglPage editDueDate(String s)throws Exception{return null;}
+	public ILiglPage caseCreateWithAdditionalFields(Hashtable<String,String> data) throws Exception{return null;}
+	public ILiglPage editAdditionalFields(String costCentre,String caseAlias,String drpDownVal) throws Exception{return null;}
+	public ILiglPage addExistingInHouseCounselToParty(String s)throws Exception{return null;}
+	public ILiglPage addExistingOutCounsel(String s1,String s2)throws Exception{return null;}
+	public ILiglPage sendCaseForApproval(String s1,String s2,String s3)throws Exception{return null;}
+	public ILiglPage addOutCounselWithAddLawFirmBtn(String s1,String s2,String s3,String s4,String s5)throws Exception{return null;}
+	public ILiglPage goToOutSideCounselInOtherParty()throws Exception{return null;}
 	public ILiglPage addingExistingParty(String PartyNameA,String PartyNew) throws Exception {
 		return null;
 	}
+	public ILiglPage validateCourtAddedToGrid(String s)throws Exception{return null;}
+	public ILiglPage createNewCourt(String s1,String s2,String s3)throws Exception{return null;}
 	public ILiglPage sendingLegalHoldForApproval() throws Exception {
 		return null;
 	}

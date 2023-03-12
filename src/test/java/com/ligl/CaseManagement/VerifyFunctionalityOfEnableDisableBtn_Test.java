@@ -35,7 +35,7 @@ public class VerifyFunctionalityOfEnableDisableBtn_Test extends TestBase {
                     .addCustodianToCase(data.get("Employee1"))
                     .getLeftMenu()
                     .navigateToDataSourcesPage()
-                    .addDataSources()
+                    .addDataSources(data.get("DataSource1"))
                     .getLeftMenu()
                     .navigateToKeyWordsPage()
                     .addKeywordsByCustom(data.get("Keywords1"), data.get("DataSource1") )

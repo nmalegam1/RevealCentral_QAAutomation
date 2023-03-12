@@ -143,15 +143,40 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
 
     @FindBy(id = "party-add-select-status")
     WebElement PartyStatusDrpdwn;
-
+    @FindBy(xpath = "//button[contains(text(),'Outside Counsel')]")
+    WebElement AddOutSideCounsel;
+    @FindBy(xpath="//mat-select[@title='select-law-firm-third-party']")
+    WebElement LawFirmDP;
     @FindBy(xpath = "//i[@class='lnr lnr-trash']")
     WebElement DeleteIcon;
 
     @FindBy(xpath = "//input[@placeholder='Filter...']")
     WebElement PartySearchBar;
-
+    @FindBy(id="outsideRadio-button")
+    WebElement OutSideRadioButton;
     @FindBy(xpath = "//div[contains(text(),' No data available...')]")
     WebElement NodataAvailable;
+    @FindBy(id="select-contact")
+    WebElement ExistingContactsDropDown;
+    @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']")
+    WebElement Filter;
+    @FindBy(css="input[placeholder='Filter...']")
+    WebElement SearchBar;
+    @FindBy(xpath="//button[contains(text(),'In-House Counsel')]")
+    WebElement AddInHouseCounsel;
+    @FindBy(id="btn-addparty")
+    WebElement CreatePartyBtn;
+    @FindBy(id="third-party-save-btn")
+    WebElement ConSaveBtn;
+    @FindBy(id="outside-assign-btn")
+    WebElement OutSideCounselSave;
+    @FindBy(id="select-contacts-dpdwn")
+    WebElement ExistingContDP;
+    @FindBy(id="inhouse-assign-btn")
+    WebElement InHouseAssignBTN;
+    @FindBy(xpath = "//span[contains(text(),'Counsel')]/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
+    WebElement CounselHeader;
+
 
 
     // Process Of Searching A Particular Party Through Filter
@@ -187,6 +212,28 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
         }
     }
 
+    /**
+     * Method to validate Added party is added to party Grid
+     * @param PartyName
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage validatePartyCreatedOrNot(String PartyName) throws Exception{
+        try{
+            log_Info("validatePartyCreatedOrNot() Started");
+            Thread.sleep(3000);
+            Actions ac = new Actions(getCurrentDriver());
+            log_Info("ValidatePartyCreatedOrNot() Started");
+            ac.moveToElement(PartyHeader).perform();
+            searchingParty(PartyName);
+            boolean b = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+PartyName+"')]")) .isDisplayed();
+            Assert.assertEquals(true, b);
+            log_Pass("Created New party Added To Grid SuccessFully");
+            return new CaseOtherPartyPage();
+        }catch (Exception ex){
+            throw new Exception("Exception in validatePartyCreatedOrNot()",ex);
+        }
+    }
 
     //  Process Of Creating New Party Through Other Party
 
@@ -1073,4 +1120,221 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
         }
     }
 
+    /**
+     * Method to create and validate party created and added to grid
+     * @param PartyName
+     * @param PartyType
+     * @param Desc
+     * @return CaseOtherPartyPage
+     * @throws Exception
+     */
+    public ILiglPage createAndValidatePartyCreatedOrNot(String PartyName,String PartyType,String Desc) throws Exception {
+        try {
+            log_Info("createAndValidatePartyCreatedOrNot() Started");
+            AddParty.click();
+            CreatePartyBtn.click();
+            addingNewParty(PartyName,PartyType,Desc);
+            validatePartyCreatedOrNot(PartyName);
+            return new CaseOtherPartyPage();
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validatePartyCreatedOrNot() Failed", ex);
+        }
+    }
+    //  Process Of Creating New Party Through Other Party
+
+    public ILiglPage addingNewParty(String PartyName,String PartyType,String Description) throws Exception {
+
+        try {
+
+            log_Info("Click on Name TextBox In Party");
+            getDriver().waitForelementToBeClickable(NameParty);
+            Thread.sleep(5000);
+            NameParty.sendKeys(PartyName);
+            getSession().log_Pass("Clicked on Name TextBox In Party");
+
+
+            log_Info("Click on Party Type Drop Down");
+            getDriver().waitForelementToBeClickable(PartyTypeDrpDwn);
+            Thread.sleep(5000);
+            PartyTypeDrpDwn.sendKeys(PartyType);
+            Thread.sleep(2000);
+            PartyTypeDrpDwn.sendKeys(Keys.ENTER);
+            getSession().log_Pass("Clicked on Party Type Drop Down");
+
+
+            log_Info("Click on Description TextBox");
+            getDriver().waitForelementToBeClickable(DescriptionTextBox);
+            Thread.sleep(5000);
+            DescriptionTextBox.sendKeys(Description);
+            getSession().log_Pass("Clicked on Description TextBox");
+
+            log_Info("Click On create button");
+            getDriver().waitForelementToBeClickable(CreateButton);
+            Thread.sleep(5000);
+            CreateButton.click();
+            log_Info("Clicked On create button");
+            return new CaseOtherPartyPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("addingNewParty() Failed", ex);
+        }
+    }
+
+    /**
+     * Method to navigate to Outside Counsel in Other Party page
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage goToOutSideCounselInOtherParty() throws Exception{
+        try{
+            log_Info("goToOutSideCounselInOtherParty() Started");
+
+            Thread.sleep(3000);
+            ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", AddInHouseCounsel);
+            OutSideRadioButton.click();
+            return new CaseOtherPartyPage();
+        }catch (Exception ex){
+            log_Error("Exception in goToOutSideCounselInOtherParty()");
+            throw new Exception("goToOutSideCounselInOtherParty() Failed" , ex);
+        }
+    }
+    /**
+     * Method to Add OutSide Counsel with AddCounsel Button using LawFirm To Outside Counsel Grid
+     * @param Name
+     * @param lawFirm
+     * @param CounselFName
+     * @param CounselLName
+     * @param CounFullame
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage addOutCounselWithAddLawFirmBtn(String Name,String lawFirm,String CounselFName, String CounselLName, String CounFullame) throws Exception{
+        try{
+            AddOutSideCounsel.click();
+            LawFirmDP.click();
+            ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+lawFirm+"')]")));
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+lawFirm+"')]")).click();
+            AddCounselBtn.click();
+            addCounsel(CounselFName,CounselLName);
+            searchingParty(Name);
+            goToOutSideCounselInOtherParty();
+            Thread.sleep(5000);
+            validateAddedOutsideCounsel(CounFullame);
+
+            return new CaseOtherPartyPage();
+        }catch (Exception ex){
+            log_Error("Exception in AddOutCounselWithAddLawFirmBtn()");
+            throw new Exception("AddOutCounselWithAddLawFirmBtn Failed");
+        }
+    }
+    /**
+     *Method Create New Counsel
+     * @param s1
+     * @param s2
+     * @throws Exception
+     */
+    public void addCounsel(String s1,String s2) throws Exception{
+        try{
+            log_Info("addCounsel() Started");
+            Thread.sleep(2000);
+            FirstNameBox.sendKeys(s1);
+            Thread.sleep(3000);
+            LastNameBox.sendKeys(s2);
+            Thread.sleep(3000);
+            CreateButton.click();
+
+        }catch(Exception ex){
+            log_Error("addCounsel() Failed");
+            throw new Exception("Exception in addCounsel()", ex);
+        }
+    }
+    /**
+     * Method to add Existing Contact to selected PArty
+     * @param existingContact
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage addExistingContact(String existingContact) throws Exception {
+        try {
+            log_Info("addExistingContact() Started");
+            AddContact.click();
+            ExistingContactsDropDown.click();
+            Thread.sleep(3000);
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+existingContact+"')]")).click();
+            ConSaveBtn.click();
+            Thread.sleep(5000);
+            ContactHeader.click();
+            Thread.sleep(3000);
+            Filter.click();
+            SearchBar.sendKeys(existingContact);
+            Thread.sleep(3000);
+            //((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", SearchedContact);
+            boolean b = getCurrentDriver().findElement(By.cssSelector("span[title='"+existingContact+"']")).isDisplayed();
+            Assert.assertEquals(true, b);
+            log_Info("Contact Added Succesfully");
+
+            return new CaseOtherPartyPage();
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("addExistingContact() Failed", ex);
+        }
+    }
+    /**
+     * Method to Add Existing InHouse Counsel to EnterPrice Party And Validate that Added to Grid or not
+     * @param ExistingInCounsel
+     * @return CaseOtherPartyPage()
+     * @throws Exception
+     */
+    public ILiglPage addExistingInHouseCounselToParty(String ExistingInCounsel) throws Exception {
+        try {
+            log_Info("addExistingInHouseCounselToParty() Started");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",AddInHouseCounsel);
+            AddInHouseCounsel.click();
+            Thread.sleep(5000);
+            ExistingContDP.click();
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+ExistingInCounsel+"')]")).click();
+            Thread.sleep(2000);
+            InHouseAssignBTN.click();
+            Thread.sleep(2000);
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(CounselHeader).perform();
+            CounselHeader.click();
+            Filter.click();
+            SearchBar.sendKeys(ExistingInCounsel);
+            Thread.sleep(5000);
+            boolean b = getCurrentDriver().findElement(By.cssSelector("span[title='"+ExistingInCounsel+"']")).isDisplayed();
+            Assert.assertEquals(true, b);
+            log_Info("Enterprise Counsel Added Successfully");
+            return new CaseOtherPartyPage();
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("addExistingInHouseCounselToParty() Failed", ex);
+        }
+    }
+
+    /**
+     * Method to Add Existing OutSide Counsel to Case Perty
+     * @param lawFirm
+     * @param lawFirmSubEntity
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage addExistingOutCounsel(String lawFirm,String lawFirmSubEntity) throws Exception{
+        try{
+            ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", AddInHouseCounsel);
+            OutSideRadioButton.click();
+            AddOutSideCounsel.click();
+            LawFirmDP.click();
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+lawFirm+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//div[contains(text(),'"+lawFirmSubEntity+"')]")).click();
+            LeftArrow.click();
+            OutSideCounselSave.click();
+            return new CaseOtherPartyPage();
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("addExistingOutCounsel() Failed", ex);
+        }
+    }
 }
