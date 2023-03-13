@@ -37,7 +37,7 @@ public class TC_44376_VerifyApprovingCaseDualApprovalLinearTypeBothApproved exte
                     .addCustodianToCase(data.get("Email1"))
                     .getLeftMenu()
                     .navigateToDataSourcesPage()
-                    .addDataSources()
+                    .addDataSources(data.get("DataSource1"))
                     .getLeftMenu()
                     .goToSecurityPage().validateCaseNotinitiatedState()
                     .sendingCaseForDualApprovalLinearType(data.get("Employee1"),data.get("GmailCheck"), data.get("GoogleDriveCheck"),data.get("BatchNAME"),data.get("EMAIL"), data.get("USER1"), data.get("USER2"),data.get("SubType") )

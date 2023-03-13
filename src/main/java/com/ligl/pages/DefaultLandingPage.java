@@ -142,9 +142,180 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='CreatedByName']//span[@class='ellipsisAgGrid']")
     WebElement CreatedByColData;
+    @FindBy(id = "input-dynamic-column-1")
+    WebElement CostCentre;
+    @FindBy(id="input-dynamic-column-2")
+    WebElement CaseAlias;
+    @FindBy(id="select-dynamic-column-3")
+    WebElement AddDropDown;
+    @FindBy(xpath = "//span[contains(text(),'Region is required')]")
+    WebElement RegionReqValidation;
 
 
+    /**
+     * Method to Check the Region Field in Case Creation isMandatory
+     * @param data
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage checkRegionIsMandatory(Hashtable<String,String> data) throws Exception{
+        try{
+            log_Info("checkRegionIsMan() Started");
+            Thread.sleep(3000);
+            log_Info("Click Create Case Button");
+            createCaseBtn.click();
+            log_Info(data.toString());
+            log_Info("Enter CaseType");
+            getDriver().waitForelementToBeClickable(CaseType);
+            CaseType.click();
+            Thread.sleep(3000);
+            CaseTypeText.sendKeys(data.get("CaseType"));
+            Thread.sleep(3000);
+            CaseTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter RoleType");
+            getDriver().waitForelementToBeClickable(RoleType);
+            RoleType.click();
+            Thread.sleep(3000);
+            RoleTypeText.sendKeys(data.get("Role"));
+            Thread.sleep(3000);
+            RoleTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter CaseName");
+            getDriver().waitForelementToBeClickable(CaseName);
+            CaseName.sendKeys(data.get("CaseName"));
+            Thread.sleep(3000);
+            log_Info("Enter Case Settings Template");
+            getDriver().waitForelementToBeClickable(CST);
+            CST.click();
+            Thread.sleep(3000);
+            CSTText.sendKeys(data.get("CaseSetTemp"));
+            Thread.sleep(3000);
+            CSTText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
 
+            log_Info("Enter Entity");
+            getDriver().waitForelementToBeClickable(Entity);
+            Entity.click();
+            Thread.sleep(3000);
+            EntityText.sendKeys(data.get("CaseEntity"));
+            Thread.sleep(3000);
+            EntityText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Description");
+            getDriver().waitForelementToBeClickable(Desc);
+            Desc.sendKeys(data.get("Description"));
+
+            log_Info("Enter Priority");
+            getDriver().waitForelementToBeClickable(Priority);
+            Priority.click();
+            Thread.sleep(5000);
+            SelPriority.click();
+            log_Pass("Priority Selected");
+            Thread.sleep(3000);
+            log_Pass("All Mandatory Fields Are Entered");
+            log_Info("Click Save Button");
+            SaveBtn.click();
+            boolean b=RegionReqValidation.isDisplayed();
+            Assert.assertEquals(b,true);
+            log_Pass("Region Field is Mandatory");
+            return new CaseSummaryPage();
+        }catch (Exception ex){
+            throw new Exception("Exception in checkRegionIsMan()", ex);
+        }
+    }
+
+    /**
+     * Method to Create Case by filling Additional Fields
+     * @param data
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage caseCreateWithAdditionalFields(Hashtable<String,String> data) throws Exception{
+        try{
+            log_Info("caseAdditionalFields() Started");
+            Thread.sleep(3000);
+            log_Info("Click Create Case Button");
+            createCaseBtn.click();
+            log_Info(data.toString());
+            log_Info("Enter CaseType");
+            getDriver().waitForelementToBeClickable(CaseType);
+            CaseType.click();
+            Thread.sleep(3000);
+            CaseTypeText.sendKeys(data.get("CaseType"));
+            Thread.sleep(3000);
+            CaseTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter RoleType");
+            getDriver().waitForelementToBeClickable(RoleType);
+            RoleType.click();
+            Thread.sleep(3000);
+            RoleTypeText.sendKeys(data.get("Role"));
+            Thread.sleep(3000);
+            RoleTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter CaseName");
+            getDriver().waitForelementToBeClickable(CaseName);
+            CaseName.sendKeys(data.get("CaseName"));
+            Thread.sleep(3000);
+            log_Info("Enter Case Settings Template");
+            getDriver().waitForelementToBeClickable(CST);
+            CST.click();
+            Thread.sleep(3000);
+            CSTText.sendKeys(data.get("CaseSetTemp"));
+            Thread.sleep(3000);
+            CSTText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Entity");
+            getDriver().waitForelementToBeClickable(Entity);
+            Entity.click();
+            Thread.sleep(3000);
+            EntityText.sendKeys(data.get("CaseEntity"));
+            Thread.sleep(3000);
+            EntityText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Region");
+            getDriver().waitForelementToBeClickable(Region);
+            Region.click();
+            Thread.sleep(3000);
+            RegionText.sendKeys(data.get("Region"));
+            Thread.sleep(3000);
+            RegionText.sendKeys(Keys.ENTER);
+            log_Info("Region Entered");
+            Thread.sleep(3000);
+
+            log_Info("Enter Description");
+            getDriver().waitForelementToBeClickable(Desc);
+            Desc.sendKeys(data.get("Description"));
+
+            log_Info("Enter Priority");
+            getDriver().waitForelementToBeClickable(Priority);
+            Priority.click();
+            Thread.sleep(5000);
+            SelPriority.click();
+            log_Pass("Priority Selected");
+            Thread.sleep(3000);
+            MoreBtn.click();
+            Thread.sleep(3000);
+            CostCentre.sendKeys(data.get("Cost centre"));
+            Thread.sleep(3000);
+            CaseAlias.sendKeys(data.get("Case Alias"));
+            Thread.sleep(3000);
+            AddDropDown.click();
+            Thread.sleep(3000);
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+data.get("AddDP")+"')]")).click();
+            Thread.sleep(3000);
+            log_Info("Click Save Button");
+            SaveBtn.click();
+            log_Pass("Save button Clicked");
+            String b= NewlyCreatedCaseName.getAttribute("title");
+            Assert.assertEquals(data.get("CaseName"),b);
+            log_Pass("Case Created Successfully");
+            return new CaseSummaryPage();
+        }catch (Exception ex){
+            log_Error("caseAdditionalFields() Failed");
+            throw new Exception("Exception in caseAdditionalFields()",ex);
+        }
+    }
 
     //Create NewCase
     public ILiglPage createNewCase(Hashtable<String,String> data) throws Exception {

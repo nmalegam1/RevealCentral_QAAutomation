@@ -30,7 +30,7 @@ public class DeleteContactsAddedForParty_Test extends TestBase {
                     .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToOtherPartyPage()
-                    .searchingParty()
+                    .searchingParty(data.get("PartyName"))
                     .deleteContactsAddedForParty(data.get("PartyNew"), data.get("ContactName"))
                     .searchingContact(data.get("ContactName"))
                     .validatingContactsAfterDeletingFromParty();

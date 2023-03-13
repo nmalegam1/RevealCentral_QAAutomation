@@ -26,7 +26,7 @@ public class SSOLoginPage extends LiglBasePage {
         getSession().log_Pass("Clicked Sign in button");
         getCurrentDriver().findElement(By.xpath("//input[@value='Yes']")).click();
         getSession().log_Pass("Clicked Yes button in confirmation window");
-        Thread.sleep(10000);
+        Thread.sleep(15000);
         if (getCurrentDriver().getCurrentUrl().contains("legalentity"))
         {
             log_Info("EntityPage Loaded");

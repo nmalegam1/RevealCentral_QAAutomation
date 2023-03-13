@@ -3,10 +3,7 @@ package com.ligl.pages.casemanagement;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LeftMenu;
 import com.ligl.pages.LiglBaseSessionPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
@@ -95,6 +92,20 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//span[contains(text(),'FullName')]")
     WebElement FullNameCol;
+    @FindBy(xpath = "//span[contains(text(),'Email')]/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
+    WebElement CustEmailHeader;
+    @FindBy(id="activate-deactivate-custodians")
+    WebElement ActInActBtn;
+    @FindBy(xpath = "//option[contains(text(),'Deactivate')and @class='ng-star-inserted']")
+    WebElement DeActiveOption;
+    @FindBy(xpath = "//span[contains(text(),'Name')]/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']")
+    WebElement NameHeader;
+    @FindBy(xpath = "//option[contains(text(),'Activate')and @class='ng-star-inserted']")
+    WebElement ActiveOption;
+    @FindBy(xpath = "//button[contains(text(),'Yes')]")
+    WebElement YesBtn;
+    @FindBy(id = "refresh-button")
+    WebElement RefreshBtn;
 
 
     //12. After Navigating To Custodian Tab The Actions We Perform Adding Custodians To A Case
@@ -186,6 +197,45 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             log_Error(ex.getMessage());
             throw new Exception("addCustodianToCase() Failed",ex);*/
 
+    }
+    /**
+     * Method to validate Custodian Added from Employee master Grid is Added to Custodian Grid
+     * @param Custodian
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage validateCustodianAddedToGrid(String Custodian) throws Exception{
+        try{
+            log_Info("validateCustodianAddedToGrid() Started");
+            searchCustodian(Custodian);
+            getCurrentDriver().findElement(By.xpath("//span[@title='"+Custodian+"']")).isDisplayed();
+            return new CaseCustodiansPage();
+        }catch (Exception ex){
+            log_Error("validateCustodianAddedToGrid() Failed");
+            throw new Exception("Exception in validateCustodianAddedToGrid()");
+        }
+    }
+    /**
+     * Method to Search The Particular Custodian in Grid
+     * @param Custodian
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage searchCustodian(String Custodian) throws Exception{
+        try{
+            log_Info("searchCustodian() Started");
+            Thread.sleep(3000);
+            CustEmailHeader.click();
+            Thread.sleep(3000);
+            Filter.click();
+            Thread.sleep(3000);
+            Searchbar.sendKeys(Custodian);
+            Thread.sleep(3000);
+            return new CaseCustodiansPage();
+        }catch (Exception ex){
+            log_Error("searchCustodian() failed");
+            throw new Exception("Exception in searchCustodian()");
+        }
     }
 
 
@@ -503,6 +553,109 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("verifyAdditionalColumnsInCustodianGrid()", ex);
+        }
+    }
+    /**
+     * Method to DeActive the Active Custodians in Grid
+     * @param Custodian
+     * @param Status
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage deActivateActiveCustodian(String Custodian,String Status) throws Exception{
+        try{
+            log_Info("deActivateActiveCustodian() Started");
+            //searchCustodian(Custodian);
+            getCurrentDriver().findElement(By.xpath("//span[@title='"+Custodian+"']/ancestor::div[@role='rowgroup']//div[@ref='eCheckbox']")).click();
+            Thread.sleep(3000);
+            ActInActBtn.click();
+            DeActiveOption.click();
+            YesBtn.click();
+            //secondSearchCustodian(Custodian);
+            validateCustStatus(Status);
+            return new CaseCustodiansPage();
+        }catch (Exception ex){
+            log_Error("deActivateActiveCustodian() Failed");
+            throw new Exception("Exception in deActivateActiveCustodian()");
+        }
+    }
+
+    /**
+     * Method to Activate DeActive Custodians
+     * @param Custodian
+     * @param Status
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage activeInactiveCustodians(String Custodian, String Status) throws Exception{
+        try{
+            log_Info("activeInactiveCustodians() Started");
+            RefreshBtn.click();
+            secondSearchCustodian(Custodian);
+            Thread.sleep(4000);
+            getCurrentDriver().findElement(By.xpath("//span[@title='"+Custodian+"']/ancestor::div[@role='rowgroup']//div[@ref='eCheckbox']")).click();
+            Thread.sleep(3000);
+            ActInActBtn.click();
+            ActiveOption.click();
+            YesBtn.click();
+            validateCustStatus(Status);
+
+            return new CaseCustodiansPage();
+        }catch(Exception ex){
+            log_Error("activeInactiveCustodians() Failed");
+            throw new Exception("Exception in activeInactiveCustodians()",ex);
+        }
+    }
+    /**
+     * Method to Search Record Second Time(Change in Filter Button)
+     * @param Custodian
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage secondSearchCustodian(String Custodian) throws Exception{
+        try{
+            log_Info("secondSearchCustodian() Started");
+            Thread.sleep(3000);
+            CustEmailHeader.click();
+            Thread.sleep(3000);
+            Searchbar.clear();
+            Thread.sleep(5000);
+            Searchbar.sendKeys(Custodian);
+            Thread.sleep(3000);
+            return new CaseCustodiansPage();
+        }catch (Exception ex){
+            log_Error("searchCustodian() failed");
+            throw new Exception("Exception in searchCustodian()");
+        }
+    }
+    /**
+     * Method to validate the Custodian Status in case Custodians Grid
+     * @param CustStatus
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage validateCustStatus(String CustStatus) throws Exception{
+        try{
+            log_Info("validateCustStatus() Started");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='FullName']//span[@class='ellipsisAgGrid']")).click();
+            Thread.sleep(5000);
+            Actions ac = new Actions(getCurrentDriver());
+            for (int i = 0; i < 8; i++) {
+                ac.sendKeys(Keys.TAB).perform();
+            }
+            //((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", CaseCustodianStatusHeader);
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+CustStatus+"')]")).isDisplayed();
+            Thread.sleep(4000);
+            for (int i = 0; i < 8; i++) {
+                ac.sendKeys(Keys.ARROW_LEFT).perform();
+            }
+            log_Info("Status is updated");
+
+            return new CaseCustodiansPage();
+        }catch (Exception ex){
+            log_Error("validateCustStatus is Failed");
+            throw new Exception("Exception in validateCustStatus()");
         }
     }
 }

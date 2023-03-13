@@ -91,7 +91,13 @@ public interface ILiglPage {
 
     ILiglPage addDataSourceRecordToDSIGrid(String cust,String datasource,String DataHold,String DateRanges,String Keywords) throws Exception;
 
-    ILiglPage addDataSources() throws Exception;
+    ILiglPage addDataSources(String s) throws Exception;
+    ILiglPage validateCustodianAddedToGrid(String s)throws Exception;
+    ILiglPage validatePartyCreatedOrNot(String s)throws Exception;
+    ILiglPage addingNewParty(String s1,String s2,String s3)throws Exception;
+    ILiglPage createAndValidatePartyCreatedOrNot(String s1,String s2,String s3)throws Exception;
+
+    ILiglPage editDataSources(String s1,String s2)throws Exception;
     ILiglPage automateRecordInDSI()throws Exception;
     ILiglPage goToDSIPage() throws Exception;
 
@@ -190,8 +196,40 @@ public interface ILiglPage {
     ILiglPage addingNewParty(String PartyName, String PartyType, String Status, String Description) throws Exception;
     ILiglPage addingExistingParty(String PartyNameA,String PartyNew) throws Exception;
 
-    ILiglPage searchingParty() throws Exception;
+    ILiglPage searchingParty(String s) throws Exception;
+    ILiglPage addExistingInHouseCounselToParty(String s)throws Exception;
+    ILiglPage searchCourt(String s)throws Exception;
+    ILiglPage sendCaseForApproval(String s1,String s2,String s3)throws Exception;
+    ILiglPage approvalHistoryCheck(String s1,String s2)throws Exception;
+    ILiglPage selectRecordInApprovalRequestsGrid(String s)throws Exception;
+    ILiglPage approveCase(String s)throws Exception;
+    ILiglPage sendRejectedCaseApproval()throws Exception;
+    ILiglPage activeInactiveCustodians(String s1,String s2)throws Exception;
+    ILiglPage editWFT(String wft) throws Exception;
+    ILiglPage revokeCase() throws Exception;
+    ILiglPage navigateToProsecutor()throws Exception;
+    ILiglPage createNewProsecutor(String CounselFN,String CounselLN) throws Exception;
+    ILiglPage validateProsecutorAddedToGrid(String FirstName,String LastName) throws Exception;
+    ILiglPage searchProsecutor(String s1, String s2) throws Exception;
+    ILiglPage deleteProsecutor(String FirstName, String LastName) throws Exception;
+    ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException;
+    ILiglPage deActivateActiveCustodian(String s1,String s2)throws Exception;
+    ILiglPage editDueDate(String s)throws Exception;
+    ILiglPage caseCreateWithAdditionalFields(Hashtable<String,String> data) throws Exception;
+    ILiglPage editAdditionalFields(String costCentre,String caseAlias,String drpDownVal) throws Exception;
+    ILiglPage checkRegionIsMandatory(Hashtable<String,String> data) throws Exception;
+    ILiglPage addExistingOutCounsel(String s1,String s2)throws Exception;
+    ILiglPage createNewJudge(String s1,String s2)throws Exception;
+    ILiglPage validateJudgeAddedToGrid(String s1,String s2)throws Exception;
+    ILiglPage datesIssuedFields(String s1,String s2,String s3,String s4)throws Exception;
+    ILiglPage cancelInEditDocument(String s)throws Exception;
+    public ILiglPage updateInEditDocument(String s)throws Exception;
+    ILiglPage addExistingContact(String s)throws Exception;
+    ILiglPage goToOutSideCounselInOtherParty()throws Exception;
+    ILiglPage addOutCounselWithAddLawFirmBtn(String s1,String s2,String s3,String s4,String s5)throws Exception;
 
+    ILiglPage createNewCourt(String s1,String s2,String s3)throws Exception;
+    ILiglPage validateCourtAddedToGrid(String s)throws Exception;
     ILiglPage validateEnableAndDisableDateRanges(String Status2) throws Exception;
 
     ILiglPage createNewCounselForSelectedOutsideCounsel(String PartyNew,String OptionFromLawFirmDropDwn,String FirstName,String LastName) throws Exception;

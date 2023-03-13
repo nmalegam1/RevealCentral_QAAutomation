@@ -75,12 +75,20 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
 
     @FindBy(xpath="//span[contains(text(),'Jury')]/ancestor::div[@ref='eLabel']/span")
     WebElement JudgeHeader;
-
+    @FindBy(id="btn-court")
+    WebElement CreateCourt;
     @FindBy(xpath="//span[contains(text(),'Jury')]/ancestor::div[@ref='eLabel']/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
     WebElement JudgeMenu;
-
+    @FindBy(xpath = "//span[contains(text(),'Jury')]/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
+    WebElement JuryHeader;
     @FindBy(xpath="//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='ContactName']//span[@class='ellipsisAgGrid']")
     WebElement JudgeNameColData;
+    @FindBy(xpath = "//mat-icon[contains(text(),'add_box')]")
+    WebElement CreateNewProsecutor;
+    @FindBy(xpath = "//div[@class='prosecutor']//div[contains(text(),'No data available...')]")
+    WebElement NoDataInProsecutor;
+    @FindBy(xpath = "//button[contains(text(),'Yes')]")
+    WebElement DltConfirmBtn;
 
 
     //  10.Adding Particular Court To Case Through Add Court Button
@@ -376,5 +384,262 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
             throw new Exception("searchRequiredJudge() Failed",ex);
         }
     }
+    /**
+     * Method to create New Court to case
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage createNewCourt(String CourtName,String PartyType,String Desc) throws Exception {
+        try{
+            log_Info("addNewCourt() Started");
+            AddCourtBtn.click();
+            CreateCourt.click();
+            Thread.sleep(5000);
+            CaseOtherPartyPage COPP=new CaseOtherPartyPage();
+            COPP.addingNewParty(CourtName,PartyType,Desc);
+            return new CaseCourtListPage();
+        }catch(Exception | Error ex){
+            log_Error("createNewCourt Failed");
+            throw new Exception("Exception in createNewCourt()");
+        }
+    }
 
+    /**
+     * Method to Validate the added Court Added to Court Grid
+     * @param CourtName
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage validateCourtAddedToGrid(String CourtName) throws Exception {
+        try{
+            log_Info("validateCourtAddedToGrid() Started");
+            searchCourt(CourtName);
+            boolean b= getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+CourtName+"')]")).isDisplayed();
+            Assert.assertEquals(true, b);
+            log_Info("Court Created And Added to Grid Successflly");
+            return new CaseCourtListPage();
+        }catch(Exception | Error ex){
+            log_Error("validateCourtAddedToGrid() Failed");
+            throw new Exception("Exception in validateCourtAddedToGrid()", ex);
+        }
+    }
+    /**
+     * Searches Particular Court in grid
+     * @param Court
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage searchCourt(String Court) throws Exception {
+        try{
+            log_Info("searchCourt() started");
+            CourtHeader.click();
+            //Menu.click();
+            Filter.click();
+            SearchBar.sendKeys(Court);
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Court+"')]")).click();
+            Thread.sleep(2000);
+            //CourtRecord.click();
+            return new CaseCourtListPage();
+        }catch(Exception | Error ex){
+            log_Error("searchCourt() Failed");
+            throw new Exception("Exception in searchCourt()",ex);
+        }
+    }
+    /**
+     * Method to Create New Judge to case
+     * @param conJudgeFN
+     * @param conJudgeLN
+     * @return CaseCourtListPage()
+     * @throws Exception
+     */
+    public ILiglPage createNewJudge(String conJudgeFN,String conJudgeLN) throws Exception {
+        try{
+            log_Info("createNewJudge() started");
+            AddJudgeBtn.click();
+            CreateCourt.click();
+            CaseOtherPartyPage COPP=new CaseOtherPartyPage();
+            COPP.addCounsel(conJudgeFN,conJudgeLN);
+            log_Info("Judge created successfully");
+            Thread.sleep(3000);
+
+            return new CaseCourtListPage();
+        }catch(Exception | Error ex){
+            log_Error("createNewJudge() Failed");
+            throw new Exception("Exception in createNewJudge()",ex);
+        }
+    }
+    /**
+     * validating judge added/cretaed is adding to grid or not
+     * @param conFN
+     * @param conLN
+     * @return CaseCourtListPage()
+     * @throws Exception
+     */
+    public ILiglPage validateJudgeAddedToGrid(String conFN,String conLN) throws Exception{
+        try{
+            log_Info("Call searchJudge Method");
+            searchJudge(conFN,conLN);
+            log_Info("Judge Record Searched");
+            String counselFullName=conFN+" "+conLN;
+            boolean b = getCurrentDriver().findElement(By.xpath("//span[contains(text(), '"+counselFullName+"')]")).isEnabled();
+            Assert.assertEquals(true, b);
+            log_Info("Judge Added To Grid Successfully");
+            return new CaseCourtListPage();
+        }catch (Exception | Error ex){
+            log_Error("validateJudgeAddedToGrid() Failed");
+            throw new Exception("Exception in validateJudgeAddedToGrid()", ex);
+        }
+    }
+    /**
+     * Creates New Prosecutor From +Prosecutor Button in Case->Court->+Prosecutor
+     * @param CounselFN
+     * @param CounselLN
+     * @return CaseCourtListPage
+     * @throws Exception
+     */
+    public ILiglPage createNewProsecutor(String CounselFN,String CounselLN) throws Exception{
+        try{
+            Thread.sleep(3000);
+            log_Info("createNewProsecutor() Started");
+            AddProsecutor.click();
+            Thread.sleep(3000);
+            CreateNewProsecutor.click();
+            Thread.sleep(3000);
+            CaseOtherPartyPage cp=new CaseOtherPartyPage();
+            cp.addCounsel(CounselFN,CounselLN);
+            Thread.sleep(3000);
+
+            return new CaseCourtListPage();
+        }catch (Exception | Error ex){
+            log_Error("createNewProsecutor() Failed");
+            throw new Exception("Exception in createNewProsecutor()", ex);
+        }
+    }
+    /**
+     * Method to Validate Prosecutor Added/Created is Added to Grid or not
+     * @param FirstName
+     * @param LastName
+     * @return CaseCourtListPage
+     * @throws Exception
+     */
+    public ILiglPage validateProsecutorAddedToGrid(String FirstName,String LastName) throws Exception {
+        try {
+            log_Info("validateProsecutorAddedToGrid() started");
+            Thread.sleep(5000);
+            searchProsecutor(FirstName,LastName);
+            String s =(FirstName+" "+LastName);
+            getCurrentDriver().findElement(By.cssSelector("span[title='"+s+"']")).isDisplayed();
+            log_Info("xpathMTD() Executed");
+            return new CaseCourtListPage();
+        } catch (Exception | Error ex) {
+            log_Error("validateProsecutorAddedToGrid() Failed");
+            throw new Exception("Exception in validateProsecutorAddedToGrid()", ex);
+        }
+    }
+    /**
+     * Method To Delete Prosecutor From Grid
+     * @param FirstName
+     * @param LastName
+     * @return CaseCourtListPage
+     * @throws Exception
+     */
+    public ILiglPage deleteProsecutor(String FirstName, String LastName) throws Exception{
+        try{
+            log_Info("deleteProsecutor() Started");
+            Thread.sleep(3000);
+            String s =(FirstName+" "+LastName);
+            getCurrentDriver().findElement(By.xpath("//div[@class='prosecutor']//span[@title='"+s+"']/ancestor::div[@role='row']//button")).click();
+            Thread.sleep(3000);
+            DltConfirmBtn.click();
+            Thread.sleep(3000);
+            secondSearchProsecutor(FirstName,LastName);
+            Thread.sleep(3000);
+            NoDataInProsecutor.isEnabled();
+            log_Pass("Record Deleted Successfully");
+            return new CaseCourtListPage();
+        }catch (Exception | Error ex){
+            log_Error("deleteProsecutor Failed");
+            throw new Exception("Exception in deleteProsecutor()",ex);
+        }
+    }
+    /**
+     * Method to perform Search Second time(Without Filter)
+     * @param s1
+     * @param s2
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage secondSearchProsecutor(String s1, String s2) throws Exception{
+        try {
+            log_Info("searchProsecutor() Started");
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'Prosecutor/Advocacy')]/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")).click();
+            //Filter.click();
+            SearchBar.sendKeys(s1+" "+s2);
+            log_Pass("Prosecutor Entered in Search Bar");
+            return new CaseCourtListPage();
+
+        }catch (Exception | Error ex){
+            log_Error("searchProsecutor() Failed");
+            throw new Exception("Exception in searchProsecutor()", ex);
+        }
+    }
+    /**
+     * Searches Prosecutor in Grid
+     * @param s1
+     * @param s2
+     * @return CaseCourtListPage
+     * @throws Exception
+     */
+    public ILiglPage searchProsecutor(String s1, String s2) throws Exception{
+        try {
+            log_Info("searchProsecutor() Started");
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'Prosecutor/Advocacy')]/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")).click();
+
+            /*if(!SearchBar.isDisplayed())*/
+            Filter.click();
+            SearchBar.sendKeys(s1+" "+s2);
+            //getCurrentDriver().findElement(By.xpath("//span[@class='ag-icon ag-icon-menu']")).click();
+
+            log_Pass("Prosecutor Entered in Search Bar");
+            return new CaseCourtListPage();
+
+        }catch (Exception | Error ex){
+            log_Error("searchProsecutor() Failed");
+            throw new Exception("Exception in searchProsecutor()", ex);
+        }
+    }
+    public ILiglPage navigateToProsecutor()throws Exception{
+        try{
+            log_Info("navigateToProsecutor() Started");
+            log_Info("Click on Particular Court Name");
+            Thread.sleep(5000);
+            log_Info("Clicked on Particular Court Name");
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", AddProsecutor);
+            return new CaseCourtListPage();
+        }catch (Exception ex){
+            log_Error(ex.getMessage());
+            throw new Exception("navigateToProsecutor() Failed",ex);
+        }
+    }
+    /**
+     * Method to Search the Judge Record in Judge Grid
+     * @param conFN
+     * @param conLN
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage searchJudge(String conFN,String conLN) throws Exception{
+        try{
+            JuryHeader.click();
+            //Menu.click();
+            Filter.click();
+            String s=(conFN+" "+conLN);
+            SearchBar.sendKeys(s);
+            return new CaseCourtListPage();
+        }catch (Exception | Error ex){
+            log_Error("searchJudge() is Failed");
+            throw new Exception("Exception in searchJudge()", ex);
+        }
+    }
 }

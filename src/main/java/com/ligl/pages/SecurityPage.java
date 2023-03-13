@@ -135,6 +135,8 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DateRangesCount']//span[@class='ellipsisAgGrid']")
     WebElement DateRangesCountColData;
+    @FindBy(xpath="//button[@id='appr-approve-btn']")
+    WebElement ApproveBtn;
 
     @FindBy(xpath = "//span[contains(text(),'Approval Status')]")
     WebElement ApprovalStatusColumn;
@@ -175,8 +177,16 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='ApprovalBatchName']//span[@class='ellipsisAgGrid']")
     WebElement ApprovalBatchNameColData;
 
-
-
+    @FindBy(xpath = "//input[@placeholder='Search']")
+    WebElement EmailTempText;
+    @FindBy(xpath = "//input[@placeholder='Search']")
+    WebElement ApproverName;
+    @FindBy(xpath = "//div[@class='approval-history-body']/table/tbody/tr[position()=1] /td[position()=1]")
+    WebElement ApprovalUserName;
+    @FindBy(id = "send-approval-btn")
+    WebElement SaveBtn;
+    @FindBy(xpath = "//button[contains(text(),'Revoke')]")
+    WebElement RevokeBtn;
 
 
 
@@ -219,6 +229,46 @@ public class SecurityPage extends LiglBaseSessionPage {
         }catch (Exception | Error ex){
             log_Error(ex.getMessage());
             throw new Exception("sendingCaseForApproval() Failed",ex);
+        }
+    }
+    /**
+     * Method to Send Case for Approval
+     * @param BchName
+     * @param Apptemp
+     * @param UserName
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage sendCaseForApproval(String BchName,String Apptemp,String UserName) throws Exception {
+        try {
+            log_Info("Click send for Approval Button");
+            SendApprovalBtn.click();
+            log_Pass("Send Approval btn Clicked");
+            log_Info("Click next");
+            NextBtn.click();
+            NextBtn.click();
+            NextBtn.click();
+            NextBtn.click();
+            BatchName.sendKeys(BchName);
+            TemplateNameDrpDwn.click();
+            Thread.sleep(4000);
+            EmailTempText.sendKeys(Apptemp);
+            EmailTempText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+            log_Info("Case Approval Temp selected");
+            SelectApprovalDrpDwn.click();
+            log_Info("Select Approver DropDown Clicked");
+            Thread.sleep(3000);
+            ApproverName.sendKeys(UserName);
+            Thread.sleep(3000);
+            ApproverName.sendKeys(Keys.ENTER);
+            log_Pass("All Credentials Required for Approval are Given");
+            log_Info("Click send for Approval Button");
+            SendForApprovalBtn.click();
+            log_Pass("Case Sent for Approval");
+            return new SecurityPage();
+        }catch (Exception ex){
+            throw new Exception("Exception From sendCaseForApproval()", ex);
         }
     }
     public ILiglPage selectOnpremDataSourceForApproval(String DataSource)throws Exception{
@@ -1245,4 +1295,104 @@ public class SecurityPage extends LiglBaseSessionPage {
         }
     }
 
+    /**
+     * Method to Check Approval History of Case in Approval History grid in Security Page
+     * @param Username
+     * @param Status
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage approvalHistoryCheck(String Username,String Status) throws Exception{
+        try{
+            log_Info("approvalHistoryCheck() Started");
+            Thread.sleep(3000);
+            String username=ApprovalUserName.getText();
+            String newUsrName=Username.replace(" ","");
+            Assert.assertEquals(username,newUsrName);
+            log_Info("User Name Updated Properly");
+            Thread.sleep(2000);
+            String status=ApprovalStatus.getText();
+            Assert.assertEquals(status,Status);
+            log_Info("Approval Status is Updated to '"+status+"' successfully");
+
+            return new SecurityPage();
+        }catch (Exception ex){
+            log_Error("approvalHistoryCheck() Failed");
+            throw new Exception("Exception in approvalHistoryCheck()",ex);
+        }
+    }
+    public ILiglPage selectRecordInApprovalRequestsGrid(String approvalrecord)throws Exception{
+        try{
+            log_Info("selectRecordInApprovalRequestsGrid() Started");
+            /*getDriver().waitForelementToBeClickable(Name);
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(Name).perform();
+            log_Info("Hovered on Name Header");
+            Thread.sleep(5000);*/
+
+            /*Menu.click();
+
+            Thread.sleep(5000);
+            log_Info("Menu clicked");
+            log_Info("Click on Filter");
+            Thread.sleep(5000);
+            Filter.click();
+            log_Info("Filter Clicked");
+            Thread.sleep(5000);
+            log_Info("Enter Employee");
+            Searchbar.sendKeys("QA_24cases11-BTH_11");
+            Thread.sleep(5000);
+
+            log_Info("Select Case To Be Approve");*/
+            getCurrentDriver().findElement(By.linkText(approvalrecord)).click();
+            return new ApprovalPage();
+        }catch (Exception ex){
+            log_Error("selectRecordInApprovalRequestsGrid Failed");
+            throw new Exception("Exception in selectRecordInApprovalRequestsGrid()",ex);
+        }
+    }
+    public ILiglPage approveCase(String action) throws Exception {
+        try {
+            log_Info("caseApproval() Started");
+            Thread.sleep(15000);
+            ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", ApproveBtn);
+            getCurrentDriver().findElement(By.id("appr-"+action+"-btn")).click();
+            SaveBtn.click();
+            Thread.sleep(5000);
+            return new ApprovalPage();
+        }catch (Exception ex){
+            throw new Exception("Exception in caseApproval()", ex);
+        }
+    }
+    /**
+     * Method to Revoke the Case which is in Pending Approval Status
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage revokeCase() throws Exception{
+        try{
+            log_Info("revokeCase() Started");
+            RevokeBtn.click();
+            waitForPageToLoad();
+            Thread.sleep(2000);
+            log_Pass("Case Approval Revoked");
+            return new SecurityPage();
+        }catch (Exception ex){
+            log_Error("revokeCase() Failed");
+            throw new Exception("Exception in revokeCase()",ex);
+        }
+    }
+    public ILiglPage sendRejectedCaseApproval() throws Exception {
+        try {
+            log_Info("Click send for Approval Button");
+            SendApprovalBtn.click();
+            log_Pass("Send Approval btn Clicked");
+            log_Info("Click send for Approval Button");
+            SendForApprovalBtn.click();
+            log_Pass("Case Sent for Approval");
+            return new SecurityPage();
+        }catch (Exception ex){
+            throw new Exception("Exception From sendCaseForApproval()", ex);
+        }
+    }
     }

@@ -32,7 +32,7 @@ public class CreateNewInhouseCounselEnterpriseParty_Test extends TestBase {
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToOtherPartyPage()
                     .addingNewParty(data.get("PartyName"),data.get("PartyType"), data.get("Description"),data.get("Status"))
-                    .searchingParty()
+                    .searchingParty(data.get("PartyName"))
                     .createNewInHouseCounselForEnterpriseParty(data.get("PartyName"), data.get("FirstName"), data.get("LastName") )
                     .searchingInHouseCounsel(data.get("PartyName"), data.get("CounselName"))
                     .validateAddedInHouseCounsel(data.get("CounselName"));

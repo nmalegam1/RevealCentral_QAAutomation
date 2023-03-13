@@ -57,16 +57,16 @@ public class LeftMenu extends LiglBasePage {
     @FindBy(xpath = "//span[@title='Keywords']")
     WebElement Keywords;
 
-    @FindBy(xpath = "//div[contains(text(),'Select Data Source(s)')]")
-    WebElement DataSourceHeader;
+    @FindBy(css="span[title='Documents']")
+    WebElement Documents;
 
-    @FindBy(xpath = "//span[@title='Data Management']")
+    @FindBy(xpath = "//span[@title='Data Management Summary']")
     WebElement DataManagement;
 
     @FindBy(xpath = "//span[@title='Identification']")
     WebElement Identification;
 
-    @FindBy(xpath = "//span[@title='Process Management']")
+    @FindBy(xpath = "//span[@title='Process Management Summary']")
     WebElement ProcessManagement;
 
     @FindBy(xpath = "//span[@title='Documents']")
@@ -109,6 +109,23 @@ public class LeftMenu extends LiglBasePage {
         }
     }
 
+    /**
+     * Method to Go to CaseDocumentsPage
+     * @return CaseDocumentsPage()
+     * @throws InterruptedException
+     */
+    public ILiglPage navigateToCaseDocumentsPage() throws InterruptedException {
+        getSession().log_Info("Click on Case Management");
+        getDriver().waitForelementToBeClickable(CaseManage);
+        CaseManage.click();
+        log_Pass("case Management clicked");
+        Thread.sleep(3000);
+        log_Info("Click Documents");
+        Documents.click();
+        log_Pass("Documents tab Clicked");
+        Thread.sleep(3000);
+        return new CaseDocumentsPage();
+    }
     public ILiglPage goToCaseManagementSummary() throws InterruptedException {
         caseManagementSummaryLink.click();
         return new CaseSummaryPage();
