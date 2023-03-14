@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ligl.base.pages.LiglBasePage;
+import org.testng.Assert;
 
 public class Header extends LiglBasePage {
 
@@ -55,6 +56,20 @@ public class Header extends LiglBasePage {
 
 	@FindBy(xpath = "//*[@id=\"switch-case\"]/span")
 	WebElement SwitchCase;
+
+	@FindBy(id = "old-password-input")
+	WebElement oldPasswordTxtBox;
+	@FindBy(id = "new-password-input")
+	WebElement newPasswordTxtBox;
+	@FindBy(id = "confirm-password-input")
+	WebElement confirmPasswordTxtBox;
+	@FindBy(xpath = "//button[contains(text(),'Save')]")
+	WebElement saveBtn;
+	@FindBy(xpath = "//a[contains(text(),'Change Password')]")
+	public WebElement changePasswordLink;
+
+	@FindBy(xpath = "//p[@class='userandRole user-role-label pl-4 mb-0']")
+	WebElement loggedInRole;
 
 	public Header(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -136,8 +151,23 @@ public class Header extends LiglBasePage {
 		return new DefaultLandingPage();
 	}
 	public ILiglPage goToAdministrationPage() {
+		getSession().log_Info("Click on Administration Tab");
+		getDriver().waitForelementToBeClickable(AdministrationTab);
+		wait(2);
 		AdministrationTab.click();
+		getDriver().waitForAngularRequestsToComplete();
+		getSession().log_Pass("Clicked on Administration Tab");
 		return new ContactMasterPage();
+	}
+
+	public ILiglPage goToGlobalRequestPage() {
+		getSession().log_Info("Click On Global Request Tab");
+		getDriver().waitForelementToBeClickable(requestsTab);
+		requestsTab.click();
+		getDriver().waitForAngularRequestsToComplete();
+		getDriver().waitUntilSpinnerIsClosed();
+		getSession().log_Pass("Clicked On Global Request Tab");
+		return new GlobalRequestPage();
 	}
 
 	public ILiglPage create(String elementText) {
@@ -190,6 +220,105 @@ public class Header extends LiglBasePage {
 			log_Error(ex.getMessage());
 			throw new Exception("switchCaseFunctionality() Failed",ex);
 
+		}
+	}
+
+	/****************************Admin RElated Test**********************/
+
+	public ILiglPage clickChangePassword() throws InterruptedException{
+		getSession().log_Info("Click Username link");
+		getDriver().waitForelementToBeClickable(userNameLink);
+		wait(2);
+		userNameLink.click();
+		getSession().log_Pass("Clicked Username link");
+		getSession().log_Info("Click Change Password link");
+		getDriver().waitForelementToBeClickable(changePasswordLink);
+		changePasswordLink.click();
+		getSession().log_Pass("Clicked Change Password link");
+		return this;
+	}
+	/**
+	 * TC22519-Check whether ChangePassword option is present in User profile and user is able to again log in successfully with new password
+	 * */
+	public ILiglPage changePasswordInUserProfile(String oldPassword, String newPassword, String confirmPassword) throws Exception{
+		try {
+			//Old Password
+			getSession().log_Info("Enter Old Password");
+			getDriver().waitForelementToBeClickable(oldPasswordTxtBox);
+			oldPasswordTxtBox.sendKeys(oldPassword);
+			getSession().log_Pass("Entered Old Password");
+			//New Password
+			getSession().log_Info("Enter New Password");
+			getDriver().waitForelementToBeClickable(newPasswordTxtBox);
+			newPasswordTxtBox.sendKeys(newPassword);
+			getSession().log_Pass("Entered New Password");
+			//Confirm Password
+			getSession().log_Info("Enter Confirm Password");
+			getDriver().waitForelementToBeClickable(confirmPasswordTxtBox);
+			confirmPasswordTxtBox.sendKeys(confirmPassword);
+			getSession().log_Pass("Entered Confirm Password");
+			//Save
+			getSession().log_Info("Click 'Save' Button");
+			getDriver().waitForelementToBeClickable(saveBtn);
+			saveBtn.click();
+			getSession().log_Pass("Clicked 'Save' Button");
+			wait(2);
+			return new LoginPage();
+		}catch (Exception | Error ex) {
+			log_Error(ex.getMessage());
+			throw new Exception("Change Password In User Profile failed", ex);
+		}
+
+	}
+
+	/**
+	 * TC51897 Verify the unavailability of 'Change Password' option in logged in SSO User profile icon
+	 */
+	public ILiglPage unavailabilityOfChangePasswordOption() throws Exception{
+		try {
+			wait(5);
+			getDriver().waitForelementToBeClickable(userNameLink);
+			userNameLink.click();
+			getSession().log_Pass("Clicked Username link");
+			getSession().log_Info("Check unavailability of 'Change Password' option in logged in SSO User profile icon");
+			try {
+				changePasswordLink.isDisplayed();
+			} catch (Exception eds) {
+				getSession().log_Pass("'Change Password' option not displayed");
+			}
+			getDriver().waitForelementToBeClickable(userNameLink);
+			userNameLink.click();
+			getSession().log_Pass("closed User profile");
+			return this;
+		}catch (Exception | Error ex) {
+			log_Error(ex.getMessage());
+			throw new Exception("Unavailability Of Change Password Option failed", ex);
+		}
+	}
+
+	/**
+	 * TC28539_Check whether Logged in user is displaying with Assigned role after changing role of user
+	 */
+	public ILiglPage loggedInUserRoleAfterRoleChanged(String expectedRole) throws Exception{
+		try {
+			getSession().log_Info("Click Username link");
+			getDriver().waitForelementToBeClickable(userNameLink);
+			userNameLink.click();
+			getSession().log_Pass("Clicked Username link");
+
+			getSession().log_Info("Check that 'Role' logged in user");
+			wait(1);
+			String role = loggedInRole.getText();
+			Assert.assertEquals(role, expectedRole);
+			getSession().log_Pass(" logged in user 'Role' was  " + role.toUpperCase());
+
+			getDriver().waitForelementToBeClickable(userNameLink);
+			userNameLink.click();
+			getSession().log_Pass("closed User profile");
+			return new DefaultLandingPage();
+		}catch(Exception | Error ex) {
+			log_Error(ex.getMessage());
+			throw new Exception("Logged In User Role", ex);
 		}
 	}
 

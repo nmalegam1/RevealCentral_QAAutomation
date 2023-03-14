@@ -39,4 +39,13 @@ public class Constants {
 	public static final String TCID = "TCID";
 	public static final String RUNMODE = "Runmode";
 
+	//Import Employee exel file
+
+	public static final String ImportXLSX_ShortTemplate = System.getProperty("user.dir")+"\\importEmpTemplates\\ImportXLSX_ShortTemplate.xlsx";
+	public static final String ImportXLSX_Template_FullTemplate = System.getProperty("user.dir")+"\\importEmpTemplates\\ImportXLSX_Template.xlsx";
+	public static final String ImportXLSX_Template_Title_Optional = System.getProperty("user.dir")+"\\importEmpTemplates\\ImportXLSX_Template_Title_Optional.xlsx";
+	public static final String ImportXLSX_Template_Only_Mandatory_Field =  System.getProperty("user.dir")+"\\importEmpTemplates\\ImportXLSX_Template_Only_Mandatory_Fields.xlsx";
+	public static final String ImportXLSX_Template_AccountType = System.getProperty("user.dir")+"\\importEmpTemplates\\ImportXLSX_Template_AccountType.xlsx";
+
+
 }

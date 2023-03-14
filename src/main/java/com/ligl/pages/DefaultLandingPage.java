@@ -663,4 +663,104 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     }
 
+    /*****************************************Admin related test**************************************************/
+
+    /**
+     * TC54583 Check whether case type user defined look up value is populated in the case type dropdown in create case popup
+     */
+
+    public ILiglPage checkNewlyCreatedLookupPopulatedInCaseTypeDropDown(String caseType) throws Exception{
+        try {
+            //Case Button
+            getSession().log_Info("Click On '+Case' Button");
+            getDriver().waitForelementToBeClickable(createCaseBtn);
+            createCaseBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked On '+Case' Button");
+
+            //Case Type
+            getSession().log_Info("Click On 'Case Type' Drop Down");
+            getDriver().waitForelementToBeClickable(CaseType);
+            CaseType.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked On 'Case Type' Drop Down");
+
+            getSession().log_Info("Enter Case type");
+            CaseTypeText.sendKeys(caseType);
+            wait(2);
+            getSession().log_Pass("Entered Case type");
+
+            getSession().log_Info("Check Lookup Populated In 'CaseType' DropDown");
+            String reqTypeText = getDriver().customXpathBasedOnTextValue(caseType).getText();
+            Assert.assertEquals(reqTypeText, caseType);
+            getDriver().customXpathBasedOnTextValue(caseType).click();
+            getSession().log_Pass("Lookup Populated In 'CaseType' DropDown");
+
+            //Cancle Button
+            getSession().log_Info("Click On 'Cancle' Button");
+            getDriver().waitForelementToBeClickable(CancelBtn);
+            CancelBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked On 'Cancle' Button");
+            getSession().log_Info("Click On 'yes' Button");
+            getDriver().waitForelementToBeClickable(CancelYesBtn);
+            CancelYesBtn.click();
+            getSession().log_Pass("Clicked On 'Yes' Button");
+            getDriver().waitForAngularRequestsToComplete();
+
+            getDriver().waitUntilSpinnerIsClosed();
+
+            return new DefaultLandingPage();
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("Check Lookup Populated In Case Type DropDown Failed", ex);
+        }
+    }
+
+    @Override
+    public ILiglPage checkNewlyCreatedCaseSettingTemplatePopulatedInCaseSettingsTemplateDropDown(String caseSettingsTemplate) throws Exception {
+        try {
+            //Click On Case Create Button
+            getSession().log_Info("Click On '+Case' Button");
+            getDriver().waitForelementToBeClickable(createCaseBtn);
+            createCaseBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked '+Case' Button");
+
+
+            //Select case setting Template
+            log_Info("Select the case Workflow Template");
+            getDriver().waitForelementToBeClickable(CST);
+            CST.click();
+            CSTText.sendKeys(caseSettingsTemplate);
+            getSession().log_Pass("Case Workflow Template Selected");
+
+            getSession().log_Info("Check that Newly Created Case Setting Template is Displaying in Select case setting Template Drop Down");
+            Assert.assertEquals(getDriver().customXpathBasedOnTextValue(caseSettingsTemplate).getText(), caseSettingsTemplate);
+            getSession().log_Pass("Newly Created Case Setting Template is Displayed in Select case setting Template Drop Down");
+            CST.sendKeys(Keys.ESCAPE);
+
+            getSession().log_Info("Click On 'Cancle' Button");
+            getDriver().waitForelementToBeClickable(CancelBtn);
+            CancelBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked On 'Cancle' Button");
+            getSession().log_Info("Click On 'yes' Button");
+            getDriver().waitForelementToBeClickable(CancelYesBtn);
+            CancelYesBtn.click();
+            getSession().log_Pass("Clicked On 'Yes' Button");
+            getDriver().waitForAngularRequestsToComplete();
+
+            wait(2);
+            return new DefaultLandingPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception(" check Newly Created CaseSetting Template Test failed", ex);
+        }
+    }
+
+    /****************************************************************************************************************/
+
+
 }
