@@ -31,4 +31,13 @@ public interface IWebConnector{
 	public void waitUntilSpinnerIsClosed();
 	void waitForVisibilityOfElementLocated(By locator);
 	void waitForelementToBeClickable(WebElement element);
+
+	/*****************************************************************************/
+
+	void scrollToView(WebElement element) throws Exception;
+	void waitForMoveToElement(WebElement element) throws Exception;
+	WebElement customXpathBasedOnTextValue(String textValue) throws Exception;
+
+	void moveToRightInAngularTable(String number) throws Exception;
+
 }

@@ -4,9 +4,8 @@ import java.time.Duration;
 
 import com.ligl.base.pages.ILiglPage;
 import com.paulhammant.ngwebdriver.NgWebDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -132,5 +131,30 @@ public abstract class LiglValidationDriver implements IWebConnector {
 		if(isStopExecution())
 			assertAll();
 	}
-	
+
+	/*****************************************************/
+
+	public void scrollToView(WebElement element) throws Exception {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView()", element);
+	}
+
+	public void waitForMoveToElement(WebElement element) throws Exception{
+		Actions ac = new Actions(getCurrentDriver());
+		ac.moveToElement(element).perform();
+	}
+
+	public WebElement customXpathBasedOnTextValue(String textValue) throws Exception{
+		WebElement webElement = getCurrentDriver().findElement(By.xpath("//span[contains(text(), '" + textValue + "')]"));
+		return webElement;
+	}
+
+	public void moveToRightInAngularTable(String number) throws Exception{
+		Actions ac = new Actions(getCurrentDriver());
+		int a = Integer.parseInt(number);
+		for (int i = 0; i < a; i++) {
+			ac.sendKeys(Keys.TAB).perform();
+		}
+		ac.sendKeys(Keys.TAB).perform();
+	}
 }
