@@ -31,7 +31,7 @@ public class TC51903_Check_the_Duplicate_Validation_Message_for_Email_field_in_S
                     .getAdminLeft()
                     .clickOnAdminLegalHold()
                     .getAdminLeft()
-                    .clikcOnStakeholderLink()
+                    .clickOnStakeholderLink()
                     .clickOnAddStakeholderButton()
                     .createStakeholder(data.get("FirstName"), data.get("MiddleName"), data.get("LastName"), data.get("Email"),
                             data.get("Department"), data.get("Category"))

@@ -30,7 +30,7 @@ public class TC37922_Verify_functionality_of_delete_button_in_the_Stakeholder_gr
                     .getAdminLeft()
                     .clickOnAdminLegalHold()
                     .getAdminLeft()
-                    .clikcOnStakeholderLink()
+                    .clickOnStakeholderLink()
                     .searchTheStakeholder(data.get("StakeholderEmail"))
                     .scrollToRightToDoAction(data.get("StakeholderEmail"))
                     .deleteTheExitingStakeholder()

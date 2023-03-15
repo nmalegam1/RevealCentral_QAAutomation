@@ -17,7 +17,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
 
     // Web Elements For Other Party
 
-    @FindBy(id = "add-case-doc-btn")
+    @FindBy(id = "add-party-btn")
     WebElement AddParty;
 
     @FindBy(id = "select-party-type-third-party")
