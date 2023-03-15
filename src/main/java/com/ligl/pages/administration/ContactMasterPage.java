@@ -830,7 +830,8 @@ public class ContactMasterPage extends LiglBaseSessionPage {
             wait(1);
             dropDwnSearchBar.sendKeys(partyType);
             wait(1);
-            String expected = getCurrentDriver().findElement(By.xpath("//span[normalize-space()='" + partyType + "']")).getText();
+            //String expected = getCurrentDriver().findElement(By.xpath("//span[normalize-space()='" + partyType + "']")).getText();
+            String expected = getDriver().customXpathBasedOnTextValue(partyType).getText();
             wait(1);
             Assert.assertEquals(partyType, expected);
             wait(1);

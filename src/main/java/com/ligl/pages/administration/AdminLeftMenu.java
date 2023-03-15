@@ -163,7 +163,7 @@ public class AdminLeftMenu extends LiglBasePage {
         return new LookupManagerPage();
     }
 
-    public ILiglPage clikcOnStakeholderLink() {
+    public ILiglPage clickOnStakeholderLink() {
         getSession().log_Info("Click On Stakeholder");
         getDriver().waitForelementToBeClickable(stakeholderLink);
         stakeholderLink.click();
@@ -171,6 +171,16 @@ public class AdminLeftMenu extends LiglBasePage {
         getDriver().waitUntilSpinnerIsClosed();
         getSession().log_Pass("Clicked On Stakeholder");
         return new StakeHoldersPage();
+    }
+
+    public ILiglPage clickOnManageQuestionBankPageLink() {
+        getSession().log_Info("Click On Manage Question Bank Link");
+        getDriver().waitForelementToBeClickable(manageQuestionBankLink);
+        manageQuestionBankLink.click();
+        getDriver().waitForAngularRequestsToComplete();
+        getDriver().waitUntilSpinnerIsClosed();
+        getSession().log_Pass("Clicked On Manage Question Bank Link");
+        return new ManageQuestionBankPage();
     }
 
 }
