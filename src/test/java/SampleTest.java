@@ -36,7 +36,7 @@ public class SampleTest {
 		javascriptExecutor=(JavascriptExecutor) driver;
 		ngWebDriver=new NgWebDriver(javascriptExecutor);
 //		driver.get("https://rt.myligl.io/RT/#/login");
-//		String user="superuser1";
+//		String user="superuser1"; testcode
 //		String pw="Testing@123";
 		driver.get("https://in-opt-sit-01.in.vertical.com/SIT/#/login");
 		String user="nmalegamSITSuperUser";
@@ -66,7 +66,7 @@ public class SampleTest {
 			ngWebDriver.waitForAngularRequestsToFinish();
         }
 
-		//ngWebDriver.waitForAngularRequestsToFinish();
+		ngWebDriver.waitForAngularRequestsToFinish();
 		//driver.findElement(By.cssSelector(".menu-item-parent")).click();
 		//ngWebDriver.waitForAngularRequestsToFinish();
 //		WebElement jobManagerTabLink=driver.findElement(By.xpath("//span[@id='job-manager-tab']"));
