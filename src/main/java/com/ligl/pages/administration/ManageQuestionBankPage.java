@@ -66,7 +66,7 @@ public class ManageQuestionBankPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//input[@placeholder='Filter...']")
     public WebElement searchBar;
 
-    public ILiglPage clickOnQuestionnaire() throws Exception {
+    public ILiglPage clickOnQuestionnaireButton() throws Exception {
         getSession().log_Info("Click On '+Questionnaire' Button");
         getDriver().waitForelementToBeClickable(questionnaireCreateBtn);
         questionnaireCreateBtn.click();

@@ -1347,6 +1347,19 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage verifyTheDuplicateValidationMessage() throws Exception{return null;}
 
+	/*
+	 * Manage QuestionBank
+	 * */
+
+	public ILiglPage clickOnQuestionnaireButton() throws Exception{return null;}
+
+	public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent, String IsQuestionMandatory,
+											String RenderOptions, String Description, String AppliesTo) throws Exception{
+		return null;
+	}
+	public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,String Description) throws Exception{
+		return null;
+	}
 		public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;
