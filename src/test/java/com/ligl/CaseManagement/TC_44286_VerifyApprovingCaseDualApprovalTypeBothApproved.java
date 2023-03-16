@@ -37,7 +37,7 @@ public class TC_44286_VerifyApprovingCaseDualApprovalTypeBothApproved extends Te
                     .addCustodianToCase(data.get("Email1"))
                     .getLeftMenu()
                     .goToSecurityPage().validateCaseNotinitiatedState()
-                    .sendingCaseForDualApproval(data.get("BatchNAME"), data.get("USER1"), data.get("USER2"), data.get("EMAIL"), data.get("Employee1"), data.get("SubType") )
+                    .sendingCaseForDualApproval(data.get("Employee1"),data.get("BatchNAME"),data.get("USER1"), data.get("USER2"),data.get("SubType") ,data.get("EMAIL") )
                     .getHeader().goToApprovalPage()
                     .approvingCaseSingleApprover(data.get("CaseNameApprove"))
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
@@ -49,8 +49,6 @@ public class TC_44286_VerifyApprovingCaseDualApprovalTypeBothApproved extends Te
                     .getLeftMenu().goToSecurityPage().verifyingApproveStatus().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status1"), data.get("AssignedUser1"), data.get("Status1") )
                     .getHeader().logout().login(data.get("Username"), data.get("Password"),data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName")).getLeftMenu().goToSecurityPage().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status1"), data.get("AssignedUser1"), data.get("Status1"));
-
-
 
         } catch (Exception ex) {
             session.log_Error("TC_44286_VerifyApprovingCaseDualApprovalTypeBothApproved Failed");

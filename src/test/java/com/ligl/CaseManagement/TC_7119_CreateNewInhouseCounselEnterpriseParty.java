@@ -32,7 +32,7 @@ public class TC_7119_CreateNewInhouseCounselEnterpriseParty extends TestBase {
                     .login(data.get("Username"), data.get("Password"),data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToOtherPartyPage()
-                    .addingNewParty(data.get("PartyName"),data.get("PartyType"), data.get("Description"), data.get("Status"))
+                    .addingNewParty(data.get("PartyName"),data.get("PartyType"),data.get("Status"),data.get("Description"))
                     .searchingParty(data.get("PartyName"))
                     .createNewInHouseCounselForEnterpriseParty(data.get("PartyName"), data.get("FirstName"), data.get("LastName") )
                     .searchingInHouseCounsel(data.get("PartyName"), data.get("CounselName"))

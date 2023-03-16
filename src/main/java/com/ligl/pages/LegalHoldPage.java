@@ -3,6 +3,7 @@ import com.ligl.base.pages.ILiglPage;
 import com.ligl.base.pages.LiglBasePage;
 import com.ligl.pages.administration.EmailTemplatePage;
 import com.ligl.pages.administration.EmployeeMasterPage;
+import com.ligl.pages.administration.StakeHoldersPage;
 import com.ligl.pages.casemanagement.CaseCustodiansPage;
 import com.ligl.pages.datamanagement.DMCollectionsPage;
 import org.openqa.selenium.By;
@@ -136,7 +137,8 @@ public class LegalHoldPage extends LiglBasePage {
     @FindBy(xpath = "//span[contains(text(),'Legal Hold Name')]")
     WebElement LHNAME;
 
-    @FindBy(xpath = "//span[contains(text(),'Email')]")
+    //@FindBy(xpath = "//span[contains(text(),'Email')]")
+    @FindBy(xpath = "//span[@ref='eText'][normalize-space()='Email']")
     WebElement Semail;
 
     @FindBy(xpath = "//span[contains(text(),'Legal Hold Name')]/ancestor::div[@ref='eLabel']/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
@@ -495,6 +497,9 @@ public class LegalHoldPage extends LiglBasePage {
     @FindBy(id="lhncustActions")
     WebElement SelectAction;
 
+    @FindBy(xpath = "(//span[@ref='eMenu'])[4]")
+    public WebElement menuBtn;
+
     // Sending Legal Hold For Approval
 
     public ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException {
@@ -669,7 +674,7 @@ public class LegalHoldPage extends LiglBasePage {
             Thread.sleep(5000);
             EditLHN.click();
             Thread.sleep(3000);
-            LHNNextBtn.click();
+            NextBtn.click();
             Thread.sleep(2000);
             OnFlyEdit.click();
             editTempOnFly(NewtempName,subject,content);
@@ -1505,7 +1510,7 @@ public class LegalHoldPage extends LiglBasePage {
             log_Info("Click On Legal Hold Name Menu");
             LHNameMenu.click();
             Thread.sleep(5000);
-            Searchbar.sendKeys(Keys.ENTER);;
+            Searchbar.sendKeys(Keys.ENTER);
             Thread.sleep(5000);
             log_Info("Data is filtered");
             return new LegalHoldPage();
@@ -1831,6 +1836,7 @@ public class LegalHoldPage extends LiglBasePage {
             log_Info("Enter email In The Search Bar");
             Searchbar.sendKeys(StakeEmailID);
             Thread.sleep(5000);
+            Filter.click();
             log_Info("Entered email In The Search Bar");
             return new LegalHoldPage();
 
@@ -1852,11 +1858,11 @@ public class LegalHoldPage extends LiglBasePage {
             Thread.sleep(5000);
             log_Info("searchStakeholderEmailFromLHNGrid() completed");
             log_Info("Getting the Email column data");
-            String Mail=EmailColumn.getText();
+            String Mail = EmailColumn.getText();
             Thread.sleep(5000);
             log_Info("Checking created stakeholder is displaying in grid");
-            Assert.assertEquals(Mail,StakeEmailID);
-            Thread.sleep(5000);
+            Assert.assertEquals(Mail, StakeEmailID);
+            Thread.sleep(6000);
             log_Pass("Checked created stakeholder is displaying in grid");
             return new LegalHoldPage();
 
@@ -1879,7 +1885,7 @@ public class LegalHoldPage extends LiglBasePage {
             log_Info("Validate Display Of Default Template in Release Popup");
             Thread.sleep(5000);
             String Temp = DefaultReleaseTemplate.getText();
-            Assert.assertEquals(Temp,DefaultTemplate);
+            Assert.assertEquals(Temp, DefaultTemplate);
             log_Pass("Default Template is displaying in Release Popup");
             Thread.sleep(5000);
             return new LegalHoldPage();
@@ -2505,6 +2511,7 @@ public class LegalHoldPage extends LiglBasePage {
             log_Info("click On Run Button");
             Thread.sleep(5000);
             RunButton.click();
+            Thread.sleep(5000);
             log_Info("clicked On Run Button");
             return new LegalHoldPage();
 
@@ -2679,9 +2686,8 @@ public class LegalHoldPage extends LiglBasePage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");
 
-
             log_Info("Click on Save Button");
-            getDriver().waitForelementToBeClickable(SaveBtn);
+            getDriver().waitForelementToBeClickable(SaveButton);
             Thread.sleep(3000);
             SaveButton.click();
             Thread.sleep(5000);
@@ -2753,7 +2759,7 @@ public class LegalHoldPage extends LiglBasePage {
 
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("clickActionOnResponseDocument() Failed", ex);
+            throw new Exception("clickOnRefreshButtonLHGrid() Failed", ex);
         }
 
     }
@@ -2849,7 +2855,7 @@ public class LegalHoldPage extends LiglBasePage {
 
 
             log_Info("Click on Save Button");
-            getDriver().waitForelementToBeClickable(SaveBtn);
+            getDriver().waitForelementToBeClickable(SaveButton);
             Thread.sleep(3000);
             SaveButton.click();
             Thread.sleep(5000);
@@ -2946,7 +2952,7 @@ public class LegalHoldPage extends LiglBasePage {
 
 
             log_Info("Click on Save Button");
-            getDriver().waitForelementToBeClickable(SaveBtn);
+            getDriver().waitForelementToBeClickable(SaveButton);
             Thread.sleep(3000);
             SaveButton.click();
             Thread.sleep(5000);
@@ -3039,7 +3045,7 @@ public class LegalHoldPage extends LiglBasePage {
     }
 
 
-    public ILiglPage editEscalationAndRemainderConfigValues(String Remainderdays, String Remaindermails, String Remainderfrequency,String Escalationdays, String Escalationmails, String Escalationfrequency) throws Exception {
+    public ILiglPage editEscalationAndRemainderConfigValues(String Remainderdays, String Remaindermails, String Remainderfrequency, String Escalationdays, String Escalationmails, String Escalationfrequency) throws Exception {
 
         try {
 
@@ -3103,7 +3109,7 @@ public class LegalHoldPage extends LiglBasePage {
 
 
             log_Info("Click on Save Button");
-            getDriver().waitForelementToBeClickable(SaveBtn);
+            getDriver().waitForelementToBeClickable(SaveButton);
             SaveButton.click();
             Thread.sleep(5000);
             getSession().log_Pass("Save Button clicked");
@@ -3303,7 +3309,7 @@ public class LegalHoldPage extends LiglBasePage {
             log_Info("selectTheColumnCheckBox() Started");
             log_Info("Select The Particular Searched Column");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+COLUMN+"')]/ancestor::div[@role='treeitem']//input")).click();
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + COLUMN + "')]/ancestor::div[@role='treeitem']//input")).click();
             log_Info("Selected The Particular Searched Column");
 
             return new LegalHoldPage();
@@ -3333,7 +3339,7 @@ public class LegalHoldPage extends LiglBasePage {
             getCurrentDriver().switchTo().window(tabs2.get(1));
             getCurrentDriver().close();
             getCurrentDriver().switchTo().window(tabs2.get(0));
-            String test=getCurrentDriver().getCurrentUrl();
+            String test = getCurrentDriver().getCurrentUrl();
             log_Info("Opened In The New Tab");
 
             return new LegalHoldPage();
@@ -4080,7 +4086,7 @@ public class LegalHoldPage extends LiglBasePage {
 
 
             log_Info("Click on Save Button");
-            getDriver().waitForelementToBeClickable(SaveBtn);
+            getDriver().waitForelementToBeClickable(SaveButton);
             Thread.sleep(3000);
             SaveButton.click();
             Thread.sleep(5000);
@@ -4095,6 +4101,52 @@ public class LegalHoldPage extends LiglBasePage {
             throw new Exception("createNewLegalHold() Failed", ex);
         }
     }
+
+    /*****************************************Admin Test*********************************************************/
+    public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception {
+        try {
+            wait(2);
+            getSession().log_Info("Hover on Email Header");
+            getDriver().waitForelementToBeClickable(Semail);
+            getDriver().waitForMoveToElement(Semail);
+            getSession().log_Pass("Hovered on Email Column");
+
+            getSession().log_Info("Click on Menu");
+            getDriver().waitForelementToBeClickable(menuBtn);
+            getDriver().waitForMoveToElement(menuBtn);
+            menuBtn.click();
+            getSession().log_Pass("Clicked on Menu");
+
+            getSession().log_Info("Click on Filter");
+            getDriver().waitForelementToBeClickable(Filter);
+            Filter.click();
+            getSession().log_Pass("Clicked on Filter");
+
+            getSession().log_Info("Enter the Email in Search Bar");
+            getDriver().waitForelementToBeClickable(Searchbar);
+            Searchbar.sendKeys(email);
+            Filter.click();
+            getSession().log_Pass("Entered the Email in Search Bar");
+
+            try {
+                boolean actualValue = getDriver().customXpathBasedOnTextValue(email).isDisplayed();
+
+                getSession().log_Info("Check that newly created Stakeholder Displaying In Stakeholder Grid");
+                Assert.assertEquals(actualValue, true);
+                getSession().log_Pass("Newly created Stakeholder Displayed In Stakeholder Grid");
+            } catch (Exception exception) {
+                getSession().log_Info("Check that deleted created Stakeholder not Displaying In Stakeholder Grid");
+
+                getSession().log_Pass("deleted created Stakeholder not Displayed In Stakeholder Grid");
+            }
+
+            return new LegalHoldPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Check Delected Stakeholder Displaying In LHStakeholder Grid Failed", ex);
+        }
+    }
+
 
 }
 

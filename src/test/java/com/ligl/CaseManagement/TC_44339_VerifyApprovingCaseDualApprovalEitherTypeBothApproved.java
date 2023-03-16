@@ -37,15 +37,17 @@ public class TC_44339_VerifyApprovingCaseDualApprovalEitherTypeBothApproved exte
                     .addCustodianToCase(data.get("Email1"))
                     .getLeftMenu()
                     .navigateToDataSourcesPage()
-                    .addDataSources(data.get("DataSource1"))
+                    .addingDataSource(data.get("Datasource1"))
+                    .addingDataSource(data.get("Datasource2"))
+                    .clickOnSaveButton()
                     .getLeftMenu().navigateToDateRangesPage()
                     .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))
                     .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))
                     .validatingDateRanges()
                     .getLeftMenu()
                     .navigateToKeyWordsPage()
-                    .addKeywordsByCustom(data.get("Keywords1"), data.get("DataSource1") )
-                    .addKeywordsByCustom(data.get("Keywords1"), data.get("DataSource1"))
+                    .addKeywordsByCustom(data.get("Keywords1"), data.get("Datasource1") )
+                    .addKeywordsByCustom(data.get("Keywords1"), data.get("Datasource1"))
                     .validatingKeywords()
                     .getLeftMenu()
                     .goToCaseManagement().getLeftMenu()
@@ -62,9 +64,6 @@ public class TC_44339_VerifyApprovingCaseDualApprovalEitherTypeBothApproved exte
                     .getLeftMenu().goToSecurityPage().verifyingApproveStatus().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status1"), data.get("AssignedUser2"), data.get("Status2") )
                     .getHeader().logout().login(data.get("Username"), data.get("Password"),data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName")).getLeftMenu().goToSecurityPage().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status1"), data.get("AssignedUser2"), data.get("Status2"));
-
-
-
         } catch (Exception ex) {
             session.log_Error("TC_44339_VerifyApprovingCaseDualApprovalEitherTypeBothApproved Failed");
             throw new Exception("TC_44339_VerifyApprovingCaseDualApprovalEitherTypeBothApproved Failed", ex);

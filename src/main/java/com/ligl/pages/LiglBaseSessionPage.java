@@ -6,6 +6,7 @@ import java.util.Date;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.base.pages.LiglBasePage;
+import com.ligl.pages.administration.AdminLeftMenu;
 import com.ligl.pages.casemanagement.CaseCustodiansPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,8 @@ public class LiglBaseSessionPage extends LiglBasePage {
 
 	LeftMenu leftNavigation;
 
+	AdminLeftMenu adminLeftNavigation;
+
 	@FindBy(css=Constants.DATE_MONTH_YEAR)
 	public WebElement dateMonth;
 	@FindBy(css=Constants.DATE_MONTH_FORWARD)
@@ -30,6 +33,7 @@ public class LiglBaseSessionPage extends LiglBasePage {
 	public LiglBaseSessionPage() {
 		header = new Header(getCurrentDriver());
 		leftNavigation = new LeftMenu(getCurrentDriver());
+		adminLeftNavigation = new AdminLeftMenu(getCurrentDriver());
 	}
 
 	public Header getHeader() {
@@ -41,6 +45,9 @@ public class LiglBaseSessionPage extends LiglBasePage {
 		return leftNavigation;
 
 	}
+
+	public AdminLeftMenu getAdminLeft(){return adminLeftNavigation;}
+
 	public ILiglPage navigateToDataSourcesPage(){ return  null;}
 
 

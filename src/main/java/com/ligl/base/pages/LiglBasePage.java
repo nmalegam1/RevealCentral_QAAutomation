@@ -2,6 +2,7 @@ package com.ligl.base.pages;
 
 import com.ligl.pages.DashboardPage;
 import com.ligl.pages.LeftMenu;
+import com.ligl.pages.administration.AdminLeftMenu;
 import com.ligl.pages.casemanagement.CaseCustodiansPage;
 import com.ligl.session.LiglTestSession;
 import org.apache.poi.xwpf.usermodel.BreakType;
@@ -155,7 +156,7 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage navigateToLegalHoldPage()  { return  null;}
 
-	public ILiglPage sendingCaseForDualApproval(String BatchNAME,String USER1,String USER2,String EMAIL,String Employee1,String SubType) throws Exception{
+	public  ILiglPage sendingCaseForDualApproval(String Employee1,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception{
 		return null;
 	}
 
@@ -441,7 +442,7 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage sendingLegalHoldForApproval() throws Exception {
 		return null;
 	}
-	public ILiglPage checkLHNForCustodians(String LHN,String Employee1) throws Exception{
+	public ILiglPage checkLHNForCustodians(String LHN) throws Exception{
 		return null;
 	}
 
@@ -998,6 +999,380 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage verifyNonApprovedScopeInCustomTab(String Custodian,String Datasource,String Daterange,String Keyword) throws Exception{
 		return null;
 	}
+
+	/**
+	 * Admin-General
+	 */
+	/*User and Roles Page*/
+	public AdminLeftMenu getAdminLeft() {
+		return null;
+	}
+
+	public ILiglPage refreshUserAndRolesPage() throws Exception{return null;}
+
+	public ILiglPage newLogin(String userName, String password) throws Exception {
+		return null;
+	}
+
+	public ILiglPage loginPageValidation(String userName, String password) throws Exception {
+		return null;
+	}
+
+	public ILiglPage SSOLoginValidation(String userName, String password) throws Exception {
+		return null;
+	}
+
+	public ILiglPage checkTheAlertNoRoleAssign() throws Exception {
+		return null;
+	}
+
+	public ILiglPage verifyInActiveUserLoginValidation() throws Exception {
+		return null;
+	}
+
+	public ILiglPage verifyInActiveSSOUserLoginValidation() throws Exception {
+		return null;
+	}
+	public ILiglPage clickOnAddUserButton() throws Exception{return null;}
+
+	public ILiglPage swithToLiglUser() throws Exception{return null;}
+
+	public ILiglPage searchTheUser(String selectUser) throws Exception {return null;}
+
+	public ILiglPage scrollToRightToDoActionInUsers(String selectUser) throws Exception{return null;}
+
+	public ILiglPage clickOnEditButton(String user) throws Exception {
+		return null;
+	}
+
+	public ILiglPage duplicateValidationMessageForLiglUser() throws Exception {
+		return null;
+	}
+
+	public ILiglPage duplicateValidationMessageForSSOUser() throws Exception {
+		return null;
+	}
+
+	public ILiglPage unavailabilityOfChangePasswordOption() throws Exception {
+		return null;
+	}
+
+	public ILiglPage creatingLiglUser(
+			String userName, String email, String firstName,
+			String middleName, String lastName, String role, String status,
+			String passWordConfirmation, String password, String confirmPassword, String sendPasswordInEmail
+	) throws Exception {
+		return null;
+	}
+
+	public ILiglPage creatingSSOUser(
+			String email, String firstName, String middleName, String lastName, String role, String status
+	) throws Exception {
+		return null;
+	}
+
+	public ILiglPage editTheUser(
+			String editUserName, String editEmail, String editFirstName,
+			String editMiddleName, String editLastName, String editRole, String editStatus,
+			String userEditingConfirmation
+	) throws Exception {
+		return null;
+	}
+
+	public ILiglPage editSSOUser(String editEmail, String editFirstName,
+								 String editMiddleName, String editLastName, String editRole, String editStatus
+	) throws Exception {
+		return null;
+	}
+
+	public ILiglPage changePasswordInUserProfile(String oldPassword, String newPassword, String confirmPassword)
+			throws Exception {
+		return null;
+	}
+
+	public ILiglPage adminResetPassword(String conformManualPawdReset, String password, String confirmPassword) throws Exception {
+		return null;
+	}
+
+	public ILiglPage changePasswordAfterUserLogin(
+			String changePasswordConfirmation, String oldPassword,
+			String newPassword, String confirmPassword
+	) throws Exception {
+		return null;
+	}
+
+	public ILiglPage acceptEula() throws Exception {
+		return null;
+	}
+
+	public ILiglPage restPasswordClickDisabledForSSOUser(String searchSSOUser) throws Exception {
+		return null;
+	}
+
+	public ILiglPage passwordValidation() throws Exception {
+		return null;
+	}
+
+	public ILiglPage oldPasswordValidation() throws Exception {
+		return null;
+	}
+
+	public ILiglPage changeRole(String roleChangeTo) throws Exception {
+		return null;
+	}
+
+	public ILiglPage changeSSORole(String roleChangeTo) throws Exception {
+		return null;
+	}
+
+	public ILiglPage loggedInUserRoleAfterRoleChanged(String expectedRole) throws Exception {
+		return null;
+	}
+
+	/*Employee Master Page*/
+
+	public ILiglPage clickOnImport() throws Exception {
+		return null;
+	}
+
+	public ILiglPage clickOnEmployee() throws Exception {
+		return null;
+	}
+
+	public ILiglPage searchAndSelectTheEmployee(String employee) throws Exception {
+		return null;
+	}
+
+	public ILiglPage clickOnAddEmployeeButton() throws Exception {
+		return null;
+	}
+
+	public ILiglPage employeeBulkImport(String importEmpFile) throws Exception {
+		return null;
+	}
+
+	public ILiglPage createNewEmployee(
+			String id, String firstName, String middleName, String lastName,
+			String alias, String department, String title, String checkTitleOptional, String lastUpdate,
+			String empJoinDate, String empTerminatedDate, String status, String empHistoricID, String empEmail, String alternateEmail, String secondaryEmail,
+			String mobileNumber, String telephoneNumber, String faxNumber, String category, String entity, String location, String division,
+			String accountType, String accountManagerFirstName, String accountManagerMiddleName, String accountManagerLastName, String reportingManager,
+			String officeType, String officeName, String officeAddressLine, String officeAddressBuildingCode, String officeAddressCampusCode,
+			String officeAddressMailingCode, String officeAddressZipCode, String officeAddressCity, String officeAddressState, String affiliation,
+			String homeDepartmentCode
+	) throws Exception {
+		return null;
+	}
+
+	public ILiglPage editEmployee(
+			String firstName, String middleName, String lastName,
+			String department, String title, String checkTitleOptional, String lastUpdate,
+			String empJoinDate, String empTerminatedDate, String status, String empHistoricID, String alternateEmail,
+			String secondaryEmail, String mobileNumber, String telephoneNumber, String faxNumber,
+			String accountType, String accountManagerFirstName, String accountManagerMiddleName, String accountManagerLastName,
+			String reportingManager, String entity, String officeName, String officeAddressLine, String officeAddressBuildingCode,
+			String officeAddressCampusCode, String officeAddressMailingCode, String officeAddressZipCode, String officeAddressCity,
+			String officeAddressState, String affiliation, String homeDepartmentCode
+	) throws Exception {
+		return null;
+	}
+
+	public ILiglPage empNonEditableFields() throws Exception {
+		return null;
+	}
+
+	public ILiglPage employeeMaximumOfDigitsAllowedContctFields(String mobileNumber, String telephoneNumber, String faxNumber)
+			throws Exception {
+		return null;
+	}
+
+	public ILiglPage editableFiedsHRStatusHireDateTerminatedDate(String empJoinDate, String empTerminatedDate, String status)
+			throws Exception {
+		return null;
+	}
+
+	public ILiglPage titleFieldName() throws Exception {
+		return null;
+	}
+
+	public ILiglPage availablityOfOptionlDropDowns() throws Exception {
+		return null;
+	}
+
+	public ILiglPage availablityOfOptionlFields() throws Exception {
+		return null;
+	}
+
+	/*Contact Master*/
+
+	public ILiglPage clickOnAddContactButton() throws Exception {
+		return null;
+	}
+
+	public ILiglPage searchAndSelectTheContact(String firstName) throws Exception {
+		return null;
+	}
+
+	public ILiglPage createContact(String firstName, String middleName, String lastName, String title, String isPrimaryContact,
+								   String status, String contactType, String partyType, String partyName, String primaryEmail,
+								   String secondaryEmail, String mobile, String telephone, String fax, String addressLine1,
+								   String addressLine2, String country, String state, String city, String zip) throws Exception {
+		return null;
+	}
+
+	public ILiglPage editContact(String firstName, String middleName, String lastName, String title, String contactType,
+								 String status, String primaryContact, String partyType, String partyName, String primaryEmail,
+								 String secondaryEmail, String mobile, String telephone, String fax, String addressLine1,
+								 String addressLine2, String country, String state, String city, String zip) throws Exception {
+		return null;
+	}
+
+	public ILiglPage checkPartyName(String contactType, String partyType, String partyName) throws Exception {
+		return null;
+	}
+
+	public ILiglPage contactMaximumOfDigitsAllowedContctFields(String mobileNumber, String telephoneNumber, String faxNumber)
+			throws Exception {
+		return null;
+	}
+
+	public ILiglPage checkPartyNameBasedOnSelectedContactType(String contactType, String partyType) throws Exception {
+		return null;
+	}
+
+	/* Parties Page */
+
+	public ILiglPage clickOnAddPartyButton() throws Exception {
+		return null;
+	}
+
+	public ILiglPage searchAndSelectTheParties(String partiesName) throws Exception {
+		return null;
+	}
+
+	public ILiglPage craeteNewParty(String name, String partyType, String department, String status, String description,
+									String website, String email, String phone, String telephone, String fax,
+									String addressLine1, String addressLine2, String addressLine3, String country,
+									String state, String city, String zip) throws Exception {
+		return null;
+	}
+
+	public ILiglPage editParty(String name, String partyType, String department, String status, String statusChangeReason,
+							   String description, String website, String email, String phone, String telephone, String fax,
+							   String addressLine1, String addressLine2, String addressLine3, String country,
+							   String state, String city, String zip) throws Exception {
+		return null;
+	}
+
+	public ILiglPage partyMaximumOfDigitsAllowedContctFields(String mobileNumber, String telephoneNumber, String faxNumber)
+			throws Exception{
+		return null;
+	}
+
+	/*Email Template Page*/
+	public ILiglPage createNewEmailTemplate(String emailTemplateCategory, String emailTemplateName, String subject,
+											String content) throws Exception {
+		return null;
+	}
+
+	public ILiglPage editEmailTemplate(String emailTemplateCategory, String emailTemplate, String subject,
+									   String content) throws Exception {
+		return null;
+	}
+
+	public ILiglPage checkWhetherAddTemplateAndDeleteButtonsAreDisabled(String emailTemplateCategory,
+																		String emailTemplate) throws Exception {
+		return null;
+	}
+
+	/*Case Settings Page*/
+
+	public ILiglPage createCaseSettingsTemplate(String caseSettingsTemplateName, String Description, String kWE,
+												String workSpaceTemplateId, String clientTemplateId,
+												String processingProfiles) throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkNewlyCreatedCaseSettingTemplatePopulatedInCaseSettingsTemplateDropDown(String caseSettingsTemplate) throws Exception{
+		return null;
+	}
+
+	/*Lookup Manager Page*/
+	public ILiglPage selectLookupType(String lookup) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnNewButton() throws Exception{return null;}
+
+	public ILiglPage searchAndSelectTheLookUp(String name) throws Exception{return null;}
+
+	public ILiglPage createLookUp(String name, String displayOrder, String description, String entityType) throws Exception{
+		return null;
+	}
+
+	public ILiglPage editLookUp(String name, String displayOrder, String description, String entityType) throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkNewlyCreatedLookupPopulatedInRequestTypeDropDown(String requestType) throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkNewlyCreatedLookupPopulatedInCaseTypeDropDown(String caseType) throws Exception{
+		return null;
+	}
+
+	/**
+	 * Admin-Legal Hold
+	 */
+	/*Stakeholder Page*/
+
+	public ILiglPage clickOnAddStakeholderButton() throws Exception{return null;}
+
+	public ILiglPage createStakeholder(String firstName, String middleName, String lastName, String email,
+									   String department, String category) throws Exception{return null;}
+
+	public ILiglPage editExitingStakeholder(String firstName, String middleName, String lastName, String email,
+											String department, String category, String status, String reason)
+			throws Exception{return null;}
+
+	public ILiglPage scrollToRightToDoAction(String email) throws Exception {return null;}
+
+	public ILiglPage searchTheStakeholder(String email) throws Exception{return null;}
+
+	public ILiglPage deleteTheExitingStakeholder() throws Exception{return null;}
+
+	public ILiglPage checkStakeholderDisplayingInGrid(String email) throws Exception{return null;}
+
+	public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception{return null;}
+
+	public ILiglPage verifyTheDuplicateValidationMessage() throws Exception{return null;}
+
+	/*
+	 * Manage QuestionBank
+	 * */
+
+	public ILiglPage refreshTheManageQuestionBankPage() throws Exception{return null;}
+
+	public ILiglPage clickOnQuestionnaireButton() throws Exception{return null;}
+
+	public ILiglPage clickOnEditInQuestionGrid() throws Exception{return null;}
+
+	public ILiglPage scrollToRightToDoActionInManageQuestionGrid(String question) throws Exception{return null;}
+
+	public ILiglPage searchTheQuestion(String question) throws Exception{return null;}
+
+	public ILiglPage searchChildQuestion(String childQuestion) throws Exception{return null;}
+
+	public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent,
+											String IsQuestionMandatory, String RenderOptions, String Description,
+											String AppliesTo, String searchParentQuestion) throws Exception{
+		return null;
+	}
+	public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,
+											  String Description) throws Exception{return null;}
+
+	public ILiglPage checkAppliesToIsNonEditableField() throws Exception{return null;}
 		public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;
