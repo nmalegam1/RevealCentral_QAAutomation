@@ -1,6 +1,7 @@
 package com.ligl.web;
 
 import java.time.Duration;
+import java.util.List;
 
 import com.ligl.base.pages.ILiglPage;
 import com.paulhammant.ngwebdriver.NgWebDriver;
@@ -145,11 +146,13 @@ public abstract class LiglValidationDriver implements IWebConnector {
 	}
 
 	public WebElement customXpathBasedOnTextValue(String textValue) throws Exception{
-		WebElement webElement = getCurrentDriver().findElement(By.xpath("//span[contains(text(), '" + textValue + "')]"));
-		return webElement;
+		Thread.sleep(500);
+		WebElement webElementA = getCurrentDriver().findElement(By.xpath("//span[contains(text(), '" + textValue + "')]"));
+		return webElementA;
 	}
 
 	public void moveToRightInAngularTable(String number) throws Exception{
+		Thread.sleep(500);
 		Actions ac = new Actions(getCurrentDriver());
 		int a = Integer.parseInt(number);
 		for (int i = 0; i < a; i++) {
@@ -157,4 +160,11 @@ public abstract class LiglValidationDriver implements IWebConnector {
 		}
 		ac.sendKeys(Keys.TAB).perform();
 	}
+
+	public WebElement checkTheCheckBox(String textValue) throws Exception{
+		Thread.sleep(1000);
+		WebElement webElementB = getCurrentDriver().findElement(By.xpath("//span[@title='"+textValue+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']"));
+		return webElementB;
+	}
+
 }

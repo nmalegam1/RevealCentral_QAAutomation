@@ -1343,7 +1343,7 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage checkStakeholderDisplayingInGrid(String email) throws Exception{return null;}
 
-	public ILiglPage checkDelectedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception{return null;}
+	public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception{return null;}
 
 	public ILiglPage verifyTheDuplicateValidationMessage() throws Exception{return null;}
 
@@ -1351,15 +1351,27 @@ public class LiglBasePage implements ILiglPage {
 	 * Manage QuestionBank
 	 * */
 
+	public ILiglPage refreshTheManageQuestionBankPage() throws Exception{return null;}
+
 	public ILiglPage clickOnQuestionnaireButton() throws Exception{return null;}
 
-	public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent, String IsQuestionMandatory,
-											String RenderOptions, String Description, String AppliesTo) throws Exception{
+	public ILiglPage clickOnEditInQuestionGrid() throws Exception{return null;}
+
+	public ILiglPage scrollToRightToDoActionInManageQuestionGrid(String question) throws Exception{return null;}
+
+	public ILiglPage searchTheQuestion(String question) throws Exception{return null;}
+
+	public ILiglPage searchChildQuestion(String childQuestion) throws Exception{return null;}
+
+	public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent,
+											String IsQuestionMandatory, String RenderOptions, String Description,
+											String AppliesTo, String searchParentQuestion) throws Exception{
 		return null;
 	}
-	public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,String Description) throws Exception{
-		return null;
-	}
+	public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,
+											  String Description) throws Exception{return null;}
+
+	public ILiglPage checkAppliesToIsNonEditableField() throws Exception{return null;}
 		public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;
