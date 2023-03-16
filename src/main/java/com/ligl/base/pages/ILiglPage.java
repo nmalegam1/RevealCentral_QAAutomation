@@ -886,17 +886,34 @@ public interface ILiglPage {
 
     public ILiglPage verifyTheDuplicateValidationMessage() throws Exception;
 
-    public ILiglPage checkDelectedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception;
+    public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception;
 
     /*
      * Manage QuestionBank
      * */
 
+    public ILiglPage refreshTheManageQuestionBankPage() throws Exception;
+
     public ILiglPage clickOnQuestionnaireButton() throws Exception;
+
+    public ILiglPage clickOnEditInQuestionGrid() throws Exception;
+
+    public ILiglPage scrollToRightToDoActionInManageQuestionGrid(String question) throws Exception;
+
+    public ILiglPage searchTheQuestion(String question) throws Exception;
+
+    public ILiglPage searchChildQuestion(String childQuestion) throws Exception;
 
     public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent,
                                             String IsQuestionMandatory, String RenderOptions, String Description,
-                                            String AppliesTo) throws Exception;
+                                            String AppliesTo, String searchParentQuestion) throws Exception;
+
+    public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,
+                                              String Description) throws Exception;
+
+    public ILiglPage checkAppliesToIsNonEditableField() throws Exception;
+
+
 
 
 }

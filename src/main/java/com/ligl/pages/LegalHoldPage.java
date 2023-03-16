@@ -4058,8 +4058,8 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         }
     }
 
-    /*****************************************Admin*********************************************************/
-    public ILiglPage checkDelectedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception {
+    /*****************************************Admin Test*********************************************************/
+    public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception {
         try {
             wait(2);
             getSession().log_Info("Hover on Email Header");
