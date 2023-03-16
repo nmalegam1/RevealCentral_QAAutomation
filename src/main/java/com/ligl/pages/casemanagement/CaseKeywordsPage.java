@@ -38,7 +38,7 @@ public class CaseKeywordsPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[@title='KW2']")
     WebElement KW2;
 
-    @FindBy(xpath = "//div/mat-select[@role='combobox' and @id='dstId']")
+    @FindBy(id = "selectType")
     WebElement SelectDataSourceDrpDwn;
 
     @FindBy(xpath = "//span[@title='Basic']")

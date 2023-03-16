@@ -183,6 +183,8 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
             log_Info("Click On Status Drop Down");
             Thread.sleep(5000);
             StatusDrpDwn.sendKeys(StatusDropDown1);
+            Thread.sleep(5000);
+            StatusDrpDwn.sendKeys(Keys.ENTER);
             getSession().log_Pass("Clicked On Status Drop Down");
 
 
@@ -237,18 +239,21 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
             log_Info("Click On Case Type Drop Down");
             Thread.sleep(5000);
             CaseType.sendKeys(CaseTypeDrpDwn);
+            Thread.sleep(5000);
             CaseType.sendKeys(Keys.ENTER);
             getSession().log_Pass("Clicked On Case Type Drop Down");
 
             log_Info("Click On Case Name");
             Thread.sleep(5000);
             CaseName.clear();
+            Thread.sleep(5000);
             CaseName.sendKeys(CaseName1);
             getSession().log_Pass("Clicked On Case Name");
 
             log_Info("Click On Case Type Drop Down");
             Thread.sleep(5000);
             CST.sendKeys(CaseSettingTemplateDrpDwn);
+            Thread.sleep(5000);
             CST.sendKeys(Keys.ENTER);
             getSession().log_Pass("Clicked On Case Type Drop Down");
 
@@ -333,7 +338,8 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
     public ILiglPage verifyingEditBtn() throws Exception {
 
         try {
-
+            Thread.sleep(5000);
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", EditBtn);
             log_Info("Click On Edit Button");
             getDriver().waitForelementToBeClickable(EditBtn);
             Thread.sleep(5000);

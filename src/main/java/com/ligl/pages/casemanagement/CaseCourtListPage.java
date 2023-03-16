@@ -43,7 +43,7 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
     // 3. Navigate To Prosecutor
 
 
-    @FindBy(xpath = "//button[contains(text(),'Prosecutor')]")
+    @FindBy(id = "add-prosecutor-btn")
     WebElement AddProsecutor;
 
     @FindBy(xpath = "//span[contains(text(),'test team')]")

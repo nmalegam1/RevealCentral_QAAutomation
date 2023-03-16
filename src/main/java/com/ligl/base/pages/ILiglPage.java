@@ -120,7 +120,7 @@ public interface ILiglPage {
 
     ILiglPage checkReportingManagerFieldinAdditionalFields(String s) throws Exception;
 
-    ILiglPage checkLHNForCustodians(String LHN, String Employee1) throws Exception;
+    ILiglPage checkLHNForCustodians(String LHN) throws Exception;
 
     void selectDateFromCalendar(String date);
 
@@ -188,7 +188,7 @@ public interface ILiglPage {
 
     ILiglPage verifyApprovalHistoryStatus(String AssignedUser1, String Status1, String Status2, String AssignedUser2) throws Exception;
 
-    ILiglPage sendingCaseForDualApproval(String BatchNAME, String USER1, String USER2, String EMAIL, String Employee1, String SubType) throws Exception;
+    ILiglPage sendingCaseForDualApproval(String Employee1,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception;
 
     ILiglPage verifyingEditBtn() throws Exception;
 

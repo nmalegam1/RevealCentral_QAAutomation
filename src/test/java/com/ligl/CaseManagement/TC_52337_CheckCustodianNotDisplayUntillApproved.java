@@ -35,14 +35,14 @@ public class TC_52337_CheckCustodianNotDisplayUntillApproved extends TestBase
                     .getLeftMenu()
                     .navigateToCustodiansPage()
                     .addCustodianToCase(data.get("Email1"))
-                    .getLeftMenu().navigateToLegalHoldPage().checkLHNForCustodians(data.get("LHN"), data.get("Employee1"))
-                    .validateCustodianBeforeApproved()
-                    .getLeftMenu().goToDataManagement().checkDSIForCustodians(data.get("Employee1"))
+                    .getLeftMenu().navigateToLegalHoldPage().checkLHNForCustodians(data.get("LHN"))
+                    .validateCustodianBeforeApproved().getLeftMenu()
+                    .goToDataManagement().checkDSIForCustodians(data.get("Employee1"))
                     .getLeftMenu().goToSecurityPage()
                     .sendingCaseCustodianForApproval(data.get("Employee1"), data.get("BatchNAME"), data.get("USER"), data.get("EMAIL"))
                     .getHeader().goToApprovalPage().approvingCaseSingleApprover(data.get("CaseNameApprove"))
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().navigateToLegalHoldPage().checkLHNForCustodians(data.get("LHN"), data.get("Employee1")).validateCustodianAfterApproved(data.get("Employee1"))
+                    .getLeftMenu().navigateToLegalHoldPage().checkLHNForCustodians(data.get("LHN")).validateCustodianAfterApproved(data.get("Employee1"))
                     .getLeftMenu().goToDataManagement().validateDSIForCustodians(data.get("Employee1"));
 
 

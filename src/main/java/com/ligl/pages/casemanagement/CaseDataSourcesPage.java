@@ -30,7 +30,6 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage {
         try {
             log_Info("addDataSources() Started");
             log_Info("Click on checkbox");
-            //getDriver().waitForelementToBeClickable(Gmail);
             Thread.sleep(2000);
             getCurrentDriver().findElement(By.xpath("//div[text()='"+DataSource1+"']//../..//div[@class='sourceChkbxDiv']")).click();
             log_Info("Clicked on checkbox");

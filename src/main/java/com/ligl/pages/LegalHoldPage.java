@@ -1355,8 +1355,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     }
     // Check That Any Added Custodian Should Not Be Displayed In LHN Or In DSI Page Untill Approved
 
-    public ILiglPage checkLHNForCustodians(String LHN, String Employee1) throws Exception {
-
+    public ILiglPage checkLHNForCustodians(String LHN) throws Exception {
         try {
 
             log_Info("Click On Legal Hold Name ");
@@ -2645,9 +2644,8 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");
 
-
             log_Info("Click on Save Button");
-            getDriver().waitForelementToBeClickable(SaveBtn);
+            getDriver().waitForelementToBeClickable(SaveButton);
             Thread.sleep(3000);
             SaveButton.click();
             Thread.sleep(5000);
@@ -2719,7 +2717,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("clickActionOnResponseDocument() Failed", ex);
+            throw new Exception("clickOnRefreshButtonLHGrid() Failed", ex);
         }
 
     }
@@ -2815,7 +2813,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
 
             log_Info("Click on Save Button");
-            getDriver().waitForelementToBeClickable(SaveBtn);
+            getDriver().waitForelementToBeClickable(SaveButton);
             Thread.sleep(3000);
             SaveButton.click();
             Thread.sleep(5000);
@@ -2912,7 +2910,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
 
             log_Info("Click on Save Button");
-            getDriver().waitForelementToBeClickable(SaveBtn);
+            getDriver().waitForelementToBeClickable(SaveButton);
             Thread.sleep(3000);
             SaveButton.click();
             Thread.sleep(5000);
@@ -3069,7 +3067,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
 
             log_Info("Click on Save Button");
-            getDriver().waitForelementToBeClickable(SaveBtn);
+            getDriver().waitForelementToBeClickable(SaveButton);
             SaveButton.click();
             Thread.sleep(5000);
             getSession().log_Pass("Save Button clicked");
@@ -3205,7 +3203,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
 
             log_Info("Click on Save Button");
-            getDriver().waitForelementToBeClickable(SaveBtn);
+            getDriver().waitForelementToBeClickable(SaveButton);
             Thread.sleep(3000);
             SaveButton.click();
             Thread.sleep(5000);
@@ -4042,7 +4040,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
 
             log_Info("Click on Save Button");
-            getDriver().waitForelementToBeClickable(SaveBtn);
+            getDriver().waitForelementToBeClickable(SaveButton);
             Thread.sleep(3000);
             SaveButton.click();
             Thread.sleep(5000);

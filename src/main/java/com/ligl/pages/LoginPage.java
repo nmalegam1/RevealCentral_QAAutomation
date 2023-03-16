@@ -53,6 +53,7 @@ public class LoginPage extends LiglBasePage {
 				if(Entity.contains(Entity))
 				{
 					getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Entity+"')]")).click();
+					getDriver().waitUntilSpinnerIsClosed();
 					getDriver().waitForAngularRequestsToComplete();
 					return new DefaultLandingPage();
 				}
