@@ -156,7 +156,7 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage navigateToLegalHoldPage()  { return  null;}
 
-	public ILiglPage sendingCaseForDualApproval(String BatchNAME,String USER1,String USER2,String EMAIL,String Employee1,String SubType) throws Exception{
+	public  ILiglPage sendingCaseForDualApproval(String Employee1,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception{
 		return null;
 	}
 
@@ -442,7 +442,7 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage sendingLegalHoldForApproval() throws Exception {
 		return null;
 	}
-	public ILiglPage checkLHNForCustodians(String LHN,String Employee1) throws Exception{
+	public ILiglPage checkLHNForCustodians(String LHN) throws Exception{
 		return null;
 	}
 
