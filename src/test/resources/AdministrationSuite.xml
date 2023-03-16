@@ -324,5 +324,22 @@
         </classes>
     </test>
 
+    <!--Manage Question Bank-->
+    <test name="TC20282 Verifying the functionality of Save button in Create and Edit +Questionnaire modal">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Edit_Questionnaire_modal"/>
+        </classes>
+    </test>
+    <test name="TC51773 Check whether 'Applies to' field is non-editable in Edit Question modal for Parent and Child questions">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Parent_and_Child_questions"/>
+        </classes>
+    </test>
+    <test name="TC50807 Display Parent to Child questions- Verify that Parent Question which is linked to Child Question is displaying in the Parent Question Column as 'Yes' for IsParent">
+        <classes>
+
+        </classes>
+    </test>
+
 
 </suite>

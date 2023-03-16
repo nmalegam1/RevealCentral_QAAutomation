@@ -39,5 +39,6 @@ public interface IWebConnector{
 	WebElement customXpathBasedOnTextValue(String textValue) throws Exception;
 
 	void moveToRightInAngularTable(String number) throws Exception;
+	WebElement checkTheCheckBox(String textValue) throws Exception;
 
 }
