@@ -1353,6 +1353,8 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage clickOnQuestionnaireButton() throws Exception{return null;}
 
+	public ILiglPage clickOnQuestionnaireButtonDummy() throws Exception{return null;}
+
 	public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent, String IsQuestionMandatory,
 											String RenderOptions, String Description, String AppliesTo) throws Exception{
 		return null;

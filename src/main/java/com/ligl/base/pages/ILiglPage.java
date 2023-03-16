@@ -892,6 +892,8 @@ public interface ILiglPage {
      * Manage QuestionBank
      * */
 
+    public ILiglPage clickOnQuestionnaireButtonDummy() throws Exception;
+
     public ILiglPage clickOnQuestionnaireButton() throws Exception;
 
     public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent,
