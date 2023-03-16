@@ -29,15 +29,15 @@ public class TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCu
                     .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
-                    //.getLeftMenu().navigateToCustodiansPage()
-                    //.addCustodianToCase(data.get("CustMail"))
+                    .getLeftMenu().navigateToCustodiansPage()
+                    .addCustodianToCase(data.get("CustMail"))
                     .getLeftMenu().goToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHName"))
                     .goToLegalHold(data.get("LHName"))
                     .searchLHNThroughEmail(data.get("CustMail"))
                     .clickOnActionDropDownAndRun(data.get("Action"))
                     .sendStealthMode()
-                    //.searchLHNThroughEmail("kkailasam@in.vertical.com")
+                    .searchLHNThroughEmail("kkailasam@in.vertical.com")
                     .verifyRecordStatusInLHN(data.get("CustStatus"));
         } catch (Exception ex) {
             session.log_Error("TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians Failed");

@@ -37,7 +37,7 @@ public class TC_50503_VerifyApprovingCaseDualApprovalTypeBothRejected extends Te
                     .addCustodianToCase(data.get("Email1"))
                     .getLeftMenu()
                     .goToSecurityPage().validateCaseNotinitiatedState()
-                    .sendingCaseForDualApproval(data.get("BatchNAME"), data.get("USER1"), data.get("USER2"), data.get("EMAIL"), data.get("Employee1"), data.get("SubType") )
+                    .sendingCaseForDualApproval(data.get("Employee1"),data.get("BatchNAME"),data.get("USER1"), data.get("USER2"),data.get("SubType") ,data.get("EMAIL"))
                     .getHeader().goToApprovalPage().rejectingTheCase(data.get("CaseNameApprove"))
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage().validateCaseRejectedState()

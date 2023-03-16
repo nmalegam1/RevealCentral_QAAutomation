@@ -48,10 +48,10 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(id = "dual-opt")
     WebElement DualApproval;
 
-    @FindBy(xpath = "//mat-select[@id='select-approver']/ancestor::div[@class='form-group']//span[contains(text(),'Select Approver 1')]//..//mat-select[@id='select-approver'] ")
+    @FindBy(id = "select-approver")
     WebElement SelectorApprover1;
 
-    @FindBy(xpath = "//mat-select[@id='select-approver']/ancestor::div[@class='form-group']//span[contains(text(),'Select Approver 2')]//..//mat-select[@id='select-approver'] ")
+    @FindBy(id = "select-approver-dual")
     WebElement SelectorApprover2;
 
     @FindBy(id = "approval-subType")
@@ -292,6 +292,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             // validating the case Status In Approved state
 
             log_Info("Check The Status Of Case , It Should Be In Approved State");
+            Thread.sleep(7000);
             boolean a3 = ApprovedStatus.isDisplayed();
             System.out.println(a3);
             Thread.sleep(3000);
@@ -397,6 +398,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(SelectApprovalDrpDwn);
             Thread.sleep(3000);
             SelectApprovalDrpDwn.sendKeys(USER);
+            Thread.sleep(5000);
             SelectApprovalDrpDwn.sendKeys(Keys.ENTER);
             log_Info("Clicked on Select Approval  Drop down");
 
@@ -404,6 +406,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
             Thread.sleep(5000);
             TemplateNameDrpDwn.sendKeys(EMAIL);
+            Thread.sleep(5000);
             TemplateNameDrpDwn.sendKeys(Keys.ENTER);
             log_Info("Clicked on Email Template Drop down");
 
@@ -411,9 +414,8 @@ public class SecurityPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(SendApprovalBtn);
             Thread.sleep(3000);
             SendApprovalBtn.click();
+            Thread.sleep(10000);
             log_Info("Clicked on Send For Approval Button");
-
-
             log_Info("Check The Status Of Case , It Should Be In Pending State");
             boolean a2 = PendingStatus.isDisplayed();
             System.out.println(a2);
@@ -488,7 +490,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     // Verify The Case Status When Dual Approval Is Selected And Both Approved The Status
 
-    public ILiglPage sendingCaseForDualApproval(String BatchNAME,String USER1,String USER2,String EMAIL,String Employee1,String SubType) throws Exception {
+    public ILiglPage sendingCaseForDualApproval(String Employee1,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception {
 
         try {
 
@@ -524,8 +526,9 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Select Approval1  Drop down");
             getDriver().waitForelementToBeClickable(SelectorApprover1);
-            Thread.sleep(3000);
+            Thread.sleep(5000);
             SelectorApprover1.sendKeys(USER1);
+            Thread.sleep(5000);
             SelectorApprover1.sendKeys(Keys.ENTER);
             log_Info("Clicked on Select Approval1  Drop down");
 
@@ -533,20 +536,21 @@ public class SecurityPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(SelectorApprover2);
             Thread.sleep(3000);
             SelectorApprover2.sendKeys(USER2);
+            Thread.sleep(5000);
             SelectorApprover2.sendKeys(Keys.ENTER);
             log_Info("Clicked on Select Approval2  Drop down");
 
-            log_Info("Click on Select Approval2  Drop down");
+            log_Info("Click on Approval Type  Drop down");
             getDriver().waitForelementToBeClickable(ApprovalSubType);
-            Thread.sleep(3000);
             ApprovalSubType.sendKeys(SubType);
-            ApprovalSubType.sendKeys(Keys.ENTER);
-            log_Info("Clicked on Select Approval2  Drop down");
+            Thread.sleep(5000);
+            log_Info("Clicked on Approval Type Drop down");
 
             log_Info("Click on Email Template Drop down");
             getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
             Thread.sleep(5000);
             TemplateNameDrpDwn.sendKeys(EMAIL);
+            Thread.sleep(5000);
             TemplateNameDrpDwn.sendKeys(Keys.ENTER);
             log_Info("Clicked on Email Template Drop down");
 
@@ -554,6 +558,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(SendApprovalBtn);
             Thread.sleep(3000);
             SendApprovalBtn.click();
+            Thread.sleep(8000);
             log_Info("Clicked on Send For Approval Button");
 
 
@@ -692,9 +697,8 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Approver SubType  Drop down");
             getDriver().waitForelementToBeClickable(ApprovalSubType);
-            Thread.sleep(3000);
+            Thread.sleep(7000);
             ApprovalSubType.sendKeys(SubType);
-            ApprovalSubType.sendKeys(Keys.ENTER);
             log_Info("Clicked on Approver SubType  Drop down");
 
 
