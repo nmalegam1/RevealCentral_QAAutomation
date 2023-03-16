@@ -894,6 +894,20 @@ public interface ILiglPage {
 
     public ILiglPage clickOnQuestionnaireButton() throws Exception;
 
+    ILiglPage clikcOnStakeholderLink() throws Exception;
+
+    ILiglPage clickOnAddRequestButton() throws Exception;
+
+    ILiglPage validateListOfColumnsInTheRequestPage() throws Exception;
+
+    ILiglPage validateCreatedRequestInTheGlobalRequestGrid(String TITLE) throws Exception;
+
+    ILiglPage clickOnEditIconInTheGrid() throws Exception;
+
+    ILiglPage addAllDetailsInTheAddRequestPopUpWithoutAssignee(String RequestType,String REQTitle,String CaseDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception;
+
+    ILiglPage addAllDetailsInTheAddRequestPopUp(String RequestType,String REQTitle,String CaseDropDown,String UserDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception;
+
     public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent,
                                             String IsQuestionMandatory, String RenderOptions, String Description,
                                             String AppliesTo) throws Exception;

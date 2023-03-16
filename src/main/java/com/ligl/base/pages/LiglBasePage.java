@@ -1353,10 +1353,38 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage clickOnQuestionnaireButton() throws Exception{return null;}
 
+	public ILiglPage clikcOnStakeholderLink() throws  Exception{
+		return null;
+	}
+
 	public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent, String IsQuestionMandatory,
 											String RenderOptions, String Description, String AppliesTo) throws Exception{
 		return null;
 	}
+
+
+	public ILiglPage clickOnAddRequestButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage addAllDetailsInTheAddRequestPopUp(String RequestType,String REQTitle,String CaseDropDown,String UserDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateCreatedRequestInTheGlobalRequestGrid(String TITLE) throws Exception{
+		return null;
+	}
+	public ILiglPage validateListOfColumnsInTheRequestPage() throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnEditIconInTheGrid() throws Exception{
+		return null;
+	}
+
+	public ILiglPage addAllDetailsInTheAddRequestPopUpWithoutAssignee(String RequestType,String REQTitle,String CaseDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception{
+		return null;
+	}
+
 	public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,String Description) throws Exception{
 		return null;
 	}
