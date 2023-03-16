@@ -578,11 +578,12 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage clickOnKeywordsCheckBoxForApproval(String KeyWords) throws Exception{
 		return null;
 	}
-	public ILiglPage addDataSourceRecordToDSIGridUptoCollection(String cust, String datasource, String DataHold) throws Exception{
+
+	public  ILiglPage addInActiveEMPToCase(String s) throws Exception {return null;}
+	public ILiglPage addDataSourceRecordToDSIGridUptoCollection(String cust, String datasource, String DataHold) throws Exception {
 		return null;
 	}
-
-
+	public ILiglPage verifyRecordStatusInLHNSH(String LHStatus) throws Exception{return null;}
 	public ILiglPage validateLHStatus(String Status) throws Exception{
 		return null;
 	}
