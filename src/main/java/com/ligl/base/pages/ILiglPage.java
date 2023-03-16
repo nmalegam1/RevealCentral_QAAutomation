@@ -72,6 +72,8 @@ public interface ILiglPage {
     ILiglPage verifyFieldsInAddLegalHoldModel(String s1,String s2)throws Exception;
     ILiglPage checkUnableToSetStealthModeToDeactiveCust(String s)throws Exception;
     ILiglPage verifyRecordStatusInLHN(String s)throws Exception;
+    ILiglPage addInActiveEMPToCase(String s) throws Exception;
+    ILiglPage verifyRecordStatusInLHNSH(String LHStatus) throws Exception;
     ILiglPage checkReportingManagerFieldinAdditionalFields(String s)throws  Exception;
     ILiglPage checkLHNForCustodians(String LHN,String Employee1) throws Exception;
 

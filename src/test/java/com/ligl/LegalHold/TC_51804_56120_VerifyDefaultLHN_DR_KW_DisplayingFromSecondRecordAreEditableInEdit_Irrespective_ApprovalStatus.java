@@ -29,7 +29,7 @@ public class TC_51804_56120_VerifyDefaultLHN_DR_KW_DisplayingFromSecondRecordAre
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .editLHNCreatedWithDRKW(data.get("LHName1"),data.get("LHName2"),data.get("CustNoticeTemp"),data.get("StartDate"),data.get("EndDate"),data.get("KeyWord"));
         } catch (Exception ex) {
             session.log_Error("TC_51803_VerifyFirstCreatedLH_KW_DR_DisplayedDefaultToRestOfLHs Failed");

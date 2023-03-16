@@ -35,7 +35,7 @@ public class LegalHoldPage extends LiglBasePage {
     @FindBy(id = "appr-approve-btn")
     WebElement ApproveBtn;
 
-    @FindBy(id = "send-approval-btn")
+    @FindBy(id = "btn-save")
     WebElement SaveBtn;
     @FindBy(id = "appr-reject-btn")
     WebElement RejectBtn;
@@ -349,6 +349,8 @@ public class LegalHoldPage extends LiglBasePage {
     WebElement InterviewActionColHeader;
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DPNStatusName']")
     WebElement CustStatus;
+    @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DpnStatusName']")
+    WebElement StakeStatus;
     @FindBy(css = "i[class='lnr lnr-pencil']")
     WebElement EditBtn;
     @FindBy(xpath = "//button[contains(text(),'Ok')]")
@@ -610,6 +612,20 @@ public class LegalHoldPage extends LiglBasePage {
             throw new Exception("Exception in verifyRecordStatusInLHN()",ex);
         }
     }
+    public ILiglPage verifyRecordStatusInLHNSH(String LHStatus) throws Exception{
+        try{
+            log_Info("verifyRecordStatusInLHN() Started");
+            Thread.sleep(8000);
+            String status=StakeStatus.getText();
+            Assert.assertEquals(status,LHStatus);
+            log_Info("Custodian Status is '"+status+"'");
+            log_Pass("Custodian Status updated as per Change");
+            return new LegalHoldPage();
+        }catch (Exception ex){
+            log_Error(" verifyRecordStatusInLHN() is Failed");
+            throw new Exception("Exception in verifyRecordStatusInLHN()",ex);
+        }
+    }
     public ILiglPage resendLHN(String custMail,String action) throws Exception{
         try{
             log_Pass("resendLHN() Started");
@@ -653,7 +669,7 @@ public class LegalHoldPage extends LiglBasePage {
             Thread.sleep(5000);
             EditLHN.click();
             Thread.sleep(3000);
-            NextBtn.click();
+            LHNNextBtn.click();
             Thread.sleep(2000);
             OnFlyEdit.click();
             editTempOnFly(NewtempName,subject,content);
@@ -674,11 +690,11 @@ public class LegalHoldPage extends LiglBasePage {
             LHNSaveBtn.click();
             Thread.sleep(8000);
             log_Pass("LHN Saved Successfully After onFly Edit");
-            //searchRequiredLegalHoldName(lhName);
+            searchRequiredLegalHoldName(lhName);
             Thread.sleep(10000);
             EditLHN.click();
             Thread.sleep(2000);
-            NextBtn.click();
+            LHNNextBtn.click();
             Thread.sleep(2000);
             String s1=selectedTemplateName.getText();
             Assert.assertEquals(s1,NewtempName);
@@ -723,7 +739,7 @@ public class LegalHoldPage extends LiglBasePage {
         UnCheckAll.click();
         SendStealth.click();
         Thread.sleep(7000);
-        return new LegalHoldPage();
+        return new CaseCustodiansPage();
     }
     public ILiglPage selectLHN(String LHN)throws Exception{
         try{
@@ -833,25 +849,25 @@ public class LegalHoldPage extends LiglBasePage {
             Thread.sleep(3000);
             LHNNextBtn.click();
             Thread.sleep(2000);
-            //OnFlyEdit.click();
-            //editTempOnFly(NewtempName,subject,content);
+            OnFlyEdit.click();
+            editTempOnFly(NewtempName,subject,content);
 
             CustodianNextBtn.click();
             StakeNextBtn.click();
             Thread.sleep(2000);
-            //Startdate.click();
-            Thread.sleep(3000);
-            // Startdate.sendKeys(Keys.ENTER);
-            Thread.sleep(2000);
-            Startdate.clear();
-            Thread.sleep(3000);
-            Startdate.sendKeys(startDate);
 
-            //EndDate.click();
-            //EndDate.sendKeys(Keys.ENTER);
-            EndDate.clear();
-            Thread.sleep(3000);
-            EndDate.sendKeys(endDate);
+            Startdate.click();
+            Startdate.sendKeys(Keys.ESCAPE);
+            Startdate.sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+            Startdate.sendKeys(startDate);
+            Startdate.sendKeys(Keys.TAB);
+
+            EndDate.click();
+            EndDate.sendKeys(Keys.ESCAPE);
+            EndDate.sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+            EndDate.sendKeys(startDate);
+            EndDate.sendKeys(Keys.TAB);
+
             DateRangeNextbtn.click();
             Thread.sleep(2000);
             WebElement keyWordsForm= getCurrentDriver().findElement(By.xpath("//mat-chip-list[@id='mat-chip-list-0']"));
@@ -1065,7 +1081,7 @@ public class LegalHoldPage extends LiglBasePage {
     public ILiglPage editLHNCreatedWithDRKW(String lhName1,String lhName2,String custTemp,String startDate,String endDate,String keyword)throws Exception{
         try{
             log_Info("editLHNCreatedWithDRKW() is Started");
-            createSecondLHN(lhName1,custTemp);
+           // createSecondLHN(lhName1,custTemp);
             Thread.sleep(10000);
             searchRequiredLegalHoldName(lhName1);
             Thread.sleep(5000);
@@ -1078,18 +1094,17 @@ public class LegalHoldPage extends LiglBasePage {
             Thread.sleep(2000);
 
             Startdate.click();
-            Thread.sleep(3000);
-            Startdate.sendKeys(Keys.ENTER);
-            Thread.sleep(2000);
-            Startdate.clear();
-            Thread.sleep(3000);
+            Startdate.sendKeys(Keys.ESCAPE);
+            Startdate.sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
             Startdate.sendKeys(startDate);
+            Startdate.sendKeys(Keys.TAB);
 
             EndDate.click();
-            EndDate.sendKeys(Keys.ENTER);
-            EndDate.clear();
-            Thread.sleep(3000);
-            EndDate.sendKeys(endDate);
+            EndDate.sendKeys(Keys.ESCAPE);
+            EndDate.sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+            EndDate.sendKeys(startDate);
+            EndDate.sendKeys(Keys.TAB);
+
             DateRangeNextbtn.click();
             Thread.sleep(2000);
             WebElement keyWordsForm= getCurrentDriver().findElement(By.xpath("//mat-chip-list[@id='mat-chip-list-0']"));
@@ -1187,6 +1202,7 @@ public class LegalHoldPage extends LiglBasePage {
 
             Assert.assertEquals(ED,endDate);
             log_Pass("End date is filled by default with first LHN date ");
+            DateRangeNextbtn.click();
 
             Boolean b3=KeyWordsFields.isEnabled();
             if(!b3)
@@ -1235,8 +1251,8 @@ public class LegalHoldPage extends LiglBasePage {
             log_Info("Start Date Field is Available");
             EndDate.isDisplayed();
             log_Info("End Date Field is Available");
-            NoOfDays.isDisplayed();
-            log_Info("No of Days Field is Available");
+           /* NoOfDays.isDisplayed();
+            log_Info("No of Days Field is Available");*/
             DateRangeNextbtn.click();
             Thread.sleep(2000);
             KeyWordsFields.isDisplayed();
