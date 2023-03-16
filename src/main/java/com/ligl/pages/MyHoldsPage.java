@@ -176,14 +176,15 @@ public class MyHoldsPage extends LiglBaseSessionPage {
         try{
             log_Info("checkAckModeColumn() Started");
             RefreshBtn.click();
-            caseNameSearch("QA_Feb_06");
+            Thread.sleep(5000);
+            caseNameSearch(CaseName);
             Thread.sleep(5000);
             RefreshBtn.click();
             Thread.sleep(3000);
             legalHoldSearch(LHN);
             Thread.sleep(3000);
-            RefreshBtn.click();
-            Thread.sleep(3000);
+            //RefreshBtn.click();
+            //Thread.sleep(3000);
             Actions ac=new Actions(getCurrentDriver());
             getCurrentDriver().findElement(By.xpath("//div[@col-id='Comments']//span[@class='ellipsisAgGrid']")).click();
 

@@ -31,7 +31,7 @@ public class TC30545_Verify_that_newly_added_stakeholders_are_displaying_in_Stak
                     .getAdminLeft()
                     .clickOnAdminLegalHold()
                     .getAdminLeft()
-                    .clikcOnStakeholderLink()
+                    .clickOnStakeholderLink()
                     .searchTheStakeholder(data.get("StakeholderEmail"))
                     .checkStakeholderDisplayingInGrid(data.get("StakeholderEmail"))
                     .getHeader()

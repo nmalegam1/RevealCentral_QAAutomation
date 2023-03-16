@@ -17,7 +17,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
 
     // Web Elements For Other Party
 
-    @FindBy(id = "add-case-doc-btn")
+    @FindBy(id = "add-party-btn")
     WebElement AddParty;
 
     @FindBy(id = "select-party-type-third-party")
@@ -112,7 +112,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     WebElement SelectLawFirmDrpDwn;
 
 
-    @FindBy(id = "cancel-btn")
+    @FindBy(id = "third-party-add-counsel-inhouse-btn")
     WebElement CounselBtn;
 
     @FindBy(xpath = "//span[contains(text(),'Contact')]/ancestor::div[@ref='eLabel']")
@@ -274,9 +274,9 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(PartyStatusDrpdwn);
             Thread.sleep(5000);
             PartyStatusDrpdwn.sendKeys(Status);
-            Thread.sleep(3000);
+            Thread.sleep(5000);
             PartyStatusDrpdwn.sendKeys(Keys.ENTER);
-            getSession().log_Pass("Clicked on Status");
+            getSession().log_Pass("Click on Status Drop Down");
 
             log_Info("Click on Description TextBox");
             getDriver().waitForelementToBeClickable(DescriptionTextBox);
@@ -460,13 +460,6 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     public ILiglPage deleteContactsAddedForParty(String PartyNew, String ContactName) throws Exception {
 
         try {
-
-            log_Info("Enter PartyName from search bar");
-            Thread.sleep(5000);
-            SearchBarIcon.sendKeys(PartyNew);
-            log_Info("Entered Party Name from search bar");
-
-
             log_Info("Click On Party Name ");
             Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//span[@title='"+PartyNew+"']//span")).click();
@@ -519,13 +512,6 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     public ILiglPage createNewInHouseCounselForEnterpriseParty(String PartyName,String FirstName,String LastName) throws Exception {
 
         try {
-
-            log_Info("Enter PartyName from search bar");
-            Thread.sleep(5000);
-            SearchBarIcon.sendKeys(PartyName);
-            log_Info("Entered Party Name from search bar");
-
-
             log_Info("Click On Party Name ");
             Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//span[@title='"+PartyName+"']//span")).click();
@@ -750,14 +736,6 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     public ILiglPage createOtherPartyNewOutsideCounsel(String PartyName,String NameTextBox,String PartyDrpDwn,String Description,String Status,String FirstName,String LastName) throws Exception {
 
         try {
-
-
-            log_Info("Enter PartyName from search bar");
-            Thread.sleep(5000);
-            SearchBarIcon.sendKeys(PartyName);
-            log_Info("Entered Party Name from search bar");
-
-
             log_Info("Click On Party Name ");
             Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//span[@title='"+PartyName+"']//span")).click();
@@ -797,8 +775,8 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             log_Info("Click on Party Type Drop Down");
             getDriver().waitForelementToBeClickable(PartyTypeDrpDwn);
             Thread.sleep(5000);
-            //PartyTypeDrpDwn.click();
             PartyTypeSearchBar.sendKeys(PartyDrpDwn);
+            Thread.sleep(5000);
             PartyTypeSearchBar.sendKeys(Keys.ENTER);
             getSession().log_Pass("Clicked on Party Type Drop Down");
 
@@ -810,10 +788,11 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getSession().log_Pass("Clicked on Description TextBox");
 
             log_Info("Click On Status Drop Down");
-            getDriver().waitForelementToBeClickable(StatusDropDown);
+            getDriver().waitForelementToBeClickable(PartyStatusDrpdwn);
             Thread.sleep(5000);
-            StatusDropDown.sendKeys(Status);
-            StatusDropDown.sendKeys(Keys.ENTER);
+            PartyStatusDrpdwn.sendKeys(Status);
+            Thread.sleep(5000);
+            PartyStatusDrpdwn.sendKeys(Keys.ENTER);
             log_Info("Clicked On Status Drop Down");
 
 
@@ -940,13 +919,6 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     public ILiglPage createNewCounselForSelectedOutsideCounsel(String PartyNew,String OptionFromLawFirmDropDwn,String FirstName,String LastName) throws Exception {
 
         try {
-
-            log_Info("Enter PartyName from search bar");
-            Thread.sleep(5000);
-            SearchBarIcon.sendKeys(PartyNew);
-            log_Info("Entered Party Name from search bar");
-
-
             log_Info("Click On Party Name ");
             Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//span[@title='"+PartyNew+"']//span")).click();
@@ -1013,7 +985,6 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
         try {
 
             log_Info("Click On Party Name ");
-            getDriver().waitForelementToBeClickable(PartyName4);
             Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//span[@title='"+PartyNew+"']//span")).click();
             getSession().log_Pass("Clicked On Party Name");

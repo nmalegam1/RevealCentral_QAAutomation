@@ -29,7 +29,7 @@ public class TC_50827_CheckNoDuplicateRecordsAfterResendActionLHNGrid extends Te
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHName"))
                     .goToLegalHold(data.get("LHName"))
                     .resendLHN(data.get("CustMail"),data.get("DPAction"));

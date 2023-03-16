@@ -186,13 +186,12 @@ public interface ILiglPage {
 
     ILiglPage goToCaseManagement() throws InterruptedException;
 
-    ILiglPage verifyApprovalHistoryStatus(String AssignedUser1, String Status1, String Status2, String AssignedUser2) throws Exception;
+    ILiglPage verifyApprovalHistoryStatus(String AssignedUser1,String Status1,String Status2,String AssignedUser2) throws Exception;
 
-    ILiglPage sendingCaseForDualApproval(String BatchNAME, String USER1, String USER2, String EMAIL, String Employee1, String SubType) throws Exception;
+    ILiglPage sendingCaseForDualApproval(String Employee1,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception;
 
     ILiglPage verifyingEditBtn() throws Exception;
-
-    ILiglPage sendingCaseCustodianForApproval(String Employee1, String BatchNAME, String USER, String EMAIL) throws Exception;
+    ILiglPage sendingCaseCustodianForApproval(String Employee1,String BatchNAME,String USER,String EMAIL) throws Exception;
 
     ILiglPage checkDSIForCustodians(String Employee1) throws Exception;
 
@@ -893,6 +892,14 @@ public interface ILiglPage {
      * */
 
     public ILiglPage clickOnQuestionnaireButton() throws Exception;
+
+    public ILiglPage clickOnEditInQuestionGrid() throws Exception;
+
+    public ILiglPage scrollToRightToDoActionInManageQuestionGrid(String question) throws Exception;
+
+    public ILiglPage searchTheQuestion(String question) throws Exception;
+
+    public ILiglPage searchChildQuestion(String childQuestion) throws Exception;
 
     ILiglPage clikcOnStakeholderLink() throws Exception;
 

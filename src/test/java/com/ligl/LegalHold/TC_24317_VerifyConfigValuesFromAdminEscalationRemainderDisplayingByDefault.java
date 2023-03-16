@@ -35,7 +35,7 @@ public class TC_24317_VerifyConfigValuesFromAdminEscalationRemainderDisplayingBy
                     .getHeader().goToAdministrationPage()
                     .navigateToEscalationAndRemainder().validateEscalationAndRemainderDefaultValues()
                     .getHeader().viewCase().getLeftMenu().navigateToLegalHoldPage().clickOnAddNewLegalHoldButton()
-                    .createNewLegalHold(data.get("LHname1"), data.get("CustodianNoticeTemplate"), data.get("CustodianQueTemplate"),data.get("StakeHolderNoticeTemplate"), data.get("StakeHolderQueTemplate") );
+                    .createNewLegalHold(data.get("LHname"), data.get("CustodianNoticeTemplate"), data.get("CustodianQueTemplate"),data.get("StakeHolderNoticeTemplate"), data.get("StakeHolderQueTemplate") );
 
 
         } catch (Exception ex) {

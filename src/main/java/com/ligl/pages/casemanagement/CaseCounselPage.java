@@ -54,7 +54,7 @@ public class CaseCounselPage extends LiglBaseSessionPage {
     @FindBy(id = "outsideRadio")
     WebElement OutsideBtn;
 
-    @FindBy(id = "add-case-doc-btn")
+    @FindBy(id = "add-case-doc-btn-counsel")
     WebElement AddOutsideCounsel;
 
     @FindBy(id = "select-law-firm")
@@ -330,7 +330,9 @@ public class CaseCounselPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             SelectLawFirmDrpDwn.click();
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+OptionFromLawFirmDropDwn+"')]")).click();
+            SelectLawFirmDrpDwn.sendKeys(OptionFromLawFirmDropDwn);
+            Thread.sleep(5000);
+            SelectLawFirmDrpDwn.sendKeys(Keys.ENTER);
             getSession().log_Pass("Clicked and Selected Law Firm Drop Down");
 
 
@@ -377,7 +379,6 @@ public class CaseCounselPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
 
             log_Info("Click on Law Firm Name ");
-            getDriver().waitForelementToBeClickable(LawFirmName);
             Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+OptionFromLawFirmDropDwn+"')]")).click();
             getSession().log_Pass("Clicked on Law Firm Name ");

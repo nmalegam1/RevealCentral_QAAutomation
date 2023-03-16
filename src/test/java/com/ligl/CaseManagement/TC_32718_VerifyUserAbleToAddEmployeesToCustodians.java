@@ -32,7 +32,7 @@ public class TC_32718_VerifyUserAbleToAddEmployeesToCustodians extends TestBase 
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
-                    .addCustodiansToCaseThroughFilters(data.get("Employee1"), data.get("Employee2") )
+                    .addCustodianToCase(data.get("Employee1"))
                     .validatingCustodians(data.get("Employee1"));
 
 

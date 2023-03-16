@@ -26,10 +26,11 @@ public class TC_51752_VerifyFunctionalityOfEditLHNbySelectingNewTemplateCreatedO
             ILiglPage Launch = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHName"))
                     .editExistingLHNWithOnFlyEditOfCustTemp(data.get("LHName"),data.get("NewTempName"),data.get("MailSubject"),data.get("MailContent"));
         } catch (Exception ex) {

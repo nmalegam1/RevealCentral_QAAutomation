@@ -30,7 +30,7 @@ public class TC37930_Check_that_Deleted_stakeholders_are_not_displaying_in_Stake
                     .getAdminLeft()
                     .clickOnAdminLegalHold()
                     .getAdminLeft()
-                    .clikcOnStakeholderLink()
+                    .clickOnStakeholderLink()
                     .searchTheStakeholder(data.get("StakeholderEmail"))
                     .checkStakeholderDisplayingInGrid(data.get("StakeholderEmail"))
                     .getHeader()
@@ -45,7 +45,7 @@ public class TC37930_Check_that_Deleted_stakeholders_are_not_displaying_in_Stake
                     .searchRequiredLegalHoldName(data.get("LegalHoldName"))
                     .goToRequiredLegalHoldName(data.get("LegalHoldName"))
                     .switchOnToTheStakeHolderTab()
-                    .checkDelectedStakeholderISDisplayingInLHStakeholderGrid(data.get("StakeholderEmail"))
+                    .checkDeletedStakeholderISDisplayingInLHStakeholderGrid(data.get("StakeholderEmail"))
                     .getHeader()
                     .logout();
         }catch (Exception ex){

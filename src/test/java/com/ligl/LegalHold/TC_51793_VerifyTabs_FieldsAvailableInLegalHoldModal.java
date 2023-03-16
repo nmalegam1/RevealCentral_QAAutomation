@@ -30,7 +30,7 @@ public class TC_51793_VerifyTabs_FieldsAvailableInLegalHoldModal extends TestBas
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .verifyFieldsInAddLegalHoldModel(data.get("LHName"), data.get("CustNoticeTemp"));
         } catch (Exception ex) {
             session.log_Error("TC_51793_VerifyTabs_FieldsAvailableInLegalHoldModal Failed");

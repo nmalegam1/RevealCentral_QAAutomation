@@ -1,4 +1,4 @@
-package com.ligl.Administration.LegalHold.Stakeholder;
+package com.ligl.Administration.LegalHold.ManageQuestionBank;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC37922_Verify_functionality_of_delete_button_in_the_Stakeholder_grid extends TestBase {
+public class TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Parent_and_Child_questions extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
-    public void TC37922_Verify_functionality_of_delete_button_in_the_Stakeholder_grid(Hashtable<String, String> data) throws Exception{
+    public void TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Parent_and_Child_questions(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -30,17 +30,21 @@ public class TC37922_Verify_functionality_of_delete_button_in_the_Stakeholder_gr
                     .getAdminLeft()
                     .clickOnAdminLegalHold()
                     .getAdminLeft()
-                    .clickOnStakeholderLink()
-                    .searchTheStakeholder(data.get("StakeholderEmail"))
-                    .scrollToRightToDoAction(data.get("StakeholderEmail"))
-                    .deleteTheExitingStakeholder()
+                    .clickOnManageQuestionBankPageLink()
+                    .searchTheQuestion(data.get("ParentQuestion"))
+                    .scrollToRightToDoActionInManageQuestionGrid(data.get("ParentQuestion"))
+                    .clickOnEditInQuestionGrid()
+                    .checkAppliesToIsNonEditableField()
+                    .refreshTheManageQuestionBankPage()
+                    .searchChildQuestion(data.get("ChildQuestion"))
+                    .clickOnEditInQuestionGrid()
+                    .checkAppliesToIsNonEditableField()
                     .getHeader()
                     .logout();
-        }catch (Exception ex){
-            session.log_Error("TC37922_the_functionality_of_delete_button_in_the_Stakeholder_grid Failed");
-            throw new Exception("TC37922_Verify_functionality_of_delete_button_in_the_Stakeholder_grid Failed", ex);
-        }finally {
-            session.end();
+
+        }catch (Exception | Error ex){
+            session.log_Error("TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Parent_and_Child_questions Failed");
+            throw new Exception("TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Parent_and_Child_questions Failed", ex);
         }
     }
 }

@@ -156,7 +156,7 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage navigateToLegalHoldPage()  { return  null;}
 
-	public ILiglPage sendingCaseForDualApproval(String BatchNAME,String USER1,String USER2,String EMAIL,String Employee1,String SubType) throws Exception{
+	public  ILiglPage sendingCaseForDualApproval(String Employee1,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception{
 		return null;
 	}
 
@@ -442,7 +442,7 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage sendingLegalHoldForApproval() throws Exception {
 		return null;
 	}
-	public ILiglPage checkLHNForCustodians(String LHN,String Employee1) throws Exception{
+	public ILiglPage checkLHNForCustodians(String LHN) throws Exception{
 		return null;
 	}
 
@@ -578,11 +578,12 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage clickOnKeywordsCheckBoxForApproval(String KeyWords) throws Exception{
 		return null;
 	}
-	public ILiglPage addDataSourceRecordToDSIGridUptoCollection(String cust, String datasource, String DataHold) throws Exception{
+
+	public  ILiglPage addInActiveEMPToCase(String s) throws Exception {return null;}
+	public ILiglPage addDataSourceRecordToDSIGridUptoCollection(String cust, String datasource, String DataHold) throws Exception {
 		return null;
 	}
-
-
+	public ILiglPage verifyRecordStatusInLHNSH(String LHStatus) throws Exception{return null;}
 	public ILiglPage validateLHStatus(String Status) throws Exception{
 		return null;
 	}
@@ -1353,6 +1354,20 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage clickOnQuestionnaireButton() throws Exception{return null;}
 
+	public ILiglPage clickOnEditInQuestionGrid() throws Exception{return null;}
+
+	public ILiglPage scrollToRightToDoActionInManageQuestionGrid(String question) throws Exception{return null;}
+
+	public ILiglPage searchTheQuestion(String question) throws Exception{return null;}
+
+	public ILiglPage searchChildQuestion(String childQuestion) throws Exception{return null;}
+
+	public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent,
+											String IsQuestionMandatory, String RenderOptions, String Description,
+											String AppliesTo, String searchParentQuestion) throws Exception{
+		return null;
+	}
+
 	public ILiglPage clikcOnStakeholderLink() throws  Exception{
 		return null;
 	}
@@ -1385,9 +1400,10 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
-	public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,String Description) throws Exception{
-		return null;
-	}
+	public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,
+											  String Description) throws Exception{return null;}
+
+	public ILiglPage checkAppliesToIsNonEditableField() throws Exception{return null;}
 		public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;

@@ -30,7 +30,7 @@ public class TC30545_Verify_Processes_of_Stakeholder_Creation extends TestBase {
                     .getAdminLeft()
                     .clickOnAdminLegalHold()
                     .getAdminLeft()
-                    .clikcOnStakeholderLink()
+                    .clickOnStakeholderLink()
                     .clickOnAddStakeholderButton()
                     .createStakeholder(data.get("FirstName"), data.get("MiddleName"), data.get("LastName"), data.get("Email"),
                             data.get("Department"), data.get("Category"))

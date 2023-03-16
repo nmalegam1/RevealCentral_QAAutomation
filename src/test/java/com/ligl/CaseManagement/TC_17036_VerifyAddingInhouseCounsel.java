@@ -23,7 +23,6 @@ public class TC_17036_VerifyAddingInhouseCounsel extends TestBase {
                 // skip-testng
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
-            // Create new template using +template button for case approval category
 
             ILiglPage page = new LaunchPage()
 
@@ -32,13 +31,9 @@ public class TC_17036_VerifyAddingInhouseCounsel extends TestBase {
                     .login(data.get("Username"), data.get("Password"),data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToCaseCounselPage()
-                    .addInhouseCounselToCase(data.get("Email1"),data.get("CounselName"))
-                    .addOneMoreInhouseCounselToCase(data.get("Email2"),data.get("CounselName1"))
-                    .validateOneOrMoreInhouseCounsel(data.get("CounselName"),data.get("CounselName1"));
-
-
-
-
+                    .addInhouseCounselToCase(data.get("Email1"),data.get("CounselName1"))
+                    .addOneMoreInhouseCounselToCase(data.get("Email2"),data.get("CounselName2"))
+                    .validateOneOrMoreInhouseCounsel(data.get("CounselName1"),data.get("CounselName2"));
 
         } catch (Exception ex) {
             session.log_Error("TC_17036_VerifyAddingInhouseCounsel Failed");

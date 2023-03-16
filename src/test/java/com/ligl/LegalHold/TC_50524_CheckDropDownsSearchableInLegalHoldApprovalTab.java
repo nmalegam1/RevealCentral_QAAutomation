@@ -29,7 +29,7 @@ public class TC_50524_CheckDropDownsSearchableInLegalHoldApprovalTab extends Tes
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .sendLHNToApproval(data.get("LHName"),data.get("DPAction"),data.get("EmailTemp"),data.get("Approver"));
 
         } catch (Exception ex) {

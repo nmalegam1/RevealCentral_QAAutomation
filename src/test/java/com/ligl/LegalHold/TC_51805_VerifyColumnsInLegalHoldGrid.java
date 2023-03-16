@@ -29,7 +29,7 @@ public class TC_51805_VerifyColumnsInLegalHoldGrid extends TestBase {
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .verifyColumnsInLegalHoldGrid();
         } catch (Exception ex) {
             session.log_Error("TC_51805_VerifyColumnsInLegalHoldGrid Failed");
