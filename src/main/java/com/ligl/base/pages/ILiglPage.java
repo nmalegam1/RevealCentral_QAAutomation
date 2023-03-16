@@ -76,7 +76,7 @@ public interface ILiglPage {
     ILiglPage addInActiveEMPToCase(String s) throws Exception;
     ILiglPage verifyRecordStatusInLHNSH(String LHStatus) throws Exception;
     ILiglPage checkReportingManagerFieldinAdditionalFields(String s)throws  Exception;
-    ILiglPage checkLHNForCustodians(String LHN,String Employee1) throws Exception;
+    ILiglPage checkLHNForCustodians(String LHN) throws Exception;
 
     void selectDateFromCalendar(String date);
     ILiglPage goToDefaultLandingPage();
