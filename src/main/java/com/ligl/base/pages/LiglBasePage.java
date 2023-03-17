@@ -578,8 +578,8 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage clickOnKeywordsCheckBoxForApproval(String KeyWords) throws Exception{
 		return null;
 	}
-
 	public  ILiglPage addInActiveEMPToCase(String s) throws Exception {return null;}
+
 	public ILiglPage addDataSourceRecordToDSIGridUptoCollection(String cust, String datasource, String DataHold) throws Exception {
 		return null;
 	}
@@ -1344,14 +1344,14 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage checkStakeholderDisplayingInGrid(String email) throws Exception{return null;}
 
-	public ILiglPage checkDelectedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception{return null;}
+	public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception{return null;}
 
 	public ILiglPage verifyTheDuplicateValidationMessage() throws Exception{return null;}
 
 	/*
 	 * Manage QuestionBank
 	 * */
-
+	public ILiglPage refreshTheManageQuestionBankPage() throws Exception{return null;}
 	public ILiglPage clickOnQuestionnaireButton() throws Exception{return null;}
 
 	public ILiglPage clickOnEditInQuestionGrid() throws Exception{return null;}
@@ -1369,11 +1369,6 @@ public class LiglBasePage implements ILiglPage {
 	}
 
 	public ILiglPage clikcOnStakeholderLink() throws  Exception{
-		return null;
-	}
-
-	public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent, String IsQuestionMandatory,
-											String RenderOptions, String Description, String AppliesTo) throws Exception{
 		return null;
 	}
 
@@ -1404,7 +1399,7 @@ public class LiglBasePage implements ILiglPage {
 											  String Description) throws Exception{return null;}
 
 	public ILiglPage checkAppliesToIsNonEditableField() throws Exception{return null;}
-		public void waitForPageToLoad(){
+	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;
 		// check for pageload 100% - 20 secs

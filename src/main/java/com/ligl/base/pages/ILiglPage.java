@@ -120,7 +120,7 @@ public interface ILiglPage {
 
     ILiglPage checkReportingManagerFieldinAdditionalFields(String s) throws Exception;
 
-    ILiglPage checkLHNForCustodians(String LHN, String Employee1) throws Exception;
+    ILiglPage checkLHNForCustodians(String LHN) throws Exception;
 
     void selectDateFromCalendar(String date);
 
@@ -884,13 +884,13 @@ public interface ILiglPage {
     public ILiglPage checkStakeholderDisplayingInGrid(String email) throws Exception;
 
     public ILiglPage verifyTheDuplicateValidationMessage() throws Exception;
-
-    public ILiglPage checkDelectedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception;
-
+    public ILiglPage verifyRecordStatusInLHNSH(String LHStatus) throws Exception;
+    public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception;
+    public  ILiglPage addInActiveEMPToCase(String s) throws Exception;
     /*
      * Manage QuestionBank
      * */
-
+    public ILiglPage refreshTheManageQuestionBankPage() throws Exception;
     public ILiglPage clickOnQuestionnaireButton() throws Exception;
 
     public ILiglPage clickOnEditInQuestionGrid() throws Exception;
@@ -917,7 +917,9 @@ public interface ILiglPage {
 
     public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent,
                                             String IsQuestionMandatory, String RenderOptions, String Description,
-                                            String AppliesTo) throws Exception;
+                                            String AppliesTo, String searchParentQuestion) throws Exception;
 
-
+    public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,
+                                              String Description) throws Exception;
+    public ILiglPage checkAppliesToIsNonEditableField() throws Exception;
 }
