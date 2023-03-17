@@ -30,7 +30,7 @@ public class TC_51785_VerifyRevokeFunctionalityForPendingApprovalLegalHolds exte
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHName"))
                     .selectLHN(data.get("LHName"))
                     .clickOnActionDropDownAndRun(data.get("Action"))

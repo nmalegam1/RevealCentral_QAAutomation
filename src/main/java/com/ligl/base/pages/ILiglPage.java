@@ -120,7 +120,7 @@ public interface ILiglPage {
 
     ILiglPage checkReportingManagerFieldinAdditionalFields(String s) throws Exception;
 
-    ILiglPage checkLHNForCustodians(String LHN) throws Exception;
+    ILiglPage checkLHNForCustodians(String LHN, String Employee1) throws Exception;
 
     void selectDateFromCalendar(String date);
 
@@ -186,13 +186,12 @@ public interface ILiglPage {
 
     ILiglPage goToCaseManagement() throws InterruptedException;
 
-    ILiglPage verifyApprovalHistoryStatus(String AssignedUser1, String Status1, String Status2, String AssignedUser2) throws Exception;
+    ILiglPage verifyApprovalHistoryStatus(String AssignedUser1,String Status1,String Status2,String AssignedUser2) throws Exception;
 
     ILiglPage sendingCaseForDualApproval(String Employee1,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception;
 
     ILiglPage verifyingEditBtn() throws Exception;
-
-    ILiglPage sendingCaseCustodianForApproval(String Employee1, String BatchNAME, String USER, String EMAIL) throws Exception;
+    ILiglPage sendingCaseCustodianForApproval(String Employee1,String BatchNAME,String USER,String EMAIL) throws Exception;
 
     ILiglPage checkDSIForCustodians(String Employee1) throws Exception;
 
@@ -886,13 +885,11 @@ public interface ILiglPage {
 
     public ILiglPage verifyTheDuplicateValidationMessage() throws Exception;
 
-    public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception;
+    public ILiglPage checkDelectedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception;
 
     /*
      * Manage QuestionBank
      * */
-
-    public ILiglPage refreshTheManageQuestionBankPage() throws Exception;
 
     public ILiglPage clickOnQuestionnaireButton() throws Exception;
 
@@ -904,16 +901,23 @@ public interface ILiglPage {
 
     public ILiglPage searchChildQuestion(String childQuestion) throws Exception;
 
+    ILiglPage clikcOnStakeholderLink() throws Exception;
+
+    ILiglPage clickOnAddRequestButton() throws Exception;
+
+    ILiglPage validateListOfColumnsInTheRequestPage() throws Exception;
+
+    ILiglPage validateCreatedRequestInTheGlobalRequestGrid(String TITLE) throws Exception;
+
+    ILiglPage clickOnEditIconInTheGrid() throws Exception;
+
+    ILiglPage addAllDetailsInTheAddRequestPopUpWithoutAssignee(String RequestType,String REQTitle,String CaseDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception;
+
+    ILiglPage addAllDetailsInTheAddRequestPopUp(String RequestType,String REQTitle,String CaseDropDown,String UserDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception;
+
     public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent,
                                             String IsQuestionMandatory, String RenderOptions, String Description,
-                                            String AppliesTo, String searchParentQuestion) throws Exception;
-
-    public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,
-                                              String Description) throws Exception;
-
-    public ILiglPage checkAppliesToIsNonEditableField() throws Exception;
-
-
+                                            String AppliesTo) throws Exception;
 
 
 }

@@ -245,11 +245,9 @@ public class DMDSIPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(AccountEmailHeader).perform();
-            Thread.sleep(5000);
 
             log_Info("Click On Menu Icon");
             AccountEmailMenu.click();
-            Thread.sleep(5000);
             log_Info("Menu clicked");
 
             log_Info("Click on Filter");

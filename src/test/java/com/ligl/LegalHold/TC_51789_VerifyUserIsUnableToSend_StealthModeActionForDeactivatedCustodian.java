@@ -30,13 +30,13 @@ public class TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCu
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHName"))
                     .goToLegalHold(data.get("LHName"))
                     .searchLHNThroughEmail(data.get("CustMail"))
                     .clickOnActionDropDownAndRun(data.get("Action"))
                     .checkUnableToSetStealthModeToDeactiveCust(data.get("CustMail"))
-                    .verifyRecordStatusInLHN(data.get("CustStatus"));
+                    .verifyRecordStatusInLHNSH(data.get("CustStatus"));
         } catch (Exception ex) {
             session.log_Error("TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian Failed");
             throw new Exception("TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian Failed", ex);

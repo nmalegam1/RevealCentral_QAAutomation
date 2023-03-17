@@ -29,7 +29,7 @@ public class TC_56122_56127_VerifyLHN_DR_KW_GivenInFirstLHN_DisplayingByDefault_
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHName2"))
                     .editLHNAfterFirstLHNWith_KW_DR_AndCheckKW_DR_Editable(data.get("LHName1"),data.get("LHName2"),data.get("LHName3"),data.get("CustNoticeTemp"),data.get("StartDate"),data.get("EndDate"),data.get("KeyWord"),data.get("NewTempName"),data.get("MailSubject"),data.get("MailContent"));
         } catch (Exception ex) {

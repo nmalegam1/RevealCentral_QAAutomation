@@ -29,7 +29,7 @@ public class TC_54625_54626_CheckNoDuplicateRecordsAfterResendActionForEscalatio
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("RemainderCaseName")).GoToCase(data.get("RemainderCaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("RemainderLHN"))
                     .goToLegalHold(data.get("RemainderLHN"))
                     .resendLHN(data.get("RemainderMail"),data.get("CustAction"))

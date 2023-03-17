@@ -39,5 +39,15 @@
         </classes>
 
     </test>
+    <test name="Cas Create ApproveFor OnPremDST">
+        <classes>
+            <class name="com.ligl.SmokeSuiteRelativity.Case_Create_ApproveFor_OnPremDST"/>
+        </classes>
+    </test>
+    <test name="NetWorkShare AutoProcess Processing">
+        <classes>
+            <class name="com.ligl.SmokeSuiteRelativity.NetWorkShare_AutoProcess_Processing"/>
+        </classes>
+    </test>
 
 </suite> <!-- Suite -->

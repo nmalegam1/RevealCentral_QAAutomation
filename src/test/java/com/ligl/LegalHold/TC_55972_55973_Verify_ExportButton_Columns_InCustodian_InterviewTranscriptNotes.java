@@ -29,7 +29,7 @@ public class TC_55972_55973_Verify_ExportButton_Columns_InCustodian_InterviewTra
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHname"))
                     .goToLegalHold(data.get("LHname"))
                     .verifyCustodianInterviewTranscriptNotes();

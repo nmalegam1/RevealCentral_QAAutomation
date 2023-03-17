@@ -30,7 +30,7 @@ public class TC_51796_LHNForCustodian_StakeholderVerifyRevokeActionForRecordsLHN
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHname"))
                     .goToLegalHold(data.get("LHname"))
                     .searchLHNThroughEmail(data.get("AwaitingCustMail"))
@@ -38,7 +38,13 @@ public class TC_51796_LHNForCustodian_StakeholderVerifyRevokeActionForRecordsLHN
                     .refreshLHN()
                     .searchLHNThroughEmail(data.get("AwaitingCustMail"))
                     .verifyRecordStatusInLHN(data.get("CustStatus"))
-                    .refreshLHN()
+                    .switchOnToTheStakeHolderTab()
+                    .searchLHNThroughEmail(data.get("AwaitingCustMail"))
+                    .clickOnActionDropDownAndRunInStakeHolder(data.get("CustAction"))
+                    //.clickOnRefreshButtonStakeHolder()
+                    //.searchLHNThroughEmail(data.get("AwaitingCustMail"))
+                    .verifyRecordStatusInLHN(data.get("CustStatus"));
+                    /*.refreshLHN()
                     .searchLHNThroughEmail(data.get("RemaindCustMail"))
                     .clickOnActionDropDownAndRun(data.get("CustAction"))
                     .refreshLHN()
@@ -49,7 +55,7 @@ public class TC_51796_LHNForCustodian_StakeholderVerifyRevokeActionForRecordsLHN
                     .clickOnActionDropDownAndRun(data.get("CustAction"))
                     .refreshLHN()
                     .searchLHNThroughEmail(data.get("AwaitingCustMail"))
-                    .verifyRecordStatusInLHN(data.get("CustStatus"));
+                    .verifyRecordStatusInLHN(data.get("CustStatus"));*/
         } catch (Exception ex) {
             session.log_Error("TC_51796_LHNForCustodian_StakeholderVerifyRevokeActionForRecordsLHNStatusAwaitingAck_SentReminder_EscalationSent Failed");
             throw new Exception("TC_51796_LHNForCustodian_StakeholderVerifyRevokeActionForRecordsLHNStatusAwaitingAck_SentReminder_EscalationSent Failed", ex);

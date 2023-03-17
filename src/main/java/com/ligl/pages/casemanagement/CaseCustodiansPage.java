@@ -2,6 +2,7 @@ package com.ligl.pages.casemanagement;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LeftMenu;
+import com.ligl.pages.LegalHoldPage;
 import com.ligl.pages.LiglBaseSessionPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -106,6 +107,8 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
     WebElement YesBtn;
     @FindBy(id = "refresh-button")
     WebElement RefreshBtn;
+    @FindBy(xpath = "//button[contains(text(),'Proceed')]")
+    WebElement InactEmpProceed;
 
 
     //12. After Navigating To Custodian Tab The Actions We Perform Adding Custodians To A Case
@@ -214,6 +217,13 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             log_Error("validateCustodianAddedToGrid() Failed");
             throw new Exception("Exception in validateCustodianAddedToGrid()");
         }
+    }
+    public ILiglPage addInActiveEMPToCase(String EmpMail) throws Exception {
+        addCustodianToCase(EmpMail);
+        log_Info("addInActiveEMPToCase() Started");
+        InactEmpProceed.click();
+        Thread.sleep(3000);
+        return new LegalHoldPage();
     }
     /**
      * Method to Search The Particular Custodian in Grid
