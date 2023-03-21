@@ -78,9 +78,8 @@ public class LiglDriver extends LiglValidationDriver {
 	}
 
 	public void navigate(String url) {
-		log("URL"+url );
+		log("URL: "+url );
 		driver.get(url);
-		
 	}
 
 	public void quit() {

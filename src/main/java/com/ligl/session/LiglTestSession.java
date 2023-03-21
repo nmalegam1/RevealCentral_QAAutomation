@@ -25,50 +25,48 @@ public class LiglTestSession {
 	ExtentReports reports;
 	ExtentTest test ;
 	boolean executeListener;
-
-	Properties prop1;
-	Properties prop2;
-
-
-
-
-
-
-
+	Properties smokeProperties;
+	Properties regressionProperties;
+	Properties globalProperties;
 	public LiglTestSession()throws Exception  {
-
 		con = new LiglDriver();
 		try {
- prop1 = new Properties();
- prop2 = new Properties();
- FileInputStream fs1 = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\smoke.properties");
- prop1.load(fs1);
- FileInputStream fs2 = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\regression.properties");
- prop2.load(fs2);
- }catch (Exception e)
- {
- e.printStackTrace();
- }
-}
+			smokeProperties = new Properties();
+			regressionProperties = new Properties();
+			globalProperties = new Properties();
+			FileInputStream gpFIS = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\global.properties");
+			globalProperties.load(gpFIS);
+			FileInputStream spFIS = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\smoke.properties");
+			smokeProperties.load(spFIS);
+			FileInputStream rpFIS = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\regression.properties");
+			regressionProperties.load(rpFIS);
+		}catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	public String getSmokeData(String td) {
+		return (String) smokeProperties.get(td);
+	}
+	public String getGlobalData(String td)
+	{
+		return (String) globalProperties.get(td);
+	}
+	public String getRegressionData(String td)
+	{
+		return (String) regressionProperties.get(td);
+	}
 
-public String getSmokeData(String td) {
-	return (String) prop1.get(td);
-}
-public String getRegressionData(String td)
- {
-	return (String) prop2.get(td);
- }
-	
 	public void init(String testName) {
 		setExecuteListener(true);
 		if(Reporter.getCurrentTestResult().getTestContext().getAttribute("session") == null)
-		 Reporter.getCurrentTestResult().getTestContext().setAttribute("session", this);
-		
+			Reporter.getCurrentTestResult().getTestContext().setAttribute("session", this);
+
 		// init reports
 		reports = ExtentManager.getReport(Constants.REPORTS_PATH);
 		test = reports.createTest(testName);
 	}
-	
+
 	public IWebConnector getCon() {
 		return con;
 	}
@@ -80,9 +78,9 @@ public String getRegressionData(String td)
 	public void setCurrentPage(ILiglPage currentPage) {
 		this.currentPage = currentPage;
 	}
-	
+
 	public void end() {
-		 getCon().assertAll();
+		getCon().assertAll();
 	}
 
 	/*********************Reporting functions**********************/
@@ -90,7 +88,7 @@ public String getRegressionData(String td)
 		System.out.println(message);
 		test.log(Status.INFO, message);
 	}
-	
+
 	public void generateReport() {
 		if(reports !=null)
 			reports.flush();
@@ -98,7 +96,7 @@ public String getRegressionData(String td)
 		if(getCon() !=null)
 			getCon().quit();
 	}
-	
+
 	public void log_Error(String failureMessage) {
 		//fail in extent
 		System.out.println("Failing "+failureMessage);
@@ -117,21 +115,21 @@ public String getRegressionData(String td)
 	// first take screenshot and then add it to reports
 	public void takeScreenShot() {
 		// fileName of the screenshot
-				Date d=new Date();
-				String screenshotFile=d.toString().replace(":", "_").replace(" ", "_")+".png";
-				// take screenshot
-				File srcFile = ((TakesScreenshot) getCon().getCurrentDriver()).getScreenshotAs(OutputType.FILE);
-				try {
-					// get the dynamic folder name
-					FileUtils.copyFile(srcFile, new File(ExtentManager.screenshotFolderPath+screenshotFile));
-					//put screenshot file in reports
-					test.log(Status.INFO,"Screenshot-> "+ test.addScreenCaptureFromPath(ExtentManager.screenshotFolderPath+screenshotFile));
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		Date d=new Date();
+		String screenshotFile=d.toString().replace(":", "_").replace(" ", "_")+".png";
+		// take screenshot
+		File srcFile = ((TakesScreenshot) getCon().getCurrentDriver()).getScreenshotAs(OutputType.FILE);
+		try {
+			// get the dynamic folder name
+			FileUtils.copyFile(srcFile, new File(ExtentManager.screenshotFolderPath+screenshotFile));
+			//put screenshot file in reports
+			test.log(Status.INFO,"Screenshot-> "+ test.addScreenCaptureFromPath(ExtentManager.screenshotFolderPath+screenshotFile));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
+
 	public void skipTest(String message) {
 		test.log(Status.SKIP, message);
 	}

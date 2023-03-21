@@ -16,9 +16,9 @@ public class ZipAndSendMail
 	Properties emailProperties;
 	Session mailSession;
 	MimeMessage emailMessage;
-	static String[] toEmails = { "sachintester1983@gmail.com" };
-	static String fromUser = "sachintester1983@gmail.com";// imap on, other devices on, no recovery phone
-	static String password = "8968585110";
+	static String[] toEmails = { "testuser2@gmail.com" };
+	static String fromUser = "testuser1@gmail.com";// imap on, other devices on, no recovery phone
+	static String password = "9849111234";
 
 	
     public static void main(String[] args) throws Exception
