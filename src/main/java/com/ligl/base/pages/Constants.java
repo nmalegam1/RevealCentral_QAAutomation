@@ -28,9 +28,14 @@ public class Constants {
 	// report path
 	public static final String REPORTS_PATH = System.getProperty("user.dir")+"//reports//";
 	public static final How CSS_SEL = How.CSS;
-	
+
+	//properties path
+	public static final String GLOBAL_PROP_PATH=System.getProperty("user.dir") + "\\src\\test\\resources\\global.properties";
+	public static final String SMOKE_PROP_PATH=System.getProperty("user.dir") + "\\src\\test\\resources\\smoke.properties";
+	public static final String REGRESSION_PROP_PATH=System.getProperty("user.dir") + "\\src\\test\\resources\\regression.properties";
+
 	// sheet names
-	public static final String TEST_DATA_SHEET = "TestData";
+	public static final String TEST_DATA_SHEET = "TestDataRT";
 	public static final String TEST_STATUS_SHEET = "TestStatus";
 	
 	//col names

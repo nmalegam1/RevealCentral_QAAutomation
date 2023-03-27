@@ -16,6 +16,7 @@ import com.ligl.pages.Header;
 import com.ligl.web.IWebConnector;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.Hashtable;
 
 public class LiglBasePage implements ILiglPage {
@@ -37,7 +38,7 @@ public class LiglBasePage implements ILiglPage {
 		// TODO Auto-generated method stub
 	}
 
-	public ILiglPage navigateURL() {
+	public ILiglPage navigateURL() throws IOException {
 		return null;
 	}
 
