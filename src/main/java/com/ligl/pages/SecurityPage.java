@@ -1,15 +1,15 @@
 package com.ligl.pages;
 
 import com.ligl.base.pages.ILiglPage;
-import com.ligl.pages.casemanagement.CaseDataSourcesPage;
-import com.ligl.pages.casemanagement.CaseOtherPartyPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import com.ligl.util.DatabaseUtil;
+import com.ligl.util.DbUtil;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import java.sql.*;
+import java.sql.Connection;
+import java.util.Hashtable;
 
 public class SecurityPage extends LiglBaseSessionPage {
 
@@ -21,7 +21,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Approved')]")
     WebElement ApprovedStatus;
 
-    @FindBy(id= "btn-send-for-approval")
+    @FindBy(id = "btn-send-for-approval")
     WebElement SendForApprovalBtn;
 
     @FindBy(id = "send-approval-btn")
@@ -36,13 +36,14 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[contains(text(),'Request Approval')]")
     WebElement RATab;
 
-    @FindBy (id = "input-case-name")
+    @FindBy(id = "input-case-name")
     WebElement BatchName;
 
     @FindBy(id = "select-approver")
     WebElement SelectApprovalDrpDwn;
 
     @FindBy(id = "template-name")
+    // @FindBy(xpath = "//div[@class='mat-select-value ng-tns-c71-13']//following::div")
     WebElement TemplateNameDrpDwn;
 
     @FindBy(id = "dual-opt")
@@ -71,16 +72,16 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//button[contains(text(),'Next')]")
     WebElement NextBtn;
-    @FindBy(id="On-Prem-button")
+    @FindBy(id = "On-Prem-button")
     WebElement OnpremDSTab;
 
-    @FindBy(id="edit-btn")
+    @FindBy(id = "edit-btn")
     WebElement EditBtn;
 
-    @FindBy(id="user-button")
+    @FindBy(id = "user-button")
     WebElement UsersTab;
 
-    @FindBy(id="users-access-permissions-save-btn")
+    @FindBy(id = "users-access-permissions-save-btn")
     WebElement AddUserBtn;
 
     @FindBy(xpath = "//mat-select[@id='FullName']")
@@ -88,7 +89,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//input[@placeholder='Search']")
     WebElement FullNameDropdownTypeText;
-    @FindBy(id="send-approval-btn")
+    @FindBy(id = "send-approval-btn")
     WebElement AddBtn;
 
     @FindBy(xpath = "//span[contains(text(),'Full Name')]")
@@ -102,6 +103,12 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
     WebElement Filter;
+
+    @FindBy(xpath="//div[@col-id='AddedBy']//span[@ref='eMenu']/span")
+    WebElement AddedByIcon;
+
+    @FindBy(xpath="//div[@col-id='Role.Name']//div[@role='presentation']//span[@ref='eMenu']")
+    WebElement RoleNameColumn;
 
     @FindBy(xpath = "//input[@placeholder='Filter...']")
     WebElement Searchbar;
@@ -135,7 +142,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DateRangesCount']//span[@class='ellipsisAgGrid']")
     WebElement DateRangesCountColData;
-    @FindBy(xpath="//button[@id='appr-approve-btn']")
+    @FindBy(xpath = "//button[@id='appr-approve-btn']")
     WebElement ApproveBtn;
 
     @FindBy(xpath = "//span[contains(text(),'Approval Status')]")
@@ -165,7 +172,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//input[@aria-label='Filter Columns Input']")
     WebElement ChooseColumnsSearch;
 
-    @FindBy(id="Columns")
+    @FindBy(id = "Columns")
     WebElement ChooseColumnsMenu;
 
     @FindBy(xpath = "//span[contains(text(),'Approval Batch Name')]")
@@ -188,6 +195,45 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[contains(text(),'Revoke')]")
     WebElement RevokeBtn;
 
+    @FindBy(xpath = "*//input[@role='switch']/ancestor::div[@col-id='isChecked']//span")
+    WebElement SwitchUserBtn;
+
+    @FindBy(xpath = "//button[@type='button']/ancestor::div[@class='modal-content']//button[1]")
+    WebElement YesBtn;
+
+    @FindBy(xpath = "//input[@role='switch']/ancestor::div[@row-id='0']//span[@class='mat-slide-toggle-thumb-container']")
+    WebElement SwitchSuperUserBtn;
+
+    @FindBy(xpath = "//input[@role='switch']/ancestor::div[@row-id='1']//span[@class='mat-slide-toggle-thumb-container']")
+    WebElement SwitchOutsideCounselBtn;
+
+    @FindBy(xpath = "//input[@role='switch']/ancestor::div[@row-id='2']//span[@class='mat-slide-toggle-thumb-container']")
+    WebElement SwitchLegalUserBtn;
+
+    @FindBy(xpath = "//input[@role='switch']/ancestor::div[@row-id='3']//span[@class='mat-slide-toggle-thumb-container']")
+    WebElement SwitchLegalApprovalUserBtn;
+
+    @FindBy(xpath = "//input[@role='switch']/ancestor::div[@row-id='4']//span[@class='mat-slide-toggle-thumb-container']")
+    WebElement SwitchLegalAdminBtn;
+
+    @FindBy(xpath = "//input[@role='switch']/ancestor::div[@row-id='5']//span[@class='mat-slide-toggle-thumb-container']")
+    WebElement SwitchExecutiveBtn;
+
+    @FindBy(xpath = "//input[@role='switch']/ancestor::div[@row-id='6']//span[@class='mat-slide-toggle-thumb-container']")
+    WebElement SwitchERMGBtn;
+
+    @FindBy(xpath = "//input[@role='switch']/ancestor::div[@row-id='7']//span[@class='mat-slide-toggle-thumb-container']")
+    WebElement SwitcheDiscoveryUserBtn;
+
+    @FindBy(xpath = "//input[@role='switch']/ancestor::div[@row-id='7']//span[@class='mat-slide-toggle-thumb-container']")
+    WebElement SwitcheDiscoveryAdminBtn;
+
+
+    @FindBy(id="roles-access-cancel-btn")
+    WebElement RolesSaveBtn;
+
+    @FindBy(xpath="//label[@class='matchresults']/strong")
+    WebElement UsersTabResults;
 
 
     // Verifying Approving Rejected Test Case
@@ -226,20 +272,22 @@ public class SecurityPage extends LiglBaseSessionPage {
             return new SecurityPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("sendingCaseForApproval() Failed",ex);
+            throw new Exception("sendingCaseForApproval() Failed", ex);
         }
     }
+
     /**
      * Method to Send Case for Approval
+     *
      * @param BchName
      * @param Apptemp
      * @param UserName
      * @return
      * @throws Exception
      */
-    public ILiglPage sendCaseForApproval(String BchName,String Apptemp,String UserName) throws Exception {
+    public ILiglPage sendCaseForApproval(String BchName, String Apptemp, String UserName) throws Exception {
         try {
             log_Info("Click send for Approval Button");
             SendApprovalBtn.click();
@@ -267,19 +315,20 @@ public class SecurityPage extends LiglBaseSessionPage {
             SendForApprovalBtn.click();
             log_Pass("Case Sent for Approval");
             return new SecurityPage();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception From sendCaseForApproval()", ex);
         }
     }
-    public ILiglPage selectOnpremDataSourceForApproval(String DataSource)throws Exception{
-        try{
+
+    public ILiglPage selectOnpremDataSourceForApproval(String DataSource) throws Exception {
+        try {
             log_Info("selectOnpremDataSourceForApproval() Started");
             OnpremDSTab.click();
             Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//div[text()='" + DataSource + "']//../..//div[@class='sourceChkbxDiv']")).click();
             log_Info("Click on The Required DataSource Checkbox");
             return new SecurityPage();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             log_Error(ex.getMessage());
             throw new Exception("selectOnpremDataSourceForApproval()  Failed", ex);
         }
@@ -299,9 +348,9 @@ public class SecurityPage extends LiglBaseSessionPage {
             return new SecurityPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("verifyingApproveStatus() Failed",ex);
+            throw new Exception("verifyingApproveStatus() Failed", ex);
         }
     }
 
@@ -320,9 +369,9 @@ public class SecurityPage extends LiglBaseSessionPage {
             return new SecurityPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("validateCaseNotinitiatedState() Failed",ex);
+            throw new Exception("validateCaseNotinitiatedState() Failed", ex);
         }
     }
 
@@ -341,9 +390,9 @@ public class SecurityPage extends LiglBaseSessionPage {
             return new SecurityPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("validateCasePendingForApprovalState() Failed",ex);
+            throw new Exception("validateCasePendingForApprovalState() Failed", ex);
         }
     }
 
@@ -362,15 +411,15 @@ public class SecurityPage extends LiglBaseSessionPage {
             return new SecurityPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("validateCasePendingForApprovalState() Failed",ex);
+            throw new Exception("validateCasePendingForApprovalState() Failed", ex);
         }
     }
 
     // Verify The Functionality Of Approving Case (Without Selecting Scope Items) By Selecting Single Approval Type
 
-    public ILiglPage sendingCaseForSingleApproval(String BatchNAME,String USER,String EMAIL) throws Exception {
+    public ILiglPage sendingCaseForSingleApproval(String BatchNAME, String USER, String EMAIL) throws Exception {
 
         try {
 
@@ -395,21 +444,24 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Select Approval  Drop down");
             getDriver().waitForelementToBeClickable(SelectApprovalDrpDwn);
-            Thread.sleep(3000);
+            Thread.sleep(5000);
             SelectApprovalDrpDwn.sendKeys(USER);
+            Thread.sleep(3000);
             SelectApprovalDrpDwn.sendKeys(Keys.ENTER);
             log_Info("Clicked on Select Approval  Drop down");
 
             log_Info("Click on Email Template Drop down");
             getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
-            Thread.sleep(5000);
+            Thread.sleep(10000);
             TemplateNameDrpDwn.sendKeys(EMAIL);
+            Thread.sleep(3000);
             TemplateNameDrpDwn.sendKeys(Keys.ENTER);
+
             log_Info("Clicked on Email Template Drop down");
 
             log_Info("Click on Send For Approval Button");
             getDriver().waitForelementToBeClickable(SendApprovalBtn);
-            Thread.sleep(3000);
+
             SendApprovalBtn.click();
             log_Info("Clicked on Send For Approval Button");
 
@@ -422,14 +474,14 @@ public class SecurityPage extends LiglBaseSessionPage {
             return new SecurityPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("sendingCaseForSingleApproval() Failed",ex);
+            throw new Exception("sendingCaseForSingleApproval() Failed", ex);
         }
     }
 
 
-    public ILiglPage sendingCaseCustodianForApproval(String Employee1,String BatchNAME,String USER,String EMAIL) throws Exception {
+    public ILiglPage sendingCaseCustodianForApproval(String Employee1, String BatchNAME, String USER, String EMAIL) throws Exception {
 
         try {
 
@@ -442,7 +494,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Custodian Check Box");
             Thread.sleep(3000);
-            getCurrentDriver().findElement(By.xpath("//span[@title='"+Employee1+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + Employee1 + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
             log_Info("Clicked on Custodian Check Box");
 
 
@@ -480,15 +532,15 @@ public class SecurityPage extends LiglBaseSessionPage {
             return new SecurityPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("sendingCaseForSingleApproval() Failed",ex);
+            throw new Exception("sendingCaseForSingleApproval() Failed", ex);
         }
     }
 
     // Verify The Case Status When Dual Approval Is Selected And Both Approved The Status
 
-    public ILiglPage sendingCaseForDualApproval(String BatchNAME,String USER1,String USER2,String EMAIL,String Employee1,String SubType) throws Exception {
+    public ILiglPage sendingCaseForDualApproval(String BatchNAME, String USER1, String USER2, String EMAIL, String Employee1, String SubType) throws Exception {
 
         try {
 
@@ -501,7 +553,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Custodian Check Box");
             Thread.sleep(3000);
-            getCurrentDriver().findElement(By.xpath("//span[@title='"+Employee1+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + Employee1 + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
             log_Info("Clicked on Custodian Check Box");
 
             log_Info("Click on Request For Approval Tab");
@@ -565,15 +617,15 @@ public class SecurityPage extends LiglBaseSessionPage {
             return new SecurityPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("sendingCaseForSingleApproval() Failed",ex);
+            throw new Exception("sendingCaseForSingleApproval() Failed", ex);
         }
     }
 
-                // Verify The Approval History Of The Case By Assigned Approvals
+    // Verify The Approval History Of The Case By Assigned Approvals
 
-    public ILiglPage verifyApprovalHistoryStatus(String AssignedUser1,String Status1,String AssignedUser2,String Status2) throws Exception {
+    public ILiglPage verifyApprovalHistoryStatus(String AssignedUser1, String Status1, String AssignedUser2, String Status2) throws Exception {
 
         try {
 
@@ -581,32 +633,32 @@ public class SecurityPage extends LiglBaseSessionPage {
             log_Info("Check The Assigned UserName");
             Thread.sleep(3000);
             String s1 = AssignedUserName.getText();
-            Assert.assertEquals(s1,AssignedUser1);
+            Assert.assertEquals(s1, AssignedUser1);
             log_Info("Checked The Assigned UserName");
 
             log_Info("Check The Assigned UserName Status");
             Thread.sleep(3000);
-            String  s2 = StatusOfUser.getText();
-            Assert.assertEquals(s2,Status1);
+            String s2 = StatusOfUser.getText();
+            Assert.assertEquals(s2, Status1);
             log_Info("Checked The Assigned UserName Status");
 
             log_Info("Check The Assigned UserName");
             Thread.sleep(3000);
             String s3 = AssignedUserName1.getText();
-            Assert.assertEquals(s3,AssignedUser2);
+            Assert.assertEquals(s3, AssignedUser2);
             log_Info("Checked The Assigned UserName");
 
             log_Info("Check The Assigned UserName Status");
             Thread.sleep(3000);
-            String  s4 = StatusOfUser1.getText();
-            Assert.assertEquals(s4,Status2);
+            String s4 = StatusOfUser1.getText();
+            Assert.assertEquals(s4, Status2);
             log_Info("Checked The Assigned UserName Status");
             return new SecurityPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("verifyApprovalHistoryStatus() Failed",ex);
+            throw new Exception("verifyApprovalHistoryStatus() Failed", ex);
         }
 
     }
@@ -614,7 +666,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     // Verify The Case Status When Dual Approval Is Selected - Linear Type
 
-    public ILiglPage sendingCaseForDualApprovalLinearType(String Employee1,String GmailCheck,String GoogleDriveCheck,String BatchNAME,String EMAIL,String USER1,String USER2,String SubType) throws Exception {
+    public ILiglPage sendingCaseForDualApprovalLinearType(String Employee1, String GmailCheck, String GoogleDriveCheck, String BatchNAME, String EMAIL, String USER1, String USER2, String SubType) throws Exception {
 
         try {
 
@@ -627,7 +679,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Custodian Check Box");
             Thread.sleep(3000);
-            getCurrentDriver().findElement(By.xpath("//span[@title='"+Employee1+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + Employee1 + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
             log_Info("Clicked on Custodian Check Box");
 
             log_Info("Click on Next Button");
@@ -638,12 +690,12 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Gmail Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GmailCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.xpath("//div[text()='" + GmailCheck + "']//../..//div[@class='sourceChkbxDiv']")).click();
             log_Info("Clicked on Gmail Checkbox");
 
             log_Info("Click on Google Drive Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GoogleDriveCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.xpath("//div[text()='" + GoogleDriveCheck + "']//../..//div[@class='sourceChkbxDiv']")).click();
             log_Info("Clicked on Google Drive Checkbox");
 
 
@@ -713,13 +765,13 @@ public class SecurityPage extends LiglBaseSessionPage {
             return new SecurityPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("sendingCaseForSingleApproval() Failed",ex);
+            throw new Exception("sendingCaseForSingleApproval() Failed", ex);
         }
     }
 
-    public ILiglPage sendingCaseForApprovalWithScopeItems(String Employee1,String GmailCheck,String BatchNAME,String USER ,String EMAIL) throws Exception {
+    public ILiglPage sendingCaseForApprovalWithScopeItems(String Employee1, String GmailCheck, String BatchNAME, String USER, String EMAIL) throws Exception {
 
 
         try {
@@ -792,7 +844,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     }
 
 
-    public ILiglPage sendingCaseForDualApprovalEitherType(String Employee1,String GmailCheck,String GoogleDriveCheck,String DateRange1,String DateRange2,String Keywords1,String Keywords2,String BatchNAME,String EMAIL,String USER1,String USER2,String SubType) throws Exception {
+    public ILiglPage sendingCaseForDualApprovalEitherType(String Employee1, String GmailCheck, String GoogleDriveCheck, String DateRange1, String DateRange2, String Keywords1, String Keywords2, String BatchNAME, String EMAIL, String USER1, String USER2, String SubType) throws Exception {
 
         try {
 
@@ -805,7 +857,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Custodian Check Box");
             Thread.sleep(3000);
-            getCurrentDriver().findElement(By.xpath("//span[@title='"+Employee1+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + Employee1 + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
             log_Info("Clicked on Custodian Check Box");
 
             log_Info("Click on Next Button");
@@ -816,12 +868,12 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Gmail Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GmailCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.xpath("//div[text()='" + GmailCheck + "']//../..//div[@class='sourceChkbxDiv']")).click();
             log_Info("Clicked on Gmail Checkbox");
 
             log_Info("Click on Google Drive Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GoogleDriveCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.xpath("//div[text()='" + GoogleDriveCheck + "']//../..//div[@class='sourceChkbxDiv']")).click();
             log_Info("Clicked on Google Drive Checkbox");
 
             log_Info("Click on Next Button");
@@ -832,12 +884,12 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Date Range1");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//span[@title='"+DateRange1+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + DateRange1 + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
             log_Info("Clicked on Date Range1");
 
             log_Info("Click on Date Range2");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//span[@title='"+DateRange2+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + DateRange2 + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
             log_Info("Clicked on Date Range2");
 
             log_Info("Click on Next Button");
@@ -848,12 +900,12 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Keyword 1");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//span[@title='"+Keywords1+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + Keywords1 + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
             log_Info("Clicked on Keyword 1");
 
             log_Info("Click on Keyword2");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//span[@title='"+Keywords2+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            getCurrentDriver().findElement(By.xpath("//span[@title='" + Keywords2 + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
             log_Info("Clicked on Keyword2");
 
 
@@ -924,16 +976,16 @@ public class SecurityPage extends LiglBaseSessionPage {
             return new SecurityPage();
 
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("sendingCaseForDualApprovalEitherType() Failed",ex);
+            throw new Exception("sendingCaseForDualApprovalEitherType() Failed", ex);
         }
     }
 
 
     // Sending Case For Approval Single Approval Type
 
-    public ILiglPage sendingCaseForApprovalAfterAddingScopeItems(String BatchNAME,String USER ,String EMAIL) throws Exception {
+    public ILiglPage sendingCaseForApprovalAfterAddingScopeItems(String BatchNAME, String USER, String EMAIL) throws Exception {
 
 
         try {
@@ -1100,7 +1152,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     public ILiglPage verifyProvidingCaseAccessToUsersInSecurityUsersDropdown(String Name) throws Exception {
         try {
-            log_Info("verifyUnavailabilityOfInActiveUsersInSecurityUsersDropdown() Started");
+            log_Info("verifyProvidingCaseAccessToUsersInSecurityUsersDropdown() Started");
             ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", EditBtn);
             log_Info("Scrolled down to View/Modify Permissions grid");
             UsersTab.click();
@@ -1123,7 +1175,6 @@ public class SecurityPage extends LiglBaseSessionPage {
             FullNameDropdownTypeText.sendKeys(Keys.ENTER);
 
 
-
             log_Info("Entered Full name of User");
             AddBtn.click();
             log_Info("Clicked Add Button and Popup closed");
@@ -1132,16 +1183,18 @@ public class SecurityPage extends LiglBaseSessionPage {
             log_Info("Filtered Full name in Full name column in grid");
             Thread.sleep(5000);
             log_Info("Getting the Full name column data");
-            String FName=FullNameColData.getText();
+            String FName = FullNameColData.getText();
             Thread.sleep(3000);
-            Assert.assertEquals(FName,Name);
+            Assert.assertEquals(FName, Name);
             log_Info("User is successfully displaying in grid, Case Access is provided to user");
-            log_Pass("verifyUnavailabilityOfInActiveUsersInSecurityUsersDropdown() completed successfully");
+            log_Pass("verifyProvidingCaseAccessToUsersInSecurityUsersDropdown() completed successfully");
             return new SecurityPage();
 
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("verifyUnavailabilityOfInActiveUsersInSecurityUsersDropdown() Failed", ex);    }}
+            throw new Exception("verifyProvidingCaseAccessToUsersInSecurityUsersDropdown() Failed", ex);
+        }
+    }
 
     public ILiglPage searchRequiredFullNameInUsersDropdown(String Fullname) throws Exception {
         try {
@@ -1170,7 +1223,9 @@ public class SecurityPage extends LiglBaseSessionPage {
 
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("searchRequiredFullNameInUsersDropdown() Failed", ex);    }}
+            throw new Exception("searchRequiredFullNameInUsersDropdown() Failed", ex);
+        }
+    }
 
     public ILiglPage searchRequiredApprovalBatchName(String AppBatchname) throws Exception {
         try {
@@ -1199,46 +1254,48 @@ public class SecurityPage extends LiglBaseSessionPage {
 
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("searchRequiredApprovalBatchName() Failed", ex);    }}
+            throw new Exception("searchRequiredApprovalBatchName() Failed", ex);
+        }
+    }
 
-    public ILiglPage verifyColumnsDatainAdditionalScopeApprovalGrid(String ApprovalBatchNameExpected,String CustodiansCountExpected,String DatasourcesCountExpected,String KeywordsCountExpected,String DateRangesCountExpected,String ApprovalStatusColumnExpected,String ApprovalTypeExpected,String ApprovalUsersExpected,String ApprovedOrRejectedOnExpected) throws Exception {
+    public ILiglPage verifyColumnsDatainAdditionalScopeApprovalGrid(String ApprovalBatchNameExpected, String CustodiansCountExpected, String DatasourcesCountExpected, String KeywordsCountExpected, String DateRangesCountExpected, String ApprovalStatusColumnExpected, String ApprovalTypeExpected, String ApprovalUsersExpected, String ApprovedOrRejectedOnExpected) throws Exception {
 
         try {
             log_Info("Checking the Column names are displaying in Additional Scope Approval Grid in Security Page");
 
             String a = ApprovalBatchNameColData.getText();
-            Assert.assertEquals(a,ApprovalBatchNameExpected);
+            Assert.assertEquals(a, ApprovalBatchNameExpected);
             log_Info("ApprovalBatchName Column data is displaying as expected");
             Thread.sleep(2000);
 
 
             String b = CustodiansCountColData.getText();
-            Assert.assertEquals(b,CustodiansCountExpected);
+            Assert.assertEquals(b, CustodiansCountExpected);
             log_Info("CustodiansCount Column data is displaying as expected");
             Thread.sleep(2000);
 
             String c = DatasourcesCountColData.getText();
-            Assert.assertEquals(c,DatasourcesCountExpected);
+            Assert.assertEquals(c, DatasourcesCountExpected);
             log_Info("DatasourcesCount Column data is displaying as expected");
             Thread.sleep(2000);
 
             String d = KeywordsCountColData.getText();
-            Assert.assertEquals(d,KeywordsCountExpected);
+            Assert.assertEquals(d, KeywordsCountExpected);
             log_Info("ApprovalBatchName Column data is displaying as expected");
             Thread.sleep(2000);
 
             String e = DateRangesCountColData.getText();
-            Assert.assertEquals(e,DateRangesCountExpected);
+            Assert.assertEquals(e, DateRangesCountExpected);
             log_Info("ApprovalBatchName Column data is displaying as expected");
             Thread.sleep(2000);
 
             String f = ApprovalStatusColumnData.getText();
-            Assert.assertEquals(f,ApprovalStatusColumnExpected);
+            Assert.assertEquals(f, ApprovalStatusColumnExpected);
             log_Info("ApprovalStatus Column data is displaying as expected");
             Thread.sleep(2000);
 
             String g = ApprovalTypeColData.getText();
-            Assert.assertEquals(g,ApprovalTypeExpected);
+            Assert.assertEquals(g, ApprovalTypeExpected);
             log_Info("ApprovalType Column data is displaying as expected");
             Thread.sleep(2000);
 
@@ -1261,35 +1318,32 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             ApprovalBatchNameHeader.click();
             getDriver().waitUntilSpinnerIsClosed();
-            for (int i = 0; i < 7; i++)
-            {
+            for (int i = 0; i < 7; i++) {
                 Actions ac = new Actions(getCurrentDriver());
                 ac.sendKeys(Keys.TAB).perform();
             }
             Thread.sleep(3000);
             String h = ApprovalUsersColData.getText();
-            Assert.assertEquals(h,ApprovalUsersExpected);
+            Assert.assertEquals(h, ApprovalUsersExpected);
             log_Info("Approval users column data is displaying as expected in grid");
             Thread.sleep(3000);
 
             ApprovalUsersHeader.click();
             getDriver().waitUntilSpinnerIsClosed();
-            for (int i = 0; i < 1; i++)
-            {
+            for (int i = 0; i < 1; i++) {
                 Actions ac = new Actions(getCurrentDriver());
                 ac.sendKeys(Keys.TAB).perform();
             }
             Thread.sleep(3000);
             String i = ApprovedOrRejectedOnColData.getText();
-            Assert.assertEquals(i,ApprovedOrRejectedOnExpected);
+            Assert.assertEquals(i, ApprovedOrRejectedOnExpected);
             log_Info("Approved or Rejected By Column data is displaying as expected");
 
             log_Pass("verifyColumnsDatainAdditionalScopeApprovalGrid() validated successfully");
 
             return new SecurityPage();
 
-        }
-        catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("verifyColumnsDatainAdditionalScopeApprovalGrid()", ex);
         }
@@ -1297,32 +1351,34 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     /**
      * Method to Check Approval History of Case in Approval History grid in Security Page
+     *
      * @param Username
      * @param Status
      * @return
      * @throws Exception
      */
-    public ILiglPage approvalHistoryCheck(String Username,String Status) throws Exception{
-        try{
+    public ILiglPage approvalHistoryCheck(String Username, String Status) throws Exception {
+        try {
             log_Info("approvalHistoryCheck() Started");
             Thread.sleep(3000);
-            String username=ApprovalUserName.getText();
-            String newUsrName=Username.replace(" ","");
-            Assert.assertEquals(username,newUsrName);
+            String username = ApprovalUserName.getText();
+            String newUsrName = Username.replace(" ", "");
+            Assert.assertEquals(username, newUsrName);
             log_Info("User Name Updated Properly");
             Thread.sleep(2000);
-            String status=ApprovalStatus.getText();
-            Assert.assertEquals(status,Status);
-            log_Info("Approval Status is Updated to '"+status+"' successfully");
+            String status = ApprovalStatus.getText();
+            Assert.assertEquals(status, Status);
+            log_Info("Approval Status is Updated to '" + status + "' successfully");
 
             return new SecurityPage();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             log_Error("approvalHistoryCheck() Failed");
-            throw new Exception("Exception in approvalHistoryCheck()",ex);
+            throw new Exception("Exception in approvalHistoryCheck()", ex);
         }
     }
-    public ILiglPage selectRecordInApprovalRequestsGrid(String approvalrecord)throws Exception{
-        try{
+
+    public ILiglPage selectRecordInApprovalRequestsGrid(String approvalrecord) throws Exception {
+        try {
             log_Info("selectRecordInApprovalRequestsGrid() Started");
             /*getDriver().waitForelementToBeClickable(Name);
             Actions ac = new Actions(getCurrentDriver());
@@ -1346,42 +1402,46 @@ public class SecurityPage extends LiglBaseSessionPage {
             log_Info("Select Case To Be Approve");*/
             getCurrentDriver().findElement(By.linkText(approvalrecord)).click();
             return new ApprovalPage();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             log_Error("selectRecordInApprovalRequestsGrid Failed");
-            throw new Exception("Exception in selectRecordInApprovalRequestsGrid()",ex);
+            throw new Exception("Exception in selectRecordInApprovalRequestsGrid()", ex);
         }
     }
+
     public ILiglPage approveCase(String action) throws Exception {
         try {
             log_Info("caseApproval() Started");
             Thread.sleep(15000);
-            ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", ApproveBtn);
-            getCurrentDriver().findElement(By.id("appr-"+action+"-btn")).click();
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", ApproveBtn);
+            getCurrentDriver().findElement(By.id("appr-" + action + "-btn")).click();
             SaveBtn.click();
             Thread.sleep(5000);
             return new ApprovalPage();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in caseApproval()", ex);
         }
     }
+
     /**
      * Method to Revoke the Case which is in Pending Approval Status
+     *
      * @return
      * @throws Exception
      */
-    public ILiglPage revokeCase() throws Exception{
-        try{
+    public ILiglPage revokeCase() throws Exception {
+        try {
             log_Info("revokeCase() Started");
             RevokeBtn.click();
             waitForPageToLoad();
             Thread.sleep(2000);
             log_Pass("Case Approval Revoked");
             return new SecurityPage();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             log_Error("revokeCase() Failed");
-            throw new Exception("Exception in revokeCase()",ex);
+            throw new Exception("Exception in revokeCase()", ex);
         }
     }
+
     public ILiglPage sendRejectedCaseApproval() throws Exception {
         try {
             log_Info("Click send for Approval Button");
@@ -1391,8 +1451,143 @@ public class SecurityPage extends LiglBaseSessionPage {
             SendForApprovalBtn.click();
             log_Pass("Case Sent for Approval");
             return new SecurityPage();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception From sendCaseForApproval()", ex);
         }
     }
+
+    public ILiglPage verifyRemovingCaseAccessToUsersInSecurityUsersDropdown(String Name) throws Exception {
+        try {
+            log_Info("verifyUnavailabilityOfInActiveUsersInSecurityUsersDropdown() Started");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", EditBtn);
+            log_Info("Scrolled down to View/Modify Permissions grid");
+            UsersTab.click();
+            log_Info("Clicked Users Tab");
+            EditBtn.click();
+            Thread.sleep(10000);
+            searchRequiredFullNameInUsersDropdown(Name);
+            log_Info("Filtered Full name in Full name column in grid");
+            Thread.sleep(5000);
+            SwitchUserBtn.click();
+            YesBtn.click();
+
+            return new SecurityPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyRemovingCaseAccessToUsersInSecurityUsersDropdown() Failed", ex);
+        }
     }
+    public ILiglPage fetchDataFromDb(String CasenameDB, Hashtable<String,String> data) throws Exception {
+        Connection conn = null;
+        ResultSet resSet = null;
+
+        try {
+            DatabaseUtil.dbConnection("CaseUserAccess",data);
+
+            // DbUtil.dbConnection("CaseUserAccess",data);
+
+           return new SecurityPage();
+        } catch (
+                SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+
+        }
+        return new SecurityPage();
+    }
+
+
+    public ILiglPage DisableSuperUser() throws Exception{
+        try {
+            log_Info("DisableSuperUser() Started");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", EditBtn);
+            log_Info("Scrolled down to View/Modify Permissions grid");
+
+            EditBtn.click();
+            log_Info("Clicked Edit button");
+            Thread.sleep(3000);
+            SwitchSuperUserBtn.click();
+            log_Info("Clicked Super user switch button");
+
+            Thread.sleep(3000);
+            RolesSaveBtn.click();
+            log_Info("Clicked save button");
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("DisableSuperUser() Failed", ex);
+        }
+    }
+
+    public ILiglPage EnableLegalUser() throws Exception{
+        try {
+            log_Info("EnableLegalUser() Started");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", EditBtn);
+            log_Info("Scrolled down to View/Modify Permissions grid");
+
+            EditBtn.click();
+            log_Info("Clicked Edit button");
+            Thread.sleep(3000);
+
+            SwitchLegalUserBtn.click();
+            log_Info("Clicked Legal User button");
+            Thread.sleep(3000);
+
+            RolesSaveBtn.click();
+            log_Info("Clicked save button");
+            return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("DisableSuperUser() Failed", ex);
+        }
+    }
+
+
+
+
+    public ILiglPage verifyProvidingCaseAccessToRolesInSecurityRolestab(String Name) throws Exception {
+        try {
+            log_Info("verifyProvidingCaseAccessToRolesInSecurityRolestab() Started");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", EditBtn);
+            log_Info("Scrolled down to View/Modify Permissions grid");
+
+            Thread.sleep(3000);
+            UsersTab.click();
+            log_Info("Clicked users tab");
+
+            Thread.sleep(3000);
+            AddedByIcon.click();
+            log_Info("clicked Added by role icon ");
+
+            Thread.sleep(3000);
+            Filter.click();
+            log_Info("Clicked filter button");
+
+            Thread.sleep(3000);
+            Searchbar.sendKeys("Added By Role");
+
+            Thread.sleep(3000);
+           RoleNameColumn.click();
+            log_Info("Clicked Role name column icon");
+
+             Thread.sleep(3000);
+            Searchbar.sendKeys("Legal User");
+            log_Info("Searched Legal User");
+
+            Thread.sleep(3000);
+            String res=UsersTabResults.getText();
+            log_Info(res);
+
+
+             return new SecurityPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyProvidingCaseAccessToRolesInSecurityRolestab() Failed", ex);
+        }
+    }
+
+}
