@@ -71,14 +71,14 @@ public class LiglTestSession {
 		return (String) globalProperties.get(td);
 	}
 
-	public void init(String testName) {
+	public void init(String testName, String moduleName) {
 		setExecuteListener(true);
 		if(Reporter.getCurrentTestResult().getTestContext().getAttribute("session") == null)
 			Reporter.getCurrentTestResult().getTestContext().setAttribute("session", this);
 
 		// init reports
 		reports = ExtentManager.getReport(Constants.REPORTS_PATH);
-		test = reports.createTest(testName);
+		test = reports.createTest(testName).assignCategory(moduleName);
 	}
 
 	public IWebConnector getCon() {
