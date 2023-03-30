@@ -82,8 +82,7 @@ public class ManageQuestionBankPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//mat-radio-group[@id='applies-to-radio-group']")
     public WebElement AppliesToOptions;
 
-    //@FindBy(xpath = "(//span[@class='ag-header-cell-text'][normalize-space()='Question Title'])[3]")
-    @FindBy(xpath = "//div[@class='modal-body']//app-questionnaire-list//div[@class='ctnt_sec content']//section[@id='widget-grid-quoestionairelist']//article[@class='col-xs-12 col-sm-12 col-md-12 col-lg-12 pr-2 pl-0']//div[@id='wid-id-0-quoestionairelist']//div[@id='myTabContent1']//div[@id='proc1-quoestionairelist']//article[@class='nopadding']//div[@class='lis-of-case-outer']//div[@class='widget-body lis-of-case-body-outer']//div[@class='striped-table-wrapper custom-tbl-wrapper']//ag-grid-angular[@class='ag-theme-balham']//div[@class='ag-root-wrapper ag-layout-normal ag-ltr']//div[@class='ag-root-wrapper-body ag-layout-normal ag-focus-managed']//div[@role='grid']//div[@role='presentation']//div[@role='presentation']//div[@role='rowgroup']//div[@role='row']//div[@role='columnheader']//div[@role='presentation']//div[@role='presentation']//span[@class='ag-header-cell-text'][normalize-space()='Question Title']")
+    @FindBy(xpath = "(//span[@class='ag-header-cell-text'][normalize-space()='Question Title'])[3]")
     public WebElement parentQuestionTitleColumn;
 
     @FindBy(xpath = "(//span[@ref='eMenu'])[6]")
@@ -163,29 +162,30 @@ public class ManageQuestionBankPage extends LiglBaseSessionPage {
     }
 
     public ILiglPage searchParentQuestion(String parentQuestion) throws Exception {
-        getSession().log_Info("Hover on 'Questionnaire Title'");
-        getDriver().waitForelementToBeClickable(parentQuestionTitleColumn);
-        getDriver().waitForMoveToElement(parentQuestionTitleColumn);
-        getSession().log_Pass("Hovered on Questionnaire Title");
-
-        getSession().log_Info("Click on Menu");
-        getDriver().waitForelementToBeClickable(MenuBtn);
-        getDriver().waitForMoveToElement(MenuBtn);
-        MenuBtn.click();
-        getSession().log_Pass("Clicked on Menu");
-
-        getSession().log_Info("Click on Filter");
-        getDriver().waitForelementToBeClickable(filterBtn);
-        filterBtn.click();
-        getSession().log_Pass("Clicked on Filter");
-
-        getSession().log_Info("Enter the Questionnaire in Search Bar");
-        getDriver().waitForelementToBeClickable(searchBar);
-        searchBar.sendKeys(parentQuestion);
-        filterBtn.click();
-        getSession().log_Pass("Questionnaire in Search Bar");
-        wait(2);
         try {
+            getSession().log_Info("Hover on 'Questionnaire Title'");
+            getDriver().waitForelementToBeClickable(parentQuestionTitleColumn);
+            getDriver().waitForMoveToElement(parentQuestionTitleColumn);
+            getSession().log_Pass("Hovered on Questionnaire Title");
+
+            getSession().log_Info("Click on Menu");
+            getDriver().waitForelementToBeClickable(MenuBtn);
+            getDriver().waitForMoveToElement(MenuBtn);
+            MenuBtn.click();
+            getSession().log_Pass("Clicked on Menu");
+
+            getSession().log_Info("Click on Filter");
+            getDriver().waitForelementToBeClickable(filterBtn);
+            filterBtn.click();
+            getSession().log_Pass("Clicked on Filter");
+
+            getSession().log_Info("Enter the Questionnaire in Search Bar");
+            getDriver().waitForelementToBeClickable(searchBar);
+            searchBar.sendKeys(parentQuestion);
+            filterBtn.click();
+            getSession().log_Pass("Questionnaire in Search Bar");
+
+            wait(2);
             return new ManageQuestionBankPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
@@ -199,8 +199,7 @@ public class ManageQuestionBankPage extends LiglBaseSessionPage {
             getSession().log_Info("Search the Child Question");
             searchTheQuestion(childQuestion);
             scrollToRightToDoActionInManageQuestionGrid(childQuestion);
-            String actual = getCurrentDriver().findElement(By.xpath("//span[@class='ellipsisAgGrid'][normalize-space()='No']")).getText();
-            Assert.assertEquals(actual, "No");
+
             getSession().log_Pass("Child Question Searched");
             return new ManageQuestionBankPage();
         } catch (Exception | Error ex) {
@@ -208,16 +207,6 @@ public class ManageQuestionBankPage extends LiglBaseSessionPage {
             throw new Exception("Search Child Question Failed", ex);
         }
     }
-
-    public ILiglPage verifyTheIsParentOption(String question) throws Exception {
-        try {
-            return new ManageQuestionBankPage();
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("Verify The 'IsParent' Option Failed", ex);
-        }
-    }
-
 
     //Create
     @Override
@@ -314,7 +303,7 @@ public class ManageQuestionBankPage extends LiglBaseSessionPage {
             descriptionTxt.sendKeys(Description);
             getSession().log_Pass("'Description' Entered");
 
-            if (AppliesToOptions.isEnabled()) {
+            if (AppliesToOptions.isSelected()) {
                 //Applies To:
                 getSession().log_Info("Select Applies To");
                 if (AppliesTo.contains("Custodian")) {
@@ -332,13 +321,16 @@ public class ManageQuestionBankPage extends LiglBaseSessionPage {
                 }
                 getSession().log_Pass("'Applies To' is Selected");
             }
-
+            wait(1);
+            getSession().takeScreenShot();
             //Save
             getSession().log_Info("Click on 'Save' Button");
             getDriver().waitForelementToBeClickable(saveBtn);
             saveBtn.click();
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Clicked on 'Save' Button");
+
+
 
             return new ManageQuestionBankPage();
         } catch (Exception | Error ex) {
@@ -418,10 +410,54 @@ public class ManageQuestionBankPage extends LiglBaseSessionPage {
             saveBtn.click();
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Clicked on Save Button");
+            wait(2);
             return new ManageQuestionBankPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("Check AppliesTo Is Non-Editable Field Failed", ex);
+        }
+    }
+
+    // Is Parent Option
+    public ILiglPage verifyTheIsParentOption(String question) throws Exception {
+        try {
+            scrollToRightToDoActionInManageQuestionGrid(question);
+            getSession().log_Info("Verify The 'IsParent' Option displayed 'Yes or No'");
+            try {
+                String actual = getCurrentDriver().findElement(By.xpath("//div[@aria-label='Press SPACE to select this row.']//div[7]")).getText();
+                Assert.assertEquals(actual, "No");
+                getSession().takeScreenShot();
+                getSession().log_Pass("'IsParent' Option displayed as " + actual.toUpperCase());
+
+            } catch (Exception ex) {
+                ////span[@class='ellipsisAgGrid'][normalize-space()='Yes']
+                String actual = getCurrentDriver().findElement(By.xpath("//div[@aria-label='Press SPACE to select this row.']//div[7]")).getText();
+                Assert.assertEquals(actual, "Yes");
+                getSession().takeScreenShot();
+                getSession().log_Pass("'IsParent' Option displayed as " + actual.toUpperCase());
+            }
+            wait(2);
+            return new ManageQuestionBankPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Verify The 'IsParent' Option Failed", ex);
+        }
+    }
+
+    //Verify ParentQuestion Column
+
+    public ILiglPage verifyParentQuestionColumn(String question) throws Exception {
+        try {
+            scrollToRightToDoActionInManageQuestionGrid(question);
+            getSession().log_Info("Verify the ParentQuestion Column");
+            String a1 = getCurrentDriver().findElement(By.xpath("//div[@col-id='ParentQuestion']//span[@class='ellipsisAgGrid']")).getText();
+            getSession().log_Pass("Parent Question is " + "'" + a1 + "'");
+            getSession().takeScreenShot();
+            wait(2);
+            return new ManageQuestionBankPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Verify The 'Parent Question' Column", ex);
         }
     }
 

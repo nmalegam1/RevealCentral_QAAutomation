@@ -50,7 +50,7 @@ public class AdminLeftMenu extends LiglBasePage {
     @FindBy(xpath = "//span[@title='Manage QuestionBank']")
     public WebElement manageQuestionBankLink;
 
-    @FindBy(xpath = "//span[@title='Manage QuestionTemplates']")
+    @FindBy(xpath = "//span[@title='Manage Questionnaire Templates']")
     public WebElement manageQuestionTemplatesLink;
 
     @FindBy(xpath = "//span[@title='Escalation and Reminder']")
@@ -92,13 +92,19 @@ public class AdminLeftMenu extends LiglBasePage {
         return new ContactMasterPage();
     }
 
-    public ILiglPage clickOnAdminLegalHold() {
-        getSession().log_Info("Click on Admin Legal Hold");
-        getDriver().waitForelementToBeClickable(adminLegalHoldLink);
-        adminLegalHoldLink.click();
-        getDriver().waitForAngularRequestsToComplete();
-        getSession().log_Pass("Clicked on Legal Hold");
-        return new ContactMasterPage();
+    public ILiglPage clickOnAdminLegalHold() throws Exception {
+        try {
+            getSession().log_Info("Click on Admin Legal Hold");
+            getDriver().waitForelementToBeClickable(adminLegalHoldLink);
+            adminLegalHoldLink.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked on Legal Hold");
+            return new ContactMasterPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Click On Admin LegalHold Link Failed", ex);
+        }
     }
 
 
@@ -181,6 +187,20 @@ public class AdminLeftMenu extends LiglBasePage {
         getDriver().waitUntilSpinnerIsClosed();
         getSession().log_Pass("Clicked On Manage Question Bank Link");
         return new ManageQuestionBankPage();
+    }
+
+    public ILiglPage clickOnManageQuestionnaireTemplatesPageLink() throws Exception {
+        try {
+            getSession().log_Info("Click On Manage Questionnaire Templates Page Link");
+            getDriver().waitForelementToBeClickable(manageQuestionTemplatesLink);
+            manageQuestionTemplatesLink.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked On Manage Questionnaire Templates Page Link");
+            return new ManageQuestionnaireTemplatesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Click On Manage Questionnaire Templates PageLink Failed", ex);
+        }
     }
 
 }

@@ -18,7 +18,7 @@ public interface ILiglPage {
     LiglTestSession getSession();
 
     // Ligl Normal Pages methods
-    ILiglPage navigateURL();
+    public ILiglPage navigateURL() throws Exception;
 
     ILiglPage submitUsername(String userid);
 
@@ -922,4 +922,20 @@ public interface ILiglPage {
     public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,
                                               String Description) throws Exception;
     public ILiglPage checkAppliesToIsNonEditableField() throws Exception;
+
+    public ILiglPage verifyTheIsParentOption(String question) throws Exception;
+
+    public ILiglPage verifyParentQuestionColumn(String question)throws Exception;
+
+    /**
+     * ManageQuestionnaireTemplatesPage*/
+
+    public ILiglPage clickOnAddTemplate() throws Exception;
+
+    public ILiglPage clickOnAddNewQuestionButton() throws Exception;
+
+    public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data) throws Exception;
+
+    public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception;
+
 }

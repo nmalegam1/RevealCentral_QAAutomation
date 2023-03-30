@@ -38,7 +38,7 @@ public class LiglBasePage implements ILiglPage {
 		// TODO Auto-generated method stub
 	}
 
-	public ILiglPage navigateURL() throws IOException {
+	public ILiglPage navigateURL() throws Exception {
 		return null;
 	}
 
@@ -1400,6 +1400,26 @@ public class LiglBasePage implements ILiglPage {
 											  String Description) throws Exception{return null;}
 
 	public ILiglPage checkAppliesToIsNonEditableField() throws Exception{return null;}
+
+	public ILiglPage verifyTheIsParentOption(String question) throws Exception{return null;}
+
+	public ILiglPage verifyParentQuestionColumn(String question)throws Exception{return null;}
+
+	/**
+	 * ManageQuestionnaireTemplatesPage*/
+
+	public ILiglPage clickOnAddTemplate() throws Exception{return null;}
+
+	public ILiglPage clickOnAddNewQuestionButton() throws Exception{return null;}
+
+	public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data)
+			throws Exception{return null;}
+
+	public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception{
+		return null;
+	}
+
+
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;
