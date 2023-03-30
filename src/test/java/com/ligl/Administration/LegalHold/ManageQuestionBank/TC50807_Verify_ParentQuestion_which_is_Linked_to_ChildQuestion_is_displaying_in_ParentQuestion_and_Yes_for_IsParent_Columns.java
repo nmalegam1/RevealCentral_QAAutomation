@@ -33,11 +33,14 @@ public class TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_d
                     .clickOnManageQuestionBankPageLink()
                     .clickOnQuestionnaireButton()
                     .createNewQuestionnaire(data.get("QuestionnaireTitle"), data.get("RenderType"),data.get("IsParent"),
-                            data.get("IsQuestionMandatory"), data.get("RenderOptions"), data.get("Description"),
-                            data.get("AppliesTo"), data.get("ParentQuestionAddToChild"))
+                            data.get("IsQuestionMandatory"), data.get("Null"), data.get("Description"), data.get("Null"),
+                            data.get("ParentQuestionAddToChild"))
                     .refreshTheManageQuestionBankPage()
-                    .searchTheQuestion(data.get("Question"))
-
+                    .searchTheQuestion(data.get("QuestionnaireTitle"))
+                    .verifyTheIsParentOption(data.get("QuestionnaireTitle"))
+                    .refreshTheManageQuestionBankPage()
+                    .searchTheQuestion(data.get("QuestionnaireTitle"))
+                    .verifyParentQuestionColumn(data.get("QuestionnaireTitle"))
                     .getHeader()
                     .logout();
 

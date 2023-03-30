@@ -337,9 +337,34 @@
     </test>
     <test name="TC50807 Display Parent to Child questions- Verify that Parent Question which is linked to Child Question is displaying in the Parent Question Column as 'Yes' for IsParent">
         <classes>
-
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_displaying_in_ParentQuestion_and_Yes_for_IsParent_Columns"/>
         </classes>
     </test>
 
+    <!--Manage Questionnaire Templates Page-->
+
+    <test name="TC20723	Admin-Manage Questionnaire Templates-Verify the process of creating New template by choosing 'Create New Template' option from Add template button">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplatesPage.TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button"/>
+        </classes>
+    </test>
+
+    <test name="TC38065 Admin-Manage Questionnaire Templates-Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplatesPage.TC38065_Verify_the_process_creating_New_Template_by_choosing_Create_From_Existing_Template_from_Add_Template_button"/>
+        </classes>
+    </test>
+
+    <test name="TC20792 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create New Template'">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplatesPage.TC20792_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_New_Template"/>
+        </classes>
+    </test>
+
+    <test name="TC38068 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplatesPage.TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template"/>
+        </classes>
+    </test>
 
 </suite>

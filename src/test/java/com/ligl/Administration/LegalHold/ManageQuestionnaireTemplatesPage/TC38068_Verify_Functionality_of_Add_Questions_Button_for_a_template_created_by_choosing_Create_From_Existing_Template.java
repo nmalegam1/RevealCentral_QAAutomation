@@ -1,7 +1,6 @@
-package com.ligl.Administration.General.EmployeeMaster;
+package com.ligl.Administration.LegalHold.ManageQuestionnaireTemplatesPage;
 
 import com.ligl.base.TestBase;
-import com.ligl.base.pages.Constants;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.dataprovider.TestDataProvider;
 import com.ligl.pages.LaunchPage;
@@ -11,9 +10,9 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC56374_Verify_user_able_to_import_Employee_by_giving_Both_Mandatory_and_Non_Mandatory_Fields_in_Full_Template_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
-    public void TC40180_user_is_able_to_import_employee_without_filling_Title_field_Test(Hashtable<String, String> data) throws Exception {
+public class TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template extends TestBase {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "AdministrationModule")
+    public void TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -29,16 +28,18 @@ public class TC56374_Verify_user_able_to_import_Employee_by_giving_Both_Mandator
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
+                    .clickOnAdminLegalHold()
                     .getAdminLeft()
-                    .clickOnEmployeeMaster()
-                    .clickOnImport()
-                    .employeeBulkImport(Constants.ImportXLSX_Template_FullTemplate)
+                    .clickOnManageQuestionnaireTemplatesPageLink()
+                    .clickOnAddTemplate()
+                    .createNewQuestionnaireTemplates(data)
+                    .clickOnAddNewQuestionButton()
+                    .addQuestionToManageQuestionnaireTemplate(data)
                     .getHeader()
                     .logout();
         } catch (Exception ex) {
-            session.log_Error("TC40180_user_is_able_to_import_employee_without_filling_Title_field_Test");
-            throw new Exception("TC40180_user_is_able_to_import_employee_without_filling_Title_field_Test", ex);
+            session.log_Error("TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template Failed");
+            throw new Exception("TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template Failed", ex);
         } finally {
             session.end();
         }
