@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "AdministrationModule")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Admin_Manage_Questionnaire_Templates")
     public void TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());
@@ -31,7 +31,7 @@ public class TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template
                     .clickOnAdminLegalHold()
                     .getAdminLeft()
                     .clickOnManageQuestionnaireTemplatesPageLink()
-                    .clickOnAddTemplate()
+                    .clickOnAddTemplate(data)
                     .createNewQuestionnaireTemplates(data)
                     .clickOnAddNewQuestionButton()
                     .addQuestionToManageQuestionnaireTemplate(data)

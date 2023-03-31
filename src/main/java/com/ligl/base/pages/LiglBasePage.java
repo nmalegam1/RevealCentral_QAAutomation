@@ -1408,9 +1408,15 @@ public class LiglBasePage implements ILiglPage {
 	/**
 	 * ManageQuestionnaireTemplatesPage*/
 
-	public ILiglPage clickOnAddTemplate() throws Exception{return null;}
+	public ILiglPage clickOnAddTemplate(Hashtable<String, String> data) throws Exception{return null;}
+
+	public ILiglPage clickOnEditButtonInManageQuestionnaireTemplate() throws Exception{return null;}
 
 	public ILiglPage clickOnAddNewQuestionButton() throws Exception{return null;}
+
+	public ILiglPage selectQuestionnaireTemplate(String questionnaireTemplate) throws Exception{return null;}
+
+	public ILiglPage searchTheQuestionInManageQuestionTemplate(String question) throws Exception{return null;}
 
 	public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data)
 			throws Exception{return null;}
@@ -1418,6 +1424,10 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception{
 		return null;
 	}
+
+	public ILiglPage deLinkTheQuestion(String question) throws Exception{return null;}
+
+	public ILiglPage editQuestionnaireTemplate(Hashtable<String, String> data) throws Exception{return null;}
 
 
 	public void waitForPageToLoad(){

@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC38065_Verify_the_process_creating_New_Template_by_choosing_Create_From_Existing_Template_from_Add_Template_button extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "AdministrationModule")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Admin_Manage_Questionnaire_Templates")
     public void TC38065_Verify_the_process_creating_New_Template_by_choosing_Create_From_Existing_Template_from_Add_Template_button(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());
@@ -31,7 +31,7 @@ public class TC38065_Verify_the_process_creating_New_Template_by_choosing_Create
                     .clickOnAdminLegalHold()
                     .getAdminLeft()
                     .clickOnManageQuestionnaireTemplatesPageLink()
-                    .clickOnAddTemplate()
+                    .clickOnAddTemplate(data)
                     .createNewQuestionnaireTemplates(data)
                     .getHeader()
                     .logout();

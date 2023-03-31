@@ -930,12 +930,22 @@ public interface ILiglPage {
     /**
      * ManageQuestionnaireTemplatesPage*/
 
-    public ILiglPage clickOnAddTemplate() throws Exception;
+    public ILiglPage clickOnAddTemplate(Hashtable<String, String> data) throws Exception;
+
+    public ILiglPage clickOnEditButtonInManageQuestionnaireTemplate() throws Exception;
 
     public ILiglPage clickOnAddNewQuestionButton() throws Exception;
+
+    public ILiglPage selectQuestionnaireTemplate(String questionnaireTemplate) throws Exception;
+
+    public ILiglPage searchTheQuestionInManageQuestionTemplate(String question) throws Exception;
 
     public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data) throws Exception;
 
     public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception;
+
+    public ILiglPage deLinkTheQuestion(String question) throws Exception;
+
+    public ILiglPage editQuestionnaireTemplate(Hashtable<String, String> data) throws Exception;
 
 }
