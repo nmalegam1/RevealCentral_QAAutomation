@@ -429,6 +429,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             ac.moveToElement(CaseNameHeader).perform();
 
 
+            getDriver().waitUntilSpinnerIsClosed();
             log_Info("pointed mouse to the case name");
             waitForPageToLoad();
             log_Info("click on case search menu");

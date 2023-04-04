@@ -25,7 +25,7 @@ import java.util.ArrayList;
         import java.util.List;
         import java.util.concurrent.TimeUnit;
 
-public class LegalHoldPage extends LiglBasePage {
+public class LegalHoldPage extends LiglBaseSessionPage {
 
 
 
@@ -1350,7 +1350,7 @@ public class LegalHoldPage extends LiglBasePage {
     }
     // Check That Any Added Custodian Should Not Be Displayed In LHN Or In DSI Page Untill Approved
 
-    public ILiglPage checkLHNForCustodians(String LHN,String Employee1) throws Exception {
+    public ILiglPage checkLHNForCustodians(String LHN) throws Exception {
 
         try {
 
@@ -1379,6 +1379,7 @@ public class LegalHoldPage extends LiglBasePage {
             System.out.println(a1);
             Thread.sleep(5000);
             Assert.assertEquals(true, a1);
+
             return new LegalHoldPage();
 
 

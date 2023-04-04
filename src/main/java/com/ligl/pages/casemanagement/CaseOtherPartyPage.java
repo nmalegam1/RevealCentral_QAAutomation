@@ -105,7 +105,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(id = "add-lawfirm-outside-btn")
     WebElement AddLawFirmBtn;
 
-    @FindBy(id = "select-status")
+    @FindBy(id = "party-add-select-status")
     WebElement StatusDropDown;
 
     @FindBy(xpath = "//mat-select[@title='select-law-firm-third-party']")
@@ -601,6 +601,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
 
         }
     }
+
     // 6. Validating The Added In House Counsel InThe Grid
     public ILiglPage validateAddedInHouseCounsel(String CounselName) throws Exception{
 
@@ -619,10 +620,11 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
         }
     }
 
+
     // Validate Counsel And Save Button For Party Type
 
 
-    public ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB,String PartyType,String Description) throws Exception {
+    public ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB,String PartyType,String Description,String StatusDrpdown) throws Exception {
 
         try {
 
@@ -651,6 +653,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(PartyTypeDrpDwn);
             Thread.sleep(5000);
             PartyTypeDrpDwn.sendKeys(PartyType);
+            Thread.sleep(5000);
             PartyTypeDrpDwn.sendKeys(Keys.ENTER);
             getSession().log_Pass("Clicked on Party Type Drop Down");
 
@@ -660,6 +663,14 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             DescriptionTextBox.sendKeys(Description);
             getSession().log_Pass("Clicked on Description TextBox");
+
+            log_Info("Click on Status Drop Down");
+            getDriver().waitForelementToBeClickable(StatusDropDown);
+            Thread.sleep(5000);
+            StatusDropDown.sendKeys(StatusDrpdown);
+            Thread.sleep(5000);
+            StatusDropDown.sendKeys(Keys.ENTER);
+            getSession().log_Pass("Clicked on Status Drop Down");
 
             log_Info("Click On create button");
             getDriver().waitForelementToBeClickable(CreateButton);

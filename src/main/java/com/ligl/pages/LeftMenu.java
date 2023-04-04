@@ -75,6 +75,9 @@ public class LeftMenu extends LiglBasePage {
     @FindBy(xpath = "//span[@title='History']")
     WebElement History;
 
+    @FindBy(xpath = "//li[@id='Requests']")
+    WebElement Requests;
+
 
     public LeftMenu(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -205,6 +208,7 @@ public class LeftMenu extends LiglBasePage {
             Thread.sleep(5000);
             Identification.click();
             getSession().log_Pass("Clicked on Identification");
+
             return new DMCollectionsPage();
 
         } catch (Exception | Error ex) {
@@ -631,4 +635,32 @@ public class LeftMenu extends LiglBasePage {
 
         }
     }
+
+    public ILiglPage navigateToCaseLevelRequests() throws Exception {
+
+        try {
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", Requests);
+
+
+            getDriver().waitForelementToBeClickable(Requests);
+            log_Info("Click on Case Request Page");
+            Requests.click();
+            Thread.sleep(5000);
+            log_Info("Clicked on Case Request Page");
+
+            return new CaseRequestsPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("navigateToCaseLevelRequests() Failed ", ex);
+        }
+    }
+
+
+
+
+
+
+
 }

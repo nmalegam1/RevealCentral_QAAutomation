@@ -464,6 +464,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(SelectApprovalDrpDwn);
             Thread.sleep(3000);
             SelectApprovalDrpDwn.sendKeys(USER);
+            Thread.sleep(5000);
             SelectApprovalDrpDwn.sendKeys(Keys.ENTER);
             log_Info("Clicked on Select Approval  Drop down");
 
@@ -471,6 +472,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
             Thread.sleep(5000);
             TemplateNameDrpDwn.sendKeys(EMAIL);
+            Thread.sleep(5000);
             TemplateNameDrpDwn.sendKeys(Keys.ENTER);
             log_Info("Clicked on Email Template Drop down");
 

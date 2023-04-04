@@ -120,7 +120,7 @@ public interface ILiglPage {
 
     ILiglPage checkReportingManagerFieldinAdditionalFields(String s) throws Exception;
 
-    ILiglPage checkLHNForCustodians(String LHN, String Employee1) throws Exception;
+    ILiglPage checkLHNForCustodians(String LHN) throws Exception;
 
     void selectDateFromCalendar(String date);
 
@@ -249,7 +249,7 @@ public interface ILiglPage {
 
     ILiglPage createNewInHouseCounselForEnterpriseParty(String PartyName, String FirstName, String LastName) throws Exception;
 
-    ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB, String PartyType, String Description) throws Exception;
+    ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB, String PartyType, String Description,String StatusDrpdown) throws Exception;
 
     ILiglPage createOtherPartyNewOutsideCounsel(String PartyName, String NameTextBox, String PartyDrpDwn, String Description, String Status, String FirstName, String LastName) throws Exception;
 
@@ -317,6 +317,11 @@ public interface ILiglPage {
 
     ILiglPage goToOutSideCounselInOtherParty() throws Exception;
 
+    ILiglPage clearActionInCaseDropDown() throws Exception;
+    ILiglPage clickOnChooseACaseDropDown() throws Exception;
+
+    ILiglPage validatingNonApprovedCasesInCaseDropDown(String CaseDropDown) throws Exception;
+
     ILiglPage addOutCounselWithAddLawFirmBtn(String s1, String s2, String s3, String s4, String s5) throws Exception;
 
     ILiglPage createNewCourt(String s1, String s2, String s3) throws Exception;
@@ -333,6 +338,8 @@ public interface ILiglPage {
 
     ILiglPage searchingAddedCourt(String AvailableCourt) throws Exception;
 
+    ILiglPage validateTheFieldValuesInAddRequestPopUp(String FieldValues) throws Exception;
+
     ILiglPage navigateAndAddProsecutor(String AvailableCourt, String AvailableProsecutor1, String AvailableProsecutor2, String AvailableProsecutor3, String AvailableProsecutor4) throws Exception;
 
     ILiglPage addOneMoreInhouseCounselToCase(String Email2, String CounselName1) throws Exception;
@@ -342,6 +349,10 @@ public interface ILiglPage {
     ILiglPage addDateRanges(String StartDate1, String EndDate1, String DescriptionBox) throws Exception;
 
     ILiglPage validatingDateRanges() throws Exception;
+
+    ILiglPage clickOnAddRequestButtonInCaseRequests() throws Exception;
+
+    ILiglPage navigateToCaseLevelRequests() throws Exception;
 
     ILiglPage navigateToKeyWordsPage() throws Exception;
 
@@ -890,6 +901,12 @@ public interface ILiglPage {
     /*
      * Manage QuestionBank
      * */
+    public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,
+                                              String Description) throws Exception;
+
+    public ILiglPage checkAppliesToIsNonEditableField() throws Exception;
+
+    public ILiglPage refreshTheManageQuestionBankPage() throws Exception;
 
     public ILiglPage clickOnQuestionnaireButton() throws Exception;
 
@@ -909,7 +926,41 @@ public interface ILiglPage {
 
     ILiglPage validateCreatedRequestInTheGlobalRequestGrid(String TITLE) throws Exception;
 
-    ILiglPage clickOnEditIconInTheGrid() throws Exception;
+    ILiglPage clickOnEditIconInTheGrid(String TITLE) throws Exception;
+
+    ILiglPage addInActiveEMPToCase(String s) throws Exception;
+
+    ILiglPage verifyRecordStatusInLHNSH(String LHStatus) throws Exception;
+
+    ILiglPage addMessageWhenReqIsInProgress(String TextBoxArea) throws Exception;
+
+    public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception;
+
+    ILiglPage moveToTheParticularColumn(String TITLE) throws Exception;
+
+    ILiglPage validateStatusOfTheRequest(String status) throws Exception;
+
+    ILiglPage clickOnViewIconInTheGrid() throws Exception;
+
+    ILiglPage validateMessageBoxIsInDisableMode() throws Exception;
+
+    ILiglPage clickOnNotificationIcon() throws Exception;
+
+    ILiglPage searchForTheParticularTitleOfTheRequest(String title) throws Exception;
+
+    ILiglPage clickOnTheRequestAlertInTheNotificationIcon(String assignedrequest,String PageTitle) throws Exception;
+
+    ILiglPage validateReqAlertInTheNotificationIcon(String request) throws Exception;
+
+    ILiglPage sendAdditionalMessageWhenReqIsInNewStatus(String TextBoxArea) throws Exception;
+
+    ILiglPage clickOnBackToRequestButton() throws Exception;
+
+    ILiglPage modifyIntoTheRequiredStatus(String status) throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfRequestUnderNewInProgressCloseStats(String RequestType,String REQTitle,String CaseDropDown,String UserDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea,String status1,String status2) throws Exception;
+
+    ILiglPage addAllDetailsInTheAddRequestPopUpByAssigningToRole(String RequestType,String REQTitle,String CaseDropDown,String UserDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception;
 
     ILiglPage addAllDetailsInTheAddRequestPopUpWithoutAssignee(String RequestType,String REQTitle,String CaseDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception;
 
@@ -917,7 +968,7 @@ public interface ILiglPage {
 
     public ILiglPage createNewQuestionnaire(String questionnaireTitle, String renderType, String IsParent,
                                             String IsQuestionMandatory, String RenderOptions, String Description,
-                                            String AppliesTo) throws Exception;
+                                            String AppliesTo, String searchParentQuestion) throws Exception;
 
 
 }

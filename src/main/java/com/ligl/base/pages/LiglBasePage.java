@@ -85,6 +85,18 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
+	public ILiglPage searchForTheParticularTitleOfTheRequest(String title) throws Exception{
+		return null;
+	}
+
+	public ILiglPage sendAdditionalMessageWhenReqIsInNewStatus(String TextBoxArea) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnBackToRequestButton() throws Exception{
+		return null;
+	}
+
 	public ILiglPage navigateSSOLoginPage(){
 		return null;
 	}
@@ -174,6 +186,10 @@ public class LiglBasePage implements ILiglPage {
 	}
 	public ILiglPage waitAndvalidateForRecordToCompleteCollection(String status)throws Exception{
 		return  null;
+	}
+
+	public ILiglPage modifyIntoTheRequiredStatus(String status) throws Exception{
+		return null;
 	}
 	public ILiglPage goToDataManagementSummary() throws Exception{
 		return  null;
@@ -361,7 +377,7 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validatingContactAddedForParty(String ContactName) throws Exception{
 		return null;
 	}
-	public ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB,String PartyType,String Description) throws Exception {
+	public ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB,String PartyType,String Description,String StatusDrpdown) throws Exception {
 		return null;
 	}
 	public ILiglPage validatingContactsAfterDeletingFromParty() throws Exception{
@@ -1151,6 +1167,14 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
+	public ILiglPage clickOnTheRequestAlertInTheNotificationIcon(String assignedrequest,String PageTitle) throws Exception{
+		return null;
+	}
+
+	public ILiglPage addAllDetailsInTheAddRequestPopUpByAssigningToRole(String RequestType,String REQTitle,String CaseDropDown,String UserDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception{
+		return null;
+	}
+
 	public ILiglPage createNewEmployee(
 			String id, String firstName, String middleName, String lastName,
 			String alias, String department, String title, String checkTitleOptional, String lastUpdate,
@@ -1280,6 +1304,13 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
+	public ILiglPage clickOnNotificationIcon() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateReqAlertInTheNotificationIcon(String request) throws Exception{
+		return null;
+	}
 	public ILiglPage checkWhetherAddTemplateAndDeleteButtonsAreDisabled(String emailTemplateCategory,
 																		String emailTemplate) throws Exception {
 		return null;
@@ -1352,6 +1383,8 @@ public class LiglBasePage implements ILiglPage {
 	 * Manage QuestionBank
 	 * */
 
+	public ILiglPage refreshTheManageQuestionBankPage() throws Exception{return null;}
+
 	public ILiglPage clickOnQuestionnaireButton() throws Exception{return null;}
 
 	public ILiglPage clickOnEditInQuestionGrid() throws Exception{return null;}
@@ -1392,16 +1425,62 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validateListOfColumnsInTheRequestPage() throws Exception{
 		return null;
 	}
-	public ILiglPage clickOnEditIconInTheGrid() throws Exception{
+	public ILiglPage clickOnEditIconInTheGrid(String TITLE) throws Exception{
 		return null;
 	}
 
+	public ILiglPage addMessageWhenReqIsInProgress(String TextBoxArea) throws Exception{
+		return null;
+	}
+	public ILiglPage moveToTheParticularColumn(String TITLE) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateStatusOfTheRequest(String status) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnViewIconInTheGrid() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateMessageBoxIsInDisableMode() throws Exception{
+		return null;
+	}
 	public ILiglPage addAllDetailsInTheAddRequestPopUpWithoutAssignee(String RequestType,String REQTitle,String CaseDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception{
 		return null;
 	}
 
+	public ILiglPage checkAndValidateTheCountOfRequestUnderNewInProgressCloseStats(String RequestType,String REQTitle,String CaseDropDown,String UserDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea,String status1,String status2) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnChooseACaseDropDown() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateTheFieldValuesInAddRequestPopUp(String FieldValues) throws Exception{
+		return null;
+	}
+
+	public ILiglPage navigateToCaseLevelRequests() throws Exception{
+		return null;
+	}
+	public ILiglPage validatingNonApprovedCasesInCaseDropDown(String CaseDropDown) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnAddRequestButtonInCaseRequests() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clearActionInCaseDropDown() throws Exception{
+		return null;
+	}
 	public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,
 											  String Description) throws Exception{return null;}
+
+	public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception{
+		return null;
+	}
 
 	public ILiglPage checkAppliesToIsNonEditableField() throws Exception{return null;}
 		public void waitForPageToLoad(){
