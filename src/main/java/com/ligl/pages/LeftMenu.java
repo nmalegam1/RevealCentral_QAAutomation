@@ -22,6 +22,9 @@ public class LeftMenu extends LiglBasePage {
     @FindBy(xpath = "//span[contains(text(),'Counsel')]")
     public WebElement CounselLink;
 
+    @FindBy(xpath = "//li[@id='Requests']")
+    WebElement Requests;
+
     @FindBy(xpath = "//span[contains(text(),'Security')]")
     WebElement SecurityLink;
 
@@ -629,6 +632,27 @@ public class LeftMenu extends LiglBasePage {
             log_Error(ex.getMessage());
             throw new Exception("navigateToNotesHistoryPage() Failed", ex);
 
+        }
+    }
+
+    public ILiglPage navigateToCaseLevelRequests() throws Exception {
+
+        try {
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", Requests);
+
+
+            getDriver().waitForelementToBeClickable(Requests);
+            log_Info("Click on Case Request Page");
+            Requests.click();
+            Thread.sleep(5000);
+            log_Info("Clicked on Case Request Page");
+
+            return new CaseRequestsPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("navigateToCaseLevelRequests() Failed ", ex);
         }
     }
 }

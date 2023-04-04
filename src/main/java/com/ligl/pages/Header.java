@@ -71,6 +71,9 @@ public class Header extends LiglBasePage {
 	@FindBy(xpath = "//p[@class='userandRole user-role-label pl-4 mb-0']")
 	WebElement loggedInRole;
 
+	@FindBy(id = "notificationDropdown")
+	WebElement NotificationIcon;
+
 	public Header(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
@@ -322,4 +325,26 @@ public class Header extends LiglBasePage {
 		}
 	}
 
+	public ILiglPage clickOnNotificationIcon() throws Exception{
+
+		try {
+
+			log_Info("clickOnNotificationIcon() started");
+			log_Info("Click On The Notification Icon");
+			getDriver().waitForelementToBeClickable(NotificationIcon);
+			Thread.sleep(5000);
+			NotificationIcon.click();
+			Thread.sleep(5000);
+			getSession().log_Pass("Click On The Notification Icon");
+
+			getDriver().waitUntilSpinnerIsClosed();
+
+
+			return new  NotificationsPage();
+
+		}catch(Exception | Error ex) {
+			log_Error(ex.getMessage());
+			throw new Exception("clickOnNotificationIcon", ex);
+		}
+	}
 }

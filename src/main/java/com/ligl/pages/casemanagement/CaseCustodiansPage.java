@@ -151,7 +151,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             AddToCase.click();
             Thread.sleep(5000);
             getSession().log_Pass("Add To Case Button clicked");
-            return new CaseOtherPartyPage();
+            return new CaseCustodiansPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("addCustodianToCase() Failed", ex);
