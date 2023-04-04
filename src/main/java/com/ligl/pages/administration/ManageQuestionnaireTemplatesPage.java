@@ -364,4 +364,6 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
             throw new Exception("Edit the Questionnaire Templates Failed", ex);
         }
     }
+
+    //
 }

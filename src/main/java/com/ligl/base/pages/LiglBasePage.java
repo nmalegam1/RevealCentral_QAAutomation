@@ -1429,6 +1429,30 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage editQuestionnaireTemplate(Hashtable<String, String> data) throws Exception{return null;}
 
+	public ILiglPage createLegalHoldWithEscalationAndReminderConfigurations(Hashtable<String, String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage getReminderConfigurationsValuesInLegalHoldAtCaseLevel(String legalHoldName, String setReminderDays, String setReminderFrequency,
+																			   String setReminderMailsCap) throws Exception{
+		return null;
+	}
+
+	public ILiglPage getEscalationConfigurationsValuesInLegalHoldAtCaseLevel(String setEscalationDays, String setEscalationFrequency,
+																			 String setEscalationMailsCap) throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkThatReminderConfigurationsInLegalHoldAtAminLevel(String checkReminderDay,String checkReminderFrequency,
+																		   String checkReminderMailsCap) throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkThatEscalationConfigurationsInLegalHoldAtAminLevel(String checkEscalationDay,String checkEscalationFrequency,
+																			 String checkEscalationMailsCap) throws Exception{
+		return null;
+	}
+
 
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();

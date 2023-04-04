@@ -948,4 +948,18 @@ public interface ILiglPage {
 
     public ILiglPage editQuestionnaireTemplate(Hashtable<String, String> data) throws Exception;
 
+    public ILiglPage createLegalHoldWithEscalationAndReminderConfigurations(Hashtable<String, String> data) throws Exception;
+
+    public ILiglPage getReminderConfigurationsValuesInLegalHoldAtCaseLevel(String legalHoldName, String setReminderDays, String setReminderFrequency,
+                                                                               String setReminderMailsCap) throws Exception;
+
+    public ILiglPage getEscalationConfigurationsValuesInLegalHoldAtCaseLevel(String setEscalationDays, String setEscalationFrequency,
+                                                                             String setEscalationMailsCap) throws Exception;
+
+    public ILiglPage checkThatReminderConfigurationsInLegalHoldAtAminLevel(String checkReminderDay,String checkReminderFrequency,
+                                                                           String checkReminderMailsCap) throws Exception;
+
+    public ILiglPage checkThatEscalationConfigurationsInLegalHoldAtAminLevel(String checkEscalationDay,String checkEscalationFrequency,
+                                                                             String checkEscalationMailsCap) throws Exception;
+
 }

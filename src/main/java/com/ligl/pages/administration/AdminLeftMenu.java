@@ -203,4 +203,18 @@ public class AdminLeftMenu extends LiglBasePage {
         }
     }
 
+    public ILiglPage clickOnEscalationAndReminderPageLink() throws Exception{
+        try{
+            getDriver().waitForelementToBeClickable(escalationAndReminderLink);
+            getSession().log_Info("Click On Escalation And Reminder Page Link");
+            escalationAndReminderLink.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked On Escalation And Reminder Page Link");
+            return new EscalationAndReminderPage();
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("Click On Escalation And Reminder Page Link Failed", ex);
+        }
+    }
+
 }
