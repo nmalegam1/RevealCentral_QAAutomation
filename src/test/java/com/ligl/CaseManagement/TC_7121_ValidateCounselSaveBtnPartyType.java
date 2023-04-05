@@ -31,7 +31,7 @@ public class TC_7121_ValidateCounselSaveBtnPartyType extends TestBase {
                     .login(data.get("Username"), data.get("Password"),data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToOtherPartyPage()
-                    .validateCounselAndSaveButtonForPartyType(data.get("PartyNameB"), data.get("PartyType"), data.get("Description") );
+                    .validateCounselAndSaveButtonForPartyType(data.get("PartyNameB"), data.get("PartyType"), data.get("Description"), data.get("StatusDrpDwn") );
 
 
 

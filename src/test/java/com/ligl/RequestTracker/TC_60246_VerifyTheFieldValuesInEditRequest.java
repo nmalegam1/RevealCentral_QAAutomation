@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_36700_CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProgress extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData",description="RequestTracker")
-    public void TC_36700_CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProgress(Hashtable<String,String> data) throws Exception {
+public class TC_60246_VerifyTheFieldValuesInEditRequest extends TestBase {
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    public void TC_60246_VerifyTheFieldValuesInEditRequest(Hashtable<String,String> data) throws Exception {
         try{
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -31,16 +31,17 @@ public class TC_36700_CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProg
                     .getHeader().goToGlobalRequestPage()
                     .searchForTheParticularTitleOfTheRequest(data.get("ReqTitle"))
                     .clickOnEditIconInTheGrid(data.get("ReqTitle"))
-                    .validateStatusOfTheRequest(data.get("Status"))
-                    .addMessageWhenReqIsInProgress(data.get("Message"))
-                    .searchForTheParticularTitleOfTheRequest(data.get("ReqTitle"))
-                    .moveToTheParticularColumn(data.get("ReqTitle"))
-                    .validateStatusOfTheRequest(data.get("Message"));
+                    .validateTheFieldValuesInAddRequestPopUp(data.get("ReqType"))
+                    .validateTheFieldValuesInAddRequestPopUp(data.get("ReqTitle"))
+                    .validateTheFieldValuesInAddRequestPopUp(data.get("ChooseCase"))
+                    .validateTheFieldValuesInAddRequestPopUp(data.get("ChooseUser"))
+                    .validateTheFieldValuesInAddRequestPopUp(data.get("Priority"))
+                    .validateTheFieldValuesInAddRequestPopUp(data.get("CompleteDate"));
 
 
         }catch (Exception ex){
-            session.log_Error("TC_36700_CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProgress Failed");
-            throw new Exception("Exception in TC_36700_CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProgress", ex);
+            session.log_Error("TC_60246_VerifyTheFieldValuesInEditRequest Failed");
+            throw new Exception("Exception in TC_60246_VerifyTheFieldValuesInEditRequest", ex);
         }finally {
             session.end();
         }
