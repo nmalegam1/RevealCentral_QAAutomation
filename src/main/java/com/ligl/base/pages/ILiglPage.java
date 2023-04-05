@@ -55,8 +55,10 @@ public interface ILiglPage {
 
     void log_Info(String message);
 
-    ILiglPage checkCustodianRoleInUserCreationPopUp(String s) throws Exception;
 
+    ILiglPage multipleCustodianSelect()throws Exception;
+    ILiglPage multipleDataSourceSelect()throws Exception;
+    ILiglPage checkCustodianRoleInUserCreationPopUp(String s)throws Exception;
     void log_Pass(String message);
 
     void log_Error(String message);
@@ -749,6 +751,8 @@ public interface ILiglPage {
     public ILiglPage clickOnAddEmployeeButton() throws Exception;
 
     public ILiglPage employeeBulkImport(String importEmpFile) throws Exception;
+    String getCCDStats();
+    ILiglPage goToExports(String s);
 
 
     public ILiglPage createNewEmployee(
@@ -851,6 +855,7 @@ public interface ILiglPage {
 
     public ILiglPage clickOnNewButton() throws Exception;
 
+
     public ILiglPage searchAndSelectTheLookUp(String name) throws Exception;
 
     public ILiglPage createLookUp(String name, String displayOrder, String description, String entityType) throws Exception;
@@ -865,6 +870,7 @@ public interface ILiglPage {
      * Admin-Legal Hold
      */
     /*Stakeholder Page*/
+
     public ILiglPage clickOnAddStakeholderButton() throws Exception;
 
     public ILiglPage createStakeholder(String firstName, String middleName, String lastName, String email,
@@ -890,12 +896,20 @@ public interface ILiglPage {
      * */
     public ILiglPage refreshTheManageQuestionBankPage() throws Exception;
     public ILiglPage clickOnQuestionnaireButton() throws Exception;
+    ILiglPage goToMatters() throws Exception;
+    ILiglPage searchMatter(String matter);
 
     public ILiglPage clickOnEditInQuestionGrid() throws Exception;
+    ILiglPage googleVaultLogin(String s1,String s2,String s3)throws Exception;
 
     public ILiglPage scrollToRightToDoActionInManageQuestionGrid(String question) throws Exception;
 
+    /**/
+    public ILiglPage clickOnQuestionnaire() throws Exception;
+    public ILiglPage selectAllCCDs() throws InterruptedException;
+    ILiglPage multipleCCDsSelect()throws Exception;
     public ILiglPage searchTheQuestion(String question) throws Exception;
+    ILiglPage validateCollectionStats()throws Exception;
 
     public ILiglPage searchChildQuestion(String childQuestion) throws Exception;
 

@@ -115,6 +115,16 @@ public class LiglBasePage implements ILiglPage {
 		getSession().log_Info(message);
 	}
 
+	@Override
+	public ILiglPage multipleCustodianSelect() throws Exception {
+		return null;
+	}
+
+	@Override
+	public ILiglPage multipleDataSourceSelect() throws Exception {
+		return null;
+	}
+
 	public void log_Pass(String message) {
 		getSession().log_Pass(message);
 	}
@@ -1297,11 +1307,13 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage checkNewlyCreatedCaseSettingTemplatePopulatedInCaseSettingsTemplateDropDown(String caseSettingsTemplate) throws Exception{
 		return null;
 	}
+	public String getCCDStats(){return null;}
 
 	/*Lookup Manager Page*/
 	public ILiglPage selectLookupType(String lookup) throws Exception{
 		return null;
 	}
+	public ILiglPage goToExports(String a){return null;}
 
 	public ILiglPage clickOnNewButton() throws Exception{return null;}
 
@@ -1347,6 +1359,11 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception{return null;}
 
+	@Override
+	public ILiglPage clickOnQuestionnaire() throws Exception {
+		return null;
+	}
+
 	public ILiglPage verifyTheDuplicateValidationMessage() throws Exception{return null;}
 
 	/*
@@ -1391,7 +1408,11 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage clickOnEditIconInTheGrid(String TITLE) throws Exception{
 		return null;
 	}
+	public ILiglPage goToMatters() throws Exception {return null;}
+	public ILiglPage searchMatter(String matter){return null;}
 
+	 public ILiglPage googleVaultLogin(String s1,String s2,String s3)throws Exception{return null;}
+	public ILiglPage validateCollectionStats()throws Exception{return null;}
 	public ILiglPage addAllDetailsInTheAddRequestPopUpWithoutAssignee(String RequestType,String REQTitle,String CaseDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception{
 		return null;
 	}
@@ -1572,6 +1593,8 @@ public class LiglBasePage implements ILiglPage {
 		}
 
 	}
+	public ILiglPage selectAllCCDs() throws InterruptedException {return null;}
+	public ILiglPage multipleCCDsSelect() throws Exception {return null;}
 
 	public void wait(int time) {
 		try {

@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import java.util.Hashtable;
 import java.util.concurrent.TimeUnit;
 
 public class CaseCustodiansPage extends LiglBaseSessionPage {
@@ -213,6 +214,168 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             throw new Exception("addCustodianToCase() Failed",ex);*/
 
     }
+    public ILiglPage multipleCustodianSelect()throws Exception{
+        try{
+            log_Info("Started multipleCustodianSelect()");
+            if(getSession().getRegressionData("O365_Exchange_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("O365_Exchange_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("O365_Exchange_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("O365_Exchange_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("O365_Sharepoint_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("O365_Sharepoint_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("O365_Sharepoint_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("O365_Sharepoint_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("OneDrive_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("OneDrive_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("OneDrive_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("OneDrive_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("MS_Teams_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("MS_Teams_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("MS_Teams_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("MS_Teams_Custodian"));
+                }
+            }
+
+            if(getSession().getRegressionData("Hangouts_Chat_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("Hangouts_Chat_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("Hangouts_Chat_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("Hangouts_Chat_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("GMail_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("GMail_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("GMail_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("GMail_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("GDrive_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("GDrive_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("GDrive_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("GDrive_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("Google_Chat_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("Google_Chat_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("Google_Chat_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("Google_Chat_Custodian"));
+                }
+            }
+
+            if(getSession().getRegressionData("Dropbox_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("Dropbox_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("Dropbox_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("Dropbox_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("Box_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("Box_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("Box_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("Box_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("Proofpoint_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("Proofpoint_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("Proofpoint_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("Proofpoint_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("Zoom_Video_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("Zoom_Video_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("Zoom_Video_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("Zoom_Video_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("Zoom_Chat_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("Zoom_Chat_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("Zoom_Chat_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("Zoom_Chat_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("Onna_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("Onna_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("Onna_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("Onna_Custodian"));
+                }
+            }
+            if(getSession().getRegressionData("Slack_RunState").equals("Y")) {
+                searchCustodian(getSession().getRegressionData("Slack_Custodian"));
+                try {
+                    if (getCurrentDriver().findElement(By.xpath("//span[@title='" + getSession().getRegressionData("Slack_Custodian") + "']")).isDisplayed()){
+                        log_Info("Custodian is already Added to Grid");
+                    }
+                }catch(Exception ex){
+                    addCustodianToCase(getSession().getRegressionData("Slack_Custodian"));
+                }
+            }
+
+            return new CaseCustodiansPage();
+        }catch(Exception ex){
+            log_Error(ex.getMessage());
+            throw new Exception("multipleCustodianSelect() Failed", ex);
+        }
+    }
     /**
      * Method to validate Custodian Added from Employee master Grid is Added to Custodian Grid
      * @param Custodian
@@ -246,13 +409,28 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
     public ILiglPage searchCustodian(String Custodian) throws Exception{
         try{
             log_Info("searchCustodian() Started");
+            try {
+                Thread.sleep(3000);
+                if (Searchbar.isDisplayed()) {
+                    Searchbar.clear();
+                    Searchbar.sendKeys(Custodian);
+                }
+            }catch(Exception ex){
+                CustEmailHeader.click();
+            }
             Thread.sleep(3000);
-            CustEmailHeader.click();
-            Thread.sleep(3000);
-            Filter.click();
-            Thread.sleep(3000);
-            Searchbar.sendKeys(Custodian);
-            Thread.sleep(3000);
+            try {
+                if(Searchbar.isDisplayed()) {
+                    Searchbar.clear();
+                    Searchbar.sendKeys(Custodian);
+                }
+                Thread.sleep(3000);
+            }catch(Exception ex){
+
+                Filter.click();
+                Searchbar.sendKeys(Custodian);
+                Thread.sleep(3000);
+            }
             return new CaseCustodiansPage();
         }catch (Exception ex){
             log_Error("searchCustodian() failed");
