@@ -876,7 +876,9 @@ public interface ILiglPage {
                                             String department, String category, String status, String reason) throws Exception;
 
     public ILiglPage scrollToRightToDoAction(String email) throws Exception;
+    public ILiglPage verifyTheIsParentOption(String question) throws Exception;
 
+    public ILiglPage verifyParentQuestionColumn(String question)throws Exception;
     public ILiglPage searchTheStakeholder(String email) throws Exception;
 
     public ILiglPage deleteTheExitingStakeholder() throws Exception;
@@ -923,19 +925,35 @@ public interface ILiglPage {
                                               String Description) throws Exception;
     public ILiglPage checkAppliesToIsNonEditableField() throws Exception;
 
-    public ILiglPage verifyTheIsParentOption(String question) throws Exception;
+    public ILiglPage createNewQuestionnaireTemplates(Hashtable<String, String> data) throws Exception;
 
-    public ILiglPage verifyParentQuestionColumn(String question)throws Exception;
+    ILiglPage searchRequiredDaterangeName(String DRname) throws Exception;
 
-    /**
-     * ManageQuestionnaireTemplatesPage*/
+    ILiglPage disabledDateRangeNotesClick(String DRName) throws Exception;
 
-    public ILiglPage clickOnAddTemplate() throws Exception;
+    ILiglPage NotesDelete(String NotesContent) throws Exception;
 
-    public ILiglPage clickOnAddNewQuestionButton() throws Exception;
+    ILiglPage validateDeletedNote(String NotesContent) throws Exception;
 
-    public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data) throws Exception;
+    ILiglPage clickOnAddTemplate() throws Exception;
 
-    public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception;
+    ILiglPage clickOnAddNewQuestionButton() throws Exception;
 
+    ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable<String, String> data) throws Exception;
+
+    ILiglPage enabledDateRangeNotesClick(String DRName) throws Exception;
+
+    ILiglPage searchRequiredKeywordName(String KWname) throws Exception;
+
+    ILiglPage disabledKeywordsNotesClick(String KWname) throws Exception;
+
+    ILiglPage enabledKeywordsNotesClick(String KWname) throws Exception;
+
+    ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromInHouseCounselPage() throws Exception;
+
+    ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromCustodiansPage() throws Exception;
+
+    ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception;
+
+    ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception;
 }

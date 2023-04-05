@@ -38,7 +38,7 @@ public class LiglBasePage implements ILiglPage {
 		// TODO Auto-generated method stub
 	}
 
-	public ILiglPage navigateURL() throws Exception {
+	public ILiglPage navigateURL()throws Exception {
 		return null;
 	}
 
@@ -1050,6 +1050,11 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
+
+	public ILiglPage verifyTheIsParentOption(String question) throws Exception{return null;}
+
+	public ILiglPage verifyParentQuestionColumn(String question)throws Exception{return null;}
+
 	public ILiglPage duplicateValidationMessageForSSOUser() throws Exception {
 		return null;
 	}
@@ -1399,27 +1404,66 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,
 											  String Description) throws Exception{return null;}
 
-	public ILiglPage checkAppliesToIsNonEditableField() throws Exception{return null;}
-
-	public ILiglPage verifyTheIsParentOption(String question) throws Exception{return null;}
-
-	public ILiglPage verifyParentQuestionColumn(String question)throws Exception{return null;}
-
-	/**
-	 * ManageQuestionnaireTemplatesPage*/
-
-	public ILiglPage clickOnAddTemplate() throws Exception{return null;}
-
-	public ILiglPage clickOnAddNewQuestionButton() throws Exception{return null;}
-
-	public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data)
-			throws Exception{return null;}
-
-	public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception{
+	public ILiglPage searchRequiredDaterangeName(String DRname) throws Exception{
 		return null;
 	}
 
+	public ILiglPage disabledDateRangeNotesClick(String DRName) throws Exception{
+		return null;
+	}
 
+	public ILiglPage NotesDelete(String NotesContent) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateDeletedNote(String NotesContent) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnAddTemplate() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnAddNewQuestionButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable<String, String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enabledDateRangeNotesClick(String DRName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchRequiredKeywordName(String KWname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage disabledKeywordsNotesClick(String KWname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enabledKeywordsNotesClick(String KWname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromInHouseCounselPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromCustodiansPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception{
+		return null;
+	}
+	public ILiglPage checkAppliesToIsNonEditableField() throws Exception{return null;}
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;
@@ -1460,4 +1504,7 @@ public class LiglBasePage implements ILiglPage {
 		}
 	}
 
+	public ILiglPage createNewQuestionnaireTemplates(Hashtable<String, String> data) throws Exception{
+		return null;
+	}
 }
