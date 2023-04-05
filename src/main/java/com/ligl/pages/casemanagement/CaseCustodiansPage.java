@@ -111,6 +111,18 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[contains(text(),'Proceed')]")
     WebElement InactEmpProceed;
 
+    @FindBy(xpath="//button[@aria-label='Columns']")
+    WebElement ChooseColumnsEmployeeMaster;
+
+    @FindBy(xpath="//span[contains(text(),'Action')]")
+    WebElement ActionColumn;
+
+    @FindBy(id="back-btn-employeemaster")
+    WebElement BackButton;
+
+    @FindBy(xpath="//span[contains(text(),'Import')]/ancestor::div[@aria-disabled='true']")
+    WebElement DisabledImportTab;
+
 
     //12. After Navigating To Custodian Tab The Actions We Perform Adding Custodians To A Case
 
@@ -152,7 +164,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             AddToCase.click();
             Thread.sleep(5000);
             getSession().log_Pass("Add To Case Button clicked");
-            return new CaseOtherPartyPage();
+            return new CaseCustodiansPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("addCustodianToCase() Failed", ex);
@@ -846,6 +858,45 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             throw new Exception("Exception in validateCustStatus()");
         }
     }
+
+    //validating Action column is unavailable for Non-legal user & Non-legal reviewer
+    public ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromCustodiansPage() throws Exception{
+
+        try {
+            AddCust.click();
+            log_Info("Clicked Add Custodian button");
+            Thread.sleep(5000);
+            boolean v1 = DisabledImportTab.isEnabled();
+            System.out.println(v1);
+            Assert.assertEquals(true, v1);
+            log_Info("Import tab is disabled when redirected from Custodians page");
+            Thread.sleep(5000);
+            ChooseColumnsEmployeeMaster.click();
+            log_Info("Clicked Choose columns");
+            try
+            {
+                log_Info("Started checking unavailability of Action column in Employee master grid when redirected from Custodians page");
+                ChooseColumnsSearch.sendKeys("Action");
+                if(ActionColumn.isDisplayed()){
+                    log_Error("Incorrect: Action column is displaying");
+                }
+            }
+            catch (Exception ex)
+            {
+                log_Info("Action column is not displaying");
+            }
+            Thread.sleep(5000);
+            BackButton.click();
+            log_Info("Clicked Back button and redirected to Custodians page");
+            Thread.sleep(5000);
+            return new CaseCounselPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("validateUnavailabilityOfCreateAndEditOfEmployeeFromCustodiansPage() Failed",ex);
+        }
+    }
+
 }
 
 

@@ -33,7 +33,7 @@ public class TC56374_Verify_user_able_to_import_Employee_by_giving_Both_Mandator
                     .getAdminLeft()
                     .clickOnEmployeeMaster()
                     .clickOnImport()
-                    .employeeBulkImport(Constants.ImportXLSX_Template_Title_Optional)
+                    .employeeBulkImport(Constants.ImportXLSX_Template_FullTemplate)
                     .getHeader()
                     .logout();
         } catch (Exception ex) {

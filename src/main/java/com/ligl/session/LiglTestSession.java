@@ -1,8 +1,6 @@
 package com.ligl.session;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 import java.util.Properties;
 import com.ligl.base.pages.ILiglPage;
@@ -34,37 +32,53 @@ public class LiglTestSession {
 			smokeProperties = new Properties();
 			regressionProperties = new Properties();
 			globalProperties = new Properties();
-			FileInputStream gpFIS = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\global.properties");
+
+			FileInputStream gpFIS = new FileInputStream(Constants.GLOBAL_PROP_PATH);
 			globalProperties.load(gpFIS);
-			FileInputStream spFIS = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\smoke.properties");
+
+			FileInputStream spFIS = new FileInputStream(Constants.SMOKE_PROP_PATH);
 			smokeProperties.load(spFIS);
-			FileInputStream rpFIS = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\regression.properties");
+
+			FileInputStream rpFIS = new FileInputStream(Constants.REPORTS_PATH);
 			regressionProperties.load(rpFIS);
 		}catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
+
+	public void setSmokeData(String key, String value) throws IOException {
+		smokeProperties.setProperty(key,value);
+		smokeProperties.store(new FileOutputStream(Constants.SMOKE_PROP_PATH),null);
+	}
 	public String getSmokeData(String td) {
 		return (String) smokeProperties.get(td);
 	}
-	public String getGlobalData(String td)
-	{
-		return (String) globalProperties.get(td);
+	public void setRegressionData(String key, String value) throws IOException {
+		smokeProperties.setProperty(key,value);
+		smokeProperties.store(new FileOutputStream(Constants.REGRESSION_PROP_PATH),null);
 	}
 	public String getRegressionData(String td)
 	{
 		return (String) regressionProperties.get(td);
 	}
+	public void setGlobalData(String key, String value) throws IOException {
+		smokeProperties.setProperty(key,value);
+		smokeProperties.store(new FileOutputStream(Constants.GLOBAL_PROP_PATH),null);
+	}
+	public String getGlobalData(String td)
+	{
+		return (String) globalProperties.get(td);
+	}
 
-	public void init(String testName) {
+	public void init(String testName, String moduleName) {
 		setExecuteListener(true);
 		if(Reporter.getCurrentTestResult().getTestContext().getAttribute("session") == null)
 			Reporter.getCurrentTestResult().getTestContext().setAttribute("session", this);
 
 		// init reports
 		reports = ExtentManager.getReport(Constants.REPORTS_PATH);
-		test = reports.createTest(testName);
+		test = reports.createTest(testName).assignCategory(moduleName);
 	}
 
 	public IWebConnector getCon() {

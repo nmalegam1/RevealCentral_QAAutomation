@@ -38,8 +38,10 @@ public class TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Ed
                     .refreshTheManageQuestionBankPage()
 
                     //Edit
-                    .searchTheQuestion(data.get("searchQuestion"))
-                    .scrollToRightToDoActionInManageQuestionGrid(data.get("searchQuestion"))
+                    //.searchTheQuestion(data.get("searchQuestion"))
+                    //.scrollToRightToDoActionInManageQuestionGrid(data.get("searchQuestion"))
+                    .searchTheQuestion("QA_Automation_Question_001")
+                    .scrollToRightToDoActionInManageQuestionGrid("QA_Automation_Question_001")
                     .clickOnEditInQuestionGrid()
                     .editExitingQuestionnaire(data.get("EditQuestionnaireTitle"), data.get("EditIsQuestionMandatory"),data.get("EditDescription"))
                     .getHeader()

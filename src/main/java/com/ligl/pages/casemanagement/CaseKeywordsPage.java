@@ -2,6 +2,7 @@ package com.ligl.pages.casemanagement;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
+import com.ligl.pages.NotesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -47,6 +48,20 @@ public class CaseKeywordsPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[@title='Basic']")
     WebElement KWTP2;
 
+    @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
+    WebElement Filter;
+
+    @FindBy(xpath = "//input[@placeholder='Filter...']")
+    WebElement Searchbar;
+
+    @FindBy(xpath="//span[contains(text(),'Keyword Search Name')]/ancestor::div[@ref='eLabel']/ancestor::div[@col-id='Name']//span")
+    WebElement KWNameMenu;
+
+    @FindBy(xpath="//span[contains(text(),'Keyword Search Name') and @ref='eText']")
+    WebElement KwName;
+
+    @FindBy(xpath = "//button[@title='Notes']")
+    WebElement KWNoteIcon;
 
 
     // Adding KeyWords In The Keywords Page By Taking Case Type Basic
@@ -257,4 +272,76 @@ public class CaseKeywordsPage extends LiglBaseSessionPage {
             throw new Exception("validateEnableAndDisableKeywords() Failed", ex);
         }
     }
+
+//Searching required Keyword in Keywords grid
+    public ILiglPage searchRequiredKeywordName(String KWname) throws Exception {
+        try {
+            log_Info("searchRequiredKeywordName() Started");
+            Thread.sleep(5000);
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(KwName).perform();
+            KWNameMenu.click();
+            Thread.sleep(5000);
+            Filter.click();
+            Thread.sleep(5000);
+            Searchbar.sendKeys(KWname);
+            Thread.sleep(5000);
+            return new CaseKeywordsPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("searchRequiredKeywordName() Failed", ex);
+
+        }}
+
+    //Clicking Notes for Disabled Keywords
+    public ILiglPage disabledKeywordsNotesClick(String KWname) throws Exception {
+        try {
+            log_Info("disabledKeywordsNotesClick() Started");
+            KwName.click();
+            for (int i = 0; i < 9; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
+            getDriver().waitForelementToBeClickable(KWNoteIcon);
+            KWNoteIcon.click();
+            Thread.sleep(5000);
+            return new NotesPage();
+        }
+        catch (Exception | Error ex)
+        {
+            log_Error(ex.getMessage());
+            throw new Exception("disabledKeywordsNotesClick() Failed", ex);
+
+        }
+    }
+
+//Clicking Note icon for Enabled Keywords
+    public ILiglPage enabledKeywordsNotesClick(String KWname) throws Exception {
+        try {
+            log_Info("enabledKeywordsNotesClick() Started");
+            searchRequiredKeywordName(KWname);
+            Thread.sleep(5000);
+            KwName.click();
+            getDriver().waitUntilSpinnerIsClosed();
+            for (int i = 0; i < 9; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
+            getDriver().waitForelementToBeClickable(KWNoteIcon);
+            KWNoteIcon.click();
+            Thread.sleep(5000);
+
+            return new NotesPage();
+        }
+        catch (Exception | Error ex)
+        {
+            log_Error(ex.getMessage());
+            throw new Exception("enabledKeywordsNotesClick() Failed", ex);
+
+        }
+    }
+
 }

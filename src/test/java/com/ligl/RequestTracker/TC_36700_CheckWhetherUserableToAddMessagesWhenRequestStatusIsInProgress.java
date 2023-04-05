@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_36700_CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProgress extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData",description="RequestTracker")
     public void TC_36700_CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProgress(Hashtable<String,String> data) throws Exception {
         try{
             session.log_Info(data.toString());
@@ -29,8 +29,13 @@ public class TC_36700_CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProg
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .getHeader().goToGlobalRequestPage()
-                    .validateCreatedRequestInTheGlobalRequestGrid(data.get("ReqTitle"))
-                    .clickOnEditIconInTheGrid();
+                    .searchForTheParticularTitleOfTheRequest(data.get("ReqTitle"))
+                    .clickOnEditIconInTheGrid(data.get("ReqTitle"))
+                    .validateStatusOfTheRequest(data.get("Status"))
+                    .addMessageWhenReqIsInProgress(data.get("Message"))
+                    .searchForTheParticularTitleOfTheRequest(data.get("ReqTitle"))
+                    .moveToTheParticularColumn(data.get("ReqTitle"))
+                    .validateStatusOfTheRequest(data.get("Message"));
 
 
         }catch (Exception ex){

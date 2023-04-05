@@ -7,10 +7,10 @@ import com.ligl.pages.datamanagement.DMCollectionsPage;
 import com.ligl.pages.datamanagement.DMDSIPage;
 import com.ligl.pages.datamanagement.DMSummaryPage;
 import com.ligl.pages.processmanagement.PMSummaryPage;
-//import com.sun.source.tree.CatchTree;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class LeftMenu extends LiglBasePage {
 
@@ -22,6 +22,9 @@ public class LeftMenu extends LiglBasePage {
 
     @FindBy(xpath = "//span[contains(text(),'Counsel')]")
     public WebElement CounselLink;
+
+    @FindBy(xpath = "//li[@id='Requests']")
+    WebElement Requests;
 
     @FindBy(xpath = "//span[contains(text(),'Security')]")
     WebElement SecurityLink;
@@ -122,6 +125,7 @@ public class LeftMenu extends LiglBasePage {
             }
 
             return new DMDSIPage();
+
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("goToDSIPage() Failed ", ex);
@@ -283,10 +287,13 @@ public class LeftMenu extends LiglBasePage {
                     // Navigating To Custodian Page In The LeftMenu
 
     public ILiglPage navigateToCustodiansPage() throws Exception {
+
         try {
+
             try {
                 WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
+
                     log_Info("Click on Case Management");
                     getDriver().waitForelementToBeClickable(CaseManage);
                     Thread.sleep(5000);
@@ -305,6 +312,7 @@ public class LeftMenu extends LiglBasePage {
                     log_Info("clicked on the Custodians subtab");
                 }
             } catch (NoSuchElementException e) {
+
                 WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
 
                 try {
@@ -331,23 +339,76 @@ public class LeftMenu extends LiglBasePage {
                     log_Info("clicked on the Custodians subtab");
 
                 }
+
             }
             return new CaseCustodiansPage();
 
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("navigateToDataSourcesPage() Failed", ex);
+            throw new Exception("navigateToCustodiansPage() Failed", ex);
+
 
         }
     }
 
-    // Navigating To Data Source Page In The LeftMenu
 
-    public ILiglPage navigateToDataSourcesPage() throws Exception {
+    // Navigating To Court Page
+
+    public ILiglPage navigateToCourtPage() throws Exception {
+
         try {
+
             try {
                 WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
+
+                    log_Info("Click on Case Management");
+                    getDriver().waitForelementToBeClickable(CaseManage);
+                    CaseManage.click();
+                    getSession().log_Pass("case Management clicked");
+
+                    log_Info("Click on court Tab ");
+                    getDriver().waitForelementToBeClickable(Court);
+                    Thread.sleep(2000);
+                    Court.click();
+                    getSession().log_Pass("court Tab is clicked");
+
+
+                }
+            } catch (NoSuchElementException e) {
+
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+
+                if (caseMgmt1.isDisplayed()) {
+
+                    log_Info("Click on court Tab ");
+                    getDriver().waitForelementToBeClickable(Court);
+                    Thread.sleep(2000);
+                    Court.click();
+                    getSession().log_Pass("court Tab is clicked");
+
+                }
+
+            }
+            return new CaseCourtListPage();
+
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("navigateToCourtPage() Failed", ex);
+
+        }
+
+    }
+// Navigating to Datasources tab
+    public ILiglPage navigateToDataSourcesPage() throws Exception {
+
+        try {
+
+            try {
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                if (caseMgmt2.isEnabled()) {
+
                     log_Info("Click on Case Management");
                     getDriver().waitForelementToBeClickable(CaseManage);
                     Thread.sleep(5000);
@@ -364,8 +425,12 @@ public class LeftMenu extends LiglBasePage {
                     Thread.sleep(5000);
                     DataSources.click();
                     log_Info("clicked on the Data sources subtab");
+
+
+
                 }
             } catch (NoSuchElementException e) {
+
                 WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
 
                 try {
@@ -380,18 +445,20 @@ public class LeftMenu extends LiglBasePage {
                     }
                 }catch (NoSuchElementException ex){
 
-                        log_Info("click on the Data sources subtab");
+                    log_Info("click on the Data sources subtab");
                     log_Info("Click on Scope");
                     getDriver().waitForelementToBeClickable(Scope);
                     Thread.sleep(5000);
                     Scope.click();
                     getSession().log_Pass("Scope is clicked");
 
-                        Thread.sleep(5000);
-                        DataSources.click();
-                        log_Info("clicked on the Data sources subtab");
+                    Thread.sleep(5000);
+                    DataSources.click();
+                    log_Info("clicked on the Data sources subtab");
+
 
                 }
+
             }
             return new CaseDataSourcesPage();
 
@@ -476,7 +543,7 @@ public class LeftMenu extends LiglBasePage {
 
                     log_Info("click on the Date Ranges subtab");
                     DateRanges.click();
-                    log_Info("clicked on the Date Ranges subtab");
+                    log_Info("clicked on the Data Ranges subtab");
                     Thread.sleep(2000);
 
 
@@ -508,6 +575,7 @@ public class LeftMenu extends LiglBasePage {
                     log_Info("clicked on the Date Ranges subtab");
 
                 }
+
             }
             return new CaseDateRangesPage();
 
@@ -576,6 +644,7 @@ public class LeftMenu extends LiglBasePage {
                     Thread.sleep(5000);
                     Keywords.click();
                     log_Info("clicked on the Keywords subtab");
+
 
                 }
 
@@ -684,6 +753,27 @@ public class LeftMenu extends LiglBasePage {
             log_Error(ex.getMessage());
             throw new Exception("navigateToNotesHistoryPage() Failed", ex);
 
+        }
+    }
+
+    public ILiglPage navigateToCaseLevelRequests() throws Exception {
+
+        try {
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", Requests);
+
+
+            getDriver().waitForelementToBeClickable(Requests);
+            log_Info("Click on Case Request Page");
+            Requests.click();
+            Thread.sleep(5000);
+            log_Info("Clicked on Case Request Page");
+
+            return new CaseRequestsPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("navigateToCaseLevelRequests() Failed ", ex);
         }
     }
 }

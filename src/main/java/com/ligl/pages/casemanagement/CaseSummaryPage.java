@@ -64,6 +64,9 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
     @FindBy(id="select-workflow-template")
     WebElement WFT;
 
+    @FindBy(xpath = "//span[contains(text(),'Security')]")
+    WebElement SecurityLink;
+
 
     /**
      * Method to Check the Additional Fields are Editable
@@ -374,6 +377,33 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("validateCreatedCase() Failed", ex);
+        }
+    }
+
+    //verifying unavailability of Security tab for Non-legal user & Non-legal reviewer
+    public ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception{
+
+        try {
+            Thread.sleep(5000);
+            try
+            {
+                log_Info("Started checking unavailability of Security tab in Left Menu for NLU/NLR");
+                getLeftMenu();
+                boolean a=SecurityLink.isDisplayed();
+                System.out.println(a);
+               if(a==true) {
+                   log_Error("Security tab is displaying");
+               }}
+            catch (Exception ex)
+            {
+                log_Info("Security tab is not displaying");
+            }
+            Thread.sleep(5000);
+            return new CaseCounselPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("validateUnavailabilityOfCreateAndEditOfEmployeeFromCustodiansPage() Failed",ex);
         }
     }
 }

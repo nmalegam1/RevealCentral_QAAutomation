@@ -18,7 +18,7 @@ public interface ILiglPage {
     LiglTestSession getSession();
 
     // Ligl Normal Pages methods
-    ILiglPage navigateURL();
+    public ILiglPage navigateURL() throws Exception;
 
     ILiglPage submitUsername(String userid);
 
@@ -250,8 +250,6 @@ public interface ILiglPage {
     ILiglPage verifyingCaseFieldsAreNonEditable() throws Exception;
 
     ILiglPage createNewInHouseCounselForEnterpriseParty(String PartyName, String FirstName, String LastName) throws Exception;
-
-    ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB, String PartyType, String Description) throws Exception;
 
     ILiglPage createOtherPartyNewOutsideCounsel(String PartyName, String NameTextBox, String PartyDrpDwn, String Description, String Status, String FirstName, String LastName) throws Exception;
 
@@ -923,7 +921,7 @@ public interface ILiglPage {
 
     ILiglPage validateCreatedRequestInTheGlobalRequestGrid(String TITLE) throws Exception;
 
-    ILiglPage clickOnEditIconInTheGrid() throws Exception;
+    ILiglPage clickOnEditIconInTheGrid(String TITLE) throws Exception;
 
     ILiglPage addAllDetailsInTheAddRequestPopUpWithoutAssignee(String RequestType,String REQTitle,String CaseDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception;
 
@@ -936,4 +934,87 @@ public interface ILiglPage {
     public ILiglPage editExitingQuestionnaire(String questionnaireTitle, String IsQuestionMandatory,
                                               String Description) throws Exception;
     public ILiglPage checkAppliesToIsNonEditableField() throws Exception;
+
+    public ILiglPage verifyTheIsParentOption(String question) throws Exception;
+
+    public ILiglPage verifyParentQuestionColumn(String question)throws Exception;
+
+    /**
+     * ManageQuestionnaireTemplatesPage*/
+
+    public ILiglPage clickOnAddTemplate() throws Exception;
+
+    public ILiglPage clickOnAddNewQuestionButton() throws Exception;
+
+    public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data) throws Exception;
+
+    public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception;
+
+    ILiglPage addMessageWhenReqIsInProgress(String TextBoxArea) throws Exception;
+
+    ILiglPage moveToTheParticularColumn(String TITLE) throws Exception;
+
+    ILiglPage validateStatusOfTheRequest(String status) throws Exception;
+
+    ILiglPage clickOnViewIconInTheGrid() throws Exception;
+
+    ILiglPage validateMessageBoxIsInDisableMode() throws Exception;
+
+    ILiglPage clickOnNotificationIcon() throws Exception;
+
+    ILiglPage searchForTheParticularTitleOfTheRequest(String title) throws Exception;
+
+    ILiglPage clickOnTheRequestAlertInTheNotificationIcon(String assignedrequest,String PageTitle) throws Exception;
+
+    ILiglPage validateReqAlertInTheNotificationIcon(String request) throws Exception;
+
+    ILiglPage sendAdditionalMessageWhenReqIsInNewStatus(String TextBoxArea) throws Exception;
+
+    ILiglPage clickOnBackToRequestButton() throws Exception;
+
+    ILiglPage modifyIntoTheRequiredStatus(String status) throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfRequestUnderNewInProgressCloseStats(String RequestType,String REQTitle,String CaseDropDown,String UserDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea,String status1,String status2) throws Exception;
+
+    ILiglPage addAllDetailsInTheAddRequestPopUpByAssigningToRole(String RequestType,String REQTitle,String CaseDropDown,String UserDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception;
+
+
+    ILiglPage clickOnAddRequestButtonInCaseRequests() throws Exception;
+
+    ILiglPage navigateToCaseLevelRequests() throws Exception;
+
+    ILiglPage validateTheFieldValuesInAddRequestPopUp(String FieldValues) throws Exception;
+
+    ILiglPage clearActionInCaseDropDown() throws Exception;
+    ILiglPage clickOnChooseACaseDropDown() throws Exception;
+
+    ILiglPage validatingNonApprovedCasesInCaseDropDown(String CaseDropDown) throws Exception;
+
+    ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB, String PartyType, String Description,String StatusDrpdown) throws Exception;
+
+    ILiglPage searchRequiredDaterangeName(String DRname) throws Exception;
+
+    ILiglPage disabledDateRangeNotesClick(String DRName) throws Exception;
+
+    ILiglPage NotesDelete(String NotesContent) throws Exception;
+
+    ILiglPage validateDeletedNote(String NotesContent) throws Exception;
+
+    ILiglPage enabledDateRangeNotesClick(String DRName) throws Exception;
+
+    ILiglPage searchRequiredKeywordName(String KWname) throws Exception;
+
+    ILiglPage enabledKeywordsNotesClick(String KWname) throws Exception;
+
+    ILiglPage disabledKeywordsNotesClick(String KWname) throws Exception;
+
+    ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromInHouseCounselPage() throws Exception;
+
+    ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromCustodiansPage() throws Exception;
+
+    ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception;
+
+    ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception;
+
 }
+
