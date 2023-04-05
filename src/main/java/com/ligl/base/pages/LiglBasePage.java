@@ -1495,7 +1495,53 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
+	public ILiglPage searchRequiredDaterangeName(String DRname) throws Exception{
+		return null;
+	}
 
+	public ILiglPage disabledDateRangeNotesClick(String DRName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage NotesDelete(String NotesContent) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateDeletedNote(String NotesContent) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enabledDateRangeNotesClick(String DRName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enabledKeywordsNotesClick(String KWname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchRequiredKeywordName(String KWname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage disabledKeywordsNotesClick(String KWname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromInHouseCounselPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromCustodiansPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception{
+		return null;
+	}
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;

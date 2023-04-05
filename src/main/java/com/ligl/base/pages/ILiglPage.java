@@ -978,10 +978,29 @@ public interface ILiglPage {
 
     ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB, String PartyType, String Description,String StatusDrpdown) throws Exception;
 
+    ILiglPage searchRequiredDaterangeName(String DRname) throws Exception;
 
+    ILiglPage disabledDateRangeNotesClick(String DRName) throws Exception;
 
+    ILiglPage NotesDelete(String NotesContent) throws Exception;
 
+    ILiglPage validateDeletedNote(String NotesContent) throws Exception;
 
+    ILiglPage enabledDateRangeNotesClick(String DRName) throws Exception;
+
+    ILiglPage searchRequiredKeywordName(String KWname) throws Exception;
+
+    ILiglPage enabledKeywordsNotesClick(String KWname) throws Exception;
+
+    ILiglPage disabledKeywordsNotesClick(String KWname) throws Exception;
+
+    ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromInHouseCounselPage() throws Exception;
+
+    ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromCustodiansPage() throws Exception;
+
+    ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception;
+
+    ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception;
 
 }
 

@@ -10,6 +10,7 @@ import com.ligl.pages.processmanagement.PMSummaryPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class LeftMenu extends LiglBasePage {
 
@@ -320,60 +321,6 @@ public class LeftMenu extends LiglBasePage {
 
     }
 
-    // Navigating To Data Source Page In The LeftMenu
-
-    public ILiglPage navigateToDataSourcesPage() throws Exception {
-
-        try {
-
-            try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
-                if (caseMgmt2.isEnabled()) {
-
-                    log_Info("Click on Case Management");
-                    getDriver().waitForelementToBeClickable(CaseManage);
-                    Thread.sleep(5000);
-                    CaseManage.click();
-                    getSession().log_Pass("case Management clicked");
-
-                    log_Info("Click on Scope");
-                    getDriver().waitForelementToBeClickable(Scope);
-                    Thread.sleep(5000);
-                    Scope.click();
-                    getSession().log_Pass("Scope is clicked");
-
-                    log_Info("click on the Data sources subtab");
-                    Thread.sleep(5000);
-                    DataSources.click();
-                    log_Info("clicked on the Data sources subtab");
-
-
-
-                }
-            } catch (NoSuchElementException e) {
-
-                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
-
-                if (caseMgmt1.isDisplayed()) {
-
-
-                    log_Info("click on the Data sources subtab");
-                    Thread.sleep(5000);
-                    DataSources.click();
-                    log_Info("clicked on the Data sources subtab");
-
-
-                }
-
-            }
-            return new CaseDataSourcesPage();
-
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("navigateToDataSourcesPage() Failed", ex);
-
-        }
-    }
 
     // Navigating To Court Page
 
@@ -423,8 +370,68 @@ public class LeftMenu extends LiglBasePage {
         }
 
     }
+// Navigating to Datasources tab
+    public ILiglPage navigateToDataSourcesPage() throws Exception {
+        try {
+            try {
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                if (caseMgmt2.isEnabled()) {
+                    log_Info("Click on Case Management");
+                    getDriver().waitForelementToBeClickable(CaseManage);
+                    Thread.sleep(5000);
+                    CaseManage.click();
+                    getSession().log_Pass("case Management clicked");
 
-    // Navigate To Date Ranges SubTab
+                    log_Info("Click on Scope");
+                    getDriver().waitForelementToBeClickable(Scope);
+                    Thread.sleep(5000);
+                    Scope.click();
+                    getSession().log_Pass("Scope is clicked");
+
+                    log_Info("click on the Data sources subtab");
+                    Thread.sleep(5000);
+                    DataSources.click();
+                    log_Info("clicked on the Data sources subtab");
+                }
+            } catch (NoSuchElementException e) {
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+
+                try {
+                    if (caseMgmt1.isDisplayed()) {
+                        WebElement caseMgmt3 = getCurrentDriver().findElement(By.xpath("//li[@id='Scope' and contains(@class,'open')]"));
+                        if (caseMgmt3.isEnabled()) {
+                            log_Info("click on the Data sources subtab");
+                            Thread.sleep(5000);
+                            DataSources.click();
+                            log_Info("clicked on the Data sources subtab");
+                        }
+                    }
+                }catch (NoSuchElementException ex){
+
+                    log_Info("click on the Data sources subtab");
+                    log_Info("Click on Scope");
+                    getDriver().waitForelementToBeClickable(Scope);
+                    Thread.sleep(5000);
+                    Scope.click();
+                    getSession().log_Pass("Scope is clicked");
+
+                    Thread.sleep(5000);
+                    DataSources.click();
+                    log_Info("clicked on the Data sources subtab");
+
+                }
+            }
+            return new CaseDataSourcesPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("navigateToDataSourcesPage() Failed", ex);
+
+        }
+    }
+
+
+    //Navigating to Dateranges tab
 
     public ILiglPage navigateToDateRangesPage() throws Exception {
 
@@ -449,7 +456,7 @@ public class LeftMenu extends LiglBasePage {
 
                     log_Info("click on the Date Ranges subtab");
                     DateRanges.click();
-                    log_Info("clicked on the Data Ranges subtab");
+                    log_Info("clicked on the Date Ranges subtab");
                     Thread.sleep(2000);
 
 
@@ -457,18 +464,30 @@ public class LeftMenu extends LiglBasePage {
             } catch (NoSuchElementException e) {
 
                 WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+                try {
+                    if (caseMgmt1.isDisplayed()) {
+                        WebElement caseMgmt3 = getCurrentDriver().findElement(By.xpath("//li[@id='Scope' and contains(@class,'open')]"));
+                        if (caseMgmt3.isEnabled()) {
+                            log_Info("click on the Date ranges subtab");
+                            Thread.sleep(5000);
+                            DateRanges.click();
+                            log_Info("clicked on the Date ranges subtab");
+                        }
+                    }
+                }catch (NoSuchElementException ex){
 
-                if (caseMgmt1.isDisplayed()) {
+                    log_Info("click on the Date ranges subtab");
+                    log_Info("Click on Scope");
+                    getDriver().waitForelementToBeClickable(Scope);
+                    Thread.sleep(5000);
+                    Scope.click();
+                    getSession().log_Pass("Scope is clicked");
 
-                    log_Info("click on the Date Ranges subtab");
                     Thread.sleep(5000);
                     DateRanges.click();
-                    log_Info("clicked on the Data Ranges subtab");
-                    Thread.sleep(2000);
-
+                    log_Info("clicked on the Date Ranges subtab");
 
                 }
-
             }
             return new CaseDateRangesPage();
 
@@ -480,8 +499,8 @@ public class LeftMenu extends LiglBasePage {
 
     }
 
-    // Navigate To Keywords SubTab
 
+//Navigating to Keywords page
     public ILiglPage navigateToKeyWordsPage() throws Exception {
 
         try {
@@ -515,15 +534,28 @@ public class LeftMenu extends LiglBasePage {
 
                 WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
 
-                if (caseMgmt1.isDisplayed()) {
-
-                    ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", Keywords);
+                try {
+                    if (caseMgmt1.isDisplayed()) {
+                        WebElement caseMgmt3 = getCurrentDriver().findElement(By.xpath("//li[@id='Scope' and contains(@class,'open')]"));
+                        if (caseMgmt3.isEnabled()) {
+                            log_Info("click on the Keywords subtab");
+                            Thread.sleep(5000);
+                            Keywords.click();
+                            log_Info("clicked on the Keywords subtab");
+                        }
+                    }
+                }catch (NoSuchElementException ex){
 
                     log_Info("click on the Keywords subtab");
+                    log_Info("Click on Scope");
+                    getDriver().waitForelementToBeClickable(Scope);
+                    Thread.sleep(5000);
+                    Scope.click();
+                    getSession().log_Pass("Scope is clicked");
+
                     Thread.sleep(5000);
                     Keywords.click();
                     log_Info("clicked on the Keywords subtab");
-
 
                 }
 
@@ -538,7 +570,6 @@ public class LeftMenu extends LiglBasePage {
         }
 
     }
-
     public ILiglPage goToDataManagementSummary() throws Exception {
 
         try {

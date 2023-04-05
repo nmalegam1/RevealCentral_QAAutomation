@@ -173,9 +173,9 @@ public class Header extends LiglBasePage {
 		return new GlobalRequestPage();
 	}
 
-	public ILiglPage create(String elementText) {
+	/*public ILiglPage create(String elementText) {
 
-		/*addIcon.click();
+		*//*addIcon.click();
 		if(elementText.equals("lead")) {
 			submenuLead.click();
 			return new NewLeadPage();
@@ -185,11 +185,11 @@ public class Header extends LiglBasePage {
 		}else if(elementText.equals("task")) {
 			submenuTasks.click();
 			//return new NewContactPage();
-		}*/
+		}*//*
 		// report a failure and stop
 		return new LiglBasePage();
 
-	}
+	}*/
 
 	public ILiglPage goToAboutPage() {
 		aboutTab.click();

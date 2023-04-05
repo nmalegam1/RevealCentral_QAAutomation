@@ -1,6 +1,7 @@
 package com.ligl.pages.administration;
 
 import com.ligl.base.pages.ILiglPage;
+import com.ligl.base.pages.LiglBasePage;
 import com.ligl.pages.LiglBaseSessionPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
