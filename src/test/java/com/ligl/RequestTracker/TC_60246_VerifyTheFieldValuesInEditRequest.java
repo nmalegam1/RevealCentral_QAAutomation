@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_60246_VerifyTheFieldValuesInEditRequest extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "RequestTracker")
     public void TC_60246_VerifyTheFieldValuesInEditRequest(Hashtable<String,String> data) throws Exception {
         try{
             session.log_Info(data.toString());

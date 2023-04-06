@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class CreatingNewTemplate_Test extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Smoke")
     public void CreatingNewTemplate_Test(Hashtable<String, String> data) throws Exception {
 
         try {

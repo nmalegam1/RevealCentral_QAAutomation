@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_23782_VerifyProcessOfCreatingNewLegalHoldAppConfigTrue extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_23782_VerifyProcessOfCreatingNewLegalHoldAppConfigTrue(Hashtable<String, String> data) throws Exception {
 
         try {

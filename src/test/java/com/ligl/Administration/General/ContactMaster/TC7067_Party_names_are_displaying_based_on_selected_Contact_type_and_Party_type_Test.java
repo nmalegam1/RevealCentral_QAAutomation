@@ -11,8 +11,8 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC7067_Party_names_are_displaying_based_on_selected_Contact_type_and_Party_type_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
-    public void TC7067_Party_names_are_displaying_based_on_selected_Contact_type_and_Party_type_Test(Hashtable<String, String> data) throws Exception{
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
+    public void TC7067_Party_names_are_displaying_based_on_selected_Contact_type_and_Party_type_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

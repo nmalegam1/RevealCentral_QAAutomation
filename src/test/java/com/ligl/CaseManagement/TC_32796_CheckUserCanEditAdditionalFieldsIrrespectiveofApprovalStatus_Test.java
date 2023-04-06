@@ -14,8 +14,8 @@ import java.util.Hashtable;
  * Cases-Check whether user can edit Additional fields irrespective of Approval Status
  */
 public class TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStatus_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStatus_Test(Hashtable<String,String> data) throws Exception {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
+    public void TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStatus_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -27,24 +27,24 @@ public class TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStat
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("ApprovedCaseName"))
                     .GoToCase(data.get("ApprovedCaseName"))
-                    .editAdditionalFields(data.get("Cost centre"), data.get("Case Alias"),data.get("AddDP"))
+                    .editAdditionalFields(data.get("Cost centre"), data.get("Case Alias"), data.get("AddDP"))
                     .getHeader()
                     .switchCase()
                     .searchcase(data.get("PenAppCaseName"))
                     .GoToCase(data.get("PenAppCaseName"))
-                    .editAdditionalFields(data.get("Cost centre"), data.get("Case Alias"),data.get("AddDP"))
+                    .editAdditionalFields(data.get("Cost centre"), data.get("Case Alias"), data.get("AddDP"))
                     .getHeader()
                     .switchCase()
                     .searchcase(data.get("NotIniCaseName"))
                     .GoToCase(data.get("NotIniCaseName"))
-                    .editAdditionalFields(data.get("Cost centre"), data.get("Case Alias"),data.get("AddDP"));
-        }catch (Exception ex){
+                    .editAdditionalFields(data.get("Cost centre"), data.get("Case Alias"), data.get("AddDP"));
+        } catch (Exception ex) {
             session.log_Error("TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStatus_Test Failed");
             throw new Exception("Exception in TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStatus_Test", ex);
-        }finally {
+        } finally {
             session.end();
         }
     }

@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_7107_CreateNewContactSelectedParty extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_7107_CreateNewContactSelectedParty(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -29,10 +29,10 @@ public class TC_7107_CreateNewContactSelectedParty extends TestBase {
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToOtherPartyPage()
-                    .addingExistingParty(data.get("PartyNameA"),data.get("PartyNew"))
+                    .addingExistingParty(data.get("PartyNameA"), data.get("PartyNew"))
                     .createNewContactForSelectedParty(data.get("PartyNew"), data.get("FirstName"), data.get("LastName"))
                     .searchingContact(data.get("ContactName"))
                     .validatingContactAddedForParty(data.get("ContactName"));

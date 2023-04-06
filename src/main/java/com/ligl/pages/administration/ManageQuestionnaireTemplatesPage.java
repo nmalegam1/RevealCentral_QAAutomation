@@ -1,7 +1,6 @@
 package com.ligl.pages.administration;
 
 import com.ligl.base.pages.ILiglPage;
-import com.ligl.base.pages.LiglBasePage;
 import com.ligl.pages.LiglBaseSessionPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -51,6 +50,15 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
     @FindBy(id = "edit-btn")
     WebElement editBtn;
 
+    @FindBy(xpath = "//button[@title='DELINK']")
+    public WebElement delinkBtn;
+
+    @FindBy(xpath = "//button[.='Yes']")
+    public WebElement yesBtn;
+
+    @FindBy(xpath = "//button[.='no']")
+    public WebElement noBtn;
+
     @FindBy(id = "add-new-question-button")
     public WebElement addNewQuestionBtn;
 
@@ -63,7 +71,7 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[@class='ag-header-cell-text'][normalize-space()='Question Title']")
     public WebElement questionTitleColumn;
 
-    @FindBy(xpath = "span[class='ag-icon ag-icon-menu']")
+    @FindBy(xpath = "(//span[@ref='eMenu'])[2]")
     public WebElement menuBtn;
 
     @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
@@ -74,13 +82,38 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
 
     public ManageQuestionBankPage selectQuestion = new ManageQuestionBankPage();
 
-    public ILiglPage clickOnAddTemplate() throws Exception {
+    //Add Template Button
+    public ILiglPage clickOnAddTemplate(Hashtable<String, String> data) throws Exception {
         try {
             getSession().log_Info("Click On 'AddTemplate' Button");
             getDriver().waitForelementToBeClickable(addTemplateBtn);
             addTemplateBtn.click();
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Clicked On 'AddTemplate' Button");
+
+            if (data.get("addTemplate").contains("Create New Template")) {
+                getSession().log_Info("Select 'Create New Template'");
+                getDriver().waitForelementToBeClickable(createNewTemplateBtn);
+                createNewTemplateBtn.click();
+                getDriver().waitForAngularRequestsToComplete();
+                getSession().log_Pass("'Create New Template' Selected");
+            } else if (data.get("addTemplate").contains("Create From Existing Template")) {
+                getSession().log_Info("Select 'Create From Existing Template'");
+                getDriver().waitForelementToBeClickable(createFromExistingTemplateBtn);
+                createFromExistingTemplateBtn.click();
+                getDriver().waitForAngularRequestsToComplete();
+                getSession().log_Pass("'Create From Existing Template' Selected");
+
+                //Select Questionnaire Template
+                getSession().log_Info("Select Questionnaire Template");
+                getDriver().waitForelementToBeClickable(selectQuestionnareTemplatesDrpDwn);
+                selectQuestionnareTemplatesDrpDwn.click();
+                dropDownSearchBar.sendKeys(data.get("selectQuestionnaireTemplate"));
+                wait(1);
+                getDriver().customXpathBasedOnTextValue(data.get("selectQuestionnaireTemplate")).click();
+                getSession().log_Pass("Questionnaire Template Selected");
+            }
+
             return new ManageQuestionnaireTemplatesPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
@@ -88,6 +121,22 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
         }
     }
 
+    //Edit Button
+    public ILiglPage clickOnEditButtonInManageQuestionnaireTemplate() throws Exception {
+        try {
+            getSession().log_Info("Click On 'Edit' Button");
+            getDriver().waitForelementToBeClickable(editBtn);
+            editBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked On 'Edit' Button");
+            return new ManageQuestionnaireTemplatesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Click On Edit Button Failed", ex);
+        }
+    }
+
+    //Add Question Button
     public ILiglPage clickOnAddNewQuestionButton() throws Exception {
         try {
             getSession().log_Info("Click on 'Add New Question' Button");
@@ -102,6 +151,25 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
         }
     }
 
+    //Select Questionnaire Template
+    public ILiglPage selectQuestionnaireTemplate(String questionnaireTemplate) throws Exception {
+        try {
+            getSession().log_Info("Select Questionnaire Template");
+            getDriver().waitForelementToBeClickable(selectQuestionnareTemplatesDrpDwn);
+            selectQuestionnareTemplatesDrpDwn.sendKeys(questionnaireTemplate);
+            wait(2);
+            selectQuestionnareTemplatesDrpDwn.sendKeys(Keys.ENTER);
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Questionnaire Template Selected");
+            wait(2);
+            return new ManageQuestionnaireTemplatesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Select Questionnaire Template Failed", ex);
+        }
+    }
+
+    //Search the Question In Manage Question Template
     public ILiglPage searchTheQuestionInManageQuestionTemplate(String question) throws Exception {
         try {
             getSession().log_Info("Hover on 'Questionnaire Title'");
@@ -133,45 +201,11 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
         }
     }
 
-    public ILiglPage selectQuestionnaireTemplate(String question) throws Exception{
-        try{
-            getSession().log_Info("Select Questionnaire Template");
-            getDriver().waitForelementToBeClickable(selectQuestionnareTemplatesDrpDwn);
-            selectQuestionnareTemplatesDrpDwn.sendKeys(question);
-            getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Questionnaire Template Selected");
-            return new ManageQuestionnaireTemplatesPage();
-        }catch (Exception | Error ex){
-            log_Error(ex.getMessage());
-            throw new Exception("Select Questionnaire Template Failed", ex);
-        }
-    }
 
     @Override
     public ILiglPage createNewQuestionnaireTemplates(Hashtable<String, String> data) throws Exception {
         try {
-            if (data.get("addTemplate").contains("Create New Template")) {
-                getSession().log_Info("Select 'Create New Template'");
-                getDriver().waitForelementToBeClickable(createNewTemplateBtn);
-                createNewTemplateBtn.click();
-                getDriver().waitForAngularRequestsToComplete();
-                getSession().log_Pass("'Create New Template' Selected");
-            } else if (data.get("addTemplate").contains("Create From Existing Template")) {
-                getSession().log_Info("Select 'Create From Existing Template'");
-                getDriver().waitForelementToBeClickable(createFromExistingTemplateBtn);
-                createFromExistingTemplateBtn.click();
-                getDriver().waitForAngularRequestsToComplete();
-                getSession().log_Pass("'Create From Existing Template' Selected");
 
-                //Select Questionnaire Template
-                getSession().log_Info("Select Questionnaire Template");
-                getDriver().waitForelementToBeClickable(selectQuestionnareTemplatesDrpDwn);
-                selectQuestionnareTemplatesDrpDwn.click();
-                dropDownSearchBar.sendKeys(data.get("selectQuestionnaireTemplate"));
-                wait(1);
-                getDriver().customXpathBasedOnTextValue(data.get("selectQuestionnaireTemplate")).click();
-                getSession().log_Pass("Questionnaire Template Selected");
-            }
 
             //Clear the Questionnaire Template Name Field
             getDriver().waitForelementToBeClickable(questionnaireTemplateNameTxt);
@@ -184,26 +218,23 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("'Questionnaire Template Name' Entered");
 
-            wait(4);
-
             //Applies To:
-            if (AppliesToOptions.isEnabled()) {
-                getSession().log_Info("Select Applies To");
-                if (data.get("appliesTo").contains("Custodian")) {
-                    getSession().log_Info("Select 'Case Custodian Questionnaire' Option");
-                    getDriver().waitForelementToBeClickable(custodianRadioBtn);
-                    custodianRadioBtn.click();
-                    getDriver().waitForAngularRequestsToComplete();
-                    getSession().log_Pass("'Case Custodian Questionnaire' Option Selected");
-                } else if (data.get("appliesTo").contains("StakeHolder")) {
-                    getSession().log_Info("Select 'Case StakeHolder Questionnaire' Option");
-                    getDriver().waitForelementToBeClickable(stakeHolderRadioBtn);
-                    stakeHolderRadioBtn.click();
-                    getDriver().waitForAngularRequestsToComplete();
-                    getSession().log_Pass("'Case StakeHolder Questionnaire' Option Selected");
-                }
-                getSession().log_Pass("'Applies To' is Selected");
+
+            getSession().log_Info("Select Applies To");
+            if (data.get("appliesTo").contains("Custodian")) {
+                getSession().log_Info("Select 'Case Custodian Questionnaire' Option");
+                getDriver().waitForelementToBeClickable(custodianRadioBtn);
+                custodianRadioBtn.click();
+                getDriver().waitForAngularRequestsToComplete();
+                getSession().log_Pass("'Case Custodian Questionnaire' Option Selected");
+            } else if (data.get("appliesTo").contains("StakeHolder")) {
+                getSession().log_Info("Select 'Case StakeHolder Questionnaire' Option");
+                getDriver().waitForelementToBeClickable(stakeHolderRadioBtn);
+                stakeHolderRadioBtn.click();
+                getDriver().waitForAngularRequestsToComplete();
+                getSession().log_Pass("'Case StakeHolder Questionnaire' Option Selected");
             }
+            getSession().log_Pass("'Applies To' is Selected");
 
             //Description
             getDriver().waitForelementToBeClickable(descriptionTxt);
@@ -222,8 +253,7 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
             saveBtn.click();
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Clicked On 'Save' Button");
-            wait(4);
-            boolean a1 = getCurrentDriver().findElement(By.xpath("//div[@class='cm-div-read col-4 ng-star-inserted'][1]//div")).isDisplayed();
+            wait(2);
 
             getSession().takeScreenShot();
 
@@ -254,7 +284,7 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
 
             //Verify that add question displaying in grid
             getSession().log_Info("Verify that add question displaying in grid");
-
+            searchTheQuestionInManageQuestionTemplate(data.get("addQuestion"));
             String question = questionnaireTitleColumn.getText();
             Assert.assertEquals(question, data.get("addQuestion"));
             getSession().log_Pass("Verify that add question displaying in grid");
@@ -268,5 +298,92 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
         }
     }
 
+    // de-link the Question
+    public ILiglPage deLinkTheQuestion(String question) throws Exception {
+        try {
+            searchTheQuestionInManageQuestionTemplate(question);
+            getDriver().customXpathBasedOnTextValue(question).click();
+            getDriver().moveToRightInAngularTable("3");
+            getSession().log_Info("Click on 'DeLink'");
+            getDriver().waitForelementToBeClickable(delinkBtn);
+            delinkBtn.click();
+            getSession().log_Pass("Clicked on 'DeLink'");
 
+            getSession().log_Info("Are you sure you want to delete?");
+            getSession().log_Info("Click on 'Yes' Button");
+            getDriver().waitForelementToBeClickable(yesBtn);
+            yesBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked on 'Yes' Button");
+
+            getSession().takeScreenShot();
+            return new ManageQuestionnaireTemplatesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("DeLink the Question to Questionnaire Templates Failed", ex);
+        }
+    }
+
+    //Edit Questionnaire Template Fields
+    public ILiglPage editQuestionnaireTemplate(Hashtable<String, String> data) throws Exception {
+        try {
+
+            //Clear the Questionnaire Template Name Field
+            getDriver().waitForelementToBeClickable(questionnaireTemplateNameTxt);
+            getSession().log_Info("Clear the 'Questionnaire Template Name' Field");
+            questionnaireTemplateNameTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+            getSession().log_Pass("'Questionnaire Template Name' Field Cleared");
+            //Enter the Questionnaire Template Name
+            getSession().log_Info("Enter 'Questionnaire Template Name'");
+            questionnaireTemplateNameTxt.sendKeys(data.get("questionnaireTemplateName"));
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("'Questionnaire Template Name' Entered");
+
+            //Description
+            getDriver().waitForelementToBeClickable(descriptionTxt);
+            getSession().log_Info("Clear the 'Description' Field");
+            descriptionTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+            getSession().log_Pass("'Description' Field Cleared");
+            //Enter the Questionnaire Template Name
+            getSession().log_Info("Enter 'Description'");
+            descriptionTxt.sendKeys(data.get("description"));
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("'Description' Entered");
+
+            //Save Button
+            getSession().log_Info("Click On 'Save' Button");
+            getDriver().waitForelementToBeClickable(saveBtn);
+            saveBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked On 'Save' Button");
+            getSession().takeScreenShot();
+            wait(2);
+            return new ManageQuestionnaireTemplatesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Edit the Questionnaire Templates Failed", ex);
+        }
+    }
+
+    //get Questionnaire Template Name
+    public ILiglPage getQuestionnaireTemplateName(String setQuestion) throws Exception{
+        try{
+            getSession().log_Info("Get Questionnaire Template Name");
+            String q1 = getCurrentDriver().findElement(By.xpath("//div[@class='cm-div-read col-4 ng-star-inserted'][1]//div")).getText();
+            getSession().log_Pass("'Questionnaire Template Name is' " +q1.toUpperCase());
+            getSession().setSmokeData(setQuestion, q1);
+
+            //Cancel Button
+            getSession().log_Info("Click on 'Cancel' Button");
+            getDriver().waitForelementToBeClickable(cancelBtn);
+            cancelBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked on 'Cancel' Button");
+            wait(2);
+            return new ManageQuestionnaireTemplatesPage();
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("Get Questionnaire Template Name Failed", ex);
+        }
+    }
 }

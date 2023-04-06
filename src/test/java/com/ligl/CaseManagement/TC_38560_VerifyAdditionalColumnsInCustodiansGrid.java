@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_38560_VerifyAdditionalColumnsInCustodiansGrid extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_38560_VerifyAdditionalColumnsInCustodiansGrid(Hashtable<String, String> data) throws Exception {
 
         try {

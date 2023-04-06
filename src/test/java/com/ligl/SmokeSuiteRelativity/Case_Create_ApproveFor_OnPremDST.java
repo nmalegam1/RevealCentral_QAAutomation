@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class Case_Create_ApproveFor_OnPremDST extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Smoke")
     public void Case_Create_ApproveFor_OnPremDST(Hashtable<String, String> data) throws Exception {
 
         try {

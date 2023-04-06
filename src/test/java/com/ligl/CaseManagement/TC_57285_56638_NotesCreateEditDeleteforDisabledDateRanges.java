@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_57285_56638_NotesCreateEditDeleteforDisabledDateRanges extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_57285_56638_NotesCreateEditDeleteforDisabledDateRanges(Hashtable<String, String> data) throws Exception {
 
         try {

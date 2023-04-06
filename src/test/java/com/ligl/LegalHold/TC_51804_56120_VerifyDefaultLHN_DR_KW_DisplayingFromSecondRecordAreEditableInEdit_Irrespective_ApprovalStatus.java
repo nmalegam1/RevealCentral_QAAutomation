@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_51804_56120_VerifyDefaultLHN_DR_KW_DisplayingFromSecondRecordAreEditableInEdit_Irrespective_ApprovalStatus extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData", description = "LegalHold")
     public void TC_51804_56120_VerifyDefaultLHN_DR_KW_DisplayingFromSecondRecordAreEditableInEdit_Irrespective_ApprovalStatus(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());

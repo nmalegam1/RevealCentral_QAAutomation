@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_1707_VerifyFunctionalityOfAssigningOneOrMoreCourtsToCase extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_1707_VerifyFunctionalityOfAssigningOneOrMoreCourtsToCase(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -29,7 +29,7 @@ public class TC_1707_VerifyFunctionalityOfAssigningOneOrMoreCourtsToCase extends
                     .openBrowser("chrome")
                     .navigateURL()
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCourtPage()
@@ -41,8 +41,7 @@ public class TC_1707_VerifyFunctionalityOfAssigningOneOrMoreCourtsToCase extends
         } catch (Exception ex) {
             session.log_Error("TC_1707_VerifyFunctionalityOfAssigningOneOrMoreCourtsToCase Failed");
             throw new Exception("TC_1707_VerifyFunctionalityOfAssigningOneOrMoreCourtsToCase Failed", ex);
-        } finally
-        {
+        } finally {
             session.end();
         }
     }

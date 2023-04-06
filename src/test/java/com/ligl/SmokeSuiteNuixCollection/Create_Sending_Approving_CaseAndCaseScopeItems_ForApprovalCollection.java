@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalCollection extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "Smoke")
     public void Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalCollection(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());

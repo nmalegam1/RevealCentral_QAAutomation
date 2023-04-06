@@ -13,7 +13,7 @@ package com.ligl.DataManagement;
 
 public class TC_01_GMailDataValidation extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "DataManagement")
     public void TC_01_GMailDataValidation(Hashtable<String, String> data) throws Exception {
 
         try {

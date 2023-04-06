@@ -12,7 +12,8 @@ import java.util.Hashtable;
 
 public class TC_17036_VerifyAddingInhouseCounsel extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData",description ="CaseManagement")
+
     public void TC_17036_VerifyAddingInhouseCounsel(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -28,12 +29,12 @@ public class TC_17036_VerifyAddingInhouseCounsel extends TestBase {
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToCaseCounselPage()
-                    .addInhouseCounselToCase(data.get("Email1"),data.get("CounselName1"))
-                    .addOneMoreInhouseCounselToCase(data.get("Email2"),data.get("CounselName2"))
-                    .validateOneOrMoreInhouseCounsel(data.get("CounselName1"),data.get("CounselName2"));
+                    .addInhouseCounselToCase(data.get("Email1"), data.get("CounselName1"))
+                    .addOneMoreInhouseCounselToCase(data.get("Email2"), data.get("CounselName2"))
+                    .validateOneOrMoreInhouseCounsel(data.get("CounselName1"), data.get("CounselName2"));
 
         } catch (Exception ex) {
             session.log_Error("TC_17036_VerifyAddingInhouseCounsel Failed");

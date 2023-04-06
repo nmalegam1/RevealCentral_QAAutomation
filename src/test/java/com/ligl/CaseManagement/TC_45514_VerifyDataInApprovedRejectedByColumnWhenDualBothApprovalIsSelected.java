@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_45514_VerifyDataInApprovedRejectedByColumnWhenDualBothApprovalIsSelected extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_45514_VerifyDataInApprovedRejectedByColumnWhenDualBothApprovalIsSelected(Hashtable<String, String> data) throws Exception {
 
         try {

@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_7129_CreateNewCounselSelectedOutsideCounsel extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_7129_CreateNewCounselSelectedOutsideCounsel(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -29,15 +29,14 @@ public class TC_7129_CreateNewCounselSelectedOutsideCounsel extends TestBase {
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToOtherPartyPage()
-                    .addingExistingParty(data.get("PartyNameA"),data.get("PartyNew"))
+                    .addingExistingParty(data.get("PartyNameA"), data.get("PartyNew"))
                     .searchingParty(data.get("PartyNew"))
-                    .createNewCounselForSelectedOutsideCounsel(data.get("PartyNew"),data.get("OptionFromLawFirmDropDwn"),data.get("FirstName"),data.get("LastName"))
-                    .searchingOutSideCounsel(data.get("PartyNew"),data.get("OptionFromLawFirmDropDwn"))
+                    .createNewCounselForSelectedOutsideCounsel(data.get("PartyNew"), data.get("OptionFromLawFirmDropDwn"), data.get("FirstName"), data.get("LastName"))
+                    .searchingOutSideCounsel(data.get("PartyNew"), data.get("OptionFromLawFirmDropDwn"))
                     .validateAddedOutsideCounsel(data.get("OutSideCounselName"));
-
 
 
         } catch (Exception ex) {

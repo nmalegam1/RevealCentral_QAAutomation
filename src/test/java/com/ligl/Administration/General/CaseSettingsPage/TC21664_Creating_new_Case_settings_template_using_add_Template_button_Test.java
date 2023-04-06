@@ -12,7 +12,7 @@ import com.ligl.pages.LaunchPage;
 import com.ligl.util.DataUtil;
 
 public class TC21664_Creating_new_Case_settings_template_using_add_Template_button_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData",description = "Administration")
     public void TC21664_Creating_new_Case_settings_template_using_add_Template_button_Test(Hashtable<String, String> data) throws Exception {
 
         try {

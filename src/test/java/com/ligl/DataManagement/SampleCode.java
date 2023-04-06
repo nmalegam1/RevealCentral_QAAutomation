@@ -12,7 +12,7 @@ package com.ligl.DataManagement;
 
 public class SampleCode extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "DataManagement")
     public void SampleCode(Hashtable<String, String> data) throws Exception {
 
         try {

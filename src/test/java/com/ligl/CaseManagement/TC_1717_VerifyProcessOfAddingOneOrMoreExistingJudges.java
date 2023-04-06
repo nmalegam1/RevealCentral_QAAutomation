@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_1717_VerifyProcessOfAddingOneOrMoreExistingJudges extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_1717_VerifyProcessOfAddingOneOrMoreExistingJudges(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -29,7 +29,7 @@ public class TC_1717_VerifyProcessOfAddingOneOrMoreExistingJudges extends TestBa
                     .openBrowser("chrome")
                     .navigateURL()
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToCourtPage()
                     .addCourtToCase(data.get("CourtName1"))
@@ -43,8 +43,7 @@ public class TC_1717_VerifyProcessOfAddingOneOrMoreExistingJudges extends TestBa
         } catch (Exception ex) {
             session.log_Error("TC_1717_VerifyProcessOfAddingOneOrMoreExistingJudges Failed");
             throw new Exception("TC_1717_VerifyProcessOfAddingOneOrMoreExistingJudges Failed", ex);
-        } finally
-        {
+        } finally {
             session.end();
         }
     }
