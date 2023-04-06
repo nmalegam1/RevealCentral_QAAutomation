@@ -214,7 +214,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             throw new Exception("addCustodianToCase() Failed",ex);*/
 
     }
-    public ILiglPage multipleCustodianSelect()throws Exception{
+    public ILiglPage multipleCustodianSelect(Hashtable<String, String> data)throws Exception{
         try{
             log_Info("Started multipleCustodianSelect()");
             if(getSession().getRegressionData("O365_Exchange_RunState").equals("Y")) {

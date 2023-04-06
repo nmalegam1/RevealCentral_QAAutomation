@@ -56,8 +56,8 @@ public interface ILiglPage {
     void log_Info(String message);
 
 
-    ILiglPage multipleCustodianSelect()throws Exception;
-    ILiglPage multipleDataSourceSelect()throws Exception;
+    ILiglPage multipleCustodianSelect(Hashtable<String, String> data)throws Exception;
+    ILiglPage multipleDataSourceSelect(Hashtable<String, String> data)throws Exception;
     ILiglPage checkCustodianRoleInUserCreationPopUp(String s)throws Exception;
     void log_Pass(String message);
 
@@ -907,7 +907,7 @@ public interface ILiglPage {
     /**/
     public ILiglPage clickOnQuestionnaire() throws Exception;
     public ILiglPage selectAllCCDs() throws InterruptedException;
-    ILiglPage multipleCCDsSelect()throws Exception;
+    ILiglPage multipleCCDsSelect(Hashtable<String, String> data)throws Exception;
     public ILiglPage searchTheQuestion(String question) throws Exception;
     ILiglPage validateCollectionStats()throws Exception;
 

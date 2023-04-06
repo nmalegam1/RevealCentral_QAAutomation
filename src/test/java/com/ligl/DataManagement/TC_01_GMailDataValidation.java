@@ -25,13 +25,12 @@ public class TC_01_GMailDataValidation extends TestBase {
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
             ILiglPage page = new LaunchPage()
-                    .openBrowser("chrome");
-                    /*.navigateURL()
+                    .openBrowser("chrome")
+                    .navigateURL()
                     .login(session.getRegressionData("Username"), session.getRegressionData("Password"),session.getRegressionData("EntitySelection"))
-                    //.navigateSSOLoginPage()
-                    .getHeader().logout();*/
-                    /*.SSOLogin(session.getRegressionData("Username"), session.getRegressionData("Password"),session.getRegressionData("EntitySelection"))
-                    .searchcase(session.getRegressionData("TC_01_CaseName")).GoToCase(session.getRegressionData("TC_01_CaseName"))
+                    /*.navigateSSOLoginPage()
+                    .SSOLogin(session.getRegressionData("Username"), session.getRegressionData("Password"),session.getRegressionData("EntitySelection"))
+                    */.searchcase(session.getRegressionData("TC_01_CaseName")).GoToCase(session.getRegressionData("TC_01_CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
                     .addCustodianToCase(session.getRegressionData("TC_01_Custodian"))
@@ -45,14 +44,12 @@ public class TC_01_GMailDataValidation extends TestBase {
                     .addDataSourceRecordToDSIGrid(session.getRegressionData("TC_01_CustFullName"),session.getRegressionData("TC_01_DataSource"),session.getRegressionData("DHScope"),session.getRegressionData("DR1"),session.getRegressionData("KW1"))
                     .selectAllCCDs()
                     .clickOnAutomateButton()
-                    .getLeftMenu().goToDataManagementSummary()*/
-                    //.validateAndWaitForRecordsToCompleteCollection(session.getRegressionData("CollectionStatus"))
+                    .getLeftMenu().goToDataManagementSummary()
+                    .validateAndWaitForRecordsToCompleteCollection(session.getRegressionData("CollectionStatus"));
             ILiglPage page1=new GoogleVaultPage();
             page1.googleVaultLogin(session.getGlobalData("GoogleVaultURL"),session.getGlobalData("GVaultUserName"),session.getGlobalData("GVaultPassword"))
                     .goToMatters().searchMatter(session.getGlobalData("MatterName"))
                     .goToExports(session.getGlobalData("MatterRecord"));
-
-                    //.validateCollectionStats();
 
         } catch (Exception ex) {
             session.log_Error("TC_01_GMailDataValidation Failed");
