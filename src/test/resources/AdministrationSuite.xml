@@ -477,7 +477,7 @@
     </test>
     <test name="TC38068 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template"/>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38068_Verify_that_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template"/>
         </classes>
     </test>
     <test name="TC20800 Admin-Manage Questionnaire Templates-Verifying the Functionality of Delink Option for a question in Questionnaire template">
@@ -487,12 +487,12 @@
     </test>
     <test name="TC38072 Admin-Manage Questionnaire Templates- Verify that user is able to delink the Questions from the template created by choosing 'Create From Existing Template' option">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38072_Verify_user_is_able_to_delink_the_Questions_from_the_template_created_by_choosing_Create_From_Existing_Template"/>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38072_Verify_user_able_to_delink_the_Questions_from_template_created_by_Create_From_Existing_Template"/>
         </classes>
     </test>
     <test name="TC38070 Admin-Manage Questionnaire Templates- Check whether newly created templates are populated under Questionnaire template dropdown for Custodian and Stakeholder Legalhold">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38070_Verify_newly_created_templates_are_populated_under_Questionnaire_Template_dropdown_for_Custodian_and_Stakeholder"/>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38070_Verify_newly_created_templates_populated_under_Custodian_and_stakeHolder_Questionnaire_template_dropdown"/>
         </classes>
     </test>
     <test name="TC20802 Admin-Manage Questionnaire Templates-Verifying the functionality of Save button after editing the fields for a questionnaire template">
