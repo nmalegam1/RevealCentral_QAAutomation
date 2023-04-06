@@ -153,7 +153,7 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage {
             throw new Exception("addingDataSource() Failed", ex);
         }
     }
-    public ILiglPage multipleDataSourceSelect()throws Exception{
+    public ILiglPage multipleDataSourceSelect(Hashtable<String, String> data)throws Exception{
         try{
             log_Info("Started multipleDataSourceSelect()");
             Thread.sleep(3000);

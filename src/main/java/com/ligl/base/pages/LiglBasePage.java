@@ -116,12 +116,12 @@ public class LiglBasePage implements ILiglPage {
 	}
 
 	@Override
-	public ILiglPage multipleCustodianSelect() throws Exception {
+	public ILiglPage multipleCustodianSelect(Hashtable<String, String> data) throws Exception {
 		return null;
 	}
 
 	@Override
-	public ILiglPage multipleDataSourceSelect() throws Exception {
+	public ILiglPage multipleDataSourceSelect(Hashtable<String, String> data) throws Exception {
 		return null;
 	}
 
@@ -1594,7 +1594,7 @@ public class LiglBasePage implements ILiglPage {
 
 	}
 	public ILiglPage selectAllCCDs() throws InterruptedException {return null;}
-	public ILiglPage multipleCCDsSelect() throws Exception {return null;}
+	public ILiglPage multipleCCDsSelect(Hashtable<String, String> data) throws Exception {return null;}
 
 	public void wait(int time) {
 		try {

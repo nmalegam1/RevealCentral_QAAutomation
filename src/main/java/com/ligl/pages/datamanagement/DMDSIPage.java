@@ -221,7 +221,7 @@ public class DMDSIPage extends LiglBaseSessionPage {
         }
     }
 
-    public ILiglPage multipleCCDsSelect()throws Exception {
+    public ILiglPage multipleCCDsSelect(Hashtable<String, String> data)throws Exception {
         try {
 
             log_Info("multipleCCDsSelect() Started");

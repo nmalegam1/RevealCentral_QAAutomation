@@ -234,7 +234,6 @@ public class NotesPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             Assert.assertEquals(true, a1);
             log_Info("No data available text in Grid is Displayed");
-            getSession().setGlobalData();
             log_Pass("validateDeletedNote() Completed");
             return new NotesPage();
         } catch (Exception e) {

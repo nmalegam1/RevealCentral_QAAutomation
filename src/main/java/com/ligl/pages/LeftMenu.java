@@ -469,55 +469,6 @@ public class LeftMenu extends LiglBasePage {
         }
     }
 
-    // Navigating To Court Page
-
-    public ILiglPage navigateToCourtPage() throws Exception {
-
-        try {
-
-            try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
-                if (caseMgmt2.isEnabled()) {
-
-                    log_Info("Click on Case Management");
-                    getDriver().waitForelementToBeClickable(CaseManage);
-                    CaseManage.click();
-                    getSession().log_Pass("case Management clicked");
-
-                    log_Info("Click on court Tab ");
-                    getDriver().waitForelementToBeClickable(Court);
-                    Thread.sleep(2000);
-                    Court.click();
-                    getSession().log_Pass("court Tab is clicked");
-
-
-                }
-            } catch (NoSuchElementException e) {
-
-                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
-
-                if (caseMgmt1.isDisplayed()) {
-
-                    log_Info("Click on court Tab ");
-                    getDriver().waitForelementToBeClickable(Court);
-                    Thread.sleep(2000);
-                    Court.click();
-                    getSession().log_Pass("court Tab is clicked");
-
-                }
-
-            }
-            return new CaseCourtListPage();
-
-
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("navigateToCourtPage() Failed", ex);
-
-        }
-
-    }
-
     // Navigate To Date Ranges SubTab
 
     public ILiglPage navigateToDateRangesPage() throws Exception {
