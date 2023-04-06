@@ -472,7 +472,7 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage creatingNewTemplate() throws Exception {
 		return null;
 	}
-	public  ILiglPage goToAdministrationPage() throws InterruptedException {
+	public  ILiglPage goToAdministrationPage() throws Exception {
 		return null;
 	}
 	public ILiglPage goToAdminLeftMenu() throws Exception {
@@ -1429,9 +1429,15 @@ public class LiglBasePage implements ILiglPage {
 	/**
 	 * ManageQuestionnaireTemplatesPage*/
 
-	public ILiglPage clickOnAddTemplate() throws Exception{return null;}
+	public ILiglPage clickOnAddTemplate(Hashtable<String, String> data) throws Exception{return null;}
+
+	public ILiglPage clickOnEditButtonInManageQuestionnaireTemplate() throws Exception{return null;}
 
 	public ILiglPage clickOnAddNewQuestionButton() throws Exception{return null;}
+
+	public ILiglPage selectQuestionnaireTemplate(String questionnaireTemplate) throws Exception{return null;}
+
+	public ILiglPage searchTheQuestionInManageQuestionTemplate(String question) throws Exception{return null;}
 
 	public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data)
 			throws Exception{return null;}
@@ -1439,6 +1445,58 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception{
 		return null;
 	}
+
+	public ILiglPage deLinkTheQuestion(String question) throws Exception{return null;}
+
+	public ILiglPage editQuestionnaireTemplate(Hashtable<String, String> data) throws Exception{return null;}
+
+	public ILiglPage checkThatNewlyCreatedQuestionnaireIsDisplaying(String legalHoldName, String custodianNotice,
+																	String custodianQuestionner, String stakeholderNotice,
+																	String stakeholderQuestionner) throws Exception{
+		return null;
+	}
+
+	public ILiglPage getQuestionnaireTemplateName(String setQuestion) throws Exception{return null;}
+
+	/**
+	 * Escalation And Reminder
+	 */
+
+	public ILiglPage createLegalHoldWithEscalationAndReminderConfigurations(Hashtable<String, String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage getReminderConfigurationsValuesInLegalHoldAtCaseLevel(String legalHoldName, String setReminderDays, String setReminderFrequency,
+																		   String setReminderMailsCap) throws Exception{
+		return null;
+	}
+
+	public ILiglPage getEscalationConfigurationsValuesInLegalHoldAtCaseLevel(String setEscalationDays, String setEscalationFrequency,
+																			 String setEscalationMailsCap) throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkThatReminderConfigurationsInLegalHoldAtAminLevel(String checkReminderDay,String checkReminderFrequency,
+																		   String checkReminderMailsCap) throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkThatEscalationConfigurationsInLegalHoldAtAminLevel(String checkEscalationDay,String checkEscalationFrequency,
+																			 String checkEscalationMailsCap) throws Exception{
+		return null;
+	}
+
+	/**
+	 * Manage Display Content
+	 */
+	public ILiglPage verifyTheParametersInManageDisplayContent(String manageContentCategory,
+															   String parameter1, String parameter2) throws Exception{
+		return null;
+	}
+
+
+
+	/******************************************************************End Admin******************************************************************/
 
 	public ILiglPage searchForTheParticularTitleOfTheRequest(String title) throws Exception{
 		return null;

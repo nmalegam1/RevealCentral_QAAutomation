@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC8735_Create_new_Party_by_using_Party_Button_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC8735_Create_new_Party_by_using_Party_Button_Test(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());

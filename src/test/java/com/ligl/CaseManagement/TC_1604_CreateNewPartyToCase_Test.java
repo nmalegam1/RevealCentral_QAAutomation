@@ -11,9 +11,9 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_1604_CreateNewPartyToCase_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void TC_1604_CreateNewPartyToCase_Test(Hashtable<String , String> data) throws Exception {
-        try{
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
+    public void TC_1604_CreateNewPartyToCase_Test(Hashtable<String, String> data) throws Exception {
+        try {
             session.log_Info(data.get(toString()));
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
                 // skip in extent rep
@@ -24,17 +24,16 @@ public class TC_1604_CreateNewPartyToCase_Test extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToOtherPartyPage()
-                    .createAndValidatePartyCreatedOrNot(data.get("PartyName"),data.get("PartyType"),data.get("Description"));
-        }catch (Exception ex){
+                    .createAndValidatePartyCreatedOrNot(data.get("PartyName"), data.get("PartyType"), data.get("Description"));
+        } catch (Exception ex) {
             session.log_Error("TC_1604_CreateNewPartyToCase_Test Failed");
-            throw new Exception("TC_1604_CreateNewPartyToCase_Test failed",ex);
-        }
-        finally{
+            throw new Exception("TC_1604_CreateNewPartyToCase_Test failed", ex);
+        } finally {
             session.end();
         }
     }

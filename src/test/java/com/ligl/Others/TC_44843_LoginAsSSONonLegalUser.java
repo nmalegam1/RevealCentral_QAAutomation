@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_44843_LoginAsSSONonLegalUser extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Others")
     public void TC_44843_LoginAsSSONonLegalUser(Hashtable<String, String> data) throws Exception {
 
         try {

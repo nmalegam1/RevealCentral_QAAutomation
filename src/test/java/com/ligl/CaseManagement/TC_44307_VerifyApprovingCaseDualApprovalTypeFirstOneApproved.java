@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_44307_VerifyApprovingCaseDualApprovalTypeFirstOneApproved extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_44307_VerifyApprovingCaseDualApprovalTypeFirstOneApproved(Hashtable<String, String> data) throws Exception {
 
         try {

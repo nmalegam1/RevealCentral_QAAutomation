@@ -1,4 +1,4 @@
-package com.ligl.Administration.LegalHold.ManageQuestionnaireTemplatesPage;
+package com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "AdministrationModule")
-    public void TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template(Hashtable<String, String> data) throws Exception{
+public class TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button extends TestBase {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
+    public void TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -31,15 +31,13 @@ public class TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template
                     .clickOnAdminLegalHold()
                     .getAdminLeft()
                     .clickOnManageQuestionnaireTemplatesPageLink()
-                    .clickOnAddTemplate()
+                    .clickOnAddTemplate(data)
                     .createNewQuestionnaireTemplates(data)
-                    .clickOnAddNewQuestionButton()
-                    .addQuestionToManageQuestionnaireTemplate(data)
                     .getHeader()
                     .logout();
         } catch (Exception ex) {
-            session.log_Error("TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template Failed");
-            throw new Exception("TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template Failed", ex);
+            session.log_Error("TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button Failed");
+            throw new Exception("TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button Failed", ex);
         } finally {
             session.end();
         }

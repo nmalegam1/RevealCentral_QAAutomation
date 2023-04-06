@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_35057_VerifyFunctionalityOfCreatingKeywords extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_35057_VerifyFunctionalityOfCreatingKeywords(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -28,7 +28,7 @@ public class TC_35057_VerifyFunctionalityOfCreatingKeywords extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()

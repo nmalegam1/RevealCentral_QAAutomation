@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_9972_VerifyProcessOfCreatingCaseByClickingSaveAndAddDetailsBtn extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_9972_VerifyProcessOfCreatingCaseByClickingSaveAndAddDetailsBtn(Hashtable<String, String> data) throws Exception {
 
         try {

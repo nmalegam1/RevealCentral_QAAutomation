@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_24317_VerifyConfigValuesFromAdminEscalationRemainderDisplayingByDefault extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_24317_VerifyConfigValuesFromAdminEscalationRemainderDisplayingByDefault(Hashtable<String, String> data) throws Exception {
 
         try {

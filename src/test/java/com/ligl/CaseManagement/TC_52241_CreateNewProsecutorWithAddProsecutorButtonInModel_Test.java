@@ -14,7 +14,7 @@ import java.util.Hashtable;
  *Case-Courts-Prosecutors-Verifying the functionality of creating new Prosecutors using +Prosecutor button in modal
  */
 public class TC_52241_CreateNewProsecutorWithAddProsecutorButtonInModel_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "CaseManagement")
     public void TC_52241_CreateNewProsecutorWithAddProsecutorButtonInModel_Test(Hashtable<String , String> data) throws Exception{
         try{
             session.log_Info(data.get(toString()));

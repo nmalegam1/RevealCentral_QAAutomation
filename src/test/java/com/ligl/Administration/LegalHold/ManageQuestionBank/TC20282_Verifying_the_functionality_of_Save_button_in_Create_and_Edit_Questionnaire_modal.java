@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Edit_Questionnaire_modal extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Edit_Questionnaire_modal(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());

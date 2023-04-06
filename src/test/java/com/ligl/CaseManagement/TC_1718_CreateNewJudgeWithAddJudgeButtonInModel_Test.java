@@ -14,7 +14,7 @@ import java.util.Hashtable;
  * Case-Courts-Judge-Verifying the functionality of creating New Judge using +Judge button in modal
  */
 public class TC_1718_CreateNewJudgeWithAddJudgeButtonInModel_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_1718_CreateNewJudgeWithAddJudgeButtonInModel_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -27,16 +27,16 @@ public class TC_1718_CreateNewJudgeWithAddJudgeButtonInModel_Test extends TestBa
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCourtPage()
                     .searchCourt(data.get("CourtName"))
-                    .createNewJudge(data.get("CounselFN"),data.get("CounselLN"))
+                    .createNewJudge(data.get("CounselFN"), data.get("CounselLN"))
                     .searchCourt(data.get("CourtName"))
-                    .validateJudgeAddedToGrid(data.get("CounselFN"),data.get("CounselLN"));
-        }catch (Exception | Error ex) {
+                    .validateJudgeAddedToGrid(data.get("CounselFN"), data.get("CounselLN"));
+        } catch (Exception | Error ex) {
             throw new Exception("TC_1718_CreateNewJudgeWithAddJudgeButtonInModel_Test Failed", ex);
         }
     }

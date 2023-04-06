@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_52366_VerifyDateRangesFunctionalityOfEnableDisableBtn extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_52366_VerifyDateRangesFunctionalityOfEnableDisableBtn(Hashtable<String, String> data) throws Exception {
 
         try {

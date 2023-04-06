@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 
 public class TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());

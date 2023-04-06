@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC20363_Verify_availability_of_Mentioned_Optional_Dropdown_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC20363_Verify_availability_of_Mentioned_Optional_Dropdown_Test(Hashtable<String, String> data) throws Exception {
         try {
             ILiglPage page = new LaunchPage()

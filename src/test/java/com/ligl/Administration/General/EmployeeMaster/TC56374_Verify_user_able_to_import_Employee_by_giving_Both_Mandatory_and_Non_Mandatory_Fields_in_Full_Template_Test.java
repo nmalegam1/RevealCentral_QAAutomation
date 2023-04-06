@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC56374_Verify_user_able_to_import_Employee_by_giving_Both_Mandatory_and_Non_Mandatory_Fields_in_Full_Template_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC40180_user_is_able_to_import_employee_without_filling_Title_field_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());

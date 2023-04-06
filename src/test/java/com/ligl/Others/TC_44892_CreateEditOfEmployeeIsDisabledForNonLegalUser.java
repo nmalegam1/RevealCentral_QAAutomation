@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_44892_CreateEditOfEmployeeIsDisabledForNonLegalUser extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Others")
     public void TC_44892_CreateEditOfEmployeeIsDisabledForNonLegalUser(Hashtable<String, String> data) throws Exception {
 
         try {

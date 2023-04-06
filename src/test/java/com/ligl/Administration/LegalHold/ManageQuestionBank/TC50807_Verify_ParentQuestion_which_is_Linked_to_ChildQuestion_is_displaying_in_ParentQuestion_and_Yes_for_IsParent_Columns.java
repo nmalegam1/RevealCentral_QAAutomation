@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_displaying_in_ParentQuestion_and_Yes_for_IsParent_Columns extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_displaying_in_ParentQuestion_and_Yes_for_IsParent_Columns(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -32,7 +32,7 @@ public class TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_d
                     .getAdminLeft()
                     .clickOnManageQuestionBankPageLink()
                     .clickOnQuestionnaireButton()
-                    .createNewQuestionnaire(data.get("QuestionnaireTitle"), data.get("RenderType"),data.get("IsParent"),
+                    .createNewQuestionnaire(data.get("QuestionnaireTitle"), data.get("RenderType"), data.get("IsParent"),
                             data.get("IsQuestionMandatory"), data.get("Null"), data.get("Description"), data.get("Null"),
                             data.get("ParentQuestionAddToChild"))
                     .refreshTheManageQuestionBankPage()
@@ -44,7 +44,7 @@ public class TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_d
                     .getHeader()
                     .logout();
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             session.log_Error("TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_displaying_in_ParentQuestion_and_Yes_for_IsParent_Columns Failed");
             throw new Exception("TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_displaying_in_ParentQuestion_and_Yes_for_IsParent_Columns Failed", ex);
         }

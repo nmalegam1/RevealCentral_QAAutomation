@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC40183_User_able_to_save_Employee_without_filling_Title_field_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC40183_User_able_to_save_Employee_without_filling_Title_field_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());

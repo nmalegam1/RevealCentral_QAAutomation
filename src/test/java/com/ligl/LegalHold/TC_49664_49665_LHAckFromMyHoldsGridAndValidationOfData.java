@@ -13,7 +13,7 @@ import java.util.Hashtable;
 public class TC_49664_49665_LHAckFromMyHoldsGridAndValidationOfData extends TestBase
 {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_49664_49665_LHAckFromMyHoldsGridAndValidationOfData(Hashtable<String, String> data) throws Exception
     {
         try

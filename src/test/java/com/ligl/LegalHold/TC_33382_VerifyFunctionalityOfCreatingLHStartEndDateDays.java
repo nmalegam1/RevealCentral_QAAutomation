@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_33382_VerifyFunctionalityOfCreatingLHStartEndDateDays extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_33382_VerifyFunctionalityOfCreatingLHStartEndDateDays(Hashtable<String, String> data) throws Exception {
 
         try {

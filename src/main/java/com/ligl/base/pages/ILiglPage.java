@@ -174,7 +174,7 @@ public interface ILiglPage {
 
     ILiglPage creatingNewTemplate() throws Exception;
 
-    ILiglPage goToAdministrationPage() throws InterruptedException;
+    ILiglPage goToAdministrationPage() throws Exception;
 
     ILiglPage goToSecurityPage() throws InterruptedException;
 
@@ -940,15 +940,51 @@ public interface ILiglPage {
     public ILiglPage verifyParentQuestionColumn(String question)throws Exception;
 
     /**
-     * ManageQuestionnaireTemplatesPage*/
+     * ManageQuestionnaireTemplatesPage
+     */
 
-    public ILiglPage clickOnAddTemplate() throws Exception;
+    public ILiglPage clickOnAddTemplate(Hashtable<String, String> data) throws Exception;
+
+    public ILiglPage clickOnEditButtonInManageQuestionnaireTemplate() throws Exception;
 
     public ILiglPage clickOnAddNewQuestionButton() throws Exception;
 
-    public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data) throws Exception;
+    public ILiglPage selectQuestionnaireTemplate(String questionnaireTemplate) throws Exception;
 
-    public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception;
+    public ILiglPage searchTheQuestionInManageQuestionTemplate(String question) throws Exception;
+
+    public ILiglPage createNewQuestionnaireTemplates(Hashtable<String, String> data) throws Exception;
+
+    public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable<String, String> data) throws Exception;
+
+    public ILiglPage deLinkTheQuestion(String question) throws Exception;
+
+    public ILiglPage editQuestionnaireTemplate(Hashtable<String, String> data) throws Exception;
+
+    public ILiglPage checkThatNewlyCreatedQuestionnaireIsDisplaying(String legalHoldName, String custodianNotice,
+                                                                    String custodianQuestionner, String stakeholderNotice,
+                                                                    String stakeholderQuestionner) throws Exception;
+
+    public ILiglPage getQuestionnaireTemplateName(String setQuestion) throws Exception;
+    /**
+     * Escalation And Reminder
+     */
+
+    public ILiglPage createLegalHoldWithEscalationAndReminderConfigurations(Hashtable<String, String> data) throws Exception;
+    public ILiglPage getReminderConfigurationsValuesInLegalHoldAtCaseLevel(String legalHoldName, String setReminderDays, String setReminderFrequency,
+                                                                           String setReminderMailsCap) throws Exception;
+    public ILiglPage getEscalationConfigurationsValuesInLegalHoldAtCaseLevel(String setEscalationDays, String setEscalationFrequency,
+                                                                             String setEscalationMailsCap) throws Exception;
+    public ILiglPage checkThatReminderConfigurationsInLegalHoldAtAminLevel(String checkReminderDay, String checkReminderFrequency,
+                                                                           String checkReminderMailsCap) throws Exception;
+    public ILiglPage checkThatEscalationConfigurationsInLegalHoldAtAminLevel(String checkEscalationDay, String checkEscalationFrequency,
+                                                                             String checkEscalationMailsCap) throws Exception;
+
+    /**
+     * Manage Display Content
+     */
+    public ILiglPage verifyTheParametersInManageDisplayContent(String manageContentCategory,String parameter1, String parameter2) throws Exception;
+    /************************************************End Admin************************************************************************************/
 
     ILiglPage addMessageWhenReqIsInProgress(String TextBoxArea) throws Exception;
 

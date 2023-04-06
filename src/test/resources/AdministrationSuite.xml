@@ -2,8 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Administration General/Legal Hold Test Suite">
 
-                                                            <!--Admin General-->
+    <!--Admin General-->
     <!--User and Roles Page-->
+
     <test name="TC12160 Verify the process of creating Ligl user by selecting Ligl user option in +User modal with Manual Password">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC12160_Create_Ligl_User_with_Manual_Password_Test"/>
@@ -129,6 +130,7 @@
     </test>
 
     <!--Employee Master Page-->
+
     <test name="TC33890-Employee Master- Verify the process of Creating new Employee using +Employee button">
         <classes>
             <class name="com.ligl.Administration.General.EmployeeMaster.TC33890_Creating_new_Employee_using_Employee_button_Test"/>
@@ -196,6 +198,7 @@
     </test>
 
     <!--Contact Master Page-->
+
     <test name="TC8712 Contact Master- Verify the process of Creating new contact using +Contact button">
         <classes>
             <class name="com.ligl.Administration.General.ContactMaster.TC8712_Creat_new_contact_using_addContact_button_Test"/>
@@ -223,6 +226,7 @@
     </test>
 
     <!--Parties-->
+
     <test name="TC8735 Parties- Verify the process of Creating new Party using +Party button">
         <classes>
             <class name="com.ligl.Administration.General.Parties.TC8735_Create_new_Party_by_using_Party_Button_Test"/>
@@ -235,6 +239,7 @@
     </test>
 
     <!--Email Template Page-->
+
     <test name="TC1983 Email Templates- Verify the process of creating new template using +Template button for 'Case Approval' category.">
         <classes>
             <class name="com.ligl.Administration.General.EmailTemplates.TC1983_Creat_Template_using_addTemplate_button_for_CaseApproval_Template_Test"/>
@@ -252,6 +257,7 @@
     </test>
 
     <!--Case Settings Page-->
+
     <test name="TC21664 Case Settings- Verify the process of creating new Case settings template using +Template button">
         <classes>
             <class name="com.ligl.Administration.General.CaseSettingsPage.TC21664_Creating_new_Case_settings_template_using_add_Template_button_Test"/>
@@ -264,6 +270,7 @@
     </test>
 
     <!--Lookup Manager Page-->
+
     <test name="TC54559 Requests-Check whether admin is able to create, edit the request type lookup value">
         <classes>
             <class name="com.ligl.Administration.General.LookManagerPage.TC54559_Check_admin_is_able_to_create_edit_the_RequestType_lookup_value_Test"/>
@@ -290,9 +297,10 @@
         </classes>
     </test>
 
-                                                                <!--Admin LegalHold-->
+    <!--Admin LegalHold-->
 
     <!--Stake Holder-->
+
     <test name="TC30545 Verify Create Stakeholders">
         <classes>
             <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30545_Verify_Processes_of_Stakeholder_Creation"/>
@@ -325,6 +333,7 @@
     </test>
 
     <!--Manage Question Bank-->
+
     <test name="TC20282 Verifying the functionality of Save button in Create and Edit +Questionnaire modal">
         <classes>
             <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Edit_Questionnaire_modal"/>
@@ -345,26 +354,164 @@
 
     <test name="TC20723	Admin-Manage Questionnaire Templates-Verify the process of creating New template by choosing 'Create New Template' option from Add template button">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplatesPage.TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button"/>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button"/>
         </classes>
     </test>
-
-    <test name="TC38065 Admin-Manage Questionnaire Templates-Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplatesPage.TC38065_Verify_the_process_creating_New_Template_by_choosing_Create_From_Existing_Template_from_Add_Template_button"/>
-        </classes>
-    </test>
-
     <test name="TC20792 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create New Template'">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplatesPage.TC20792_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_New_Template"/>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20792_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_New_Template"/>
         </classes>
     </test>
-
+    <test name="TC38065 Admin-Manage Questionnaire Templates-Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38065_Verify_the_process_creating_New_Template_by_choosing_Create_From_Existing_Template_from_Add_Template_button"/>
+        </classes>
+    </test>
     <test name="TC38068 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplatesPage.TC38068_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template"/>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38068_Verify_that_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template"/>
+        </classes>
+    </test>
+    <test name="TC20800 Admin-Manage Questionnaire Templates-Verifying the Functionality of Delink Option for a question in Questionnaire template">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20800_Verify_the_Functionality_of_Delink_Option_for_a_Question_in_Questionnaire_Template"/>
+        </classes>
+    </test>
+    <test name="TC38072 Admin-Manage Questionnaire Templates- Verify that user is able to delink the Questions from the template created by choosing 'Create From Existing Template' option">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38072_Verify_user_able_to_delink_the_Questions_from_template_created_by_Create_From_Existing_Template"/>
+        </classes>
+    </test>
+    <test name="TC38070 Admin-Manage Questionnaire Templates- Check whether newly created templates are populated under Questionnaire template dropdown for Custodian and Stakeholder Legalhold">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38070_Verify_newly_created_templates_populated_under_Custodian_and_stakeHolder_Questionnaire_template_dropdown"/>
+        </classes>
+    </test>
+    <test name="TC20802 Admin-Manage Questionnaire Templates-Verifying the functionality of Save button after editing the fields for a questionnaire template">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template"></class>
         </classes>
     </test>
 
+    <!--Escalation And Reminder Page-->
+    <test name="TC51777 Admin-Legal hold-Escalation and Reminder- Verify whether Case level configuration changes are not reflected in Admin level configurations">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.EscalationAndReminder.TC51777_Verify_whether_Case_level_configuration_changes_are_not_reflected_in_Admin_level_configurations"></class>
+        </classes>
+    </test>
+
+    <!--Manage Display Content page-->
+    <test name="TC36508 Admin- Manage Display Content- Check whether applicable parameters are only displayed to the value selected from the category dropdown">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageDisplayContent.TC36508_Check_applicable_Parameters_displayed_to_the_Value_selected_from_the_category_dropdown"/>
+        </classes>
+    </test>
+
+    <!--Stake Holder-->
+
+    <test name="TC30545 Verify Create Stakeholders">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30545_Verify_Processes_of_Stakeholder_Creation"/>
+        </classes>
+    </test>
+    <test name="TC30545 Verify whether newly added stakeholders are displaying in Stakeholders list grid and Case LHN for Stakeholder grid">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30545_Verify_that_newly_added_stakeholders_are_displaying_in_Stakeholders_list_grid_and_Case_LHN_for_Stakeholder_grid"/>
+        </classes>
+    </test>
+    <test name="TC30551 Verify whether user is able to perform LHN actions to newly created stakeholders from Admin">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30551_Verify_User_able_to_perform_LHN_Actions_to_newly_created_stakeholders_from_Admin"/>
+        </classes>
+    </test>
+    <test name="TC51903 Stakeholders Create and Edit -Check for the duplicate validation message for Email-id field">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC51903_Check_the_Duplicate_Validation_Message_for_Email_field_in_Stakeholders_Create_and_Edit"/>
+        </classes>
+    </test>
+    <test name="TC37922 Delete Option-Verify the functionality of delete button in the grid">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC37922_Verify_functionality_of_delete_button_in_the_Stakeholder_grid"/>
+        </classes>
+    </test>
+    <test name="TC37930 Stakeholders Delete Option-Check whether deleted stakeholders are not displaying in grids(Case LHN Stakeholder/Admin Stakeholder)">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC37930_Check_that_Deleted_stakeholders_are_not_displaying_in_Stakeholders_list_grid_and_Case_LHN_for_Stakeholder_grid"/>
+        </classes>
+    </test>
+
+    <!--Manage Question Bank-->
+
+    <test name="TC20282 Verifying the functionality of Save button in Create and Edit +Questionnaire modal">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Edit_Questionnaire_modal"/>
+        </classes>
+    </test>
+    <test name="TC51773 Check whether 'Applies to' field is non-editable in Edit Question modal for Parent and Child questions">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Parent_and_Child_questions"/>
+        </classes>
+    </test>
+    <test name="TC50807 Display Parent to Child questions- Verify that Parent Question which is linked to Child Question is displaying in the Parent Question Column as 'Yes' for IsParent">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_displaying_in_ParentQuestion_and_Yes_for_IsParent_Columns"/>
+        </classes>
+    </test>
+
+    <!--Manage Questionnaire Templates Page-->
+
+    <test name="TC20723	Admin-Manage Questionnaire Templates-Verify the process of creating New template by choosing 'Create New Template' option from Add template button">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button"/>
+        </classes>
+    </test>
+    <test name="TC20792 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create New Template'">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20792_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_New_Template"/>
+        </classes>
+    </test>
+    <test name="TC38065 Admin-Manage Questionnaire Templates-Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38065_Verify_the_process_creating_New_Template_by_choosing_Create_From_Existing_Template_from_Add_Template_button"/>
+        </classes>
+    </test>
+    <test name="TC38068 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38068_Verify_that_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template"/>
+        </classes>
+    </test>
+    <test name="TC20800 Admin-Manage Questionnaire Templates-Verifying the Functionality of Delink Option for a question in Questionnaire template">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20800_Verify_the_Functionality_of_Delink_Option_for_a_Question_in_Questionnaire_Template"/>
+        </classes>
+    </test>
+    <test name="TC38072 Admin-Manage Questionnaire Templates- Verify that user is able to delink the Questions from the template created by choosing 'Create From Existing Template' option">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38072_Verify_user_able_to_delink_the_Questions_from_template_created_by_Create_From_Existing_Template"/>
+        </classes>
+    </test>
+    <test name="TC38070 Admin-Manage Questionnaire Templates- Check whether newly created templates are populated under Questionnaire template dropdown for Custodian and Stakeholder Legalhold">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38070_Verify_newly_created_templates_populated_under_Custodian_and_stakeHolder_Questionnaire_template_dropdown"/>
+        </classes>
+    </test>
+    <test name="TC20802 Admin-Manage Questionnaire Templates-Verifying the functionality of Save button after editing the fields for a questionnaire template">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template"></class>
+        </classes>
+    </test>-->
+
+    <!--Escalation And Reminder Page-->
+    <test name="TC51777 Admin-Legal hold-Escalation and Reminder- Verify whether Case level configuration changes are not reflected in Admin level configurations">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.EscalationAndReminder.TC51777_Verify_whether_Case_level_configuration_changes_are_not_reflected_in_Admin_level_configurations"></class>
+        </classes>
+    </test>
+
+    <!--Manage Display Content page-->
+    <test name="TC36508 Admin- Manage Display Content- Check whether applicable parameters are only displayed to the value selected from the category dropdown">
+        <classes>
+            <class name="com.ligl.Administration.LegalHold.ManageDisplayContent.TC36508_Check_applicable_Parameters_displayed_to_the_Value_selected_from_the_category_dropdown"/>
+        </classes>
+    </test>
 </suite>

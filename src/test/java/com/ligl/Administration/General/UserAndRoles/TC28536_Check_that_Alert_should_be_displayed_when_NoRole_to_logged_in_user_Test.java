@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC28536_Check_that_Alert_should_be_displayed_when_NoRole_to_logged_in_user_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC28536_Check_that_Alert_should_be_displayed_when_NoRole_to_logged_in_user_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());

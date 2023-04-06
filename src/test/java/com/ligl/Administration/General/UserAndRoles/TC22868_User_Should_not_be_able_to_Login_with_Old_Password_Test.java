@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC22868_User_Should_not_be_able_to_Login_with_Old_Password_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "Administration")
     public void TC22868_User_Should_not_be_able_to_Login_with_Old_Password_Test(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());
