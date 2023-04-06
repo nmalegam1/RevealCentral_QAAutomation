@@ -225,55 +225,55 @@ public class DMDSIPage extends LiglBaseSessionPage {
         try {
 
             log_Info("multipleCCDsSelect() Started");
-            if (getSession().getRegressionData("O365_Exchange_RunState").equals("Y")) {
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("O365_Exchange_Cust_FullName"), getSession().getRegressionData("O365_Sharepoint_DataSource"), getSession().getRegressionData("DHScope"));
+            if (data.get("O365_Exchange_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("O365_Exchange_Cust_FullName"), data.get("O365_Sharepoint_DataSource"), data.get("DHScope"));
             }
-            if (getSession().getRegressionData("O365_Sharepoint_RunState").equals("Y")) {
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("O365_Sharepoint_Cust_FullName"), getSession().getRegressionData("O365_Sharepoint_DataSource"), getSession().getRegressionData("DHScope"));
+            if (data.get("O365_Sharepoint_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("O365_Sharepoint_Cust_FullName"), data.get("O365_Sharepoint_DataSource"), data.get("DHScope"));
             }
-            if (getSession().getRegressionData("OneDrive_RunState").equals("Y")) {
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("OneDrive_Cust_FullName"), getSession().getRegressionData("OneDrive_DataSource"), getSession().getRegressionData("DHScope"));
+            if (data.get("OneDrive_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("OneDrive_Cust_FullName"), data.get("OneDrive_DataSource"), data.get("DHScope"));
             }
-            if (getSession().getRegressionData("MS_Teams_RunState").equals("Y")) {
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("MS_Teams_Cust_FullName"), getSession().getRegressionData("MS_Teams_DataSource"), getSession().getRegressionData("DHScope"));
-            }
-
-
-            if (getSession().getRegressionData("Hangouts_Chat_RunState").equals("Y")) {
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("Hangouts_Chat_Cust_FullName"), getSession().getRegressionData("Hangouts_Chat_DataSource"), getSession().getRegressionData("DHScope"));
-            }
-            if (getSession().getRegressionData("GMail_RunState").equals("Y")) {
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("GMail_Cust_FullName"), getSession().getRegressionData("GMail_DataSource"), getSession().getRegressionData("DHScope"));
-            }
-            if (getSession().getRegressionData("GDrive_RunState").equals("Y")) {
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("GDrive_Cust_FullName"), getSession().getRegressionData("GDrive_DataSource"), getSession().getRegressionData("DHScope"));
-            }
-            if (getSession().getRegressionData("Google_Chat_RunState").equals("Y")) {
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("Google_Chat_Cust_FullName"), getSession().getRegressionData("Google_Chat_DataSource"), getSession().getRegressionData("DHScope"));
+            if (data.get("MS_Teams_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("MS_Teams_Cust_FullName"), data.get("MS_Teams_DataSource"), data.get("DHScope"));
             }
 
-            if(getSession().getRegressionData("Dropbox_RunState").equals("Y"))
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("Dropbox_Cust_FullName"),getSession().getRegressionData("Dropbox_DataSource"),getSession().getRegressionData("DHScope"));
-            if(getSession().getRegressionData("Box_RunState").equals("Y"))
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("Box_Cust_FullName"),getSession().getRegressionData("Box_DataSource"),getSession().getRegressionData("DHScope"));
-            if(getSession().getRegressionData("Proofpoint_RunState").equals("Y"))
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("Proofpoint_Cust_FullName"),getSession().getRegressionData("Proofpoint_DataSource"),getSession().getRegressionData("DHScope"));
-            if(getSession().getRegressionData("Zoom_Video_RunState").equals("Y"))
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("Zoom_Video_Cust_FullName"),getSession().getRegressionData("Zoom_Video_DataSource"),getSession().getRegressionData("DHScope"));
+
+            if (data.get("Hangouts_Chat_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Hangouts_Chat_Cust_FullName"), data.get("Hangouts_Chat_DataSource"), data.get("DHScope"));
+            }
+            if (data.get("GMail_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("GMail_Cust_FullName"), data.get("GMail_DataSource"), data.get("DHScope"));
+            }
+            if (data.get("GDrive_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("GDrive_Cust_FullName"), data.get("GDrive_DataSource"), data.get("DHScope"));
+            }
+            if (data.get("Google_Chat_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Google_Chat_Cust_FullName"), data.get("Google_Chat_DataSource"), data.get("DHScope"));
+            }
+
+            if(data.get("Dropbox_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Dropbox_Cust_FullName"),data.get("Dropbox_DataSource"),data.get("DHScope"));
+            if(data.get("Box_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Box_Cust_FullName"),data.get("Box_DataSource"),data.get("DHScope"));
+            if(data.get("Proofpoint_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Proofpoint_Cust_FullName"),data.get("Proofpoint_DataSource"),data.get("DHScope"));
+            if(data.get("Zoom_Video_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Zoom_Video_Cust_FullName"),data.get("Zoom_Video_DataSource"),data.get("DHScope"));
 
 
-            if(getSession().getRegressionData("Zoom_Chat_RunState").equals("Y"))
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("Zoom_Chat_Cust_FullName"),getSession().getRegressionData("Zoom_Chat_DataSource"),getSession().getRegressionData("DHScope"));
-            if(getSession().getRegressionData("Onna_RunState").equals("Y"))
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("Onna_Cust_FullName"),getSession().getRegressionData("Onna_DataSource"),getSession().getRegressionData("DHScope"));
-            if(getSession().getRegressionData("Slack_RunState").equals("Y"))
-                addDataSourceRecordToDSIGridUptoCollection(getSession().getRegressionData("Slack_Cust_FullName"),getSession().getRegressionData("Slack_DataSource"),getSession().getRegressionData("DHScope"));
+            if(data.get("Zoom_Chat_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Zoom_Chat_Cust_FullName"),data.get("Zoom_Chat_DataSource"),data.get("DHScope"));
+            if(data.get("Onna_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Onna_Cust_FullName"),data.get("Onna_DataSource"),data.get("DHScope"));
+            if(data.get("Slack_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Slack_Cust_FullName"),data.get("Slack_DataSource"),data.get("DHScope"));
 
 
             return new DMDSIPage();
         } catch (Exception ex) {
-            log_Error("automateRecordInDSI() Failed");
-            throw new Exception("Exception in automateRecordInDSI()", ex);
+            log_Error("multipleCCDsSelect() Failed");
+            throw new Exception("multipleCCDsSelect()", ex);
         }
     }
     public ILiglPage automateRecordInDSI() throws Exception {

@@ -157,45 +157,45 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage {
         try{
             log_Info("Started multipleDataSourceSelect()");
             Thread.sleep(3000);
-            if(getSession().getRegressionData("O365_Sharepoint_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("O365_Sharepoint_DataSource"));
-            if(getSession().getRegressionData("O365_Exchange_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("O365_Exchange_DataSource"));
-            if(getSession().getRegressionData("OneDrive_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("OneDrive_DataSource"));
-            if(getSession().getRegressionData("MS_Teams_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("MS_Teams_DataSource"));
+            if(data.get("O365_Sharepoint_RunState").equals("Y"))
+                addingDataSource(data.get("O365_Sharepoint_DataSource"));
+            if(data.get("O365_Exchange_RunState").equals("Y"))
+                addingDataSource(data.get("O365_Exchange_DataSource"));
+            if(data.get("OneDrive_RunState").equals("Y"))
+                addingDataSource(data.get("OneDrive_DataSource"));
+            if(data.get("MS_Teams_RunState").equals("Y"))
+                addingDataSource(data.get("MS_Teams_DataSource"));
 
-            if(getSession().getRegressionData("Hangouts_Chat_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("Hangouts_Chat_DataSource"));
-            if(getSession().getRegressionData("GMail_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("GMail_DataSource"));
-            if(getSession().getRegressionData("GDrive_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("GDrive_DataSource"));
-            if(getSession().getRegressionData("Google_Chat_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("Google_Chat_DataSource"));
+            if(data.get("Hangouts_Chat_RunState").equals("Y"))
+                addingDataSource(data.get("Hangouts_Chat_DataSource"));
+            if(data.get("GMail_RunState").equals("Y"))
+                addingDataSource(data.get("GMail_DataSource"));
+            if(data.get("GDrive_RunState").equals("Y"))
+                addingDataSource(data.get("GDrive_DataSource"));
+            if(data.get("Google_Chat_RunState").equals("Y"))
+                addingDataSource(data.get("Google_Chat_DataSource"));
 
-            if(getSession().getRegressionData("Dropbox_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("Dropbox_DataSource"));
-            if(getSession().getRegressionData("Box_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("Box_DataSource"));
-            if(getSession().getRegressionData("Proofpoint_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("Proofpoint_DataSource"));
-            if(getSession().getRegressionData("Zoom_Video_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("Zoom_Video_DataSource"));
+            if(data.get("Dropbox_RunState").equals("Y"))
+                addingDataSource(data.get("Dropbox_DataSource"));
+            if(data.get("Box_RunState").equals("Y"))
+                addingDataSource(data.get("Box_DataSource"));
+            if(data.get("Proofpoint_RunState").equals("Y"))
+                addingDataSource(data.get("Proofpoint_DataSource"));
+            if(data.get("Zoom_Video_RunState").equals("Y"))
+                addingDataSource(data.get("Zoom_Video_DataSource"));
 
-            if(getSession().getRegressionData("Zoom_Chat_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("Zoom_Chat_DataSource"));
-            if(getSession().getRegressionData("Onna_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("Onna_DataSource"));
-            if(getSession().getRegressionData("Slack_RunState").equals("Y"))
-                addingDataSource(getSession().getRegressionData("Slack_DataSource"));
+            if(data.get("Zoom_Chat_RunState").equals("Y"))
+                addingDataSource(data.get("Zoom_Chat_DataSource"));
+            if(data.get("Onna_RunState").equals("Y"))
+                addingDataSource(data.get("Onna_DataSource"));
+            if(data.get("Slack_RunState").equals("Y"))
+                addingDataSource(data.get("Slack_DataSource"));
 
             clickOnSaveButton();
-            return new CaseCustodiansPage();
+            return new CaseDataSourcesPage();
         }catch(Exception ex){
             log_Error(ex.getMessage());
-            throw new Exception("multipleCustodianSelect() Failed", ex);
+            throw new Exception("multipleDataSourceSelect() Failed", ex);
         }
     }
 
