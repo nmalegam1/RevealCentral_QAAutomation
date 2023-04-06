@@ -4272,7 +4272,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             getSession().log_Info("'Get Remainder Number Of Days Before Mail Can Be Sent' value");
             getDriver().waitForelementToBeClickable(RemainderDays);
             String remainderDay = RemainderDays.getAttribute("value");
-            getSession().setSmokeData(setReminderDays, remainderDay);           //using set property
+            getSession().setRegressionData(setReminderDays, remainderDay);           //using set property
             getSession().log_Pass("'Remainder Number Of Days Before Mail Can Be Sent' value is" + remainderDay);
 
 
@@ -4280,14 +4280,14 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             getSession().log_Info("Get 'Remainder Mails Cap' value");
             getDriver().waitForelementToBeClickable(RemainderFrequency);
             String RemainderfrequencyNew = RemainderFrequency.getAttribute("value");
-            getSession().setSmokeData(setReminderFrequency, RemainderfrequencyNew);         //using set property
+            getSession().setRegressionData(setReminderFrequency, RemainderfrequencyNew);         //using set property
             getSession().log_Pass("'Remainder Mails cap' value is " + RemainderfrequencyNew);
 
             //Reminder mails cap
             getSession().log_Info("Get 'Remainder Mails Frequency' value");
             getDriver().waitForelementToBeClickable(RemainderMailsCap);
             String RemainderMailsNew = RemainderFrequency.getAttribute("value");
-            getSession().setSmokeData(setReminderMailsCap, RemainderMailsNew);         //using set property
+            getSession().setRegressionData(setReminderMailsCap, RemainderMailsNew);         //using set property
             getSession().log_Pass("'Remainder Mails Frequency ' value is " + RemainderMailsNew);
 
             wait(5);
@@ -4314,7 +4314,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             getSession().log_Info("Get 'Number of days after reminder when escalation can be sent' value");
             getDriver().waitForelementToBeClickable(EscalationDays);
             String escalationDays = EscalationDays.getAttribute("value");
-            getSession().setSmokeData(setEscalationDays, escalationDays);           //using set property
+            getSession().setRegressionData(setEscalationDays, escalationDays);           //using set property
             getSession().log_Pass("'Number of days after reminder when escalation can be sent' value is" + escalationDays);
 
 
@@ -4322,14 +4322,14 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             getSession().log_Info("Get 'Remainder Mails Cap' value");
             getDriver().waitForelementToBeClickable(EscalationFrequency);
             String EscalationFrequencyNew = EscalationFrequency.getAttribute("value");
-            getSession().setSmokeData(setEscalationFrequency, EscalationFrequencyNew);         //using set property
+            getSession().setRegressionData(setEscalationFrequency, EscalationFrequencyNew);         //using set property
             getSession().log_Pass("'Escalation Mails cap' value is " + EscalationFrequencyNew);
 
             //Escalation mails cap
             getSession().log_Info("Get 'Escalation Mails Frequency' value");
             getDriver().waitForelementToBeClickable(EscalationMailsCap);
             String EscalationMailsNew = EscalationFrequency.getAttribute("value");
-            getSession().setSmokeData(setEscalationMailsCap, EscalationMailsNew);         //using set property
+            getSession().setRegressionData(setEscalationMailsCap, EscalationMailsNew);         //using set property
             getSession().log_Pass("'Escalation Mails Frequency ' value is " + EscalationMailsNew);
 
             getSession().log_Info("Click on Save Button");

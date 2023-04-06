@@ -371,7 +371,7 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
             getSession().log_Info("Get Questionnaire Template Name");
             String q1 = getCurrentDriver().findElement(By.xpath("//div[@class='cm-div-read col-4 ng-star-inserted'][1]//div")).getText();
             getSession().log_Pass("'Questionnaire Template Name is' " +q1.toUpperCase());
-            getSession().setSmokeData(setQuestion, q1);
+            getSession().setRegressionData(setQuestion, q1);
 
             //Cancel Button
             getSession().log_Info("Click on 'Cancel' Button");

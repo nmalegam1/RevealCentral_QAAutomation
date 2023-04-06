@@ -46,8 +46,8 @@ public class TC38070_Verify_newly_created_templates_populated_under_Custodian_an
                     .navigateToLegalHoldPage()
                     .clickOnAddNewLegalHoldButton()
                     .checkThatNewlyCreatedQuestionnaireIsDisplaying(data.get("LegalHoldName"), data.get("CustodianNotice"),
-                            session.getSmokeData("TC38070_CustodianQuestionTemplate"), data.get("StakeHolderNotice"),
-                            session.getSmokeData("TC38070_StakeHolderQuestionTemplate"))
+                            session.getRegressionData("TC38070_CustodianQuestionTemplate"), data.get("StakeHolderNotice"),
+                            session.getRegressionData("TC38070_StakeHolderQuestionTemplate"))
 
                     .getHeader()
                     .logout();

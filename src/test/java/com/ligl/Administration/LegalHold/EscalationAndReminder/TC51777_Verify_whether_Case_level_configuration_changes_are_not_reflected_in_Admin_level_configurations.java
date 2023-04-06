@@ -34,9 +34,9 @@ public class TC51777_Verify_whether_Case_level_configuration_changes_are_not_ref
                     .clickOnAddNewLegalHoldButton()
                     .createLegalHoldWithEscalationAndReminderConfigurations(data)
                     .getReminderConfigurationsValuesInLegalHoldAtCaseLevel(data.get("legalHoldName"),"TC51777_reminderDays",
-                            "TC5177_reminderFrequency","TC5177_reminderMailCap")
-                    .getEscalationConfigurationsValuesInLegalHoldAtCaseLevel("TC5177_escalationDay",
-                            "TC5177_escalationFrequency", "TC5177_escalationMailsCap")
+                            "TC51777_reminderFrequency","TC51777_reminderMailCap")
+                    .getEscalationConfigurationsValuesInLegalHoldAtCaseLevel("TC51777_escalationDay",
+                            "TC51777_escalationFrequency", "TC51777_escalationMailsCap")
                     //Admin level configuration
                     .getHeader()
                     .goToAdministrationPage()
@@ -45,9 +45,9 @@ public class TC51777_Verify_whether_Case_level_configuration_changes_are_not_ref
                     .getAdminLeft()
                     .clickOnEscalationAndReminderPageLink()
                     .checkThatReminderConfigurationsInLegalHoldAtAminLevel(session.getSmokeData("TC51777_reminderDays"),
-                            session.getSmokeData("TC5177_reminderFrequency"), session.getSmokeData("TC5177_reminderMailCap"))
-                    .checkThatEscalationConfigurationsInLegalHoldAtAminLevel(session.getSmokeData("TC5177_escalationDay"),
-                            session.getSmokeData("TC5177_escalationFrequency"),session.getSmokeData("TC5177_escalationMailsCap"))
+                            session.getSmokeData("TC51777_reminderFrequency"), session.getSmokeData("TC51777_reminderMailCap"))
+                    .checkThatEscalationConfigurationsInLegalHoldAtAminLevel(session.getSmokeData("TC51777_escalationDay"),
+                            session.getSmokeData("TC51777_escalationFrequency"),session.getSmokeData("TC51777_escalationMailsCap"))
                     .getHeader()
                     .logout();
         } catch (Exception ex) {

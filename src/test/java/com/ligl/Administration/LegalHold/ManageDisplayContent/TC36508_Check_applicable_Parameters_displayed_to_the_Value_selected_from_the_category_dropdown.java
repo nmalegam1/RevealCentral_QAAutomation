@@ -32,7 +32,7 @@ public class TC36508_Check_applicable_Parameters_displayed_to_the_Value_selected
                     .getAdminLeft()
                     .clickOnManageDisplayContentPageLink()
                     .verifyTheParametersInManageDisplayContent(data.get("ManageContentCategory"),
-                            session.getSmokeData("TC36508_Parameter1"), session.getSmokeData("TC36508_Parameter2"))
+                            session.getRegressionData("TC36508_Parameter1"), session.getRegressionData("TC36508_Parameter2"))
                     .getHeader()
                     .logout();
         } catch (Exception ex) {
