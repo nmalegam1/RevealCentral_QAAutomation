@@ -28,9 +28,7 @@ public class TC37985_Creating_SSOUser_Test extends TestBase {
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .clickOnAddUserButton()
                     .creatingSSOUser(data.get("Email"), data.get("FirstName"),
                             data.get("MiddleName"), data.get("LastName"), data.get("Role"), data.get("Status"))

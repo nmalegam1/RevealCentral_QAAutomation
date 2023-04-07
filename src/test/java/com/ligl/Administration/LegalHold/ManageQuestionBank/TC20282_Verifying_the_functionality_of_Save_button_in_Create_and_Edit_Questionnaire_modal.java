@@ -28,25 +28,20 @@ public class TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Ed
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminLegalHold()
-                    .getAdminLeft()
-                    .clickOnManageQuestionBankPageLink()
+                    .navigateToManageQuestionBankPage()
                     .clickOnQuestionnaireButton()
-                    .createNewQuestionnaire(data.get("QuestionnaireTitle"), data.get("RenderType"),data.get("IsParent"),
+                    .createNewQuestionnaire(data.get("QuestionnaireTitle"), data.get("RenderType"), data.get("IsParent"),
                             data.get("IsQuestionMandatory"), data.get("RenderOptions"), data.get("Description"),
                             data.get("AppliesTo"), data.get("Null"))
                     .refreshTheManageQuestionBankPage()
 
                     //Edit
-                    //.searchTheQuestion(data.get("searchQuestion"))
-                    //.scrollToRightToDoActionInManageQuestionGrid(data.get("searchQuestion"))
-                    .searchTheQuestion("QA_Automation_Question_001")
-                    .scrollToRightToDoActionInManageQuestionGrid("QA_Automation_Question_001")
+                    .searchTheQuestion(data.get("searchQuestion"))
+                    .scrollToRightToDoActionInManageQuestionGrid(data.get("searchQuestion"))
                     .clickOnEditInQuestionGrid()
-                    .editExitingQuestionnaire(data.get("EditQuestionnaireTitle"), data.get("EditIsQuestionMandatory"),data.get("EditDescription"))
+                    .editExitingQuestionnaire(data.get("EditQuestionnaireTitle"), data.get("EditIsQuestionMandatory"), data.get("EditDescription"))
                     .getHeader()
                     .logout();
-
         } catch (Exception ex) {
             session.log_Error("TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Edit_Questionnaire_modal Failed");
             throw new Exception("TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Edit_Questionnaire_modal Failed", ex);

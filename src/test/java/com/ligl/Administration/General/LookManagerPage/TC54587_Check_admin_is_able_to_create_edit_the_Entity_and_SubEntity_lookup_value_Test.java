@@ -28,7 +28,7 @@ public class TC54587_Check_admin_is_able_to_create_edit_the_Entity_and_SubEntity
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnLookupManagerLink()
+                    .navigateToLookupManagerPage()
                     .selectLookupType(data.get("SelectLookUp"))
                     .clickOnNewButton()
                     .createLookUp(data.get("EntityName"), data.get("EntityDisplayOrder"), data.get("EntityDescription"), data.get("EntityOptional"))

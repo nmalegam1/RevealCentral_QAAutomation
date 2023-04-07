@@ -26,18 +26,16 @@ public class TC38070_Verify_newly_created_templates_populated_under_Custodian_an
                     .navigateURL()
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("EmailId"), data.get("Password"), data.get("Entity"))
-
+                    //Admin-ManageQuestionnaire
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminLegalHold()
-                    .getAdminLeft()
-                    .clickOnManageQuestionnaireTemplatesPageLink()
+                    .navigateToManageQuestionnaireTemplatesPage()
                     .selectQuestionnaireTemplate(data.get("CustodianQuestionTemplateName"))
                     .getQuestionnaireTemplateName("TC38070_CustodianQuestionTemplate")
                     .selectQuestionnaireTemplate(data.get("StakeHolderQuestionTemplateName"))
                     .getQuestionnaireTemplateName("TC38070_StakeHolderQuestionTemplate")
-
+                    //Case-Legal Hold
                     .getHeader()
                     .goToCasePage()
                     .searchcase(data.get("CaseName"))

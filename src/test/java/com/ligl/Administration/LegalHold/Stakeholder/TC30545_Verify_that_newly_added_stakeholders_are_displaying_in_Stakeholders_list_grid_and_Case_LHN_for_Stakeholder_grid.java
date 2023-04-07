@@ -24,19 +24,17 @@ public class TC30545_Verify_that_newly_added_stakeholders_are_displaying_in_Stak
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-
+                    //Admin-Legal Hold
                     .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminLegalHold()
-                    .getAdminLeft()
-                    .clickOnStakeholderLink()
+                    .navigateToStakeholderPage()
                     .searchTheStakeholder(data.get("StakeholderEmail"))
                     .checkStakeholderDisplayingInGrid(data.get("StakeholderEmail"))
                     .getHeader()
                     .logout()
-
+                    //Case-Legal Hold
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("EmailId"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName"))

@@ -28,9 +28,7 @@ public class TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_Ligl_
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .clickOnAddUserButton()
                     .swithToLiglUser()
                     .creatingLiglUser(data.get("UserName"), data.get("Email"), data.get("FirstName"),

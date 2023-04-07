@@ -28,9 +28,7 @@ public class TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_SSO_U
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .clickOnAddUserButton()
                     .creatingSSOUser(data.get("Email"), data.get("FirstName"),
                             data.get("MiddleName"), data.get("LastName"), data.get("Role"), data.get("Status"))

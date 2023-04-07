@@ -1,7 +1,6 @@
 package com.ligl.Administration.LegalHold.Stakeholder;
 
 import com.ligl.base.TestBase;
-import com.ligl.base.pages.Constants;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.dataprovider.TestDataProvider;
 import com.ligl.pages.LaunchPage;
@@ -29,9 +28,7 @@ public class TC51903_Check_the_Duplicate_Validation_Message_for_Email_field_in_S
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminLegalHold()
-                    .getAdminLeft()
-                    .clickOnStakeholderLink()
+                    .navigateToStakeholderPage()
                     .clickOnAddStakeholderButton()
                     .createStakeholder(data.get("FirstName"), data.get("MiddleName"), data.get("LastName"), data.get("Email"),
                             data.get("Department"), data.get("Category"))

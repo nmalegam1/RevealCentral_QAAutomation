@@ -28,9 +28,7 @@ public class TC12160_Create_Ligl_User_with_Manual_Password_Test extends TestBase
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .clickOnAddUserButton()
                     .swithToLiglUser()
                     .creatingLiglUser(data.get("UserName"), data.get("Email"), data.get("FirstName"),

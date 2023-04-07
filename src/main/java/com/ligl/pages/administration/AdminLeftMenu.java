@@ -72,7 +72,7 @@ public class AdminLeftMenu extends LiglBasePage {
         getDriver().waitForelementToBeClickable(collapseLink);
         collapseLink.click();
         getSession().log_Pass("Clicked on Side Meanu 'Collapse' Icon");
-        return new AdminLeftMenu();
+        return this;
     }
 
     public ILiglPage sideMeanuExpand() {
@@ -83,16 +83,21 @@ public class AdminLeftMenu extends LiglBasePage {
         return this;
     }
 
-    public ILiglPage clickOnAdminGeneral() {
-        /*getSession().log_Info("Click on Admin General");
-        getDriver().waitForelementToBeClickable(adminGeneralLink);
-        adminGeneralLink.click();
-        getDriver().waitForAngularRequestsToComplete();
-        getSession().log_Pass("Clicked on Admin General");*/
-        return new ContactMasterPage();
+    public ILiglPage clickOnAdminGeneral() throws Exception {
+        try {
+            getSession().log_Info("Click on Admin General");
+            getDriver().waitForelementToBeClickable(adminGeneralLink);
+            adminGeneralLink.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked on Admin General");
+            return new ContactMasterPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Click On Admin General Link Failed", ex);
+        }
     }
 
-    public ILiglPage clickOnAdminLegalHold() throws Exception {
+    public ILiglPage clickOnAdminLegalHoldLink() throws Exception {
         try {
             getSession().log_Info("Click on Admin Legal Hold");
             getDriver().waitForelementToBeClickable(adminLegalHoldLink);
@@ -108,126 +113,182 @@ public class AdminLeftMenu extends LiglBasePage {
     }
 
 
-    public ILiglPage clickOnUserAndRolesLink() {
-        getSession().log_Info("Click on Users And Roles");
-        getDriver().waitForelementToBeClickable(UsersRolesLink);
-        UsersRolesLink.click();
-        //getDriver().waitForAngularRequestsToComplete();
-        getSession().log_Pass("Clicked on Users And Roles");
-        return new UsersAndRolesPage();
-    }
-
-    public ILiglPage clickOnContactsMaster() {
-        getSession().log_Info("Click on 'Contacts Master'");
-        getDriver().waitForelementToBeClickable(contactsMasterLink);
-        contactsMasterLink.click();
-        getSession().log_Pass("Clicked on 'Contacts Master'");
-        return new ContactMasterPage();
-    }
-
-    public ILiglPage clickOnEmployeeMaster() {
-        getSession().log_Info("Click on 'Employee Master'");
-        getDriver().waitForelementToBeClickable(employeeMasterLink);
-        employeeMasterLink.click();
-        getSession().log_Pass("Clicked on 'Employees Master'");
-        return new EmployeeMasterPage();
-    }
-
-    public ILiglPage clickOnPartiesLink() {
-        getSession().log_Info("Click on 'Parties'");
-        getDriver().waitForelementToBeClickable(partiesLink);
-        partiesLink.click();
-        getSession().log_Pass("Clicked on 'Parties'");
-        wait(2);
-        return new PartiesPage();
-    }
-
-    public ILiglPage clickOnEmailTemplatesLink() {
-        getSession().log_Info("Click on Email Templates");
-        getDriver().waitForelementToBeClickable(emailTemplatesLink);
-        emailTemplatesLink.click();
-        getDriver().waitForAngularRequestsToComplete();
-        getSession().log_Pass("Clikced on Email Tempaltes");
-        return new EmailTemplatePage();
-    }
-
-    public ILiglPage clickOnCaseSettingsLink() {
-        getSession().log_Info("Click on Case Settings");
-        getDriver().waitForelementToBeClickable(caseSettingsLink);
-        caseSettingsLink.click();
-        getDriver().waitForAngularRequestsToComplete();
-        getSession().log_Pass("Clikced on Case Settings");
-        return new CaseSettingsPage();
-    }
-
-    public ILiglPage clickOnLookupManagerLink() {
-        getSession().log_Info("Click on Lookup Manager");
-        getDriver().waitForelementToBeClickable(lookupManagerLink);
-        lookupManagerLink.click();
-        getDriver().waitForAngularRequestsToComplete();
-        getSession().log_Pass("Clikced on Lookup Manager");
-        return new LookupManagerPage();
-    }
-
-    public ILiglPage clickOnStakeholderLink() {
-        getSession().log_Info("Click On Stakeholder");
-        getDriver().waitForelementToBeClickable(stakeholderLink);
-        stakeholderLink.click();
-        getDriver().waitForAngularRequestsToComplete();
-        getDriver().waitUntilSpinnerIsClosed();
-        getSession().log_Pass("Clicked On Stakeholder");
-        return new StakeHoldersPage();
-    }
-
-    public ILiglPage clickOnManageQuestionBankPageLink() {
-        getSession().log_Info("Click On Manage Question Bank Link");
-        getDriver().waitForelementToBeClickable(manageQuestionBankLink);
-        manageQuestionBankLink.click();
-        getDriver().waitForAngularRequestsToComplete();
-        getDriver().waitUntilSpinnerIsClosed();
-        getSession().log_Pass("Clicked On Manage Question Bank Link");
-        return new ManageQuestionBankPage();
-    }
-
-    public ILiglPage clickOnManageQuestionnaireTemplatesPageLink() throws Exception {
+    public ILiglPage navigateToUserAndRolesPage() throws Exception {
         try {
-            getSession().log_Info("Click On Manage Questionnaire Templates Page Link");
+            getSession().log_Info("Navigate to 'Users And Roles' Page");
+            getDriver().waitForelementToBeClickable(UsersRolesLink);
+            UsersRolesLink.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getDriver().waitUntilSpinnerIsClosed();
+            getSession().log_Pass("Navigated to 'Users And Roles' Page");
+            return new UsersAndRolesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Navigate To User And Roles Failed", ex);
+        }
+    }
+
+    public ILiglPage navigateToContactsMasterPage() throws Exception {
+        try {
+            getSession().log_Info("Navigate to 'Contacts Master' Page");
+            getDriver().waitForelementToBeClickable(contactsMasterLink);
+            contactsMasterLink.click();
+            getSession().log_Pass("Navigated to 'Contacts Master' Page");
+            return new ContactMasterPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Navigate To Contacts Master Page Failed", ex);
+        }
+    }
+
+    public ILiglPage navigateToEmployeeMaster() throws Exception {
+        try {
+            getSession().log_Info("Navigate To 'Employee Master' Page");
+            getDriver().waitForelementToBeClickable(employeeMasterLink);
+            employeeMasterLink.click();
+            getSession().log_Pass("Navigated To 'Employees Master' Page");
+            return new EmployeeMasterPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Navigate To Employee Master Page Failed", ex);
+        }
+    }
+
+    public ILiglPage navigateToPartiesPage() throws Exception {
+        try {
+            getSession().log_Info("Navigate to 'Parties' Page");
+            getDriver().waitForelementToBeClickable(partiesLink);
+            partiesLink.click();
+            getSession().log_Pass("Navigated to 'Parties' Page");
+            wait(2);
+            return new PartiesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Navigate To Parties Page Failed", ex);
+        }
+    }
+
+    public ILiglPage navigateToEmailTemplatesPage() throws Exception {
+        try {
+            getSession().log_Info("Navigate to 'Email Templates' Page");
+            getDriver().waitForelementToBeClickable(emailTemplatesLink);
+            emailTemplatesLink.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Navigated to 'Email Templates' Page");
+            return new EmailTemplatePage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Navigate To Email Templates Page Failed", ex);
+        }
+    }
+
+    public ILiglPage navigateToCaseSettingsPage() throws Exception {
+        try {
+            getSession().log_Info("Navigate to 'Case Settings' Page");
+            getDriver().waitForelementToBeClickable(caseSettingsLink);
+            caseSettingsLink.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Navigated to 'Case Settings' Page");
+            return new CaseSettingsPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Navigate To Case Settings Page Failed", ex);
+        }
+    }
+
+    public ILiglPage navigateToLookupManagerPage() throws Exception {
+        try {
+            getSession().log_Info("Navigate to 'Lookup Manager' Page");
+            getDriver().waitForelementToBeClickable(lookupManagerLink);
+            lookupManagerLink.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Navigated to 'Lookup Manager' Page");
+            return new LookupManagerPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Navigate To Lookup Manager Page Failed", ex);
+        }
+    }
+
+    public ILiglPage navigateToStakeholderPage() throws Exception {
+        try {
+            clickOnAdminLegalHoldLink();
+
+            getSession().log_Info("Navigate to 'Stakeholder' Page");
+            getDriver().waitForelementToBeClickable(stakeholderLink);
+            stakeholderLink.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getDriver().waitUntilSpinnerIsClosed();
+            getSession().log_Pass("Navigated to 'Stakeholder' Page");
+            return new StakeHoldersPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Navigate To Stakeholder Page Failed", ex);
+        }
+    }
+
+    public ILiglPage navigateToManageQuestionBankPage() throws Exception {
+        try {
+            clickOnAdminLegalHoldLink();
+
+            getSession().log_Info("Navigate To 'Manage Question Bank' Page");
+            getDriver().waitForelementToBeClickable(manageQuestionBankLink);
+            manageQuestionBankLink.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getDriver().waitUntilSpinnerIsClosed();
+            getSession().log_Pass("Navigated to 'Manage Question Bank' Page");
+            return new ManageQuestionBankPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Navigate To Manage Question Bank Page Failed", ex);
+        }
+    }
+
+    public ILiglPage navigateToManageQuestionnaireTemplatesPage() throws Exception {
+        try {
+            clickOnAdminLegalHoldLink();
+
+            getSession().log_Info("Navigate To 'Manage Questionnaire Templates' Page");
             getDriver().waitForelementToBeClickable(manageQuestionTemplatesLink);
             manageQuestionTemplatesLink.click();
             getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Clicked On Manage Questionnaire Templates Page Link");
+            getSession().log_Pass("Navigated To 'Manage Questionnaire Templates' Page");
             return new ManageQuestionnaireTemplatesPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("Click On Manage Questionnaire Templates PageLink Failed", ex);
+            throw new Exception("Navigate To Manage Questionnaire Templates Page Failed", ex);
         }
     }
 
-    public ILiglPage clickOnEscalationAndReminderPageLink() throws Exception{
-        try{
+    public ILiglPage navigateToEscalationAndReminderPage() throws Exception {
+        try {
+            clickOnAdminLegalHoldLink();
+
             getDriver().waitForelementToBeClickable(escalationAndReminderLink);
-            getSession().log_Info("Click On Escalation And Reminder Page Link");
+            getSession().log_Info("Navigate To 'Escalation And Reminder' Page");
             escalationAndReminderLink.click();
             getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Clicked On Escalation And Reminder Page Link");
+            getSession().log_Pass("Navigated To 'Escalation And Reminder' Page");
             return new EscalationAndReminderPage();
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("Click On Escalation And Reminder Page Link Failed", ex);
+            throw new Exception("Navigate To Escalation And Reminder Page Failed", ex);
         }
     }
 
-    public ILiglPage clickOnManageDisplayContentPageLink() throws Exception{
-        try{
+    public ILiglPage navigateToManageDisplayContentPage() throws Exception {
+        try {
+            clickOnAdminLegalHoldLink();
+
             getDriver().waitForelementToBeClickable(manageDisplayContentLink);
-            getSession().log_Info("Click On Manage Display Content Page Link");
+            getSession().log_Info("Navigate To 'Manage Display Content' Page Link");
             manageDisplayContentLink.click();
             getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Clicked On Manage Display Content Page Link");
+            getSession().log_Pass("Navigated To 'Manage Display Content' Page");
             return new ManageDisplayContentPage();
-        }catch (Exception|Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("Click On Manage Display Content Page Link Failed",ex);
+            throw new Exception("Navigate To Manage Display Content Page Failed", ex);
         }
     }
 
