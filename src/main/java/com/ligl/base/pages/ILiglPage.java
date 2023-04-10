@@ -3,7 +3,6 @@ package com.ligl.base.pages;
 import com.ligl.pages.Header;
 import com.ligl.pages.LeftMenu;
 import com.ligl.pages.administration.AdminLeftMenu;
-import com.ligl.pages.casemanagement.CaseCustodiansPage;
 import com.ligl.session.LiglTestSession;
 import com.ligl.web.IWebConnector;
 
@@ -937,5 +936,25 @@ public interface ILiglPage {
     public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data) throws Exception;
 
     public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception;
+    public ILiglPage GoToNotesPage() throws InterruptedException;
+    public ILiglPage notesSearchFilter(String name) throws Exception;
+    public ILiglPage TypeofEventSearchFilter(String TypeofEvent) throws Exception;
+    public ILiglPage notesEdit(String RequestBy,String NotesDescription) throws Exception;
+    public ILiglPage notesDelete() throws Exception;
+    public ILiglPage validateDeleteNote() throws Exception;
+    public ILiglPage validateDeletedNote() throws Exception;
+    public ILiglPage displayingSelectedNotesList(String TOE) throws Exception;
+    public ILiglPage caseEditInplace() throws Exception;
+    public ILiglPage reAssignCaseForSingleApproval(String EMAIL,String USER) throws Exception;
+    public ILiglPage reAssignCaseForDualApproval(Hashtable<String, String> data) throws Exception;
+    public ILiglPage validateRevokeCaseForSingleApproval(String a,String b) throws Exception;
+    public ILiglPage validateRevokeCaseForDualApproval(String a,String b,String c) throws Exception;
+    public ILiglPage validateReassignForSingleApproval(String a,String b) throws Exception;
+    public ILiglPage validateReassignForDualApproval(String a,String b,String c) throws Exception;
+    public ILiglPage caseEditInplaceisSelected() throws Exception;
+    public ILiglPage goToNotesPageFromDocuments();
+    public ILiglPage createCaseWithoutInplacePreservation(Hashtable<String,String> data) throws Exception;
+    public ILiglPage verifyingCaseRoleIsNonEditable() throws Exception;
+    public ILiglPage detailsColumnData(String Details) throws Exception;
 
 }

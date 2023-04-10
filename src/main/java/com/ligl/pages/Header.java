@@ -148,6 +148,7 @@ public class Header extends LiglBasePage {
 
 		Thread.sleep(5000);
 		caseTab.click();
+		getDriver().waitUntilSpinnerIsClosed();
 		return new DefaultLandingPage();
 	}
 	public ILiglPage goToAdministrationPage() {

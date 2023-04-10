@@ -53,10 +53,13 @@ public class NotesPage extends LiglBaseSessionPage {
         return new NotesPage();
     }
 
-    public ILiglPage NotesSearchFilter(String name) throws Exception {
+    public ILiglPage notesSearchFilter(String name) throws Exception {
         try{
             log_Info("choose notes");
             Thread.sleep(3000);
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(ChooseNotes).perform();
+            getDriver().waitForelementToBeClickable(ChooseNotes);
             ChooseNotes.click();
             log_Info("click on notes");
             Notes_filter.click();
@@ -132,9 +135,9 @@ public class NotesPage extends LiglBaseSessionPage {
 
     }
     //  @FindBy(xpath = "//*[@id=\"EDIT\"]"), id = "DELETE"
-    @FindBy(xpath = "//button[@title='Edit']")
+    @FindBy(xpath = "//div[@row-id='0']//button[@title='Edit']")
     WebElement Editbtn;
-    @FindBy(xpath = "//button[@title='Delete']")
+    @FindBy(xpath = "//div[@row-id='0']//button[@title='Delete']")
     WebElement Deletebtn;
 
     @FindBy(xpath ="//button[contains(text(),'Yes')]")
@@ -159,12 +162,17 @@ public class NotesPage extends LiglBaseSessionPage {
             Editbtn.click();
             log_Info("Edit note button is Clicked");
             Thread.sleep(5000);
+            RequestBytxtbox.clear();
+            log_Info("Requested By field is cleared");
             RequestBytxtbox.sendKeys(RequestBy);
             log_Info("Data given to Requested by field");
             Thread.sleep(5000);
             log_Info("clicking on Notes text editor field");
             Notes.click();
             log_Info("clicked on Notes text editor field");
+            Notes.clear();
+            Thread.sleep(3000);
+            log_Info("Data Cleared");
             Notes.sendKeys(NotesDescription);
             log_Info("Notes content is given");
             Thread.sleep(5000);
@@ -177,12 +185,23 @@ public class NotesPage extends LiglBaseSessionPage {
         }
         catch (Exception ex)
         {
+            log_Error(ex.getMessage());
             throw new Exception("Exception in NotesEdit()", ex);
         }
     }
-    public ILiglPage NotesDelete() throws Exception{
+    public ILiglPage notesDelete() throws Exception{
         try {
-            ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",Deletebtn);
+//            Actions actions = new Actions(getCurrentDriver());
+//            actions.moveToElement(Deletebtn).perform();
+            NotesHeader.click();
+            getDriver().waitUntilSpinnerIsClosed();
+            for (int i = 0; i < 8; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
+           // ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",Deletebtn);
+            getDriver().waitForelementToBeClickable(Deletebtn);
             log_Pass("Click on Delete button of notes");
             Deletebtn.click();
             Thread.sleep(3000);
@@ -208,6 +227,32 @@ public class NotesPage extends LiglBaseSessionPage {
             System.out.println(a1);
             Thread.sleep(5000);
             Assert.assertEquals(true, a1);
+            log_Info("No data available text in Grid is Displayed");
+            return new NotesPage();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FindBy(xpath = "//span[contains(text(),'Result(s)')]/ancestor::div[@class='table-header-action-item-list']//b")
+    WebElement Results;
+    // using this validateDeletedNote() to validate deleted notes when same multiple records are present in Grid.
+    public ILiglPage validateDeletedNote() throws Exception{
+        try {
+            log_Info("verify No data available text in Grid");
+            //  WebElement p = driver.findElement(By.xpath("//span[contains(text(),'Result(s)')]/ancestor::div[@class='table-header-action-item-list']//b"));
+            String a1 = Results.getText();
+            int i = Integer.parseInt(a1);
+            int k=(--i);
+            notesDelete();
+            String a2 = Results.getText();
+            int j = Integer.parseInt(a2);
+            Assert.assertEquals(j,k);
+
+            /*boolean a1 = Nodata.isDisplayed();
+            Thread.sleep(5000);
+            System.out.println(a1);*/
+            Thread.sleep(5000);
+            // Assert.assertEquals(true, a1);
             log_Info("No data available text in Grid is Displayed");
             return new NotesPage();
         } catch (Exception e) {

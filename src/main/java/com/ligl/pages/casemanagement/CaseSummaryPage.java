@@ -63,6 +63,8 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
     WebElement WFTText;
     @FindBy(id="select-workflow-template")
     WebElement WFT;
+    @FindBy(xpath = "//*[@id=\"input-dynamic-column-4\"]/label/span[1]/input")
+    WebElement inplace_checkbox1;
 
 
     /**
@@ -374,6 +376,71 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("validateCreatedCase() Failed", ex);
+        }
+    }
+    public ILiglPage caseEditInplace() throws Exception {
+        try {
+
+            EditBtn.click();
+            Thread.sleep(2000);
+            MoreBtn.click();
+
+            log_Info("check for inplace preservation check box disabled or not");
+            boolean a1 = inplace_checkbox1.isEnabled();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(false, a1);
+            log_Info("inplace preservation check box disabled for approved case");
+            //btnSave.click();
+            return new CaseSummaryPage();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public ILiglPage caseEditInplaceisSelected() throws Exception {
+        try {
+
+            EditBtn.click();
+            Thread.sleep(2000);
+            MoreBtn.click();
+
+            log_Info("check for inplace preservation check box selected or not");
+            boolean a1 = inplace_checkbox1.isSelected();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(true, a1);
+            log_Info("inplace preservation check box selected for approved case");
+            //btnSave.click();
+            return new CaseSummaryPage();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public ILiglPage verifyingCaseRoleIsNonEditable() throws Exception {
+        try {
+
+            log_Info("Click On Edit Button");
+            getDriver().waitForelementToBeClickable(EditBtn);
+            Thread.sleep(5000);
+            EditBtn.click();
+            log_Info("Click On Edit Button");
+
+            log_Info("Check The Case Role Type is In Non-Editable Mode");
+            WebElement CaseName_Edit = getCurrentDriver().findElement(By.id("sel-role-type"));
+            String classes = CaseName_Edit.getAttribute("class");
+            boolean isDisabled = classes.contains("mat-form-field-disabled");
+            System.out.println(isDisabled);
+            Assert.assertEquals(true, isDisabled);
+
+            return new CaseSummaryPage();
+
+        } catch (Exception ex)
+        {
+            throw new Exception(ex);
         }
     }
 }
