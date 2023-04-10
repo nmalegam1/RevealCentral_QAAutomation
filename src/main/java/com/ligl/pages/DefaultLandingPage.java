@@ -2,6 +2,7 @@ package com.ligl.pages;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.base.pages.LiglBasePage;
+import com.ligl.pages.casemanagement.CaseCounselPage;
 import com.ligl.pages.casemanagement.CaseSummaryPage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -152,6 +153,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     WebElement RegionReqValidation;
     @FindBy(id = "input-dynamic-column-4")
     WebElement inplace_checkbox;
+
+    @FindBy(id="filedownload-btn")
+    WebElement HelpLink;
 
 
     /**
@@ -760,6 +764,31 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception(" check Newly Created CaseSetting Template Test failed", ex);
+        }
+    }
+//Verify availability of Help hyperlink in case list page for NLU
+    public ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception{
+
+        try {
+            Thread.sleep(5000);
+            try
+            {
+                log_Info("Started checking availability of Help hyperlink in case list page");
+                boolean a=HelpLink.isDisplayed();
+                System.out.println(a);
+                if(a==true) {
+                    log_Info("Help link is displaying");
+                }}
+            catch (Exception ex)
+            {
+                log_Error("Help link is not displaying");
+            }
+            Thread.sleep(5000);
+            return new DefaultLandingPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("verifyAvailabilityOfHelpLinkInCaseListPage() Failed",ex);
         }
     }
 

@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC28539_Logged_in_user_is_displaying_with_Assigned_role_after_changing_the_role_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC28539_Logged_in_user_is_displaying_with_Assigned_role_after_changing_the_role_Test(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());

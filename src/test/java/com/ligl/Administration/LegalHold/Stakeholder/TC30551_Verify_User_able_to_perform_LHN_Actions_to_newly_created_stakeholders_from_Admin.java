@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC30551_Verify_User_able_to_perform_LHN_Actions_to_newly_created_stakeholders_from_Admin extends TestBase{
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC30551_Verify_User_able_to_perform_LHN_Actions_to_newly_created_stakeholders_from_Admin(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());

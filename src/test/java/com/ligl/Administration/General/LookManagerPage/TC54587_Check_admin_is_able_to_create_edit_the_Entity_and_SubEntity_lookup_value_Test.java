@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC54587_Check_admin_is_able_to_create_edit_the_Entity_and_SubEntity_lookup_value_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC54587_Check_admin_is_able_to_create_edit_the_Entity_and_SubEntity_lookup_value_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());

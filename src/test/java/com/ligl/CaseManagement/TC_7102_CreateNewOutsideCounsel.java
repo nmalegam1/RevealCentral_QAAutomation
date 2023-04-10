@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_7102_CreateNewOutsideCounsel extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_7102_CreateNewOutsideCounsel(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -29,10 +29,10 @@ public class TC_7102_CreateNewOutsideCounsel extends TestBase {
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToCaseCounselPage()
-                    .createNewOutsideCounselToCase(data.get("PartyLawFirm"), data.get("FirstName"), data.get("LastName") )
+                    .createNewOutsideCounselToCase(data.get("PartyLawFirm"), data.get("FirstName"), data.get("LastName"))
                     .searchingAddedOutsideCounsel(data.get("OutSideCounsel"))
                     .validateNewOutSideCounselAdded(data.get("OutSideCounsel"));
 

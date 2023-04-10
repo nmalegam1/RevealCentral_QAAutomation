@@ -3,6 +3,7 @@ package com.ligl.base.pages;
 import com.ligl.pages.Header;
 import com.ligl.pages.LeftMenu;
 import com.ligl.pages.administration.AdminLeftMenu;
+import com.ligl.pages.casemanagement.CaseCustodiansPage;
 import com.ligl.session.LiglTestSession;
 import com.ligl.web.IWebConnector;
 
@@ -54,8 +55,10 @@ public interface ILiglPage {
 
     void log_Info(String message);
 
-    ILiglPage checkCustodianRoleInUserCreationPopUp(String s) throws Exception;
 
+    ILiglPage multipleCustodianSelect(Hashtable<String, String> data)throws Exception;
+    ILiglPage multipleDataSourceSelect(Hashtable<String, String> data)throws Exception;
+    ILiglPage checkCustodianRoleInUserCreationPopUp(String s)throws Exception;
     void log_Pass(String message);
 
     void log_Error(String message);
@@ -171,7 +174,7 @@ public interface ILiglPage {
 
     ILiglPage creatingNewTemplate() throws Exception;
 
-    ILiglPage goToAdministrationPage() throws InterruptedException;
+    ILiglPage goToAdministrationPage() throws Exception;
 
     ILiglPage goToSecurityPage() throws InterruptedException;
 
@@ -247,8 +250,6 @@ public interface ILiglPage {
     ILiglPage verifyingCaseFieldsAreNonEditable() throws Exception;
 
     ILiglPage createNewInHouseCounselForEnterpriseParty(String PartyName, String FirstName, String LastName) throws Exception;
-
-    ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB, String PartyType, String Description) throws Exception;
 
     ILiglPage createOtherPartyNewOutsideCounsel(String PartyName, String NameTextBox, String PartyDrpDwn, String Description, String Status, String FirstName, String LastName) throws Exception;
 
@@ -750,6 +751,8 @@ public interface ILiglPage {
     public ILiglPage clickOnAddEmployeeButton() throws Exception;
 
     public ILiglPage employeeBulkImport(String importEmpFile) throws Exception;
+    String getCCDStats();
+    ILiglPage goToExports(String s);
 
 
     public ILiglPage createNewEmployee(
@@ -852,6 +855,7 @@ public interface ILiglPage {
 
     public ILiglPage clickOnNewButton() throws Exception;
 
+
     public ILiglPage searchAndSelectTheLookUp(String name) throws Exception;
 
     public ILiglPage createLookUp(String name, String displayOrder, String description, String entityType) throws Exception;
@@ -866,6 +870,7 @@ public interface ILiglPage {
      * Admin-Legal Hold
      */
     /*Stakeholder Page*/
+
     public ILiglPage clickOnAddStakeholderButton() throws Exception;
 
     public ILiglPage createStakeholder(String firstName, String middleName, String lastName, String email,
@@ -891,12 +896,20 @@ public interface ILiglPage {
      * */
     public ILiglPage refreshTheManageQuestionBankPage() throws Exception;
     public ILiglPage clickOnQuestionnaireButton() throws Exception;
+    ILiglPage goToMatters() throws Exception;
+    ILiglPage searchMatter(String matter);
 
     public ILiglPage clickOnEditInQuestionGrid() throws Exception;
+    ILiglPage googleVaultLogin(String s1,String s2,String s3)throws Exception;
 
     public ILiglPage scrollToRightToDoActionInManageQuestionGrid(String question) throws Exception;
 
+    /**/
+    public ILiglPage clickOnQuestionnaire() throws Exception;
+    public ILiglPage selectAllCCDs() throws InterruptedException;
+    ILiglPage multipleCCDsSelect(Hashtable<String, String> data)throws Exception;
     public ILiglPage searchTheQuestion(String question) throws Exception;
+    ILiglPage validateCollectionStats()throws Exception;
 
     public ILiglPage searchChildQuestion(String childQuestion) throws Exception;
 
@@ -908,7 +921,7 @@ public interface ILiglPage {
 
     ILiglPage validateCreatedRequestInTheGlobalRequestGrid(String TITLE) throws Exception;
 
-    ILiglPage clickOnEditIconInTheGrid() throws Exception;
+    ILiglPage clickOnEditIconInTheGrid(String TITLE) throws Exception;
 
     ILiglPage addAllDetailsInTheAddRequestPopUpWithoutAssignee(String RequestType,String REQTitle,String CaseDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception;
 
@@ -927,34 +940,117 @@ public interface ILiglPage {
     public ILiglPage verifyParentQuestionColumn(String question)throws Exception;
 
     /**
-     * ManageQuestionnaireTemplatesPage*/
+     * ManageQuestionnaireTemplatesPage
+     */
 
-    public ILiglPage clickOnAddTemplate() throws Exception;
+    public ILiglPage clickOnAddTemplate(Hashtable<String, String> data) throws Exception;
+
+    public ILiglPage clickOnEditButtonInManageQuestionnaireTemplate() throws Exception;
 
     public ILiglPage clickOnAddNewQuestionButton() throws Exception;
 
-    public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data) throws Exception;
+    public ILiglPage selectQuestionnaireTemplate(String questionnaireTemplate) throws Exception;
+
+    public ILiglPage searchTheQuestionInManageQuestionTemplate(String question) throws Exception;
+
+    public ILiglPage createNewQuestionnaireTemplates(Hashtable<String, String> data) throws Exception;
 
     public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception;
-    public ILiglPage GoToNotesPage() throws InterruptedException;
-    public ILiglPage notesSearchFilter(String name) throws Exception;
-    public ILiglPage TypeofEventSearchFilter(String TypeofEvent) throws Exception;
-    public ILiglPage notesEdit(String RequestBy,String NotesDescription) throws Exception;
-    public ILiglPage notesDelete() throws Exception;
-    public ILiglPage validateDeleteNote() throws Exception;
-    public ILiglPage validateDeletedNote() throws Exception;
-    public ILiglPage displayingSelectedNotesList(String TOE) throws Exception;
-    public ILiglPage caseEditInplace() throws Exception;
-    public ILiglPage reAssignCaseForSingleApproval(String EMAIL,String USER) throws Exception;
-    public ILiglPage reAssignCaseForDualApproval(Hashtable<String, String> data) throws Exception;
-    public ILiglPage validateRevokeCaseForSingleApproval(String a,String b) throws Exception;
-    public ILiglPage validateRevokeCaseForDualApproval(String a,String b,String c) throws Exception;
-    public ILiglPage validateReassignForSingleApproval(String a,String b) throws Exception;
-    public ILiglPage validateReassignForDualApproval(String a,String b,String c) throws Exception;
-    public ILiglPage caseEditInplaceisSelected() throws Exception;
-    public ILiglPage goToNotesPageFromDocuments();
-    public ILiglPage createCaseWithoutInplacePreservation(Hashtable<String,String> data) throws Exception;
-    public ILiglPage verifyingCaseRoleIsNonEditable() throws Exception;
-    public ILiglPage detailsColumnData(String Details) throws Exception;
+
+    public ILiglPage deLinkTheQuestion(String question) throws Exception;
+
+    public ILiglPage editQuestionnaireTemplate(Hashtable<String, String> data) throws Exception;
+
+    public ILiglPage checkThatNewlyCreatedQuestionnaireIsDisplaying(String legalHoldName, String custodianNotice,
+                                                                    String custodianQuestionner, String stakeholderNotice,
+                                                                    String stakeholderQuestionner) throws Exception;
+
+    public ILiglPage getQuestionnaireTemplateName(String setQuestion) throws Exception;
+    /**
+     * Escalation And Reminder
+     */
+
+    public ILiglPage createLegalHoldWithEscalationAndReminderConfigurations(Hashtable<String, String> data) throws Exception;
+    public ILiglPage getReminderConfigurationsValuesInLegalHoldAtCaseLevel(String legalHoldName, String setReminderDays, String setReminderFrequency,
+                                                                           String setReminderMailsCap) throws Exception;
+    public ILiglPage getEscalationConfigurationsValuesInLegalHoldAtCaseLevel(String setEscalationDays, String setEscalationFrequency,
+                                                                             String setEscalationMailsCap) throws Exception;
+    public ILiglPage checkThatReminderConfigurationsInLegalHoldAtAminLevel(String checkReminderDay, String checkReminderFrequency,
+                                                                           String checkReminderMailsCap) throws Exception;
+    public ILiglPage checkThatEscalationConfigurationsInLegalHoldAtAminLevel(String checkEscalationDay, String checkEscalationFrequency,
+                                                                             String checkEscalationMailsCap) throws Exception;
+
+    /**
+     * Manage Display Content
+     */
+    public ILiglPage verifyTheParametersInManageDisplayContent(String manageContentCategory,String parameter1, String parameter2) throws Exception;
+    /************************************************End Admin************************************************************************************/
+
+    ILiglPage addMessageWhenReqIsInProgress(String TextBoxArea) throws Exception;
+
+    ILiglPage moveToTheParticularColumn(String TITLE) throws Exception;
+
+    ILiglPage validateStatusOfTheRequest(String status) throws Exception;
+
+    ILiglPage clickOnViewIconInTheGrid() throws Exception;
+
+    ILiglPage validateMessageBoxIsInDisableMode() throws Exception;
+
+    ILiglPage clickOnNotificationIcon() throws Exception;
+
+    ILiglPage searchForTheParticularTitleOfTheRequest(String title) throws Exception;
+
+    ILiglPage clickOnTheRequestAlertInTheNotificationIcon(String assignedrequest,String PageTitle) throws Exception;
+
+    ILiglPage validateReqAlertInTheNotificationIcon(String request) throws Exception;
+
+    ILiglPage sendAdditionalMessageWhenReqIsInNewStatus(String TextBoxArea) throws Exception;
+
+    ILiglPage clickOnBackToRequestButton() throws Exception;
+
+    ILiglPage modifyIntoTheRequiredStatus(String status) throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfRequestUnderNewInProgressCloseStats(String RequestType,String REQTitle,String CaseDropDown,String UserDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea,String status1,String status2) throws Exception;
+
+    ILiglPage addAllDetailsInTheAddRequestPopUpByAssigningToRole(String RequestType,String REQTitle,String CaseDropDown,String UserDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception;
+
+
+    ILiglPage clickOnAddRequestButtonInCaseRequests() throws Exception;
+
+    ILiglPage navigateToCaseLevelRequests() throws Exception;
+
+    ILiglPage validateTheFieldValuesInAddRequestPopUp(String FieldValues) throws Exception;
+
+    ILiglPage clearActionInCaseDropDown() throws Exception;
+    ILiglPage clickOnChooseACaseDropDown() throws Exception;
+
+    ILiglPage validatingNonApprovedCasesInCaseDropDown(String CaseDropDown) throws Exception;
+
+    ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB, String PartyType, String Description,String StatusDrpdown) throws Exception;
+
+    ILiglPage searchRequiredDaterangeName(String DRname) throws Exception;
+
+    ILiglPage disabledDateRangeNotesClick(String DRName) throws Exception;
+
+    ILiglPage NotesDelete(String NotesContent) throws Exception;
+
+    ILiglPage validateDeletedNote(String NotesContent) throws Exception;
+
+    ILiglPage enabledDateRangeNotesClick(String DRName) throws Exception;
+
+    ILiglPage searchRequiredKeywordName(String KWname) throws Exception;
+
+    ILiglPage enabledKeywordsNotesClick(String KWname) throws Exception;
+
+    ILiglPage disabledKeywordsNotesClick(String KWname) throws Exception;
+
+    ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromInHouseCounselPage() throws Exception;
+
+    ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromCustodiansPage() throws Exception;
+
+    ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception;
+
+    ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception;
 
 }
+

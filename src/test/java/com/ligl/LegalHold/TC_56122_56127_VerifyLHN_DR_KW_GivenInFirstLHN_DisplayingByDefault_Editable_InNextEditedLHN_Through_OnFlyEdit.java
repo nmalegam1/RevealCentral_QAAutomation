@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_56122_56127_VerifyLHN_DR_KW_GivenInFirstLHN_DisplayingByDefault_Editable_InNextEditedLHN_Through_OnFlyEdit extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData", description = "LegalHold")
     public void TC_56122_56127_VerifyLHN_DR_KW_GivenInFirstLHN_DisplayingByDefault_Editable_InNextEditedLHN_Through_OnFlyEdit(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());

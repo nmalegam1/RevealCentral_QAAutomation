@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class NetWorkShare_AutoProcess_Processing extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Smoke")
     public void NetWorkShare_AutoProcess_Processing(Hashtable<String, String> data) throws Exception {
 
         try {

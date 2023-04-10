@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_54625_54626_CheckNoDuplicateRecordsAfterResendActionForEscalationSent_RemainderSent_InLHNGrid extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData", description = "LegalHold")
     public void TC_54625_54626_CheckNoDuplicateRecordsAfterResendActionForEscalationSent_RemainderSent_InLHNGrid(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());

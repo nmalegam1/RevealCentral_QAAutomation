@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_26253_CheckCaseEditBtnEnabled extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_26253_CheckCaseEditBtnEnabled(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -37,9 +37,6 @@ public class TC_26253_CheckCaseEditBtnEnabled extends TestBase {
                     .searchcase(data.get("CaseName2")).GoToCase(data.get("CaseName2"))
                     .getLeftMenu().goToSecurityPage().validateCaseRejectedState()
                     .getLeftMenu().goToCaseManagement().verifyingEditBtn();
-
-
-
 
 
         } catch (Exception ex) {

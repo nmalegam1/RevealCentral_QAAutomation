@@ -4,7 +4,6 @@ import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -32,9 +31,6 @@ public class DMSummaryPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//input[@placeholder='Filter...']")
     WebElement Searchbar;
-
-
-
 
     // For Single Record Waiting For The Collection Completed Status
 
@@ -80,9 +76,54 @@ public class DMSummaryPage extends LiglBaseSessionPage {
         }
     }
 
+    /**
+     * Gets Collection Size
+     * @return
+     * @throws Exception
+     */
+    public String getCollectionSize()throws Exception{
+        try{
+            log_Info("getCollectionSize() Started");
+            String CollectioSize=null;
+           // WebElement test = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']"));
+            List<WebElement> listItem = getCurrentDriver().findElements(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']"));
+            for(WebElement rows :listItem){
+               List<WebElement> RowList = rows.findElements(By.xpath("//div[@role='gridcell'][@col-id='SizeWithUnit']//span[@class='ellipsisAgGrid']"));
+               for(WebElement size:RowList){
+                   CollectioSize=size.getText();
+               }
+            }
+            return CollectioSize;
+        }catch(Exception ex){
+            log_Error("getCollectionSize() Failed");
+            throw new Exception("Exception in getCollectionSize()", ex);
+        }
+    }
 
-    // Validate And Wait For The Records To Complete Collection Process
-
+    public String getCollectionCount()throws Exception{
+        try{
+            log_Info("getCollectionCount() Started");
+            String CollectioSize=null;
+            // WebElement test = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']"));
+            List<WebElement> listItem = getCurrentDriver().findElements(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']"));
+            for(WebElement rows :listItem){
+                List<WebElement> RowList = rows.findElements(By.xpath("//div[@role='gridcell'][@col-id='ItemCount']//span[@class='ellipsisAgGrid']"));
+                for(WebElement size:RowList){
+                    CollectioSize=size.getText();
+                }
+            }
+            return CollectioSize;
+        }catch(Exception ex){
+            log_Error("getCollectionCount() Failed");
+            throw new Exception("Exception in getCollectionCount()", ex);
+        }
+    }
+    /**
+     * Wait and Validate CCDs Status
+     * @param CollectionStatus
+     * @return DMSummaryPage
+     * @throws Exception
+     */
     public ILiglPage validateAndWaitForRecordsToCompleteCollection(String CollectionStatus) throws Exception {
 
         try {
@@ -104,8 +145,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
 
             Outer:
 
-
-            for (int i = 1; i <= 120; i++) {
+            for (int i = 1; i <= 200; i++) {
 
                 try {
 
@@ -129,23 +169,67 @@ public class DMSummaryPage extends LiglBaseSessionPage {
                     y=0;
                     RefreshBtn.click();
 
+
                 } catch (Exception e) {
 
                 }
 
             }
 
+            for (int j = 0; j < listItem.size(); j++) {
+                String Status = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
+                getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='WorkFlowStatusReason']")).click();
+                for (int i = 0; i < 16; i++) {
+                    Actions ac = new Actions(getCurrentDriver());
+                    ac.sendKeys(Keys.ARROW_LEFT).perform();
+                }
+                String DataSource = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='DataSourceTypeName']//span[@class='ellipsisAgGrid']")).getText();
+                getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DataSourceTypeName']")).click();
+                for (int i = 0; i < 16; i++) {
+                    Actions ac = new Actions(getCurrentDriver());
+                    ac.sendKeys(Keys.TAB).perform();
+                }
+                if(Status.contains("Failed")) {
+                    String FailedReason = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='WorkFlowStatusReason']//span[@class='ellipsisAgGrid']")).getText();
+                    log_Info("Status of '" + DataSource + "' is '" + Status + "' with Reason '"+FailedReason+"' ");
+                }
+                else{
+                    log_Info("Status of '"+DataSource+"' is '"+Status+"' ");
+                }
+            }
             if (z==listItem.size()) {
                 getSession().takeScreenShot();
                 return new DMSummaryPage();
 
             }
 
-            return new DMCollectionsPage();
+            return new DMSummaryPage();
 
         } catch (Exception ex) {
             log_Error("validateAndWaitForRecordsToCompleteCollection() Failed");
             throw new Exception("validateAndWaitForRecordsToCompleteCollection()", ex);
+        }
+    }
+    public ILiglPage validateCollectionStats() throws Exception{
+        try{
+            log_Info("Started validateCollectionStats()");
+            String ColSize=getCollectionSize();
+            String ColCount=getCollectionCount();
+            try {
+                if (ColSize == getSession().getRegressionData("TC_01_CollectionSize")) {
+                    log_Pass("Collection Size is Matched");
+                    if (ColCount == getSession().getRegressionData("TC_01_CollectionCount")) {
+                        log_Pass("Collection Count is Matched");
+                    }
+                }
+            }catch (Exception ex){
+                throw new Exception("Collection Size/Count not getting as Expected or null");
+            }
+
+            return new DMSummaryPage();
+        }catch (Exception ex){
+            log_Error("validateCollectionStats() Failed");
+            throw new Exception("validateCollectionStats()", ex);
         }
     }
 }

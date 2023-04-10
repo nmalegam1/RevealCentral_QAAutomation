@@ -121,6 +121,17 @@ public class CaseCounselPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'A CUSTODIAN')]")
     WebElement InHouseCounsel2;
 
+    @FindBy(xpath="//button[@aria-label='Columns']")
+    WebElement ChooseColumnsEmployeeMaster;
+
+    @FindBy(xpath = "//input[@aria-label='Filter Columns Input']")
+    WebElement ChooseColumnsSearch;
+
+    @FindBy(xpath="//span[contains(text(),'Action')]")
+    WebElement ActionColumn;
+
+    @FindBy(id="back-btn-employeemaster")
+    WebElement BackButton;
 
     // (1.DeletingInHouseCounsel_Test) Adding One Inhouse counsel To A Case
 
@@ -550,6 +561,39 @@ public class CaseCounselPage extends LiglBaseSessionPage {
         }catch (Exception | Error ex){
             log_Error(ex.getMessage());
             throw new Exception("validateNewOutSideCounselAdded() Failed",ex);
+        }
+    }
+
+    //validating Action column is unavailable for Non-legal user & Non-legal reviewer
+    public ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromInHouseCounselPage() throws Exception{
+
+        try {
+            InHouseCounselBtn.click();
+            log_Info("Clicked Add Inhouse counsel button");
+            Thread.sleep(5000);
+            ChooseColumnsEmployeeMaster.click();
+            log_Info("Clicked Choose columns");
+            try
+            {
+                log_Info("Started checking unavailability of Action column in Employee master grid when redirected from Inhouse counsel page");
+                ChooseColumnsSearch.sendKeys("Action");
+               if(ActionColumn.isDisplayed()){
+                   log_Error("Incorrect: Action column is displaying");
+               }
+            }
+            catch (Exception ex)
+            {
+                log_Info("Action column is not displaying");
+            }
+            Thread.sleep(5000);
+            BackButton.click();
+            Thread.sleep(5000);
+            log_Info("Clicked Back button and redirected to Counsel page");
+            return new CaseCounselPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("validateUnavailabilityOfCreateAndEditOfEmployeeFromInHouseCounselPage() Failed",ex);
         }
     }
 

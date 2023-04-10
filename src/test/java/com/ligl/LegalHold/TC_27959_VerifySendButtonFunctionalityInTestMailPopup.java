@@ -13,7 +13,7 @@ import java.util.Hashtable;
 public class TC_27959_VerifySendButtonFunctionalityInTestMailPopup extends TestBase
 {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_27959_VerifySendButtonFunctionalityInTestMailPopup(Hashtable<String, String> data) throws Exception
     {
         try {

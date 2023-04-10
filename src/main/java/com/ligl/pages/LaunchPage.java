@@ -11,7 +11,7 @@ public class LaunchPage extends LiglBasePage {
     	return this;
     }
     
-	public ILiglPage navigateURL() throws IOException {
+	public ILiglPage navigateURL()  {
 		log_Info("Navigaing to Application URL");
 
 		switch(getSession().getGlobalData("Environment")) {

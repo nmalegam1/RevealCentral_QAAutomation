@@ -9,6 +9,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import java.util.Hashtable;
+
 public class CaseDataSourcesPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//button[contains(text(),Save) and @type='submit']")
@@ -140,7 +142,7 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage {
             log_Info("addingDataSource() Started");
             log_Info("Click on checkbox");
             Thread.sleep(2000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='" + DataSource + "']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.xpath("//div[text()='"+DataSource+"']//../..//div[@class='sourceChkbxDiv']")).click();
             log_Info("Clicked on checkbox");
             Thread.sleep(2000);
             return new CaseDataSourcesPage();
@@ -149,6 +151,51 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("addingDataSource() Failed", ex);
+        }
+    }
+    public ILiglPage multipleDataSourceSelect(Hashtable<String, String> data)throws Exception{
+        try{
+            log_Info("Started multipleDataSourceSelect()");
+            Thread.sleep(3000);
+            if(data.get("O365_Sharepoint_RunState").equals("Y"))
+                addingDataSource(data.get("O365_Sharepoint_DataSource"));
+            if(data.get("O365_Exchange_RunState").equals("Y"))
+                addingDataSource(data.get("O365_Exchange_DataSource"));
+            if(data.get("OneDrive_RunState").equals("Y"))
+                addingDataSource(data.get("OneDrive_DataSource"));
+            if(data.get("MS_Teams_RunState").equals("Y"))
+                addingDataSource(data.get("MS_Teams_DataSource"));
+
+            if(data.get("Hangouts_Chat_RunState").equals("Y"))
+                addingDataSource(data.get("Hangouts_Chat_DataSource"));
+            if(data.get("GMail_RunState").equals("Y"))
+                addingDataSource(data.get("GMail_DataSource"));
+            if(data.get("GDrive_RunState").equals("Y"))
+                addingDataSource(data.get("GDrive_DataSource"));
+            if(data.get("Google_Chat_RunState").equals("Y"))
+                addingDataSource(data.get("Google_Chat_DataSource"));
+
+            if(data.get("Dropbox_RunState").equals("Y"))
+                addingDataSource(data.get("Dropbox_DataSource"));
+            if(data.get("Box_RunState").equals("Y"))
+                addingDataSource(data.get("Box_DataSource"));
+            if(data.get("Proofpoint_RunState").equals("Y"))
+                addingDataSource(data.get("Proofpoint_DataSource"));
+            if(data.get("Zoom_Video_RunState").equals("Y"))
+                addingDataSource(data.get("Zoom_Video_DataSource"));
+
+            if(data.get("Zoom_Chat_RunState").equals("Y"))
+                addingDataSource(data.get("Zoom_Chat_DataSource"));
+            if(data.get("Onna_RunState").equals("Y"))
+                addingDataSource(data.get("Onna_DataSource"));
+            if(data.get("Slack_RunState").equals("Y"))
+                addingDataSource(data.get("Slack_DataSource"));
+
+            clickOnSaveButton();
+            return new CaseDataSourcesPage();
+        }catch(Exception ex){
+            log_Error(ex.getMessage());
+            throw new Exception("multipleDataSourceSelect() Failed", ex);
         }
     }
 

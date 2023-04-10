@@ -13,9 +13,9 @@ import java.util.Hashtable;
 /**
  * Case-Custodians-Verify the process of Adding Custodians to Case
  */
-public class TC_1227_AddCustodian_Test extends TestBase{
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void TC_1227_AddCustodian_Test(Hashtable<String,String> data) throws Exception {
+public class TC_1227_AddCustodian_Test extends TestBase {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
+    public void TC_1227_AddCustodian_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
 
@@ -29,7 +29,7 @@ public class TC_1227_AddCustodian_Test extends TestBase{
             ILiglPage Launch = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
@@ -37,10 +37,10 @@ public class TC_1227_AddCustodian_Test extends TestBase{
                     .addCustodianToCase(data.get("CustodianMail"))
                     .validateCustodianAddedToGrid(data.get("CustodianMail"));
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             session.log_Error("TC_1227_AddCustodian_Test test Failed");
             throw new Exception("TC_1227_AddCustodian_Test test Failed", ex);
-        }finally {
+        } finally {
             session.end();
         }
     }

@@ -257,4 +257,91 @@
     </classes>
   </test>
 
+
+  <test name="VerifyColumnsInHistoryGrid">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55279_VerifyColumnsInHistoryGrid"/>
+    </classes>
+  </test> <!-- Test -->
+  <test name="VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected"/>
+    </classes>
+  </test>
+  <test name="VerifyDataInApprovedRejectedByColumnWhenDualBothApprovalIsSelected">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_45514_VerifyDataInApprovedRejectedByColumnWhenDualBothApprovalIsSelected"/>
+    </classes>
+  </test>
+  <test name="VerifyDataInApprovedRejectedByColumnWhenDualEitherApprovalIsSelected">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_45514_VerifyDataInApprovedRejectedByColumnWhenDualEitherApprovalIsSelected"/>
+    </classes>
+  </test>
+  <test name="VerifyDataInApprovedRejectedByColumnWhenDualLinearApprovalIsSelected">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_45514_VerifyDataInApprovedRejectedByColumnWhenDualLinearApprovalIsSelected"/>
+    </classes>
+  </test>
+  <test name="VerifyAdditionalColumnsInCustodiansGrid">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_38560_VerifyAdditionalColumnsInCustodiansGrid"/>
+    </classes>
+  </test>
+  <test name="VerifyDataInAdditionalScopeApprovalGridColumns">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_52331_VerifyDataInAdditionalScopeApprovalGridColumns"/>
+    </classes>
+  </test>
+  <test name="VerifyingCaseAdditionalFieldsAreDisplayingInCaseListGrid">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_45515_VerifyingCaseAdditionalFieldsAreDisplayingInCaseListGrid"/>
+    </classes>
+  </test>
+  <test name="CheckThatAdditionalScopeItemsAddedToCaseNotVisibleInAddDSUntilTheyApproved">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_52341_VerifyNonApprovedScopeItemsAreNotDisplayingInCustomTabInDSI"/>
+    </classes>
+  </test>
+  <test name="ViewOrModifyPermissions_ProvidingCaseAccessToUserFromUsersTab">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_12984_ViewOrModifyPermissions_ProvidingCaseAccessToUserFromUsersTab"/>
+    </classes>
+  </test>
+  <test name="VerifySwitchCaseBtnFunctionality">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_27737_VerifySwitchCaseBtnFunctionality"/>
+    </classes>
+  </test>
+  <test name="VerifyUserIsAbleToViewCaseDocumentInNewTab">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_10305_VerifyUserIsAbleToViewCaseDocumentInNewTab"/>
+    </classes>
+  </test>
+  <test name="VerifyProcessOfCreatingCaseByClickingSaveAndAddDetailsBtn">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_9972_VerifyProcessOfCreatingCaseByClickingSaveAndAddDetailsBtn"/>
+    </classes>
+  </test>
+  <test name="VerifyProcessOfAddingOneOrMoreExistingJudges">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1717_VerifyProcessOfAddingOneOrMoreExistingJudges"/>
+    </classes>
+  </test>
+  <test name="VerifyFunctionalityOfAssigningOneOrMoreCourtsToCase">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1707_VerifyFunctionalityOfAssigningOneOrMoreCourtsToCase"/>
+    </classes>
+  </test>
+  <test name="VerifyProcessOfDeletingAssignedPartyInCase">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_10329_VerifyProcessOfDeletingAssignedPartyInCase"/>
+    </classes>
+  </test>
+  <test name="VerifyDataInCreatedByColumnInCaseGrid">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_45504_VerifyDataInCreatedByColumnInCaseGrid"/>
+    </classes>
+  </test>
+
 </suite> <!-- Suite -->

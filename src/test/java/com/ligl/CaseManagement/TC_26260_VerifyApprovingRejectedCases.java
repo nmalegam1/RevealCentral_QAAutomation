@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_26260_VerifyApprovingRejectedCases extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_26260_VerifyApprovingRejectedCases(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -29,7 +29,7 @@ public class TC_26260_VerifyApprovingRejectedCases extends TestBase {
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToSecurityPage().sendingCaseForApproval()

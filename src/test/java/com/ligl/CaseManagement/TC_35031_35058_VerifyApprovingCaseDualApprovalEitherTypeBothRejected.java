@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_35031_35058_VerifyApprovingCaseDualApprovalEitherTypeBothRejected extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_35031_35058_VerifyApprovingCaseDualApprovalEitherTypeBothRejected(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -30,7 +30,7 @@ public class TC_35031_35058_VerifyApprovingCaseDualApprovalEitherTypeBothRejecte
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
@@ -46,25 +46,24 @@ public class TC_35031_35058_VerifyApprovingCaseDualApprovalEitherTypeBothRejecte
                     .validatingDateRanges()
                     .getLeftMenu()
                     .navigateToKeyWordsPage()
-                    .addKeywordsByCustom(data.get("Keywords1"), data.get("Datasource1") )
+                    .addKeywordsByCustom(data.get("Keywords1"), data.get("Datasource1"))
                     .addKeywordsByCustom(data.get("Keywords1"), data.get("Datasource1"))
                     .validatingKeywords()
                     .getLeftMenu()
                     .goToCaseManagement().getLeftMenu()
                     .goToSecurityPage().validateCaseNotinitiatedState()
-                    .sendingCaseForDualApprovalEitherType(data.get("Employee1"),data.get("GmailCheck"), data.get("GoogleDriveCheck"),data.get("DateRange1"),data.get("DateRange2"),data.get("Keyword1"),data.get("Keyword2"),data.get("BatchNAME"),data.get("EMAIL"), data.get("USER1"), data.get("USER2"),data.get("SubType") )
+                    .sendingCaseForDualApprovalEitherType(data.get("Employee1"), data.get("GmailCheck"), data.get("GoogleDriveCheck"), data.get("DateRange1"), data.get("DateRange2"), data.get("Keyword1"), data.get("Keyword2"), data.get("BatchNAME"), data.get("EMAIL"), data.get("USER1"), data.get("USER2"), data.get("SubType"))
                     .getHeader().goToApprovalPage()
                     .rejectingTheCase(data.get("CaseNameApprove"))
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage().validateCasePendingForApprovalState()
-                    .verifyApprovalHistoryStatus(data.get("AssignedUser1"), data.get("Status3"), data.get("AssignedUser2"), data.get("Status2") )
+                    .verifyApprovalHistoryStatus(data.get("AssignedUser1"), data.get("Status3"), data.get("AssignedUser2"), data.get("Status2"))
                     .getHeader().logout()
-                    .login(data.get("Username1"), data.get("Password1"),data.get("Entity")).getHeader().goToApprovalPage().rejectingTheCase(data.get("CaseNameApprove"))
+                    .login(data.get("Username1"), data.get("Password1"), data.get("Entity")).getHeader().goToApprovalPage().rejectingTheCase(data.get("CaseNameApprove"))
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToSecurityPage().validateCaseRejectedState().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status3"), data.get("AssignedUser1"), data.get("Status3") )
-                    .getHeader().logout().login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .getLeftMenu().goToSecurityPage().validateCaseRejectedState().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status3"), data.get("AssignedUser1"), data.get("Status3"))
+                    .getHeader().logout().login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName")).getLeftMenu().goToSecurityPage().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status3"), data.get("AssignedUser1"), data.get("Status3"));
-
 
 
         } catch (Exception ex) {

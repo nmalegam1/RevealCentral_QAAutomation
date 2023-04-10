@@ -14,8 +14,8 @@ import java.util.Hashtable;
  * Case Due Date-Verify whether 'Due Date' field is optional during Create & Edit Case
  */
 public class TC_29642_CheckIsDueDateFieldOptinalInCreateEditCase_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void TC_29642_CheckIsDueDateFieldOptinalInCreateEditCase_Test(Hashtable<String,String> data) throws Exception {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
+    public void TC_29642_CheckIsDueDateFieldOptinalInCreateEditCase_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -27,13 +27,13 @@ public class TC_29642_CheckIsDueDateFieldOptinalInCreateEditCase_Test extends Te
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .createNewCase(data)
                     .editDueDate(data.get("DueDate"));
-        }catch (Exception ex){
+        } catch (Exception ex) {
             session.log_Error("TC_29642_CheckIsDueDateFieldOptinalInCreateEditCase_Test Failed");
             throw new Exception("TC_29642_CheckIsDueDateFieldOptinalInCreateEditCase_Test Failed", ex);
-        }finally {
+        } finally {
             session.end();
         }
     }

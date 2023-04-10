@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC54583_Check_that_CaseType_LookUp_value_is_populated_in_Case_Create_popup_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC54583_Check_that_CaseType_LookUp_value_is_populated_in_Case_Create_popup_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());

@@ -35,9 +35,7 @@ public class Constants {
 	public static final String REGRESSION_PROP_PATH=System.getProperty("user.dir") + "\\src\\test\\resources\\regression.properties";
 
 	// sheet names
-	//public static final String TEST_DATA_SHEET = "TestDataRT";
-	public static final String TEST_DATA_SHEET = "TestData_Nikhitha";
-
+	public static final String TEST_DATA_SHEET = "TestData";
 	public static final String TEST_STATUS_SHEET = "TestStatus";
 	
 	//col names

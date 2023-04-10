@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_1731_AddOneOrMoreExistingProsecutors extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_1731_AddOneOrMoreExistingProsecutors(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -34,10 +34,8 @@ public class TC_1731_AddOneOrMoreExistingProsecutors extends TestBase {
                     .navigateToCourtPage()
                     .addCourtToCase(data.get("AvailableCourt"))
                     .searchingAddedCourt(data.get("AvailableCourt"))
-                    .navigateAndAddProsecutor(data.get("AvailableCourt"), data.get("AvailableProsecutor1"), data.get("AvailableProsecutor2"), data.get("AvailableProsecutor3"), data.get("AvailableProsecutor4") )
+                    .navigateAndAddProsecutor(data.get("AvailableCourt"), data.get("AvailableProsecutor1"), data.get("AvailableProsecutor2"), data.get("AvailableProsecutor3"), data.get("AvailableProsecutor4"))
                     .validateProsecutors(data.get("AvailableProsecutor1"), data.get("AvailableProsecutor2"), data.get("AvailableProsecutor3"), data.get("AvailableProsecutor4"));
-
-
 
 
         } catch (Exception ex) {

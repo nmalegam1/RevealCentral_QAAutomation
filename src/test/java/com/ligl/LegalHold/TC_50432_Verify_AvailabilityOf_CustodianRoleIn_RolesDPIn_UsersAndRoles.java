@@ -14,7 +14,7 @@ import java.util.Hashtable;
  * 47403- Verify the Availability of 'Custodian' Role in Users & Roles->Roles Assigned dropdown
  */
 public class TC_50432_Verify_AvailabilityOf_CustodianRoleIn_RolesDPIn_UsersAndRoles  extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData", description = "LegalHold")
     public void TC_50432_Verify_AvailabilityOf_CustodianRoleIn_RolesDPIn_UsersAndRoles(Hashtable<String,String>data) throws Exception {
         try {
             session.log_Info(data.toString());

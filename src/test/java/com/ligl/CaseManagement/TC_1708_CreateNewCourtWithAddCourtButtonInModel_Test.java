@@ -14,7 +14,7 @@ import java.util.Hashtable;
  * 512-Case-Courts-Verifying the process of creating New Court to case using +Court button in modal
  */
 public class TC_1708_CreateNewCourtWithAddCourtButtonInModel_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_1708_CreateNewCourtWithAddCourtButtonInModel_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -27,12 +27,12 @@ public class TC_1708_CreateNewCourtWithAddCourtButtonInModel_Test extends TestBa
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCourtPage()
-                    .createNewCourt(data.get("CourtName"),data.get("PartyType"),data.get("Description"))
+                    .createNewCourt(data.get("CourtName"), data.get("PartyType"), data.get("Description"))
                     .validateCourtAddedToGrid(data.get("CourtName"));
 
         } catch (Exception | Error ex) {

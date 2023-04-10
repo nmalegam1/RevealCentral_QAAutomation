@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_33850_VerifyLHApprovalProcessWhenApprovalConfigTrue extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_33850_VerifyLHApprovalProcessWhenApprovalConfigTrue(Hashtable<String, String> data) throws Exception {
 
         try {

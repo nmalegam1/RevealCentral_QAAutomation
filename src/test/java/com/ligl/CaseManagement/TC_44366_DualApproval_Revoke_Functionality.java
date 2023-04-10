@@ -14,7 +14,7 @@ import java.util.Hashtable;
  * Dual Approval-Revoke-Check that Revoke functionality will apply on both Approver Users irrespective of Approval Status
  */
 public class TC_44366_DualApproval_Revoke_Functionality extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "CaseManagement")
     public void TC_44366_DualApproval_Revoke_Functionality(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());

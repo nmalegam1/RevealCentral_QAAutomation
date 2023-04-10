@@ -71,16 +71,16 @@ public class Header extends LiglBasePage {
 	@FindBy(xpath = "//p[@class='userandRole user-role-label pl-4 mb-0']")
 	WebElement loggedInRole;
 
+	@FindBy(id = "notificationDropdown")
+	WebElement NotificationIcon;
+
 	public Header(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 
 
 	public ILiglPage logout() throws Exception {
-
 		try {
-
-
 			getDriver().waitForelementToBeClickable(userNameLink);
 			userNameLink.click();
 			getSession().log_Pass("Clicked Username link");
@@ -98,9 +98,7 @@ public class Header extends LiglBasePage {
 	}
 
 	public ILiglPage viewCase() throws Exception{
-
 		try{
-
 			log_Info("switchCase() Started");
 			SwitchCaseTab.click();
 			Thread.sleep(2000);
@@ -145,20 +143,33 @@ public class Header extends LiglBasePage {
 	}
 
 	public ILiglPage goToCasePage() throws Exception {
-
-		Thread.sleep(5000);
-		caseTab.click();
-		getDriver().waitUntilSpinnerIsClosed();
-		return new DefaultLandingPage();
+		try {
+			getSession().log_Info("Click on Case Tab");
+			wait(5);
+			getDriver().waitForelementToBeClickable(caseTab);
+			caseTab.click();
+			getDriver().waitForAngularRequestsToComplete();
+			wait(5);
+			getSession().log_Pass("Clicked on Case Tab");
+			return new DefaultLandingPage();
+		} catch (Exception | Error ex) {
+			log_Error(ex.getMessage());
+			throw new Exception("Go To Case Page Failed", ex);
+		}
 	}
-	public ILiglPage goToAdministrationPage() {
-		getSession().log_Info("Click on Administration Tab");
-		getDriver().waitForelementToBeClickable(AdministrationTab);
-		wait(2);
-		AdministrationTab.click();
-		getDriver().waitForAngularRequestsToComplete();
-		getSession().log_Pass("Clicked on Administration Tab");
-		return new ContactMasterPage();
+	public ILiglPage goToAdministrationPage() throws Exception{
+		try{
+			getSession().log_Info("Click on Administration Tab");
+			getDriver().waitForelementToBeClickable(AdministrationTab);
+			wait(2);
+			AdministrationTab.click();
+			getDriver().waitForAngularRequestsToComplete();
+			getSession().log_Pass("Clicked on Administration Tab");
+			return new ContactMasterPage();
+		}catch (Exception|Error ex){
+			log_Error(ex.getMessage());
+			throw new Exception("Go To oAdministration Page Failed", ex);
+		}
 	}
 
 	public ILiglPage goToGlobalRequestPage() {
@@ -171,9 +182,9 @@ public class Header extends LiglBasePage {
 		return new GlobalRequestPage();
 	}
 
-	public ILiglPage create(String elementText) {
+	/*public ILiglPage create(String elementText) {
 
-		/*addIcon.click();
+		*//*addIcon.click();
 		if(elementText.equals("lead")) {
 			submenuLead.click();
 			return new NewLeadPage();
@@ -183,11 +194,11 @@ public class Header extends LiglBasePage {
 		}else if(elementText.equals("task")) {
 			submenuTasks.click();
 			//return new NewContactPage();
-		}*/
+		}*//*
 		// report a failure and stop
 		return new LiglBasePage();
 
-	}
+	}*/
 
 	public ILiglPage goToAboutPage() {
 		aboutTab.click();
@@ -323,4 +334,26 @@ public class Header extends LiglBasePage {
 		}
 	}
 
+	public ILiglPage clickOnNotificationIcon() throws Exception{
+
+		try {
+
+			log_Info("clickOnNotificationIcon() started");
+			log_Info("Click On The Notification Icon");
+			getDriver().waitForelementToBeClickable(NotificationIcon);
+			Thread.sleep(5000);
+			NotificationIcon.click();
+			Thread.sleep(5000);
+			getSession().log_Pass("Click On The Notification Icon");
+
+			getDriver().waitUntilSpinnerIsClosed();
+
+
+			return new  NotificationsPage();
+
+		}catch(Exception | Error ex) {
+			log_Error(ex.getMessage());
+			throw new Exception("clickOnNotificationIcon", ex);
+		}
+	}
 }

@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_7121_ValidateCounselSaveBtnPartyType extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_7121_ValidateCounselSaveBtnPartyType(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -28,12 +28,10 @@ public class TC_7121_ValidateCounselSaveBtnPartyType extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToOtherPartyPage()
-                    .validateCounselAndSaveButtonForPartyType(data.get("PartyNameB"), data.get("PartyType"), data.get("Description") );
-
-
+                    .validateCounselAndSaveButtonForPartyType(data.get("PartyNameB"), data.get("PartyType"), data.get("Description"), data.get("StatusDrpDwn"));
 
 
         } catch (Exception ex) {

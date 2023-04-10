@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_51805_VerifyColumnsInLegalHoldGrid extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData", description = "LegalHold")
     public void TC_51805_VerifyColumnsInLegalHoldGrid(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());

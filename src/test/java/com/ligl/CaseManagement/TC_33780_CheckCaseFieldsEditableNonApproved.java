@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_33780_CheckCaseFieldsEditableNonApproved extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_33780_CheckCaseFieldsEditableNonApproved(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -27,10 +27,10 @@ public class TC_33780_CheckCaseFieldsEditableNonApproved extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .verifyingCaseFieldsAreEditable(data.get("CaseTypeDrpDwn"), data.get("CaseName1"),data.get("CaseSettingTemplateDrpDwn") )
-                    .verifyingCaseFieldsAreEdited(data.get("CaseTypeDrpDwn"), data.get("CaseName1"),data.get("CaseSettingTemplateDrpDwn"));
+                    .verifyingCaseFieldsAreEditable(data.get("CaseTypeDrpDwn"), data.get("CaseName1"), data.get("CaseSettingTemplateDrpDwn"))
+                    .verifyingCaseFieldsAreEdited(data.get("CaseTypeDrpDwn"), data.get("CaseName1"), data.get("CaseSettingTemplateDrpDwn"));
 
 
         } catch (Exception ex) {
