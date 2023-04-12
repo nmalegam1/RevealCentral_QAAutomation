@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_55286_EditNotesInCaseHistory extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void EditNotesInCaseHistory_55286(Hashtable<String,String> data) throws Exception {
+    public void TC_55286_EditNotesInCaseHistory(Hashtable<String,String> data) throws Exception {
         session.log_Info(data.toString());
         if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
             // skip in extent rep
@@ -25,7 +25,7 @@ public class TC_55286_EditNotesInCaseHistory extends TestBase {
                 .navigateURL()
                 .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                 .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-//                .GoToNotesPage().createNewNotes(data.get("RequestBy"), data.get("Notes"))
+//                .goToNotesPage().createNewNotes(data.get("RequestBy"), data.get("Notes"))
 //                .GoToCase(data.get("CaseName"))
                 .getLeftMenu()
                 .navigateToNotesHistoryPage()
@@ -34,7 +34,7 @@ public class TC_55286_EditNotesInCaseHistory extends TestBase {
                 .getHeader()
                 .goToCasePage()
                 .searchcase(data.get("CaseName"))
-                .GoToNotesPage()
+                .goToNotesPage()
                 .notesSearchFilter(data.get("NotesDescription1"))
                 .validateDataInNotesGrid(data.get("NotesDescription1"));
               //  .notesDelete().validateDeletedNote();

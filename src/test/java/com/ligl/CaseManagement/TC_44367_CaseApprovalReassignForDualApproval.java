@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_44367_CaseApprovalReassignForDualApproval extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void CaseApprovalReassignForDualApproval_44367(Hashtable<String,String> data) throws Exception {
+    public void TC_44367_CaseApprovalReassignForDualApproval(Hashtable<String,String> data) throws Exception {
         session.log_Info(data.toString());
         if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
             // skip in extent rep

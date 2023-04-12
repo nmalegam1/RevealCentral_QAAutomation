@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_55178_EditNotes extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void EditNotes_Test(Hashtable<String,String> data) throws Exception {
+    public void TC_55178_EditNotes(Hashtable<String,String> data) throws Exception {
         session.log_Info(data.toString());
         if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
             // skip in extent rep
@@ -27,12 +27,12 @@ public class TC_55178_EditNotes extends TestBase {
                 .login(data.get("Username"), data.get("Password"),data.get("Entity"))
                 // .selectEntity(data.get("Entity"));
                 .searchcase(data.get("CaseName"))
-                .GoToNotesPage()
+                .goToNotesPage()
                // .createNewNotes(data)
                 .notesSearchFilter(data.get("Notes"))
                 .editNotes(data.get("EditRequestBy"), data.get("EditNotesDescription"))
                 .getHeader()
-                .goToCasePage().searchcase(data.get("CaseName")).GoToNotesPage()
+                .goToCasePage().searchcase(data.get("CaseName")).goToNotesPage()
                 .notesSearchFilter(data.get("FinalNotesDescription"))
                 .validateDataInNotesGrid(data.get("FinalNotesDescription"));
     }

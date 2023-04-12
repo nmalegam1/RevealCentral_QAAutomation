@@ -1621,6 +1621,28 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception{
 		return null;
 	}
+	public ILiglPage goToNotesPage() throws InterruptedException{return null;}
+	public ILiglPage notesSearchFilter(String name) throws Exception{return null;}
+	public ILiglPage TypeofEventSearchFilter(String TypeofEvent) throws Exception{return null;}
+	public ILiglPage notesEdit(String RequestBy,String NotesDescription) throws Exception{return null;}
+	public ILiglPage notesDelete() throws Exception{return null;}
+	public ILiglPage validateDeletedNoteForMultipleRecords() throws Exception{return null;}
+	public ILiglPage validateDeleteNote() throws Exception{return null;}
+	public ILiglPage displayingSelectedNotesList(String TOE) throws Exception{return null;}
+	public ILiglPage caseEditInplace() throws Exception{return null;}
+	public ILiglPage reAssignCaseForSingleApproval(String EMAIL,String USER) throws Exception{return null;}
+	public ILiglPage reAssignCaseForDualApproval(Hashtable<String, String> data) throws Exception{return null;}
+	public ILiglPage validateRevokeCaseForSingleApproval(String a,String b) throws Exception{return null;}
+	public ILiglPage validateRevokeCaseForDualApproval(String a,String b,String c) throws Exception{return null;}
+	public ILiglPage validateReassignForSingleApproval(String a,String b) throws Exception{return null;}
+	public ILiglPage validateReassignForDualApproval(String a,String b,String c) throws Exception{return null;}
+	public ILiglPage caseEditInplaceisSelected() throws Exception{return null;}
+	public ILiglPage goToNotesPageFromDocuments(){return null;}
+	public ILiglPage createCaseWithoutInplacePreservation(Hashtable<String,String> data) throws Exception{return null;}
+	public ILiglPage verifyingCaseRoleIsNonEditable() throws Exception{return null;}
+	public ILiglPage detailsColumnData(String Details) throws Exception{return null;}
+
+
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;

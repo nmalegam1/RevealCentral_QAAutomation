@@ -1031,9 +1031,6 @@ public interface ILiglPage {
     ILiglPage searchRequiredDaterangeName(String DRname) throws Exception;
 
     ILiglPage disabledDateRangeNotesClick(String DRName) throws Exception;
-
-    ILiglPage NotesDelete(String NotesContent) throws Exception;
-
     ILiglPage validateDeletedNote(String NotesContent) throws Exception;
 
     ILiglPage enabledDateRangeNotesClick(String DRName) throws Exception;
@@ -1051,6 +1048,27 @@ public interface ILiglPage {
     ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception;
 
     ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception;
+    ILiglPage goToNotesPage() throws InterruptedException;
+    public ILiglPage notesSearchFilter(String name) throws Exception;
+    public ILiglPage TypeofEventSearchFilter(String TypeofEvent) throws Exception;
+    public ILiglPage notesEdit(String RequestBy,String NotesDescription) throws Exception;
+    public ILiglPage NotesDelete(String NotesContent) throws Exception;
+    public ILiglPage validateDeletedNoteForMultipleRecords() throws Exception;
+    public ILiglPage validateDeleteNote() throws Exception;
+    public ILiglPage displayingSelectedNotesList(String TOE) throws Exception;
+    public ILiglPage caseEditInplace() throws Exception;
+    public ILiglPage reAssignCaseForSingleApproval(String EMAIL,String USER) throws Exception;
+    public ILiglPage reAssignCaseForDualApproval(Hashtable<String, String> data) throws Exception;
+    public ILiglPage validateRevokeCaseForSingleApproval(String a,String b) throws Exception;
+    public ILiglPage validateRevokeCaseForDualApproval(String a,String b,String c) throws Exception;
+    public ILiglPage validateReassignForSingleApproval(String a,String b) throws Exception;
+    public ILiglPage validateReassignForDualApproval(String a,String b,String c) throws Exception;
+    public ILiglPage caseEditInplaceisSelected() throws Exception;
+    public ILiglPage goToNotesPageFromDocuments();
+    public ILiglPage createCaseWithoutInplacePreservation(Hashtable<String,String> data) throws Exception;
+    public ILiglPage verifyingCaseRoleIsNonEditable() throws Exception;
+    public ILiglPage detailsColumnData(String Details) throws Exception;
+
 
 }
 

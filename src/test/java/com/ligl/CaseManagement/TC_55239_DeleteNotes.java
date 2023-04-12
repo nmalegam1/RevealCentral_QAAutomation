@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_55239_DeleteNotes extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void DeleteNotes_Test(Hashtable<String,String> data) throws Exception {
+    public void TC_55239_DeleteNotes(Hashtable<String,String> data) throws Exception {
         session.log_Info(data.toString());
         if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
             // skip in extent rep
@@ -26,7 +26,7 @@ public class TC_55239_DeleteNotes extends TestBase {
                 .login(data.get("Username"), data.get("Password"),data.get("Entity"))
              //   .selectEntity(data.get("Entity"))
                 .searchcase(data.get("CaseName"))
-                .GoToNotesPage()
+                .goToNotesPage()
                 .notesSearchFilter(data.get("NotesDescription"))
               //  .NewTabFunction()
 //                .notesDelete()
@@ -35,7 +35,8 @@ public class TC_55239_DeleteNotes extends TestBase {
 //                .searchcase(data.get("CaseName"))
 //                .GoToNotesPage()
 //                .NotesSearchFilter(data.get("NotesDescription"))
-               .validateDeletedNote();
+                .NotesDelete(data.get("NotesDescription"))
+               .validateDeletedNote(data.get("NotesDescription"));
 
     }
 }

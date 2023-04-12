@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_55227_CreatingNewNotesForCase extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void CreatingNewNotesForCase_Test(Hashtable<String,String> data) throws Exception{
+    public void TC_55227_CreatingNewNotesForCase(Hashtable<String,String> data) throws Exception{
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -26,7 +26,7 @@ public class TC_55227_CreatingNewNotesForCase extends TestBase {
                     .navigateURL()
                     .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName"))
-                    .GoToNotesPage()
+                    .goToNotesPage()
                     .createNewNotes(data.get("RequestBy"), data.get("Notes"))
                     .notesSearchFilter(data.get("Notes"))
                     .validateDataInNotesGrid(data.get("Notes"));

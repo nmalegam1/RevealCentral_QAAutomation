@@ -208,7 +208,7 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
             throw new Exception("Exception in NotesDelete()", ex);
         }
     }
-    public ILiglPage validateDeletedNote() throws Exception{
+    public ILiglPage validateDeletedNoteForMultipleRecords() throws Exception{
         try {
             log_Info("verify No data available text in Grid");
             //  WebElement p = driver.findElement(By.xpath("//span[contains(text(),'Result(s)')]/ancestor::div[@class='table-header-action-item-list']//b"));

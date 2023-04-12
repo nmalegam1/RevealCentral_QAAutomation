@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_55304_DeleteNotesInCaseHistory extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void DeleteNotesInCaseHistory_55304(Hashtable<String,String> data) throws Exception {
+    public void TC_55304_DeleteNotesInCaseHistory(Hashtable<String,String> data) throws Exception {
         session.log_Info(data.toString());
         if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
             // skip in extent rep
@@ -24,17 +24,12 @@ public class TC_55304_DeleteNotesInCaseHistory extends TestBase {
                 .openBrowser("chrome")
                 .navigateURL()
                 .login(data.get("Username"), data.get("Password"),data.get("Entity"))
-                // .selectEntity(data.get("Entity"));
                 .searchcase(data.get("CaseName"))
                 .GoToCase(data.get("CaseName"))
                  .getLeftMenu()
-               // .GoToNotesPage()
                 .navigateToNotesHistoryPage()
-                //.CreateNewNotes(data)
                 .TypeofEventSearchFilter(data.get("TypeofEvent"))
-              //  .NotesDelete()
-                //.TypeofEventSearchFilter(data.get("TypeofEvent"))
-                .validateDeletedNote();
+                .validateDeletedNoteForMultipleRecords();
 
     }
 }

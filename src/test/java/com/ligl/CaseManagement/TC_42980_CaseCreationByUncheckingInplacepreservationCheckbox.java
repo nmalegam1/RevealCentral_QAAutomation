@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_42980_CaseCreationByUncheckingInplacepreservationCheckbox extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
-    public void CaseCreationByUncheckingInplacepreservationCheckbox(Hashtable<String, String> data) throws Exception {
+    public void TC_42980_CaseCreationByUncheckingInplacepreservationCheckbox(Hashtable<String, String> data) throws Exception {
         session.log_Info(data.toString());
         if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
             // skip in extent rep
@@ -25,12 +25,6 @@ public class TC_42980_CaseCreationByUncheckingInplacepreservationCheckbox extend
                 .openBrowser("chrome")
                 .navigateURL()
                 .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
-               //.selectEntity(data.get("Entity"))
-              //  .createNewCase(data);
-                /*.searchcase("QA_testNotes_002")
-                .GoToCase("QA_testNotes_002")
-               .CaseEditInplaceisSelected()
-              .CaseEditInplace()*/
-         .createCaseWithoutInplacePreservation(data);
+                .createCaseWithoutInplacePreservation(data);
     }
 }

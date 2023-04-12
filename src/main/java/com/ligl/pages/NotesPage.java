@@ -209,9 +209,9 @@ public class NotesPage extends LiglBaseSessionPage {
     }
 
     //To delete notes in grid
-    public ILiglPage notesDelete() throws Exception{
+    public ILiglPage NotesDelete(String NotesContent) throws Exception{
         try {
-            searchRequiredNotesContent(NotesContent);
+           searchRequiredNotesContent(NotesContent);
             Thread.sleep(3000);
             ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",Deletebtn);
 //            Actions actions = new Actions(getCurrentDriver());
@@ -263,7 +263,7 @@ public class NotesPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Result(s)')]/ancestor::div[@class='table-header-action-item-list']//b")
     WebElement Results;
     // using this validateDeletedNote() to validate deleted notes when same multiple records are present in Grid.
-    public ILiglPage validateDeletedNote() throws Exception{
+    /*public ILiglPage validateDeleteNote() throws Exception{
         try {
             log_Info("verify No data available text in Grid");
             //  WebElement p = driver.findElement(By.xpath("//span[contains(text(),'Result(s)')]/ancestor::div[@class='table-header-action-item-list']//b"));
@@ -275,9 +275,9 @@ public class NotesPage extends LiglBaseSessionPage {
             int j = Integer.parseInt(a2);
             Assert.assertEquals(j,k);
 
-            /*boolean a1 = Nodata.isDisplayed();
+            *//*boolean a1 = Nodata.isDisplayed();
             Thread.sleep(5000);
-            System.out.println(a1);*/
+            System.out.println(a1);*//*
             Thread.sleep(5000);
             // Assert.assertEquals(true, a1);
             log_Info("No data available text in Grid is Displayed");
@@ -286,7 +286,7 @@ public class NotesPage extends LiglBaseSessionPage {
             throw new RuntimeException(e);
         }
     }
-
+*/
     //Searching Notes content column in Notes grid
     public ILiglPage searchRequiredNotesContent(String NotesContent) throws Exception {
         try {

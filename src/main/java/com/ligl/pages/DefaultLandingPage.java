@@ -793,7 +793,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     }
 
     /****************************************************************************************************************/
-    public ILiglPage GoToNotesPage() throws InterruptedException {
+    public ILiglPage goToNotesPage() throws InterruptedException {
         try {
             log_Pass("Click on Notes Icon in Case list page");
             waitForPageToLoad();
