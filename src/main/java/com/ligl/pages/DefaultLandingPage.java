@@ -151,6 +151,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Region is required')]")
     WebElement RegionReqValidation;
 
+    @FindBy(xpath="//span[@class='region-switch region-value cursorPointer bold']")
+    WebElement RegionName;
+
 
     /**
      * Method to Check the Region Field in Case Creation isMandatory
@@ -716,6 +719,36 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             throw new Exception("Check Lookup Populated In Case Type DropDown Failed", ex);
         }
     }
+
+    public ILiglPage verifySwitchedRegion(String SwitchedEntity) throws Exception {
+        try {
+
+
+            log_Info("Click on Rehion name");
+            getDriver().waitForelementToBeClickable(RegionName);
+            Thread.sleep(3000);
+            String region=RegionName.getText();
+            if(region.equals(SwitchedEntity))
+            {
+                log_Pass("Region switched without logout");
+            }
+            else{
+                log_Error("Region not switched");
+
+
+            }
+
+
+            System.out.println(region);
+
+            return new DefaultLandingPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifySwitchedRegion failed", ex);
+        }
+    }
+
 
     @Override
     public ILiglPage checkNewlyCreatedCaseSettingTemplatePopulatedInCaseSettingsTemplateDropDown(String caseSettingsTemplate) throws Exception {
