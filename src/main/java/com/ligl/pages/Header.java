@@ -71,6 +71,21 @@ public class Header extends LiglBasePage {
 	@FindBy(xpath = "//p[@class='userandRole user-role-label pl-4 mb-0']")
 	WebElement loggedInRole;
 
+	@FindBy(xpath="//span[@title='Time Tracker']")
+	WebElement TimeTrackerIcon;
+
+	@FindBy(id="logo-region")
+	WebElement Region;
+
+	@FindBy(xpath="//span[@class='region-switch region-value cursorPointer bold']")
+	WebElement RegionName;
+
+	@FindBy(xpath="//span[@class=\"menu-item-parent\"][contains(text(),'IND')]")
+	WebElement INDRegion;
+
+	@FindBy(xpath="//span[@class=\"menu-item-parent\"][contains(text(),'USA')]")
+	WebElement USARegion;
+
 	public Header(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
@@ -81,8 +96,9 @@ public class Header extends LiglBasePage {
 		try {
 
 
-			getDriver().waitForelementToBeClickable(userNameLink);
+					getDriver().waitForelementToBeClickable(userNameLink);
 			userNameLink.click();
+
 			getSession().log_Pass("Clicked Username link");
 			getDriver().waitForelementToBeClickable(logoutLink);
 			logoutLink.click();
@@ -142,6 +158,10 @@ public class Header extends LiglBasePage {
 	public ILiglPage goToApprovalPage(){
 		approvalTab.click();
 		return new ApprovalPage();
+	}
+	public ILiglPage goToJobManagerPage(){
+		jobManagerTab.click();
+		return new JobManagerPage();
 	}
 
 	public ILiglPage goToCasePage() throws Exception {
@@ -222,6 +242,44 @@ public class Header extends LiglBasePage {
 
 		}
 	}
+
+
+	public ILiglPage switchRegionFunctionality(String SwitchedEntity) throws Exception {
+
+		try{
+
+			log_Info("switchRegionFunctionality() started");
+			log_Info("Click On The Region For Switch");
+			getDriver().waitForelementToBeClickable(Region);
+			Thread.sleep(5000);
+			Region.click();
+			log_Info("Clicked On The Region For Switch");
+			getDriver().waitForelementToBeClickable(RegionName);
+			Thread.sleep(3000);
+			RegionName.click();
+			getSession().log_Pass("Clicked On The RegionName Icon");
+			Thread.sleep(5000);
+
+			getCurrentDriver().findElement(By.xpath("//span[@class='menu-item-parent'][contains(text(),'"+SwitchedEntity+"')]")).click();
+			log_Info("Clicked On The IND Region");
+			getDriver().waitForelementToBeClickable(Region);
+			Thread.sleep(5000);
+			Region.click();
+			log_Info("Clicked On The Region For Switch");
+
+			return new DefaultLandingPage();
+
+
+
+		}catch (Exception | Error ex){
+			log_Error(ex.getMessage());
+			throw new Exception("switchCaseFunctionality() Failed",ex);
+
+		}
+	}
+
+
+
 
 	/****************************Admin RElated Test**********************/
 
@@ -319,6 +377,21 @@ public class Header extends LiglBasePage {
 		}catch(Exception | Error ex) {
 			log_Error(ex.getMessage());
 			throw new Exception("Logged In User Role", ex);
+		}
+	}
+
+	public ILiglPage goToTimeTrackerPage() throws Exception{
+		try {
+			getSession().log_Info("clickOnTimeTrackerIcon() Started");
+			log_Info("click On Time Tracker Icon");
+			getDriver().waitForelementToBeClickable(TimeTrackerIcon);
+			TimeTrackerIcon.click();
+			Thread.sleep(3000);
+			getSession().log_Pass("Clicked TimeTrackerIcon");
+			return new TimeTrackerPage();
+		}catch(Exception | Error ex) {
+			log_Error(ex.getMessage());
+			throw new Exception("clickOnTimeTrackerIcon() Failed", ex);
 		}
 	}
 

@@ -7,9 +7,10 @@ import com.ligl.util.DataUtil;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 import java.util.Hashtable;
-public class TC_55339_CheckWhetherNLRIsAbleToCreateCaseSuccessfully extends TestBase {
+
+public class TC_44840_NonLegalUsers_VerifyTheProcessOfCreatingSSOUserWithNonLegalUserRole extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void TC_55339_CheckWhetherNLRIsAbleToCreateCaseSuccessfully(Hashtable<String,String> data) throws Exception {
+    public void TC_44840_NonLegalUsers_VerifyTheProcessOfCreatingSSOUserWithNonLegalUserRole(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -21,15 +22,21 @@ public class TC_55339_CheckWhetherNLRIsAbleToCreateCaseSuccessfully extends Test
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
-                    .createNewCase(data)
+                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .getHeader()
-                    .goToCasePage()
-                    .searchcase(data.get("CaseName"))
+                    .goToAdministrationPage()
+                    .getAdminLeft()
+                    .clickOnAdminGeneral()
+                    .getAdminLeft()
+                    .clickOnUserAndRolesLink()
+                    .clickOnAddUserButton()
+                    .creatingSSOUser(data.get("Email"), data.get("FirstName"),
+                    data.get("MiddleName"), data.get("LastName"), data.get("Role"), data.get("Status"))
+                    .getHeader()
                     .logout();
         }catch (Exception ex){
-            session.log_Error("CheckWhetherNLRIsAbleToCreateCaseSuccessfully Failed");
-            throw new Exception("CheckWhetherNLRIsAbleToCreateCaseSuccessfully Failed", ex);
+            session.log_Error("VerifyTheProcessOfCreatingSSOUserWithNonLegalUserRole Failed");
+            throw new Exception("VerifyTheProcessOfCreatingSSOUserWithNonLegalUserRole Failed", ex);
         }finally {
             session.end();
         }

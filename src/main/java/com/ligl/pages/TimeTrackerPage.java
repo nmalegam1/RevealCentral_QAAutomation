@@ -68,7 +68,7 @@ public class TimeTrackerPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//input[@placeholder='Search']")
     WebElement CaseNameSearch;
 
-    public ILiglPage addTimeDetail(String EffortDate, String CaseName, String TaskName, String TaskTitle, String EffortHours, String Description) throws Exception {
+    public ILiglPage addTimeDetail(Hashtable<String, String> data) throws Exception {
 
         try {
             log_Info("Click on add time detail button");
@@ -80,7 +80,7 @@ public class TimeTrackerPage extends LiglBaseSessionPage {
            log_Info("Click on Case Name");
             getDriver().waitForelementToBeClickable(caseName);
             caseName.click();
-            CaseNameSearch.sendKeys(CaseName);
+            CaseNameSearch.sendKeys(data.get("CaseName"));
             Thread.sleep(20000);
             CaseNameSearch.sendKeys(Keys.ENTER);
             getSession().log_Pass("Selected Case name");
@@ -88,26 +88,26 @@ public class TimeTrackerPage extends LiglBaseSessionPage {
             log_Info("Click on Task Type");
             getDriver().waitForelementToBeClickable(taskType);
             taskType.click();
-            taskType.sendKeys(TaskName);
+            taskType.sendKeys(data.get("TaskName"));
             Thread.sleep(5000);
             taskType.sendKeys(Keys.ENTER);
             getSession().log_Pass("Selected Task Type");
 
             log_Info("Click on Task Title");
             getDriver().waitForelementToBeClickable(taskTitle);
-            taskTitle.sendKeys(TaskTitle);
+            taskTitle.sendKeys(data.get("TaskTitle"));
             Thread.sleep(5000);
             getSession().log_Pass("Selected Task Title");
 
             log_Info("Enter Hours");
             getDriver().waitForelementToBeClickable(hours);
-            hours.sendKeys(EffortHours);
+            hours.sendKeys(data.get("EffortHours"));
             Thread.sleep(5000);
             getSession().log_Pass("Entered Hours");
 
             log_Info("Enter Description");
             getDriver().waitForelementToBeClickable(description);
-            description.sendKeys(Description);
+            description.sendKeys(data.get("Description"));
             Thread.sleep(5000);
             getSession().log_Pass("Entered Description");
 
@@ -135,11 +135,11 @@ public class TimeTrackerPage extends LiglBaseSessionPage {
 
         try {
 
-            log_Info("Hover on Name Header");
+            log_Info("Hover on task title");
             Thread.sleep(5000);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(TaskTitleMenu).perform();
-            Thread.sleep(5000);
+            Thread.sleep(10000);
 
             TaskTitleMenu.click();
 
@@ -161,16 +161,46 @@ public class TimeTrackerPage extends LiglBaseSessionPage {
         }
     }
 
-    public ILiglPage validateTheAddedDetailsInTheTimeTrackerGrid(String EffortHours, String CaseName, String TaskName, String TaskTitle) throws Exception {
+    public ILiglPage secondSearchThroughTaskTitle(String TaskTitle) throws Exception {
 
         try {
 
-            log_Info("Check The Column names In The History Grid");
+            log_Info("Hover on task title");
+            Thread.sleep(5000);
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(TaskTitleMenu).perform();
+            Thread.sleep(10000);
 
-            boolean c1 = getCurrentDriver().findElement(By.xpath("//span[@title='" + EffortHours + "']")).isDisplayed();
-            boolean c2 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + CaseName + "')]")).isDisplayed();
-            boolean c3 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + TaskName + "')]")).isDisplayed();
-            boolean c4 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + TaskTitle + "')]")).isDisplayed();
+            TaskTitleMenu.click();
+
+            Thread.sleep(5000);
+            log_Info("Menu clicked");
+            log_Info("Click on Filter");
+            Thread.sleep(5000);
+           // Filter.click();
+            log_Info("Filter Clicked");
+            Thread.sleep(5000);
+            log_Info("Enter task title");
+            Searchbar.sendKeys(TaskTitle);
+
+            return new TimeTrackerPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("searchThroughTaskTitle failed", ex);
+        }
+    }
+
+    public ILiglPage validateTheAddedDetailsInTheTimeTrackerGrid(Hashtable<String, String> data) throws Exception {
+
+        try {
+
+            log_Info("Check The Column names In The Time Tracker Grid");
+
+            boolean c1 = getCurrentDriver().findElement(By.xpath("//span[@title='" + data.get("EffortHours") + "']")).isDisplayed();
+            boolean c2 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + data.get("CaseName") + "')]")).isDisplayed();
+            boolean c3 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + data.get("TaskName") + "')]")).isDisplayed();
+            boolean c4 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + data.get("TaskTitle") + "')]")).isDisplayed();
 
 
             Thread.sleep(5000);
@@ -194,7 +224,39 @@ public class TimeTrackerPage extends LiglBaseSessionPage {
             throw new Exception("validateTheAddedDetailsInTheTimeTrackerGrid failed", ex);
         }
     }
+    public ILiglPage validateTheEditedDetailsInTheTimeTrackerGrid(Hashtable<String, String> data) throws Exception {
 
+        try {
+
+            log_Info("Check The Column names In The Time Tracker Grid");
+
+            boolean c1 = getCurrentDriver().findElement(By.xpath("//span[@title='" + data.get("EffortHours") + "']")).isDisplayed();
+            boolean c2 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + data.get("CaseName") + "')]")).isDisplayed();
+            boolean c3 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + data.get("TaskName") + "')]")).isDisplayed();
+            boolean c4 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + data.get("EditTaskTitle") + "')]")).isDisplayed();
+
+
+            Thread.sleep(5000);
+
+            System.out.println(c1);
+            System.out.println(c2);
+            System.out.println(c3);
+            System.out.println(c4);
+
+            Thread.sleep(5000);
+
+            Assert.assertEquals(true, c1);
+            Assert.assertEquals(true, c2);
+            Assert.assertEquals(true, c3);
+            Assert.assertEquals(true, c4);
+
+            return new TimeTrackerPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateTheEditedDetailsInTheTimeTrackerGrid failed", ex);
+        }
+    }
     public ILiglPage verifyEffortHours(String ValidationMessage) throws Exception {
 
         try {
@@ -238,7 +300,7 @@ public class TimeTrackerPage extends LiglBaseSessionPage {
     }
 
 
-    public ILiglPage editFieldsInTimeTrackerPopUp(String EffortDate, String CaseName, String TaskName, String TaskTitle, String EffortHours, String Description) throws Exception {
+    public ILiglPage editFieldsInTimeTrackerPopUp(Hashtable<String, String> data) throws Exception {
         try {
             log_Info("Click on edit button");
             getDriver().waitForelementToBeClickable(editIcon);
@@ -249,7 +311,7 @@ public class TimeTrackerPage extends LiglBaseSessionPage {
             log_Info("Click on Case Name");
             getDriver().waitForelementToBeClickable(caseName);
             caseName.click();
-            CaseNameSearch.sendKeys(CaseName);
+            CaseNameSearch.sendKeys(data.get("CaseName"));
             Thread.sleep(20000);
             CaseNameSearch.sendKeys(Keys.ENTER);
             getSession().log_Pass("Selected Case name");
@@ -257,7 +319,7 @@ public class TimeTrackerPage extends LiglBaseSessionPage {
             log_Info("Click on Task Type");
             getDriver().waitForelementToBeClickable(taskType);
             taskType.click();
-            taskType.sendKeys(TaskName);
+            taskType.sendKeys(data.get("TaskName"));
             Thread.sleep(5000);
             taskType.sendKeys(Keys.ENTER);
             getSession().log_Pass("Selected Task Type");
@@ -265,21 +327,21 @@ public class TimeTrackerPage extends LiglBaseSessionPage {
             log_Info("Click on Task Title");
             getDriver().waitForelementToBeClickable(taskTitle);
             taskTitle.clear();
-            taskTitle.sendKeys(TaskTitle);
+            taskTitle.sendKeys(data.get("EditTaskTitle"));
             Thread.sleep(5000);
             getSession().log_Pass("Selected Task Title");
 
             log_Info("Enter Hours");
             getDriver().waitForelementToBeClickable(hours);
             hours.clear();
-            hours.sendKeys(EffortHours);
+            hours.sendKeys(data.get("EffortHours"));
             Thread.sleep(5000);
             getSession().log_Pass("Entered Hours");
 
             log_Info("Enter Description");
             getDriver().waitForelementToBeClickable(description);
             description.clear();
-            description.sendKeys(Description);
+            description.sendKeys(data.get("Description"));
             Thread.sleep(5000);
             getSession().log_Pass("Entered Description");
 
@@ -287,7 +349,7 @@ public class TimeTrackerPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(updateButton);
             updateButton.click();
             Thread.sleep(5000);
-            getSession().log_Pass("Clicked on create button");
+            getSession().log_Pass("Clicked on update button");
 
            return new TimeTrackerPage();
 

@@ -96,9 +96,32 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage goToPMSummaryPage() throws Exception{
 		return null;
 	}
+	public ILiglPage verifySwitchedRegion(String SwitchedEntity) throws Exception {
+		return null;
+	}
+	public ILiglPage goToJobManagerPage(){
+		return null;
+	}
+	public ILiglPage switchRegionFunctionality(String SwitchedEntity) throws Exception {
+		return null;
+	}
 
+	public ILiglPage goToTimeTrackerPage() throws Exception{
+		return null;
+	}
+	public ILiglPage addTimeDetail(Hashtable<String, String> data) throws Exception {
+		return null;
+	}
+	public ILiglPage verifyEffortHoursValidation(String EffortHours) throws Exception {
+		return null;
+	}
+	public ILiglPage validateHoursExceededAlert(String Alert) throws Exception {
+		return null;
+	}
 
-
+	public ILiglPage verifyReleaseVersion(Hashtable<String, String> data) throws Exception {
+		return null;
+	}
 	public LiglTestSession getSession() {
 		return (LiglTestSession)Reporter.getCurrentTestResult().getTestContext().getAttribute("session");
 	}
@@ -1306,6 +1329,34 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage clickOnNewButton() throws Exception{return null;}
 
 	public ILiglPage searchAndSelectTheLookUp(String name) throws Exception{return null;}
+
+	public ILiglPage clickOnAddTimeDetailButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnCreateButtonInTimeTrackerPopUp() throws Exception{
+		return null;
+	}
+
+	public ILiglPage editFieldsInTimeTrackerPopUp(Hashtable<String, String> data) throws Exception {
+		return null;
+	}
+	public ILiglPage clickOnClearFilterButton() throws Exception {
+		return null;
+	}
+	public ILiglPage searchThroughTaskTitle(String TaskTitle) throws Exception{
+		return null;
+	}
+	public ILiglPage validateTheEditedDetailsInTheTimeTrackerGrid(Hashtable<String, String> data) throws Exception {
+		return null;
+	}
+
+	public ILiglPage secondSearchThroughTaskTitle(String TaskTitle) throws Exception {
+		return null;
+	}
+	public ILiglPage validateTheAddedDetailsInTheTimeTrackerGrid(Hashtable<String, String> data) throws Exception{
+		return null;
+	}
 
 	public ILiglPage createLookUp(String name, String displayOrder, String description, String entityType) throws Exception{
 		return null;

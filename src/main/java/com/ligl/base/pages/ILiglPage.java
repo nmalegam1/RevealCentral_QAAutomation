@@ -44,6 +44,10 @@ public interface ILiglPage {
 
     ILiglPage selectEntity(String entity);
 
+    ILiglPage goToTimeTrackerPage() throws Exception;
+
+    public ILiglPage addTimeDetail(Hashtable<String, String> data) throws Exception ;
+
     ILiglPage createNewCase(Hashtable<String, String> data) throws Exception;
 
     ILiglPage clickClearFilterBtn();
@@ -938,4 +942,20 @@ public interface ILiglPage {
 
     public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception;
 
+    public ILiglPage verifyReleaseVersion(Hashtable<String, String> data) throws Exception ;
+
+    ILiglPage clickOnAddTimeDetailButton() throws Exception;
+
+    ILiglPage clickOnCreateButtonInTimeTrackerPopUp() throws Exception;
+    ILiglPage editFieldsInTimeTrackerPopUp(Hashtable<String, String> data) throws Exception ;
+    ILiglPage clickOnClearFilterButton() throws Exception ;
+    ILiglPage searchThroughTaskTitle(String TaskTitle) throws Exception;
+    ILiglPage verifyEffortHoursValidation(String EffortHours) throws Exception ;
+    ILiglPage validateHoursExceededAlert(String Alert) throws Exception ;
+    ILiglPage verifySwitchedRegion(String SwitchedEntity) throws Exception ;
+    ILiglPage switchRegionFunctionality(String SwitchedEntity) throws Exception ;
+   ILiglPage validateTheEditedDetailsInTheTimeTrackerGrid(Hashtable<String, String> data) throws Exception;
+    ILiglPage goToJobManagerPage();
+    ILiglPage secondSearchThroughTaskTitle(String TaskTitle) throws Exception;
+    ILiglPage validateTheAddedDetailsInTheTimeTrackerGrid(Hashtable<String, String> data) throws Exception;
 }

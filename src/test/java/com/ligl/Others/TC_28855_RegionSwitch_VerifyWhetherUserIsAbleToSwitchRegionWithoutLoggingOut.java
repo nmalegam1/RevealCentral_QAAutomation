@@ -7,9 +7,9 @@ import com.ligl.util.DataUtil;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 import java.util.Hashtable;
-public class TC_55339_CheckWhetherNLRIsAbleToCreateCaseSuccessfully extends TestBase {
+public class TC_28855_RegionSwitch_VerifyWhetherUserIsAbleToSwitchRegionWithoutLoggingOut extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void TC_55339_CheckWhetherNLRIsAbleToCreateCaseSuccessfully(Hashtable<String,String> data) throws Exception {
+    public void TC_28855_RegionSwitch_VerifyWhetherUserIsAbleToSwitchRegionWithoutLoggingOut(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -22,14 +22,13 @@ public class TC_55339_CheckWhetherNLRIsAbleToCreateCaseSuccessfully extends Test
                     .openBrowser("chrome")
                     .navigateURL()
                     .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
-                    .createNewCase(data)
                     .getHeader()
-                    .goToCasePage()
-                    .searchcase(data.get("CaseName"))
+                    .switchRegionFunctionality(data.get("SwitchedEntity"))
+                    .verifySwitchedRegion(data.get("SwitchedEntity"))
                     .logout();
         }catch (Exception ex){
-            session.log_Error("CheckWhetherNLRIsAbleToCreateCaseSuccessfully Failed");
-            throw new Exception("CheckWhetherNLRIsAbleToCreateCaseSuccessfully Failed", ex);
+            session.log_Error("RegionSwitch_VerifyWhetherUserIsAbleToSwitchRegionWithoutLoggingOut Failed");
+            throw new Exception("RegionSwitch_VerifyWhetherUserIsAbleToSwitchRegionWithoutLoggingOut Failed", ex);
         }finally {
             session.end();
         }
