@@ -28,7 +28,7 @@ public class TC54559_Check_admin_is_able_to_create_edit_the_RequestType_lookup_v
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnLookupManagerLink()
+                    .navigateToLookupManagerPage()
                     .selectLookupType(data.get("SelectLookUp"))
                     .clickOnNewButton()
                     .createLookUp(data.get("RequestName"), data.get("DisplayOrder"), data.get("Description"), data.get("EntityOptional"))

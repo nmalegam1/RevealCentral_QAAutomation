@@ -28,9 +28,7 @@ public class TC33890_Creating_new_Employee_using_Employee_button_Test extends Te
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnEmployeeMaster()
+                    .navigateToEmployeeMaster()
                     .clickOnImport()
                     .clickOnAddEmployeeButton()
                     .createNewEmployee(data.get("EmpID"), data.get("FirstName"), data.get("MiddleName"), data.get("LastName"),

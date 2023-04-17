@@ -24,18 +24,17 @@ public class TC37930_Check_that_Deleted_stakeholders_are_not_displaying_in_Stake
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
+                    //Admin-Legal Hold
                     .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminLegalHold()
-                    .getAdminLeft()
-                    .clickOnStakeholderLink()
+                    .navigateToStakeholderPage()
                     .searchTheStakeholder(data.get("StakeholderEmail"))
                     .checkStakeholderDisplayingInGrid(data.get("StakeholderEmail"))
                     .getHeader()
                     .logout()
-
+                    //Case-Legal Hold
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("EmailId"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName"))

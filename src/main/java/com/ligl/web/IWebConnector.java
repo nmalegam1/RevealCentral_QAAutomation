@@ -33,6 +33,7 @@ public interface IWebConnector{
 	void waitForelementToBeClickable(WebElement element);
 
 	/*****************************************************************************/
+	boolean isSubstring(String main, String sub);
 
 	void scrollToView(WebElement element) throws Exception;
 	void waitForMoveToElement(WebElement element) throws Exception;
@@ -40,5 +41,9 @@ public interface IWebConnector{
 
 	void moveToRightInAngularTable(String number) throws Exception;
 	WebElement checkTheCheckBox(String textValue) throws Exception;
+
+	int maximumValueShouldNotExceed20Digits(String a1) throws Exception;
+
+	String removeSpecialCharacter(String convertString) throws Exception;
 
 }

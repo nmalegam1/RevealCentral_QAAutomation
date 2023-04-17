@@ -28,9 +28,7 @@ public class TC25196_User_Able_to_ResetPassword_And_without_Selecting_ManualPass
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .searchTheUser(data.get("SelectUser"))
                     .scrollToRightToDoActionInUsers(data.get("SelectUser"))
                     .adminResetPassword(data.get("ConformManualPawdReset"),
