@@ -55,16 +55,16 @@ public class LiglTestSession {
 		return (String) smokeProperties.get(td);
 	}
 	public void setRegressionData(String key, String value) throws IOException {
-		smokeProperties.setProperty(key,value);
-		smokeProperties.store(new FileOutputStream(Constants.REGRESSION_PROP_PATH),null);
+		regressionProperties.setProperty(key,value);
+		regressionProperties.store(new FileOutputStream(Constants.REGRESSION_PROP_PATH),null);
 	}
 	public String getRegressionData(String td)
 	{
 		return (String) regressionProperties.get(td);
 	}
 	public void setGlobalData(String key, String value) throws IOException {
-		smokeProperties.setProperty(key,value);
-		smokeProperties.store(new FileOutputStream(Constants.GLOBAL_PROP_PATH),null);
+		globalProperties.setProperty(key,value);
+		globalProperties.store(new FileOutputStream(Constants.GLOBAL_PROP_PATH),null);
 	}
 	public String getGlobalData(String td)
 	{
