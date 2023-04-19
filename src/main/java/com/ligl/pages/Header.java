@@ -88,6 +88,7 @@ public class Header extends LiglBasePage {
 			logoutLink.click();
 			getSession().log_Pass("Clicked logout link");
 			waitForPageToLoad();
+			getCurrentDriver().manage().window().minimize();
 			getSession().log_Pass("logout successful");
 			return new LoginPage();
 
