@@ -135,11 +135,6 @@ public abstract class LiglValidationDriver implements IWebConnector {
     }
 
     /*****************************************************/
-
-    public boolean isSubstring(String main, String sub){
-        return main.contains(sub);
-    }
-
     public void scrollToView(WebElement element) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView()", element);
@@ -189,9 +184,35 @@ public abstract class LiglValidationDriver implements IWebConnector {
 
     }
 
-    public String removeSpecialCharacter( String convertString) throws Exception{
+    public String removeSpecialCharacter(String convertString) throws Exception {
         String originalString = convertString.replace("*", "");
         return originalString;
+    }
+
+    /******************************Data Base**********************************************/
+
+    public boolean isSubstring(String main, String sub) {
+        return main.contains(sub);
+    }
+
+    public String concat(String stringOne, String stringTwo) {
+        String fullString = stringOne + " " + stringTwo;
+        return fullString;
+    }
+
+    public String sqlQueryForEmailTracker(String email, String subject) throws Exception {
+        try {
+            String sql1 = "SELECT TOP 1 * FROM VERTICAL.EMAILTRACKER WHERE TOADDRESS LIKE '%" + email + "%' AND SUBJECT LIKE '%" + subject + "%'ORDER BY 1 DESC";
+            return sql1;
+        } catch (Exception ex) {
+            getSession().log_Error("SQL Query For Email Tracker Failed");
+            throw new Exception(ex.getMessage());
+        }
+    }
+
+    public String sqlQueryForEmailStatusLookID(String parentID, String name) {
+        String sql2 = "select * from metadata.Lookup where Name like '%" + name + "%' and ParentID = " + parentID + "";
+        return sql2;
     }
 
 }
