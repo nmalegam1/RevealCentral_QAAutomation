@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Parent_and_Child_questions extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Parent_and_Child_questions(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Pa
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminLegalHold()
-                    .getAdminLeft()
-                    .clickOnManageQuestionBankPageLink()
+                    .navigateToManageQuestionBankPage()
                     .searchTheQuestion(data.get("ParentQuestion"))
                     .scrollToRightToDoActionInManageQuestionGrid(data.get("ParentQuestion"))
                     .clickOnEditInQuestionGrid()

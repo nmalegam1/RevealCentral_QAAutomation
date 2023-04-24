@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Hashtable;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.security.InvalidKeyException;
@@ -84,6 +85,8 @@ public class DMDSIPage extends LiglBaseSessionPage {
 
     @FindBy(id="dsi-custkeyword-id")
     WebElement CustomKWDropdown;
+    @FindBy(id="select-all-id")
+    WebElement SelectAllCCDs;
 
 
     public ILiglPage addDataSourceRecordToDSIGrid(String cust, String datasource, String DataHold,String DateRanges,String Keywords) throws Exception {
@@ -218,6 +221,61 @@ public class DMDSIPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage multipleCCDsSelect(Hashtable<String, String> data)throws Exception {
+        try {
+
+            log_Info("multipleCCDsSelect() Started");
+            if (data.get("O365_Exchange_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("O365_Exchange_Cust_FullName"), data.get("O365_Sharepoint_DataSource"), data.get("DHScope"));
+            }
+            if (data.get("O365_Sharepoint_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("O365_Sharepoint_Cust_FullName"), data.get("O365_Sharepoint_DataSource"), data.get("DHScope"));
+            }
+            if (data.get("OneDrive_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("OneDrive_Cust_FullName"), data.get("OneDrive_DataSource"), data.get("DHScope"));
+            }
+            if (data.get("MS_Teams_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("MS_Teams_Cust_FullName"), data.get("MS_Teams_DataSource"), data.get("DHScope"));
+            }
+
+
+            if (data.get("Hangouts_Chat_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Hangouts_Chat_Cust_FullName"), data.get("Hangouts_Chat_DataSource"), data.get("DHScope"));
+            }
+            if (data.get("GMail_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("GMail_Cust_FullName"), data.get("GMail_DataSource"), data.get("DHScope"));
+            }
+            if (data.get("GDrive_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("GDrive_Cust_FullName"), data.get("GDrive_DataSource"), data.get("DHScope"));
+            }
+            if (data.get("Google_Chat_RunState").equals("Y")) {
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Google_Chat_Cust_FullName"), data.get("Google_Chat_DataSource"), data.get("DHScope"));
+            }
+
+            if(data.get("Dropbox_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Dropbox_Cust_FullName"),data.get("Dropbox_DataSource"),data.get("DHScope"));
+            if(data.get("Box_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Box_Cust_FullName"),data.get("Box_DataSource"),data.get("DHScope"));
+            if(data.get("Proofpoint_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Proofpoint_Cust_FullName"),data.get("Proofpoint_DataSource"),data.get("DHScope"));
+            if(data.get("Zoom_Video_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Zoom_Video_Cust_FullName"),data.get("Zoom_Video_DataSource"),data.get("DHScope"));
+
+
+            if(data.get("Zoom_Chat_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Zoom_Chat_Cust_FullName"),data.get("Zoom_Chat_DataSource"),data.get("DHScope"));
+            if(data.get("Onna_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Onna_Cust_FullName"),data.get("Onna_DataSource"),data.get("DHScope"));
+            if(data.get("Slack_RunState").equals("Y"))
+                addDataSourceRecordToDSIGridUptoCollection(data.get("Slack_Cust_FullName"),data.get("Slack_DataSource"),data.get("DHScope"));
+
+
+            return new DMDSIPage();
+        } catch (Exception ex) {
+            log_Error("multipleCCDsSelect() Failed");
+            throw new Exception("multipleCCDsSelect()", ex);
+        }
+    }
     public ILiglPage automateRecordInDSI() throws Exception {
         try {
 
@@ -361,48 +419,39 @@ public class DMDSIPage extends LiglBaseSessionPage {
 
         try {
 
-
             log_Info("addDataSourceRecordToDSIGrid() Started");
             log_Info("Click on Add Data Source Button");
             getDriver().waitForelementToBeClickable(AddDSBtn);
-            Thread.sleep(3000);
             AddDSBtn.click();
+            Thread.sleep(3000);
             log_Info("Clicked on Add Data Source Button");
-
-            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", GeneralBtn);
-
 
             log_Info("Click on Custodian Drop Down");
             getDriver().waitForelementToBeClickable(CustDropDown);
-            Thread.sleep(5000);
-            CustDropDown.sendKeys(Keys.ENTER);
             CustDropDown.sendKeys(cust);
+            Thread.sleep(3000);
+            CustDropDown.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
 
-            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", GeneralBtn);
-            GeneralBtn.click();
             log_Info("Clicked on Custodian Drop Down");
-
-            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", GeneralBtn);
 
             log_Info("Click on DataSource Drop Down");
             getDriver().waitForelementToBeClickable(DataSourceDropDown);
+            DataSourceDropDown.sendKeys(datasource);
             Thread.sleep(5000);
             DataSourceDropDown.sendKeys(Keys.ENTER);
-            DataSourceDropDown.sendKeys(datasource);
             log_Info("Clicked on DataSource Drop Down");
 
             log_Info("Click on DataHold Scope Drop Down");
             getDriver().waitForelementToBeClickable(DataHoldScopeDD);
+            DataHoldScopeDD.sendKeys(DataHold);
             Thread.sleep(5000);
             DataHoldScopeDD.sendKeys(Keys.ENTER);
-            DataHoldScopeDD.sendKeys(DataHold);
-            GeneralBtn.click();
             log_Info("Clicked on DataHold Scope Drop Down");
 
 
             log_Info("Click on Search Button");
             getDriver().waitForelementToBeClickable(SearchBtn);
-            Thread.sleep(5000);
             SearchBtn.click();
             log_Info("Clicked on Search Button");
 
@@ -426,6 +475,13 @@ public class DMDSIPage extends LiglBaseSessionPage {
             log_Error("addDataSourceRecordToDSIGridUptoCollection() Failed");
             throw new Exception("Exception In addDataSourceRecordToDSIGridUptoCollection()", ex);
         }
+    }
+
+    public ILiglPage selectAllCCDs() throws InterruptedException {
+        log_Info("selectAllCCDs() Started");
+        SelectAllCCDs.click();
+        Thread.sleep(2000);
+        return new DMDSIPage();
     }
 
     public ILiglPage verifyNonApprovedScopeInCustomTab(String Custodian,String Datasource,String Daterange,String Keyword) throws Exception

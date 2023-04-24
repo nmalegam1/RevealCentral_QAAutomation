@@ -14,8 +14,8 @@ import java.util.Hashtable;
  * Sub Category of Entity -Check whether 'Region' field is mandatory in Create & Edit Case when Facility Config is True
  */
 public class TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test(Hashtable<String , String>data) throws Exception {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
+    public void TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -27,13 +27,12 @@ public class TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test e
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .checkRegionIsMandatory(data);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             session.log_Error("TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test Failed");
-            throw new Exception("TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test failed",ex);
-        }
-        finally {
+            throw new Exception("TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test failed", ex);
+        } finally {
             session.end();
         }
     }

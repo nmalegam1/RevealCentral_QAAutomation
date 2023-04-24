@@ -13,7 +13,7 @@ import java.util.Hashtable;
 public class TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold extends TestBase
 {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold(Hashtable<String, String> data) throws Exception
     {
         try {

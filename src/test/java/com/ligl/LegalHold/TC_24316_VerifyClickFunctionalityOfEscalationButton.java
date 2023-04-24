@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_24316_VerifyClickFunctionalityOfEscalationButton extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_24316_VerifyClickFunctionalityOfEscalationButton(Hashtable<String, String> data) throws Exception {
 
         try {

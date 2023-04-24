@@ -90,10 +90,7 @@ public class Header extends LiglBasePage {
 
 
 	public ILiglPage logout() throws Exception {
-
 		try {
-
-
 			getDriver().waitForelementToBeClickable(userNameLink);
 			userNameLink.click();
 			getSession().log_Pass("Clicked Username link");
@@ -101,6 +98,7 @@ public class Header extends LiglBasePage {
 			logoutLink.click();
 			getSession().log_Pass("Clicked logout link");
 			waitForPageToLoad();
+			getCurrentDriver().manage().window().minimize();
 			getSession().log_Pass("logout successful");
 			return new LoginPage();
 
@@ -114,6 +112,8 @@ public class Header extends LiglBasePage {
 
 		try {
 
+	public ILiglPage viewCase() throws Exception{
+		try{
 			log_Info("switchCase() Started");
 			SwitchCaseTab.click();
 			Thread.sleep(2000);
@@ -234,19 +234,33 @@ public class Header extends LiglBasePage {
 	}
 
 	public ILiglPage goToCasePage() throws Exception {
-
-		Thread.sleep(5000);
-		caseTab.click();
-		return new DefaultLandingPage();
+		try {
+			getSession().log_Info("Click on Case Tab");
+			wait(5);
+			getDriver().waitForelementToBeClickable(caseTab);
+			caseTab.click();
+			getDriver().waitForAngularRequestsToComplete();
+			wait(5);
+			getSession().log_Pass("Clicked on Case Tab");
+			return new DefaultLandingPage();
+		} catch (Exception | Error ex) {
+			log_Error(ex.getMessage());
+			throw new Exception("Go To Case Page Failed", ex);
+		}
 	}
-	public ILiglPage goToAdministrationPage() {
-		getSession().log_Info("Click on Administration Tab");
-		getDriver().waitForelementToBeClickable(AdministrationTab);
-		wait(2);
-		AdministrationTab.click();
-		getDriver().waitForAngularRequestsToComplete();
-		getSession().log_Pass("Clicked on Administration Tab");
-		return new ContactMasterPage();
+	public ILiglPage goToAdministrationPage() throws Exception{
+		try{
+			getSession().log_Info("Click on Administration Tab");
+			getDriver().waitForelementToBeClickable(AdministrationTab);
+			wait(2);
+			AdministrationTab.click();
+			getDriver().waitForAngularRequestsToComplete();
+			getSession().log_Pass("Clicked on Administration Tab");
+			return new ContactMasterPage();
+		}catch (Exception|Error ex){
+			log_Error(ex.getMessage());
+			throw new Exception("Go To oAdministration Page Failed", ex);
+		}
 	}
 
 	public ILiglPage goToGlobalRequestPage() {
@@ -259,9 +273,9 @@ public class Header extends LiglBasePage {
 		return new GlobalRequestPage();
 	}
 
-	public ILiglPage create(String elementText) {
+	/*public ILiglPage create(String elementText) {
 
-		/*addIcon.click();
+		*//*addIcon.click();
 		if(elementText.equals("lead")) {
 			submenuLead.click();
 			return new NewLeadPage();
@@ -271,11 +285,11 @@ public class Header extends LiglBasePage {
 		}else if(elementText.equals("task")) {
 			submenuTasks.click();
 			//return new NewContactPage();
-		}*/
+		}*//*
 		// report a failure and stop
 		return new LiglBasePage();
 
-	}
+	}*/
 
 	public ILiglPage goToAboutPage() {
 		aboutTab.click();

@@ -1,4 +1,5 @@
 package com.ligl.CaseManagement;
+
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.dataprovider.TestDataProvider;
@@ -12,7 +13,7 @@ import java.util.Hashtable;
 
 public class TC_32718_VerifyUserAbleToAddEmployeesToCustodians extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_32718_VerifyUserAbleToAddEmployeesToCustodians(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -28,7 +29,7 @@ public class TC_32718_VerifyUserAbleToAddEmployeesToCustodians extends TestBase 
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()

@@ -1,7 +1,6 @@
 package com.ligl.Administration.LegalHold.Stakeholder;
 
 import com.ligl.base.TestBase;
-import com.ligl.base.pages.Constants;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.dataprovider.TestDataProvider;
 import com.ligl.pages.LaunchPage;
@@ -12,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC51903_Check_the_Duplicate_Validation_Message_for_Email_field_in_Stakeholders_Create_and_Edit extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC51903_Check_the_Duplicate_Validation_Message_for_Email_field_in_Stakeholders_Create_and_Edit(Hashtable<String, String> data) throws Exception {
         try{
             session.log_Info(data.toString());
@@ -29,9 +28,7 @@ public class TC51903_Check_the_Duplicate_Validation_Message_for_Email_field_in_S
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminLegalHold()
-                    .getAdminLeft()
-                    .clickOnStakeholderLink()
+                    .navigateToStakeholderPage()
                     .clickOnAddStakeholderButton()
                     .createStakeholder(data.get("FirstName"), data.get("MiddleName"), data.get("LastName"), data.get("Email"),
                             data.get("Department"), data.get("Category"))

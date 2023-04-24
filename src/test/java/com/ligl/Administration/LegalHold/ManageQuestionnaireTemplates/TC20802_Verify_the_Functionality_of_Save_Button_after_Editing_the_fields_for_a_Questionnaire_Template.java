@@ -1,4 +1,4 @@
-package com.ligl.Administration.LegalHold.ManageQuestionnaireTemplatesPage;
+package com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "AdministrationManageQuestionnaireTemplates")
-    public void TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button(Hashtable<String, String> data) throws Exception{
+public class TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template extends TestBase {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
+    public void TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -28,16 +28,15 @@ public class TC20723_Verify_the_process_creating_New_Template_by_choosing_Create
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminLegalHold()
-                    .getAdminLeft()
-                    .clickOnManageQuestionnaireTemplatesPageLink()
-                    .clickOnAddTemplate()
-                    .createNewQuestionnaireTemplates(data)
+                    .navigateToManageQuestionnaireTemplatesPage()
+                    .selectQuestionnaireTemplate(data.get("QuestionnaireTemplate"))
+                    .clickOnEditButtonInManageQuestionnaireTemplate()
+                    .editQuestionnaireTemplate(data)
                     .getHeader()
                     .logout();
         } catch (Exception ex) {
-            session.log_Error("TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button Failed");
-            throw new Exception("TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button Failed", ex);
+            session.log_Error("TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template Failed");
+            throw new Exception("TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template Failed", ex);
         } finally {
             session.end();
         }

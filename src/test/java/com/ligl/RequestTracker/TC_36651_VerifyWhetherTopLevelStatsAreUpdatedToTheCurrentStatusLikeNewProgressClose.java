@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_36651_VerifyWhetherTopLevelStatsAreUpdatedToTheCurrentStatusLikeNewProgressClose extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "RequestTracker")
     public void TC_36651_VerifyWhetherTopLevelStatsAreUpdatedToTheCurrentStatusLikeNewProgressClose(Hashtable<String,String> data) throws Exception {
         try{
             session.log_Info(data.toString());

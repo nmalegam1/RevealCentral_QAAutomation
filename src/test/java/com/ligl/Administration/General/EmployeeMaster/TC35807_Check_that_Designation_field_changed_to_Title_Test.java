@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC35807_Check_that_Designation_field_changed_to_Title_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC35807_Check_that_Designation_field_changed_to_Title_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC35807_Check_that_Designation_field_changed_to_Title_Test extends 
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnEmployeeMaster()
+                    .navigateToEmployeeMaster()
                     .clickOnImport()
                     .clickOnAddEmployeeButton()
                     .titleFieldName()

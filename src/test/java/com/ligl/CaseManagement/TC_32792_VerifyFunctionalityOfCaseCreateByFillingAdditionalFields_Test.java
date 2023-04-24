@@ -14,8 +14,8 @@ import java.util.Hashtable;
  * Case-Verify the functionality of 'Save & Add Details' button after entering all Additional fields
  */
 public class TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_Test(Hashtable<String,String> data) throws Exception {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
+    public void TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -27,12 +27,12 @@ public class TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_T
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .caseCreateWithAdditionalFields(data);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             session.log_Error("TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_Test Failed");
             throw new Exception("Exception in TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_Test", ex);
-        }finally {
+        } finally {
             session.end();
         }
     }

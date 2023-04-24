@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC22059_Create_Ligl_User_with_out_Manual_Password_Test extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC22059_Create_Ligl_User_with_out_Manual_Password_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -29,9 +29,7 @@ public class TC22059_Create_Ligl_User_with_out_Manual_Password_Test extends Test
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .clickOnAddUserButton()
                     .swithToLiglUser()
                     .creatingLiglUser(data.get("UserName"), data.get("Email"), data.get("FirstName"),

@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC56376_Verify_user_able_to_import_Employee_by_giving_all_fields_in_Short_Template_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC56376_Verify_user_able_to_import_Employee_by_giving_all_fields_in_Short_Template_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -29,9 +29,7 @@ public class TC56376_Verify_user_able_to_import_Employee_by_giving_all_fields_in
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnEmployeeMaster()
+                    .navigateToEmployeeMaster()
                     .clickOnImport()
                     .employeeBulkImport(Constants.ImportXLSX_ShortTemplate)
                     .getHeader()

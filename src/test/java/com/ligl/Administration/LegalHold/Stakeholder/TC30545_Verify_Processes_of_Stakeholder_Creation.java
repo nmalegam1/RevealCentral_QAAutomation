@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC30545_Verify_Processes_of_Stakeholder_Creation extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC30545_Verify_Processes_of_Stakeholder_Creation(Hashtable<String, String> data) throws Exception {
         try{
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC30545_Verify_Processes_of_Stakeholder_Creation extends TestBase {
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminLegalHold()
-                    .getAdminLeft()
-                    .clickOnStakeholderLink()
+                    .navigateToStakeholderPage()
                     .clickOnAddStakeholderButton()
                     .createStakeholder(data.get("FirstName"), data.get("MiddleName"), data.get("LastName"), data.get("Email"),
                             data.get("Department"), data.get("Category"))

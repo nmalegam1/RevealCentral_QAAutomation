@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class Initiate_AutoProcess_ForRecordUpto_RelativityProcessing_SmokeTest extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Smoke")
     public void Initiate_AutoProcess_ForRecordUpto_RelativityProcessing_SmokeTest(Hashtable<String, String> data) throws Exception {
 
         try {

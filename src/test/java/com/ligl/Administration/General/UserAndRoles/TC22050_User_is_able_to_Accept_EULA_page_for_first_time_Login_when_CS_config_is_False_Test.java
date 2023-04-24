@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC22050_User_is_able_to_Accept_EULA_page_for_first_time_Login_when_CS_config_is_False_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC22050_User_is_able_to_Accept_EULA_page_for_first_time_Login_when_CS_config_is_False_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());

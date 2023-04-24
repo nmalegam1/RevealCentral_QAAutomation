@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC35048_Edit_Subject_and_Content_for_Mentioned_Email_Template_Categories_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC35048_Edit_Subject_and_Content_for_Mentioned_Email_Template_Categories_Test(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC35048_Edit_Subject_and_Content_for_Mentioned_Email_Template_Categ
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnEmailTemplatesLink()
+                    .navigateToEmailTemplatesPage()
                     .editEmailTemplate(data.get("SelectEmailTemplateCategory"), data.get("SelectEmailTemplate"),
                             data.get("EditSubject"), data.get("EditContent"))
                     .editEmailTemplate(data.get("SelectEmailTemplateCategory1"), data.get("SelectEmailTemplate1"),

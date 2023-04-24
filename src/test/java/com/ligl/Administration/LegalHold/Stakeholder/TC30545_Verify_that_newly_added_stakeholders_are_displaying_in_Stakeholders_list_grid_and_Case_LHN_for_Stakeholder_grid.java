@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC30545_Verify_that_newly_added_stakeholders_are_displaying_in_Stakeholders_list_grid_and_Case_LHN_for_Stakeholder_grid extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC30545_Verify_that_newly_added_stakeholders_are_displaying_in_Stakeholders_list_grid_and_Case_LHN_for_Stakeholder_grid(Hashtable<String, String> data) throws Exception {
         try{
             session.log_Info(data.toString());
@@ -24,19 +24,17 @@ public class TC30545_Verify_that_newly_added_stakeholders_are_displaying_in_Stak
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-
+                    //Admin-Legal Hold
                     .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminLegalHold()
-                    .getAdminLeft()
-                    .clickOnStakeholderLink()
+                    .navigateToStakeholderPage()
                     .searchTheStakeholder(data.get("StakeholderEmail"))
                     .checkStakeholderDisplayingInGrid(data.get("StakeholderEmail"))
                     .getHeader()
                     .logout()
-
+                    //Case-Legal Hold
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("EmailId"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName"))

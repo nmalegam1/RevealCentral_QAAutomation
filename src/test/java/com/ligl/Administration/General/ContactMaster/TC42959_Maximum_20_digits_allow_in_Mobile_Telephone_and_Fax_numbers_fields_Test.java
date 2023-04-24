@@ -12,7 +12,7 @@ import com.ligl.pages.LaunchPage;
 import com.ligl.util.DataUtil;
 
 public class TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_Test extends TestBase{
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_Test(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());

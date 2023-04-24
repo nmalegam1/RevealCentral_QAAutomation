@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC54559_Check_admin_is_able_to_create_edit_the_RequestType_lookup_value_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC54559_Check_admin_is_able_to_create_edit_the_RequestType_lookup_value_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -28,7 +28,7 @@ public class TC54559_Check_admin_is_able_to_create_edit_the_RequestType_lookup_v
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnLookupManagerLink()
+                    .navigateToLookupManagerPage()
                     .selectLookupType(data.get("SelectLookUp"))
                     .clickOnNewButton()
                     .createLookUp(data.get("RequestName"), data.get("DisplayOrder"), data.get("Description"), data.get("EntityOptional"))

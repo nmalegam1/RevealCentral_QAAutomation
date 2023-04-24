@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC54576_Check_admin_is_able_to_Create_or_edit_the_Case_type_lookup_value_when_CS_config_is_false_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC54576_Check_admin_is_able_to_Create_or_edit_the_Case_type_lookup_value_when_CS_config_is_false_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -28,7 +28,7 @@ public class TC54576_Check_admin_is_able_to_Create_or_edit_the_Case_type_lookup_
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnLookupManagerLink()
+                    .navigateToLookupManagerPage()
                     .selectLookupType(data.get("SelectLookUp"))
                     .clickOnNewButton()
                     .createLookUp(data.get("CaseTypeName"), data.get("DisplayOrder"), data.get("Description"), data.get("Optional"))

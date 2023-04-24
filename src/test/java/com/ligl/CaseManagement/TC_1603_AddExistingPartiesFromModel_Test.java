@@ -14,9 +14,9 @@ import java.util.Hashtable;
  * Case-Other Party-Verifying the functionality of Assigning one or more existing Parties from modal
  */
 public class TC_1603_AddExistingPartiesFromModel_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void TC_1603_AddExistingPartiesFromModel_Test(Hashtable<String , String> data) throws Exception {
-        try{
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
+    public void TC_1603_AddExistingPartiesFromModel_Test(Hashtable<String, String> data) throws Exception {
+        try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
                 // skip in extent rep
@@ -27,17 +27,17 @@ public class TC_1603_AddExistingPartiesFromModel_Test extends TestBase {
             ILiglPage Launch = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToOtherPartyPage()
-                    .addingExistingParty(data.get("PartyName"),data.get("PartyType"))
+                    .addingExistingParty(data.get("PartyName"), data.get("PartyType"))
                     .validatePartyCreatedOrNot(data.get("PartyName"));
-        }catch (Exception ex){
+        } catch (Exception ex) {
             session.log_Error("TC_1603_AddExistingPartiesFromModel_Test Failed");
             throw new Exception("TC_1603_AddExistingPartiesFromModel_Test Failed", ex);
-        }finally {
+        } finally {
             session.end();
         }
     }

@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected(Hashtable<String, String> data) throws Exception {
 
         try {

@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC7065_Check_Party_types_are_displaying_based_on_selected_Contact_type_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData",description = "Administration")
     public void TC7065_Check_Party_types_are_displaying_based_on_selected_Contact_type_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());

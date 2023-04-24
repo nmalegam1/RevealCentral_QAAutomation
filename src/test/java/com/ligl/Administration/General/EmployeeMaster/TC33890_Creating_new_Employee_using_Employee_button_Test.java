@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC33890_Creating_new_Employee_using_Employee_button_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC33890_Creating_new_Employee_using_Employee_button_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC33890_Creating_new_Employee_using_Employee_button_Test extends Te
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnEmployeeMaster()
+                    .navigateToEmployeeMaster()
                     .clickOnImport()
                     .clickOnAddEmployeeButton()
                     .createNewEmployee(data.get("EmpID"), data.get("FirstName"), data.get("MiddleName"), data.get("LastName"),

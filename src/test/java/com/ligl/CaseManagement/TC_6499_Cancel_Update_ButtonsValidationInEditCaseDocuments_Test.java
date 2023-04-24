@@ -14,8 +14,8 @@ import java.util.Hashtable;
  * Case-Documents-Verify the functionality of Cancel & Update buttons in Edit Document modal
  */
 public class TC_6499_Cancel_Update_ButtonsValidationInEditCaseDocuments_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void TC_6499_Cancel_Update_ButtonsValidationInEditCaseDocuments_Test(Hashtable<String,String> data) throws Exception {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
+    public void TC_6499_Cancel_Update_ButtonsValidationInEditCaseDocuments_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

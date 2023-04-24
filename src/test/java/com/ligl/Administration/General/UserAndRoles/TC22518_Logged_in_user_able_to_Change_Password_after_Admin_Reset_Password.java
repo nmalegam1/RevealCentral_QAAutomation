@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC22518_Logged_in_user_able_to_Change_Password_after_Admin_Reset_Password extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC22518_Logged_in_user_able_to_Change_Password_after_Admin_Reset_Password(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());

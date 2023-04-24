@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC22060_Check_newly_created_CaseSettings_templates_are_populating_in_CaseSettingsTemplate_dropdown_in_Create_a_New_Case_Test extends TestBase{
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData",description = "Administration")
     public void TC22060_Check_newly_created_CaseSettings_templates_are_populating_in_CaseSettingsTemplate_dropdown_in_Create_a_New_Case_Test(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());

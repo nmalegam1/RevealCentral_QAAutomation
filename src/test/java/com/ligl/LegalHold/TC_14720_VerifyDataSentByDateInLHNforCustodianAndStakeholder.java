@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_14720_VerifyDataSentByDateInLHNforCustodianAndStakeholder extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_14720_VerifyDataSentByDateInLHNforCustodianAndStakeholder(Hashtable<String, String> data) throws Exception {
 
         try {

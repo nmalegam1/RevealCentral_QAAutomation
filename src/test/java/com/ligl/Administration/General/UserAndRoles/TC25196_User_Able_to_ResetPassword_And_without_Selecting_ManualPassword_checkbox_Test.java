@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC25196_User_Able_to_ResetPassword_And_without_Selecting_ManualPassword_checkbox_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC25196_User_Able_to_ResetPassword_And_without_Selecting_ManualPassword_checkbox_Test(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC25196_User_Able_to_ResetPassword_And_without_Selecting_ManualPass
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .searchTheUser(data.get("SelectUser"))
                     .scrollToRightToDoActionInUsers(data.get("SelectUser"))
                     .adminResetPassword(data.get("ConformManualPawdReset"),

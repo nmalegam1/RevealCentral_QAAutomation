@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_SSO_User_Create_Edit_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_SSO_User_Create_Edit_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_SSO_U
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .clickOnAddUserButton()
                     .creatingSSOUser(data.get("Email"), data.get("FirstName"),
                             data.get("MiddleName"), data.get("LastName"), data.get("Role"), data.get("Status"))

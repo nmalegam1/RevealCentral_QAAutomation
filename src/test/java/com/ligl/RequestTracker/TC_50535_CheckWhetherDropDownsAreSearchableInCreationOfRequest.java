@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_50535_CheckWhetherDropDownsAreSearchableInCreationOfRequest extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "RequestTracker")
     public void TC_50535_CheckWhetherDropDownsAreSearchableInCreationOfRequest(Hashtable<String,String> data) throws Exception {
         try{
             session.log_Info(data.toString());

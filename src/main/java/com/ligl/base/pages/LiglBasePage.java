@@ -115,6 +115,16 @@ public class LiglBasePage implements ILiglPage {
 		getSession().log_Info(message);
 	}
 
+	@Override
+	public ILiglPage multipleCustodianSelect(Hashtable<String, String> data) throws Exception {
+		return null;
+	}
+
+	@Override
+	public ILiglPage multipleDataSourceSelect(Hashtable<String, String> data) throws Exception {
+		return null;
+	}
+
 	public void log_Pass(String message) {
 		getSession().log_Pass(message);
 	}
@@ -1301,11 +1311,13 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage checkNewlyCreatedCaseSettingTemplatePopulatedInCaseSettingsTemplateDropDown(String caseSettingsTemplate) throws Exception{
 		return null;
 	}
+	public String getCCDStats(){return null;}
 
 	/*Lookup Manager Page*/
 	public ILiglPage selectLookupType(String lookup) throws Exception{
 		return null;
 	}
+	public ILiglPage goToExports(String a){return null;}
 
 	public ILiglPage clickOnNewButton() throws Exception{return null;}
 
@@ -1351,6 +1363,11 @@ public class LiglBasePage implements ILiglPage {
 
 	public ILiglPage checkDeletedStakeholderISDisplayingInLHStakeholderGrid(String email) throws Exception{return null;}
 
+	@Override
+	public ILiglPage clickOnQuestionnaire() throws Exception {
+		return null;
+	}
+
 	public ILiglPage verifyTheDuplicateValidationMessage() throws Exception{return null;}
 
 	/*
@@ -1395,7 +1412,11 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage clickOnEditIconInTheGrid(String TITLE) throws Exception{
 		return null;
 	}
+	public ILiglPage goToMatters() throws Exception {return null;}
+	public ILiglPage searchMatter(String matter){return null;}
 
+	 public ILiglPage googleVaultLogin(String s1,String s2,String s3)throws Exception{return null;}
+	public ILiglPage validateCollectionStats()throws Exception{return null;}
 	public ILiglPage addAllDetailsInTheAddRequestPopUpWithoutAssignee(String RequestType,String REQTitle,String CaseDropDown,String PriorityDropDown,String CompleteDate,String TextBoxArea) throws Exception{
 		return null;
 	}
@@ -1412,9 +1433,15 @@ public class LiglBasePage implements ILiglPage {
 	/**
 	 * ManageQuestionnaireTemplatesPage*/
 
-	public ILiglPage clickOnAddTemplate() throws Exception{return null;}
+	public ILiglPage clickOnAddTemplate(Hashtable<String, String> data) throws Exception{return null;}
+
+	public ILiglPage clickOnEditButtonInManageQuestionnaireTemplate() throws Exception{return null;}
 
 	public ILiglPage clickOnAddNewQuestionButton() throws Exception{return null;}
+
+	public ILiglPage selectQuestionnaireTemplate(String questionnaireTemplate) throws Exception{return null;}
+
+	public ILiglPage searchTheQuestionInManageQuestionTemplate(String question) throws Exception{return null;}
 
 	public ILiglPage createNewQuestionnaireTemplates(Hashtable<String,String> data)
 			throws Exception{return null;}
@@ -1422,6 +1449,58 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception{
 		return null;
 	}
+
+	public ILiglPage deLinkTheQuestion(String question) throws Exception{return null;}
+
+	public ILiglPage editQuestionnaireTemplate(Hashtable<String, String> data) throws Exception{return null;}
+
+	public ILiglPage checkThatNewlyCreatedQuestionnaireIsDisplaying(String legalHoldName, String custodianNotice,
+																	String custodianQuestionner, String stakeholderNotice,
+																	String stakeholderQuestionner) throws Exception{
+		return null;
+	}
+
+	public ILiglPage getQuestionnaireTemplateName(String setQuestion) throws Exception{return null;}
+
+	/**
+	 * Escalation And Reminder
+	 */
+
+	public ILiglPage createLegalHoldWithEscalationAndReminderConfigurations(Hashtable<String, String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage getReminderConfigurationsValuesInLegalHoldAtCaseLevel(String legalHoldName, String setReminderDays, String setReminderFrequency,
+																		   String setReminderMailsCap) throws Exception{
+		return null;
+	}
+
+	public ILiglPage getEscalationConfigurationsValuesInLegalHoldAtCaseLevel(String setEscalationDays, String setEscalationFrequency,
+																			 String setEscalationMailsCap) throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkThatReminderConfigurationsInLegalHoldAtAminLevel(String checkReminderDay,String checkReminderFrequency,
+																		   String checkReminderMailsCap) throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkThatEscalationConfigurationsInLegalHoldAtAminLevel(String checkEscalationDay,String checkEscalationFrequency,
+																			 String checkEscalationMailsCap) throws Exception{
+		return null;
+	}
+
+	/**
+	 * Manage Display Content
+	 */
+	public ILiglPage verifyTheParametersInManageDisplayContent(String manageContentCategory,
+															   String parameter1, String parameter2) throws Exception{
+		return null;
+	}
+
+
+
+	/******************************************************************End Admin******************************************************************/
 
 	public ILiglPage searchForTheParticularTitleOfTheRequest(String title) throws Exception{
 		return null;
@@ -1499,6 +1578,53 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
+	public ILiglPage searchRequiredDaterangeName(String DRname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage disabledDateRangeNotesClick(String DRName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage NotesDelete(String NotesContent) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateDeletedNote(String NotesContent) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enabledDateRangeNotesClick(String DRName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enabledKeywordsNotesClick(String KWname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchRequiredKeywordName(String KWname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage disabledKeywordsNotesClick(String KWname) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromInHouseCounselPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateUnavailabilityOfActionColumnInEmployeeMasterFromCustodiansPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception{
+		return null;
+	}
 	public ILiglPage clickOnProcessInsightsTab() throws Exception{
 		return null;
 	}
@@ -1609,6 +1735,8 @@ public class LiglBasePage implements ILiglPage {
 		}
 
 	}
+	public ILiglPage selectAllCCDs() throws InterruptedException {return null;}
+	public ILiglPage multipleCCDsSelect(Hashtable<String, String> data) throws Exception {return null;}
 
 	public void wait(int time) {
 		try {

@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTestNuix extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Smoke")
     public void Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTestNuix(Hashtable<String, String> data) throws Exception {
 
         try {

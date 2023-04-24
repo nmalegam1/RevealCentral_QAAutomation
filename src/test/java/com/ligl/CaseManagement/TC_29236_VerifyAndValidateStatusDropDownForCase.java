@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_29236_VerifyAndValidateStatusDropDownForCase extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
     public void TC_29236_VerifyAndValidateStatusDropDownForCase(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -28,11 +28,10 @@ public class TC_29236_VerifyAndValidateStatusDropDownForCase extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .verifyingTheStatusDropDownForACase(data.get("StatusDrpDwn"))
                     .validatingUpdatedStatus(data.get("StatusDrpDwn"));
-
 
 
         } catch (Exception ex) {

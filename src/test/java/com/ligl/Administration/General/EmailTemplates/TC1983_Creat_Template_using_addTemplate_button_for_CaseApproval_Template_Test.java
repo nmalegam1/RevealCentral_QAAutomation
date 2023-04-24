@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC1983_Creat_Template_using_addTemplate_button_for_CaseApproval_Template_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC1983_Creat_Template_using_addTemplate_button_for_CaseApproval_Template_Test(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC1983_Creat_Template_using_addTemplate_button_for_CaseApproval_Tem
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnEmailTemplatesLink()
+                    .navigateToEmailTemplatesPage()
                     .createNewEmailTemplate(data.get("EmailTemplateCategory"), data.get("EmailTemplateName"),
                             data.get("Subject"), data.get("Content"))
                     .getHeader()

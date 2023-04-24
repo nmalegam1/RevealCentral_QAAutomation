@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC25171_SSO_User_ResetPassword_button_Click_Disabled_in_UserRoles_grid_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC25171_SSO_User_ResetPassword_button_Click_Disabled_in_UserRoles_grid_Test(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC25171_SSO_User_ResetPassword_button_Click_Disabled_in_UserRoles_g
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .searchTheUser(data.get("SearchSSOUser"))
                     .scrollToRightToDoActionInUsers(data.get("SearchSSOUser"))
                     .restPasswordClickDisabledForSSOUser(data.get("SearchSSOUser"))

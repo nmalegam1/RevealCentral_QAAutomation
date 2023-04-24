@@ -13,7 +13,7 @@ import java.util.Hashtable;
 ///Sending Case For Approval And Approving Case
 
 public class TC_44284_SendCaseForApproval_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "CaseManagement")
     public void TC_44284_SendCaseForApproval_Test(Hashtable<String , String> data) throws Exception {
         try {
             session.log_Info(data.toString());

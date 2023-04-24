@@ -13,7 +13,7 @@ import java.util.Hashtable;
 
 public class TC40180_user_is_able_to_import_employee_without_filling_Title_field_Test extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC40180_user_is_able_to_import_employee_without_filling_Title_field_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -30,9 +30,7 @@ public class TC40180_user_is_able_to_import_employee_without_filling_Title_field
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnEmployeeMaster()
+                    .navigateToEmployeeMaster()
                     .clickOnImport()
                     .employeeBulkImport(Constants.ImportXLSX_Template_Title_Optional)
                     .getHeader()

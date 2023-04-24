@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC30468_Employee_Edit_Verify_that_HRStatus_HireDate_TerminatedDate_fields_are_editable_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC30468_Employee_Edit_Verify_that_HRStatus_HireDate_TerminatedDate_fields_are_editable_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC30468_Employee_Edit_Verify_that_HRStatus_HireDate_TerminatedDate_
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnEmployeeMaster()
+                    .navigateToEmployeeMaster()
                     .searchAndSelectTheEmployee(data.get("SearchEmployeeAlias"))
                     .editableFiedsHRStatusHireDateTerminatedDate(data.get("HireDate"), data.get("TerminatedDate"), data.get("HRStatus"))
                     .getHeader()

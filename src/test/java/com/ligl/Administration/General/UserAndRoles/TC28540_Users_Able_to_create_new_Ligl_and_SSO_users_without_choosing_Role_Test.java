@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC28540_Users_Able_to_create_new_Ligl_and_SSO_users_without_choosing_Role_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC28540_Users_Able_to_create_new_Ligl_and_SSO_users_without_choosing_Role_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC28540_Users_Able_to_create_new_Ligl_and_SSO_users_without_choosin
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .clickOnAddUserButton()
                     .swithToLiglUser()
                     .creatingLiglUser(data.get("UserName"), data.get("Email"), data.get("FirstName"),

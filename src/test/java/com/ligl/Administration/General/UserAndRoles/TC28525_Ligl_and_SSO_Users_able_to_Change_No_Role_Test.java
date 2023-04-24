@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC28525_Ligl_and_SSO_Users_able_to_Change_No_Role_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC28525_Ligl_and_SSO_Users_able_to_Change_No_Role_Test(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -28,9 +28,7 @@ public class TC28525_Ligl_and_SSO_Users_able_to_Change_No_Role_Test extends Test
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .searchTheUser(data.get("SelectLiglUser"))
                     .scrollToRightToDoActionInUsers(data.get("SelectLiglUser"))
                     .changeRole(data.get("SelectLiglRole"))
@@ -41,9 +39,7 @@ public class TC28525_Ligl_and_SSO_Users_able_to_Change_No_Role_Test extends Test
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .searchTheUser(data.get("SelectSSOUser"))
                     .scrollToRightToDoActionInUsers(data.get("SelectSSOUser"))
                     .changeSSORole(data.get("SelectSSORole"))
