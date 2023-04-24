@@ -25,7 +25,7 @@ import java.util.ArrayList;
         import java.util.List;
         import java.util.concurrent.TimeUnit;
 
-public class LegalHoldPage extends LiglBasePage {
+public class LegalHoldPage extends LiglBaseSessionPage {
 
 
 

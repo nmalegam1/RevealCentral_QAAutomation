@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import javax.swing.*;
@@ -150,6 +151,27 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     WebElement AddDropDown;
     @FindBy(xpath = "//span[contains(text(),'Region is required')]")
     WebElement RegionReqValidation;
+
+    @FindBy(xpath = "//span[contains(text(),'Last Date Modified')]/ancestor::div[@ref='eLabel']")
+    WebElement LastDateModifiedHeader;
+
+    @FindBy(xpath = "//div[@col-id='ModifiedOn']//span[@ref='eMenu']")
+    WebElement DateModifierMenu;
+
+    @FindBy(xpath = "//div[@aria-label='Filtering operator']//div[@ref='eIcon']")
+    WebElement ComparatorDropDown;
+
+    @FindBy(xpath = "//div[@class='ag-filter-apply-panel']//button[contains(text(),'Apply')]")
+    WebElement ApplyButton;
+
+    @FindBy(xpath = "//label[@class='matchresults']//b")
+    WebElement CasesCount;
+
+    @FindBy(xpath = "//div[contains(text(),'Total Cases')]/ancestor::td//td[@class='tile-value']//div")
+    WebElement CasesCountInDashBoard;
+
+    @FindBy(xpath = "//div[@ref='eDateInput']//input[@ref='eInput']")
+    WebElement DateFormat;
 
 
     /**
@@ -424,6 +446,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
         try {
 
+            getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitForAngularRequestsToComplete();
+
             getDriver().waitForelementToBeClickable(CaseNameHeader);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(CaseNameHeader).perform();
@@ -471,6 +496,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             throw new Exception("GoToCase() Failed ",ex);
         }
     }
+
 
     public ILiglPage verifyCreatedByColDataInCaseGrid(String CreatedByName) throws Exception {
 
@@ -760,7 +786,91 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
         }
     }
 
-    /****************************************************************************************************************/
+    public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title) throws Exception {
+
+        try {
+
+            getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitForAngularRequestsToComplete();
+
+            getDriver().waitForelementToBeClickable(LastDateModifiedHeader);
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(LastDateModifiedHeader).perform();
+            log_Info("pointed mouse To The Date Modifier Menu");
+            waitForPageToLoad();
+
+            log_Info("click on Date Modifier Menu");
+            DateModifierMenu.click();
+            log_Info("clicked on Date Modifier Menu");
+            waitForPageToLoad();
+
+            log_Info("click on Date Modifier filter");
+            CaseSearchFilter.click();
+            log_Info("clicked on Date Modifier filter");
+            waitForPageToLoad();
+
+            log_Info("click On Date Modifier Dropdown");
+            ComparatorDropDown.click();
+            Thread.sleep(3000);
+            log_Info("clicked On Date Modifier Dropdown");
+            Thread.sleep(3000);
+            log_Info("click On Date Modifier Dropdown Value");
+            Thread.sleep(3000);
+            getCurrentDriver().findElement(By.xpath("//div[@role='option']//span[contains(text(),'"+Comparator+"')]")).click();
+            Thread.sleep(2000);
+            log_Info("clicked On Date Modifier Dropdown Value ");
+            waitForPageToLoad();
+            log_Info("Enter The Date In The Bar");
+            DateFormat.click();
+            Thread.sleep(2000);
+            DateFormat.sendKeys(Date);
+            Thread.sleep(2000);
+            DateFormat.sendKeys(Month);
+            Thread.sleep(2000);
+            DateFormat.sendKeys(Year);
+            Thread.sleep(2000);
+            log_Info("Entered The Date In The Bar");
+            log_Info("Click On Apply Button");
+            ApplyButton.click();
+            Thread.sleep(2000);
+            log_Info("Clicked On Apply Button");
+            Thread.sleep(5000);
+            waitForPageToLoad();
+
+
+            String CasesCOUNT = CasesCount.getText();
+            int CasescountDL = Integer.parseInt(CasesCOUNT);
+
+            log_Info("Total Number Of Cases  : " + CasescountDL);
+
+            getHeader().navigateToDashboardPage()
+                    .validateDashBoardPageURL(Title);
+
+            String CasesCountDB = CasesCountInDashBoard.getText();
+            int CASESCountDB = Integer.parseInt(CasesCountDB);
+
+            log_Info("Total Number Of Cases  : " + CASESCountDB);
+
+            try {
+
+                if (CasescountDL == CASESCountDB) {
+
+                    log_Pass("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are EQUAL ");
+                }
+            }
+            catch(Exception e) {
+                log_Error("Total Count In Both Pages Are Not Equal");
+            }
+
+            return  new DashboardPage();
+
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("searchLastDateModifiedColumn() Failed",ex);
+        }
+
+    }
 
 
 }

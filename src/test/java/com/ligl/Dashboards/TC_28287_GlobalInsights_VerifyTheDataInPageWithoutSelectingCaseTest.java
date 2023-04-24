@@ -1,0 +1,2 @@
+package com.ligl.Dashboards;public class TC_28287_GlobalInsights_VerifyTheDataInPageWithoutSelectingCaseTest {
+}

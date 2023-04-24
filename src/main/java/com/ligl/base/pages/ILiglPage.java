@@ -979,6 +979,51 @@ public interface ILiglPage {
     ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB, String PartyType, String Description,String StatusDrpdown) throws Exception;
 
 
+    ILiglPage navigateToDashboardPage() throws Exception;
+
+    ILiglPage clickOnProcessInsightsTab() throws Exception;
+
+    ILiglPage clickOnReviewInsightsTab() throws Exception;
+
+    ILiglPage clickOnLegalHoldInsightsTab() throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfTheProcessInsightsStats(String Email) throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfTheLegalHoldInsightsStats(String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus,String LHname,String Action) throws Exception;
+
+    ILiglPage selectCase() throws Exception;
+
+    ILiglPage validateTheNavigateToDashBoardPageURL(String PageTitle) throws Exception;
+
+    ILiglPage clickOnProductionInsightsTab() throws Exception;
+
+    ILiglPage clickOnGlobalInsightsTab() throws Exception;
+
+    ILiglPage validateDashBoardPageURL(String PageTitle) throws Exception;
+
+    ILiglPage clearCaseFunctionality() throws Exception;
+
+    ILiglPage validateTheSelectCaseNameInHeader() throws Exception;
+
+    ILiglPage checkAndValidateTheFunctionalityOfFromToDateAndApplyButton(String SYEAR,String SMONTH,String SDATE,String EYEAR,String EMONTH,String EDATE) throws Exception;
+    ILiglPage clickOnPrintButton() throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfTheCaseInsightsStats(String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus,String Pstatus) throws Exception;
+
+    ILiglPage clickOnClearAllButton() throws Exception;
+
+    ILiglPage validateThePrintButtonFunctionality() throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfTheGlobalInsightsStats(String CaseName,String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus) throws Exception;
+
+    ILiglPage validateUserAccessCasesCountWhenUACsetToFalse(String USERname,String PASSword,String ENTITYSelection,String Title) throws Exception;
+
+
+    ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title) throws Exception;
+
+
+
+
 
 
 
