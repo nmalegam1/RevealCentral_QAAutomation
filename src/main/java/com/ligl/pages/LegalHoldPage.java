@@ -27,10 +27,6 @@ import java.util.concurrent.TimeUnit;
 
 public class LegalHoldPage extends LiglBaseSessionPage {
 
-
-
-public class LegalHoldPage extends LiglBaseSessionPage {
-
     @FindBy(xpath = "//span[@title='QA_Nov24v5 - LHNLIGLv']")
     WebElement LegalHoldName;
 
@@ -4441,6 +4437,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             throw new Exception("Check That Newly Created Questionnaire Is Displaying Failed", ex);
         }
     }
-
 }
+
 

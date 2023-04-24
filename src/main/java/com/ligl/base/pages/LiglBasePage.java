@@ -476,7 +476,7 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage creatingNewTemplate() throws Exception {
 		return null;
 	}
-	public  ILiglPage goToAdministrationPage() throws InterruptedException {
+	public  ILiglPage goToAdministrationPage() throws Exception {
 		return null;
 	}
 	public ILiglPage goToAdminLeftMenu() throws Exception {
@@ -1703,6 +1703,14 @@ public class LiglBasePage implements ILiglPage {
 	}
 
 	public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validatingEmailsInDB() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateEmpData(String custodianName, String emailID) throws Exception{
 		return null;
 	}
 	public void waitForPageToLoad(){

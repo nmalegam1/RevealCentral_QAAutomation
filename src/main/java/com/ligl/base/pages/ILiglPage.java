@@ -6,6 +6,7 @@ import com.ligl.pages.administration.AdminLeftMenu;
 import com.ligl.pages.casemanagement.CaseCustodiansPage;
 import com.ligl.session.LiglTestSession;
 import com.ligl.web.IWebConnector;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 
 import java.util.Hashtable;
 
@@ -187,6 +188,8 @@ public interface ILiglPage {
     ILiglPage validateCustodianAfterApproved(String Employee1) throws Exception;
 
     ILiglPage goToCaseManagement() throws InterruptedException;
+
+    ILiglPage validatingEmailsInDB() throws Exception;
 
     ILiglPage verifyApprovalHistoryStatus(String AssignedUser1,String Status1,String Status2,String AssignedUser2) throws Exception;
 
@@ -1096,6 +1099,8 @@ public interface ILiglPage {
     ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception;
 
     ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception;
+
+    ILiglPage validateEmpData(String custodianName, String emailID) throws Exception;
 
 }
 

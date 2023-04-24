@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_27224_RelativityProccessing_CaseInsights_VerifyTheDataInInventoryTile extends TestBase {
+public class TC_27224_27226_RelativityProccessing_CaseInsights_VerifyTheDataInInventoryTileAndPublishTileTest extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
-    public void TC_17477_ReviewInsightsVerifyTheStatsInSummaryTiles(Hashtable<String,String> data) throws Exception {
+    public void TC_27224_27226_RelativityProccessing_CaseInsights_VerifyTheDataInInventoryTileAndPublishTileTest(Hashtable<String,String> data) throws Exception {
         try{
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -28,13 +28,13 @@ public class TC_27224_RelativityProccessing_CaseInsights_VerifyTheDataInInventor
                     .navigateURL()
                     .login(data.get("Username"),data.get("Password"),data.get("Entity"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getHeader().navigateToDashboardPage().clickOnReviewInsightsTab()
-                    .checkAndValidateTheCountOfTheProcessInsightsStats(data.get("EMAIL"));
+                    .getHeader().navigateToDashboardPage()
+                    .checkAndValidateTheCountOfTheCaseInsightsStats(data.get("Email"),data.get("Emp"),data.get("EMAIL"),data.get("EMP"), data.get("DataSource"),data.get("SourcePath"),data.get("DataHold"),data.get("CollectionStatus"), data.get("Pstatus"));
 
 
         }catch (Exception ex){
-            session.log_Error("TC_17477_ReviewInsightsVerifyTheStatsInSummaryTiles Failed");
-            throw new Exception("Exception in TC_17477_ReviewInsightsVerifyTheStatsInSummaryTiles", ex);
+            session.log_Error("TC_27224_27226_RelativityProccessing_CaseInsights_VerifyTheDataInInventoryTileAndPublishTileTest Failed");
+            throw new Exception("Exception in TC_27224_27226_RelativityProccessing_CaseInsights_VerifyTheDataInInventoryTileAndPublishTileTest", ex);
         }finally {
             session.end();
         }

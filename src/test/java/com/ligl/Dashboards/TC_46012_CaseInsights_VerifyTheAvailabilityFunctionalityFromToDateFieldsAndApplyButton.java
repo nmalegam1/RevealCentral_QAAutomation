@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_46012_VerifyTheAvailabilityFunctionalityFromToDateFieldsAndApplyButton extends TestBase {
+public class TC_46012_CaseInsights_VerifyTheAvailabilityFunctionalityFromToDateFieldsAndApplyButton extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
     public void TC_46012_CaseInsights_VerifyTheAvailabilityFunctionalityFromToDateFieldsAndApplyButton(Hashtable<String,String> data) throws Exception {
         try{
@@ -30,7 +30,7 @@ public class TC_46012_VerifyTheAvailabilityFunctionalityFromToDateFieldsAndApply
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getHeader().navigateToDashboardPage()
                     .validateDashBoardPageURL(data.get("TITLE1"))
-                    .checkAndValidateTheFunctionalityOfFromToDateAndApplyButtonInCaseInsights(data.get("startDATE"), data.get("endDATE") );
+                    .checkAndValidateTheFunctionalityOfFromToDateAndApplyButton(data.get("SYear"), data.get("SMonth"),data.get("SDate"),data.get("EYear"), data.get("EMonth"),data.get("EDate"));
 
         }catch (Exception ex){
             session.log_Error("TC_46012_CaseInsights_VerifyTheAvailabilityFunctionalityFromToDateFieldsAndApplyButton Failed");

@@ -28,7 +28,7 @@ public class DB_002 extends TestBase {
                     page.dataBaseConnection("enityDB");
                     page.executeSQL_Query(Constants.EmailTracker_Emp_query);
                     page.validatingEmailsInDB();
-                    page.validateEmpData();
+                    page.validateEmpData(data.get("CustodianName"), data.get("Email") );
                     page.closeTheDBConnection();
 
 
