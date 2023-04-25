@@ -1,6 +1,8 @@
 package com.ligl.pages.casemanagement;
 
 import com.ligl.base.pages.ILiglPage;
+import com.ligl.pages.DashboardPage;
+import com.ligl.pages.GlobalRequestPage;
 import com.ligl.pages.LiglBaseSessionPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -379,6 +381,45 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
             throw new Exception("validateCreatedCase() Failed", ex);
         }
     }
+
+    public ILiglPage validateTheNavigateToDashBoardPageURL(String PageTitle) throws Exception {
+
+        try {
+
+            getDriver().waitForAngularRequestsToComplete();
+
+            log_Info("validateTheNavigateToDashBoardPageURL Started");
+
+
+            if (getCurrentDriver().getCurrentUrl().contains(PageTitle)) {
+                log_Info("Naviagated To "+PageTitle+"Page");
+            }
+            else {
+
+                throw new Exception("Required Page Not Loaded");
+            }
+            return  new DashboardPage();
+
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateTheNavigateToDashBoardPageURL() Failed ", ex);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //verifying unavailability of Security tab for Non-legal user & Non-legal reviewer
     public ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception{

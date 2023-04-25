@@ -93,6 +93,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     WebElement QuestionaireDrpDwn;
 
 
+
     @FindBy(id = "lhncustActions")
     WebElement SelectActionDrpDwn;
 
@@ -388,6 +389,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     WebElement Responses;
     @FindBy(xpath = "//span[contains(text(),'Actions')]")
     WebElement Actions;
+
 
 
     @FindBy(xpath = "//button[@title='Questionnaire Response']")
@@ -1533,6 +1535,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         try {
 
 
+
             log_Info("secondSearch() Started");
             //log_Info("Hover on Name Header");
             Thread.sleep(5000);
@@ -1659,6 +1662,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
     public ILiglPage searchRequiredLHNStatus(String Status) throws Exception {
         try {
+
 
 
             log_Info("searchRequiredLHNStatus() Started");
@@ -1840,6 +1844,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
     public ILiglPage searchStakeholderEmailFromLHNGrid(String StakeEmailID) throws Exception {
         try {
+
 
 
             log_Info("searchStakeholderEmailFromLHNGrid() Started");
@@ -3266,6 +3271,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     }
 
 
+
     public ILiglPage searchTheColumnsInColumnMenuInLHGrid(String Column) throws Exception {
 
         try {
@@ -3543,6 +3549,8 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(3000);
             StakeHolderQuestionaireTemplate.sendKeys(Keys.ENTER);
             getSession().log_Pass("Selected StakeHolder Questionaire Template Drop Down");
+
+
 
 
             getDriver().waitUntilSpinnerIsClosed();
@@ -4429,6 +4437,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             throw new Exception("Check That Newly Created Questionnaire Is Displaying Failed", ex);
         }
     }
-
 }
+
 
