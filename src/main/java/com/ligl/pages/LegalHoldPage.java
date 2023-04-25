@@ -895,6 +895,38 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage createSecondLHN(String lhName, String custTemp) throws Exception {
+        try {
+            log_Info("createSecondLHN_With_KW_DR() is Started");
+            AddLHN.click();
+            Thread.sleep(5000);
+            LHNNameField.sendKeys(lhName);
+            LHNNextBtn.click();
+            Thread.sleep(2000);
+            CustNoticeTemp.click();
+            Thread.sleep(2000);
+            Search.sendKeys(custTemp);
+            Thread.sleep(2000);
+            Search.sendKeys(Keys.ENTER);
+            CustodianNextBtn.click();
+            Thread.sleep(2000);
+            StakeNextBtn.click();
+            Thread.sleep(2000);
+            DateRangeNextbtn.click();
+            Thread.sleep(2000);
+            KeyWordNextBtn.click();
+            Thread.sleep(2000);
+            RemainderNextBtn.click();
+            Thread.sleep(2000);
+            LHNSaveBtn.click();
+
+            return new LegalHoldPage();
+        } catch (Exception ex) {
+            log_Error("createSecondLHN_With_KW_DR() is Failed");
+            throw new Exception("Exception in createSecondLHN_With_KW_DR()", ex);
+        }
+    }
+
     public ILiglPage editLHNAfterFirstLHNWith_KW_DR_AndCheckKW_DR_Editable(String lhName1, String lhName2, String lhName3, String custTemp, String startDate, String endDate, String keyword, String NewtempName, String subject, String content) throws Exception {
         try {
             log_Info("editLHNAfterFirstLHNWith_KW_DR_AndCheckKW_DR_Editable() is Started");
@@ -3618,6 +3650,8 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(3000);
             StakeHolderQuestionaireTemplate.sendKeys(Keys.ENTER);
             getSession().log_Pass("Selected StakeHolder Questionaire Template Drop Down");
+
+
 
 
             getDriver().waitUntilSpinnerIsClosed();

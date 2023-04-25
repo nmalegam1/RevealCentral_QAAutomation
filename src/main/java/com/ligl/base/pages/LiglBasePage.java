@@ -375,6 +375,10 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validateCounselAndSaveButtonForPartyType(String PartyNameB, String PartyType, String Description,String StatusDrpdown) throws Exception {
 		return null;
 	}
+
+	public ILiglPage navigateToDashboardPage()throws Exception{
+		return null;
+	}
 	public ILiglPage validatingContactsAfterDeletingFromParty() throws Exception{
 		return null;
 	}
@@ -1633,6 +1637,94 @@ public class LiglBasePage implements ILiglPage {
 	}
 
 	public ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnProcessInsightsTab() throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkAndValidateTheCountOfTheProcessInsightsStats(String Email) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnReviewInsightsTab() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnLegalHoldInsightsTab() throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkAndValidateTheCountOfTheLegalHoldInsightsStats(String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus,String LHname,String Action)throws Exception{
+		return null;
+	}
+
+	public ILiglPage selectCase() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateTheNavigateToDashBoardPageURL(String PageTitle) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnProductionInsightsTab() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnGlobalInsightsTab() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateDashBoardPageURL(String PageTitle) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clearCaseFunctionality() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateTheSelectCaseNameInHeader() throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkAndValidateTheFunctionalityOfFromToDateAndApplyButton(String SYEAR,String SMONTH,String SDATE,String EYEAR,String EMONTH,String EDATE) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnPrintButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkAndValidateTheCountOfTheCaseInsightsStats(String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus,String Pstatus) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnClearAllButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkAndValidateTheCountOfTheGlobalInsightsStats(String CaseName,String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateThePrintButtonFunctionality() throws Exception{
+		return null;
+	}
+
+
+	public ILiglPage validateUserAccessCasesCountWhenUACsetToFalse(String USERname,String PASSword,String ENTITYSelection,String Title) throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validatingEmailsInDB() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateEmpData(String custodianName, String emailID) throws Exception{
 		return null;
 	}
 	public void waitForPageToLoad(){

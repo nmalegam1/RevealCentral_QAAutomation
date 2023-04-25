@@ -28,9 +28,7 @@ public class TC12104_Editing_Ligl_and_SSO_Users_Test extends TestBase {
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .searchTheUser(data.get("SelectUser"))
                     .scrollToRightToDoActionInUsers(data.get("SelectUser"))
                     .editTheUser(data.get("EditUserName"), data.get("EditEmail"),

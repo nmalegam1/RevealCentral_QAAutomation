@@ -28,9 +28,7 @@ public class TC1983_Creat_Template_using_addTemplate_button_for_CaseApproval_Tem
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnEmailTemplatesLink()
+                    .navigateToEmailTemplatesPage()
                     .createNewEmailTemplate(data.get("EmailTemplateCategory"), data.get("EmailTemplateName"),
                             data.get("Subject"), data.get("Content"))
                     .getHeader()

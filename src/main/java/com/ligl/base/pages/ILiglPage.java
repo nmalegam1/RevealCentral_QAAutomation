@@ -6,6 +6,7 @@ import com.ligl.pages.administration.AdminLeftMenu;
 import com.ligl.pages.casemanagement.CaseCustodiansPage;
 import com.ligl.session.LiglTestSession;
 import com.ligl.web.IWebConnector;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -199,6 +200,8 @@ public interface ILiglPage {
     ILiglPage validateCustodianAfterApproved(String Employee1) throws Exception;
 
     ILiglPage goToCaseManagement() throws InterruptedException;
+
+    ILiglPage validatingEmailsInDB() throws Exception;
 
     ILiglPage verifyApprovalHistoryStatus(String AssignedUser1,String Status1,String Status2,String AssignedUser2) throws Exception;
 
@@ -1053,6 +1056,51 @@ public interface ILiglPage {
     ILiglPage validateDeletedNote(String NotesContent) throws Exception;
 
     ILiglPage enabledDateRangeNotesClick(String DRName) throws Exception;
+    ILiglPage navigateToDashboardPage() throws Exception;
+
+    ILiglPage clickOnProcessInsightsTab() throws Exception;
+
+    ILiglPage clickOnReviewInsightsTab() throws Exception;
+
+    ILiglPage clickOnLegalHoldInsightsTab() throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfTheProcessInsightsStats(String Email) throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfTheLegalHoldInsightsStats(String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus,String LHname,String Action) throws Exception;
+
+    ILiglPage selectCase() throws Exception;
+
+    ILiglPage validateTheNavigateToDashBoardPageURL(String PageTitle) throws Exception;
+
+    ILiglPage clickOnProductionInsightsTab() throws Exception;
+
+    ILiglPage clickOnGlobalInsightsTab() throws Exception;
+
+    ILiglPage validateDashBoardPageURL(String PageTitle) throws Exception;
+
+    ILiglPage clearCaseFunctionality() throws Exception;
+
+    ILiglPage validateTheSelectCaseNameInHeader() throws Exception;
+
+    ILiglPage checkAndValidateTheFunctionalityOfFromToDateAndApplyButton(String SYEAR,String SMONTH,String SDATE,String EYEAR,String EMONTH,String EDATE) throws Exception;
+    ILiglPage clickOnPrintButton() throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfTheCaseInsightsStats(String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus,String Pstatus) throws Exception;
+
+    ILiglPage clickOnClearAllButton() throws Exception;
+
+    ILiglPage validateThePrintButtonFunctionality() throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfTheGlobalInsightsStats(String CaseName,String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus) throws Exception;
+
+    ILiglPage validateUserAccessCasesCountWhenUACsetToFalse(String USERname,String PASSword,String ENTITYSelection,String Title) throws Exception;
+
+
+    ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title) throws Exception;
+
+
+
+
 
     ILiglPage searchRequiredKeywordName(String KWname) throws Exception;
 
@@ -1068,6 +1116,8 @@ public interface ILiglPage {
 
     ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception;
     ILiglPage createLHWithOnlyKW(String lhName, String custTemp, String Keywords) throws Exception;
+
+    ILiglPage validateEmpData(String custodianName, String emailID) throws Exception;
 
 }
 

@@ -28,7 +28,7 @@ public class TC54576_Check_admin_is_able_to_Create_or_edit_the_Case_type_lookup_
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnLookupManagerLink()
+                    .navigateToLookupManagerPage()
                     .selectLookupType(data.get("SelectLookUp"))
                     .clickOnNewButton()
                     .createLookUp(data.get("CaseTypeName"), data.get("DisplayOrder"), data.get("Description"), data.get("Optional"))
