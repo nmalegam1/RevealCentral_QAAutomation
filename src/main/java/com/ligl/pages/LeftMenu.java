@@ -5,6 +5,7 @@ import com.ligl.base.pages.LiglBasePage;
 import com.ligl.pages.casemanagement.*;
 import com.ligl.pages.datamanagement.DMCollectionsPage;
 import com.ligl.pages.datamanagement.DMDSIPage;
+import com.ligl.pages.datamanagement.DMDataHoldPage;
 import com.ligl.pages.datamanagement.DMSummaryPage;
 import com.ligl.pages.processmanagement.PMSummaryPage;
 import org.openqa.selenium.*;
@@ -69,6 +70,9 @@ public class LeftMenu extends LiglBasePage {
 
     @FindBy(xpath = "//span[@title='Identification']")
     WebElement Identification;
+
+    @FindBy(xpath = "//span[@title='Preservation']")
+    WebElement Preservation;
 
     @FindBy(xpath = "//span[@title='Process Management']")
     WebElement ProcessManagement;
@@ -229,6 +233,29 @@ public class LeftMenu extends LiglBasePage {
             Identification.click();
             getSession().log_Pass("Clicked on Identification");
             return new DMCollectionsPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("goToDataManagement() Failed ", ex);
+        }
+    }
+
+    public ILiglPage goToPreservation() throws Exception {
+
+        try {
+
+            log_Info("Click on Data Management");
+            getDriver().waitForelementToBeClickable(DataManagement);
+            Thread.sleep(5000);
+            DataManagement.click();
+            getSession().log_Pass("Clicked on Data Management");
+
+            log_Info("Click on Identification");
+            getDriver().waitForelementToBeClickable(Preservation);
+            Thread.sleep(5000);
+            Preservation.click();
+            getSession().log_Pass("Clicked on Identification");
+            return new DMDataHoldPage();
 
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());

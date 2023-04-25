@@ -99,7 +99,7 @@ public class Header extends LiglBasePage {
 
 	public ILiglPage viewCase() throws Exception{
 		try{
-			log_Info("switchCase() Started");
+			log_Info("viewCase() Started");
 			SwitchCaseTab.click();
 			Thread.sleep(2000);
 			ViewCaseBtn.click();

@@ -39,7 +39,7 @@ public class NetWorkShare_AutoProcess_Processing extends TestBase {
                     .searchAccountEmailRecordInDSI(data.get("Email"))
                     .automateRecordInDSI()
                     .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteCollection(data.get("CollectionStatus"))
+                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(data.get("CollectionStatus"))
                     .getLeftMenu().goToPMSummaryPage()
                     .validateAndWaitForRecordsToCompleteProcessing(data.get("Pstatus"))
                     .logout();
