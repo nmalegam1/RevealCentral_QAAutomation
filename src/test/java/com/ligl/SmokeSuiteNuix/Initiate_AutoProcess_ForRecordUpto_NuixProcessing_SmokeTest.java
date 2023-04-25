@@ -45,7 +45,7 @@ public class Initiate_AutoProcess_ForRecordUpto_NuixProcessing_SmokeTest extends
                     .searchAccountEmailOneMoreTime()
                     .clickOnAutomateButton()
                     .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteCollection(data.get("CollectionStatus"))
+                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(data.get("CollectionStatus"))
                     .getLeftMenu().goToPMSummaryPage()
                     .validateAndWaitForRecordsToCompleteProcessing(data.get("Pstatus"));
 

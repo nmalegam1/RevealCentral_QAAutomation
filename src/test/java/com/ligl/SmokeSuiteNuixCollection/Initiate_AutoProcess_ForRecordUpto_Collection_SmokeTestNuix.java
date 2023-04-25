@@ -47,7 +47,7 @@ public class Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTestNuix extends
                     .searchAccountEmailOneMoreTime()
                     .clickOnAutomateButton()
                     .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteCollection(data.get("CollectionStatus"));
+                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(data.get("CollectionStatus"));
 
 
         } catch (Exception ex) {

@@ -114,6 +114,7 @@ public class ApprovalPage extends LiglBaseSessionPage {
             waitForPageToLoad();
             Thread.sleep(5000);
             SaveBtn.click();
+            Thread.sleep(5000);
             getSession().log_Pass("Clicked on Save Button");
             return new ApprovalPage();
 
@@ -192,9 +193,9 @@ public class ApprovalPage extends LiglBaseSessionPage {
     public ILiglPage clickOnPendingLHNameInAppPage(String CaseLHname) throws Exception {
         try {
             log_Info("Check Pending Approval Legal hold name");
-            Thread.sleep(10000);
+            Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + CaseLHname + "')]")).click();
-            Thread.sleep(10000);
+            Thread.sleep(15000);
             log_Info("Pending Approval Legal hold name checked");
             return new ApprovalPage();
         } catch (Exception | Error ex) {
@@ -255,6 +256,7 @@ public class ApprovalPage extends LiglBaseSessionPage {
             waitForPageToLoad();
             Thread.sleep(5000);
             SaveBtn.click();
+            Thread.sleep(7000);
             getSession().log_Pass("Clicked on Save Button");
 
             return  new ApprovalPage();

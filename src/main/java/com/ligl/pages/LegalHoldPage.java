@@ -6,6 +6,7 @@ import com.ligl.pages.administration.EmailTemplatePage;
 import com.ligl.pages.administration.EmployeeMasterPage;
 import com.ligl.pages.administration.StakeHoldersPage;
 import com.ligl.pages.casemanagement.CaseCustodiansPage;
+import com.ligl.pages.casemanagement.CaseSummaryPage;
 import com.ligl.pages.datamanagement.DMCollectionsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -33,7 +34,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     @FindBy(id = "appr-approve-btn")
     WebElement ApproveBtn;
 
-    @FindBy(id = "btn-save")
+    @FindBy(id = "legal-hold-form-custodian-btn")
     WebElement SaveBtn;
     @FindBy(id = "appr-reject-btn")
     WebElement RejectBtn;
@@ -91,7 +92,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
     @FindBy(id = "lhc-custodian-ques-templateCustodianQuestionnaireTemplateUniqueID")
     WebElement QuestionaireDrpDwn;
-
 
 
     @FindBy(id = "lhncustActions")
@@ -300,7 +300,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     WebElement NoOfDays;
     @FindBy(id = "legal-hold-conguration-component-btn")
     WebElement DateRangeNextbtn;
-    @FindBy(id = "keywords")
+    @FindBy(id = "keyWords")
     WebElement KeyWordsFields;
     @FindBy(id = "legal-hold-configuration-backlhnName-btn")
     WebElement KeyWordNextBtn;
@@ -389,7 +389,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     WebElement Responses;
     @FindBy(xpath = "//span[contains(text(),'Actions')]")
     WebElement Actions;
-
 
 
     @FindBy(xpath = "//button[@title='Questionnaire Response']")
@@ -792,6 +791,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     public ILiglPage createLHWith_KW_DR(String lhName, String custTemp, String startDate, String endDate, String keyword) throws Exception {
         try {
             log_Info("createLHWith_KW_DR() is Started");
+            Thread.sleep(10000);
             AddLHN.click();
             Thread.sleep(5000);
             LHNNameField.sendKeys(lhName);
@@ -823,6 +823,63 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage createLHWithOnlyKW(String lhName, String custTemp, String Keywords) throws Exception {
+        try {
+            log_Info("createLHWith_KW_DR() is Started");
+            Thread.sleep(10000);
+            clickOnAddNewLegalHoldButton();
+            enterNameOfTheLH(lhName);
+            clickOnNextBtn1();
+            CustNoticeTemp.click();
+            Thread.sleep(2000);
+            Search.sendKeys(custTemp);
+            Thread.sleep(2000);
+            Search.sendKeys(Keys.ENTER);
+            clickOnNextBtn2();
+            clickOnNextBtn3();
+            clickOnNextBtn4();
+            KeyWordsFields.sendKeys(Keywords);
+            clickOnNextBtn5();
+            clickOnNextBtn6();
+            clickOnSaveBtn();
+            LHNSaveBtn.click();
+            Thread.sleep(15000);
+
+            return new LegalHoldPage();
+        } catch (Exception ex) {
+            log_Error("createLHWith_KW_DR() is Failed");
+            throw new Exception("Exception in createLHWith_KW_DR()", ex);
+        }
+    }
+    public ILiglPage createLHWithOnlyDR(String lhName, String custTemp, String startDate, String endDate) throws Exception {
+        try {
+            log_Info("createLHWith_KW_DR() is Started");
+            Thread.sleep(10000);
+            clickOnAddNewLegalHoldButton();
+            enterNameOfTheLH(lhName);
+            clickOnNextBtn1();
+            CustNoticeTemp.click();
+            Thread.sleep(2000);
+            Search.sendKeys(custTemp);
+            Thread.sleep(2000);
+            Search.sendKeys(Keys.ENTER);
+            clickOnNextBtn2();
+            clickOnNextBtn3();
+            Startdate.sendKeys(startDate);
+            EndDate.sendKeys(endDate);
+            clickOnNextBtn4();
+            clickOnNextBtn5();
+            clickOnNextBtn6();
+            clickOnSaveBtn();
+            LHNSaveBtn.click();
+            Thread.sleep(15000);
+
+            return new LegalHoldPage();
+        } catch (Exception ex) {
+            log_Error("createLHWith_KW_DR() is Failed");
+            throw new Exception("Exception in createLHWith_KW_DR()", ex);
+        }
+    }
     public ILiglPage chooseColumns(String columnName) throws Exception {
         try {
             log_Info("chooseColumns() is Started");
@@ -1108,6 +1165,54 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         } catch (Exception ex) {
             log_Error("verifyColumnsInLegalHoldGrid() is Failed");
             throw new Exception("Exception in verifyColumnsInLegalHoldGrid()");
+        }
+    }
+    public ILiglPage editLH_DR_KW(String lhName1,String startDate, String endDate, String keyword)throws Exception{
+        try{
+            log_Info("editLH_DR_KW() Started");
+            Thread.sleep(8000);
+            EditLHN.click();
+            Thread.sleep(8000);
+            LHNNextBtn.click();
+            Thread.sleep(2000);
+            CustodianNextBtn.click();
+            Thread.sleep(2000);
+            StakeNextBtn.click();
+            Thread.sleep(2000);
+
+            Startdate.click();
+            Startdate.sendKeys(Keys.ESCAPE);
+            Startdate.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+            Startdate.sendKeys(startDate);
+            Startdate.sendKeys(Keys.TAB);
+
+            EndDate.click();
+            EndDate.sendKeys(Keys.ESCAPE);
+            EndDate.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+            EndDate.sendKeys(endDate);
+            EndDate.sendKeys(Keys.TAB);
+
+            DateRangeNextbtn.click();
+            Thread.sleep(2000);
+            WebElement keyWordsForm = getCurrentDriver().findElement(By.xpath("//mat-chip-list[@id='mat-chip-list-0']"));
+            keyWordsForm.click();
+            List<WebElement> listItem = keyWordsForm.findElements(By.xpath("//mat-chip"));
+            for (int i = 0; i < listItem.size(); i++) {
+                keyWordsForm.sendKeys(Keys.BACK_SPACE);
+            }
+            Thread.sleep(3000);
+            KeyWordsFields.sendKeys(keyword);
+            Thread.sleep(2000);
+            KeyWordNextBtn.click();
+            Thread.sleep(2000);
+            RemainderNextBtn.click();
+            Thread.sleep(2000);
+            LHNSaveBtn.click();
+            Thread.sleep(15000);
+            return  new LegalHoldPage();
+        }catch (Exception ex){
+            log_Error("editLH_DR_KW() is failed");
+            throw new Exception("Exception in editLH_DR_KW()",ex);
         }
     }
 
@@ -1535,7 +1640,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         try {
 
 
-
             log_Info("secondSearch() Started");
             //log_Info("Hover on Name Header");
             Thread.sleep(5000);
@@ -1662,7 +1766,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
     public ILiglPage searchRequiredLHNStatus(String Status) throws Exception {
         try {
-
 
 
             log_Info("searchRequiredLHNStatus() Started");
@@ -1844,7 +1947,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
     public ILiglPage searchStakeholderEmailFromLHNGrid(String StakeEmailID) throws Exception {
         try {
-
 
 
             log_Info("searchStakeholderEmailFromLHNGrid() Started");
@@ -3271,7 +3373,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     }
 
 
-
     public ILiglPage searchTheColumnsInColumnMenuInLHGrid(String Column) throws Exception {
 
         try {
@@ -3354,7 +3455,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Name Of The Legal Hold Given");
 
-            getDriver().waitUntilSpinnerIsClosed();
+            //getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3387,7 +3488,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             QuestionaireDrpDwn.sendKeys(Keys.ENTER);
             getSession().log_Pass(" Selected Questionaire Template Drop Down");
 
-            getDriver().waitUntilSpinnerIsClosed();
+            //getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3408,7 +3509,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");                               //1
 
-            getDriver().waitUntilSpinnerIsClosed();
+            //getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3430,7 +3531,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");
 
-            getDriver().waitUntilSpinnerIsClosed();
+           // getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3453,7 +3554,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             getSession().log_Pass("Next Button clicked");
 
 
-            getDriver().waitUntilSpinnerIsClosed();
+            //getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3474,7 +3575,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");
 
-            getDriver().waitUntilSpinnerIsClosed();
+            //getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3497,7 +3598,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");
 
-            getDriver().waitUntilSpinnerIsClosed();
+            //getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3519,7 +3620,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");
 
-            getDriver().waitUntilSpinnerIsClosed();
+            //getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3574,7 +3675,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Save Button clicked");
 
-            getDriver().waitUntilSpinnerIsClosed();
+            //getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -4437,6 +4538,27 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             throw new Exception("Check That Newly Created Questionnaire Is Displaying Failed", ex);
         }
     }
-}
+    public ILiglPage legalHoldApprovalIrrespectiveOfApprovalConfig(String LHName,String LHAction,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
+        try{
+            log_Info("legalHoldApprovalIrrespectiveOfApprovalConfig() Started");
+            try {
+                if (getCurrentDriver().findElement(By.xpath("//button[@id='modelaction-btn' and @disabled]")).isDisplayed())
+                    return new LegalHoldPage();
+            }catch (Exception ex){
+                sendLHNToApproval(LHName,LHAction,Apptemp,UserName);
+                ApprovalPage ap=new ApprovalPage();
+                getHeader().goToApprovalPage();
+                ap.clickOnPendingLHNameInAppPage(CaseNameApprove);
+                ap.clickOnApproveBtnInAppPage();
+                getHeader().viewCase();
+                return new CaseSummaryPage();
+            }
+            return new LegalHoldPage();
+        }catch (Exception ex){
+            log_Error("legalHoldApprovalIrrespectiveOfApprovalConfig() is Failed");
+            throw new Exception("Exception in legalHoldApprovalIrrespectiveOfApprovalConfig()",ex);
+        }
+    }
 
+}
 

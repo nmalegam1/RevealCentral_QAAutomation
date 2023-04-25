@@ -244,7 +244,7 @@ public class DashboardPage extends LiglBaseSessionPage {
                     .searchAccountEmailRecordInDSI(Email)
                     .automateRecordInDSI()
                     .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteCollection(CollectionStatus)
+                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(CollectionStatus)
                     .getHeader().clearCaseFunctionality()
                     .getHeader().navigateToDashboardPage().clickOnGlobalInsightsTab();
 
@@ -355,7 +355,7 @@ public class DashboardPage extends LiglBaseSessionPage {
                     .searchAccountEmailRecordInDSI(Email)
                     .automateRecordInDSI()
                     .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteCollection(CollectionStatus)
+                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(CollectionStatus)
                     .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(LHname).goToRequiredLegalHoldName(LHname)
                     .searchActionThroughEmail(EMAIL)
@@ -511,7 +511,7 @@ public class DashboardPage extends LiglBaseSessionPage {
                     .searchAccountEmailRecordInDSI(Email)
                     .automateRecordInDSI()
                     .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteCollection(CollectionStatus)
+                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(CollectionStatus)
                     .getLeftMenu().goToPMSummaryPage()
                     .validateAndWaitForRecordsToCompleteProcessing(Pstatus)
                     .getHeader().navigateToDashboardPage().clickOnProcessInsightsTab();

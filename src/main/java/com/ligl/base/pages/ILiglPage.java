@@ -8,6 +8,7 @@ import com.ligl.session.LiglTestSession;
 import com.ligl.web.IWebConnector;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 
+import java.io.IOException;
 import java.util.Hashtable;
 
 public interface ILiglPage {
@@ -166,8 +167,12 @@ public interface ILiglPage {
     ILiglPage navigateToDataSourcesPage() throws Exception;
 
     ILiglPage goToApprovalPage();
+    ILiglPage goToPreservation() throws Exception;
+    ILiglPage goToDMLHScope();
+    ILiglPage validateAndWaitForRecordsToCompleteLock(String s)throws Exception;
+    ILiglPage goToPreservationLHScope();
 
-    ILiglPage goToDataManagementSummary() throws Exception;
+    ILiglPage goToDataManagementSummary() throws Exception;ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception;
 
     ILiglPage sendingLegalHoldForApproval() throws Exception;
 
@@ -177,9 +182,16 @@ public interface ILiglPage {
 
     ILiglPage goToAdministrationPage() throws Exception;
 
+    ILiglPage sendCaseForApprovalWithAllScope(String BchName,String Apptemp,String UserName) throws Exception;
+
     ILiglPage goToSecurityPage() throws InterruptedException;
+    ILiglPage searchCCDWithCustNameAndDSName(String CustName,String DST)throws Exception;
+    ILiglPage checkResultsCount()throws Exception;
+    ILiglPage legalHoldApprovalIrrespectiveOfApprovalConfig(String LHName,String LHAction,String Apptemp,String UserName,String CaseNameApprove) throws Exception;
+    ILiglPage checkingRetainRecordAddedPrevGrid(String CustName,String DST,String LockCompleteStatus,String LockNotInitiateStatus,String PreviuosLHLDR,String PreviuosLHLKW,String LatestLHLDR,String LatestLHLKW)throws Exception;
 
     ILiglPage sendingCaseForSingleApproval(String BatchNAME, String USER, String EMAIL) throws Exception;
+    ILiglPage createLHWithOnlyDR(String lhName, String custTemp, String startDate, String endDate) throws Exception;
 
     ILiglPage goToAdminLeftMenu() throws Exception;
 
@@ -440,7 +452,7 @@ public interface ILiglPage {
 
     // Smoke Suite Methods
 
-    ILiglPage validateAndWaitForRecordsToCompleteCollection(String CollectionStatus) throws Exception;
+    ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(String CollectionStatus) throws Exception;
 
     ILiglPage validateAndWaitForRecordsToCompleteProcessing(String Processingstatus) throws Exception;
 
@@ -656,10 +668,14 @@ public interface ILiglPage {
     ILiglPage validateTheColumnsNames() throws Exception;
 
     ILiglPage clearActionInLHColumnMenu() throws Exception;
+    ILiglPage noteColStats()throws Exception;
+    ILiglPage getAndValidateCCDStats() throws Exception;
+    ILiglPage editLH_DR_KW(String lhName1,String startDate, String endDate, String keyword)throws Exception;
 
     ILiglPage checkWhetherLHDetailsWithPreviewOptionDisplayInTheGrid(String CaseNameApprove, String keywords) throws Exception;
 
     ILiglPage checkTheLHPopUpDetailsInDisabledCondition() throws Exception;
+    ILiglPage createLHWith_KW_DR(String lhName, String custTemp, String startDate, String endDate, String keyword) throws Exception;
 
     ILiglPage createNewLHBySelectingTemplateOnFlyEdit(String LegalHoldname, String CustodianTemplate, String NewtempName, String subject, String content) throws Exception;
 
@@ -754,7 +770,7 @@ public interface ILiglPage {
     public ILiglPage clickOnAddEmployeeButton() throws Exception;
 
     public ILiglPage employeeBulkImport(String importEmpFile) throws Exception;
-    String getCCDStats();
+    ILiglPage getCCDStats() throws IOException;
     ILiglPage goToExports(String s);
 
 
@@ -1099,6 +1115,7 @@ public interface ILiglPage {
     ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception;
 
     ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception;
+    ILiglPage createLHWithOnlyKW(String lhName, String custTemp, String Keywords) throws Exception;
 
     ILiglPage validateEmpData(String custodianName, String emailID) throws Exception;
 

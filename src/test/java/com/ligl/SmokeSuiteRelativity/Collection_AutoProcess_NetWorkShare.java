@@ -38,7 +38,7 @@ public class Collection_AutoProcess_NetWorkShare extends TestBase {
                     .searchAccountEmailRecordInDSI(data.get("Email"))
                     .automateRecordInDSI()
                     .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteCollection(data.get("CollectionStatus"))
+                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(data.get("CollectionStatus"))
                     .logout();
 
         } catch (Exception ex) {

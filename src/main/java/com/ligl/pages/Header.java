@@ -15,36 +15,36 @@ import org.testng.Assert;
 
 public class Header extends LiglBasePage {
 
-	@FindBy(xpath = "//a[@id='case-tab']")
+	@FindBy(xpath="//a[@id='case-tab']")
 	public WebElement caseTab;
 
-	@FindBy(xpath = "//span[@id='requests-tab']")
+	@FindBy(xpath="//span[@id='requests-tab']")
 	public WebElement requestsTab;
 
-	@FindBy(xpath = "//span[@id='job-manager-tab']")
+	@FindBy(xpath="//span[@id='job-manager-tab']")
 	public WebElement jobManagerTab;
 
-	@FindBy(xpath = "//span[@id='reports-tab']")
+	@FindBy(xpath="//span[@id='reports-tab']")
 	public WebElement reportsTab;
 
-	@FindBy(xpath = "//span[@id='about-tab']")
+	@FindBy(xpath="//span[@id='about-tab']")
 	public WebElement aboutTab;
 
-	@FindBy(id = "profileDropdown")
+	@FindBy(id="profileDropdown")
 	public WebElement userNameLink;
 
-	@FindBy(xpath = "//a[@data-action='userLogout']")
+	@FindBy(xpath="//a[@data-action='userLogout']")
 	public WebElement logoutLink;
 
 	@FindBy(xpath = "//a[@id='approval-tab']")
 	public WebElement approvalTab;
-	@FindBy(id = "user-profile")
+	@FindBy(id="user-profile")
 	public WebElement UserProfiles;
 	@FindBy(xpath = "//a[@title='Administration']")
 	public WebElement AdministrationTab;
 	@FindBy(xpath = "//a[@ng-click='vmBase.resetMouseHoverPopUp()']")
 	public WebElement SwitchCaseTab;
-	@FindBy(id = "view-case")
+	@FindBy(id="view-case")
 	public WebElement ViewCaseBtn;
 
 	@FindBy(id = "select-case")
@@ -102,26 +102,25 @@ public class Header extends LiglBasePage {
 			getSession().log_Pass("logout successful");
 			return new LoginPage();
 
-		} catch (Exception | Error ex) {
+		}catch (Exception | Error ex){
 			log_Error(ex.getMessage());
-			throw new Exception("logout() Failed", ex);
+			throw new Exception("logout() Failed",ex);
 		}
 	}
 
-	public ILiglPage viewCase() throws Exception {
-
-		try {
-
-			log_Info("switchCase() Started");
+	public ILiglPage viewCase() throws Exception{
+		try{
+			log_Info("viewCase() Started");
 			SwitchCaseTab.click();
 			Thread.sleep(2000);
 			ViewCaseBtn.click();
 			return new CaseSummaryPage();
 
-		} catch (Exception ex) {
+		}catch (Exception ex){
 			throw new Exception("Exception in switchCase()");
 		}
 	}
+
 
 	public ILiglPage clearCaseFunctionality() throws Exception {
 
@@ -189,7 +188,7 @@ public class Header extends LiglBasePage {
 			SwitchCaseBtn.click();
 			Thread.sleep(5000);
 			return new DefaultLandingPage();
-		} catch (Exception ex) {
+		}catch (Exception ex){
 			throw new Exception("Exception in switchCase()");
 		}
 	}

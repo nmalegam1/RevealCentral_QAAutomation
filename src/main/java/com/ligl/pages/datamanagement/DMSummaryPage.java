@@ -19,6 +19,10 @@ public class DMSummaryPage extends LiglBaseSessionPage {
     WebElement RefreshBtn;
     @FindBy(xpath = "//ag-grid-angular//div[@ref='eCenterContainer']//span[contains(text(),'Collection Completed')]")
     WebElement ColComStatus;
+    @FindBy(xpath = "//div[@role='gridcell'][@col-id='SizeWithUnit']//span[@class='ellipsisAgGrid']")
+    WebElement UIColSize;
+    @FindBy(xpath = "//div[@role='gridcell'][@col-id='ItemCount']//span[@class='ellipsisAgGrid']")
+    WebElement UIColCount;
 
     @FindBy(xpath = "//span[contains(text(),'Custodian Name')]/ancestor::div[@ref='eLabel']")
     WebElement CustodianNameHeader;
@@ -31,6 +35,8 @@ public class DMSummaryPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//input[@placeholder='Filter...']")
     WebElement Searchbar;
+    @FindBy(xpath = "//button//span[contains(text(),'IPP - Legal Hold Scope')]")
+    WebElement DMLHScopeBTN;
 
     // For Single Record Waiting For The Collection Completed Status
 
@@ -118,17 +124,23 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             throw new Exception("Exception in getCollectionCount()", ex);
         }
     }
+    public ILiglPage goToDMLHScope(){
+        log_Info("goToDMLHScope() Started");
+        DMLHScopeBTN.click();
+        log_Info("Navigated to IPP-LegalHoldScope tab in Data Management");
+        return new DMSummaryPage();
+    }
     /**
      * Wait and Validate CCDs Status
-     * @param CollectionStatus
+     * @param Status
      * @return DMSummaryPage
      * @throws Exception
      */
-    public ILiglPage validateAndWaitForRecordsToCompleteCollection(String CollectionStatus) throws Exception {
+    public ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(String Status) throws Exception {
 
         try {
 
-            log_Info("validateAndWaitForRecordsToCompleteCollection() Started");
+            log_Info("validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid() Started");
             Thread.sleep(5000);
             SummaryCheckBox.click();
 
@@ -153,7 +165,100 @@ public class DMSummaryPage extends LiglBaseSessionPage {
                     for (int j = 0; j < listItem.size(); j++) {
                         String actualValue = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
 
-                        if (actualValue.equalsIgnoreCase(CollectionStatus)) {
+                        if (actualValue.equalsIgnoreCase(Status)) {
+                            y++;
+                        }
+                        if (actualValue.contains("Failed")) {
+                            y++;
+                            z++;
+                        }
+                        if(listItem.size() == y){
+                            getSession().takeScreenShot();
+                            break Outer;
+                        }
+                    }
+                    z=0;
+                    y=0;
+                    RefreshBtn.click();
+
+
+                } catch (Exception e) {
+
+                }
+
+            }
+
+            for (int j = 0; j < listItem.size(); j++) {
+                String Status1 = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
+                getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='WorkFlowStatusReason']")).click();
+                for (int i = 0; i < 16; i++) {
+                    Actions ac = new Actions(getCurrentDriver());
+                    ac.sendKeys(Keys.ARROW_LEFT).perform();
+                }
+                String DataSource = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='DataSourceTypeName']//span[@class='ellipsisAgGrid']")).getText();
+                getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DataSourceTypeName']")).click();
+                for (int i = 0; i < 16; i++) {
+                    Actions ac = new Actions(getCurrentDriver());
+                    ac.sendKeys(Keys.TAB).perform();
+                }
+                if(Status1.contains("Failed")) {
+                    String FailedReason = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='WorkFlowStatusReason']//span[@class='ellipsisAgGrid']")).getText();
+                    log_Info("Status of '" + DataSource + "' is '" + Status1 + "' with Reason '"+FailedReason+"' ");
+                }
+                else{
+                    log_Info("Status of '"+DataSource+"' is '"+Status1+"' ");
+                }
+            }
+            if (z==listItem.size()) {
+                getSession().takeScreenShot();
+                return new DMSummaryPage();
+
+            }
+
+            return new DMSummaryPage();
+
+        } catch (Exception ex) {
+            log_Error("validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid() Failed");
+            throw new Exception("validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid()", ex);
+        }
+    }
+
+    /**
+     * Wait and Validate CCDs Status
+     * @param LockStatus
+     * @return DMSummaryPage
+     * @throws Exception
+     */
+    public ILiglPage validateAndWaitForRecordsToCompleteLock(String LockStatus) throws Exception {
+
+        try {
+
+            log_Info("validateAndWaitForRecordsToCompleteLock() Started");
+            Thread.sleep(5000);
+            SummaryCheckBox.click();
+
+            for (int i = 0; i < 16; i++) {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
+
+            int y = 0;
+            int z = 0;
+
+            WebElement test = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']"));
+            List<WebElement> listItem = test.findElements(By.xpath("div[@role='row']"));
+
+            Outer:
+
+            for (int i = 1; i <= 200; i++) {
+
+                try {
+
+                    Thread.sleep(30000);
+                    for (int j = 0; j < listItem.size(); j++) {
+                        String actualValue = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='DataHoldStatusName']//span[@class='ellipsisAgGrid']")).getText();
+
+                        if (actualValue.equalsIgnoreCase(LockStatus)) {
                             y++;
                         }
                         if (actualValue.contains("Failed")) {
@@ -199,37 +304,30 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             }
             if (z==listItem.size()) {
                 getSession().takeScreenShot();
-                return new DMSummaryPage();
+                throw new Exception("All Record/(s) in Failed Stat");
 
             }
 
             return new DMSummaryPage();
 
         } catch (Exception ex) {
-            log_Error("validateAndWaitForRecordsToCompleteCollection() Failed");
-            throw new Exception("validateAndWaitForRecordsToCompleteCollection()", ex);
+            log_Error("validateAndWaitForRecordsToCompleteLock() Failed");
+            throw new Exception("validateAndWaitForRecordsToCompleteLock()", ex);
         }
     }
-    public ILiglPage validateCollectionStats() throws Exception{
-        try{
-            log_Info("Started validateCollectionStats()");
-            String ColSize=getCollectionSize();
-            String ColCount=getCollectionCount();
-            try {
-                if (ColSize == getSession().getRegressionData("TC_01_CollectionSize")) {
-                    log_Pass("Collection Size is Matched");
-                    if (ColCount == getSession().getRegressionData("TC_01_CollectionCount")) {
-                        log_Pass("Collection Count is Matched");
-                    }
-                }
-            }catch (Exception ex){
-                throw new Exception("Collection Size/Count not getting as Expected or null");
-            }
 
+    public ILiglPage noteColStats()throws Exception{
+        try{
+            log_Info("noteColStats() Started");
+            String ColCount=UIColCount.getText();
+            String ColSize=UIColSize.getText();
+            getSession().setGlobalData("GmailCount",ColCount);
+            getSession().setGlobalData("GmailSize",ColSize);
+            log_Pass("UI Collection Stats are Noted in Global Properties Successfully");
             return new DMSummaryPage();
         }catch (Exception ex){
-            log_Error("validateCollectionStats() Failed");
-            throw new Exception("validateCollectionStats()", ex);
+            log_Error("noteColStats() is Started");
+            throw new Exception("Exception in noteColStats()",ex);
         }
     }
 }

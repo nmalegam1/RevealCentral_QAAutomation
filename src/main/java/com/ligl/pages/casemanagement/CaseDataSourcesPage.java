@@ -142,7 +142,7 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage {
             log_Info("addingDataSource() Started");
             log_Info("Click on checkbox");
             Thread.sleep(2000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+DataSource+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.xpath("//div[text()='"+ DataSource +"']//../..//div[@class='sourceChkbxDiv']")).click();
             log_Info("Clicked on checkbox");
             Thread.sleep(2000);
             return new CaseDataSourcesPage();
@@ -157,7 +157,7 @@ public class CaseDataSourcesPage extends LiglBaseSessionPage {
         try{
             log_Info("Started multipleDataSourceSelect()");
             Thread.sleep(3000);
-            if(data.get("O365_Sharepoint_RunState").equals("Y"))
+           if(data.get("O365_Sharepoint_RunState").equals("Y"))
                 addingDataSource(data.get("O365_Sharepoint_DataSource"));
             if(data.get("O365_Exchange_RunState").equals("Y"))
                 addingDataSource(data.get("O365_Exchange_DataSource"));
