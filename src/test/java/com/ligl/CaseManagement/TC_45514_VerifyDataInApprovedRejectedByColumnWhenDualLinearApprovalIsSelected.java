@@ -32,7 +32,8 @@ public class TC_45514_VerifyDataInApprovedRejectedByColumnWhenDualLinearApproval
                     .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .clickAndChooseColumnsInCaseGrid()
-                    .verifyChooseColumnsDataInCaseGrid(data.get("ApprovedByDual"),data.get("ApprovalTypeDualLinear"));
+                    .verifyChooseColumnsDataInCaseGrid(data.get("ApprovedByDual"),data.get("ApprovalTypeDualLinear"))
+                    .logout();
 
 
         } catch (Exception ex) {

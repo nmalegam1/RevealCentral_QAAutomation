@@ -32,7 +32,8 @@ public class TC_44284_SendCaseForApproval_Test extends TestBase {
                     .sendCaseForApproval(data.get("BatchName"),data.get("AppTemp"),data.get("AppUserName"))
                     .getHeader().goToApprovalPage()
                     .selectRecordInApprovalRequestsGrid(data.get("BatchName"))
-                    .approveCase(data.get("CaseBatchName"));
+                    .approveCase(data.get("CaseBatchName"))
+                    .logout();
 
         }
         catch (Exception ex){

@@ -3,6 +3,7 @@ package com.ligl.pages;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.casemanagement.CaseDataSourcesPage;
 import com.ligl.pages.casemanagement.CaseOtherPartyPage;
+import com.ligl.pages.casemanagement.CaseSummaryPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -187,6 +188,9 @@ public class SecurityPage extends LiglBaseSessionPage {
     WebElement SaveBtn;
     @FindBy(xpath = "//button[contains(text(),'Revoke')]")
     WebElement RevokeBtn;
+
+    @FindBy(xpath = "//section//div[@class='pull-left']//span")
+    WebElement CaseApprovalStatus;
 
 
 
@@ -1399,4 +1403,26 @@ public class SecurityPage extends LiglBaseSessionPage {
             throw new Exception("Exception From sendCaseForApproval()", ex);
         }
     }
+//To check whether Case Approval Status is approved & Approve if not approved
+public ILiglPage checkApprovalConfStatus(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
+    try{
+        log_Info("checkApprovalConfStatus() Started");
+        if(CaseApprovalStatus.getText().equals("Approved"))
+            return new SecurityPage();
+        else if(CaseApprovalStatus.getText().equals("Not Initiated"))
+        {
+            sendCaseForApproval(BchName,Apptemp,UserName);
+            ApprovalPage ap=new ApprovalPage();
+            getHeader().goToApprovalPage();
+            ap.approvingRejectedCase(CaseNameApprove);
+            getHeader().viewCase();
+            return new CaseSummaryPage();
+        }
+        else
+            return new SecurityPage();
+    }catch (Exception ex){
+        log_Error("checkApprovalConfStatus() is Failed");
+        throw new Exception("Exception in checkApprovalConfStatus()",ex);
+    }
+}
     }

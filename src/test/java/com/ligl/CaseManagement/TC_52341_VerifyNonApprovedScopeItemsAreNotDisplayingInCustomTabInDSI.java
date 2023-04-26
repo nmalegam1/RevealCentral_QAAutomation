@@ -31,7 +31,8 @@ public class TC_52341_VerifyNonApprovedScopeItemsAreNotDisplayingInCustomTabInDS
                     .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToDSIPage()
-                    .verifyNonApprovedScopeInCustomTab(data.get("Custodian"),data.get("Datasource"),data.get("Daterange"),data.get("Keyword"));
+                    .verifyNonApprovedScopeInCustomTab(data.get("Custodian"),data.get("Datasource"),data.get("Daterange"),data.get("Keyword"))
+                    .logout();
 
                      }
         catch (Exception ex) {

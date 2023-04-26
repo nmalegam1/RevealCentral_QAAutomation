@@ -32,7 +32,8 @@ public class TC_31089_VerifyColumnsAvailableInCustodianGrid extends TestBase {
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
-                    .verifyColumnsInCustodianGrid();
+                    .verifyColumnsInCustodianGrid()
+                    .logout();
 
 
         } catch (Exception ex) {

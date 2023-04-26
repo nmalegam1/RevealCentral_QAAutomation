@@ -35,7 +35,8 @@ public class TC_53633_VerifyApprovingCaseSingleApprovalType extends TestBase {
                     .sendingCaseForSingleApproval(data.get("BatchNAME"), data.get("USER"), data.get("EMAIL") )
                     .getHeader().goToApprovalPage().approvingCaseSingleApprover(data.get("CaseNameApprove"))
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToSecurityPage().verifyingApproveStatus();
+                    .getLeftMenu().goToSecurityPage().verifyingApproveStatus()
+                    .logout();
 
 
 

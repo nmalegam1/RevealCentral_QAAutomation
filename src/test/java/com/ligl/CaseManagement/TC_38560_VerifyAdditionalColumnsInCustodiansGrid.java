@@ -32,7 +32,8 @@ public class TC_38560_VerifyAdditionalColumnsInCustodiansGrid extends TestBase {
                     .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToCustodiansPage()
-                    .verifyAdditionalColumnsInCustodianGrid();
+                    .verifyAdditionalColumnsInCustodianGrid()
+                    .logout();
 
 
         } catch (Exception ex) {

@@ -32,7 +32,8 @@ public class TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSe
                     .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .clickAndChooseColumnsInCaseGrid()
-                    .verifyChooseColumnsDataInCaseGrid(data.get("ApprovedBySingle"),data.get("ApprovalTypeSingle"));
+                    .verifyChooseColumnsDataInCaseGrid(data.get("ApprovedBySingle"),data.get("ApprovalTypeSingle"))
+                    .logout();
 
 
         } catch (Exception ex) {

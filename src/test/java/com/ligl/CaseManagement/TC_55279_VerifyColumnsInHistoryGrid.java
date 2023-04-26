@@ -32,7 +32,8 @@ public class TC_55279_VerifyColumnsInHistoryGrid extends TestBase {
                     .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToNotesHistoryPage()
-                    .verifyColumnsInNotesHistoryGrid();
+                    .verifyColumnsInNotesHistoryGrid()
+                    .logout();
 
 
         } catch (Exception ex) {

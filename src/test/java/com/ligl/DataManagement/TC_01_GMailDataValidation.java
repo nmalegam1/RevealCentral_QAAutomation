@@ -45,7 +45,7 @@ public class TC_01_GMailDataValidation extends TestBase {
                     .selectAllCCDs()
                     .clickOnAutomateButton()
                     .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteCollection(session.getRegressionData("CollectionStatus"));
+                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(session.getRegressionData("CollectionStatus"));
             ILiglPage page1=new GoogleVaultPage();
             page1.googleVaultLogin(session.getGlobalData("GoogleVaultURL"),session.getGlobalData("GVaultUserName"),session.getGlobalData("GVaultPassword"))
                     .goToMatters().searchMatter(session.getGlobalData("MatterName"))

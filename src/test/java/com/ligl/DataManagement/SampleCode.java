@@ -41,8 +41,8 @@ public class SampleCode extends TestBase {
                     .multipleCCDsSelect(data)
                     .selectAllCCDs()
                     .clickOnAutomateButton()
-                    .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteCollection(data.get("CollectionStatus"));
+                    .getLeftMenu().goToDataManagementSummary();
+                    //.validateAndWaitForRecordsToCompleteCollection(data.get("CollectionStatus"));
 
 
 

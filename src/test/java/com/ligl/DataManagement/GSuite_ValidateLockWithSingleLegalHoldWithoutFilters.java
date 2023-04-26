@@ -3,18 +3,18 @@ package com.ligl.DataManagement;
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.dataprovider.TestDataProvider;
-import com.ligl.pages.GoogleVaultPage;
 import com.ligl.pages.LaunchPage;
 import com.ligl.util.DataUtil;
+import org.openqa.selenium.WebElement;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class GSuite_Validation extends TestBase {
+public class GSuite_ValidateLockWithSingleLegalHoldWithoutFilters extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
-    public void GSuite_Validation(Hashtable<String, String> data) throws Exception {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData",description = "DataManagement")
+    public void GSuite_ValidateLockWithSingleLegalHoldWithoutFilters(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -36,20 +36,27 @@ public class GSuite_Validation extends TestBase {
                     .multipleCustodianSelect(data)
                     .getLeftMenu().navigateToDataSourcesPage()
                     .multipleDataSourceSelect(data)
+                    .checkApprovalConfStatus(data.get("BchName"),data.get("Apptemp"),data.get("UserName"),data.get("CaseNameApprove"))
+                    .getLeftMenu().goToLegalHoldPage()
+                    .createLHWithOut_KW_DR(data.get("LHName"),data.get("CustodianTemplate"))
+                    //If Legal hold Approval is True need to call below methods
+                    /*.searchRequiredLegalHoldName(data.get("LHName"))
+                    .sendLHNToApproval(data.get("LHName"),data.get("action"),data.get("emailTemp"),data.get("approver"))
+                    .getHeader().goToApprovalPage()
+                    .clickOnPendingLHNameInAppPage(data.get("CaseLHName"))
+                    .clickOnApproveBtnInAppPage()
+                    .getHeader().viewCase()*/
                     .getLeftMenu().goToDSIPage()
-                    .addDataSourceRecordToDSIGrid(data.get("TC_01_CustFullName"),data.get("TC_01_DataSource"),data.get("DHScope"),data.get("DR1"),data.get("KW1"))
+                    .addDataSourceRecordToDSIGridUptoCollection(data.get("CustFullName"),data.get("DataSource"),data.get("DHScope"))
                     .selectAllCCDs()
                     .clickOnAutomateButton()
                     .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteCollection(data.get("CollectionStatus"));
-            ILiglPage page1=new GoogleVaultPage();
-            page1.googleVaultLogin(session.getGlobalData("GoogleVaultURL"),session.getGlobalData("GVaultUserName"),session.getGlobalData("GVaultPassword"))
-                    .goToMatters().searchMatter(session.getGlobalData("MatterName"))
-                    .goToExports(session.getGlobalData("MatterRecord"));
+                    .validateGSuiteDST_LockWithSingleLegalHoldWithoutFilters(data.get("Status"));
+
 
         } catch (Exception ex) {
-            session.log_Error("GSuite_Validation Failed");
-            throw new Exception("GSuite_Validation Failed", ex);
+            session.log_Error("GSuite_ValidateLockWithSingleLegalHoldWithoutFilters Failed");
+            throw new Exception("GSuite_ValidateLockWithSingleLegalHoldWithoutFilters Failed", ex);
         } finally {
             session.end();
         }
