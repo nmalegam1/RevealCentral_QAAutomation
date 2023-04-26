@@ -2,6 +2,7 @@ package com.ligl.pages;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.administration.ContactMasterPage;
+import com.ligl.pages.casemanagement.CaseCustodiansPage;
 import com.ligl.pages.casemanagement.CaseSummaryPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -46,7 +47,10 @@ public class Header extends LiglBasePage {
 	@FindBy(id="view-case")
 	public WebElement ViewCaseBtn;
 
-	@FindBy(id="custodianprofile-tab")
+	@FindBy(id = "select-case")
+	WebElement SelectCase;
+
+	@FindBy(id = "custodianprofile-tab")
 	public WebElement myHoldsTab;
 	@FindBy(id = "switch-case")
 	public WebElement SwitchCaseBtn;
@@ -74,6 +78,12 @@ public class Header extends LiglBasePage {
 	@FindBy(id = "notificationDropdown")
 	WebElement NotificationIcon;
 
+	@FindBy(id = "dashboard-tab")
+	WebElement Dashboard;
+
+	@FindBy(id = "clear-case")
+	WebElement ClearCase;
+
 	public Header(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
@@ -100,7 +110,7 @@ public class Header extends LiglBasePage {
 
 	public ILiglPage viewCase() throws Exception{
 		try{
-			log_Info("switchCase() Started");
+			log_Info("viewCase() Started");
 			SwitchCaseTab.click();
 			Thread.sleep(2000);
 			ViewCaseBtn.click();
@@ -110,8 +120,67 @@ public class Header extends LiglBasePage {
 			throw new Exception("Exception in switchCase()");
 		}
 	}
-	public ILiglPage switchCase() throws Exception{
-		try{
+
+
+	public ILiglPage clearCaseFunctionality() throws Exception {
+
+		try {
+
+			log_Info("clearCaseFunctionality() Started");
+			Thread.sleep(5000);
+			SwitchCaseTab.click();
+			Thread.sleep(5000);
+			ClearCase.click();
+			getDriver().waitForAngularRequestsToComplete();
+
+			return this;
+
+		} catch (Exception ex) {
+			throw new Exception("Exception in clearCaseFunctionality()");
+		}
+	}
+
+	public ILiglPage validateTheSelectCaseNameInHeader() throws Exception {
+
+		try {
+
+			log_Info("validate the name SELECT CASE in the header");
+
+			boolean a1 = SelectCase.isDisplayed();
+			log_Info("Select Case Is Displayed");
+
+			System.out.println(a1);
+			Thread.sleep(5000);
+
+			Assert.assertEquals(true, a1);
+
+			return new DashboardPage();
+
+		} catch (Exception | Error ex) {
+			log_Error(ex.getMessage());
+			throw new Exception("validateTheSelectCaseNameInHeader()", ex);
+		}
+	}
+
+
+	public ILiglPage selectCase() throws Exception {
+
+		try {
+
+			log_Info("selectCase() Started");
+			getDriver().waitForelementToBeClickable(SelectCase);
+			SelectCase.click();
+			Thread.sleep(2000);
+			getDriver().waitForAngularRequestsToComplete();
+			return new DefaultLandingPage();
+
+		} catch (Exception ex) {
+			throw new Exception("Exception in selectCase()");
+		}
+	}
+	public ILiglPage switchCase() throws Exception {
+		try {
+			getDriver().waitForAngularRequestsToComplete();
 			log_Info("switchCase() Started");
 			Thread.sleep(2000);
 			SwitchCaseTab.click();
@@ -123,24 +192,42 @@ public class Header extends LiglBasePage {
 			throw new Exception("Exception in switchCase()");
 		}
 	}
-	public ILiglPage checkLoggedInUser(String Username,String role) throws Exception{
-		try{
+
+	public ILiglPage checkLoggedInUser(String Username, String role) throws Exception {
+		try {
 			log_Info("checkLoggedInUser() Started");
 			UserProfiles.click();
 			Thread.sleep(3000);
-			getCurrentDriver().findElement(By.xpath("//div[@aria-labelledby='profileDropdown']//p[@title='"+Username+"']")).isDisplayed();
-			getCurrentDriver().findElement(By.xpath("//div[@aria-labelledby='profileDropdown']//p[contains(text(),'"+role+"')]")).isDisplayed();
+			getCurrentDriver().findElement(By.xpath("//div[@aria-labelledby='profileDropdown']//p[@title='" + Username + "']")).isDisplayed();
+			getCurrentDriver().findElement(By.xpath("//div[@aria-labelledby='profileDropdown']//p[contains(text(),'" + role + "')]")).isDisplayed();
 			log_Pass("LoggedIn User Role Name And Role are checked");
 			return new MyHoldsPage();
-		}catch (Exception ex){
+		} catch (Exception ex) {
 			log_Error("checkLoggedInUser() Failed");
-			throw new Exception("Exception in checkLoggedInUser()",ex);
+			throw new Exception("Exception in checkLoggedInUser()", ex);
 		}
 	}
 
-	public ILiglPage goToApprovalPage(){
+	public ILiglPage goToApprovalPage() {
 		approvalTab.click();
 		return new ApprovalPage();
+	}
+
+
+	public ILiglPage navigateToDashboardPage() throws Exception {
+		try {
+
+			log_Info("navigateToDashboardPage() Started");
+			Thread.sleep(5000);
+			Dashboard.click();
+			log_Pass("Clicked on Dashboard Tab");
+
+			return new DashboardPage();
+
+		} catch (Exception ex) {
+			log_Error("navigateToDashboardPage() Failed");
+			throw new Exception("Exception in navigateToDashboardPage()", ex);
+		}
 	}
 
 	public ILiglPage goToCasePage() throws Exception {

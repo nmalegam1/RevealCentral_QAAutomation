@@ -3,6 +3,7 @@ package com.ligl.pages;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.casemanagement.CaseDataSourcesPage;
 import com.ligl.pages.casemanagement.CaseOtherPartyPage;
+import com.ligl.pages.casemanagement.CaseSummaryPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -23,10 +24,20 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Approved')]")
     WebElement ApprovedStatus;
 
-    @FindBy(id = "btn-send-for-approval")
+    @FindBy(id= "send-approval-btn")
     WebElement SendForApprovalBtn;
+    @FindBy(id="chk-all-case-casecustodians")
+    WebElement SelectAllCustodiansCheckBox;
+    @FindBy(id="SelectAll-input")
+    WebElement SelectAllDSTsCheckBox;
+    @FindBy(id="chk-all-case-casedateranges")
+    WebElement SelectAllDateRangesCheckBox;
+    @FindBy(id="chk-all-case-casekeywords")
+    WebElement SelectAllKeywordsCheckBox;
+    @FindBy(xpath = "//section//div[@class='pull-left']//span")
+    WebElement CaseApprovalStatus;
 
-    @FindBy(id = "send-approval-btn")
+    @FindBy(id = "btn-send-for-approval")
     WebElement SendApprovalBtn;
 
     @FindBy(xpath = "//span[contains(text(),' Pending Approval ')]")
@@ -198,7 +209,6 @@ public class SecurityPage extends LiglBaseSessionPage {
     public ILiglPage sendingCaseForApproval() throws Exception {
 
         try {
-
             // validating the case Status In Rejected/Approved State And Approving The Case
 
             log_Info("Check The Status Of Case , It Should Be In Rejected State");
@@ -279,6 +289,53 @@ public class SecurityPage extends LiglBaseSessionPage {
 
     public ILiglPage selectOnpremDataSourceForApproval(String DataSource) throws Exception {
         try {
+
+    /**
+     * Method to send Case For approval With all selected Scope Items by clicking SelectAll Checkbox
+     * @param BchName
+     * @param Apptemp
+     * @param UserName
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage sendCaseForApprovalWithAllScope(String BchName,String Apptemp,String UserName) throws Exception {
+        try {
+            log_Info("Click send for Approval Button");
+            SendApprovalBtn.click();
+            log_Pass("Send Approval btn Clicked");
+            SelectAllCustodiansCheckBox.click();
+            log_Info("Click next");
+            NextBtn.click();
+            SelectAllDSTsCheckBox.click();
+            NextBtn.click();
+            SelectAllDateRangesCheckBox.click();
+            NextBtn.click();
+            SelectAllKeywordsCheckBox.click();
+            NextBtn.click();
+            BatchName.sendKeys(BchName);
+            TemplateNameDrpDwn.click();
+            Thread.sleep(4000);
+            EmailTempText.sendKeys(Apptemp);
+            EmailTempText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+            log_Info("Case Approval Temp selected");
+            SelectApprovalDrpDwn.click();
+            log_Info("Select Approver DropDown Clicked");
+            Thread.sleep(3000);
+            ApproverName.sendKeys(UserName);
+            Thread.sleep(3000);
+            ApproverName.sendKeys(Keys.ENTER);
+            log_Pass("All Credentials Required for Approval are Given");
+            log_Info("Click send for Approval Button");
+            SendForApprovalBtn.click();
+            log_Pass("Case Sent for Approval");
+            return new SecurityPage();
+        }catch (Exception ex){
+            throw new Exception("Exception From sendCaseForApproval()", ex);
+        }
+    }
+    public ILiglPage selectOnpremDataSourceForApproval(String DataSource)throws Exception{
+        try{
             log_Info("selectOnpremDataSourceForApproval() Started");
             OnpremDSTab.click();
             Thread.sleep(5000);
@@ -729,7 +786,7 @@ public class SecurityPage extends LiglBaseSessionPage {
         }
     }
 
-    public ILiglPage sendingCaseForApprovalWithScopeItems(String Employee1, String GmailCheck, String BatchNAME, String USER, String EMAIL) throws Exception {
+            public ILiglPage sendingCaseForApprovalWithScopeItems(String Employee1, String GmailCheck, String BatchNAME, String USER, String EMAIL) throws Exception {
 
 
         try {
@@ -1615,5 +1672,36 @@ public class SecurityPage extends LiglBaseSessionPage {
             throw new RuntimeException(e);
         }
     }
-}
 
+
+    /**
+     * Checking Approval Status and Approving Case if Not Intiated
+     * @param BchName
+     * @param Apptemp
+     * @param UserName
+     * @param CaseNameApprove
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
+        try{
+            log_Info("checkApprovalConfStatus() Started");
+            if(CaseApprovalStatus.getText().equals("Approved"))
+                return new SecurityPage();
+            else if(CaseApprovalStatus.getText().equals("Not Initiated"))
+            {
+                sendCaseForApprovalWithAllScope(BchName,Apptemp,UserName);
+                ApprovalPage ap=new ApprovalPage();
+                getHeader().goToApprovalPage();
+                ap.approvingRejectedCase(CaseNameApprove);
+                getHeader().viewCase();
+                return new CaseSummaryPage();
+            }
+            else
+                return new SecurityPage();
+        }catch (Exception ex){
+            log_Error("checkApprovalConfStatus() is Failed");
+            throw new Exception("Exception in checkApprovalConfStatus()",ex);
+        }
+    }
+    }

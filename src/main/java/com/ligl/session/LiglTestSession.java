@@ -39,7 +39,7 @@ public class LiglTestSession {
 			FileInputStream spFIS = new FileInputStream(Constants.SMOKE_PROP_PATH);
 			smokeProperties.load(spFIS);
 
-			FileInputStream rpFIS = new FileInputStream(Constants.REPORTS_PATH);
+			FileInputStream rpFIS = new FileInputStream(Constants.REGRESSION_PROP_PATH);
 			regressionProperties.load(rpFIS);
 		}catch (Exception e)
 		{
