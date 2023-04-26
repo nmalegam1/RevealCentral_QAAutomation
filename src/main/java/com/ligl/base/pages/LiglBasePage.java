@@ -1650,6 +1650,10 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
+	public ILiglPage validatingEmailsInDB() throws Exception{
+		return null;
+	}
+
 
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();

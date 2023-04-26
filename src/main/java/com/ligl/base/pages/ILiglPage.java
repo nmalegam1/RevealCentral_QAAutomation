@@ -1073,6 +1073,8 @@ public interface ILiglPage {
 
     ILiglPage deleteTheRequiredNotes() throws Exception;
 
+    ILiglPage validatingEmailsInDB() throws Exception;
+
 
 }
 
