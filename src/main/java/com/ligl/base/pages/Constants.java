@@ -52,5 +52,10 @@ public class Constants {
 	public static final String ImportXLSX_Template_Only_Mandatory_Field =  System.getProperty("user.dir")+"\\importEmpTemplates\\ImportXLSX_Template_Only_Mandatory_Fields.xlsx";
 	public static final String ImportXLSX_Template_AccountType = System.getProperty("user.dir")+"\\importEmpTemplates\\ImportXLSX_Template_AccountType.xlsx";
 
+	//SQL Query
+	public static final String EmailTracker_Emp_query = "SELECT TOP 1 * FROM VERTICAL.EMAILTRACKER WHERE TOADDRESS LIKE '%SSIVARAJU@LIGL.IO%' AND SUBJECT LIKE'%SIT-{ENTITY} EMPLOYEE {ACTION} TO LILAC.%'ORDER BY 1 DESC";
+
+	public static final String EmailTracker_UserCreation_query ="SELECT TOP 1 * FROM VERTICAL.EMAILTRACKER WHERE TOADDRESS LIKE '%EmailTracker_001@LIGL.IO%' AND SUBJECT LIKE '%SIT-New User Created through Manual Password for {username}%' ORDER BY 1 DESC";
+
 
 }

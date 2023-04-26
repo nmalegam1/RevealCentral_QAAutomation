@@ -28,9 +28,7 @@ public class TC21215_User_Able_to_click_ResetPassword_button_And_Reset_Password_
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .searchTheUser(data.get("SelectUser"))
                     .scrollToRightToDoActionInUsers(data.get("SelectUser"))
                     .adminResetPassword(data.get("ConformManualPawdReset"),

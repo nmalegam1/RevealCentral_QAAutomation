@@ -28,9 +28,7 @@ public class TC35049_addTemplate_and_Delete_buttons_are_click_disabled_for_Menti
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnEmailTemplatesLink()
+                    .navigateToEmailTemplatesPage()
                     .checkWhetherAddTemplateAndDeleteButtonsAreDisabled(data.get("SelectEmailTemplateCategory"),
                             data.get("SelectEmailTemplate"))
 

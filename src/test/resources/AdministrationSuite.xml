@@ -237,6 +237,11 @@
             <class name="com.ligl.Administration.General.Parties.TC8746_Edit_Existing_Party_using_Edit_button_in_grid_Test"/>
         </classes>
     </test>
+    <test name="TC42968 Parties- Verify Maximum length of Mobile, Telephone and Fax numbers fields should not exceed 20 digits">
+        <classes>
+            <class name="com.ligl.Administration.General.Parties.TC42968_Verify_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Parties_Test"/>
+        </classes>
+    </test>
 
     <!--Email Template Page-->
 
