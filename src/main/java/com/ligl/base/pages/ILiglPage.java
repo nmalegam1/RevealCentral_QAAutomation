@@ -201,8 +201,6 @@ public interface ILiglPage {
 
     ILiglPage goToCaseManagement() throws InterruptedException;
 
-    ILiglPage validatingEmailsInDB() throws Exception;
-
     ILiglPage verifyApprovalHistoryStatus(String AssignedUser1,String Status1,String Status2,String AssignedUser2) throws Exception;
 
     ILiglPage sendingCaseForDualApproval(String Employee1,String BatchNAME,String USER1,String USER2,String SubType,String EMAIL) throws Exception;
@@ -974,7 +972,7 @@ public interface ILiglPage {
 
     public ILiglPage createNewQuestionnaireTemplates(Hashtable<String, String> data) throws Exception;
 
-    public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable<String, String> data) throws Exception;
+    public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable < String, String > data) throws Exception;
 
     public ILiglPage deLinkTheQuestion(String question) throws Exception;
 
@@ -1050,9 +1048,6 @@ public interface ILiglPage {
     ILiglPage searchRequiredDaterangeName(String DRname) throws Exception;
 
     ILiglPage disabledDateRangeNotesClick(String DRName) throws Exception;
-
-    ILiglPage NotesDelete(String NotesContent) throws Exception;
-
     ILiglPage validateDeletedNote(String NotesContent) throws Exception;
 
     ILiglPage enabledDateRangeNotesClick(String DRName) throws Exception;
@@ -1115,6 +1110,33 @@ public interface ILiglPage {
     ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception;
 
     ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception;
+    ILiglPage goToNotesPage() throws InterruptedException;
+    public ILiglPage notesSearchFilter(String name) throws Exception;
+    public ILiglPage TypeofEventSearchFilter(String TypeofEvent) throws Exception;
+    public ILiglPage notesEdit(String RequestBy,String NotesDescription) throws Exception;
+    public ILiglPage NotesDelete(String NotesContent) throws Exception;
+    public ILiglPage validateDeletedNoteForMultipleRecords() throws Exception;
+    public ILiglPage validateDeleteNote() throws Exception;
+    public ILiglPage displayingSelectedNotesList(String TOE) throws Exception;
+    public ILiglPage caseEditInplace() throws Exception;
+    public ILiglPage reAssignCaseForSingleApproval(String EMAIL,String USER) throws Exception;
+    public ILiglPage reAssignCaseForDualApproval(Hashtable<String, String> data) throws Exception;
+    public ILiglPage validateRevokeCaseForSingleApproval(String a,String b) throws Exception;
+    public ILiglPage validateRevokeCaseForDualApproval(String a,String b,String c) throws Exception;
+    public ILiglPage validateReassignForSingleApproval(String a,String b) throws Exception;
+    public ILiglPage validateReassignForDualApproval(String a,String b,String c) throws Exception;
+    public ILiglPage caseEditInplaceisSelected() throws Exception;
+    public ILiglPage goToNotesPageFromDocuments();
+    public ILiglPage createCaseWithoutInplacePreservation(Hashtable<String,String> data) throws Exception;
+    public ILiglPage verifyingCaseRoleIsNonEditable() throws Exception;
+    public ILiglPage detailsColumnData(String Details) throws Exception;
+
+    ILiglPage createNewCaseWithInPlacePreservation(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage deleteTheRequiredNotes() throws Exception;
+
+    ILiglPage validatingEmailsInDB() throws Exception;
+
     ILiglPage createLHWithOnlyKW(String lhName, String custTemp, String Keywords) throws Exception;
 
     ILiglPage validateEmpData(String custodianName, String emailID) throws Exception;

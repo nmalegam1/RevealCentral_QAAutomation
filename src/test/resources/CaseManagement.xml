@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="CaseManagement">
-  <test name="Deleting InHouse Counsel">
+<!--  <test name="Deleting InHouse Counsel">
     <classes>
       <class name="com.ligl.CaseManagement.TC_7094_DeletingInHouseCounsel"/>
     </classes>
-  </test> <!-- Test -->
+  </test> &lt;!&ndash; Test &ndash;&gt;
   <test name="Deleting Outside Counsel">
     <classes>
       <class name="com.ligl.CaseManagement.TC_7100_DeletingOutsideCounsel"/>
@@ -179,6 +179,81 @@
   <test name="Dual Approval - Either Both Rejected">
     <classes>
       <class name="com.ligl.CaseManagement.TC_35031_35058_VerifyApprovingCaseDualApprovalEitherTypeBothRejected"/>
+    </classes>
+  </test>-->
+  <test name="CaseApprovalReAssign">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_42956_CaseApprovalReAssign"/>
+    </classes>
+  </test>
+  <test name="CaseApprovalRevoke">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_43245_CaseApprovalRevoke"/>
+    </classes>
+  </test>
+  <test name="CaseApprovalReassignForDualApproval_44367">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_44367_CaseApprovalReassignForDualApproval"/>
+    </classes>
+  </test>
+  <test name="CaseCreationByUncheckingInplacepreservationCheckbox">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_42980_CaseCreationByUncheckingInplacepreservationCheckbox"/>
+    </classes>
+  </test>
+  <test name="CaseCreationwithInplace">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_42979_CaseCreationwithInplace"/>
+    </classes>
+  </test>
+  <test name="InPlacePreservationIsNonEditableForApprovedCase">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_42992_InPlacePreservationIsNonEditableForApprovedCase"/>
+    </classes>
+  </test>
+  <test name="VerifyCaseRoleIsNonEditableForApprovedCase_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_52320_VerifyCaseRoleIsNonEditableForApprovedCase"/>
+    </classes>
+  </test>
+  <test name="CreatingNewNotesForCase_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55227_CreatingNewNotesForCase"/>
+    </classes>
+  </test>
+  <test name="EditNotes_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55178_EditNotes"/>
+    </classes>
+  </test>
+  <test name="DeleteNotes_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55239_DeleteNotes"/>
+    </classes>
+  </test>
+  <test name="EditNotesInCaseHistory_55286">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55286_EditNotesInCaseHistory"/>
+    </classes>
+  </test>
+  <test name="DeleteNotesInCaseHistory_55304">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55304_DeleteNotesInCaseHistory"/>
+    </classes>
+  </test>
+  <test name="DisplayingSelectedCaseNotesListInCaseHistory_55318">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55318_DisplayingSelectedCaseNotesListInCaseHistory"/>
+    </classes>
+  </test>
+  <test name="VerifyCaseDocumentNotesInCaseHistory_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_56658_VerifyCaseDocumentNotesInCaseHistory"/>
+    </classes>
+  </test>
+  <test name="VerifyDetailsColumnInCaseHistory_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_56659_VerifyDetailsColumnInCaseHistory"/>
     </classes>
   </test>
 

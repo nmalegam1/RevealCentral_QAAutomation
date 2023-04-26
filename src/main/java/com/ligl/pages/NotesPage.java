@@ -24,24 +24,51 @@ public class NotesPage extends LiglBaseSessionPage {
 
     @FindBy(id = "btn-save-and-add")
     WebElement SaveBtn;
-
-    //Notes search elements
-    //@FindBy(xpath = "//*[@id=\"layout\"]/div/app-case-details/div/div[2]/main/app-notes/div[3]/mat-card/ag-grid-angular/div/div[2]/div[3]/div[1]/div[2]/button")
-    //WebElement ChooseNotes;
     @FindBy(xpath = "//div[@col-id=\"Notes\"]//span[@ref=\"eMenu\"]//span[@role='presentation']")
      WebElement ChooseNotes;
-    //div[@role="presentation"]//span[@ref="eMenu"]//span[@role='presentation']
-    // //div[@col-id="Notes"]//span[@ref="eMenu"]//span[@role='presentation']-- choose filter
-    //div[@ref="eHeader"]//span[@aria-label="filter"]//span[@role='presentation']
-    //*[@id="ag-890-input"]
-    //*[@id="layout"]/div/app-case-details/div/div[2]/main/app-notes/div[3]/mat-card/ag-grid-angular/div/div[6]/div/div[1]/span[2]/span
-    // @FindBy(xpath = "//div[@ref=\"eLabel\"]//span[contains(text(),'Notes')]")
     @FindBy(xpath = "//*[@id=\"layout\"]/div/app-case-details/div/div[2]/main/app-notes/div[3]/mat-card/ag-grid-angular/div/div[6]/div/div[1]/span[2]/span")
     WebElement Notes_filter;
     @FindBy(xpath = "//div[@role='presentation']//input[@placeholder='Filter...']")
     WebElement Notes_Search;
     @FindBy(xpath = "//div[@role=\"presentation\"]//div[@row-index=\"0\"]//div[@col-id=\"Notes\"]")
     WebElement Notes_row;
+
+    @FindBy(xpath = "//button[@title='Edit']")
+    WebElement Editbtn;
+    @FindBy(xpath = "//button[@title='Delete']")
+    WebElement Deletebtn;
+
+    @FindBy(xpath ="//button[contains(text(),'Yes')]")
+    WebElement Yesbtn;
+
+    @FindBy(xpath = "//span[contains(text(),'Type of Event')]")
+    WebElement NotesHeader;
+
+    @FindBy(xpath="//span[contains(text(),'Notes') and @ref='eText']")
+    WebElement NotesColumnHeader;
+
+    @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
+    WebElement Filter;
+
+    @FindBy(xpath = "//input[@placeholder='Filter...']")
+    WebElement Searchbar;
+
+    @FindBy(xpath="//span[contains(text(),'Notes')]/ancestor::div[@ref='eLabel']/ancestor::div[@col-id='Notes']//span")
+    WebElement NotesColumnMenu;
+
+    @FindBy(xpath = "//div[contains(text(),'No data available...')]")
+    WebElement Nodata;
+
+    @FindBy(xpath = "//div[@role='presentation']//div[@row-index='0']//div[@col-id='Notes']//span//span[@class='ellipsistextoverflow']")
+    WebElement Notesdata;
+
+    @FindBy(xpath = "//span[contains(text(),'Result(s)')]/ancestor::div[@class='table-header-action-item-list']//b")
+    WebElement Results;
+
+    @FindBy(xpath = "//span[contains(text(),'Action')]")
+    WebElement ActionColumn;
+
+
     public ILiglPage NewTabFunction() {
 
         Actions actions = new Actions(getCurrentDriver());
@@ -55,19 +82,24 @@ public class NotesPage extends LiglBaseSessionPage {
         return new NotesPage();
     }
 
-    public ILiglPage NotesSearchFilter(String name) throws Exception {
+    public ILiglPage notesSearchFilter(String name) throws Exception {
         try{
+
             log_Info("choose notes");
-            Thread.sleep(3000);
+            Thread.sleep(5000);
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(ChooseNotes).perform();
+            getDriver().waitForelementToBeClickable(ChooseNotes);
+            Thread.sleep(5000);
             ChooseNotes.click();
+            Thread.sleep(5000);
             log_Info("click on notes");
             Notes_filter.click();
             log_Info("Click on Search");
-            //  Notes_Search.click();
             log_Info("enter key");
-            // Notes_Search.sendKeys("Say hello");
+            Thread.sleep(5000);
             Notes_Search.sendKeys(name);
-            waitForPageToLoad();
+            Thread.sleep(5000);
             Notes_row.click();
             log_Pass("Clicked on Notes");
             Thread.sleep(4000);
@@ -77,10 +109,7 @@ public class NotesPage extends LiglBaseSessionPage {
 
         }
     }
-    // Elements of ValidateDataInNotesGrid
-    // @FindBy(xpath = "//span[@title='Say helloTest data Edit']")
-    @FindBy(xpath = "//div[@role='presentation']//div[@row-index='0']//div[@col-id='Notes']//span//span[@class='ellipsistextoverflow']")
-    WebElement Notesdata;
+
     @Override
     public ILiglPage validateDataInNotesGrid(String NotesContent) throws Exception{
         try
@@ -89,7 +118,6 @@ public class NotesPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             String s1= Notesdata.getAttribute("title");
             Thread.sleep(3000);
-            //Assert.assertEquals(NotesContent,b);
             String s2=NotesContent;
             System.out.println(s1.equals(s2));
             log_Info("Notes is Displaying in grid");
@@ -104,10 +132,7 @@ public class NotesPage extends LiglBaseSessionPage {
 
     public ILiglPage createNewNotes(String RequestBy,String NotesContent) throws Exception {
         try {
-           /* log_Info("Click on Notes icon in case list page");
-            Notes_btn.click();
-            log_Pass("Notes icon clicked");
-            Thread.sleep(5000);*/
+
             log_Info("Click on create new notes button");
             addNotesbtn.click();
             log_Info("Create new notes button clicked");
@@ -136,36 +161,14 @@ public class NotesPage extends LiglBaseSessionPage {
         }
 
     }
-    //  @FindBy(xpath = "//*[@id=\"EDIT\"]"), id = "DELETE"
-    @FindBy(xpath = "//button[@title='Edit']")
-    WebElement Editbtn;
-    @FindBy(xpath = "//button[@title='Delete']")
-    WebElement Deletebtn;
-
-    @FindBy(xpath ="//button[contains(text(),'Yes')]")
-    WebElement Yesbtn;
-
-    @FindBy(xpath = "//span[contains(text(),'Type of Event')]")
-    WebElement NotesHeader;
-
-    @FindBy(xpath="//span[contains(text(),'Notes') and @ref='eText']")
-    WebElement NotesColumnHeader;
-
-    @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
-    WebElement Filter;
-
-    @FindBy(xpath = "//input[@placeholder='Filter...']")
-    WebElement Searchbar;
-
-    @FindBy(xpath="//span[contains(text(),'Notes')]/ancestor::div[@ref='eLabel']/ancestor::div[@col-id='Notes']//span")
-    WebElement NotesColumnMenu;
 
     public ILiglPage editNotes(String RequestBy,String NotesDescription) throws Exception{
+
         try {
+
             log_Pass("Moving to click edit note button in grid");
-            //((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",Editbtn);
             NotesHeader.click();
-            getDriver().waitUntilSpinnerIsClosed();
+
             for (int i = 0; i < 8; i++)
             {
                 Actions ac = new Actions(getCurrentDriver());
@@ -173,15 +176,21 @@ public class NotesPage extends LiglBaseSessionPage {
             }
             getDriver().waitForelementToBeClickable(Editbtn);
             log_Pass("Clicking on Edit note button");
+            Thread.sleep(5000);
             Editbtn.click();
             log_Info("Edit note button is Clicked");
             Thread.sleep(5000);
+            RequestBytxtbox.clear();
+            log_Info("Requested By field is cleared");
             RequestBytxtbox.sendKeys(RequestBy);
             log_Info("Data given to Requested by field");
             Thread.sleep(5000);
             log_Info("clicking on Notes text editor field");
             Notes.click();
             log_Info("clicked on Notes text editor field");
+            Notes.clear();
+            Thread.sleep(3000);
+            log_Info("Data Cleared");
             Notes.sendKeys(NotesDescription);
             log_Info("Notes content is given");
             Thread.sleep(5000);
@@ -195,16 +204,26 @@ public class NotesPage extends LiglBaseSessionPage {
         }
         catch (Exception ex)
         {
+            log_Error(ex.getMessage());
             throw new Exception("Exception in NotesEdit()", ex);
         }
     }
 
-    //To delete notes in grid
+         //To delete notes in grid
     public ILiglPage NotesDelete(String NotesContent) throws Exception{
         try {
-            searchRequiredNotesContent(NotesContent);
+           searchRequiredNotesContent(NotesContent);
             Thread.sleep(3000);
             ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",Deletebtn);
+            NotesHeader.click();
+
+            for (int i = 0; i < 8; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
+
+            getDriver().waitForelementToBeClickable(Deletebtn);
             log_Pass("Click on Delete button of notes");
             Deletebtn.click();
             Thread.sleep(3000);
@@ -213,17 +232,15 @@ public class NotesPage extends LiglBaseSessionPage {
             log_Info("Yes button is Clicked");
             log_Pass("NotesDelete() Completed");
             return new NotesPage();
-        }
-        catch (Exception ex)
-        {
-            throw new Exception("Exception in NotesDelete()", ex);
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw  new Exception("NotesDelete() Failed", ex);
+
         }
     }
+        //To validate whether deleted notes is not displaying in grid
 
-    @FindBy(xpath = "//div[contains(text(),'No data available...')]")
-    WebElement Nodata;
-
-//To validate whether deleted notes is not displaying in grid
     public ILiglPage validateDeletedNote(String NotesContent) throws Exception{
         try {
             log_Info("verify No data available text in Grid");
@@ -241,7 +258,6 @@ public class NotesPage extends LiglBaseSessionPage {
         }
     }
 
-    //Searching Notes content column in Notes grid
     public ILiglPage searchRequiredNotesContent(String NotesContent) throws Exception {
         try {
 
@@ -264,8 +280,9 @@ public class NotesPage extends LiglBaseSessionPage {
             log_Error(ex.getMessage());
             throw  new Exception("searchRequiredNotesContent() Failed", ex);
 
-        }}
-//To search the same notes column for second time
+        }
+    }
+
     public ILiglPage notesSecondSearch(String NotesContent) throws Exception {
         try {
             log_Info("secondSearch() Started");
@@ -281,5 +298,45 @@ public class NotesPage extends LiglBaseSessionPage {
             log_Error(ex.getMessage());
             throw new Exception("secondSearch() Failed", ex);    }}
 
+
+
+    public ILiglPage deleteTheRequiredNotes() throws Exception{
+
+        try {
+
+            Thread.sleep(3000);
+
+            for (int i = 0; i < 8; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
+
+            getDriver().waitForelementToBeClickable(Deletebtn);
+            log_Pass("Click on Delete button of notes");
+            Deletebtn.click();
+            Thread.sleep(3000);
+            log_Info("Delete button is Clicked");
+            Yesbtn.click();
+            log_Info("Yes button is Clicked");
+            log_Pass("NotesDelete() Completed");
+
+
+            Thread.sleep(3000);
+            ActionColumn.click();
+            for (int i = 0; i < 8; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
+
+            return new NotesPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw  new Exception("deleteTheRequiredNotes() Failed", ex);
+
+        }
+    }
 
 }
