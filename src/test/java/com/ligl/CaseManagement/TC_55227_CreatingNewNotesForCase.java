@@ -22,28 +22,20 @@ public class TC_55227_CreatingNewNotesForCase extends TestBase {
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
             ILiglPage Page = new LaunchPage()
+
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
-                    .searchcase(data.get("CaseName"))
-                    .goToNotesPage()
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .searchcase(data.get("CaseName")).goToNotesPage()
                     .createNewNotes(data.get("RequestBy"), data.get("Notes"))
                     .notesSearchFilter(data.get("Notes"))
                     .validateDataInNotesGrid(data.get("Notes"));
-                    /*.editNotes(data.get("EditRequestBy"), data.get("EditNotesContent"))
-                    .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToNotesPage()
-                    .notesSearchFilter(data.get("FinalNotesDescription"))
-                    .validateDataInNotesGrid(data.get("FinalNotesDescription"))
-                    .validateDeletedNote();*/
+
             }catch (Exception e)
-        {session.log_Error("CreatingNewNotesForCase_Test Failed");
-            throw new Exception("CreatingNewNotesForCase_Test Failed", e);
+        {session.log_Error("TC_55227_CreatingNewNotesForCase Failed");
+            throw new Exception("TC_55227_CreatingNewNotesForCase Failed", e);
         } finally {
             session.end();
         }
-
-
-
-
     }
 }

@@ -157,6 +157,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(id="filedownload-btn")
     WebElement HelpLink;
 
+    @FindBy(xpath = "//*[@id='input-dynamic-column-4']/label/span[1]/input")
+    WebElement inplace_checkbox1;
+
 
     /**
      * Method to Check the Region Field in Case Creation isMandatory
@@ -812,6 +815,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     }
     public ILiglPage createCaseWithoutInplacePreservation(Hashtable<String,String> data) throws Exception {
         try {
+
             log_Info("createNewCase() Started");
             Thread.sleep(3000);
             log_Info("Click Create Case Button");
@@ -907,5 +911,104 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     }
 
+    public ILiglPage createNewCaseWithInPlacePreservation(Hashtable<String,String> data) throws Exception {
+        try {
+
+
+            log_Info("createNewCase() Started");
+            Thread.sleep(3000);
+            log_Info("Click Create Case Button");
+            createCaseBtn.click();
+            log_Info(data.toString());
+            log_Info("Enter CaseType");
+            getDriver().waitForelementToBeClickable(CaseType);
+            CaseType.click();
+            Thread.sleep(3000);
+            CaseTypeText.sendKeys(data.get("CaseType"));
+            Thread.sleep(3000);
+            CaseTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter RoleType");
+            getDriver().waitForelementToBeClickable(RoleType);
+            RoleType.click();
+            Thread.sleep(3000);
+            RoleTypeText.sendKeys(data.get("Role"));
+            Thread.sleep(3000);
+            RoleTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter CaseName");
+            getDriver().waitForelementToBeClickable(CaseName);
+            CaseName.sendKeys(data.get("CaseName"));
+
+
+            log_Info("Enter Work Flow Template");
+            getDriver().waitForelementToBeClickable(WFT);
+            WFT.click();
+            Thread.sleep(3000);
+            WFTText.sendKeys(data.get("WFT"));
+            Thread.sleep(3000);
+            WFTText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Case Settings Template");
+            getDriver().waitForelementToBeClickable(CST);
+            CST.click();
+            Thread.sleep(3000);
+            CSTText.sendKeys(data.get("CaseSetTemp"));
+            Thread.sleep(3000);
+            CSTText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Entity");
+            getDriver().waitForelementToBeClickable(Entity);
+            Entity.click();
+            Thread.sleep(3000);
+            EntityText.sendKeys(data.get("Entity"));
+            Thread.sleep(3000);
+            EntityText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Region");
+            getDriver().waitForelementToBeClickable(Region);
+            Region.click();
+            Thread.sleep(3000);
+            RegionText.sendKeys(data.get("Region"));
+            Thread.sleep(3000);
+            RegionText.sendKeys(Keys.ENTER);
+            log_Info("Region Entered");
+            Thread.sleep(3000);
+
+            log_Info("Enter Description");
+            getDriver().waitForelementToBeClickable(Desc);
+            Desc.sendKeys(data.get("Description"));
+
+            log_Info("Enter Priority");
+            getDriver().waitForelementToBeClickable(Priority);
+            Priority.click();
+            Thread.sleep(5000);
+            SelPriority.click();
+            log_Pass("Priority Selected");
+            Thread.sleep(3000);
+
+            MoreBtn.click();
+            log_Info("check for inplace preservation check box selected or not");
+            boolean a1 = inplace_checkbox1.isSelected();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(true, a1);
+            log_Info("inplace preservation check box selected for the Case");
+
+            log_Pass("All Mandatory Fields Are Entered");
+            log_Info("Click Save Button");
+            SaveBtn.click();
+            log_Pass("Save button Clicked");
+            String b= NewlyCreatedCaseName.getAttribute("title");
+            Assert.assertEquals(data.get("CaseName"),b);
+            log_Pass("Case Created Successfully");
+            return new CaseSummaryPage();
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in createNewCase()", ex);
+        }
+    }
 
 }

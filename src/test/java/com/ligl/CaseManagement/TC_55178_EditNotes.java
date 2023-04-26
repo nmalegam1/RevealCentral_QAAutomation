@@ -13,27 +13,34 @@ import java.util.Hashtable;
 public class TC_55178_EditNotes extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
     public void TC_55178_EditNotes(Hashtable<String,String> data) throws Exception {
-        session.log_Info(data.toString());
-        if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
-            // skip in extent rep
-            session.skipTest("Skipping the test as Runmode was NO");
-            //skip - testng
-            throw new SkipException("Skipping the test as Runmode was NO");
-        }
-        ILiglPage Page;
-        Page = new LaunchPage()
+
+        try {
+            session.log_Info(data.toString());
+            if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
+                session.skipTest("Skipping the test as Runmode was NO");
+                throw new SkipException("Skipping the test as Runmode was NO");
+            }
+
+        ILiglPage Page = new LaunchPage()
+
                 .openBrowser("chrome")
                 .navigateURL()
-                .login(data.get("Username"), data.get("Password"),data.get("Entity"))
-                // .selectEntity(data.get("Entity"));
+                .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                 .searchcase(data.get("CaseName"))
                 .goToNotesPage()
-               // .createNewNotes(data)
-                .notesSearchFilter(data.get("Notes"))
-                .editNotes(data.get("EditRequestBy"), data.get("EditNotesDescription"))
+                .editNotes(data.get("EditRequestBy"), data.get("NotesDescription"))
                 .getHeader()
                 .goToCasePage().searchcase(data.get("CaseName")).goToNotesPage()
-                .notesSearchFilter(data.get("FinalNotesDescription"))
-                .validateDataInNotesGrid(data.get("FinalNotesDescription"));
+                .notesSearchFilter(data.get("NotesDescription"))
+                .validateDataInNotesGrid(data.get("NotesDescription"));
+
+
+        }catch (Exception e)
+        {
+            session.log_Error("TC_55178_EditNotes Failed");
+            throw new Exception("TC_55178_EditNotes Failed", e);
+        } finally {
+            session.end();
+        }
     }
 }

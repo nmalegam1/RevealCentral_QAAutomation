@@ -1414,7 +1414,9 @@ public class SecurityPage extends LiglBaseSessionPage {
         }
     }
     public ILiglPage reAssignCaseForSingleApproval(String EMAIL,String USER) throws Exception{
+
         try{
+
             log_Info("Click ReAssign Button");
             Thread.sleep(5000);
             ReAssignBtn.click();
@@ -1433,6 +1435,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(SelectApprovalDrpDwn);
             Thread.sleep(3000);
             SelectApprovalDrpDwn.sendKeys(USER);
+            Thread.sleep(3000);
             SelectApprovalDrpDwn.sendKeys(Keys.ENTER);
             log_Info("Clicked on Select Approval  Drop down");
             log_Pass("All Credentials Required for Approval are Given");
@@ -1452,63 +1455,64 @@ public class SecurityPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             Assert.assertEquals(true,a1);
             log_Info("Displayed The Revoke Button");
+
             return new SecurityPage();
 
         }catch (Exception ex){
             throw new Exception("Exception From ReAssignCaseForApproval()", ex);
         }
     }
+
     public ILiglPage reAssignCaseForDualApproval(Hashtable<String, String> data) throws Exception{
+
         try{
-            log_Info("Click ReAssign Button");
-            Thread.sleep(5000);
+
+            log_Info("Click On Re-Assign Button");
             getDriver().waitForelementToBeClickable(ReAssignBtn);
+            Thread.sleep(5000);
             ReAssignBtn.click();
             Thread.sleep(5000);
-            log_Pass("ReAssigned button is clicked");
+            log_Pass("Clicked On Re-Assign Button");
+
             log_Info("Select Dual Approval Button");
+            getDriver().waitForelementToBeClickable(DualApproval);
             DualApproval.click();
+            Thread.sleep(5000);
             log_Pass("Dual Approval Button Selected");
-            log_Info("select template case approval");
+
+            log_Info("Select Email Template DropDown");
             getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
-            //  EmailTemp.sendKeys(data.get("Email Template"));
-            Thread.sleep(4000);
-            //  EmailTempText.sendKeys("CaseApproval");
             TemplateNameDrpDwn.sendKeys(data.get("Email Template"));
             Thread.sleep(3000);
             TemplateNameDrpDwn.sendKeys(Keys.ENTER);
-            log_Info("template selected");
-            // SelectorApprover1.click();
-            log_Info("Select Approver DropDown Clicked");
-            // Thread.sleep(3000);
-            //SelectorApprover1.sendKeys("super Vuser");
+            log_Pass("Selected Email Template From DropDown");
+
+            log_Info("Select Approver1 DropDown");
             SelectorApprover1.sendKeys(data.get("Approver1"));
-            // ApproverName.sendKeys("super Vuser");
             Thread.sleep(3000);
             SelectorApprover1.sendKeys(Keys.ENTER);
-            log_Pass("Approver1 selected");
-            //  SelectorApprover2.click();
             Thread.sleep(3000);
-            log_Info("Select Approver2 DropDown Clicked");
-            //  SelectorApprover2.sendKeys("T Nikhitha-sit");
+            log_Pass("Selected Approver1 DropDown");
+
+
+            log_Info("Select Approver2 DropDown");
             SelectorApprover2.sendKeys(data.get("Approver2"));
-            // ApproverName.sendKeys("Shyam");
             Thread.sleep(3000);
             SelectorApprover2.sendKeys(Keys.ENTER);
-            log_Pass("Approver2 selected");
-            // ApproverName.sendKeys(Keys.ENTER);
-
-            // ApprovalSubType.sendKeys("Both");
-            ApprovalSubType.sendKeys(data.get("ApprovalSubType"));
             Thread.sleep(3000);
-            log_Pass("Approval SubType selected");
-            log_Pass("All Credentials Required for Approval are Given");
+            log_Pass("Selected Approver2 DropDown");
+
+            log_Info("Click On Approver Sub Type");
+            getDriver().waitForelementToBeClickable(ApprovalSubType);
+            ApprovalSubType.sendKeys(data.get("ApprovalSubType"));
+            log_Pass("Clicked On Approver Sub Type");
 
             log_Info("Click on Send For Approval Button");
             getDriver().waitForelementToBeClickable(SendApprovalBtn);
             Thread.sleep(3000);
             SendApprovalBtn.click();
             log_Info("Clicked on Send For Approval Button");
+
             // Validate Whether Case Is Reassigned Or Not
 
             log_Info("Display The Send For Approval Button");
@@ -1592,6 +1596,7 @@ public class SecurityPage extends LiglBaseSessionPage {
         }
     }
     public ILiglPage validateReassignForDualApproval(String a,String b,String c) throws Exception{
+
         try{
             String a1,a2,b1,b2;
             a1= AssignedUserName.getText();
@@ -1602,7 +1607,9 @@ public class SecurityPage extends LiglBaseSessionPage {
             Assert.assertEquals(a2,b);
             Assert.assertEquals(b1,c);
             Assert.assertEquals(b2,c);
+
             return new SecurityPage();
+
         } catch (Exception e) {
             log_Error(e.getMessage());
             throw new RuntimeException(e);

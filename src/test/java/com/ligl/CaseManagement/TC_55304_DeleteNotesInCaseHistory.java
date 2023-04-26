@@ -13,23 +13,33 @@ import java.util.Hashtable;
 public class TC_55304_DeleteNotesInCaseHistory extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
     public void TC_55304_DeleteNotesInCaseHistory(Hashtable<String,String> data) throws Exception {
-        session.log_Info(data.toString());
-        if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
-            // skip in extent rep
-            session.skipTest("Skipping the test as Runmode was NO");
-            //skip - testng
-            throw new SkipException("Skipping the test as Runmode was NO");
-        }
+
+
+        try {
+            session.log_Info(data.toString());
+            if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
+                session.skipTest("Skipping the test as Runmode was NO");
+                throw new SkipException("Skipping the test as Runmode was NO");
+            }
+
         ILiglPage Page = new LaunchPage()
+
                 .openBrowser("chrome")
                 .navigateURL()
-                .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                 .searchcase(data.get("CaseName"))
                 .GoToCase(data.get("CaseName"))
-                 .getLeftMenu()
+                .getLeftMenu()
                 .navigateToNotesHistoryPage()
                 .TypeofEventSearchFilter(data.get("TypeofEvent"))
                 .validateDeletedNoteForMultipleRecords();
 
+        }catch (Exception e)
+        {
+            session.log_Error("TC_55304_DeleteNotesInCaseHistory Failed");
+            throw new Exception("TC_55304_DeleteNotesInCaseHistory Failed", e);
+        } finally {
+            session.end();
+        }
     }
 }

@@ -13,24 +13,31 @@ import java.util.Hashtable;
 public class TC_55318_DisplayingSelectedCaseNotesListInCaseHistory extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
     public void TC_55318_DisplayingSelectedCaseNotesListInCaseHistory(Hashtable<String, String> data) throws Exception {
-        session.log_Info(data.toString());
-        if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
-            // skip in extent rep
-            session.skipTest("Skipping the test as Runmode was NO");
-            //skip - testng
-            throw new SkipException("Skipping the test as Runmode was NO");
-        }
+
+
+        try {
+            session.log_Info(data.toString());
+            if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
+                session.skipTest("Skipping the test as Runmode was NO");
+                throw new SkipException("Skipping the test as Runmode was NO");
+            }
+
         ILiglPage Page = new LaunchPage()
+
                 .openBrowser("chrome")
                 .navigateURL()
-                .login(data.get("Username"), data.get("Password"),data.get("Entity"))
-                // .selectEntity(data.get("Entity"));
-                .searchcase(data.get("CaseName"))
-                .GoToCase(data.get("CaseName"))
+                .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                 .getLeftMenu()
-                .goToCaseManagement()
                 .navigateToNotesHistoryPage()
-                .displayingSelectedNotesList(data.get("TOE"));
+                .displayingSelectedNotesList(data.get("TypeofEvent"));
 
+        }catch (Exception e)
+        {
+            session.log_Error("TC_55318_DisplayingSelectedCaseNotesListInCaseHistory Failed");
+            throw new Exception("TC_55318_DisplayingSelectedCaseNotesListInCaseHistory Failed", e);
+        } finally {
+            session.end();
+        }
     }
 }

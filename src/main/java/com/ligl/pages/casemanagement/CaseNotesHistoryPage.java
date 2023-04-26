@@ -3,6 +3,7 @@ package com.ligl.pages.casemanagement;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
 import com.ligl.pages.NotesPage;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
@@ -63,7 +64,7 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
     WebElement SearchTOE;
     @FindBy(id= "selectType")
     public WebElement TypeofEventDrpdwn;
-    @FindBy(xpath = "//input[@placeholder=\"Search\"]")
+    @FindBy(xpath = "//input[@placeholder='Search']")
     public WebElement SearchTOfEDrpdwn;
     @FindBy(xpath = "//div[@row-id=\"0\"]//div[@col-id=\"TypeofEvent\"]//span//span")
     public WebElement TypeofEventRowValue;
@@ -72,9 +73,12 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
     @FindBy(xpath = "//span[contains(text(),'Result(s)')]/ancestor::div[@class='table-header-action-item-list']//b")
     WebElement Results;
 
+
+
     public ILiglPage verifyColumnsInNotesHistoryGrid() throws Exception {
 
         try {
+
             log_Info("Check The Column names In The History Grid");
             boolean c1 = TimeStamp.isDisplayed();
             boolean c2 = PerformedBy.isDisplayed();
@@ -122,41 +126,38 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
         }
     }
     public ILiglPage TypeofEventSearchFilter(String TypeofEvent) throws Exception {
+
         try {
-            getDriver().waitUntilSpinnerIsClosed();
+
             log_Info("choose ToE");
             Thread.sleep(3000);
             ChooseTOE.click();
             log_Info("click on ToE Filter");
             FilterTOE.click();
             log_Info("Click on Search");
-            //  Notes_Search.click();
-            log_Info("enter key");
-            // Notes_Search.sendKeys("Say hello");
+            log_Info("Enter key");
+            Thread.sleep(3000);
             SearchTOE.sendKeys(TypeofEvent);
-            waitForPageToLoad();
-            // ToE_row.click();
-            Thread.sleep(4000);
-            return new CaseNotesHistoryPage();
-        } catch (Exception ex) {
-            throw new Exception("Exception in TypeofEventSearchFilter()", ex);
+            Thread.sleep(5000);
+            log_Info("Entered key");
 
+            return new CaseNotesHistoryPage();
+
+        }
+        catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("TypeofEventSearchFilter()", ex);
         }
     }
     public ILiglPage notesEdit(String RequestBy,String NotesDescription) throws Exception{
+
         try {
+
             log_Pass("Moving to click edit note button in grid");
-            //((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",Editbtn);
-            // NotesHeader.click();
-            getDriver().waitUntilSpinnerIsClosed();
-            /*for (int i = 0; i < 8; i++)
-            {
-                Actions ac = new Actions(getCurrentDriver());
-                ac.sendKeys(Keys.TAB).perform();
-            }*/
             getDriver().waitForelementToBeClickable(Editbtn);
             log_Pass("Clicking on Edit note button");
             Editbtn.click();
+            Thread.sleep(5000);
             log_Info("Edit note button is Clicked");
             Thread.sleep(5000);
             RequestBytxtbox.clear();
@@ -165,7 +166,7 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
             log_Info("Data given to Requested by field");
             Thread.sleep(5000);
             log_Info("clicking on Notes text editor field");
-            Notes.click();
+            Notes.clear();
             log_Info("clicked on Notes text editor field");
             Thread.sleep(5000);
             Notes.sendKeys(NotesDescription);
@@ -176,90 +177,104 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
             SaveBtn.click();
             Thread.sleep(5000);
             log_Info("clicked on Save button in edit note popup");
+
             return new CaseNotesHistoryPage();
         }
-        catch (Exception ex)
-        {
-            throw new Exception("Exception in NotesEdit()", ex);
+        catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("notesEdit()", ex);
         }
     }
     public ILiglPage notesDelete() throws Exception{
         try {
             log_Pass("Moving to click edit note button in grid");
-            NotesHeader.click();
-            getDriver().waitUntilSpinnerIsClosed();
-            /*for (int i = 0; i < 8; i++)
-            {
-                Actions ac = new Actions(getCurrentDriver());
-                ac.sendKeys(Keys.TAB).perform();
-            }*/
             getDriver().waitForelementToBeClickable(Deletebtn);
-            // ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",Deletebtn);
             log_Pass("Click on Delete button of notes");
+            Thread.sleep(3000);
             Deletebtn.click();
             Thread.sleep(3000);
             log_Info("Delete button is Clicked");
             Yesbtn.click();
+            Thread.sleep(3000);
             log_Info("Yes button is Clicked");
             return new CaseNotesHistoryPage();
+
         }
-        catch (Exception ex)
-        {
-            throw new Exception("Exception in NotesDelete()", ex);
+        catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("displayingSelectedNotesList()", ex);
         }
     }
+
     public ILiglPage validateDeletedNoteForMultipleRecords() throws Exception{
+
         try {
+
             log_Info("verify No data available text in Grid");
-            //  WebElement p = driver.findElement(By.xpath("//span[contains(text(),'Result(s)')]/ancestor::div[@class='table-header-action-item-list']//b"));
             String a1 = Results.getText();
             int i = Integer.parseInt(a1);
-            int k=(--i);
+            int k=--i;
             notesDelete();
+            Thread.sleep(6000);
             String a2 = Results.getText();
             int j = Integer.parseInt(a2);
             Assert.assertEquals(j,k);
-
-            /*boolean a1 = Nodata.isDisplayed();
-            Thread.sleep(5000);
-            System.out.println(a1);*/
-            Thread.sleep(5000);
-            // Assert.assertEquals(true, a1);
             log_Info("No data available text in Grid is Displayed");
+
             return new CaseNotesHistoryPage();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+
+        }
+            catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateDeletedNoteForMultipleRecords()", ex);
         }
     }
+
+
     public ILiglPage displayingSelectedNotesList(String TOE) throws Exception{
+
         try {
-            //  ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",Deletebtn);
+
             log_Pass("Click on Type of Event Drop down");
             getDriver().waitForelementToBeClickable(TypeofEventDrpdwn);
+            Thread.sleep(5000);
             TypeofEventDrpdwn.click();
-            Thread.sleep(3000);
-            log_Pass("Search Typeof Event");
-            getDriver().waitForelementToBeClickable(SearchTOfEDrpdwn);
+            Thread.sleep(5000);
             SearchTOfEDrpdwn.sendKeys(TOE);
-            // SearchTOfEDrpdwn.sendKeys(Keys.ENTER);
-            log_Pass("Type of Event Searched");
+            Thread.sleep(5000);
+            TypeofEventDrpdwn.sendKeys(Keys.ENTER);
+            log_Pass("Clicked on Type of Event Drop down");
             waitForPageToLoad();
-            String b = TypeofEventRowValue.getAttribute("title");
-            Assert.assertEquals(TOE, b);
-            log_Pass("Type of Event data displayed successfully");
-            return new CaseNotesHistoryPage();
+
+                String b = TypeofEventRowValue.getAttribute("title");
+                Assert.assertEquals(TOE, b);
+                log_Pass("Type of Event data displayed successfully");
+                return new CaseNotesHistoryPage();
+
         }
-        catch (Exception ex)
-        {
-            throw new Exception("Exception in NotesDelete()", ex);
+        catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("displayingSelectedNotesList()", ex);
         }
     }
+
+
     public ILiglPage detailsColumnData(String Details) throws Exception{
-        log_Info("");
+
+        try {
+
+        log_Info("Validating The Coulmn Data Based On Type Of Event");
         String a=DetailsColValue.getAttribute("title");
         Assert.assertEquals(Details,a);
+        log_Info("Validated The Coulmn Data Based On Type Of Event");
         return new CaseNotesHistoryPage();
+
+        }
+        catch (Exception | Error ex) {
+        log_Error(ex.getMessage());
+        throw new Exception("detailsColumnData()", ex);
+
+        }
     }
 }
-
 

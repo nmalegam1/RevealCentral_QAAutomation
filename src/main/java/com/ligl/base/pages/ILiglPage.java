@@ -1069,6 +1069,10 @@ public interface ILiglPage {
     public ILiglPage verifyingCaseRoleIsNonEditable() throws Exception;
     public ILiglPage detailsColumnData(String Details) throws Exception;
 
+    ILiglPage createNewCaseWithInPlacePreservation(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage deleteTheRequiredNotes() throws Exception;
+
 
 }
 

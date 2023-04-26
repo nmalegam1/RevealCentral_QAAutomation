@@ -13,29 +13,32 @@ import java.util.Hashtable;
 public class TC_43245_CaseApprovalRevoke extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
     public void TC_43245_CaseApprovalRevoke(Hashtable<String,String> data) throws Exception {
-        session.log_Info(data.toString());
-        if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
-            // skip in extent rep
-            session.skipTest("Skipping the test as Runmode was NO");
-            //skip - testng
-            throw new SkipException("Skipping the test as Runmode was NO");
-        }
+
+        try{
+
+            session.log_Info(data.toString());
+            if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
+                session.skipTest("Skipping the test as Runmode was NO");
+                throw new SkipException("Skipping the test as Runmode was NO");
+            }
+
         ILiglPage Ref = new LaunchPage()
+
                 .openBrowser("chrome")
                 .navigateURL()
-                .login(data.get("UserName"),data.get("Password"),data.get("Entity"))
-                //.selectEntity(data.get("Entity"))
-                .searchcase(data.get("CaseName"))
-                .GoToCase(data.get("CaseName"))
-                //.GoToSummaryPage(data.get("CaseName"))
+                .login(data.get("UserName"),data.get("Password"),data.get("EntitySelection"))
+                .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                 .getLeftMenu()
                 .goToSecurityPage()
                 .sendingCaseForSingleApproval(data.get("Batch"),data.get("Approver"), data.get("TempName"))
                 .revokeCase()
                 .validateRevokeCaseForSingleApproval(data.get("ApproverName1"),data.get("ApprovalStatus"));
 
-
+        } catch (Exception ex) {
+            session.log_Error("TC_43245_CaseApprovalRevoke Failed");
+            throw new Exception("TC_43245_CaseApprovalRevoke Failed", ex);
+        } finally {
+            session.end();
+        }
     }
-
-
-    }
+}

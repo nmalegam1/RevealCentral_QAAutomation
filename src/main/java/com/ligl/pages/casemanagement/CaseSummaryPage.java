@@ -41,43 +41,49 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[contains(text(),'Yes')]")
     WebElement YesBtn;
 
-    @FindBy (xpath = "//span//div[@class='case-name-div']")
+    @FindBy(xpath = "//span//div[@class='case-name-div']")
     WebElement CaseNameValidation;
-    @FindBy(id="btn-edit")
+    @FindBy(id = "btn-edit")
     WebElement EditCase;
-    @FindBy(id="input-due-date")
+    @FindBy(id = "input-due-date")
     WebElement DueDate;
     @FindBy(xpath = "//button[contains(text(),'Save')]")
     WebElement EditSave;
     @FindBy(id = "input-dynamic-column-1")
     WebElement CostCentre;
-    @FindBy(id="input-dynamic-column-2")
+    @FindBy(id = "input-dynamic-column-2")
     WebElement CaseAlias;
-    @FindBy(id="select-dynamic-column-3")
+    @FindBy(id = "select-dynamic-column-3")
     WebElement AddDropDown;
-    @FindBy(id="btn-custom")
+    @FindBy(id = "btn-custom")
     WebElement MoreBtn;
-    @FindBy(id="btn-more")
+    @FindBy(id = "btn-more")
     WebElement MoreBtnCS;
-    @FindBy(xpath="//div[@id='select-workflow-template-panel']//input[@type='text']")
+    @FindBy(xpath = "//div[@id='select-workflow-template-panel']//input[@type='text']")
     WebElement WFTText;
-    @FindBy(id="select-workflow-template")
+    @FindBy(id = "select-workflow-template")
     WebElement WFT;
 
     @FindBy(xpath = "//span[contains(text(),'Security')]")
     WebElement SecurityLink;
 
+    @FindBy(xpath = "//*[@id='input-dynamic-column-4']/label/span[1]/input")
+    WebElement inplace_checkbox1;
+
+    @FindBy(id="sel-role-type")
+    WebElement RoleType;
 
     /**
      * Method to Check the Additional Fields are Editable
+     *
      * @param costCentre
      * @param caseAlias
      * @param drpDownVal
      * @return
      * @throws Exception
      */
-    public ILiglPage editAdditionalFields(String costCentre,String caseAlias,String drpDownVal) throws Exception{
-        try{
+    public ILiglPage editAdditionalFields(String costCentre, String caseAlias, String drpDownVal) throws Exception {
+        try {
             log_Info("editAdditionalFields() Started");
             EditCase.click();
             MoreBtn.click();
@@ -103,18 +109,18 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
             log_Pass("Save button Clicked");
             Thread.sleep(5000);
             MoreBtnCS.click();
-            String newCostCentre=getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+costCentre+"')]")).getText();
-            Assert.assertEquals(newCostCentre,costCentre);
+            String newCostCentre = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + costCentre + "')]")).getText();
+            Assert.assertEquals(newCostCentre, costCentre);
             log_Pass("Work Flow Template Edited Successfully");
-            String newCaseAlias=getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+caseAlias+"')]")).getText();
-            Assert.assertEquals(newCaseAlias,caseAlias);
+            String newCaseAlias = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + caseAlias + "')]")).getText();
+            Assert.assertEquals(newCaseAlias, caseAlias);
             log_Pass("Work Flow Template Edited Successfully");
             Thread.sleep(3000);
             ///String newAddDPVal=getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+drpDownVal+"')]")).getText();
             //Assert.assertEquals(newAddDPVal,drpDownVal);
             //log_Pass("Work Flow Template Edited Successfully");
             return new CaseSummaryPage();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             log_Error("editAdditionalFields() Failed");
             throw new Exception("Exception in editAdditionalFields()");
         }
@@ -122,12 +128,13 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
 
     /**
      * Method to check the edit of WFT irrespective of Case Approval Status
+     *
      * @param wft
      * @return
      * @throws Exception
      */
-    public ILiglPage editWFT(String wft) throws Exception{
-        try{
+    public ILiglPage editWFT(String wft) throws Exception {
+        try {
             log_Info("editWFT() Started");
             EditCase.click();
             log_Info("Enter Work Flow Template");
@@ -141,33 +148,35 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
             SaveBtn.click();
             Thread.sleep(8000);
             log_Pass("Save button Clicked");
-            String WorkFlowTemp=getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+wft+"')]")).getText();
-            Assert.assertEquals(WorkFlowTemp,wft);
+            String WorkFlowTemp = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + wft + "')]")).getText();
+            Assert.assertEquals(WorkFlowTemp, wft);
             log_Pass("Work Flow Template Edited Successfully");
             return new CaseSummaryPage();
-        }catch (Exception ex){
-            throw new Exception("Exception in editWFT()",ex);
+        } catch (Exception ex) {
+            throw new Exception("Exception in editWFT()", ex);
         }
     }
+
     /**
      * Method to Check Due Date Field IsOptional in Edit case
+     *
      * @return CaseSummaryPage()
      * @throws Exception
      */
-    public ILiglPage editDueDate(String dueDate) throws Exception{
-        try{
+    public ILiglPage editDueDate(String dueDate) throws Exception {
+        try {
             log_Info("editDueDate() Started");
             Thread.sleep(3000);
             EditCase.click();
-            String dueDateNew=dueDate.replace("-","");
+            String dueDateNew = dueDate.replace("-", "");
             DueDate.sendKeys(dueDateNew);
             //getCurrentDriver().findElement(By.cssSelector("button[aria-label='"+dueDateNew+"']")).click();
             DueDate.clear();
             SaveBtn.click();
             log_Pass("Case Created and Edited With out filling DueDate Field");
             return new CaseSummaryPage();
-        }catch(Exception ex){
-            throw new Exception("editDueDate() id Failed",ex);
+        } catch (Exception ex) {
+            throw new Exception("editDueDate() id Failed", ex);
         }
     }
 
@@ -368,8 +377,7 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
         }
     }
 
-    public ILiglPage validateCreatedCase(String CaseName) throws Exception
-    {
+    public ILiglPage validateCreatedCase(String CaseName) throws Exception {
         try {
             String casename = CaseNameValidation.getText();
             Assert.assertEquals(CaseName, casename);
@@ -381,29 +389,102 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
     }
 
     //verifying unavailability of Security tab for Non-legal user & Non-legal reviewer
-    public ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception{
+    public ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception {
 
         try {
             Thread.sleep(5000);
-            try
-            {
+            try {
                 log_Info("Started checking unavailability of Security tab in Left Menu for NLU/NLR");
                 getLeftMenu();
-                boolean a=SecurityLink.isDisplayed();
+                boolean a = SecurityLink.isDisplayed();
                 System.out.println(a);
-               if(a==true) {
-                   log_Error("Security tab is displaying");
-               }}
-            catch (Exception ex)
-            {
+                if (a == true) {
+                    log_Error("Security tab is displaying");
+                }
+            } catch (Exception ex) {
                 log_Info("Security tab is not displaying");
             }
             Thread.sleep(5000);
             return new CaseCounselPage();
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("validateUnavailabilityOfCreateAndEditOfEmployeeFromCustodiansPage() Failed",ex);
+            throw new Exception("validateUnavailabilityOfCreateAndEditOfEmployeeFromCustodiansPage() Failed", ex);
+        }
+    }
+
+
+    public ILiglPage caseEditInplaceisSelected() throws Exception {
+
+        try {
+
+            EditBtn.click();
+            Thread.sleep(2000);
+            MoreBtn.click();
+
+            log_Info("check for inplace preservation check box selected or not");
+            boolean a1 = inplace_checkbox1.isSelected();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(true, a1);
+            log_Info("inplace preservation check box selected for approved case");
+            return new CaseSummaryPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("caseEditInplaceisSelected() Failed", ex);
+        }
+
+    }
+
+    public ILiglPage caseEditInplace() throws Exception {
+
+        try {
+
+            EditBtn.click();
+            Thread.sleep(2000);
+            MoreBtn.click();
+
+            log_Info("check for inplace preservation check box disabled or not");
+            boolean a1 = inplace_checkbox1.isEnabled();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(false, a1);
+            log_Info("inplace preservation check box disabled for approved case");
+            return new CaseSummaryPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("caseEditInplace() Failed", ex);
+        }
+    }
+
+    public ILiglPage verifyingCaseRoleIsNonEditable() throws Exception {
+
+        try {
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", EditBtn);
+
+            log_Info("Click On Edit Button");
+            getDriver().waitForelementToBeClickable(EditBtn);
+            Thread.sleep(5000);
+            EditBtn.click();
+            log_Info("Click On Edit Button");
+
+            log_Info("Check The Case Role Type is In Non-Editable Mode");
+            WebElement CaseName_Edit = getCurrentDriver().findElement(By.id("sel-role-type"));
+            String classes = CaseName_Edit.getAttribute("class");
+            boolean isDisabled = classes.contains("mat-form-field-disabled");
+            System.out.println(isDisabled);
+            Assert.assertEquals(true, isDisabled);
+
+            return new CaseSummaryPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyingCaseRoleIsNonEditable() Failed", ex);
         }
     }
 }

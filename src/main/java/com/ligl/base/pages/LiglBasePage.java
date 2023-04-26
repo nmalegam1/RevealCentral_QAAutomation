@@ -1642,6 +1642,14 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage verifyingCaseRoleIsNonEditable() throws Exception{return null;}
 	public ILiglPage detailsColumnData(String Details) throws Exception{return null;}
 
+	public ILiglPage createNewCaseWithInPlacePreservation(Hashtable<String,String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage deleteTheRequiredNotes() throws Exception{
+		return null;
+	}
+
 
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();

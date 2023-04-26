@@ -13,22 +13,27 @@ import java.util.Hashtable;
 public class TC_42979_CaseCreationwithInplace extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
     public void TC_42979_CaseCreationwithInplace(Hashtable<String,String> data) throws Exception {
-        session.log_Info(data.toString());
-        if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
-            // skip in extent rep
-            session.skipTest("Skipping the test as Runmode was NO");
-            //skip - testng
-            throw new SkipException("Skipping the test as Runmode was NO");
-        }
+
+        try{
+
+            session.log_Info(data.toString());
+            if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
+                session.skipTest("Skipping the test as Runmode was NO");
+                throw new SkipException("Skipping the test as Runmode was NO");
+            }
         ILiglPage Ref = new LaunchPage()
+
                 .openBrowser("chrome")
                 .navigateURL()
-                .login(data.get("Username"), data.get("Password"),data.get("Entity"))
-               // .selectEntity(data.get("Entity"))
-               // .createNewCase(data)
-                .searchcase(data.get("CaseName"))
-                //.GoToSummaryPage(data.get("CaseName"))
-                .GoToCase(data.get("CaseName"))
-                .caseEditInplaceisSelected();
+                .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                .createNewCaseWithInPlacePreservation(data);
+
+
+        } catch (Exception ex) {
+            session.log_Error("TC_42979_CaseCreationwithInplace Failed");
+            throw new Exception("TC_42979_CaseCreationwithInplace Failed", ex);
+        } finally {
+            session.end();
+        }
     }
 }
