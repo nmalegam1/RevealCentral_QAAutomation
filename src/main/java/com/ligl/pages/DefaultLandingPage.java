@@ -1023,58 +1023,6 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     }
 
-            log_Info("Enter Entity");
-            getDriver().waitForelementToBeClickable(Entity);
-            Entity.click();
-            Thread.sleep(3000);
-            EntityText.sendKeys(data.get("Entity"));
-            Thread.sleep(3000);
-            EntityText.sendKeys(Keys.ENTER);
-            Thread.sleep(3000);
-
-            log_Info("Enter Region");
-            getDriver().waitForelementToBeClickable(Region);
-            Region.click();
-            Thread.sleep(3000);
-            RegionText.sendKeys(data.get("Region"));
-            Thread.sleep(3000);
-            RegionText.sendKeys(Keys.ENTER);
-            log_Info("Region Entered");
-            Thread.sleep(3000);
-
-            log_Info("Enter Description");
-            getDriver().waitForelementToBeClickable(Desc);
-            Desc.sendKeys(data.get("Description"));
-
-            log_Info("Enter Priority");
-            getDriver().waitForelementToBeClickable(Priority);
-            Priority.click();
-            Thread.sleep(5000);
-            SelPriority.click();
-            log_Pass("Priority Selected");
-            Thread.sleep(3000);
-            log_Pass("All Mandatory Fields Are Entered");
-            log_Info("Click on more button");
-            MoreBtn.click();
-            Thread.sleep(3000);
-            log_Pass("more button clicked");
-            log_Info("uncheck inplace preservation checkbox");
-            inplace_checkbox.click();
-            Thread.sleep(3000);
-            log_Pass("uncheck inplace preservation checkbox");
-
-            log_Info("Click on Save Button");
-            SaveBtn.click();
-            log_Pass("Save button Clicked");
-            String b = NewlyCreatedCaseName.getAttribute("title");
-            Assert.assertEquals(data.get("CaseName"), b);
-            log_Pass("Case Created Successfully");
-            return new CaseSummaryPage();
-        } catch (Exception ex) {
-            throw new Exception("Exception in CreateCaseWithoutInplacePreservation()", ex);
-        }
-
-    }
 
     public ILiglPage createNewCaseWithInPlacePreservation(Hashtable<String,String> data) throws Exception {
         try {
