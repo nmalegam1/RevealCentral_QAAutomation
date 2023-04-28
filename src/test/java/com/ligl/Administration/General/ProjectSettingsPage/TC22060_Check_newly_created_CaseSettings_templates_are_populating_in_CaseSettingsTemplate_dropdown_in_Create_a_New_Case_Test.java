@@ -1,4 +1,4 @@
-package com.ligl.Administration.General.CaseSettingsPage;
+package com.ligl.Administration.General.ProjectSettingsPage;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;

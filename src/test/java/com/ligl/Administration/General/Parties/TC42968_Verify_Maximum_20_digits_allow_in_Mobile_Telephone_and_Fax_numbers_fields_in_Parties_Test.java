@@ -13,7 +13,7 @@ import com.ligl.util.DataUtil;
 
 public class TC42968_Verify_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Parties_Test extends TestBase{
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC42968_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_Test(Hashtable<String, String> data) throws Exception{
+    public void TC42968_Verify_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Parties_Test(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -30,9 +30,8 @@ public class TC42968_Verify_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_
                     .goToAdministrationPage()
                     .getAdminLeft()
                     .navigateToPartiesPage()
-                    .clickOnAddPartyButton()
                     .partyMaximumOfDigitsAllowedContctFields(data.get("MobileNumber"), data.get("TelephoneNumber"), data.get("WorkFaNumber"))
-                    .searchAndSelectTheParties(data.get("SearchPartyName"))
+                    //.searchAndSelectTheParties(data.get("SearchPartyName"))
                     .partyMaximumOfDigitsAllowedContctFields(data.get("EditMobileNumber"), data.get("EditTelephoneNumber"), data.get("EditWorkFaNumber"))
                     .getHeader()
                     .logout();

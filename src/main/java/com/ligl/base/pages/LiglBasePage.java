@@ -17,6 +17,7 @@ import com.ligl.web.IWebConnector;
 
 import java.awt.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Hashtable;
 
 public class LiglBasePage implements ILiglPage {
@@ -1253,27 +1254,14 @@ public class LiglBasePage implements ILiglPage {
 
 	/* Parties Page */
 
-	public ILiglPage clickOnAddPartyButton() throws Exception {
+	public ILiglPage crateTheNewParty(Hashtable<String, String> data) throws Exception {
 		return null;
 	}
 
-	public ILiglPage searchAndSelectTheParties(String partiesName) throws Exception {
+	public ILiglPage editTheExitingParty(Hashtable<String, String> data) throws Exception{
 		return null;
 	}
 
-	public ILiglPage craeteNewParty(String name, String partyType, String department, String status, String description,
-									String website, String email, String phone, String telephone, String fax,
-									String addressLine1, String addressLine2, String addressLine3, String country,
-									String state, String city, String zip) throws Exception {
-		return null;
-	}
-
-	public ILiglPage editParty(String name, String partyType, String department, String status, String statusChangeReason,
-							   String description, String website, String email, String phone, String telephone, String fax,
-							   String addressLine1, String addressLine2, String addressLine3, String country,
-							   String state, String city, String zip) throws Exception {
-		return null;
-	}
 
 	public ILiglPage partyMaximumOfDigitsAllowedContctFields(String mobileNumber, String telephoneNumber, String faxNumber)
 			throws Exception{
@@ -1495,8 +1483,19 @@ public class LiglBasePage implements ILiglPage {
 	}
 
 
-
 	/******************************************************************End Admin******************************************************************/
+
+	/******************************************************************DB******************************************************************/
+	public ILiglPage getCaseFieldsDataInCaseSummaryPage() throws Exception{return null;}
+	public ILiglPage sendAllForCaseApproval(String batchName, String emailTemp, String approverName) throws Exception{
+		return null;
+	}
+	public ILiglPage createNewProjectWithAllFields(Hashtable<String,String> data) throws Exception{return null;}
+	public ILiglPage getFieldsDataFromSSOUserPopUp(Hashtable<String, String> data) throws Exception{return null;}
+
+	public ILiglPage getFieldsDataFromEmployee(Hashtable<String, String> data) throws Exception{return null;}
+
+	/******************************************************************End DB*******************************************/
 
 	public ILiglPage searchForTheParticularTitleOfTheRequest(String title) throws Exception{
 		return null;
@@ -1621,6 +1620,9 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception{
 		return null;
 	}
+
+
+
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;

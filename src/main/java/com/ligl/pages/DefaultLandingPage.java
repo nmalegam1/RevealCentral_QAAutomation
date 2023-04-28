@@ -2,7 +2,6 @@ package com.ligl.pages;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.base.pages.LiglBasePage;
-import com.ligl.pages.casemanagement.CaseCounselPage;
 import com.ligl.pages.casemanagement.CaseSummaryPage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -11,9 +10,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Hashtable;
 
 //****************CasePage*******************
@@ -62,8 +58,8 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(css = "input[placeholder='Filter...']")
     WebElement CaseSearchBar;
 
-    @FindBy(xpath = "//span[contains(text(),'Case Name')]/ancestor::div[@ref='eLabel']")
-    WebElement CaseNameHeader;
+    @FindBy(xpath = "//span[contains(text(),'Project Name')]/ancestor::div[@ref='eLabel']")
+    WebElement projectNameHeader;
     @FindBy(id="btn-save-and-add")
     WebElement SaveBtn;
     @FindBy(xpath = "//span[@class='menu-item-parent']/ancestor::a[@ng-click='vmBase.resetMouseHoverPopUp()']//span")
@@ -428,9 +424,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
         try {
 
-            getDriver().waitForelementToBeClickable(CaseNameHeader);
+            getDriver().waitForelementToBeClickable(projectNameHeader);
             Actions ac = new Actions(getCurrentDriver());
-            ac.moveToElement(CaseNameHeader).perform();
+            ac.moveToElement(projectNameHeader).perform();
 
 
             log_Info("pointed mouse to the case name");
@@ -490,7 +486,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("Cleared search input");
             ChooseColumnsMenuCase.click();
 
-            CaseNameHeader.click();
+            projectNameHeader.click();
             getDriver().waitUntilSpinnerIsClosed();
             for (int i = 0; i < 8; i++)
             {
@@ -636,7 +632,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Assert.assertEquals(true, a5);
             log_Info("Additional Field5 is displaying in case grid");
 
-            CaseNameHeader.click();
+            projectNameHeader.click();
             getDriver().waitUntilSpinnerIsClosed();
             for (int i = 0; i < 11; i++)
             {
@@ -666,6 +662,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
         }
 
     }
+
 
     /*****************************************Admin related test**************************************************/
 
@@ -763,7 +760,10 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             throw new Exception(" check Newly Created CaseSetting Template Test failed", ex);
         }
     }
-//Verify availability of Help hyperlink in case list page for NLU
+
+    /****************************************************************************************************************/
+
+    //Verify availability of Help hyperlink in case list page for NLU
     public ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception{
 
         try {
@@ -789,7 +789,83 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
         }
     }
 
-    /****************************************************************************************************************/
+
+
+
+    /*****************************************DB related test**************************************************/
+
+    public ILiglPage createNewProjectWithAllFields(Hashtable<String,String> data) throws Exception{
+        try{
+            Thread.sleep(25555);
+            getDriver().waitUntilSpinnerIsClosed();
+            log_Info("Click Project Case Button");
+            getDriver().waitForelementToBeClickable(createCaseBtn);
+            createCaseBtn.click();
+            log_Info(data.toString());
+
+            log_Info("Enter Project Type");
+            wait(2);
+            getDriver().waitForelementToBeClickable(CaseType);
+            CaseType.sendKeys(Keys.ENTER, data.get("ProjectType"), Keys.ENTER);
+            getDriver().waitForAngularRequestsToComplete();
+
+            log_Info("Enter RoleType");
+            getDriver().waitForelementToBeClickable(RoleType);
+            RoleType.sendKeys(Keys.ENTER, data.get("Role"), Keys.ENTER);
+            getDriver().waitForAngularRequestsToComplete();
+
+            log_Info("Enter Project Name");
+            getDriver().waitForelementToBeClickable(CaseName);
+            //CaseName.sendKeys(data.get("ProjectName"));
+            CaseName.sendKeys("QA_Automation_DBProject_QA05");
+
+            log_Info("Enter Work Flow Template");
+            getDriver().waitForelementToBeClickable(WFT);
+            WFT.sendKeys(Keys.ENTER, data.get("WFT"), Keys.ENTER);
+            getDriver().waitForAngularRequestsToComplete();
+
+            log_Info("Enter Case Settings Template");
+            getDriver().waitForelementToBeClickable(CST);
+            CST.sendKeys(Keys.ENTER,data.get("ProjectSetTemp"), Keys.ENTER);
+            getDriver().waitForAngularRequestsToComplete();
+
+            log_Info("Enter Entity");
+            getDriver().waitForelementToBeClickable(Entity);
+            Entity.sendKeys(Keys.ENTER,data.get("Entity"),Keys.ENTER);
+            getDriver().waitForAngularRequestsToComplete();
+
+            log_Info("Enter Region");
+            getDriver().waitForelementToBeClickable(Region);
+            Region.sendKeys(Keys.ENTER, data.get("Region"), Keys.ENTER);
+
+            log_Info("Enter Description");
+            getDriver().waitForelementToBeClickable(Desc);
+            Desc.sendKeys(data.get("Description"));
+
+            log_Info("Enter Priority");
+            getDriver().waitForelementToBeClickable(Priority);
+            String priorityNew = getDriver().removeSpecialCharacter(data.get("Priority"));
+            Priority.sendKeys(Keys.ENTER, priorityNew, Keys.ENTER);
+            log_Pass("Priority Selected");
+            Thread.sleep(3000);
+
+            //Due Date
+            String dueDateNew = getDriver().removeSpecialCharacter(data.get("DueDate"));
+            getCurrentDriver().findElement(By.id("input-due-date")).sendKeys(dueDateNew);
+
+            log_Pass("All Mandatory Fields Are Entered");
+            log_Info("Click Save Button");
+            SaveBtn.click();
+
+            wait(5);
+            return new CaseSummaryPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("Create New Case With All Fields Failed", ex);
+        }
+    }
+
 
 
 }

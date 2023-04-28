@@ -1,9 +1,9 @@
-package com.ligl.Administration.General.UserAndRoles;
+package com.ligl.Administration.DataBase;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.dataprovider.TestDataProvider;
-import com.ligl.db.DataBaseUtil;
+import com.ligl.db.DataBaseValidations;
 import com.ligl.pages.LaunchPage;
 import com.ligl.util.DataUtil;
 import org.testng.SkipException;
@@ -11,9 +11,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC37985_Creating_SSOUser_Test extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC37985_Creating_SSOUser_Test(Hashtable<String, String> data) throws Exception {
+public class TC38005_Check_Email_Triggered_to_Created_New_SSO_User extends TestBase {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "DataBase")
+    public void TC38005_Check_Email_Triggered_to_Created_New_SSO_User(Hashtable<String, String> data) throws Exception {
+        DataBaseValidations dataBase = new DataBaseValidations();
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -25,19 +26,21 @@ public class TC37985_Creating_SSOUser_Test extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .adminLogin(data.get("Username"), data.get("Password"), session.getGlobalData("Entity"))
+                    .navigateSSOLoginPage()
+                    .SSOLogin(data.get("EmailId"), data.get("Password"), session.getGlobalData("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
                     .navigateToUserAndRolesPage()
-                    .clickOnAddUserButton()
-                    .creatingSSOUser(data.get("Email"), data.get("FirstName"), data.get("MiddleName"), data.get("LastName"), data.get("Role"), data.get("Status"))
+                    .getFieldsDataFromSSOUserPopUp(data)
                     .getHeader()
                     .logout();
+            dataBase.checkEmailTriggeredToNewSSOUser();
         } catch (Exception ex) {
             session.log_Error("TC38005_Check_Email_Triggered_to_Created_New_SSO_User Failed");
             throw new Exception("TC38005_Check_Email_Triggered_to_Created_New_SSO_User Failed", ex);
         } finally {
+            dataBase.closeTheDBConnection();
             session.end();
         }
     }

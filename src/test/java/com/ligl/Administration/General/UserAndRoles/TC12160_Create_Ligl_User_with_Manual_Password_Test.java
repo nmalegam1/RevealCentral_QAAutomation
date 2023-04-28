@@ -1,8 +1,10 @@
 package com.ligl.Administration.General.UserAndRoles;
 
 import com.ligl.base.TestBase;
+import com.ligl.base.pages.Constants;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.dataprovider.TestDataProvider;
+import com.ligl.db.DataBaseUtil;
 import com.ligl.pages.LaunchPage;
 import com.ligl.util.DataUtil;
 import org.testng.SkipException;
@@ -24,7 +26,7 @@ public class TC12160_Create_Ligl_User_with_Manual_Password_Test extends TestBase
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .adminLogin(data.get("Username"), data.get("Password"), session.getRegressionData("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

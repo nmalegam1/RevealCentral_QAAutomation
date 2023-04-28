@@ -31,8 +31,6 @@ public class TC35048_Edit_Subject_and_Content_for_Mentioned_Email_Template_Categ
                     .navigateToEmailTemplatesPage()
                     .editEmailTemplate(data.get("SelectEmailTemplateCategory"), data.get("SelectEmailTemplate"),
                             data.get("EditSubject"), data.get("EditContent"))
-                    .editEmailTemplate(data.get("SelectEmailTemplateCategory1"), data.get("SelectEmailTemplate1"),
-                            data.get("EditSubject1"), data.get("EditContent1"))
                     .getHeader()
                     .logout();
         }catch (Exception ex){

@@ -8,25 +8,27 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Hashtable;
+
 import static org.testng.Assert.assertEquals;
 
 public class PartiesPage extends LiglBaseSessionPage {
     @FindBy(id = "add-btn")
     public WebElement addPartyBtn;
 
-    @FindBy(xpath = "//div[contains(text(),'Party')]")
+    @FindBy(xpath = "//div[text()='Party']")
     public WebElement partyLink;
 
-    @FindBy(xpath = "//div[contains(text(),'Contact')]")
+    @FindBy(xpath = "//div[text()='Contact']")
     public WebElement contactLink;
 
-    @FindBy(xpath = "//div[contains(text(),'Address')]")
+    @FindBy(xpath = "//div[text()='Address']")
     public WebElement addressLink;
 
-    @FindBy(xpath = "//button[normalize-space()='Next']")
+    @FindBy(xpath = "//button[contains(text(),'Next')]")
     public WebElement nextBtn;
 
-    @FindBy(xpath = "//button[normalize-space()='Cancel']")
+    @FindBy(xpath = "//button[contains(text(),'Cancel')]")
     public WebElement cancelBtn;
 
     @FindBy(id = "party-name")
@@ -104,17 +106,66 @@ public class PartiesPage extends LiglBaseSessionPage {
     @FindBy(id = "status-change-reason")
     public WebElement statusChangeReasonTxt;
 
-    Actions ac = new Actions(getCurrentDriver());
-
     //Create Button
-    public ILiglPage clickOnAddPartyButton() throws Exception {
-        getSession().log_Info("Click On + Party Button");
-        getDriver().waitForelementToBeClickable(addPartyBtn);
-        addPartyBtn.click();
-        getDriver().waitForAngularRequestsToComplete();
-        getSession().log_Pass("Clicked On + Party Button");
-        return new PartiesPage();
+    public ILiglPage clickOnAddPartyButtonInParties() throws Exception {
+        try {
+            getSession().log_Info("Click On + Party Button");
+            getDriver().waitForelementToBeClickable(addPartyBtn);
+            addPartyBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked On + Party Button");
+            return new PartiesPage();
+        } catch (Exception | Error ex) {
+            log_Error("Click On Add Party Button Failed");
+            throw new Exception("Click On Add Party Button Failed", ex);
+        }
     }
+
+    public ILiglPage clickOnCreateButtonInParties() throws Exception {
+        try {
+            getSession().log_Info("Click on 'Create' Button");
+            getDriver().waitForelementToBeClickable(createBtn);
+            createBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked on 'Create' Button");
+            wait(5);
+            return new PartiesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Click On Create Button In Add New Party Details PopUp Failed", ex);
+        }
+    }
+
+    public ILiglPage clickOnEditButtonInParties() throws Exception {
+        try {
+            getSession().log_Info("Click on 'edit' button");
+            getDriver().waitForelementToBeClickable(editBtn);
+            editBtn.click();
+            getSession().log_Pass("Clicked on 'edit' button");
+            return new PartiesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Click On Edit Button In Parties Grid Failed", ex);
+        }
+    }
+
+    public ILiglPage clickOnSaveButtonInParties() throws Exception{
+        try {
+            //Save
+            getSession().log_Info("Click on 'Save' Button");
+            getDriver().waitForelementToBeClickable(createBtn);
+            createBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            getSession().log_Pass("Clicked on 'Save' Button");
+            wait(5);
+            return new PartiesPage();
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Click On Save Button In Edit Party Details PopUp Failed", ex);
+
+        }
+    }
+
 
     //Search And Select The Parties
     public ILiglPage searchAndSelectTheParties(String partiesName) throws Exception {
@@ -142,17 +193,13 @@ public class PartiesPage extends LiglBaseSessionPage {
             filterBtn.click();
             getSession().log_Pass("Entered the Party's Name in Search Bar");
 
-            //select the edit button
+            //select
             log_Info("Click Scroll Bar And Move to Right");
             getDriver().customXpathBasedOnTextValue(partiesName);
             wait(1);
             getDriver().moveToRightInAngularTable("2");
             getSession().log_Pass("Clicked Scroll Bar And Moved to Right");
 
-            getSession().log_Info("Click on 'edit' button");
-            getDriver().waitForelementToBeClickable(editBtn);
-            editBtn.click();
-            getSession().log_Pass("Clicked on 'edit' button");
 
             return new PartiesPage();
         } catch (Exception | Error ex) {
@@ -161,14 +208,11 @@ public class PartiesPage extends LiglBaseSessionPage {
         }
     }
 
-    /**
-     * TC8735 Parties Verify the process of Creating new Party using +Party button
-     */
 
-    public ILiglPage craeteNewParty(String name, String partyType, String department, String status, String description,
-                                    String website, String email, String phone, String telephone, String fax,
-                                    String addressLine1, String addressLine2, String addressLine3, String country,
-                                    String state, String city, String zip) throws Exception {
+    public ILiglPage crateNewPartyFields(String name, String partyType, String department, String status, String description,
+                                         String website, String email, String phone, String telephone, String fax,
+                                         String addressLine1, String addressLine2, String addressLine3, String country,
+                                         String state, String city, String zip) throws Exception {
         try {
             //Name
             getSession().log_Info("Enter Name");
@@ -232,28 +276,44 @@ public class PartiesPage extends LiglBaseSessionPage {
             getSession().log_Pass("Email Entered");
 
             //Phone
-            getSession().log_Info("Enter Phone");
+            getSession().log_Info("Enter Phone Number");
             getDriver().waitForelementToBeClickable(phoneTxt);
-            String phoneNew = phone.replace("*", ""); //remove special character
+            String phoneNew = getDriver().removeSpecialCharacter(phone);
             phoneTxt.sendKeys(phoneNew);
             getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Phone Entered");
+            getSession().log_Pass("Phone Entered Number");
+            //Mobile field should not exceed 20 digits
+            getSession().log_Info("Verify that Maximum length of Phone fields should not exceed 20 digits");
+            String phone1 = phoneTxt.getAttribute("value");
+            getDriver().maximumValueShouldNotExceed20Digits(phone1);
+            getSession().log_Pass("Maximum length of Phone fields 20 digits");
 
             //Telephone
-            getSession().log_Info("Enter Telephone");
-            String telephoneNew = telephone.replace("*", ""); //remove special character
+            getSession().log_Info("Enter Telephone Number");
+            String telephoneNew = getDriver().removeSpecialCharacter(telephone);
             getDriver().waitForelementToBeClickable(telephoneTxt);
             telephoneTxt.sendKeys(telephoneNew);
             getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Telephone Entered");
+            getSession().log_Pass("Telephone Entered Number");
+            //Telephone field should not exceed 20 digits
+            getSession().log_Info("Verify Maximum length of Telephone fields should not exceed 20 digits");
+            String telephone1 = telephoneTxt.getAttribute("value");
+            getDriver().maximumValueShouldNotExceed20Digits(telephone1);
+            getSession().log_Pass("Maximum length of Telephone fields 20 digits");
+
 
             //Fax
-            getSession().log_Info("Enter Fax");
-            String faxNew = fax.replace("*", ""); //remove special character
+            getSession().log_Info("Enter Fax Number");
+            String faxNew = getDriver().removeSpecialCharacter(fax);
             getDriver().waitForelementToBeClickable(faxTxt);
             faxTxt.sendKeys(faxNew);
             getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Fax Entered");
+            getSession().log_Pass("Fax Entered Number");
+            //Fax field should not exceed 20 digits
+            getSession().log_Info("Verify Maximum length of Fax fields should not exceed 20 digits");
+            String fax1 = faxTxt.getAttribute("value");
+            getDriver().maximumValueShouldNotExceed20Digits(fax1);
+            getSession().log_Pass("Maximum length of Fax fields 20 digits");
 
             //Next
             getSession().log_Info("Click on Next Button");
@@ -301,43 +361,36 @@ public class PartiesPage extends LiglBaseSessionPage {
             getSession().log_Pass("State Selected");
 
             //City
-            getSession().log_Info("Enter CITY");
+            getSession().log_Info("Enter 'City'");
             cityTxt.sendKeys(city);
             getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("City Entered");
+            getSession().log_Pass("'City' Entered");
 
             //ZIP
-            getSession().log_Info("Enter ZIP");
-            String zipNew = zip.replace("*", ""); //remove special character
+            getSession().log_Info("Enter 'ZIP'");
+            String zipNew = getDriver().removeSpecialCharacter(zip);
             zipTxt.sendKeys(zipNew);
             getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("ZIP Entered");
-
-            //Save
-            getSession().log_Info("Click on 'Create' Button");
-            getDriver().waitForelementToBeClickable(createBtn);
-            createBtn.click();
-            getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Clicked on 'Create' Button");
-            wait(5);
+            getSession().log_Pass("'ZIP' Entered");
 
 
             return new PartiesPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("Create New Party Failed", ex);
+            throw new Exception("Create New Party Fields Failed", ex);
 
         }
     }
-    public ILiglPage editParty(String name, String partyType, String department, String status, String statusChangeReason,
-                               String description, String website, String email, String phone, String telephone, String fax,
-                               String addressLine1, String addressLine2, String addressLine3, String country,
-                               String state, String city, String zip) throws Exception{
+
+    public ILiglPage editExitingPartyFields(String name, String partyType, String department, String status, String statusChangeReason,
+                                            String description, String website, String email, String phone, String telephone, String fax,
+                                            String addressLine1, String addressLine2, String addressLine3, String country,
+                                            String state, String city, String zip) throws Exception {
         try {
             //Name
             getSession().log_Info("Enter Name");
             getDriver().waitForelementToBeClickable(partyNameTXt);
-            partyNameTXt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
+            partyNameTXt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             partyNameTXt.sendKeys(name);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Entered Name");
@@ -354,7 +407,7 @@ public class PartiesPage extends LiglBaseSessionPage {
             //Department
             getSession().log_Info("Enter Department");
             getDriver().waitForelementToBeClickable(departmentTxt);
-            departmentTxt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
+            departmentTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             departmentTxt.sendKeys(department);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Entered Department");
@@ -378,7 +431,7 @@ public class PartiesPage extends LiglBaseSessionPage {
             //Description
             getSession().log_Info("Enter Description");
             getDriver().waitForelementToBeClickable(descriptionTxt);
-            descriptionTxt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
+            descriptionTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             descriptionTxt.sendKeys(description);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("'Description' Entered");
@@ -394,7 +447,7 @@ public class PartiesPage extends LiglBaseSessionPage {
             //Website
             getSession().log_Info("Enter Website");
             getDriver().waitForelementToBeClickable(websiteTxt);
-            websiteTxt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
+            websiteTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             websiteTxt.sendKeys(website);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Website Entered");
@@ -402,37 +455,55 @@ public class PartiesPage extends LiglBaseSessionPage {
             //Email
             getSession().log_Info("Enter Email");
             getDriver().waitForelementToBeClickable(emailTxt);
-            emailTxt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
+            emailTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             emailTxt.sendKeys(email);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Email Entered");
 
             //Phone
-            getSession().log_Info("Enter Phone");
+            getSession().log_Info("Clear Phone Number Field");
+            phoneTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+            getSession().log_Pass("Phone Number Field Cleared");
+            getSession().log_Info("Enter the mobile Number");
+            String phoneNumberNew = getDriver().removeSpecialCharacter(phone);
             getDriver().waitForelementToBeClickable(phoneTxt);
-            phoneTxt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
-            String phoneNew = phone.replace("*", ""); //remove special character
-            phoneTxt.sendKeys(phoneNew);
-            getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Phone Entered");
+            phoneTxt.sendKeys(phoneNumberNew);
+            getSession().log_Pass("Mobile Number Entered");
+            //Mobile 20 digits
+            getSession().log_Info("Verify that Maximum length of Phone fields should not exceed 20 digits");
+            String phone1 = phoneTxt.getAttribute("value");
+            getDriver().maximumValueShouldNotExceed20Digits(phone1);
+            getSession().log_Pass("Maximum length of Phone fields 20 digits");
 
             //Telephone
-            getSession().log_Info("Enter Telephone");
-            telephoneTxt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
-            String telephoneNew = telephone.replace("*", ""); //remove special character
+            getSession().log_Info("Clear Telephone Number Field");
+            telephoneTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+            getSession().log_Pass("Telephone Number Field Cleared");
+            getSession().log_Info("Enter the Telephone Number");
             getDriver().waitForelementToBeClickable(telephoneTxt);
-            telephoneTxt.sendKeys(telephoneNew);
-            getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Telephone Entered");
+            String telephoneNumberNew = getDriver().removeSpecialCharacter(telephone);
+            telephoneTxt.sendKeys(telephoneNumberNew);
+            getSession().log_Pass("Telephone Number Entered");
+            //Telephone 20 digits
+            getSession().log_Info("Verify Maximum length of Telephone fields should not exceed 20 digits");
+            String telephone1 = telephoneTxt.getAttribute("value");
+            getDriver().maximumValueShouldNotExceed20Digits(telephone1);
+            getSession().log_Pass("Maximum length of Telephone fields 20 digits");
 
             //Fax
-            getSession().log_Info("Enter Fax");
-            faxTxt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
-            String faxNew = fax.replace("*", ""); //remove special character
+            getSession().log_Info("Clear Fax Number Field");
+            faxTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+            getSession().log_Pass("Fax Number Field Cleared");
+            getSession().log_Info("Enter 20 digits Fax Number");
             getDriver().waitForelementToBeClickable(faxTxt);
-            faxTxt.sendKeys(faxNew);
-            getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Fax Entered");
+            String faxNumberNew = getDriver().removeSpecialCharacter(fax);
+            faxTxt.sendKeys(faxNumberNew);
+            getSession().log_Pass("20 digits Fax Number Entered");
+            //Fax field should not exceed 20 digits
+            getSession().log_Info("Verify Maximum length of Fax fields should not exceed 20 digits");
+            String fax1 = faxTxt.getAttribute("value");
+            getDriver().maximumValueShouldNotExceed20Digits(fax1);
+            getSession().log_Pass("Fax fields 20 digits");
 
             //Next
             getSession().log_Info("Click on Next Button");
@@ -444,21 +515,21 @@ public class PartiesPage extends LiglBaseSessionPage {
 
             //Address Line 1
             getSession().log_Info("Enter Address Line1");
-            addressLine1TXt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
+            addressLine1TXt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             addressLine1TXt.sendKeys(addressLine1);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Address Line1 Entered");
 
             //Address Line 2
             getSession().log_Info("Enter Address Line2");
-            addressLine2TXt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
+            addressLine2TXt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             addressLine2TXt.sendKeys(addressLine2);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Address Line2 Entered");
 
             //Address Line 3
             getSession().log_Info("Enter Address Line3");
-            addressLine3TXt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
+            addressLine3TXt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             addressLine3TXt.sendKeys(addressLine3);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Address Line3 Entered");
@@ -483,29 +554,21 @@ public class PartiesPage extends LiglBaseSessionPage {
 
             //City
             getSession().log_Info("Enter CITY");
-            cityTxt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
+            cityTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             cityTxt.sendKeys(city);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("City Entered");
 
             //ZIP
             getSession().log_Info("Enter ZIP");
-            zipTxt.sendKeys(Keys.CONTROL+"A", Keys.BACK_SPACE);
-            String zipNew = zip.replace("*", ""); //remove special character
+            zipTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+            String zipNew = getDriver().removeSpecialCharacter(zip);
             zipTxt.sendKeys(zipNew);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("ZIP Entered");
 
-            //Save
-            getSession().log_Info("Click on 'Save' Button");
-            getDriver().waitForelementToBeClickable(createBtn);
-            createBtn.click();
-            getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Clicked on 'Save' Button");
-            wait(5);
-
             return new PartiesPage();
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("Edit Party Failed", ex);
         }
@@ -526,47 +589,47 @@ public class PartiesPage extends LiglBaseSessionPage {
 
             //Phone
             getSession().log_Info("Clear Phone Number Field");
-            phoneTxt.sendKeys(Keys.CONTROL+"A",Keys.BACK_SPACE);
+            phoneTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             getSession().log_Pass("Phone Number Field Cleared");
-            getSession().log_Info("Enter 20 digits Mobile Number");
-            String phoneNumberNew = phoneNumber.replace("*", ""); //remove special character
+            getSession().log_Info("Enter the mobile Number");
+            String phoneNumberNew = getDriver().removeSpecialCharacter(phoneNumber);
             getDriver().waitForelementToBeClickable(phoneTxt);
             phoneTxt.sendKeys(phoneNumberNew);
-            getSession().log_Pass("20 digits Phone Number Entered");
+            getSession().log_Pass("Mobile Number Entered");
             //Mobile 20 digits
             getSession().log_Info("Verify that Maximum length of Phone fields should not exceed 20 digits");
-            int givenPhone = phoneNumberNew.length();
-            assertEquals(20, givenPhone);
+            String phone1 = phoneTxt.getAttribute("value");
+            getDriver().maximumValueShouldNotExceed20Digits(phone1);
             getSession().log_Pass("Maximum length of Phone fields 20 digits");
 
             //Telephone
             getSession().log_Info("Clear Telephone Number Field");
-            telephoneTxt.sendKeys(Keys.CONTROL+"A",Keys.BACK_SPACE);
+            telephoneTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             getSession().log_Pass("Telephone Number Field Cleared");
-            getSession().log_Info("Enter 20 digits Telephone Number");
+            getSession().log_Info("Enter the Telephone Number");
             getDriver().waitForelementToBeClickable(telephoneTxt);
-            String telephoneNumberNew = telephoneNumber.replace("*", ""); //remove special character
+            String telephoneNumberNew = getDriver().removeSpecialCharacter(telephoneNumber);
             telephoneTxt.sendKeys(telephoneNumberNew);
-            getSession().log_Pass("20 digits Telephone Number Entered");
+            getSession().log_Pass("Telephone Number Entered");
             //Telephone 20 digits
             getSession().log_Info("Verify Maximum length of Telephone fields should not exceed 20 digits");
-            int giveTelephone = telephoneNumberNew.length();
-            assertEquals(20, giveTelephone);
+            String telephone1 = telephoneTxt.getAttribute("value");
+            getDriver().maximumValueShouldNotExceed20Digits(telephone1);
             getSession().log_Pass("Maximum length of Telephone fields 20 digits");
 
             //Fax
             getSession().log_Info("Clear Fax Number Field");
-            faxTxt.sendKeys(Keys.CONTROL+"A",Keys.BACK_SPACE);
+            faxTxt.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             getSession().log_Pass("Fax Number Field Cleared");
             getSession().log_Info("Enter 20 digits Fax Number");
             getDriver().waitForelementToBeClickable(faxTxt);
             String faxNumberNew = faxNumber.replace("*", ""); //remove special character
             faxTxt.sendKeys(faxNumberNew);
             getSession().log_Pass("20 digits Fax Number Entered");
-            //Fax 20 digits
+            //Fax field should not exceed 20 digits
             getSession().log_Info("Verify Maximum length of Fax fields should not exceed 20 digits");
-            int givenFax = faxNumberNew.length();
-            assertEquals(20, givenFax);
+            String fax1 = faxTxt.getAttribute("value");
+            getDriver().maximumValueShouldNotExceed20Digits(fax1);
             getSession().log_Pass("Maximum length of Fax fields 20 digits");
 
             getSession().log_Info("Click on Cancle Button");
@@ -582,4 +645,75 @@ public class PartiesPage extends LiglBaseSessionPage {
         }
 
     }
+
+
+    /**
+     * TC8735 Parties - Verify the process of Creating new Party using +Party button
+     */
+
+    public ILiglPage crateTheNewParty(Hashtable<String, String> data) throws Exception {
+        try {
+            clickOnAddPartyButtonInParties();
+            crateNewPartyFields(data.get("Name"), data.get("PartyType"), data.get("Department"), data.get("Status"), data.get("Description"),
+                    data.get("Website"), data.get("Email"), data.get("Phone"), data.get("Telephone"), data.get("Fax"), data.get("AddressLine1"),
+                    data.get("AddressLine2"), data.get("AddressLine3"), data.get("Country"), data.get("State"), data.get("City"), data.get("Zip"));
+            clickOnCreateButtonInParties();
+            return new PartiesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Create New Party Failed", ex);
+        }
+
+    }
+
+    /*
+     * TC8746 Parties - Verify the process of Editing Party using Edit existing Party button in grid
+     * */
+
+    public ILiglPage editTheExitingParty(Hashtable<String, String> data) throws Exception {
+        try {
+            searchAndSelectTheParties(data.get("SearchPartyName"));
+            clickOnEditButtonInParties();
+            editExitingPartyFields(data.get("EditName"), data.get("EditPartyType"), data.get("EditDepartment"), data.get("EditStatus"),
+                    data.get("StatusChangeReason"), data.get("EditDescription"), data.get("EditWebsite"), data.get("EditEmail"),
+                    data.get("EditPhone"), data.get("EditTelephone"), data.get("EditFax"), data.get("EditAddressLine1"),
+                    data.get("EditAddressLine2"), data.get("EditAddressLine3"), data.get("EditCountry"), data.get("EditState"),
+                    data.get("EditCity"), data.get("EditZip"));
+            clickOnSaveButtonInParties();
+            return new PartiesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Edit the Exiting Party Failed", ex);
+        }
+    }
+
+
+    public ILiglPage verifyTheError() throws Exception {
+        try {
+            getSession().log_Info("Check 'Name' Field");
+            String n1 = getCurrentDriver().findElement(By.id("errorFullName")).getText();
+            getSession().takeScreenShot();
+            getSession().log_Error("'Required Name Field' not Entered " + n1);
+        } catch (NoSuchFieldError ex) {
+            getSession().log_Info("Check 'Party Type' Field");
+            String n2 = getCurrentDriver().findElement(By.xpath("(//span[@class='error-message ng-star-inserted'])[1]")).getText();
+            getSession().takeScreenShot();
+            getSession().log_Error("'Required 'Party Type' Field not Selected' " + n2);
+        } finally {
+            try {
+                getSession().log_Info("Check 'Status ' Field");
+                String n1 = getCurrentDriver().findElement(By.xpath("(//span[@class='error-message ng-star-inserted'])[1]")).getText();
+                getSession().takeScreenShot();
+                getSession().log_Error("Required Status Field not Selected' " + n1);
+            } catch (NoSuchFieldError ex) {
+                getSession().log_Info("Check 'Description ' Field");
+                String n2 = getCurrentDriver().findElement(By.cssSelector("#errorDescription")).getText();
+                getSession().takeScreenShot();
+                getSession().log_Error("'Required 'Description ' Field not Entered" + n2);
+            }
+        }
+        return new PartiesPage();
+    }
+
+
 }

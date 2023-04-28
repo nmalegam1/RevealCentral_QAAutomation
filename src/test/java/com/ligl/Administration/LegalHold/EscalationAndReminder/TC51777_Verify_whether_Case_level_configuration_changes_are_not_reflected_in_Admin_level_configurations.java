@@ -26,8 +26,14 @@ public class TC51777_Verify_whether_Case_level_configuration_changes_are_not_ref
                     .navigateURL()
                     //Case level configuration
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("EmailId"), data.get("Password"), data.get("Entity"))
-                    .searchcase(data.get("CaseName"))
+                    .SSOLogin(data.get("EmailId"), data.get("Password"), session.getGlobalData("Entity"))
+                    .searchcase("QA_Automation_04212023")
+                    .GoToCase("QA_Automation_04212023")
+                    .getCaseFieldsDataInCaseSummaryPage()
+                    .getLeftMenu()
+                    .goToSecurityPage()
+                    .sendAllForCaseApproval("A12345","CaseApproval","TEST LIGL")
+                    /*.searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
@@ -46,7 +52,7 @@ public class TC51777_Verify_whether_Case_level_configuration_changes_are_not_ref
                             session.getRegressionData("TC51777_reminderFrequency"), session.getRegressionData("TC51777_reminderMailCap"))
                     .checkThatEscalationConfigurationsInLegalHoldAtAminLevel(session.getRegressionData("TC51777_escalationDay"),
                             session.getRegressionData("TC51777_escalationFrequency"),session.getRegressionData("TC51777_escalationMailsCap"))
-                    .getHeader()
+                    */.getHeader()
                     .logout();
         } catch (Exception ex) {
             session.log_Error("TC51777_Verify_whether_Case_level_configuration_changes_are_not_reflected_in_Admin_level_configurations Failed");

@@ -140,6 +140,7 @@ public abstract class LiglValidationDriver implements IWebConnector {
         js.executeScript("arguments[0].scrollIntoView()", element);
     }
 
+
     public void waitForMoveToElement(WebElement element) throws Exception {
         Actions ac = new Actions(getCurrentDriver());
         ac.moveToElement(element).perform();
@@ -195,8 +196,8 @@ public abstract class LiglValidationDriver implements IWebConnector {
         return main.contains(sub);
     }
 
-    public String concat(String stringOne, String stringTwo) {
-        String fullString = stringOne + " " + stringTwo;
+    public String concat(String stringOne, String stringTwo, String stringThree) {
+        String fullString = stringOne + stringTwo + stringThree;
         return fullString;
     }
 

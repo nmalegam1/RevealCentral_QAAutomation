@@ -1,4 +1,4 @@
-package com.ligl.Administration.General.CaseSettingsPage;
+package com.ligl.Administration.General.ProjectSettingsPage;
 
 import java.util.Hashtable;
 

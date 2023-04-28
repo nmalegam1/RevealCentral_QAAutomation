@@ -29,12 +29,7 @@ public class TC8746_Edit_Existing_Party_using_Edit_button_in_grid_Test extends T
                     .goToAdministrationPage()
                     .getAdminLeft()
                     .navigateToPartiesPage()
-                    .searchAndSelectTheParties(data.get("SearchPartyName"))
-                    .editParty(data.get("EditName"), data.get("EditPartyType"), data.get("EditDepartment"), data.get("EditStatus"),
-                            data.get("StatusChangeReason"), data.get("EditDescription"), data.get("EditWebsite"), data.get("EditEmail"),
-                            data.get("EditPhone"), data.get("EditTelephone"),data.get("EditFax"), data.get("EditAddressLine1"),
-                            data.get("EditAddressLine2"),data.get("EditAddressLine3"), data.get("EditCountry"), data.get("EditState"),
-                            data.get("EditCity"), data.get("EditZip"))
+                    .editTheExitingParty(data)
                     .getHeader()
                     .logout();
 

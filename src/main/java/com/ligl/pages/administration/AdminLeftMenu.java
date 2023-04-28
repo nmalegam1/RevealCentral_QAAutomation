@@ -67,23 +67,23 @@ public class AdminLeftMenu extends LiglBasePage {
 
     }
 
-    public ILiglPage sideMeanuCollapse() {
-        getSession().log_Info("Click on Side Meanu 'Collapse' Icon");
+    public ILiglPage sideMenuCollapse() {
+        getSession().log_Info("Click on Side Menu 'Collapse' Icon");
         getDriver().waitForelementToBeClickable(collapseLink);
         collapseLink.click();
-        getSession().log_Pass("Clicked on Side Meanu 'Collapse' Icon");
+        getSession().log_Pass("Clicked on Side Menu 'Collapse' Icon");
         return this;
     }
 
-    public ILiglPage sideMeanuExpand() {
-        getSession().log_Info("Click on Side Meanu 'Expand' Icon");
+    public ILiglPage sideMenuExpand() {
+        getSession().log_Info("Click on Side Menu 'Expand' Icon");
         getDriver().waitForelementToBeClickable(expandLink);
         expandLink.click();
-        getSession().log_Pass("Clicked on Side Meanu 'Expand' Icon");
+        getSession().log_Pass("Clicked on Side Menu 'Expand' Icon");
         return this;
     }
 
-    public ILiglPage clickOnAdminGeneral() throws Exception {
+    public ILiglPage expandAdminGeneral() throws Exception {
         try {
             getSession().log_Info("Click on Admin General");
             getDriver().waitForelementToBeClickable(adminGeneralLink);
@@ -97,7 +97,7 @@ public class AdminLeftMenu extends LiglBasePage {
         }
     }
 
-    public ILiglPage clickOnAdminLegalHoldLink() throws Exception {
+    public ILiglPage expandAdminLegalHold() throws Exception {
         try {
             getSession().log_Info("Click on Admin Legal Hold");
             getDriver().waitForelementToBeClickable(adminLegalHoldLink);
@@ -115,12 +115,14 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToUserAndRolesPage() throws Exception {
         try {
+            expandAdminGeneral();
             getSession().log_Info("Navigate to 'Users And Roles' Page");
             getDriver().waitForelementToBeClickable(UsersRolesLink);
             UsersRolesLink.click();
             getDriver().waitForAngularRequestsToComplete();
             getDriver().waitUntilSpinnerIsClosed();
             getSession().log_Pass("Navigated to 'Users And Roles' Page");
+            sideMenuCollapse();
             return new UsersAndRolesPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
@@ -143,6 +145,7 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToEmployeeMaster() throws Exception {
         try {
+            expandAdminGeneral();
             getSession().log_Info("Navigate To 'Employee Master' Page");
             getDriver().waitForelementToBeClickable(employeeMasterLink);
             employeeMasterLink.click();
@@ -156,6 +159,7 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToPartiesPage() throws Exception {
         try {
+            expandAdminGeneral();
             getSession().log_Info("Navigate to 'Parties' Page");
             getDriver().waitForelementToBeClickable(partiesLink);
             partiesLink.click();
@@ -170,6 +174,7 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToEmailTemplatesPage() throws Exception {
         try {
+            expandAdminGeneral();
             getSession().log_Info("Navigate to 'Email Templates' Page");
             getDriver().waitForelementToBeClickable(emailTemplatesLink);
             emailTemplatesLink.click();
@@ -184,6 +189,7 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToCaseSettingsPage() throws Exception {
         try {
+            expandAdminGeneral();
             getSession().log_Info("Navigate to 'Case Settings' Page");
             getDriver().waitForelementToBeClickable(caseSettingsLink);
             caseSettingsLink.click();
@@ -198,6 +204,7 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToLookupManagerPage() throws Exception {
         try {
+            expandAdminGeneral();
             getSession().log_Info("Navigate to 'Lookup Manager' Page");
             getDriver().waitForelementToBeClickable(lookupManagerLink);
             lookupManagerLink.click();
@@ -212,7 +219,7 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToStakeholderPage() throws Exception {
         try {
-            clickOnAdminLegalHoldLink();
+            expandAdminLegalHold();
 
             getSession().log_Info("Navigate to 'Stakeholder' Page");
             getDriver().waitForelementToBeClickable(stakeholderLink);
@@ -229,7 +236,7 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToManageQuestionBankPage() throws Exception {
         try {
-            clickOnAdminLegalHoldLink();
+            expandAdminLegalHold();
 
             getSession().log_Info("Navigate To 'Manage Question Bank' Page");
             getDriver().waitForelementToBeClickable(manageQuestionBankLink);
@@ -246,7 +253,7 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToManageQuestionnaireTemplatesPage() throws Exception {
         try {
-            clickOnAdminLegalHoldLink();
+            expandAdminLegalHold();
 
             getSession().log_Info("Navigate To 'Manage Questionnaire Templates' Page");
             getDriver().waitForelementToBeClickable(manageQuestionTemplatesLink);
@@ -262,7 +269,7 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToEscalationAndReminderPage() throws Exception {
         try {
-            clickOnAdminLegalHoldLink();
+            expandAdminLegalHold();
 
             getDriver().waitForelementToBeClickable(escalationAndReminderLink);
             getSession().log_Info("Navigate To 'Escalation And Reminder' Page");
@@ -278,7 +285,7 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToManageDisplayContentPage() throws Exception {
         try {
-            clickOnAdminLegalHoldLink();
+            expandAdminLegalHold();
 
             getDriver().waitForelementToBeClickable(manageDisplayContentLink);
             getSession().log_Info("Navigate To 'Manage Display Content' Page Link");

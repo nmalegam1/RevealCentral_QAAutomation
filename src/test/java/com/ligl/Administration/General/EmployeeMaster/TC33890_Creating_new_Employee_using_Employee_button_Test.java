@@ -3,6 +3,7 @@ package com.ligl.Administration.General.EmployeeMaster;
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.dataprovider.TestDataProvider;
+import com.ligl.db.DataBaseUtil;
 import com.ligl.pages.LaunchPage;
 import com.ligl.util.DataUtil;
 import org.testng.SkipException;
@@ -24,7 +25,7 @@ public class TC33890_Creating_new_Employee_using_Employee_button_Test extends Te
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))//"usa")
+                    .adminLogin(data.get("Username"), data.get("Password"), session.getGlobalData("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
@@ -44,8 +45,8 @@ public class TC33890_Creating_new_Employee_using_Employee_button_Test extends Te
                     .logout();
 
         } catch (Exception ex) {
-            session.log_Error("TC33890_Creating_new_Employee_using_Employee_button_Test");
-            throw new Exception("TC33890_Creating_new_Employee_using_Employee_button_Test", ex);
+            session.log_Error("TC38627_Check_All_Parameters_replacing_with_Actual_values_In_EmailTemplates_When_Employee_Create_Test");
+            throw new Exception("TC38627_Check_All_Parameters_replacing_with_Actual_values_In_EmailTemplates_When_Employee_Create_Test", ex);
         } finally {
             session.end();
         }

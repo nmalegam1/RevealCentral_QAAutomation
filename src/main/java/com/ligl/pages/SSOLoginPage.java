@@ -7,15 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SSOLoginPage extends LiglBasePage {
-    @FindBy(name="loginfmt")
+    @FindBy(name = "loginfmt")
     WebElement userNameTxt;
 
-    @FindBy(id="idSIButton9")
+    @FindBy(id = "idSIButton9")
     WebElement nextBtn;
 
-   // @Overridepublic
-    public ILiglPage SSOLogin(String userName, String password,String Entity) throws InterruptedException
-    {
+    // @Overridepublic
+    public ILiglPage SSOLogin(String userName, String password, String Entity) throws InterruptedException {
         log_Info("Enter SSO UserName");
         userNameTxt.sendKeys(userName);
         getSession().log_Pass("Entered SSO username");
@@ -26,15 +25,16 @@ public class SSOLoginPage extends LiglBasePage {
         getSession().log_Pass("Clicked Sign in button");
         getCurrentDriver().findElement(By.xpath("//input[@value='Yes']")).click();
         getSession().log_Pass("Clicked Yes button in confirmation window");
-        Thread.sleep(15000);
-        if (getCurrentDriver().getCurrentUrl().contains("legalentity"))
-        {
+        Thread.sleep(35000);
+        if (getCurrentDriver().getCurrentUrl().contains("/legalentity")) {
             log_Info("EntityPage Loaded");
-            System.out.println("Entity : "+Entity);
-            if(Entity.contains(Entity))
-            {
-                getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Entity+"')]")).click();
-                getDriver().waitForAngularRequestsToComplete();
+            //System.out.println("Entity : " + Entity);
+            getSession().log_Info("Select the " + Entity + " Entity");
+            if (Entity.contains(Entity)) {
+                getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + Entity + "')]")).click();
+                //getDriver().waitForAngularRequestsToComplete();
+                waitForPageToLoad();
+                getSession().log_Pass(Entity.toUpperCase() + " Entity Selected");
                 return new DefaultLandingPage();
             }
         }

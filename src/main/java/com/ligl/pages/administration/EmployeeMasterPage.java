@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import java.util.Hashtable;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
@@ -608,7 +609,8 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
             //Employment Status
             getSession().log_Info("Select the 'Employment Status'");
             getDriver().waitForelementToBeClickable(empStatusDrpDwn);
-            empStatusDrpDwn.sendKeys(status);
+            empStatusDrpDwn.sendKeys(Keys.ENTER, status, Keys.ENTER);
+
             getSession().log_Pass("Selected the 'Employment Status'");
 
             //Historic Employee ID
@@ -741,22 +743,26 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
 
             //Office Address Building Code
             getSession().log_Info("Enter 'Office Address Building Code'");
-            officeAddressBuildingCodeTxt.sendKeys(officeAddressBuildingCode);
+            String officeAddressBuildingCodeNew = getDriver().removeSpecialCharacter(officeAddressBuildingCode);
+            officeAddressBuildingCodeTxt.sendKeys(officeAddressBuildingCodeNew);
             getSession().log_Pass("Office Address Building Code Entered");
 
             //Office Address Campus Code
             getSession().log_Info("Enter Office Address Campus Code");
-            officeAddressCampusCodeTxt.sendKeys(officeAddressCampusCode);
+            String officeAddressCampusCodeNew =getDriver().removeSpecialCharacter(officeAddressCampusCode);
+            officeAddressCampusCodeTxt.sendKeys(officeAddressCampusCodeNew);
             getSession().log_Pass("Entered Office Address Campus Code");
 
             //Office Address Mailing Code
             getSession().log_Info("Enter Office Address Mailing Code");
-            officeAddressMailingCodeTxt.sendKeys(officeAddressMailingCode);
+            String officeAddressMailingCodeNew = getDriver().removeSpecialCharacter(officeAddressMailingCode);
+            officeAddressMailingCodeTxt.sendKeys(officeAddressMailingCodeNew);
             getSession().log_Pass("Entered Office Address Mailing Code");
 
             //Office Address Zip Code
             getSession().log_Info("Enter Office Address Zip Code");
-            officeAddressZipCodeTxt.sendKeys(officeAddressZipCode);
+            String officeAddressZipCodeNew = getDriver().removeSpecialCharacter(officeAddressZipCode);
+            officeAddressZipCodeTxt.sendKeys(officeAddressZipCodeNew);
             getSession().log_Pass("Entered Office Address Zip Code");
 
             //Office Address City
@@ -776,7 +782,8 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
 
             //Home Department Code
             getSession().log_Info("Enter Home Department Code");
-            homeDepartmentCodeTxt.sendKeys(homeDepartmentCode);
+            String homeDepartmentCodeNew = getDriver().removeSpecialCharacter(homeDepartmentCode);
+            homeDepartmentCodeTxt.sendKeys(homeDepartmentCodeNew);
             getSession().log_Pass("'Home Department Code' Entered");
 
             //Save
@@ -1492,6 +1499,37 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
         } catch (Exception e) {
             log_Error(e.getMessage());
             throw new Exception("Availablity Of Optionl Fields Failed", e);
+        }
+    }
+
+    public ILiglPage getFieldsDataFromEmployee(Hashtable<String, String> data) throws Exception{
+        try{
+            clickOnImport();
+            clickOnAddEmployeeButton();
+            createNewEmployee(data.get("EmpID"), data.get("FirstName"), data.get("MiddleName"), data.get("LastName"), data.get("Alias"),
+                    data.get("Department"), "","","","","", data.get("Status"),
+                    "", data.get("EmpEmail"),"","","","","","",
+                    "","","", data.get("AccountType"), "","","",
+                    "","","","","","","",
+                    "","","","","");
+
+            wait(2);
+            clickOnEmployee();
+            searchAndSelectTheEmployee(data.get("Alias"));
+
+            String firstName = firstNameTxt.getAttribute("value");
+            String middleName = middileNameTxt.getAttribute("value");
+            String lastName = lastNameTXt.getAttribute("value");
+            String employeeName = firstName+" "+ middleName+" "+lastName;
+            getSession().setRegressionData("get_EmployeeFullName", employeeName);
+            nextBtn.click();
+            getSession().setRegressionData("get_EmployeeEmailID", empEmailTxt.getAttribute("value"));
+            cancelBtn.click();
+            wait(2);
+            return new EmployeeMasterPage();
+        }catch (Exception e) {
+            log_Error(e.getMessage());
+            throw new Exception("get All Employee Fields Data Failed", e);
         }
     }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Administration General/Legal Hold Test Suite">
+<suite name="Administration General and Legal Hold Test Suite">
 
     <!--Admin General-->
     <!--User and Roles Page-->
@@ -10,6 +10,7 @@
             <class name="com.ligl.Administration.General.UserAndRoles.TC12160_Create_Ligl_User_with_Manual_Password_Test"/>
         </classes>
     </test>
+
     <test name="TC22050-Ligl and SSO users- Check whether User is able to Accept EULA page for first time Login when Common Spirit Instance config is False">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC22050_User_is_able_to_Accept_EULA_page_for_first_time_Login_when_CS_config_is_False_Test"/>
@@ -21,6 +22,7 @@
             <class name="com.ligl.Administration.General.UserAndRoles.TC22059_Create_Ligl_User_with_out_Manual_Password_Test"/>
         </classes>
     </test>
+
     <test name="TC37985 Verify the process of creating SSO user by selecting SSO user option in +User modal">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC37985_Creating_SSOUser_Test"/>
@@ -31,7 +33,6 @@
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC12104_Editing_Ligl_and_SSO_Users_Test"/>
         </classes>
-
     </test>
 
     <test name="TC25171 SSO User- Check whether 'Reset Password' button in grid is Click Disabled">
@@ -39,11 +40,13 @@
             <class name="com.ligl.Administration.General.UserAndRoles.TC25171_SSO_User_ResetPassword_button_Click_Disabled_in_UserRoles_grid_Test"/>
         </classes>
     </test>
+
     <test name="TC22508 Check whether Password strength validation is displaying for fields when user enters weak password">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC22508_Password_Strength_Validation_when_User_Enters_Weak_Password_Test"/>
         </classes>
     </test>
+
     <test name="TC22868 Verify that user should not be able to login with old password">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC22868_User_Should_not_be_able_to_Login_with_Old_Password_Test"/>
@@ -55,19 +58,22 @@
             <class name="com.ligl.Administration.General.UserAndRoles.TC21215_User_Able_to_click_ResetPassword_button_And_Reset_Password_Manually_for_Ligl_User_Test"/>
         </classes>
     </test>
+
     <test name="TC21217 Admin Reset Password Manually- Verify whether user is able to login with New password">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC21217_User_able_Login_with_Admin_Reset_Password_Test"/>
         </classes>
     </test>
+
     <test name="TC22518 Check whether Logged in user is able to Change Password after Admin Reset Password">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC22518_Logged_in_user_able_to_Change_Password_after_Admin_Reset_Password"/>
         </classes>
     </test>
+
     <test name="TC22519 Check whether 'Change Password' option is present in User profile and user is able to again login succesfully with new password">
         <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC22519_Change_Password_in_UserProfile_and_SameUser_Login_with_New_Password_Test"></class>
+            <class name="com.ligl.Administration.General.UserAndRoles.TC22519_Change_Password_in_UserProfile_and_SameUser_Login_with_New_Password_Test"/>
         </classes>
     </test>
 
@@ -76,21 +82,25 @@
             <class name="com.ligl.Administration.General.UserAndRoles.TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test"/>
         </classes>
     </test>
+
     <test name="TC28525 Ligl and SSO users Check whether user is able to change role to another role">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC28525_Ligl_and_SSO_Users_able_to_Change_Any_Role_Test"/>
         </classes>
     </test>
+
     <test name="TC28525 Ligl and SSO users Check whether user is able to change role to no role">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC28525_Ligl_and_SSO_Users_able_to_Change_No_Role_Test"/>
         </classes>
     </test>
+
     <test name="TC51900 Ligl User Create and Edit- Check duplicate validation message is displaying for 'Username' field">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_Ligl_User_Create_and_Edit_Test"/>
         </classes>
     </test>
+
     <test name="TC51900 SSO Users Create and Edit- Check duplicate validation message is displaying for 'Username' field">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_SSO_User_Create_Edit_Test"/>
@@ -107,6 +117,7 @@
             <class name="com.ligl.Administration.General.UserAndRoles.TC28551_Users_Able_to_Change_Status_Active_or_InActive_for_Ligl_and_SSO_Users_Test"/>
         </classes>
     </test>
+
     <test name="TC28536-Ligl user- Check whether Alert should be displayed when No Role user logs in">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC28536_Check_that_Alert_should_be_displayed_when_NoRole_to_logged_in_user_Test"/>
@@ -118,6 +129,7 @@
             <class name="com.ligl.Administration.General.UserAndRoles.TC25196_User_Able_to_ResetPassword_And_without_Selecting_ManualPassword_checkbox_Test"/>
         </classes>
     </test>
+
     <test name="TC28581-Ligl and SSO User- Check that Validation should be displayed in Login page when In-Active status user logs in">
         <classes>
             <class name="com.ligl.Administration.General.UserAndRoles.TC28581_Check_Validation_in_Login_page_when_InActive_status_LogsIn_Ligl_user_Test"/>
@@ -211,7 +223,7 @@
     </test>
     <test name="TC42959 Create and Edit Contact- Verify Maximum length of Mobile, Telephone and Fax numbers fields should not exceed 20 digits">
         <classes>
-            <class name="com.ligl.Administration.General.ContactMaster.TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_Test"/>
+            <class name="com.ligl.Administration.General.ContactMaster.TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Contact_Test"/>
         </classes>
     </test>
     <test name="TC42982	Create and Edit Contact- Verify Mobile number field is an optional field">
@@ -229,7 +241,7 @@
 
     <test name="TC8735 Parties- Verify the process of Creating new Party using +Party button">
         <classes>
-            <class name="com.ligl.Administration.General.Parties.TC8735_Create_new_Party_by_using_Party_Button_Test"/>
+            <class name="com.ligl.Administration.General.Parties.TC8735_Verify_the_Process_of_Create_New_Party_by_using_add_Party_Button_Test"/>
         </classes>
     </test>
     <test name="TC8746 Parties- Verify the process of Editing Party using Edit existing Party button in grid">
@@ -265,12 +277,12 @@
 
     <test name="TC21664 Case Settings- Verify the process of creating new Case settings template using +Template button">
         <classes>
-            <class name="com.ligl.Administration.General.CaseSettingsPage.TC21664_Creating_new_Case_settings_template_using_add_Template_button_Test"/>
+            <class name="com.ligl.Administration.General.ProjectSettingsPage.TC21664_Creating_new_Case_settings_template_using_add_Template_button_Test"/>
         </classes>
     </test>
     <test name="TC22060	Case Settings- Check whether newly created Case settings templates are populating in 'Case Settings Template' dropdown in +Case modal">
         <classes>
-            <class name="com.ligl.Administration.General.CaseSettingsPage.TC22060_Check_newly_created_CaseSettings_templates_are_populating_in_CaseSettingsTemplate_dropdown_in_Create_a_New_Case_Test"/>
+            <class name="com.ligl.Administration.General.ProjectSettingsPage.TC22060_Check_newly_created_CaseSettings_templates_are_populating_in_CaseSettingsTemplate_dropdown_in_Create_a_New_Case_Test"/>
         </classes>
     </test>
 
@@ -394,14 +406,14 @@
     </test>
     <test name="TC20802 Admin-Manage Questionnaire Templates-Verifying the functionality of Save button after editing the fields for a questionnaire template">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template"></class>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template"/>
         </classes>
     </test>
 
     <!--Escalation And Reminder Page-->
     <test name="TC51777 Admin-Legal hold-Escalation and Reminder- Verify whether Case level configuration changes are not reflected in Admin level configurations">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.EscalationAndReminder.TC51777_Verify_whether_Case_level_configuration_changes_are_not_reflected_in_Admin_level_configurations"></class>
+            <class name="com.ligl.Administration.LegalHold.EscalationAndReminder.TC51777_Verify_whether_Case_level_configuration_changes_are_not_reflected_in_Admin_level_configurations"/>
         </classes>
     </test>
 
@@ -502,14 +514,14 @@
     </test>
     <test name="TC20802 Admin-Manage Questionnaire Templates-Verifying the functionality of Save button after editing the fields for a questionnaire template">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template"></class>
+            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template"/>
         </classes>
-    </test>-->
+    </test>
 
     <!--Escalation And Reminder Page-->
     <test name="TC51777 Admin-Legal hold-Escalation and Reminder- Verify whether Case level configuration changes are not reflected in Admin level configurations">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.EscalationAndReminder.TC51777_Verify_whether_Case_level_configuration_changes_are_not_reflected_in_Admin_level_configurations"></class>
+            <class name="com.ligl.Administration.LegalHold.EscalationAndReminder.TC51777_Verify_whether_Case_level_configuration_changes_are_not_reflected_in_Admin_level_configurations"/>
         </classes>
     </test>
 

@@ -10,11 +10,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import java.util.Hashtable;
+
 
 public class UsersAndRolesPage extends LiglBaseSessionPage {
     @FindBy(id = "add-user-roles-btn")
     WebElement AddUserBtn;
-    @FindBy(id="role-sel-input")
+    @FindBy(id = "role-sel-input")
     WebElement RolesAssignedDP;
     @FindBy(xpath = "//input[@placeholder='Search']")
     WebElement RolesDPSearch;
@@ -90,11 +92,12 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
 
     /**
      * Method to check the Availability od Custodian Role in Roles Assigned Dropdown in Create role pop up
+     *
      * @return
      * @throws Exception
      */
-    public ILiglPage checkCustodianRoleInUserCreationPopUp(String Role)throws Exception{
-        try{
+    public ILiglPage checkCustodianRoleInUserCreationPopUp(String Role) throws Exception {
+        try {
             log_Info("checkCustodianRoleInUserCreationPopUp() Started");
             AddUserBtn.click();
             Thread.sleep(3000);
@@ -104,15 +107,15 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
             Thread.sleep(3000);
             RolesAssignedDP.sendKeys(Keys.ENTER);
             log_Info("Role is selected");
-            String RoleVal=SelectedDPValue.getText();
-            Assert.assertEquals(RoleVal,Role);
-            log_Pass("'"+Role+"' is Present in Roles Assigned DropDown");
+            String RoleVal = SelectedDPValue.getText();
+            Assert.assertEquals(RoleVal, Role);
+            log_Pass("'" + Role + "' is Present in Roles Assigned DropDown");
 
             return new UsersAndRolesPage();
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             log_Error("checkCustodianRoleInUserCreationPopUp() is Failed");
-            throw new Exception("Exception in checkCustodianRoleInUserCreationPopUp()",ex);
+            throw new Exception("Exception in checkCustodianRoleInUserCreationPopUp()", ex);
 
         }
     }
@@ -479,7 +482,7 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
                 getDriver().waitForelementToBeClickable(cancelbtn);
                 cancelbtn.click();
                 getSession().log_Pass("Clicked on 'Cancel' Button");
-                getSession().log_Pass("User Editing Cancled");
+                getSession().log_Pass("User Editing Cancelled");
             }
             wait(4);
             return new UsersAndRolesPage();
@@ -766,6 +769,81 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
         return this;
     }
 
+    public ILiglPage verifyTheDataCreateUserPopUp() throws Exception {
+        try {
+            //User Name
+            getDriver().waitForelementToBeClickable(userNameTxtBox);
+            getSession().setRegressionData("TC12160_UserName", userNameTxtBox.getAttribute("value"));
+            //email
+            getDriver().waitForelementToBeClickable(emailTxtBox);
+            getSession().setRegressionData("TC12160_Email", emailTxtBox.getAttribute("value"));
+            //First Name
+            getDriver().waitForelementToBeClickable(firstNameTxtBox);
+            String firstNAme = firstNameTxtBox.getAttribute("value");
+            //Middle Name
+            getDriver().waitForelementToBeClickable(middleNameTxtBox);
+            String middleName = middleNameTxtBox.getAttribute("value");
+            //Last Name
+            getDriver().waitForelementToBeClickable(lastNameTxtBox);
+            String lastName = lastNameTxtBox.getAttribute("value");
+
+
+            //Role
+            getDriver().waitForelementToBeClickable(roleAssigDropDown);
+            roleAssigDropDown.getText();
+            //Status
+            getDriver().waitForelementToBeClickable(statusDropDown);
+            statusDropDown.getText();
+            //Password
+            getDriver().waitForelementToBeClickable(pwdTxtBox);
+            pwdTxtBox.getAttribute("value");
+            //Confirm Password
+            getDriver().waitForelementToBeClickable(confPwdTxtBox);
+            confPwdTxtBox.getAttribute("value");
+            return new UsersAndRolesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Verify The Data User PopUp failed", ex);
+        }
+    }
+
+    public ILiglPage getFieldsDataFromSSOUserPopUp(Hashtable<String, String> data) throws Exception {
+        try {
+            clickOnAddUserButton();
+            creatingSSOUser(data.get("Email"), data.get("FirstName"), data.get("MiddleName"), data.get("LastName"), data.get("Role"), data.get("Status"));
+            searchTheUser(data.get("Email"));
+            scrollToRightToDoActionInUsers(data.get("Email"));
+            getDriver().waitForelementToBeClickable(editBtn);
+            editBtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            wait(2);
+            //SSOEmail
+            getSession().setRegressionData("get_SSOEmail", emailTxtBox.getAttribute("value"));
+
+            //First Name
+            getSession().setRegressionData("get_SSOFirstName", firstNameTxtBox.getAttribute("value"));
+
+            //Middle Name
+            getSession().setRegressionData("get_SSOMiddleName", middleNameTxtBox.getAttribute("value"));
+
+            //Last Name
+            getSession().setRegressionData("get_SSOLastName", lastNameTxtBox.getAttribute("value"));
+
+            //Roles Assigned
+            getSession().setRegressionData("get_SSORolesAssigned", roleAssigDropDown.getText());
+
+            //Status
+            getSession().setRegressionData("get_SSOStatus", statusDropDown.getText());
+
+            getDriver().waitForelementToBeClickable(cancelbtn);
+            cancelbtn.click();
+            getDriver().waitForAngularRequestsToComplete();
+            return new UsersAndRolesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Verify The Data User PopUp failed", ex);
+        }
+    }
 
 
 }
