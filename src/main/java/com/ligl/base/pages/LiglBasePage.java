@@ -39,7 +39,7 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
-	public ILiglPage checkApprovalConfStatus(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
+	public ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
 		return null;
 	}
 
@@ -1680,6 +1680,22 @@ public class LiglBasePage implements ILiglPage {
 	}
 
 	public ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage legalHoldApprovalIrrespectiveOfApprovalConfig(String LHName,String LHAction,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
+		return null;
+	}
+
+	public ILiglPage sendCaseForApprovalWithAllScope(String BchName,String Apptemp,String UserName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage goToIdentification() throws Exception{
+		return null;
+	}
+
+	public ILiglPage goToCollection() throws Exception{
 		return null;
 	}
 	public void waitForPageToLoad(){

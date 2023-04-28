@@ -6,6 +6,7 @@ import com.ligl.pages.administration.EmailTemplatePage;
 import com.ligl.pages.administration.EmployeeMasterPage;
 import com.ligl.pages.administration.StakeHoldersPage;
 import com.ligl.pages.casemanagement.CaseCustodiansPage;
+import com.ligl.pages.casemanagement.CaseSummaryPage;
 import com.ligl.pages.datamanagement.DMCollectionsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -299,7 +300,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     WebElement NoOfDays;
     @FindBy(id = "legal-hold-conguration-component-btn")
     WebElement DateRangeNextbtn;
-    @FindBy(id = "keywords")
+    @FindBy(id = "keyWords")
     WebElement KeyWordsFields;
     @FindBy(id = "legal-hold-configuration-backlhnName-btn")
     WebElement KeyWordNextBtn;
@@ -790,6 +791,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     public ILiglPage createLHWith_KW_DR(String lhName, String custTemp, String startDate, String endDate, String keyword) throws Exception {
         try {
             log_Info("createLHWith_KW_DR() is Started");
+            Thread.sleep(7000);
             AddLHN.click();
             Thread.sleep(5000);
             LHNNameField.sendKeys(lhName);
@@ -804,15 +806,17 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(2000);
             StakeNextBtn.click();
             Startdate.sendKeys(startDate);
+            Thread.sleep(2000);
             EndDate.sendKeys(endDate);
             DateRangeNextbtn.click();
             Thread.sleep(3000);
             KeyWordsFields.sendKeys(keyword);
+            Thread.sleep(2000);
             KeyWordNextBtn.click();
             Thread.sleep(3000);
             RemainderNextBtn.click();
             LHNSaveBtn.click();
-            Thread.sleep(15000);
+            Thread.sleep(20000);
 
             return new LegalHoldPage();
         } catch (Exception ex) {
@@ -4485,7 +4489,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             EndDate.click();
             EndDate.sendKeys(Keys.ESCAPE);
             EndDate.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-            EndDate.sendKeys(startDate);
+            EndDate.sendKeys(endDate);
             EndDate.sendKeys(Keys.TAB);
 
             DateRangeNextbtn.click();
@@ -4509,6 +4513,28 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         }catch (Exception ex){
             log_Error("editLH_DR_KW() is failed");
             throw new Exception("Exception in editLH_DR_KW()",ex);
+        }
+    }
+
+    public ILiglPage legalHoldApprovalIrrespectiveOfApprovalConfig(String LHName,String LHAction,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
+        try{
+            log_Info("legalHoldApprovalIrrespectiveOfApprovalConfig() Started");
+            try {
+                if (getCurrentDriver().findElement(By.xpath("//button[@id='modelaction-btn' and @disabled]")).isDisplayed())
+                    return new LegalHoldPage();
+            }catch (Exception ex){
+                sendLHNToApproval(LHName,LHAction,Apptemp,UserName);
+                ApprovalPage ap=new ApprovalPage();
+                getHeader().goToApprovalPage();
+                ap.clickOnPendingLHNameInAppPage(CaseNameApprove);
+                ap.clickOnApproveBtnInAppPage();
+                getHeader().viewCase();
+                return new CaseSummaryPage();
+            }
+            return new LegalHoldPage();
+        }catch (Exception ex){
+            log_Error("legalHoldApprovalIrrespectiveOfApprovalConfig() is Failed");
+            throw new Exception("Exception in legalHoldApprovalIrrespectiveOfApprovalConfig()",ex);
         }
     }
 

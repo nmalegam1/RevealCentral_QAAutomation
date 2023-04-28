@@ -1081,7 +1081,7 @@ public interface ILiglPage {
 
     ILiglPage createLHWithOut_KW_DR(String lhName, String custTemp) throws Exception;
 
-    ILiglPage checkApprovalConfStatus(String BchName, String Apptemp, String UserName, String CaseNameApprove) throws Exception;
+    ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName, String Apptemp, String UserName, String CaseNameApprove) throws Exception;
 
     ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPLHScopeGrid(String Status) throws Exception;
 
@@ -1107,5 +1107,11 @@ public interface ILiglPage {
 
     ILiglPage checkingRetainRecordAddedPrevGrid(String CustName, String DST, String LockCompleteStatus, String LockNotInitiateStatus, String ExpectedLHLDR, String ExpectedLHLKW) throws Exception;
     ILiglPage goToDMLHScope();
+
+    ILiglPage sendCaseForApprovalWithAllScope(String BchName,String Apptemp,String UserName) throws Exception;
+
+    ILiglPage legalHoldApprovalIrrespectiveOfApprovalConfig(String LHName,String LHAction,String Apptemp,String UserName,String CaseNameApprove) throws Exception;
+    ILiglPage goToIdentification() throws Exception;
+    ILiglPage goToCollection() throws Exception;
 }
 

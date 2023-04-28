@@ -220,12 +220,12 @@ public class DMDataHoldPage extends LiglBaseSessionPage {
             log_Info("Started searching for CCD record in Preservation LH Scope grid");
             searchCCDWithCustNameAndDSName(CustName,DST);
             log_Info("Storing the previous grid results count to compare with latest grid results count");
-            String PreviousCount=getSession().getGlobalData("PreservationResultsCount");
+            String PreviousCount=getSession().getRegressionData("PreservationResultsCount");
             int PreviousCount1=Integer.parseInt(PreviousCount);
             log_Info("Started checking latest grid results count");
             checkResultsCount();
             log_Info("Started comparing Previous grid results count & Latest grid results count");
-            String LatestCount=getSession().getGlobalData("PreservationResultsCount");
+            String LatestCount=getSession().getRegressionData("PreservationResultsCount");
             int LatestCount1=Integer.parseInt(LatestCount);
             if(PreviousCount1 ==LatestCount1)
             {
@@ -285,7 +285,7 @@ public class DMDataHoldPage extends LiglBaseSessionPage {
                             Thread.sleep(30000);
                             for (int j = 0; j < listItem.size(); j++)
                             {
-                                String actualValue = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='DataHoldStatusName']//span[@class='ellipsisAgGrid']")).getText();
+                                String actualValue = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
 
                                 if (actualValue.equalsIgnoreCase(LockCompleteStatus)) {
                                     log_Pass("Lock completed for Replaced CCD");
@@ -295,11 +295,13 @@ public class DMDataHoldPage extends LiglBaseSessionPage {
                                     log_Error("Lock failed for Replaced CCD");
                                     throw new Exception("Lock failed for Replaced CCD");
                                 }
+                                RefreshBtn.click();
                             }
-                            RefreshBtn.click();
+
 
 
                         } catch (Exception e) {
+                            log_Error("Lock Status is not fetched");
 
                         }
 
