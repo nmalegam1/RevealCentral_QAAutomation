@@ -33,13 +33,12 @@ public class DMDataHoldPage extends LiglBaseSessionPage {
     WebElement LHScopePopupText;
     @FindBy(id="btn-cross")
     WebElement ScopPopupCloseBtn;
-
-    @FindBy(xpath="//a[@class='btnrefresh']//span")
-    WebElement RefreshBtn;
     @FindBy(xpath = "//div[@col-id='CustodianName']//div[@ref='eCheckbox']//input")
     WebElement CCDCheckBox;
     @FindBy(id="data-hold-action-dropown-data-hold-scope")
     WebElement ActionDropDown;
+    @FindBy(xpath = "//div[@col-id='WorkFlowStatusName']//span[@class='ag-icon ag-icon-menu']")
+    WebElement LockUnlockStatusHeader;
     @FindBy(id="action-button-id")
     WebElement RunBtn;
     @FindBy(id="btn-yes")
@@ -50,6 +49,205 @@ public class DMDataHoldPage extends LiglBaseSessionPage {
         log_Info("Navigated to Preservation LHSCope tab");
         return new DMDataHoldPage();
     }
+    public ILiglPage searchCCDWithCustNameAndDSName(String CustName,String DST)throws Exception{
+        try{
+                CustNameSearchMenu.click();
+            Thread.sleep(3000);
+            try {
+                if(Searchbar.isDisplayed()) {
+                    Searchbar.clear();
+                    Searchbar.sendKeys(CustName);
+                }
+                Thread.sleep(3000);
+            }catch(Exception ex){
+
+                SearchFilter.click();
+                Searchbar.sendKeys(CustName);
+                Thread.sleep(3000);
+            }
+            getCurrentDriver().findElement(By.xpath("//div[contains(text(),'Preservation')]")).click();
+                DSTSearchManu.click();
+
+            Thread.sleep(3000);
+            try {
+                if(Searchbar.isDisplayed()) {
+                    Searchbar.clear();
+                    Searchbar.sendKeys(DST);
+                }
+                Thread.sleep(3000);
+            }catch(Exception ex){
+
+                SearchFilter.click();
+                Searchbar.sendKeys(DST);
+                Thread.sleep(3000);
+            }
+            return new DMDataHoldPage();
+        }catch(Exception ex){
+            log_Error("searchCCDWithCustNameAndDSName() is Failed");
+            throw new Exception("Exception in searchCCDWithCustNameAndDSName()",ex);
+        }
+    }
+
+    /**
+     * Method to Validate Retain Record availability and features like color(Red), Approval Status not initiated and it should be with latest LHScope
+     * @param CustName
+     * @param DST
+     * @param LockCompleteStatus
+     * @param LockNotInitiateStatus
+     * @param PreviuosLHLDR
+     * @param PreviuosLHLKW
+     * @param LatestLHLDR
+     * @param LatestLHLKW
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage checkingRetainRecordAddedPrevGrid(String CustName,String DST,String LockCompleteStatus,String LockNotInitiateStatus,String PreviuosLHLDR,String PreviuosLHLKW,String LatestLHLDR,String LatestLHLKW)throws Exception{
+        try{
+            log_Info("checkingRetainRecordAddedPrevGrid() Started");
+            Thread.sleep(5000);
+            searchCCDWithCustNameAndDSName(CustName,DST);
+
+            String Previouscount=getSession().getRegressionData("PreservationResultsCount");
+            int Previouscount1=Integer.parseInt(Previouscount);
+
+            checkResultsCount();
+
+            String LatestCount=getSession().getRegressionData("PreservationResultsCount");
+            int LatestCount1=Integer.parseInt(LatestCount);
+            if(Previouscount1+1 ==LatestCount1){
+                log_Info("Retain Record Added to Presrvation Grid");
+            }else
+                throw new Exception("Retain Record not Added After Changing LH Scope");
+
+            WebElement test = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']"));
+            List<WebElement> listItem = test.findElements(By.xpath("div[@role='row']"));
+
+            for (int j = 0; j < listItem.size(); j++) {
+                String colorProp = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//span[@class='ellipsisAgGrid']/ancestor::div[@role='row']")).getAttribute("style");
+                        if(colorProp.contains("color: rgb(179, 0, 0)")){
+                            log_Pass("Retain Record is Populated in RED Color");
+                           String lockStatus= getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
+                            if (LockNotInitiateStatus.equalsIgnoreCase(lockStatus)){
+                                log_Pass("Added Retain Record is in 'Not Intitiated' State");
+                            }
+                            else {
+                                log_Error("");
+                                throw new Exception("Retain Record is not in 'Not Intiated State'");
+                            }
+                            getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).click();
+                            for (int i = 0; i < 12; i++) {
+                                Actions ac = new Actions(getCurrentDriver());
+                                ac.sendKeys(Keys.TAB).perform();
+                            }
+                            getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='DateRangeName']//span[@class='ellipsistextoverflow' and @title='LDR']")).click();
+                            String LHLDR=LHScopePopupText.getText();
+                            if(LHLDR.contains(LatestLHLDR)){
+                                log_Pass("Retain Record is Populated with Latest LH LDR as Expected");
+                            }
+                            else {
+                                log_Error("");
+                                throw new Exception("Retain Record is not populated with Latest LH LDR ");
+                            }
+                            ScopPopupCloseBtn.click();
+                            getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='KeyWordName']//span[@class='ellipsistextoverflow' and @title='LKW']")).click();
+
+                            String LHLKW=LHScopePopupText.getText();
+                            if(LHLKW.contains(LatestLHLKW)){
+                                log_Pass("Retain Record is Populated with Latest LH LKW as Expected");
+                            }
+                            else {
+                                log_Error("");
+                                throw new Exception("Retain Record is not populated with Latest LH LKW ");
+                            }
+                            ScopPopupCloseBtn.click();
+                            for (int i = 0; i < 16; i++) {
+                                Actions ac = new Actions(getCurrentDriver());
+                                ac.sendKeys(Keys.ARROW_LEFT).perform();
+                            }
+                        }
+                        else{
+                            String lockStatus= getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
+
+                            if (LockCompleteStatus.equalsIgnoreCase(lockStatus)){
+                                log_Pass("Existing Record is in 'Lock Completed' State");
+                            }
+                            else{
+                                log_Error("");
+                                throw new Exception("Existing Record status is changes to 'Not Intiated State'");
+                            }
+                            getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).click();
+                            for (int i = 0; i < 12; i++) {
+                                Actions ac = new Actions(getCurrentDriver());
+                                ac.sendKeys(Keys.TAB).perform();
+                            }
+                            getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='DateRangeName']//span[@class='ellipsistextoverflow' and @title='LDR']")).click();
+
+                            String LHLDR=LHScopePopupText.getText();
+                            if(LHLDR.contains(PreviuosLHLDR)){
+                                log_Pass("Existing Record is Remain with Previous LH LDR as Expected");
+                            }
+                            else {
+                                log_Error("");
+                                throw new Exception("Existing Record is not populated with Previous LH LDR ");
+                            }
+                            ScopPopupCloseBtn.click();
+
+                            getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='KeyWordName']//span[@class='ellipsistextoverflow' and @title='LKW']")).click();
+                            String LHLKW=LHScopePopupText.getText();
+                            if(LHLKW.contains(PreviuosLHLKW)){
+                                log_Pass("Existing Record is Remain with Previous LH LKW as Expected");
+                            }
+                            else {
+                                log_Error("");
+                                throw new Exception("Existing Record is not populated with Previous LH LKW ");
+                            }
+                            ScopPopupCloseBtn.click();
+                            for (int i = 0; i < 16; i++) {
+                                Actions ac = new Actions(getCurrentDriver());
+                                ac.sendKeys(Keys.ARROW_LEFT).perform();
+                            }
+                        }
+            }
+
+            LockUnlockStatusHeader.click();
+            Thread.sleep(3000);
+            try {
+                if(Searchbar.isDisplayed()) {
+                    Searchbar.clear();
+                    Searchbar.sendKeys(LockNotInitiateStatus);
+                }
+                Thread.sleep(3000);
+            }catch(Exception ex){
+
+                SearchFilter.click();
+                Searchbar.sendKeys(LockNotInitiateStatus);
+                Thread.sleep(3000);
+            }
+            initiateLock("Lock");
+
+            return new DMDataHoldPage();
+        }catch(Exception ex){
+            log_Error("checkingRetainRecordAddedPrevGrid() is Failed");
+            throw new Exception("Exception in checkingRetainRecordAddedPrevGrid()",ex);
+        }
+    }
+    public ILiglPage initiateLock(String Action)throws Exception{
+        try{
+            log_Info("initiateLock() Started");
+            CCDCheckBox.click();
+            ActionDropDown.click();
+            getCurrentDriver().findElement(By.xpath("//option[contains(text(),'"+Action+"')]")).click();
+            RunBtn.click();
+            Thread.sleep(3000);
+            LockYesBtn.click();
+
+            return new DMDataHoldPage();
+        }catch (Exception ex){
+            log_Error("initiateLock() is Failed");
+            throw new Exception("Exception in initiateLock()");
+        }
+    }
+
     public ILiglPage searchCCDWithCustNameAndDSName(String CustName,String DST)throws Exception{
         try{
             CustNameSearchMenu.click();

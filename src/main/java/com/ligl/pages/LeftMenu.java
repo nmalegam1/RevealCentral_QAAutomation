@@ -71,6 +71,9 @@ public class LeftMenu extends LiglBasePage {
     @FindBy(xpath = "//span[@title='Identification']")
     WebElement Identification;
 
+    @FindBy(xpath = "//span[@title='Preservation']")
+    WebElement Preservation;
+
     @FindBy(xpath = "//span[@title='Process Management']")
     WebElement ProcessManagement;
 
@@ -259,6 +262,29 @@ public class LeftMenu extends LiglBasePage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("goToIdentification() Failed ", ex);
+        }
+    }
+
+    public ILiglPage goToPreservation() throws Exception {
+
+        try {
+
+            log_Info("Click on Data Management");
+            getDriver().waitForelementToBeClickable(DataManagement);
+            Thread.sleep(5000);
+            DataManagement.click();
+            getSession().log_Pass("Clicked on Data Management");
+
+            log_Info("Click on Identification");
+            getDriver().waitForelementToBeClickable(Preservation);
+            Thread.sleep(5000);
+            Preservation.click();
+            getSession().log_Pass("Clicked on Identification");
+            return new DMDataHoldPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("goToDataManagement() Failed ", ex);
         }
     }
 

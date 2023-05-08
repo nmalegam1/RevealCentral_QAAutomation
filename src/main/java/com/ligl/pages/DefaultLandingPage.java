@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import javax.swing.*;
@@ -19,8 +20,8 @@ import java.util.Hashtable;
 //****************CasePage*******************
 
 public class DefaultLandingPage extends LiglBaseSessionPage {
-
-
+    @FindBy(xpath = "//button[@type=\"submit\"]")
+    WebElement Notes_btn;
     @FindBy(id="sel-matter-type")
     WebElement CaseType;
     @FindBy(xpath="//div[@id='sel-matter-type-panel']//input[@type='text']")
@@ -151,9 +152,35 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     WebElement AddDropDown;
     @FindBy(xpath = "//span[contains(text(),'Region is required')]")
     WebElement RegionReqValidation;
+    @FindBy(id = "input-dynamic-column-4")
+    WebElement inplace_checkbox;
 
     @FindBy(id="filedownload-btn")
     WebElement HelpLink;
+
+    @FindBy(xpath = "//*[@id='input-dynamic-column-4']/label/span[1]/input")
+    WebElement inplace_checkbox1;
+
+    @FindBy(xpath = "//span[contains(text(),'Last Date Modified')]/ancestor::div[@ref='eLabel']")
+    WebElement LastDateModifiedHeader;
+
+    @FindBy(xpath = "//div[@col-id='ModifiedOn']//span[@ref='eMenu']")
+    WebElement DateModifierMenu;
+
+    @FindBy(xpath = "//div[@aria-label='Filtering operator']//div[@ref='eIcon']")
+    WebElement ComparatorDropDown;
+
+    @FindBy(xpath = "//div[@class='ag-filter-apply-panel']//button[contains(text(),'Apply')]")
+    WebElement ApplyButton;
+
+    @FindBy(xpath = "//label[@class='matchresults']//b")
+    WebElement CasesCount;
+
+    @FindBy(xpath = "//div[contains(text(),'Total Cases')]/ancestor::td//td[@class='tile-value']//div")
+    WebElement CasesCountInDashBoard;
+
+    @FindBy(xpath = "//div[@ref='eDateInput']//input[@ref='eInput']")
+    WebElement DateFormat;
 
 
     /**
@@ -427,6 +454,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     public ILiglPage searchcase(String CaseName) throws Exception {
 
         try {
+            waitForPageToLoad();
+            getDriver().waitUntilSpinnerIsClosed();
+
+            getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitForAngularRequestsToComplete();
 
             getDriver().waitForelementToBeClickable(CaseNameHeader);
             Actions ac = new Actions(getCurrentDriver());
@@ -475,6 +507,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             throw new Exception("GoToCase() Failed ",ex);
         }
     }
+
 
     public ILiglPage verifyCreatedByColDataInCaseGrid(String CreatedByName) throws Exception {
 
@@ -790,6 +823,305 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     }
 
     /****************************************************************************************************************/
+    public ILiglPage goToNotesPage() throws InterruptedException {
+        try {
+            log_Pass("Click on Notes Icon in Case list page");
+            waitForPageToLoad();
+            getDriver().waitUntilSpinnerIsClosed();
+            Thread.sleep(3000);
+            getDriver().waitForelementToBeClickable(Notes_btn);
+            log_Info("Notes icon Clicked");
+            Thread.sleep(3000);
+            Notes_btn.click();
+            Thread.sleep(5000);
+            log_Info("Load Notes page");
+            return new NotesPage();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public ILiglPage createCaseWithoutInplacePreservation(Hashtable<String,String> data) throws Exception {
+        try {
 
+            log_Info("createNewCase() Started");
+            Thread.sleep(3000);
+            log_Info("Click Create Case Button");
+            createCaseBtn.click();
+            log_Info(data.toString());
+            log_Info("Enter CaseType");
+            getDriver().waitForelementToBeClickable(CaseType);
+            CaseType.click();
+            Thread.sleep(3000);
+            CaseTypeText.sendKeys(data.get("CaseType"));
+            Thread.sleep(3000);
+            CaseTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter RoleType");
+            getDriver().waitForelementToBeClickable(RoleType);
+            RoleType.click();
+            Thread.sleep(3000);
+            RoleTypeText.sendKeys(data.get("Role"));
+            Thread.sleep(3000);
+            RoleTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter CaseName");
+            getDriver().waitForelementToBeClickable(CaseName);
+            CaseName.sendKeys(data.get("CaseName"));
+
+
+            log_Info("Enter Work Flow Template");
+            getDriver().waitForelementToBeClickable(WFT);
+            WFT.click();
+            Thread.sleep(3000);
+            WFTText.sendKeys(data.get("WFT"));
+            Thread.sleep(3000);
+            WFTText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Case Settings Template");
+            getDriver().waitForelementToBeClickable(CST);
+            CST.click();
+            Thread.sleep(3000);
+            CSTText.sendKeys(data.get("CaseSetTemp"));
+            Thread.sleep(3000);
+            CSTText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Entity");
+            getDriver().waitForelementToBeClickable(Entity);
+            Entity.click();
+            Thread.sleep(3000);
+            EntityText.sendKeys(data.get("Entity"));
+            Thread.sleep(3000);
+            EntityText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Region");
+            getDriver().waitForelementToBeClickable(Region);
+            Region.click();
+            Thread.sleep(3000);
+            RegionText.sendKeys(data.get("Region"));
+            Thread.sleep(3000);
+            RegionText.sendKeys(Keys.ENTER);
+            log_Info("Region Entered");
+            Thread.sleep(3000);
+
+            log_Info("Enter Description");
+            getDriver().waitForelementToBeClickable(Desc);
+            Desc.sendKeys(data.get("Description"));
+
+            log_Info("Enter Priority");
+            getDriver().waitForelementToBeClickable(Priority);
+            Priority.click();
+            Thread.sleep(5000);
+            SelPriority.click();
+            log_Pass("Priority Selected");
+            Thread.sleep(3000);
+            log_Pass("All Mandatory Fields Are Entered");
+            log_Info("Click on more button");
+            MoreBtn.click();
+            Thread.sleep(3000);
+            log_Pass("more button clicked");
+            log_Info("uncheck inplace preservation checkbox");
+            inplace_checkbox.click();
+            Thread.sleep(3000);
+            log_Pass("uncheck inplace preservation checkbox");
+
+            log_Info("Click on Save Button");
+            SaveBtn.click();
+            log_Pass("Save button Clicked");
+            String b = NewlyCreatedCaseName.getAttribute("title");
+            Assert.assertEquals(data.get("CaseName"), b);
+            log_Pass("Case Created Successfully");
+            return new CaseSummaryPage();
+        } catch (Exception ex) {
+            throw new Exception("Exception in CreateCaseWithoutInplacePreservation()", ex);
+        }
+
+    }
+    public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title) throws Exception {
+
+        try {
+
+            getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitForAngularRequestsToComplete();
+
+            getDriver().waitForelementToBeClickable(LastDateModifiedHeader);
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(LastDateModifiedHeader).perform();
+            log_Info("pointed mouse To The Date Modifier Menu");
+            waitForPageToLoad();
+
+            log_Info("click on Date Modifier Menu");
+            DateModifierMenu.click();
+            log_Info("clicked on Date Modifier Menu");
+            waitForPageToLoad();
+
+            log_Info("click on Date Modifier filter");
+            CaseSearchFilter.click();
+            log_Info("clicked on Date Modifier filter");
+            waitForPageToLoad();
+
+            log_Info("click On Date Modifier Dropdown");
+            ComparatorDropDown.click();
+            Thread.sleep(3000);
+            log_Info("clicked On Date Modifier Dropdown");
+            Thread.sleep(3000);
+            log_Info("click On Date Modifier Dropdown Value");
+            Thread.sleep(3000);
+            getCurrentDriver().findElement(By.xpath("//div[@role='option']//span[contains(text(),'"+Comparator+"')]")).click();
+            Thread.sleep(2000);
+            log_Info("clicked On Date Modifier Dropdown Value ");
+            waitForPageToLoad();
+            log_Info("Enter The Date In The Bar");
+            DateFormat.click();
+            Thread.sleep(2000);
+            DateFormat.sendKeys(Date);
+            Thread.sleep(2000);
+            DateFormat.sendKeys(Month);
+            Thread.sleep(2000);
+            DateFormat.sendKeys(Year);
+            Thread.sleep(2000);
+            log_Info("Entered The Date In The Bar");
+            log_Info("Click On Apply Button");
+            ApplyButton.click();
+            Thread.sleep(2000);
+            log_Info("Clicked On Apply Button");
+            Thread.sleep(5000);
+            waitForPageToLoad();
+
+
+            String CasesCOUNT = CasesCount.getText();
+            int CasescountDL = Integer.parseInt(CasesCOUNT);
+
+            log_Info("Total Number Of Cases  : " + CasescountDL);
+
+            getHeader().navigateToDashboardPage()
+                    .validateDashBoardPageURL(Title);
+
+            String CasesCountDB = CasesCountInDashBoard.getText();
+            int CASESCountDB = Integer.parseInt(CasesCountDB);
+
+            log_Info("Total Number Of Cases  : " + CASESCountDB);
+
+            try {
+
+                if (CasescountDL == CASESCountDB) {
+
+                    log_Pass("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are EQUAL ");
+                }
+            }
+            catch(Exception e) {
+                log_Error("Total Count In Both Pages Are Not Equal");
+            }
+
+            return  new DashboardPage();
+
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("searchLastDateModifiedColumn() Failed",ex);
+        }
+
+    }
+
+
+    public ILiglPage createNewCaseWithInPlacePreservation(Hashtable<String,String> data) throws Exception {
+        try {
+
+
+            log_Info("createNewCase() Started");
+            Thread.sleep(3000);
+            log_Info("Click Create Case Button");
+            createCaseBtn.click();
+            log_Info(data.toString());
+            log_Info("Enter CaseType");
+            getDriver().waitForelementToBeClickable(CaseType);
+            CaseType.click();
+            Thread.sleep(3000);
+            CaseTypeText.sendKeys(data.get("CaseType"));
+            Thread.sleep(3000);
+            CaseTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter RoleType");
+            getDriver().waitForelementToBeClickable(RoleType);
+            RoleType.click();
+            Thread.sleep(3000);
+            RoleTypeText.sendKeys(data.get("Role"));
+            Thread.sleep(3000);
+            RoleTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter CaseName");
+            getDriver().waitForelementToBeClickable(CaseName);
+            CaseName.sendKeys(data.get("CaseName"));
+
+
+            log_Info("Enter Work Flow Template");
+            getDriver().waitForelementToBeClickable(WFT);
+            WFT.click();
+            Thread.sleep(3000);
+            WFTText.sendKeys(data.get("WFT"));
+            Thread.sleep(3000);
+            WFTText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Case Settings Template");
+            getDriver().waitForelementToBeClickable(CST);
+            CST.click();
+            Thread.sleep(3000);
+            CSTText.sendKeys(data.get("CaseSetTemp"));
+            Thread.sleep(3000);
+            CSTText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Entity");
+            getDriver().waitForelementToBeClickable(Entity);
+            Entity.click();
+            Thread.sleep(3000);
+            EntityText.sendKeys(data.get("Entity"));
+            Thread.sleep(3000);
+            EntityText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Region");
+            getDriver().waitForelementToBeClickable(Region);
+            Region.click();
+            Thread.sleep(3000);
+            RegionText.sendKeys(data.get("Region"));
+            Thread.sleep(3000);
+            RegionText.sendKeys(Keys.ENTER);
+            log_Info("Region Entered");
+            Thread.sleep(3000);
+
+            log_Info("Enter Description");
+            getDriver().waitForelementToBeClickable(Desc);
+            Desc.sendKeys(data.get("Description"));
+
+            log_Info("Enter Priority");
+            getDriver().waitForelementToBeClickable(Priority);
+            Priority.click();
+            Thread.sleep(5000);
+            SelPriority.click();
+            log_Pass("Priority Selected");
+            Thread.sleep(3000);
+
+            MoreBtn.click();
+            log_Info("check for inplace preservation check box selected or not");
+            boolean a1 = inplace_checkbox1.isSelected();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(true, a1);
+            log_Info("inplace preservation check box selected for the Case");
+
+            log_Pass("All Mandatory Fields Are Entered");
+            log_Info("Click Save Button");
+            SaveBtn.click();
+            log_Pass("Save button Clicked");
+            String b= NewlyCreatedCaseName.getAttribute("title");
+            Assert.assertEquals(data.get("CaseName"),b);
+            log_Pass("Case Created Successfully");
+            return new CaseSummaryPage();
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in createNewCase()", ex);
+        }
+    }
 
 }

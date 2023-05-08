@@ -29,9 +29,7 @@ public class TC22059_Create_Ligl_User_with_out_Manual_Password_Test extends Test
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnUserAndRolesLink()
+                    .navigateToUserAndRolesPage()
                     .clickOnAddUserButton()
                     .swithToLiglUser()
                     .creatingLiglUser(data.get("UserName"), data.get("Email"), data.get("FirstName"),

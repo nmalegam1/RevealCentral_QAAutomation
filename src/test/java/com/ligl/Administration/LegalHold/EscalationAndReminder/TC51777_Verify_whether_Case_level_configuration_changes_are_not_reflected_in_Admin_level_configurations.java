@@ -41,13 +41,11 @@ public class TC51777_Verify_whether_Case_level_configuration_changes_are_not_ref
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminLegalHold()
-                    .getAdminLeft()
-                    .clickOnEscalationAndReminderPageLink()
-                    .checkThatReminderConfigurationsInLegalHoldAtAminLevel(session.getSmokeData("TC51777_reminderDays"),
-                            session.getSmokeData("TC51777_reminderFrequency"), session.getSmokeData("TC51777_reminderMailCap"))
-                    .checkThatEscalationConfigurationsInLegalHoldAtAminLevel(session.getSmokeData("TC51777_escalationDay"),
-                            session.getSmokeData("TC51777_escalationFrequency"),session.getSmokeData("TC51777_escalationMailsCap"))
+                    .navigateToEscalationAndReminderPage()
+                    .checkThatReminderConfigurationsInLegalHoldAtAminLevel(session.getRegressionData("TC51777_reminderDays"),
+                            session.getRegressionData("TC51777_reminderFrequency"), session.getRegressionData("TC51777_reminderMailCap"))
+                    .checkThatEscalationConfigurationsInLegalHoldAtAminLevel(session.getRegressionData("TC51777_escalationDay"),
+                            session.getRegressionData("TC51777_escalationFrequency"),session.getRegressionData("TC51777_escalationMailsCap"))
                     .getHeader()
                     .logout();
         } catch (Exception ex) {

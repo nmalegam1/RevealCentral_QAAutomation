@@ -41,4 +41,16 @@ public interface IWebConnector{
 	void moveToRightInAngularTable(String number) throws Exception;
 	WebElement checkTheCheckBox(String textValue) throws Exception;
 
+	int maximumValueShouldNotExceed20Digits(String a1) throws Exception;
+
+	String removeSpecialCharacter(String convertString) throws Exception;
+
+	/******************************Data Base**********************************************/
+	boolean isSubstring(String main, String sub);
+
+	String concat(String stringOne,String stringTwo);
+
+	String sqlQueryForEmailTracker(String email, String subject) throws Exception;
+
+	String sqlQueryForEmailStatusLookID(String parentID, String name);
 }

@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
@@ -134,7 +135,6 @@ public abstract class LiglValidationDriver implements IWebConnector {
     }
 
     /*****************************************************/
-
     public void scrollToView(WebElement element) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView()", element);
@@ -170,6 +170,49 @@ public abstract class LiglValidationDriver implements IWebConnector {
             getSession().log_Error("Check The CheckBox Failed");
             throw new Exception("Check The CheckBox Failed", ex);
         }
+    }
+
+    public int maximumValueShouldNotExceed20Digits(String string) throws Exception {
+        try {
+            int number = string.length();
+            Assert.assertEquals(20 >= number, true);
+            return number;
+        } catch (Exception ex) {
+            getSession().log_Error("Maximum Value Should Not Exceed 20 Digits Failed");
+            throw new Exception("Maximum Value Should Not Exceed 20 Digits Failed", ex);
+        }
+
+    }
+
+    public String removeSpecialCharacter(String convertString) throws Exception {
+        String originalString = convertString.replace("*", "");
+        return originalString;
+    }
+
+    /******************************Data Base**********************************************/
+
+    public boolean isSubstring(String main, String sub) {
+        return main.contains(sub);
+    }
+
+    public String concat(String stringOne, String stringTwo) {
+        String fullString = stringOne + " " + stringTwo;
+        return fullString;
+    }
+
+    public String sqlQueryForEmailTracker(String email, String subject) throws Exception {
+        try {
+            String sql1 = "SELECT TOP 1 * FROM VERTICAL.EMAILTRACKER WHERE TOADDRESS LIKE '%" + email + "%' AND SUBJECT LIKE '%" + subject + "%'ORDER BY 1 DESC";
+            return sql1;
+        } catch (Exception ex) {
+            getSession().log_Error("SQL Query For Email Tracker Failed");
+            throw new Exception(ex.getMessage());
+        }
+    }
+
+    public String sqlQueryForEmailStatusLookID(String parentID, String name) {
+        String sql2 = "select * from metadata.Lookup where Name like '%" + name + "%' and ParentID = " + parentID + "";
+        return sql2;
     }
 
 }

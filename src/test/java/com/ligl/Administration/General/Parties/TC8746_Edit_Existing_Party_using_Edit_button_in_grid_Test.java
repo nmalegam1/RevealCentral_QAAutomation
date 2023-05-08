@@ -28,9 +28,7 @@ public class TC8746_Edit_Existing_Party_using_Edit_button_in_grid_Test extends T
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .clickOnAdminGeneral()
-                    .getAdminLeft()
-                    .clickOnPartiesLink()
+                    .navigateToPartiesPage()
                     .searchAndSelectTheParties(data.get("SearchPartyName"))
                     .editParty(data.get("EditName"), data.get("EditPartyType"), data.get("EditDepartment"), data.get("EditStatus"),
                             data.get("StatusChangeReason"), data.get("EditDescription"), data.get("EditWebsite"), data.get("EditEmail"),
