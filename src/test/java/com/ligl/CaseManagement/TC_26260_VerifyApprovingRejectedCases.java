@@ -29,7 +29,7 @@ public class TC_26260_VerifyApprovingRejectedCases extends TestBase {
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToSecurityPage().sendingCaseForApproval()

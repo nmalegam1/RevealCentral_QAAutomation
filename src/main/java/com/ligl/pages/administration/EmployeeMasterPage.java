@@ -559,6 +559,8 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
                     getSession().log_Info("Select the 'Employment Status'");
                     getDriver().waitForelementToBeClickable(empStatusDrpDwn);
                     empStatusDrpDwn.sendKeys(status);
+                    Thread.sleep(2000);
+                    empStatusDrpDwn.sendKeys(Keys.ENTER);
                     getSession().log_Pass("Selected the 'Employment Status'");
 
                     //Navigate to Contact
@@ -609,6 +611,8 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
             getSession().log_Info("Select the 'Employment Status'");
             getDriver().waitForelementToBeClickable(empStatusDrpDwn);
             empStatusDrpDwn.sendKeys(status);
+            Thread.sleep(2000);
+            empStatusDrpDwn.sendKeys(Keys.ENTER);
             getSession().log_Pass("Selected the 'Employment Status'");
 
             //Historic Employee ID
@@ -1274,6 +1278,8 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
             getSession().log_Info("Select the 'Employment Status'");
             getDriver().waitForelementToBeClickable(empStatusDrpDwn);
             empStatusDrpDwn.sendKeys(status);
+            Thread.sleep(2000);
+            empStatusDrpDwn.sendKeys(Keys.ENTER);
             getSession().log_Pass("Selected the 'Employment Status'");
 
             //Address

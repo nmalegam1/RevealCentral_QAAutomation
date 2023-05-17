@@ -24,12 +24,12 @@ public class TC_1604_CreateNewPartyToCase_Test extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToOtherPartyPage()
-                    .createAndValidatePartyCreatedOrNot(data.get("PartyName"), data.get("PartyType"), data.get("Description"));
+                    .createAndValidatePartyCreatedOrNot(data.get("PartyName"), data.get("PartyType"), data.get("Description"),data.get("Status"));
         } catch (Exception ex) {
             session.log_Error("TC_1604_CreateNewPartyToCase_Test Failed");
             throw new Exception("TC_1604_CreateNewPartyToCase_Test failed", ex);

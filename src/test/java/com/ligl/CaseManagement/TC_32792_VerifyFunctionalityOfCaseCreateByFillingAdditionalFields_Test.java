@@ -27,7 +27,7 @@ public class TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_T
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .caseCreateWithAdditionalFields(data)
                     .logout();
         } catch (Exception ex) {

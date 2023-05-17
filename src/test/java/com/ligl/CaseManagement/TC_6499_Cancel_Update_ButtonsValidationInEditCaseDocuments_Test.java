@@ -27,7 +27,7 @@ public class TC_6499_Cancel_Update_ButtonsValidationInEditCaseDocuments_Test ext
             ILiglPage Ref = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()

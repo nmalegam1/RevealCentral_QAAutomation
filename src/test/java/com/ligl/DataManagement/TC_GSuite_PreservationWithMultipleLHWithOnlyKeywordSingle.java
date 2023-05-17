@@ -11,10 +11,10 @@ package com.ligl.DataManagement;
 
         import java.util.Hashtable;
 
-public class TC_GSuite_SingleLHWithOnlyDateRanges extends TestBase {
+public class TC_GSuite_PreservationWithMultipleLHWithOnlyKeywordSingle extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData" , description = "DataManagement")
-    public void TC_GSuite_SingleLHWithOnlyDateRanges(Hashtable<String, String> data) throws Exception {
+    public void TC_GSuite_PreservationWithMultipleLHWithOnlyKeywordSingle(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -36,6 +36,8 @@ public class TC_GSuite_SingleLHWithOnlyDateRanges extends TestBase {
                     .multipleCustodianSelect(data)
                     .getLeftMenu().navigateToDataSourcesPage()
                     .multipleDataSourceSelect(data)
+                    .getLeftMenu().goToSecurityPage()
+                    .caseApprovalIrrespectiveOfApprovalConfig(data.get("BchName"),data.get("Apptemp"),data.get("UserName"),data.get("CaseNameApprove"))
                     .getLeftMenu().goToLegalHoldPage()
                     .createLHWithOnlyDR(data.get("LHName"), data.get("CustTemp"), data.get("StartDate"), data.get("EndDate"))
                     .sendLHNToApproval(data.get("LHName"),data.get("LHAction"),data.get("EmailTemp"),data.get("ApproverUN"))
@@ -51,12 +53,13 @@ public class TC_GSuite_SingleLHWithOnlyDateRanges extends TestBase {
                     .goToDMLHScope()
                     .validateAndWaitForRecordsToCompleteLock(data.get("LockStatus"));
         } catch (Exception ex) {
-            session.log_Error("TC_GSuite_SingleLHWithOnlyDateRanges Failed");
-            throw new Exception("TC_GSuite_SingleLHWithOnlyDateRanges Failed", ex);
+            session.log_Error("TC_GSuite_PreservationWithMultipleLHWithOnlyKeywordSingle Failed");
+            throw new Exception("TC_GSuite_PreservationWithMultipleLHWithOnlyKeywordSingle Failed", ex);
         } finally {
             session.end();
         }
     }
 }
+
 
 

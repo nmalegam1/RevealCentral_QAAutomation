@@ -27,7 +27,7 @@ public class TC_6484_Availability_FunctionalityOfFieldsInCreate_Edit_Documents_T
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()

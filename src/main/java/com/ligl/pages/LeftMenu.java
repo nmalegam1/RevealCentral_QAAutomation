@@ -13,6 +13,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import javax.print.Doc;
+
 public class LeftMenu extends LiglBasePage {
 
     @FindBy(xpath = "//span[contains(text(),'Project Management')]/ancestor::li//span[contains(text(),'Summary')]")
@@ -142,17 +144,48 @@ public class LeftMenu extends LiglBasePage {
      * @return CaseDocumentsPage()
      * @throws InterruptedException
      */
-    public ILiglPage navigateToCaseDocumentsPage() throws InterruptedException {
-        getSession().log_Info("Click on Project Management");
-        getDriver().waitForelementToBeClickable(CaseManage);
-        CaseManage.click();
-        log_Pass("Project Management clicked");
-        Thread.sleep(3000);
-        log_Info("Click Documents");
-        Documents.click();
-        log_Pass("Documents tab Clicked");
-        Thread.sleep(3000);
-        return new CaseDocumentsPage();
+    public ILiglPage navigateToCaseDocumentsPage() throws Exception {
+        try {
+
+            try {
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                if (caseMgmt2.isEnabled()) {
+
+                    log_Info("Click on Case Management");
+                    getDriver().waitForelementToBeClickable(CaseManage);
+                    CaseManage.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("case Management clicked");
+
+                    log_Info("Click on Counsel");
+                    getDriver().waitForelementToBeClickable(Documents);
+                    Thread.sleep(5000);
+                    Documents.click();
+                    log_Info("Clicked on Documents");
+
+
+                }
+            } catch (NoSuchElementException e) {
+
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+
+                if (caseMgmt1.isDisplayed()) {
+
+                    log_Info("Click on Documents");
+                    getDriver().waitForelementToBeClickable(Documents);
+                    Thread.sleep(5000);
+                    Documents.click();
+                    log_Info("Clicked on Documents");
+
+                }
+
+            }
+            return new CaseDocumentsPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("navigateToCaseDocumentsPage() Failed ", ex);
+        }
     }
     public ILiglPage goToCaseManagementSummary() throws InterruptedException {
         caseManagementSummaryLink.click();
@@ -339,7 +372,7 @@ public class LeftMenu extends LiglBasePage {
         try {
 
             try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Project Management Menu is in collapsed form
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
 
                     log_Info("Click on Project Management");

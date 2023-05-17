@@ -144,11 +144,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='CreatedByName']//span[@class='ellipsisAgGrid']")
     WebElement CreatedByColData;
-    @FindBy(id = "input-dynamic-column-1")
+    @FindBy(id = "input-dynamic-column-2")
     WebElement CostCentre;
-    @FindBy(id="input-dynamic-column-2")
+    @FindBy(id="input-dynamic-column-3")
     WebElement CaseAlias;
-    @FindBy(id="select-dynamic-column-3")
+    @FindBy(id="select-dynamic-column-1")
     WebElement AddDropDown;
     @FindBy(xpath = "//span[contains(text(),'Region is required')]")
     WebElement RegionReqValidation;
@@ -454,6 +454,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     public ILiglPage searchcase(String CaseName) throws Exception {
 
         try {
+
+            getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitForAngularRequestsToComplete();
+
+            //getDriver().waitForelementToBeClickable(CaseNameHeader);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(CaseNameHeader).perform();
 

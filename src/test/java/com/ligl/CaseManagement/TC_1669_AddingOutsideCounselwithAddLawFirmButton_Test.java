@@ -27,11 +27,12 @@ public class TC_1669_AddingOutsideCounselwithAddLawFirmButton_Test extends TestB
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToOtherPartyPage()
+                    .addingExistingParty(data.get("PartyName"), data.get("PartyType"))
                     .searchingParty(data.get("PartyName"))
                     .goToOutSideCounselInOtherParty()
                     .addOutCounselWithAddLawFirmBtn(data.get("PartyName"), data.get("LawFirm"), data.get("CounselFstName"), data.get("CounselLstName"), data.get("CounselFullName"));
