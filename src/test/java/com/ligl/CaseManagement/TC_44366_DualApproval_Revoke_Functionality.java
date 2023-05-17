@@ -39,7 +39,8 @@ public class TC_44366_DualApproval_Revoke_Functionality extends TestBase {
                     .searchcase("QA_CheckDueDate_Feb19")
                     .GoToCase("QA_CheckDueDate_Feb19")
                     .getLeftMenu().goToSecurityPage()
-                    .approvalHistoryCheck(data.get("Username1"),"Not Initiated");
+                    .approvalHistoryCheck(data.get("Username1"),"Not Initiated")
+                    .logout();
         }catch (Exception ex){
             session.log_Error("TC_44366_DualApproval_Revoke_Functionality Failed");
             throw new Exception("Exception in TC_44366_DualApproval_Revoke_Functionality", ex);

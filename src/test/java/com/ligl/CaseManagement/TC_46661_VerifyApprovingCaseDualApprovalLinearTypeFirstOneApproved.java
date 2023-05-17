@@ -53,7 +53,8 @@ public class TC_46661_VerifyApprovingCaseDualApprovalLinearTypeFirstOneApproved 
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage().validateCaseRejectedState().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status3"), data.get("AssignedUser2"), data.get("Status2") )
                     .getHeader().logout().login(data.get("Username"), data.get("Password"),data.get("Entity"))
-                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName")).getLeftMenu().goToSecurityPage().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status3"), data.get("AssignedUser2"), data.get("Status2"));
+                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName")).getLeftMenu().goToSecurityPage().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status3"), data.get("AssignedUser2"), data.get("Status2"))
+                    .logout();
 
 
 

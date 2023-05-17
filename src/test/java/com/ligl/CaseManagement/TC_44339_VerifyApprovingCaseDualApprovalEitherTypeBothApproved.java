@@ -63,7 +63,8 @@ public class TC_44339_VerifyApprovingCaseDualApprovalEitherTypeBothApproved exte
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage().verifyingApproveStatus().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status1"), data.get("AssignedUser2"), data.get("Status2") )
                     .getHeader().logout().login(data.get("Username"), data.get("Password"),data.get("Entity"))
-                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName")).getLeftMenu().goToSecurityPage().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status1"), data.get("AssignedUser2"), data.get("Status2"));
+                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName")).getLeftMenu().goToSecurityPage().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status1"), data.get("AssignedUser2"), data.get("Status2"))
+                    .logout();
         } catch (Exception ex) {
             session.log_Error("TC_44339_VerifyApprovingCaseDualApprovalEitherTypeBothApproved Failed");
             throw new Exception("TC_44339_VerifyApprovingCaseDualApprovalEitherTypeBothApproved Failed", ex);

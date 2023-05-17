@@ -28,10 +28,12 @@ public class TC_45504_VerifyDataInCreatedByColumnInCaseGrid extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    .login(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    /*.navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))*/
                     .searchcase(data.get("CaseName"))
-                    .verifyCreatedByColDataInCaseGrid(data.get("CreatedByName"));
+                    .verifyCreatedByColDataInCaseGrid(data.get("CreatedByName"))
+                    .logout();
 
 
         } catch (Exception ex) {

@@ -39,7 +39,8 @@ public class TC_35057_VerifyFunctionalityOfCreatingKeywords extends TestBase {
                     .getLeftMenu().navigateToKeyWordsPage()
                     .addKeywordsByBasic(data.get("Keywords1"))
                     .addKeywordsByBasic(data.get("Keywords1"))
-                    .validatingKeywordsByKeywordType();
+                    .validatingKeywordsByKeywordType()
+                    .logout();
 
 
         } catch (Exception ex) {

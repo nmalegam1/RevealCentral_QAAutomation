@@ -30,7 +30,7 @@ public class TC_42960_VerifyReassignLHFunctionality extends TestBase
                     .openBrowser("chrome")
                     .navigateURL()
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHname"))
