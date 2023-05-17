@@ -212,7 +212,7 @@ public class LiglBasePage implements ILiglPage {
 	}
 	public ILiglPage validatePartyCreatedOrNot(String s)throws Exception{return null;}
 	public ILiglPage addingNewParty(String s1,String s2,String s3)throws Exception{return null;}
-	public ILiglPage createAndValidatePartyCreatedOrNot(String s1,String s2,String s3)throws Exception{return null;}
+	public ILiglPage createAndValidatePartyCreatedOrNot(String s1,String s2,String s3,String s4)throws Exception{return null;}
 	public ILiglPage validateCustodianAddedToGrid(String s)throws Exception{return null;}
 	public ILiglPage editDataSources(String s1,String s2)throws Exception{return null;}
 	public ILiglPage validateCaseNotinitiatedState() throws Exception{
@@ -453,7 +453,7 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 	public ILiglPage validateCourtAddedToGrid(String s)throws Exception{return null;}
-	public ILiglPage createNewCourt(String s1,String s2,String s3)throws Exception{return null;}
+	public ILiglPage createNewCourt(String s1,String s2,String s3,String s4)throws Exception{return null;}
 	public ILiglPage sendingLegalHoldForApproval() throws Exception {
 		return null;
 	}
@@ -1443,6 +1443,8 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage verifyTheIsParentOption(String question) throws Exception{return null;}
 
 	public ILiglPage verifyParentQuestionColumn(String question)throws Exception{return null;}
+	public ILiglPage clickAddPartyBtns()throws Exception{return null;}
+	public ILiglPage addExistingProsecutor(String CounselFullName)throws Exception{return null;}
 
 	/**
 	 * ManageQuestionnaireTemplatesPage*/

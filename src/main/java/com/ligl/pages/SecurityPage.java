@@ -275,6 +275,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             log_Pass("All Credentials Required for Approval are Given");
             log_Info("Click send for Approval Button");
             SendForApprovalBtn.click();
+            Thread.sleep(5000);
             log_Pass("Case Sent for Approval");
             return new SecurityPage();
         }catch (Exception ex){
@@ -1372,8 +1373,9 @@ public class SecurityPage extends LiglBaseSessionPage {
             Assert.assertEquals(username,newUsrName);
             log_Info("User Name Updated Properly");
             Thread.sleep(2000);
-            String status=ApprovalStatus.getText();
+            String status=getCurrentDriver().findElement(By.xpath("//form//section//div[@class='pull-left']//span")).getText();
             Assert.assertEquals(status,Status);
+            Thread.sleep(3000);
             log_Info("Approval Status is Updated to '"+status+"' successfully");
 
             return new SecurityPage();

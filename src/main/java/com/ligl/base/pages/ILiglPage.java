@@ -152,7 +152,7 @@ public interface ILiglPage {
 
     ILiglPage addingNewParty(String s1, String s2, String s3) throws Exception;
 
-    ILiglPage createAndValidatePartyCreatedOrNot(String s1, String s2, String s3) throws Exception;
+    ILiglPage createAndValidatePartyCreatedOrNot(String s1, String s2, String s3,String s4) throws Exception;
 
     ILiglPage editDataSources(String s1, String s2) throws Exception;
 
@@ -334,7 +334,7 @@ public interface ILiglPage {
 
     ILiglPage addOutCounselWithAddLawFirmBtn(String s1, String s2, String s3, String s4, String s5) throws Exception;
 
-    ILiglPage createNewCourt(String s1, String s2, String s3) throws Exception;
+    ILiglPage createNewCourt(String s1, String s2, String s3,String s4) throws Exception;
 
     ILiglPage validateCourtAddedToGrid(String s) throws Exception;
 
@@ -957,6 +957,8 @@ public interface ILiglPage {
     public ILiglPage verifyTheIsParentOption(String question) throws Exception;
 
     public ILiglPage verifyParentQuestionColumn(String question)throws Exception;
+    public ILiglPage clickAddPartyBtns()throws Exception;
+    public ILiglPage addExistingProsecutor(String CounselFullName)throws Exception;
 
     /**
      * ManageQuestionnaireTemplatesPage

@@ -138,7 +138,7 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
             Thread.sleep(3000);
             WFTText.sendKeys(wft);
             Thread.sleep(3000);
-            //WFTText.sendKeys(Keys.ENTER);
+            WFTText.sendKeys(Keys.ENTER);
             log_Info("Click Save Button");
             SaveBtn.click();
             Thread.sleep(8000);

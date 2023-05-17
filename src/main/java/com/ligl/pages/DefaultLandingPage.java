@@ -63,7 +63,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(css = "input[placeholder='Filter...']")
     WebElement CaseSearchBar;
 
-    @FindBy(xpath = "//span[contains(text(),'Case Name')]/ancestor::div[@ref='eLabel']")
+    @FindBy(xpath = "//div[@col-id='Name']//span[@ref='eMenu']")
     WebElement CaseNameHeader;
     @FindBy(id="btn-save-and-add")
     WebElement SaveBtn;
@@ -144,11 +144,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='CreatedByName']//span[@class='ellipsisAgGrid']")
     WebElement CreatedByColData;
-    @FindBy(id = "input-dynamic-column-1")
+    @FindBy(id = "input-dynamic-column-2")
     WebElement CostCentre;
-    @FindBy(id="input-dynamic-column-2")
+    @FindBy(id="input-dynamic-column-3")
     WebElement CaseAlias;
-    @FindBy(id="select-dynamic-column-3")
+    @FindBy(id="select-dynamic-column-1")
     WebElement AddDropDown;
     @FindBy(xpath = "//span[contains(text(),'Region is required')]")
     WebElement RegionReqValidation;
@@ -222,7 +222,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(Entity);
             Entity.click();
             Thread.sleep(3000);
-            EntityText.sendKeys(data.get("CaseEntity"));
+            EntityText.sendKeys(data.get("Entity"));
             Thread.sleep(3000);
             EntityText.sendKeys(Keys.ENTER);
             Thread.sleep(3000);
@@ -294,7 +294,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(Entity);
             Entity.click();
             Thread.sleep(3000);
-            EntityText.sendKeys(data.get("CaseEntity"));
+            EntityText.sendKeys(data.get("Entity"));
             Thread.sleep(3000);
             EntityText.sendKeys(Keys.ENTER);
             Thread.sleep(3000);
@@ -453,7 +453,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitUntilSpinnerIsClosed();
             getDriver().waitForAngularRequestsToComplete();
 
-            getDriver().waitForelementToBeClickable(CaseNameHeader);
+            //getDriver().waitForelementToBeClickable(CaseNameHeader);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(CaseNameHeader).perform();
 

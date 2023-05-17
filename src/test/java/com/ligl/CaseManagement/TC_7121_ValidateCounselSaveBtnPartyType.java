@@ -28,7 +28,7 @@ public class TC_7121_ValidateCounselSaveBtnPartyType extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToOtherPartyPage()
                     .validateCounselAndSaveButtonForPartyType(data.get("PartyNameB"), data.get("PartyType"), data.get("Description"), data.get("StatusDrpDwn"));

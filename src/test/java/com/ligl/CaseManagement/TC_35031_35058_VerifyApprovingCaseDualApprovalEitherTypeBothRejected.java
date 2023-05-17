@@ -30,7 +30,7 @@ public class TC_35031_35058_VerifyApprovingCaseDualApprovalEitherTypeBothRejecte
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
@@ -59,10 +59,10 @@ public class TC_35031_35058_VerifyApprovingCaseDualApprovalEitherTypeBothRejecte
                     .getLeftMenu().goToSecurityPage().validateCasePendingForApprovalState()
                     .verifyApprovalHistoryStatus(data.get("AssignedUser1"), data.get("Status3"), data.get("AssignedUser2"), data.get("Status2"))
                     .getHeader().logout()
-                    .login(data.get("Username1"), data.get("Password1"), data.get("Entity")).getHeader().goToApprovalPage().rejectingTheCase(data.get("CaseNameApprove"))
+                    .login(data.get("Username1"), data.get("Password1"), data.get("EntitySelection")).getHeader().goToApprovalPage().rejectingTheCase(data.get("CaseNameApprove"))
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage().validateCaseRejectedState().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status3"), data.get("AssignedUser1"), data.get("Status3"))
-                    .getHeader().logout().login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .getHeader().logout().login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName")).getLeftMenu().goToSecurityPage().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status3"), data.get("AssignedUser1"), data.get("Status3"));
 
 

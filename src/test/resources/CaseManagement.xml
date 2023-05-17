@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="CaseManagement">
-  <test name="Deleting InHouse Counsel">
+ <!-- <test name="Deleting InHouse Counsel">
     <classes>
       <class name="com.ligl.CaseManagement.TC_7094_DeletingInHouseCounsel"/>
     </classes>
-  </test> <!-- Test -->
+  </test> &lt;!&ndash; Test &ndash;&gt;
   <test name="Deleting Outside Counsel">
     <classes>
       <class name="com.ligl.CaseManagement.TC_7100_DeletingOutsideCounsel"/>
@@ -187,7 +187,7 @@
     <classes>
       <class name="com.ligl.CaseManagement.TC_55279_VerifyColumnsInHistoryGrid"/>
     </classes>
-  </test> <!-- Test -->
+  </test> &lt;!&ndash; Test &ndash;&gt;
   <test name="VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected">
     <classes>
       <class name="com.ligl.CaseManagement.TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected"/>
@@ -266,6 +266,121 @@
   <test name="VerifyDataInCreatedByColumnInCaseGrid">
     <classes>
       <class name="com.ligl.CaseManagement.TC_45504_VerifyDataInCreatedByColumnInCaseGrid"/>
+    </classes>
+  </test>-->
+  <test name="TC 1227 AddCustodian Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1227_AddCustodian_Test"/>
+    </classes>
+  </test>
+  <test name="TC 28868 Active Inactive Custodians Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_28868_Active_Inactive_Custodians_Test"/>
+    </classes>
+  </test>
+  <test name="TC 1184 1193 AddEdit DataSources Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1184_1193_AddEdit_DataSources_Test"/>
+    </classes>
+  </test>
+  <test name="TC 7103 AddExistingContactsForSelectedParty Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_7103_AddExistingContactsForSelectedParty_Test"/>
+    </classes>
+  </test>
+  <test name="TC 7110 AddExistingInHouseCounselTo EnterpriseParty Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_7110_AddExistingInHouseCounselTo_EnterpriseParty_Test"/>
+    </classes>
+  </test>
+  <test name="TC 7126 AddExistingOutSideCounselToSelectedParty Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_7126_AddExistingOutSideCounselToSelectedParty_Test"/>
+    </classes>
+  </test>
+  <test name="TC_1603_AddExistingPartiesFromModel_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1603_AddExistingPartiesFromModel_Test"/>
+    </classes>
+  </test>
+  <test name="TC_1669_AddingOutsideCounselWithAddLawFirmButton_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1669_AddingOutsideCounselwithAddLawFirmButton_Test"/>
+    </classes>
+  </test>
+  <test name="TC_6484_Availability_FunctionalityOfFieldsInCreate_Edit_Documents_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_6484_Availability_FunctionalityOfFieldsInCreate_Edit_Documents_Test"/>
+    </classes>
+  </test>
+  <test name="TC_6499_Cancel_Update_ButtonsValidationInEditCaseDocuments_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_6499_Cancel_Update_ButtonsValidationInEditCaseDocuments_Test"/>
+    </classes>
+  </test>
+  <test name="TC_27274_CheckApproval_History_Security_BasedOnUsersActions_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_27274_CheckApproval_History_Security_BasedOnUsersActions_Test"/>
+    </classes>
+  </test>
+  <test name="TC_29642_CheckIsDueDateFieldOptionalInCreateEditCase_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_29642_CheckIsDueDateFieldOptinalInCreateEditCase_Test"/>
+    </classes>
+  </test>
+  <test name="TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test"/>
+    </classes>
+  </test>
+  <test name="TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveOfApprovalStatus_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStatus_Test"/>
+    </classes>
+  </test>
+  <test name="TC_1708_CreateNewCourtWithAddCourtButtonInModel_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1708_CreateNewCourtWithAddCourtButtonInModel_Test"/>
+    </classes>
+  </test>
+  <test name="TC_1718_CreateNewJudgeWithAddJudgeButtonInModel_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1718_CreateNewJudgeWithAddJudgeButtonInModel_Test"/>
+    </classes>
+  </test>
+  <test name="TC_1604_CreateNewPartyToCase_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1604_CreateNewPartyToCase_Test"/>
+    </classes>
+  </test>
+  <test name="TC_52241_CreateNewProsecutorWithAddProsecutorButtonInModel_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_52241_CreateNewProsecutorWithAddProsecutorButtonInModel_Test"/>
+    </classes>
+  </test>
+  <test name="TC_52242_DeleteAssignedProsecutorForSelectedCourt_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_52242_DeleteAssignedProsecutorForSelectedCourt_Test"/>
+    </classes>
+  </test>
+  <test name="TC_44366_DualApproval_Revoke_Functionality">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_44366_DualApproval_Revoke_Functionality"/>
+    </classes>
+  </test>
+  <test name="TC_33336_EditWFTIrrespectiveWithApprovalStatus_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_33336_EditWFTIrrespectiveWithApprovalStatus_Test"/>
+    </classes>
+  </test>
+  <test name="TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_Test">
+        <classes>
+            <class name="com.ligl.CaseManagement.TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_Test"/>
+        </classes>
+    </test>
+  <test name="TC_44284_SendCaseForApproval_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_44284_SendCaseForApproval_Test"/>
     </classes>
   </test>
 
