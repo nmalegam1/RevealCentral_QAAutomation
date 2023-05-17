@@ -639,13 +639,18 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
-	// Smoke Suite Methods
-
-	public ILiglPage validateAndWaitForRecordsToCompleteProcessing(String Processingstatus)throws Exception{
+	@Override
+	public ILiglPage validateAndWaitForRecordsToCompleteCollection(String CollectionStatus) throws Exception {
 		return null;
 	}
 
-	public ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(String CollectionStatus) throws Exception{
+	public ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(String Status) throws Exception{
+		return null;
+	}
+
+	// Smoke Suite Methods
+
+	public ILiglPage validateAndWaitForRecordsToCompleteProcessing(String Processingstatus)throws Exception{
 		return null;
 	}
 	public ILiglPage clickOnDateRangesCheckBoxForApproval(String DateRange) throws Exception{
@@ -1380,22 +1385,11 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage selectLookupType(String lookup) throws Exception{
 		return null;
 	}
-	public ILiglPage goToPreservation() throws Exception {return  null;}
-	public ILiglPage editLH_DR_KW(String lhName1,String startDate, String endDate, String keyword)throws Exception{return null;}
 	public ILiglPage goToExports(String a){return null;}
-	public ILiglPage goToDMLHScope(){return null;}
 	public ILiglPage validateAndWaitForRecordsToCompleteLock(String s)throws Exception{return null;}
-	public ILiglPage goToPreservationLHScope(){return null;}
-	public ILiglPage searchCCDWithCustNameAndDSName(String CustName,String DST)throws Exception{return null;}
-	public ILiglPage checkResultsCount()throws Exception{return null;}
-	public ILiglPage legalHoldApprovalIrrespectiveOfApprovalConfig(String LHName,String LHAction,String Apptemp,String UserName,String CaseNameApprove) throws Exception{return null;}
-	public ILiglPage sendCaseForApprovalWithAllScope(String BchName,String Apptemp,String UserName) throws Exception{return null;}
 	public ILiglPage checkingRetainRecordAddedPrevGrid(String CustName,String DST,String LockCompleteStatus,String LockNotInitiateStatus,String PreviuosLHLDR,String PreviuosLHLKW,String LatestLHLDR,String LatestLHLKW)throws Exception{return null;}
-	public ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception{return null;}
 	public ILiglPage createLHWithOnlyDR(String lhName, String custTemp, String startDate, String endDate) throws Exception{return null;}
 	public ILiglPage clickOnNewButton() throws Exception{return null;}
-	public ILiglPage createLHWith_KW_DR(String lhName, String custTemp, String startDate, String endDate, String keyword) throws Exception{return null;}
-
 	public ILiglPage searchAndSelectTheLookUp(String name) throws Exception{return null;}
 
 	public ILiglPage createLookUp(String name, String displayOrder, String description, String entityType) throws Exception{

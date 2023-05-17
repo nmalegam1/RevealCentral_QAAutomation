@@ -334,6 +334,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             getSession().setGlobalData("GmailCount", ColCount);
             getSession().setGlobalData("GmailSize", ColSize);
             log_Pass("UI Collection Stats are Noted in Global Properties Successfully");
+            return new DMSummaryPage();
         } catch (Exception ex){
         log_Error("noteColStats() is Started");
         throw new Exception("Exception in noteColStats()",ex);
@@ -357,6 +358,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             }
 
             return new DMSummaryPage();
+        }
         catch (Exception ex) {
             log_Error("validateCollectionStats() Failed");
             throw new Exception("validateCollectionStats()", ex);
@@ -448,14 +450,6 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             throw new Exception("validateAndWaitForRecordsToCompleteLockOrCollectionInIPPLHScopeGrid()", ex);
         }
     }
-
-    public ILiglPage goToDMLHScope() {
-        log_Info("goToDMLHScope() Started");
-        DMLHScopeBTN.click();
-        log_Info("Navigated to IPP-LegalHoldScope tab in Data Management");
-        return new DMSummaryPage();
-    }
-
     /**
      * To Validate LKW hyperlink popup values for CCD record in Data Management summary-Legal hold scope grid
      * @param ExpectedLHLKW

@@ -27,8 +27,9 @@ public class TC_12984_ViewOrModifyPermissions_ProvidingCaseAccessToUserFromUsers
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .login(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    /*.navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))*/
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage()
                     .verifyProvidingCaseAccessToUsersInSecurityUsersDropdown(data.get("UserFullName"));

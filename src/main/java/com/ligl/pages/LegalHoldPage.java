@@ -791,6 +791,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     public ILiglPage createLHWith_KW_DR(String lhName, String custTemp, String startDate, String endDate, String keyword) throws Exception {
         try {
             log_Info("createLHWith_KW_DR() is Started");
+            Thread.sleep(5000);
             AddLHN.click();
             Thread.sleep(5000);
             LHNNameField.sendKeys(lhName);
@@ -4569,54 +4570,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         }
     }
 
-    public ILiglPage editLH_DR_KW(String lhName1,String startDate, String endDate, String keyword)throws Exception{
-        try{
-            log_Info("editLH_DR_KW() Started");
-            Thread.sleep(8000);
-            EditLHN.click();
-            Thread.sleep(8000);
-            LHNNextBtn.click();
-            Thread.sleep(2000);
-            CustodianNextBtn.click();
-            Thread.sleep(2000);
-            StakeNextBtn.click();
-            Thread.sleep(2000);
-
-            Startdate.click();
-            Startdate.sendKeys(Keys.ESCAPE);
-            Startdate.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-            Startdate.sendKeys(startDate);
-            Startdate.sendKeys(Keys.TAB);
-
-            EndDate.click();
-            EndDate.sendKeys(Keys.ESCAPE);
-            EndDate.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-            EndDate.sendKeys(endDate);
-            EndDate.sendKeys(Keys.TAB);
-
-            DateRangeNextbtn.click();
-            Thread.sleep(2000);
-            WebElement keyWordsForm = getCurrentDriver().findElement(By.xpath("//mat-chip-list[@id='mat-chip-list-0']"));
-            keyWordsForm.click();
-            List<WebElement> listItem = keyWordsForm.findElements(By.xpath("//mat-chip"));
-            for (int i = 0; i < listItem.size(); i++) {
-                keyWordsForm.sendKeys(Keys.BACK_SPACE);
-            }
-            Thread.sleep(3000);
-            KeyWordsFields.sendKeys(keyword);
-            Thread.sleep(2000);
-            KeyWordNextBtn.click();
-            Thread.sleep(2000);
-            RemainderNextBtn.click();
-            Thread.sleep(2000);
-            LHNSaveBtn.click();
-            Thread.sleep(15000);
-            return new LegalHoldPage();
-        }catch (Exception ex){
-            log_Error("editLH_DR_KW() is failed");
-            throw new Exception("Exception in editLH_DR_KW()",ex);
-        }
-    }
 
     public ILiglPage legalHoldApprovalIrrespectiveOfApprovalConfig(String LHName,String LHAction,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
         try{

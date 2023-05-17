@@ -43,51 +43,15 @@ public class DMDataHoldPage extends LiglBaseSessionPage {
     WebElement RunBtn;
     @FindBy(id="btn-yes")
     WebElement LockYesBtn;
+
+    @FindBy(xpath="//a[@class='btnrefresh']")
+    WebElement RefreshBtn;
     public ILiglPage goToPreservationLHScope(){
         log_Info("goToPreservationLHScope() Started ");
         PreservationLHScopeBTN.click();
         log_Info("Navigated to Preservation LHSCope tab");
         return new DMDataHoldPage();
     }
-    public ILiglPage searchCCDWithCustNameAndDSName(String CustName,String DST)throws Exception{
-        try{
-                CustNameSearchMenu.click();
-            Thread.sleep(3000);
-            try {
-                if(Searchbar.isDisplayed()) {
-                    Searchbar.clear();
-                    Searchbar.sendKeys(CustName);
-                }
-                Thread.sleep(3000);
-            }catch(Exception ex){
-
-                SearchFilter.click();
-                Searchbar.sendKeys(CustName);
-                Thread.sleep(3000);
-            }
-            getCurrentDriver().findElement(By.xpath("//div[contains(text(),'Preservation')]")).click();
-                DSTSearchManu.click();
-
-            Thread.sleep(3000);
-            try {
-                if(Searchbar.isDisplayed()) {
-                    Searchbar.clear();
-                    Searchbar.sendKeys(DST);
-                }
-                Thread.sleep(3000);
-            }catch(Exception ex){
-
-                SearchFilter.click();
-                Searchbar.sendKeys(DST);
-                Thread.sleep(3000);
-            }
-            return new DMDataHoldPage();
-        }catch(Exception ex){
-            log_Error("searchCCDWithCustNameAndDSName() is Failed");
-            throw new Exception("Exception in searchCCDWithCustNameAndDSName()",ex);
-        }
-    }
-
     /**
      * Method to Validate Retain Record availability and features like color(Red), Approval Status not initiated and it should be with latest LHScope
      * @param CustName

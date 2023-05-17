@@ -1120,7 +1120,6 @@ public interface ILiglPage {
     public ILiglPage notesSearchFilter(String name) throws Exception;
     public ILiglPage TypeofEventSearchFilter(String TypeofEvent) throws Exception;
     public ILiglPage notesEdit(String RequestBy,String NotesDescription) throws Exception;
-    public ILiglPage NotesDelete(String NotesContent) throws Exception;
     public ILiglPage validateDeletedNoteForMultipleRecords() throws Exception;
     public ILiglPage validateDeleteNote() throws Exception;
     public ILiglPage displayingSelectedNotesList(String TOE) throws Exception;
@@ -1148,9 +1147,6 @@ public interface ILiglPage {
     ILiglPage validateEmpData(String custodianName, String emailID) throws Exception;
 
     ILiglPage createLHWithOut_KW_DR(String lhName, String custTemp) throws Exception;
-
-    ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName, String Apptemp, String UserName, String CaseNameApprove) throws Exception;
-
     ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPLHScopeGrid(String Status) throws Exception;
 
     ILiglPage validateLHKW(String ExpectedLHLKW) throws Exception;
@@ -1158,28 +1154,11 @@ public interface ILiglPage {
     ILiglPage validateLHDR(String ExpectedLHLDR) throws Exception;
 
     ILiglPage validateGSuiteDST_LockWithSingleLegalHoldWithoutFilters(String Status) throws Exception;
-
-    ILiglPage createLHWith_KW_DR(String lhName, String custTemp, String startDate, String endDate, String keyword) throws Exception;
-
-    ILiglPage editLH_DR_KW(String lhName1, String startDate, String endDate, String keyword) throws Exception;
-
-    ILiglPage goToPreservation() throws Exception;
-
-    ILiglPage goToPreservationLHScope();
-
-    ILiglPage searchCCDWithCustNameAndDSName(String CustName, String DST) throws Exception;
-
-    ILiglPage checkResultsCount() throws Exception;
-
     ILiglPage checkingSingleCCDRecordIsReplacedWithLatestFilters(String CustName, String DST, String LockCompleteStatus, String LockNotInitiateStatus, String ExpectedLHLDR, String ExpectedLHLKW) throws Exception;
 
     ILiglPage checkingRetainRecordAddedPrevGrid(String CustName, String DST, String LockCompleteStatus, String LockNotInitiateStatus, String ExpectedLHLDR, String ExpectedLHLKW) throws Exception;
-    ILiglPage goToDMLHScope();
-
-    ILiglPage sendCaseForApprovalWithAllScope(String BchName,String Apptemp,String UserName) throws Exception;
-
-    ILiglPage legalHoldApprovalIrrespectiveOfApprovalConfig(String LHName,String LHAction,String Apptemp,String UserName,String CaseNameApprove) throws Exception;
     ILiglPage goToIdentification() throws Exception;
     ILiglPage goToCollection() throws Exception;
+    ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(String Status) throws Exception;
 }
 

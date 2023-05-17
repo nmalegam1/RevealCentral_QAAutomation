@@ -28,8 +28,9 @@ public class TC_55279_VerifyColumnsInHistoryGrid extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    .login(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    /*.navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))*/
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToNotesHistoryPage()
                     .verifyColumnsInNotesHistoryGrid()

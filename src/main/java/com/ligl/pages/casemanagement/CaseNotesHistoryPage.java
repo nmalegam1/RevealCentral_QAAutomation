@@ -48,10 +48,10 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
     @FindBy(xpath = "//span[contains(text(),'Action')]/ancestor::div[@ref='eLabel']")
     WebElement Action;
 
-    @FindBy(xpath = "//span[contains(text(),'Case Name')]/ancestor::div[@ref='eLabel']")
+    @FindBy(xpath = "//span[contains(text(),'Project Name')]/ancestor::div[@ref='eLabel']")
     WebElement CaseName;
 
-    @FindBy(xpath = "//span[contains(text(),'Case Name')]")
+    @FindBy(xpath = "//span[contains(text(),'Project Name')]")
     WebElement CaseNameColumn;
 
     @FindBy(id="Columns")

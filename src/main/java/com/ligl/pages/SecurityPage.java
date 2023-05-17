@@ -28,7 +28,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     WebElement SendForApprovalBtn;
     @FindBy(id="chk-all-case-casecustodians")
     WebElement SelectAllCustodiansCheckBox;
-    @FindBy(id="SelectAll-input")
+    @FindBy(xpath="//label[@for='SelectAll-input']//span")
     WebElement SelectAllDSTsCheckBox;
     @FindBy(id="chk-all-case-casedateranges")
     WebElement SelectAllDateRangesCheckBox;
@@ -201,18 +201,6 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[contains(text(),'Revoke')]")
     WebElement RevokeBtn;
 
-    @FindBy(xpath = "//section//div[@class='pull-left']//span")
-    WebElement CaseApprovalStatus;
-
-    @FindBy(id="chk-all-case-casecustodians")
-    WebElement SelectAllCustodiansCheckBox;
-    @FindBy(id="SelectAll-input")
-    WebElement SelectAllDSTsCheckBox;
-    @FindBy(id="chk-all-case-casedateranges")
-    WebElement SelectAllDateRangesCheckBox;
-    @FindBy(id="chk-all-case-casekeywords")
-    WebElement SelectAllKeywordsCheckBox;
-
     @FindBy(xpath = "//button[contains(text(),'ReAssign')]")
     WebElement ReAssignBtn;
 
@@ -318,8 +306,10 @@ public class SecurityPage extends LiglBaseSessionPage {
             NextBtn.click();
             SelectAllDSTsCheckBox.click();
             NextBtn.click();
+            Thread.sleep(3000);
             SelectAllDateRangesCheckBox.click();
             NextBtn.click();
+            Thread.sleep(3000);
             SelectAllKeywordsCheckBox.click();
             NextBtn.click();
             BatchName.sendKeys(BchName);
@@ -1490,7 +1480,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             return new SecurityPage();
         else if(CaseApprovalStatus.getText().equals("Not Initiated"))
         {
-            sendCaseForApprovalWithAllScope(BchName,Apptemp,UserName);
+            //sendCaseForApprovalWithAllScope(BchName,Apptemp,UserName);
             ApprovalPage ap=new ApprovalPage();
             getHeader().goToApprovalPage();
             ap.approvingRejectedCase(CaseNameApprove);
@@ -1504,43 +1494,6 @@ public class SecurityPage extends LiglBaseSessionPage {
         throw new Exception("Exception in caseApprovalIrrespectiveOfApprovalConfig()",ex);
     }
 }
-
-    public ILiglPage sendCaseForApprovalWithAllScope(String BchName,String Apptemp,String UserName) throws Exception {
-        try {
-            log_Info("Click send for Approval Button");
-            SendApprovalBtn.click();
-            log_Pass("Send Approval btn Clicked");
-            SelectAllCustodiansCheckBox.click();
-            log_Info("Click next");
-            NextBtn.click();
-            SelectAllDSTsCheckBox.click();
-            NextBtn.click();
-            SelectAllDateRangesCheckBox.click();
-            NextBtn.click();
-            SelectAllKeywordsCheckBox.click();
-            NextBtn.click();
-            BatchName.sendKeys(BchName);
-            TemplateNameDrpDwn.click();
-            Thread.sleep(4000);
-            EmailTempText.sendKeys(Apptemp);
-            EmailTempText.sendKeys(Keys.ENTER);
-            Thread.sleep(3000);
-            log_Info("Case Approval Temp selected");
-            SelectApprovalDrpDwn.click();
-            log_Info("Select Approver DropDown Clicked");
-            Thread.sleep(3000);
-            ApproverName.sendKeys(UserName);
-            Thread.sleep(3000);
-            ApproverName.sendKeys(Keys.ENTER);
-            log_Pass("All Credentials Required for Approval are Given");
-            log_Info("Click send for Approval Button");
-            SendForApprovalBtn.click();
-            log_Pass("Case Sent for Approval");
-            return new SecurityPage();
-        }catch (Exception ex){
-            throw new Exception("Exception From sendCaseForApproval()", ex);
-        }
-    }
 
 
 
