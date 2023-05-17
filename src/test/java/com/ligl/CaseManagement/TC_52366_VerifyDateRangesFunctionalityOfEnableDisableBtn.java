@@ -40,7 +40,8 @@ public class TC_52366_VerifyDateRangesFunctionalityOfEnableDisableBtn extends Te
                     .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))
                     .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))
                     .enableAndDisableDateRanges(data.get("Status1"))
-                    .validateEnableAndDisableDateRanges(data.get("Status2"));
+                    .validateEnableAndDisableDateRanges(data.get("Status2"))
+                    .logout();
 
 
 

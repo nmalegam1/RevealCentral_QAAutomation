@@ -27,27 +27,25 @@ public class GSuite_Validation extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
-                    //.navigateSSOLoginPage()
-                    //.SSOLogin(session.getRegressionData("Username"), session.getRegressionData("Password"),session.getRegressionData("EntitySelection"));
-                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                   /* .getLeftMenu()
+                    .login(session.getRegressionData("Username"), session.getRegressionData("Password"),session.getRegressionData("EntitySelection"))
+                    /*.navigateSSOLoginPage()
+                    .SSOLogin(session.getRegressionData("Username"), session.getRegressionData("Password"),session.getRegressionData("EntitySelection"))
+                    */.searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
+                    .getLeftMenu()
                     .navigateToCustodiansPage()
                     .multipleCustodianSelect(data)
                     .getLeftMenu().navigateToDataSourcesPage()
                     .multipleDataSourceSelect(data)
                     .getLeftMenu().goToDSIPage()
-                    .multipleCCDsSelect(data)
+                    .addDataSourceRecordToDSIGrid(data.get("TC_01_CustFullName"),data.get("TC_01_DataSource"),data.get("DHScope"),data.get("DR1"),data.get("KW1"))
                     .selectAllCCDs()
-                    .clickOnAutomateButton()*/
+                    .clickOnAutomateButton()
                     .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(data.get("CollectionStatus"))
-                    .getHeader().logout();
+                    .validateAndWaitForRecordsToCompleteCollection(data.get("CollectionStatus"));
             ILiglPage page1=new GoogleVaultPage();
             page1.googleVaultLogin(session.getGlobalData("GoogleVaultURL"),session.getGlobalData("GVaultUserName"),session.getGlobalData("GVaultPassword"))
-                    .goToMatters().searchMatter(data.get("MatterName"))
-                    .goToExports(data.get("MatterName"))
-                    .getAndValidateCCDStats();
+                    .goToMatters().searchMatter(session.getGlobalData("MatterName"))
+                    .goToExports(session.getGlobalData("MatterRecord"));
 
         } catch (Exception ex) {
             session.log_Error("GSuite_Validation Failed");

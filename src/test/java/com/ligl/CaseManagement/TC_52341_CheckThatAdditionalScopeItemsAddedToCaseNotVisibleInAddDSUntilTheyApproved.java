@@ -36,7 +36,8 @@ public class TC_52341_CheckThatAdditionalScopeItemsAddedToCaseNotVisibleInAddDSU
                     .getLeftMenu()
                     .goToSecurityPage().sendingCaseCustodianForApproval(data.get("Custodian1"),data.get("BatchName"),data.get("AppUserName"),data.get("AppTemp"))
                     .getHeader()
-                    .approvingCaseSingleApprover(data.get("ApprovalRecord"));
+                    .approvingCaseSingleApprover(data.get("ApprovalRecord"))
+                    .logout();
 
         }catch (Exception ex){
             session.log_Error("TC_52341_CheckThatAdditionalScopeItemsAddedToCaseNotVisibleInAddDSUntilTheyApproved test Failed");

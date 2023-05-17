@@ -38,7 +38,8 @@ public class TC_52241_CreateNewProsecutorWithAddProsecutorButtonInModel_Test ext
                     .createNewProsecutor(data.get("CounselFN"),data.get("CounselLN"))
                     .searchCourt(data.get("CourtName"))
                     .navigateToProsecutor()
-                    .validateProsecutorAddedToGrid(data.get("CounselFN"),data.get("CounselLN"));
+                    .validateProsecutorAddedToGrid(data.get("CounselFN"),data.get("CounselLN"))
+                    .logout();
 
         }catch (Exception | Error ex){
             throw new Exception("TC_52241_CreateNewProsecutorWithAddProsecutorButtonInModel_Test Failed");

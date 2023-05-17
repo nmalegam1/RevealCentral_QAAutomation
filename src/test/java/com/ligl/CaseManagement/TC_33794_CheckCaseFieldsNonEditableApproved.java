@@ -29,7 +29,8 @@ public class TC_33794_CheckCaseFieldsNonEditableApproved extends TestBase {
                     .navigateURL()
                     .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .verifyingCaseFieldsAreNonEditable();
+                    .verifyingCaseFieldsAreNonEditable()
+                    .logout();
 
 
         } catch (Exception ex) {

@@ -68,7 +68,7 @@ public class DMDSIPage extends LiglBaseSessionPage {
     WebElement CustomTab;
     @FindBy(id = "source-path")
     WebElement SourcePath;
-    @FindBy(id="datasourcetype-id")
+    @FindBy(id="dsi-datasource-type")
     WebElement CustomDSTDropdown;
     @FindBy(xpath = "//button[contains(text(),'Save')]")
     WebElement CustomSaveBtn;
@@ -80,10 +80,10 @@ public class DMDSIPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//input[@placeholder='Filter...']")
     WebElement Searchbar;
 
-    @FindBy(id="dsi-custdaterange-id")
+    @FindBy(id="dsi-daterange-id")
     WebElement CustomDRDropdown;
 
-    @FindBy(id="dsi-custkeyword-id")
+    @FindBy(id="dsi-keyword-id")
     WebElement CustomKWDropdown;
     @FindBy(id="select-all-id")
     WebElement SelectAllCCDs;
@@ -531,13 +531,13 @@ public class DMDSIPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             log_Info("Datasource dropdown clicked");
 
-            log_Info("Started Non-Approved Datasource validation in Custodian dropdown");
+            log_Info("Started Non-Approved Datasource validation in Datasource dropdown");
             boolean temp2 =false;
-            WebElement test2=getCurrentDriver().findElement(By.xpath("//div[@id='datasourcetype-id-panel']"));
+            WebElement test2=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-datasource-type-panel']"));
             List<WebElement> listItem2=test2.findElements(By.tagName("mat-option"));
             for(int i = 0; i<  listItem2.size(); i++)
             {
-                String actualValue=getCurrentDriver().findElement(By.xpath("//div[@id='datasourcetype-id-panel']//mat-option["+(i+1)+"]//span[@class='mat-option-text']")).getText();
+                String actualValue=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-datasource-type-panel']//mat-option["+(i+1)+"]//span[@class='mat-option-text']")).getText();
                 if(actualValue.equalsIgnoreCase(Datasource))
                 {
                     temp2=true;
@@ -548,7 +548,7 @@ public class DMDSIPage extends LiglBaseSessionPage {
                 System.out.println("Non-Approved Datasource is displaying in dropdown-Not Expected");
             else
                 System.out.println("Non-Approved Datasource is not displaying in dropdown-Expected");
-            log_Info("Completed Non-Approved Datasource validation in Custodian dropdown");
+            log_Info("Completed Non-Approved Datasource validation in Datasource dropdown");
 
             CustomDSTDropdown.sendKeys(Keys.ENTER);
             Thread.sleep(5000);
@@ -558,13 +558,13 @@ public class DMDSIPage extends LiglBaseSessionPage {
 
             CustomDRDropdown.click();
             log_Info("Daterange dropdown clicked");
-            log_Info("Started Non-Approved Dateranges validation in Custodian dropdown");
+            log_Info("Started Non-Approved Dateranges validation in Dateranges dropdown");
             boolean temp3 =false;
-            WebElement test3=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-custdaterange-id-panel']"));
+            WebElement test3=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-daterange-id-panel']"));
             List<WebElement> listItem3=test3.findElements(By.tagName("mat-option"));
             for(int i = 0; i<  listItem3.size(); i++)
             {
-                String actualValue=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-custdaterange-id-panel']//mat-option["+(i+1)+"]//span[@class='mat-option-text']")).getText();
+                String actualValue=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-daterange-id-panel']//mat-option["+(i+1)+"]//span[@class='mat-option-text']")).getText();
                 if(actualValue.equalsIgnoreCase(Daterange))
                 {
                     temp3=true;
@@ -575,20 +575,20 @@ public class DMDSIPage extends LiglBaseSessionPage {
                 System.out.println("Non-Approved Dateranges is displaying in dropdown-Not Expected");
             else
                 System.out.println("Non-Approved Dateranges is not displaying in dropdown-Expected");
-            log_Info("Completed Non-Approved Dateranges validation in Custodian dropdown");
+            log_Info("Completed Non-Approved Dateranges validation in Dateranges dropdown");
             CustomDRDropdown.sendKeys(Keys.ENTER);
             Thread.sleep(5000);
             CustomTab.click();
 
             CustomKWDropdown.click();
             log_Info("Keyword dropdown clicked");
-            log_Info("Started Non-Approved Keywords validation in Custodian dropdown");
+            log_Info("Started Non-Approved Keywords validation in Keywords dropdown");
             boolean temp4 =false;
-            WebElement test4=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-custkeyword-id-panel']"));
+            WebElement test4=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-keyword-id-panel']"));
             List<WebElement> listItem4=test4.findElements(By.tagName("mat-option"));
             for(int i = 0; i<  listItem4.size(); i++)
             {
-                String actualValue=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-custkeyword-id-panel']//mat-option["+(i+1)+"]//span[@class='mat-option-text']")).getText();
+                String actualValue=getCurrentDriver().findElement(By.xpath("//div[@id='dsi-keyword-id-panel']//mat-option["+(i+1)+"]//span[@class='mat-option-text']")).getText();
                 if(actualValue.equalsIgnoreCase(Keyword))
                 {
                     temp4=true;
@@ -599,7 +599,7 @@ public class DMDSIPage extends LiglBaseSessionPage {
                 System.out.println("Non-Approved Keywords is displaying in dropdown-Not Expected");
             else
                 System.out.println("Non-Approved Keywords is not displaying in dropdown-Expected");
-            log_Info("Completed Non-Approved Keywords validation in Custodian dropdown");
+            log_Info("Completed Non-Approved Keywords validation in Keywords dropdown");
             Thread.sleep(5000);
 
             log_Pass("verifyNonApprovedScopeInCustomTab() Completed Successfully");

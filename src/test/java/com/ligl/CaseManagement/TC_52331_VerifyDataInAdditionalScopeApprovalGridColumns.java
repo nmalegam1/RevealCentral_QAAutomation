@@ -28,12 +28,14 @@ public class TC_52331_VerifyDataInAdditionalScopeApprovalGridColumns extends Tes
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    .login(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    /*.navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))*/
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage()
                     .searchRequiredApprovalBatchName(data.get("AppBatchname"))
-                    .verifyColumnsDatainAdditionalScopeApprovalGrid(data.get("ApprovalBatchNameExpected"),data.get("CustodiansCountExpected"),data.get("DatasourcesCountExpected"),data.get("KeywordsCountExpected"),data.get("DateRangesCountExpected"),data.get("ApprovalStatusColumnExpected"),data.get("ApprovalTypeExpected"),data.get("ApprovalUsersExpected"),data.get("ApprovedOrRejectedOnExpected"));
+                    .verifyColumnsDatainAdditionalScopeApprovalGrid(data.get("ApprovalBatchNameExpected"),data.get("CustodiansCountExpected"),data.get("DatasourcesCountExpected"),data.get("KeywordsCountExpected"),data.get("DateRangesCountExpected"),data.get("ApprovalStatusColumnExpected"),data.get("ApprovalTypeExpected"),data.get("ApprovalUsersExpected"),data.get("ApprovedOrRejectedOnExpected"))
+                    .logout();
         } catch (Exception ex) {
             session.log_Error("TC_52331_VerifyDataInAdditionalScopeApprovalGridColumns Failed");
             throw new Exception("TC_52331_VerifyDataInAdditionalScopeApprovalGridColumns Failed", ex);

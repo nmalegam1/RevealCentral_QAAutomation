@@ -2,6 +2,7 @@ package com.ligl.pages.casemanagement;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
+import com.ligl.pages.NotesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -58,6 +59,8 @@ public class CaseDocumentsPage extends LiglBaseSessionPage {
     WebElement ParticularIssuedDate;
     @FindBy(css="button[aria-label='December 3, 2022']")
     WebElement ParticularRcvDate;
+    @FindBy(xpath = "//button[@title='Notes']")
+    WebElement NotesBtn;
 
     public ILiglPage searchRequiredCaseDocument(String CaseDocument) throws Exception {
         try {
@@ -203,6 +206,11 @@ public class CaseDocumentsPage extends LiglBaseSessionPage {
             log_Error("Exception in cancelInEditDocument()");
             throw new Exception("cancelInEditDocument() Failed",ex);
         }
+    }
+    public ILiglPage goToNotesPageFromDocuments(){
+        getDriver().waitForelementToBeClickable(NotesBtn);
+        NotesBtn.click();
+        return new NotesPage();
     }
 
 }

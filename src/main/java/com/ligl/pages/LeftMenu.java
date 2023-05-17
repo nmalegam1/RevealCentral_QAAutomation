@@ -84,7 +84,8 @@ public class LeftMenu extends LiglBasePage {
 
     @FindBy(xpath = "//span[@title='History']")
     WebElement History;
-
+    @FindBy(id="Collection")
+    WebElement Collection;
 
     public LeftMenu(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -208,14 +209,14 @@ public class LeftMenu extends LiglBasePage {
         try {
 
             try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Project Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
 
-                    log_Info("Click on Case Management");
+                    log_Info("Click on Project Management");
                     getDriver().waitForelementToBeClickable(CaseManage);
                     CaseManage.click();
                     Thread.sleep(5000);
-                    getSession().log_Pass("case Management clicked");
+                    getSession().log_Pass("Project Management clicked");
 
                     log_Info("Click on Counsel");
                     getDriver().waitForelementToBeClickable(Counsel);
@@ -227,7 +228,7 @@ public class LeftMenu extends LiglBasePage {
                 }
             } catch (NoSuchElementException e) {
 
-                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
 
                 if (caseMgmt1.isDisplayed()) {
 
@@ -248,28 +249,48 @@ public class LeftMenu extends LiglBasePage {
         }
     }
 
-    // Navigating To Data Management Tab
-
-    public ILiglPage goToDataManagement() throws Exception {
+    public ILiglPage goToIdentification() throws Exception {
 
         try {
 
-            log_Info("Click on Data Management");
-            getDriver().waitForelementToBeClickable(DataManagement);
-            Thread.sleep(5000);
-            DataManagement.click();
-            getSession().log_Pass("Clicked on Data Management");
+            try {
+                WebElement DataMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Data Management']//div[contains(@style,'display: none')]")); //Data Management Menu is in collapsed form
+                if (DataMgmt2.isEnabled()) {
 
-            log_Info("Click on Identification");
-            getDriver().waitForelementToBeClickable(Identification);
-            Thread.sleep(5000);
-            Identification.click();
-            getSession().log_Pass("Clicked on Identification");
-            return new DMCollectionsPage();
+                    log_Info("Click on Data Management");
+                    getDriver().waitForelementToBeClickable(DataManagement);
+                    DataManagement.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("Data Management clicked");
+
+                    log_Info("Click on Identification");
+                    getDriver().waitForelementToBeClickable(Identification);
+                    Thread.sleep(5000);
+                    Identification.click();
+                    log_Info("Clicked on Identification");
+
+
+                }
+            } catch (NoSuchElementException e) {
+
+                WebElement DataMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Data Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
+
+                if (DataMgmt1.isDisplayed()) {
+
+                    log_Info("Click on Identification");
+                    getDriver().waitForelementToBeClickable(Identification);
+                    Thread.sleep(5000);
+                    Identification.click();
+                    log_Info("Clicked on Identification");
+
+                }
+
+            }
+            return new DMDSIPage();
 
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("goToDataManagement() Failed ", ex);
+            throw new Exception("goToIdentification() Failed ", ex);
         }
     }
 
@@ -301,13 +322,13 @@ public class LeftMenu extends LiglBasePage {
         try {
 
             try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Project Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
 
-                    log_Info("Click on Case Management");
+                    log_Info("Click on Project Management");
                     getDriver().waitForelementToBeClickable(CaseManage);
                     CaseManage.click();
-                    getSession().log_Pass("case Management clicked");
+                    getSession().log_Pass("Project Management clicked");
 
                     log_Info("Click on Other Party ");
                     getDriver().waitForelementToBeClickable(OtherParty);
@@ -319,7 +340,7 @@ public class LeftMenu extends LiglBasePage {
                 }
             } catch (NoSuchElementException e) {
 
-                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
 
                 if (caseMgmt1.isDisplayed()) {
 
@@ -351,14 +372,14 @@ public class LeftMenu extends LiglBasePage {
         try {
 
             try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
 
-                    log_Info("Click on Case Management");
+                    log_Info("Click on Project Management");
                     getDriver().waitForelementToBeClickable(CaseManage);
                     Thread.sleep(5000);
                     CaseManage.click();
-                    getSession().log_Pass("case Management clicked");
+                    getSession().log_Pass("Project Management clicked");
 
                     log_Info("Click on Scope");
                     getDriver().waitForelementToBeClickable(Scope);
@@ -373,7 +394,7 @@ public class LeftMenu extends LiglBasePage {
                 }
             } catch (NoSuchElementException e) {
 
-                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
 
                 try {
                     if (caseMgmt1.isDisplayed()) {
@@ -419,13 +440,13 @@ public class LeftMenu extends LiglBasePage {
         try {
 
             try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Project Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
 
-                    log_Info("Click on Case Management");
+                    log_Info("Click on Project Management");
                     getDriver().waitForelementToBeClickable(CaseManage);
                     CaseManage.click();
-                    getSession().log_Pass("case Management clicked");
+                    getSession().log_Pass("Project Management clicked");
 
                     log_Info("Click on court Tab ");
                     getDriver().waitForelementToBeClickable(Court);
@@ -437,7 +458,7 @@ public class LeftMenu extends LiglBasePage {
                 }
             } catch (NoSuchElementException e) {
 
-                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
 
                 if (caseMgmt1.isDisplayed()) {
 
@@ -466,14 +487,14 @@ public class LeftMenu extends LiglBasePage {
         try {
 
             try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Project Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
 
-                    log_Info("Click on Case Management");
+                    log_Info("Click on Project Management");
                     getDriver().waitForelementToBeClickable(CaseManage);
                     Thread.sleep(5000);
                     CaseManage.click();
-                    getSession().log_Pass("case Management clicked");
+                    getSession().log_Pass("Project Management clicked");
 
                     log_Info("Click on Scope");
                     getDriver().waitForelementToBeClickable(Scope);
@@ -491,7 +512,7 @@ public class LeftMenu extends LiglBasePage {
                 }
             } catch (NoSuchElementException e) {
 
-                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
 
                 try {
                     if (caseMgmt1.isDisplayed()) {
@@ -535,16 +556,16 @@ public class LeftMenu extends LiglBasePage {
 
         try {
             try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Project Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
 
-                    log_Info("Click on Case Management");
+                    log_Info("Click on Project Management");
                     getDriver().waitForelementToBeClickable(CaseManage);
                     Thread.sleep(5000);
                     CaseManage.click();
                     Thread.sleep(5000);
                     CaseManage.click();
-                    getSession().log_Pass("case Management clicked");
+                    getSession().log_Pass("Project Management clicked");
 
                     log_Info("Click on Scope");
                     getDriver().waitForelementToBeClickable(Scope);
@@ -561,7 +582,7 @@ public class LeftMenu extends LiglBasePage {
                 }
             } catch (NoSuchElementException e) {
 
-                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
                 try {
                     if (caseMgmt1.isDisplayed()) {
                         WebElement caseMgmt3 = getCurrentDriver().findElement(By.xpath("//li[@id='Scope' and contains(@class,'open')]"));
@@ -605,14 +626,14 @@ public class LeftMenu extends LiglBasePage {
         try {
 
             try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Project Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
 
-                    log_Info("Click on Case Management");
+                    log_Info("Click on Project Management");
                     getDriver().waitForelementToBeClickable(CaseManage);
                     CaseManage.click();
                     CaseManage.click();
-                    getSession().log_Pass("case Management clicked");
+                    getSession().log_Pass("Project Management clicked");
 
                     log_Info("Click on Scope");
                     getDriver().waitForelementToBeClickable(Scope);
@@ -631,7 +652,7 @@ public class LeftMenu extends LiglBasePage {
                 }
             } catch (NoSuchElementException e) {
 
-                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
 
                 try {
                     if (caseMgmt1.isDisplayed()) {
@@ -725,13 +746,13 @@ public class LeftMenu extends LiglBasePage {
         try {
 
             try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Project Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
 
-                    log_Info("Click on Case Management");
+                    log_Info("Click on Project Management");
                     getDriver().waitForelementToBeClickable(CaseManage);
                     CaseManage.click();
-                    getSession().log_Pass("Case Management clicked");
+                    getSession().log_Pass("Project Management clicked");
 
                     log_Info("Click on History tab ");
                     getDriver().waitForelementToBeClickable(History);
@@ -743,7 +764,7 @@ public class LeftMenu extends LiglBasePage {
                 }
             } catch (NoSuchElementException e) {
 
-                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
 
                 if (caseMgmt1.isDisplayed()) {
 
@@ -787,4 +808,51 @@ public class LeftMenu extends LiglBasePage {
             throw new Exception("navigateToCaseLevelRequests() Failed ", ex);
         }
     }
+
+    public ILiglPage goToCollection() throws Exception {
+
+        try {
+
+            try {
+                WebElement DataMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Data Management']//div[contains(@style,'display: none')]")); //Data Management Menu is in collapsed form
+                if (DataMgmt2.isEnabled()) {
+
+                    log_Info("Click on Data Management");
+                    getDriver().waitForelementToBeClickable(DataManagement);
+                    DataManagement.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("Data Management clicked");
+
+                    log_Info("Click on Collection");
+                    getDriver().waitForelementToBeClickable(Collection);
+                    Thread.sleep(5000);
+                    Collection.click();
+                    log_Info("Clicked on Collection");
+
+
+                }
+            } catch (NoSuchElementException e) {
+
+                WebElement DataMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Data Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
+
+                if (DataMgmt1.isDisplayed()) {
+
+                    log_Info("Click on Collection");
+                    getDriver().waitForelementToBeClickable(Collection);
+                    Thread.sleep(5000);
+                    Collection.click();
+                    log_Info("Clicked on Collection");
+
+                }
+
+            }
+            return new DMCollectionsPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("goToCollection() Failed ", ex);
+        }
+    }
+
+
 }

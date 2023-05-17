@@ -47,7 +47,8 @@ public class TC_46663_VerifyApprovingCaseDualApprovalLinearTypeBothRejected exte
                     .rejectingTheCase(data.get("CaseNameApprove"))
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage().validateCaseRejectedState()
-                    .verifyApprovalHistoryStatus(data.get("AssignedUser1"), data.get("Status3"), data.get("AssignedUser2"), data.get("Status4") );
+                    .verifyApprovalHistoryStatus(data.get("AssignedUser1"), data.get("Status3"), data.get("AssignedUser2"), data.get("Status4") )
+                    .logout();
 
 
         } catch (Exception ex) {

@@ -30,7 +30,8 @@ public class TC_44284_SendCaseForApproval_Test extends TestBase {
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage()
                     .sendCaseForApproval(data.get("BatchName"),data.get("AppTemp"),data.get("AppUserName"))
-                    .approvalHistoryCheck(data.get("Username"),"Pending Approval");
+                    .approvalHistoryCheck(data.get("Username"),"Pending Approval")
+                    .logout();
 
         }
         catch (Exception ex){

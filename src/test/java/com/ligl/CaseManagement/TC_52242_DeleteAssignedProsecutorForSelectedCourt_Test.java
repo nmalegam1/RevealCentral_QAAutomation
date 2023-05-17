@@ -37,7 +37,8 @@ public class TC_52242_DeleteAssignedProsecutorForSelectedCourt_Test extends Test
                     .navigateToProsecutor()
                     .addExistingProsecutor(data.get("CounselFullName"))
                     .searchProsecutor(data.get("CounselFN"),data.get("CounselLN"))
-                    .deleteProsecutor(data.get("CounselFN"),data.get("CounselLN"));
+                    .deleteProsecutor(data.get("CounselFN"),data.get("CounselLN"))
+                    .logout();
         }catch (Exception | Error ex){
             throw new Exception("TC_52242_DeleteAssignedProsecutorForSelectedCourt_Test Failed");
         }

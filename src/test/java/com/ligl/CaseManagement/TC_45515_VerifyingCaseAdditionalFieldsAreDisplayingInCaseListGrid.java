@@ -28,9 +28,11 @@ public class TC_45515_VerifyingCaseAdditionalFieldsAreDisplayingInCaseListGrid e
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
-                    .verifyAdditionalFieldsInCasePopup(data.get("AddField1"),data.get("AddField2"),data.get("AddField3"),data.get("AddField5"));
+                    .login(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    /*.navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))*/
+                    .verifyAdditionalFieldsInCasePopup(data.get("AddField1"),data.get("AddField2"),data.get("AddField3"),data.get("AddField5"))
+                    .logout();
 
         } catch (Exception ex) {
             session.log_Error("TC_45515_VerifyingCaseAdditionalFieldsAreDisplayingInCaseListGrid Failed");

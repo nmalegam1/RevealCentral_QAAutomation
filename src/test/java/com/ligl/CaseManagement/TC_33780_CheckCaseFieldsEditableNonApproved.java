@@ -30,7 +30,8 @@ public class TC_33780_CheckCaseFieldsEditableNonApproved extends TestBase {
                     .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .verifyingCaseFieldsAreEditable(data.get("CaseTypeDrpDwn"), data.get("CaseName1"), data.get("CaseSettingTemplateDrpDwn"))
-                    .verifyingCaseFieldsAreEdited(data.get("CaseTypeDrpDwn"), data.get("CaseName1"), data.get("CaseSettingTemplateDrpDwn"));
+                    .verifyingCaseFieldsAreEdited(data.get("CaseTypeDrpDwn"), data.get("CaseName1"), data.get("CaseSettingTemplateDrpDwn"))
+                    .logout();
 
 
         } catch (Exception ex) {

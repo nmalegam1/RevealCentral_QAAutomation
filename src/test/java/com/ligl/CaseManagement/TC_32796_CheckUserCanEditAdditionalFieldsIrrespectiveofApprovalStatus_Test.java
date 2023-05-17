@@ -40,7 +40,8 @@ public class TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStat
                     .switchCase()
                     .searchcase(data.get("NotIniCaseName"))
                     .GoToCase(data.get("NotIniCaseName"))
-                    .editAdditionalFields(data.get("Cost centre"), data.get("Case Alias"), data.get("AddDP"));
+                    .editAdditionalFields(data.get("Cost centre"), data.get("Case Alias"), data.get("AddDP"))
+                    .logout();
         } catch (Exception ex) {
             session.log_Error("TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStatus_Test Failed");
             throw new Exception("Exception in TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStatus_Test", ex);

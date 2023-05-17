@@ -34,7 +34,8 @@ public class TC_32718_VerifyUserAbleToAddEmployeesToCustodians extends TestBase 
                     .getLeftMenu()
                     .navigateToCustodiansPage()
                     .addCustodianToCase(data.get("Employee1"))
-                    .validatingCustodians(data.get("Employee1"));
+                    .validatingCustodians(data.get("Employee1"))
+                    .logout();
 
 
         } catch (Exception ex) {

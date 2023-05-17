@@ -6,10 +6,12 @@ import com.ligl.pages.administration.AdminLeftMenu;
 import com.ligl.pages.casemanagement.CaseCustodiansPage;
 import com.ligl.session.LiglTestSession;
 import com.ligl.web.IWebConnector;
+import org.openqa.selenium.WebElement;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.List;
 
 public interface ILiglPage {
     // normal browser operations
@@ -172,7 +174,8 @@ public interface ILiglPage {
     ILiglPage validateAndWaitForRecordsToCompleteLock(String s)throws Exception;
     ILiglPage goToPreservationLHScope();
 
-    ILiglPage goToDataManagementSummary() throws Exception;ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception;
+    ILiglPage goToDataManagementSummary() throws Exception;
+    ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception;
 
     ILiglPage sendingLegalHoldForApproval() throws Exception;
 
@@ -200,8 +203,6 @@ public interface ILiglPage {
     ILiglPage validateCustodianAfterApproved(String Employee1) throws Exception;
 
     ILiglPage goToCaseManagement() throws InterruptedException;
-
-    ILiglPage validatingEmailsInDB() throws Exception;
 
     ILiglPage verifyApprovalHistoryStatus(String AssignedUser1,String Status1,String Status2,String AssignedUser2) throws Exception;
 
@@ -452,7 +453,7 @@ public interface ILiglPage {
 
     // Smoke Suite Methods
 
-    ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(String CollectionStatus) throws Exception;
+    ILiglPage validateAndWaitForRecordsToCompleteCollection(String CollectionStatus) throws Exception;
 
     ILiglPage validateAndWaitForRecordsToCompleteProcessing(String Processingstatus) throws Exception;
 
@@ -1117,9 +1118,49 @@ public interface ILiglPage {
     ILiglPage verifyUnavailabilityOfSecurityTabInLeftMenu() throws Exception;
 
     ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception;
+    ILiglPage goToNotesPage() throws InterruptedException;
+    public ILiglPage notesSearchFilter(String name) throws Exception;
+    public ILiglPage TypeofEventSearchFilter(String TypeofEvent) throws Exception;
+    public ILiglPage notesEdit(String RequestBy,String NotesDescription) throws Exception;
+    public ILiglPage validateDeletedNoteForMultipleRecords() throws Exception;
+    public ILiglPage validateDeleteNote() throws Exception;
+    public ILiglPage displayingSelectedNotesList(String TOE) throws Exception;
+    public ILiglPage caseEditInplace() throws Exception;
+    public ILiglPage reAssignCaseForSingleApproval(String EMAIL,String USER) throws Exception;
+    public ILiglPage reAssignCaseForDualApproval(Hashtable<String, String> data) throws Exception;
+    public ILiglPage validateRevokeCaseForSingleApproval(String a,String b) throws Exception;
+    public ILiglPage validateRevokeCaseForDualApproval(String a,String b,String c) throws Exception;
+    public ILiglPage validateReassignForSingleApproval(String a,String b) throws Exception;
+    public ILiglPage validateReassignForDualApproval(String a,String b,String c) throws Exception;
+    public ILiglPage caseEditInplaceisSelected() throws Exception;
+    public ILiglPage goToNotesPageFromDocuments();
+    public ILiglPage createCaseWithoutInplacePreservation(Hashtable<String,String> data) throws Exception;
+    public ILiglPage verifyingCaseRoleIsNonEditable() throws Exception;
+    public ILiglPage detailsColumnData(String Details) throws Exception;
+
+    ILiglPage createNewCaseWithInPlacePreservation(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage deleteTheRequiredNotes() throws Exception;
+
+    ILiglPage validatingEmailsInDB() throws Exception;
+
     ILiglPage createLHWithOnlyKW(String lhName, String custTemp, String Keywords) throws Exception;
 
     ILiglPage validateEmpData(String custodianName, String emailID) throws Exception;
 
+    ILiglPage createLHWithOut_KW_DR(String lhName, String custTemp) throws Exception;
+    ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPLHScopeGrid(String Status) throws Exception;
+
+    ILiglPage validateLHKW(String ExpectedLHLKW) throws Exception;
+
+    ILiglPage validateLHDR(String ExpectedLHLDR) throws Exception;
+
+    ILiglPage validateGSuiteDST_LockWithSingleLegalHoldWithoutFilters(String Status) throws Exception;
+    ILiglPage checkingSingleCCDRecordIsReplacedWithLatestFilters(String CustName, String DST, String LockCompleteStatus, String LockNotInitiateStatus, String ExpectedLHLDR, String ExpectedLHLKW) throws Exception;
+
+    ILiglPage checkingRetainRecordAddedPrevGrid(String CustName, String DST, String LockCompleteStatus, String LockNotInitiateStatus, String ExpectedLHLDR, String ExpectedLHLKW) throws Exception;
+    ILiglPage goToIdentification() throws Exception;
+    ILiglPage goToCollection() throws Exception;
+    ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(String Status) throws Exception;
 }
 

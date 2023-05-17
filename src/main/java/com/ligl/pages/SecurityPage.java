@@ -12,6 +12,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import java.util.Hashtable;
+
 public class SecurityPage extends LiglBaseSessionPage {
 
     // Verifying Approving Rejected Test Cases WebElements
@@ -26,7 +28,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     WebElement SendForApprovalBtn;
     @FindBy(id="chk-all-case-casecustodians")
     WebElement SelectAllCustodiansCheckBox;
-    @FindBy(id="SelectAll-input")
+    @FindBy(xpath="//label[@for='SelectAll-input']//span")
     WebElement SelectAllDSTsCheckBox;
     @FindBy(id="chk-all-case-casedateranges")
     WebElement SelectAllDateRangesCheckBox;
@@ -199,6 +201,9 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[contains(text(),'Revoke')]")
     WebElement RevokeBtn;
 
+    @FindBy(xpath = "//button[contains(text(),'ReAssign')]")
+    WebElement ReAssignBtn;
+
 
 
     // Verifying Approving Rejected Test Case
@@ -206,6 +211,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     public ILiglPage sendingCaseForApproval() throws Exception {
 
         try {
+
             // validating the case Status In Rejected/Approved State And Approving The Case
 
             log_Info("Check The Status Of Case , It Should Be In Rejected State");
@@ -301,8 +307,10 @@ public class SecurityPage extends LiglBaseSessionPage {
             NextBtn.click();
             SelectAllDSTsCheckBox.click();
             NextBtn.click();
+            Thread.sleep(3000);
             SelectAllDateRangesCheckBox.click();
             NextBtn.click();
+            Thread.sleep(3000);
             SelectAllKeywordsCheckBox.click();
             NextBtn.click();
             BatchName.sendKeys(BchName);
@@ -1458,7 +1466,6 @@ public class SecurityPage extends LiglBaseSessionPage {
             throw new Exception("Exception From sendCaseForApproval()", ex);
         }
     }
-
     /**
      * Checking Approval Status and Approving Case if Not Intiated
      * @param BchName
@@ -1469,24 +1476,229 @@ public class SecurityPage extends LiglBaseSessionPage {
      * @throws Exception
      */
     public ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
+    try{
+        log_Info("caseApprovalIrrespectiveOfApprovalConfig() Started");
+        if(CaseApprovalStatus.getText().equals("Approved"))
+            return new SecurityPage();
+        else if(CaseApprovalStatus.getText().equals("Not Initiated"))
+        {
+            //sendCaseForApprovalWithAllScope(BchName,Apptemp,UserName);
+            ApprovalPage ap=new ApprovalPage();
+            getHeader().goToApprovalPage();
+            ap.approvingRejectedCase(CaseNameApprove);
+            getHeader().viewCase();
+            return new CaseSummaryPage();
+        }
+        else
+            return new SecurityPage();
+    }catch (Exception ex){
+        log_Error("caseApprovalIrrespectiveOfApprovalConfig() is Failed");
+        throw new Exception("Exception in caseApprovalIrrespectiveOfApprovalConfig()",ex);
+    }
+}
+
+
+
+    public ILiglPage reAssignCaseForSingleApproval(String EMAIL,String USER) throws Exception{
+
         try{
-            log_Info("checkApprovalConfStatus() Started");
-            if(CaseApprovalStatus.getText().equals("Approved"))
-                return new SecurityPage();
-            else if(CaseApprovalStatus.getText().equals("Not Initiated"))
-            {
-                sendCaseForApprovalWithAllScope(BchName,Apptemp,UserName);
-                ApprovalPage ap=new ApprovalPage();
-                getHeader().goToApprovalPage();
-                ap.approvingRejectedCase(CaseNameApprove);
-                getHeader().viewCase();
-                return new CaseSummaryPage();
-            }
-            else
-                return new SecurityPage();
+
+            log_Info("Click ReAssign Button");
+            Thread.sleep(5000);
+            ReAssignBtn.click();
+            Thread.sleep(5000);
+            log_Pass("ReAssigned button is clicked");
+            log_Info("Click on Email Template Drop down");
+            getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
+            Thread.sleep(5000);
+            TemplateNameDrpDwn.sendKeys(EMAIL);
+            Thread.sleep(3000);
+            TemplateNameDrpDwn.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Email Template Drop down");
+            log_Info("template selected");
+
+            log_Info("Click on Select Approval  Drop down");
+            getDriver().waitForelementToBeClickable(SelectApprovalDrpDwn);
+            Thread.sleep(3000);
+            SelectApprovalDrpDwn.sendKeys(USER);
+            Thread.sleep(3000);
+            SelectApprovalDrpDwn.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Select Approval  Drop down");
+            log_Pass("All Credentials Required for Approval are Given");
+
+            log_Info("Click on Send For Approval Button");
+            getDriver().waitForelementToBeClickable(SendApprovalBtn);
+            Thread.sleep(3000);
+            SendApprovalBtn.click();
+            log_Info("Clicked on Send For Approval Button");
+
+            // Validate Whether Case Is Reassigned Or Not
+
+            log_Info("Display The Send For Approval Button");
+            boolean a1 = RevokeBtn.isDisplayed();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(true,a1);
+            log_Info("Displayed The Revoke Button");
+
+            return new SecurityPage();
+
         }catch (Exception ex){
-            log_Error("checkApprovalConfStatus() is Failed");
-            throw new Exception("Exception in checkApprovalConfStatus()",ex);
+            throw new Exception("Exception From ReAssignCaseForApproval()", ex);
         }
     }
+
+    public ILiglPage reAssignCaseForDualApproval(Hashtable<String, String> data) throws Exception{
+
+        try{
+
+            log_Info("Click On Re-Assign Button");
+            getDriver().waitForelementToBeClickable(ReAssignBtn);
+            Thread.sleep(5000);
+            ReAssignBtn.click();
+            Thread.sleep(5000);
+            log_Pass("Clicked On Re-Assign Button");
+
+            log_Info("Select Dual Approval Button");
+            getDriver().waitForelementToBeClickable(DualApproval);
+            DualApproval.click();
+            Thread.sleep(5000);
+            log_Pass("Dual Approval Button Selected");
+
+            log_Info("Select Email Template DropDown");
+            getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
+            TemplateNameDrpDwn.sendKeys(data.get("Email Template"));
+            Thread.sleep(3000);
+            TemplateNameDrpDwn.sendKeys(Keys.ENTER);
+            log_Pass("Selected Email Template From DropDown");
+
+            log_Info("Select Approver1 DropDown");
+            SelectorApprover1.sendKeys(data.get("Approver1"));
+            Thread.sleep(3000);
+            SelectorApprover1.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+            log_Pass("Selected Approver1 DropDown");
+
+
+            log_Info("Select Approver2 DropDown");
+            SelectorApprover2.sendKeys(data.get("Approver2"));
+            Thread.sleep(3000);
+            SelectorApprover2.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+            log_Pass("Selected Approver2 DropDown");
+
+            log_Info("Click On Approver Sub Type");
+            getDriver().waitForelementToBeClickable(ApprovalSubType);
+            ApprovalSubType.sendKeys(data.get("ApprovalSubType"));
+            log_Pass("Clicked On Approver Sub Type");
+
+            log_Info("Click on Send For Approval Button");
+            getDriver().waitForelementToBeClickable(SendApprovalBtn);
+            Thread.sleep(3000);
+            SendApprovalBtn.click();
+            log_Info("Clicked on Send For Approval Button");
+
+            // Validate Whether Case Is Reassigned Or Not
+
+            log_Info("Display The Send For Approval Button");
+            boolean a1 = RevokeBtn.isDisplayed();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(true,a1);
+            log_Info("Displayed The Revoke Button");
+
+            return new SecurityPage();
+
+        }catch (Exception ex){
+            throw new Exception("Exception From ReAssignCaseForApproval()", ex);
+        }
     }
+
+    public ILiglPage validateRevokeCaseForSingleApproval(String a,String b) throws Exception {
+        try {
+            // Validate Whether Case Is Revoked Or Not
+
+            log_Info("Display The Send For Approval Button");
+            boolean a1 = SendForApprovalBtn.isDisplayed();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(true, a1);
+            log_Info("Displayed The Send For Approval Button");
+            String a2,a3,b1,b2;
+            a2= AssignedUserName.getText();
+            b2= StatusOfUser.getText();
+            Assert.assertEquals(a2,a);
+            Assert.assertEquals(b2,b);
+
+            return new SecurityPage();
+
+        } catch (Exception ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Exception From validateRevokeCaseForSingleApproval()", ex);
+        }
+    }
+    public ILiglPage validateRevokeCaseForDualApproval(String a,String b,String c) throws Exception {
+        try {
+            // Validate Whether Case Is Revoked Or Not
+
+            log_Info("Display The Send For Approval Button");
+            boolean a1 = SendForApprovalBtn.isDisplayed();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(true, a1);
+            log_Info("Displayed The Send For Approval Button");
+            String a2,a3,b1,b2;
+            a2= AssignedUserName.getText();
+            a3= AssignedUserName1.getText();
+            b1= StatusOfUser.getText();
+            b2= StatusOfUser1.getText();
+            Assert.assertEquals(a2,a);
+            Assert.assertEquals(a3,b);
+            Assert.assertEquals(b1,c);
+            Assert.assertEquals(b2,c);
+
+            return new SecurityPage();
+
+        } catch (Exception ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Exception From validateRevokeCaseForDualApproval()", ex);
+        }
+    }
+    public ILiglPage validateReassignForSingleApproval(String a,String b) throws Exception{
+        try{
+            String a1,b1;
+            a1= AssignedUserName.getText();
+            b1= StatusOfUser.getText();
+            Assert.assertEquals(a1,a);
+            Assert.assertEquals(b1,b);
+            return new SecurityPage();
+        } catch (Exception e) {
+            log_Error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+    public ILiglPage validateReassignForDualApproval(String a,String b,String c) throws Exception{
+
+        try{
+            String a1,a2,b1,b2;
+            a1= AssignedUserName.getText();
+            a2= AssignedUserName1.getText();
+            b1= StatusOfUser.getText();
+            b2= StatusOfUser1.getText();
+            Assert.assertEquals(a1,a);
+            Assert.assertEquals(a2,b);
+            Assert.assertEquals(b1,c);
+            Assert.assertEquals(b2,c);
+
+            return new SecurityPage();
+
+        } catch (Exception e) {
+            log_Error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+}
