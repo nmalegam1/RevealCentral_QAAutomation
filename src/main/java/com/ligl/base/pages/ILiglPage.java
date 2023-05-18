@@ -1148,6 +1148,10 @@ public interface ILiglPage {
 
     ILiglPage validateEmpData(String custodianName, String emailID) throws Exception;
 
+    ILiglPage navigateToProjectDocumentsPage() throws Exception;
+
+    ILiglPage validateTheFieldValuesInAddRequestPopUpThroughEditICON(String REQtype,String REQtitle,String ChooseCASE,String chooseUSER,String PRIORITY,String DATE) throws Exception;
+
     ILiglPage createLHWithOut_KW_DR(String lhName, String custTemp) throws Exception;
     ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPLHScopeGrid(String Status) throws Exception;
 

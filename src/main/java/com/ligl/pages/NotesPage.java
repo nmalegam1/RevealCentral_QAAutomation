@@ -97,7 +97,7 @@ public class NotesPage extends LiglBaseSessionPage {
             Notes_filter.click();
             log_Info("Click on Search");
             log_Info("enter key");
-            Thread.sleep(5000);
+            Thread.sleep(6000);
             Notes_Search.sendKeys(name);
             Thread.sleep(5000);
             Notes_row.click();

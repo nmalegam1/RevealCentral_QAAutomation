@@ -89,7 +89,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[contains(text(),'In-House Counsel')]")
     WebElement AddInHouseCounselBtn;
 
-    @FindBy(xpath = "//button[contains(text(),' Counsel ')]")
+    @FindBy(xpath = "//button[@id='add-counsel-inhouse-btn']")
     WebElement AddCounselBtn;
 
 
@@ -178,6 +178,9 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     WebElement InHouseAssignBTN;
     @FindBy(xpath = "//span[contains(text(),'Counsel')]/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
     WebElement CounselHeader;
+
+    @FindBy(xpath = "//div[@id='select-contacts-dpdwn-panel']//input[@type='text']")
+    WebElement ExistingLawFirmSearchBar;
 
 
 
@@ -524,7 +527,9 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getSession().log_Pass("Clicked On Add In House Counsel Button");
 
 
+
             log_Info("Click On Add Counsel Button");
+            AddCounselBtn.sendKeys(Keys.ESCAPE);
             getDriver().waitForelementToBeClickable(AddCounselBtn);
             Thread.sleep(5000);
             AddCounselBtn.click();
@@ -714,12 +719,13 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             // validating the process counsel and save Button Is Enabled or Not
 
             log_Info("Check The Availability Of Save And Counsel Buttons");
+            Thread.sleep(3000);
             boolean a1 = AddCounselBtn.isDisplayed();
             boolean a2 = AddCounselBtn.isEnabled();
             System.out.println(a1);
             System.out.println(a2);
             log_Info("Click on Add Counsel button");
-            AddCounselBtn.click();
+            ExistingLawFirmSearchBar.sendKeys(Keys.ESCAPE);
             Thread.sleep(3000);
             boolean b1 = InHouseSaveBtn.isDisplayed();
             boolean b2 = InHouseSaveBtn.isEnabled();

@@ -1830,6 +1830,13 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage goToCollection() throws Exception{
 		return null;
 	}
+
+	public ILiglPage navigateToProjectDocumentsPage() throws Exception{
+		return null;
+	}
+	public ILiglPage validateTheFieldValuesInAddRequestPopUpThroughEditICON(String REQtype,String REQtitle,String ChooseCASE,String chooseUSER,String PRIORITY,String DATE) throws Exception{
+		return null;
+	}
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;

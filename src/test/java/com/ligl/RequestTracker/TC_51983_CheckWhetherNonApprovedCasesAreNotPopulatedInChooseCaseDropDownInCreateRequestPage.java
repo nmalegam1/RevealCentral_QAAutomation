@@ -26,8 +26,7 @@ public class TC_51983_CheckWhetherNonApprovedCasesAreNotPopulatedInChooseCaseDro
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .getHeader().goToGlobalRequestPage().clickOnAddRequestButton()
                     .clickOnChooseACaseDropDown()
                     .validatingNonApprovedCasesInCaseDropDown(data.get("CaseName1"))

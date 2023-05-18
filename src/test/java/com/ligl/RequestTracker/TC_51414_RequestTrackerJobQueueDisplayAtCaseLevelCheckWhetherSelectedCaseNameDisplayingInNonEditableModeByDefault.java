@@ -26,8 +26,7 @@ public class TC_51414_RequestTrackerJobQueueDisplayAtCaseLevelCheckWhetherSelect
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToCaseLevelRequests().clickOnAddRequestButtonInCaseRequests();
 

@@ -37,7 +37,7 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
     @FindBy(xpath = "//mat-select[@id='assignee']")
     WebElement ChooseUser;
 
-    @FindBy(id = "req-priority")
+    @FindBy(xpath = "//mat-select[@id='req-priority']")
     WebElement PriorityDrpDwn;
 
     @FindBy(id = "req-completedby")
@@ -67,7 +67,7 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
     @FindBy(xpath = "//span[contains(text(),'Title')]")
     WebElement Column3;
 
-    @FindBy(xpath = "//span[contains(text(),'Case Name')]")
+    @FindBy(xpath = "//span[contains(text(),'Project Name')]")
     WebElement Column4;
 
     @FindBy(xpath = "//span[contains(text(),'Status')]")
@@ -85,7 +85,7 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
     @FindBy(xpath = "//button[@title='Edit']")
     WebElement EditIcon;
 
-    @FindBy(id = "req-sttus")
+    @FindBy(xpath = "//mat-select[@id='req-stAtus']")
     WebElement StatusDrpDwn;
 
     @FindBy(xpath = "//button[@title='View']")
@@ -234,7 +234,7 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
 
             getSession().log_Info("Click On The Priority Drop Down");
             getDriver().waitForelementToBeClickable(PriorityDrpDwn);
-            getDriver().waitForAngularRequestsToComplete();
+           /* getDriver().waitForAngularRequestsToComplete();*/
             PriorityDrpDwn.sendKeys(PriorityDropDown);
             Thread.sleep(3000);
             PriorityDrpDwn.sendKeys(Keys.ENTER);
@@ -307,7 +307,7 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
             Thread.sleep(5000);
             boolean a1 = Column1.isDisplayed();
             boolean a2 = Column2.isDisplayed();
-           // boolean a3 = Column3.isDisplayed();
+            boolean a3 = Column3.isDisplayed();
             boolean a4 = Column4.isDisplayed();
             boolean a5 = Column5.isDisplayed();
             boolean a6 = Column6.isDisplayed();
@@ -317,7 +317,7 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
             Thread.sleep(5000);
             System.out.println(a1);
             System.out.println(a2);
-            //System.out.println(a3);
+            System.out.println(a3);
             System.out.println(a4);
             System.out.println(a5);
             System.out.println(a6);
@@ -669,6 +669,8 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
 
         try {
 
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", ReqSaveBtn);
+
             getSession().log_Info("Click On The Additional Area");
             getDriver().waitForelementToBeClickable(AdditionalMessage);
             Thread.sleep(5000);
@@ -677,9 +679,9 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
             getSession().log_Pass("Clicked On The Additional Area");
 
             getSession().log_Info("Click On The Save Button");
-            getDriver().waitForelementToBeClickable(PostMessageBtn);
+            getDriver().waitForelementToBeClickable(ReqSaveBtn);
             Thread.sleep(5000);
-            PostMessageBtn.click();
+            ReqSaveBtn.click();
             Thread.sleep(5000);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Clicked On The Save Button");
@@ -730,7 +732,7 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
             getDriver().waitForelementToBeClickable(StatusDrpDwn);
             StatusDrpDwn.click();
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//mat-option[@aria-labelledby='statusdropdown']//span[contains(text(),'"+status+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//mat-option[@aria-labelledby='mat-select']//span[contains(text(),'"+status+"')]")).click();
             StatusDrpDwn.sendKeys(Keys.ENTER);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Clicked On The Status Drop Down");
@@ -1001,5 +1003,96 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
             throw new Exception("validateListOfColumnsInTheRequestPage() Failed ", ex);
         }
     }
+
+    public ILiglPage validateTheFieldValuesInAddRequestPopUpThroughEditICON(String REQtype,String REQtitle,String ChooseCASE,String chooseUSER,String PRIORITY,String DATE) throws Exception{
+
+        try {
+
+            log_Info("validateTheFieldValuesInAddRequestPopUp Started");
+
+            log_Info("Check The Request Type Value Is Displayed Correctly");
+            getDriver().waitForAngularRequestsToComplete();
+            Thread.sleep(2000);
+            String s1 = reqTypeDrpDwn.getText();
+            if (s1.equals(REQtype))
+            {
+                log_Pass("The Request Type Value Is Displayed Correctly");
+            }
+            else{
+                throw new Exception("The Request Type Is Not Expected");
+            }
+
+
+            log_Info("Check The Request Title Value Is Displayed Correctly");
+            getDriver().waitForAngularRequestsToComplete();
+            Thread.sleep(2000);
+            String s2 = RequestTitle.getAttribute("value");
+            if (s2.equals(REQtitle))
+            {
+                log_Pass("The Request Title Value Is Displayed Correctly");
+            }
+            else{
+                throw new Exception("The Request Title Is Not Expected");
+            }
+
+            log_Info("Check The Choose A Case Value Is Displayed Correctly");
+            getDriver().waitForAngularRequestsToComplete();
+            Thread.sleep(2000);
+            String s3 = ChooseACaseDrpDwn.getText();
+            if (s3.equals(ChooseCASE))
+            {
+                log_Pass("The Choose A Case Value Is Displayed Correctly");
+            }
+            else{
+                throw new Exception("The Case Is Not Expected");
+            }
+
+            log_Info("Check The Choose A User Is Displayed Correctly");
+            getDriver().waitForAngularRequestsToComplete();
+            Thread.sleep(2000);
+            String s4 = ChooseUser.getText();
+            if (s4.equals(chooseUSER))
+            {
+                log_Pass("The Choose A User Is Displayed Correctly");
+            }
+            else{
+                throw new Exception("The User Is Not Expected");
+            }
+
+            log_Info("Check The Priority Is Displayed Correctly");
+            getDriver().waitForAngularRequestsToComplete();
+            Thread.sleep(2000);
+            String s5 = PriorityDrpDwn.getText();
+            if (s5.equals(PRIORITY))
+            {
+                log_Pass("The Priority Is Displayed Correctly");
+            }
+            else{
+                throw new Exception("The Priority Is Not Expected");
+            }
+
+
+            log_Info("Check The Completed Date Is Displayed Correctly");
+            getDriver().waitForAngularRequestsToComplete();
+            Thread.sleep(2000);
+            String s6 = CompletedBy.getAttribute("value");
+            if (s6.equals(DATE))
+            {
+                log_Pass("The Completed Date Is Displayed Correctly");
+            }
+            else{
+                throw new Exception("The Completed Date Is Not Expected");
+            }
+
+            log_Info("Validated Field Values In The Add Request PopUp");
+
+            return new GlobalRequestPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("validateListOfColumnsInTheRequestPage() Failed ", ex);
+        }
+    }
 }
+
 

@@ -31,9 +31,9 @@ public class TC_51886_CheckWhetherRequestCreatorAbleToAddTheMessagesForNewStateR
                     .getHeader().goToGlobalRequestPage().clickOnAddRequestButton()
                     .addAllDetailsInTheAddRequestPopUpByAssigningToRole(data.get("ReqType"), data.get("ReqTitle"), data.get("ChooseCase"), data.get("ChooseUser"), data.get("Priority"), data.get("CompleteDate"), data.get("AdditionalText") )
                     .validateCreatedRequestInTheGlobalRequestGrid(data.get("ReqTitle"))
-                    .moveToTheParticularColumn(data.get("ReqTitle"))
-                    .clickOnViewIconInTheGrid().sendAdditionalMessageWhenReqIsInNewStatus(data.get("Message"))
-                    .clickOnBackToRequestButton().moveToTheParticularColumn(data.get("ReqTitle")).validateStatusOfTheRequest(data.get("Message"));
+                    .clickOnEditIconInTheGrid(data.get("ReqTitle"))
+                    .sendAdditionalMessageWhenReqIsInNewStatus(data.get("Message"))
+                    .moveToTheParticularColumn(data.get("ReqTitle")).validateStatusOfTheRequest(data.get("Message"));
 
         }catch (Exception ex){
             session.log_Error("TC_51886_CheckWhetherRequestCreatorAbleToAddTheMessagesForNewStateRequest Failed");

@@ -372,7 +372,7 @@ public class LeftMenu extends LiglBasePage {
         try {
 
             try {
-                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Case Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Project Management Menu is in collapsed form
                 if (caseMgmt2.isEnabled()) {
 
                     log_Info("Click on Project Management");
@@ -806,6 +806,51 @@ public class LeftMenu extends LiglBasePage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("navigateToCaseLevelRequests() Failed ", ex);
+        }
+    }
+
+    public ILiglPage navigateToProjectDocumentsPage() throws Exception {
+
+        try {
+
+            try {
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Project Management Menu is in collapsed form
+                if (caseMgmt2.isEnabled()) {
+
+                    log_Info("Click on Project Management");
+                    getDriver().waitForelementToBeClickable(CaseManage);
+                    CaseManage.click();
+                    Thread.sleep(2000);
+                    getSession().log_Pass("Project Management clicked");
+
+                    log_Info("Click on Documents Tab");
+                    getDriver().waitForelementToBeClickable(Documents);
+                    Thread.sleep(2000);
+                    Documents.click();
+                    log_Info("Clicked on Documents Tab");
+
+
+                }
+            } catch (NoSuchElementException e) {
+
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
+
+                if (caseMgmt1.isDisplayed()) {
+
+                    log_Info("Click on Counsel");
+                    getDriver().waitForelementToBeClickable(Documents);
+                    Thread.sleep(2000);
+                    Documents.click();
+                    log_Info("Clicked on Counsel");
+
+                }
+
+            }
+            return new CaseDocumentsPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("navigateToProjectDocumentsPage() Failed ", ex);
         }
     }
 
