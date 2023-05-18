@@ -30,7 +30,7 @@ public class TC_52337_CheckCustodianNotDisplayUntillApproved extends TestBase
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
@@ -43,7 +43,8 @@ public class TC_52337_CheckCustodianNotDisplayUntillApproved extends TestBase
                     .getHeader().goToApprovalPage().approvingCaseSingleApprover(data.get("CaseNameApprove"))
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToLegalHoldPage().checkLHNForCustodians(data.get("LHN")).validateCustodianAfterApproved(data.get("Employee1"))
-                    .getLeftMenu().goToDataManagement().validateDSIForCustodians(data.get("Employee1"));
+                    .getLeftMenu().goToDataManagement().validateDSIForCustodians(data.get("Employee1"))
+                    .logout();
 
 
         }catch (Exception ex){

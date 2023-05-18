@@ -27,7 +27,7 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
 
     //2.Searching For A Particular Court Added To Case
 
-    @FindBy(xpath = "//span[contains(text(),'Court/Fourm')]/ancestor::div[@ref='eLabel']/span")
+    @FindBy(xpath = "//span[contains(text(),'Court/Fourm')]/ancestor::div[@role='presentation']/span")
     WebElement CourtHeader;
 
     @FindBy(css = "span[class='ag-icon ag-icon-menu']")
@@ -240,6 +240,31 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
             throw new Exception("navigateAndAddProsecutor() Failed",ex);
         }
     }
+    public ILiglPage addExistingProsecutor(String CounselFullName)throws Exception
+    {
+        log_Info("addExistingProsecutor() Started");
+
+        log_Info("Click on Add Prosecutor Button");
+        Thread.sleep(5000);
+        AddProsecutor.click();
+        log_Info("Clicked on Add Prosecutor Button");
+
+        Thread.sleep(5000);
+        getCurrentDriver().findElement(By.xpath("//div[contains(text(),'"+CounselFullName+"')]")).click();
+        log_Info("Clicked on Add Prosecutor Button");
+
+        log_Info("Click on Add Left Arrow Button");
+        Thread.sleep(5000);
+        LeftArrow.click();
+        log_Info("Clicked on Add Left Arrow Button");
+
+        log_Info("Click on Save Button");
+        Thread.sleep(5000);
+        SaveBtn.click();
+        log_Info("Clicked on Save Button");
+
+        return new CaseCourtListPage();
+    }
     public ILiglPage validateProsecutors(String AvailableProsecutor1,String AvailableProsecutor2,String AvailableProsecutor3,String AvailableProsecutor4) throws Exception{
 
         try {
@@ -389,14 +414,14 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
      * @return
      * @throws Exception
      */
-    public ILiglPage createNewCourt(String CourtName,String PartyType,String Desc) throws Exception {
+    public ILiglPage createNewCourt(String CourtName,String PartyType,String Desc,String Status) throws Exception {
         try{
             log_Info("addNewCourt() Started");
             AddCourtBtn.click();
             CreateCourt.click();
             Thread.sleep(5000);
             CaseOtherPartyPage COPP=new CaseOtherPartyPage();
-            COPP.addingNewParty(CourtName,PartyType,Desc);
+            COPP.addingNewParty(CourtName,PartyType,Status,Desc);
             return new CaseCourtListPage();
         }catch(Exception | Error ex){
             log_Error("createNewCourt Failed");

@@ -27,12 +27,12 @@ public class TC_7110_AddExistingInHouseCounselTo_EnterpriseParty_Test extends Te
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToOtherPartyPage()
-                    //.addingExistingParty(data.get("PartyName"),data.get("PartyType"))
+                    .addingExistingParty(data.get("PartyName"),data.get("PartyType"))
                     .searchingParty(data.get("PartyName"))
                     .addExistingInHouseCounselToParty(data.get("ExistingInCounsel"));
 

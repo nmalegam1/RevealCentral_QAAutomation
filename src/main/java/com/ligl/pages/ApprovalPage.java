@@ -104,6 +104,7 @@ public class ApprovalPage extends LiglBaseSessionPage {
 
             log_Info("Click on Approve Button");
             waitForPageToLoad();
+            Thread.sleep(3000);
             getDriver().waitForelementToBeClickable(ApproveBtn);
             ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", ApproveBtn);
             ApproveBtn.click();

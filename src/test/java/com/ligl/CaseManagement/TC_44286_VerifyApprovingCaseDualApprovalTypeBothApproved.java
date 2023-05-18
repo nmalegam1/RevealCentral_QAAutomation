@@ -30,7 +30,7 @@ public class TC_44286_VerifyApprovingCaseDualApprovalTypeBothApproved extends Te
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
@@ -44,11 +44,12 @@ public class TC_44286_VerifyApprovingCaseDualApprovalTypeBothApproved extends Te
                     .getLeftMenu().goToSecurityPage().validateCasePendingForApprovalState()
                     .verifyApprovalHistoryStatus(data.get("AssignedUser1"), data.get("Status1"), data.get("AssignedUser2"), data.get("Status2") )
                     .getHeader().logout()
-                    .login(data.get("Username1"), data.get("Password1"),data.get("Entity")).getHeader().goToApprovalPage().approvingCaseSingleApprover(data.get("CaseNameApprove"))
+                    .login(data.get("Username1"), data.get("Password1"),data.get("EntitySelection")).getHeader().goToApprovalPage().approvingCaseSingleApprover(data.get("CaseNameApprove"))
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage().verifyingApproveStatus().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status1"), data.get("AssignedUser1"), data.get("Status1") )
-                    .getHeader().logout().login(data.get("Username"), data.get("Password"),data.get("Entity"))
-                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName")).getLeftMenu().goToSecurityPage().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status1"), data.get("AssignedUser1"), data.get("Status1"));
+                    .getHeader().logout().login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName")).getLeftMenu().goToSecurityPage().verifyApprovalHistoryStatus(data.get("AssignedUser2"), data.get("Status1"), data.get("AssignedUser1"), data.get("Status1"))
+                    .logout();
 
         } catch (Exception ex) {
             session.log_Error("TC_44286_VerifyApprovingCaseDualApprovalTypeBothApproved Failed");

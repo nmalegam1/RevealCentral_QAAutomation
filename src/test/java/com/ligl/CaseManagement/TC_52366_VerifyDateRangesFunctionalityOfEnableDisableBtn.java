@@ -28,7 +28,7 @@ public class TC_52366_VerifyDateRangesFunctionalityOfEnableDisableBtn extends Te
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
@@ -40,7 +40,8 @@ public class TC_52366_VerifyDateRangesFunctionalityOfEnableDisableBtn extends Te
                     .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))
                     .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))
                     .enableAndDisableDateRanges(data.get("Status1"))
-                    .validateEnableAndDisableDateRanges(data.get("Status2"));
+                    .validateEnableAndDisableDateRanges(data.get("Status2"))
+                    .logout();
 
 
 

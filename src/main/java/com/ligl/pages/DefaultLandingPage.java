@@ -144,11 +144,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='CreatedByName']//span[@class='ellipsisAgGrid']")
     WebElement CreatedByColData;
-    @FindBy(id = "input-dynamic-column-1")
+    @FindBy(id = "input-dynamic-column-2")
     WebElement CostCentre;
-    @FindBy(id="input-dynamic-column-2")
+    @FindBy(id="input-dynamic-column-3")
     WebElement CaseAlias;
-    @FindBy(id="select-dynamic-column-3")
+    @FindBy(id="select-dynamic-column-1")
     WebElement AddDropDown;
     @FindBy(xpath = "//span[contains(text(),'Region is required')]")
     WebElement RegionReqValidation;
@@ -445,7 +445,6 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     public ILiglPage clickClearFilterBtn() {
         log_Info("Click Clear Filter Button");
         clearFilterBtn.click();
-        waitForPageToLoad();
         return new LiglBasePage();
     }
 
@@ -461,15 +460,12 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
 
             log_Info("pointed mouse to the case name");
-            waitForPageToLoad();
             log_Info("click on case search menu");
             CaseSearchMenu.click();
             log_Info("clicked on case search menu");
-            waitForPageToLoad();
             log_Info("click on case filter");
             CaseSearchFilter.click();
             log_Info("clicked on case filter");
-            waitForPageToLoad();
             log_Info("sending case name to the search bar");
             CaseSearchBar.sendKeys(CaseName);
             log_Info("recieved case name to the search bar");
@@ -821,7 +817,6 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     public ILiglPage goToNotesPage() throws InterruptedException {
         try {
             log_Pass("Click on Notes Icon in Case list page");
-            waitForPageToLoad();
             getDriver().waitUntilSpinnerIsClosed();
             Thread.sleep(3000);
             getDriver().waitForelementToBeClickable(Notes_btn);
@@ -943,17 +938,17 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(LastDateModifiedHeader).perform();
             log_Info("pointed mouse To The Date Modifier Menu");
-            waitForPageToLoad();
+
 
             log_Info("click on Date Modifier Menu");
             DateModifierMenu.click();
             log_Info("clicked on Date Modifier Menu");
-            waitForPageToLoad();
+
 
             log_Info("click on Date Modifier filter");
             CaseSearchFilter.click();
             log_Info("clicked on Date Modifier filter");
-            waitForPageToLoad();
+
 
             log_Info("click On Date Modifier Dropdown");
             ComparatorDropDown.click();
@@ -965,7 +960,6 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getCurrentDriver().findElement(By.xpath("//div[@role='option']//span[contains(text(),'"+Comparator+"')]")).click();
             Thread.sleep(2000);
             log_Info("clicked On Date Modifier Dropdown Value ");
-            waitForPageToLoad();
             log_Info("Enter The Date In The Bar");
             DateFormat.click();
             Thread.sleep(2000);
@@ -981,7 +975,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(2000);
             log_Info("Clicked On Apply Button");
             Thread.sleep(5000);
-            waitForPageToLoad();
+
 
 
             String CasesCOUNT = CasesCount.getText();

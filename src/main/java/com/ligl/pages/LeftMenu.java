@@ -13,6 +13,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import javax.print.Doc;
+
 public class LeftMenu extends LiglBasePage {
 
     @FindBy(xpath = "//span[contains(text(),'Project Management')]/ancestor::li//span[contains(text(),'Summary')]")
@@ -82,7 +84,8 @@ public class LeftMenu extends LiglBasePage {
 
     @FindBy(xpath = "//span[@title='History']")
     WebElement History;
-
+    @FindBy(id="Collection")
+    WebElement Collection;
 
     public LeftMenu(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -141,17 +144,48 @@ public class LeftMenu extends LiglBasePage {
      * @return CaseDocumentsPage()
      * @throws InterruptedException
      */
-    public ILiglPage navigateToCaseDocumentsPage() throws InterruptedException {
-        getSession().log_Info("Click on Project Management");
-        getDriver().waitForelementToBeClickable(CaseManage);
-        CaseManage.click();
-        log_Pass("Project Management clicked");
-        Thread.sleep(3000);
-        log_Info("Click Documents");
-        Documents.click();
-        log_Pass("Documents tab Clicked");
-        Thread.sleep(3000);
-        return new CaseDocumentsPage();
+    public ILiglPage navigateToCaseDocumentsPage() throws Exception {
+        try {
+
+            try {
+                WebElement caseMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: none')]")); //Case Management Menu is in collapsed form
+                if (caseMgmt2.isEnabled()) {
+
+                    log_Info("Click on Case Management");
+                    getDriver().waitForelementToBeClickable(CaseManage);
+                    CaseManage.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("case Management clicked");
+
+                    log_Info("Click on Counsel");
+                    getDriver().waitForelementToBeClickable(Documents);
+                    Thread.sleep(5000);
+                    Documents.click();
+                    log_Info("Clicked on Documents");
+
+
+                }
+            } catch (NoSuchElementException e) {
+
+                WebElement caseMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Project Management']//div[contains(@style,'display: block')]")); //Case Management Menu is in Expanded form
+
+                if (caseMgmt1.isDisplayed()) {
+
+                    log_Info("Click on Documents");
+                    getDriver().waitForelementToBeClickable(Documents);
+                    Thread.sleep(5000);
+                    Documents.click();
+                    log_Info("Clicked on Documents");
+
+                }
+
+            }
+            return new CaseDocumentsPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("navigateToCaseDocumentsPage() Failed ", ex);
+        }
     }
     public ILiglPage goToCaseManagementSummary() throws InterruptedException {
         caseManagementSummaryLink.click();
@@ -215,28 +249,48 @@ public class LeftMenu extends LiglBasePage {
         }
     }
 
-    // Navigating To Data Management Tab
-
-    public ILiglPage goToDataManagement() throws Exception {
+    public ILiglPage goToIdentification() throws Exception {
 
         try {
 
-            log_Info("Click on Data Management");
-            getDriver().waitForelementToBeClickable(DataManagement);
-            Thread.sleep(5000);
-            DataManagement.click();
-            getSession().log_Pass("Clicked on Data Management");
+            try {
+                WebElement DataMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Data Management']//div[contains(@style,'display: none')]")); //Data Management Menu is in collapsed form
+                if (DataMgmt2.isEnabled()) {
 
-            log_Info("Click on Identification");
-            getDriver().waitForelementToBeClickable(Identification);
-            Thread.sleep(5000);
-            Identification.click();
-            getSession().log_Pass("Clicked on Identification");
-            return new DMCollectionsPage();
+                    log_Info("Click on Data Management");
+                    getDriver().waitForelementToBeClickable(DataManagement);
+                    DataManagement.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("Data Management clicked");
+
+                    log_Info("Click on Identification");
+                    getDriver().waitForelementToBeClickable(Identification);
+                    Thread.sleep(5000);
+                    Identification.click();
+                    log_Info("Clicked on Identification");
+
+
+                }
+            } catch (NoSuchElementException e) {
+
+                WebElement DataMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Data Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
+
+                if (DataMgmt1.isDisplayed()) {
+
+                    log_Info("Click on Identification");
+                    getDriver().waitForelementToBeClickable(Identification);
+                    Thread.sleep(5000);
+                    Identification.click();
+                    log_Info("Clicked on Identification");
+
+                }
+
+            }
+            return new DMDSIPage();
 
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("goToDataManagement() Failed ", ex);
+            throw new Exception("goToIdentification() Failed ", ex);
         }
     }
 
@@ -799,4 +853,51 @@ public class LeftMenu extends LiglBasePage {
             throw new Exception("navigateToProjectDocumentsPage() Failed ", ex);
         }
     }
+
+    public ILiglPage goToCollection() throws Exception {
+
+        try {
+
+            try {
+                WebElement DataMgmt2 = getCurrentDriver().findElement(By.xpath("//li[@id='Data Management']//div[contains(@style,'display: none')]")); //Data Management Menu is in collapsed form
+                if (DataMgmt2.isEnabled()) {
+
+                    log_Info("Click on Data Management");
+                    getDriver().waitForelementToBeClickable(DataManagement);
+                    DataManagement.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("Data Management clicked");
+
+                    log_Info("Click on Collection");
+                    getDriver().waitForelementToBeClickable(Collection);
+                    Thread.sleep(5000);
+                    Collection.click();
+                    log_Info("Clicked on Collection");
+
+
+                }
+            } catch (NoSuchElementException e) {
+
+                WebElement DataMgmt1 = getCurrentDriver().findElement(By.xpath("//li[@id='Data Management']//div[contains(@style,'display: block')]")); //Project Management Menu is in Expanded form
+
+                if (DataMgmt1.isDisplayed()) {
+
+                    log_Info("Click on Collection");
+                    getDriver().waitForelementToBeClickable(Collection);
+                    Thread.sleep(5000);
+                    Collection.click();
+                    log_Info("Clicked on Collection");
+
+                }
+
+            }
+            return new DMCollectionsPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("goToCollection() Failed ", ex);
+        }
+    }
+
+
 }

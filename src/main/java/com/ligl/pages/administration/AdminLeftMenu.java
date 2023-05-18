@@ -36,7 +36,7 @@ public class AdminLeftMenu extends LiglBasePage {
     @FindBy(xpath = "//span[@title='Email Templates']")
     public WebElement emailTemplatesLink;
 
-    @FindBy(xpath = "//span[@title='Case Settings']")
+    @FindBy(xpath = "//span[@title='Project Settings']")
     public WebElement caseSettingsLink;
 
     @FindBy(xpath = "//span[@title='Lookup Manager']")
@@ -113,6 +113,44 @@ public class AdminLeftMenu extends LiglBasePage {
         }
     }
 
+
+    public ILiglPage navigateToUserAndRolesPage() throws Exception {
+        try {
+
+            try {
+                if (UsersRolesLink.isDisplayed()) {
+
+                    log_Info("Click on users and roles");
+                    getDriver().waitForelementToBeClickable(UsersRolesLink);
+                    Thread.sleep(5000);
+                    UsersRolesLink.click();
+                    log_Info("Clicked on users and roles tab");
+                }
+                else
+                    throw new NoSuchElementException("");
+            } catch (NoSuchElementException e) {
+
+                if (!UsersRolesLink.isDisplayed()) {
+                    log_Info("Click on General Tab");
+                    getDriver().waitForelementToBeClickable(adminGeneralLink);
+                    adminGeneralLink.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("General tab clicked");
+
+                    log_Info("Click on users and roles tab");
+                    getDriver().waitForelementToBeClickable(UsersRolesLink);
+                    Thread.sleep(5000);
+                    UsersRolesLink.click();
+                    log_Info("Clicked on users and roles tab");
+                }
+            }
+            return new UsersAndRolesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Navigate To User And Roles Failed", ex);
+        }
+    }
+
     public ILiglPage navigateToContactsMasterPage() throws Exception {
         try {
             getSession().log_Info("Navigate to 'Contacts Master' Page");
@@ -128,10 +166,33 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToEmployeeMaster() throws Exception {
         try {
-            getSession().log_Info("Navigate To 'Employee Master' Page");
-            getDriver().waitForelementToBeClickable(employeeMasterLink);
-            employeeMasterLink.click();
-            getSession().log_Pass("Navigated To 'Employees Master' Page");
+            try {
+                if (employeeMasterLink.isDisplayed()) {
+
+                    log_Info("Click on Employee master");
+                    getDriver().waitForelementToBeClickable(employeeMasterLink);
+                    Thread.sleep(5000);
+                    employeeMasterLink.click();
+                    log_Info("Clicked on Employee master tab");
+                }
+                else
+                    throw new NoSuchElementException("");
+            } catch (NoSuchElementException e) {
+
+                if (!employeeMasterLink.isDisplayed()) {
+                    log_Info("Click on General Tab");
+                    getDriver().waitForelementToBeClickable(adminGeneralLink);
+                    adminGeneralLink.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("General tab clicked");
+
+                    log_Info("Click on Employee master tab");
+                    getDriver().waitForelementToBeClickable(employeeMasterLink);
+                    Thread.sleep(5000);
+                    employeeMasterLink.click();
+                    log_Info("Clicked on Employee master tab");
+                }
+            }
             return new EmployeeMasterPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
@@ -141,11 +202,33 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToPartiesPage() throws Exception {
         try {
-            getSession().log_Info("Navigate to 'Parties' Page");
-            getDriver().waitForelementToBeClickable(partiesLink);
-            partiesLink.click();
-            getSession().log_Pass("Navigated to 'Parties' Page");
-            wait(2);
+            try {
+                if (partiesLink.isDisplayed()) {
+
+                    log_Info("Click on parties tab");
+                    getDriver().waitForelementToBeClickable(partiesLink);
+                    Thread.sleep(5000);
+                    partiesLink.click();
+                    log_Info("Clicked on parties tab");
+                }
+                else
+                    throw new NoSuchElementException("");
+            } catch (NoSuchElementException e) {
+
+                if (!partiesLink.isDisplayed()) {
+                    log_Info("Click on General Tab");
+                    getDriver().waitForelementToBeClickable(adminGeneralLink);
+                    adminGeneralLink.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("General tab clicked");
+
+                    log_Info("Click on Parties tab");
+                    getDriver().waitForelementToBeClickable(partiesLink);
+                    Thread.sleep(5000);
+                    partiesLink.click();
+                    log_Info("Clicked on Parties tab");
+                }
+            }
             return new PartiesPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
@@ -155,11 +238,33 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToEmailTemplatesPage() throws Exception {
         try {
-            getSession().log_Info("Navigate to 'Email Templates' Page");
-            getDriver().waitForelementToBeClickable(emailTemplatesLink);
-            emailTemplatesLink.click();
-            getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Navigated to 'Email Templates' Page");
+            try {
+                if (emailTemplatesLink.isDisplayed()) {
+
+                    log_Info("Click on Email Templates");
+                    getDriver().waitForelementToBeClickable(emailTemplatesLink);
+                    Thread.sleep(5000);
+                    emailTemplatesLink.click();
+                    log_Info("Clicked on Email Templates tab");
+                }
+                else
+                    throw new NoSuchElementException("");
+            } catch (NoSuchElementException e) {
+
+                if (!emailTemplatesLink.isDisplayed()) {
+                    log_Info("Click on General Tab");
+                    getDriver().waitForelementToBeClickable(adminGeneralLink);
+                    adminGeneralLink.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("General tab clicked");
+
+                    log_Info("Click on Email Templates tab");
+                    getDriver().waitForelementToBeClickable(emailTemplatesLink);
+                    Thread.sleep(5000);
+                    emailTemplatesLink.click();
+                    log_Info("Clicked on Email Templates tab");
+                }
+            }
             return new EmailTemplatePage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
@@ -169,11 +274,33 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToCaseSettingsPage() throws Exception {
         try {
-            getSession().log_Info("Navigate to 'Case Settings' Page");
-            getDriver().waitForelementToBeClickable(caseSettingsLink);
-            caseSettingsLink.click();
-            getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Navigated to 'Case Settings' Page");
+
+            try {
+                   if(caseSettingsLink.isDisplayed()) {
+                       log_Info("Click on Project Settings Template");
+                       getDriver().waitForelementToBeClickable(caseSettingsLink);
+                       Thread.sleep(5000);
+                       caseSettingsLink.click();
+                       log_Info("Clicked on Project Settings Template");
+                   }else
+                       throw new NoSuchElementException("");
+            } catch (NoSuchElementException e) {
+
+                if (!caseSettingsLink.isDisplayed()) {
+
+                    log_Info("Click on General Tab");
+                    getDriver().waitForelementToBeClickable(adminGeneralLink);
+                    adminGeneralLink.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("General tab clicked");
+
+                    log_Info("Click on Project Settings Template");
+                    getDriver().waitForelementToBeClickable(caseSettingsLink);
+                    Thread.sleep(5000);
+                    caseSettingsLink.click();
+                    log_Info("Clicked on Project Settings Template");
+                }
+            }
             return new CaseSettingsPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
@@ -183,11 +310,34 @@ public class AdminLeftMenu extends LiglBasePage {
 
     public ILiglPage navigateToLookupManagerPage() throws Exception {
         try {
-            getSession().log_Info("Navigate to 'Lookup Manager' Page");
-            getDriver().waitForelementToBeClickable(lookupManagerLink);
-            lookupManagerLink.click();
-            getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Navigated to 'Lookup Manager' Page");
+
+            try {
+                if (lookupManagerLink.isDisplayed()) {
+
+                    log_Info("Click on lookup manager");
+                    getDriver().waitForelementToBeClickable(lookupManagerLink);
+                    Thread.sleep(5000);
+                    lookupManagerLink.click();
+                    log_Info("Clicked on lookup manager tab");
+                }
+                else
+                    throw new NoSuchElementException("");
+            } catch (NoSuchElementException e) {
+
+                if (!lookupManagerLink.isDisplayed()) {
+                    log_Info("Click on General Tab");
+                    getDriver().waitForelementToBeClickable(adminGeneralLink);
+                    adminGeneralLink.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("General tab clicked");
+
+                    log_Info("Click on lookup Manager tab");
+                    getDriver().waitForelementToBeClickable(lookupManagerLink);
+                    Thread.sleep(5000);
+                    lookupManagerLink.click();
+                    log_Info("Clicked on lookup manager tab");
+                }
+            }
             return new LookupManagerPage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
@@ -276,44 +426,5 @@ public class AdminLeftMenu extends LiglBasePage {
             throw new Exception("Navigate To Manage Display Content Page Failed", ex);
         }
     }
-
-    public ILiglPage navigateToUserAndRolesPage() throws Exception {
-        try {
-
-            try {
-                if (UsersRolesLink.isDisplayed()) {
-
-                    log_Info("Click on users and roles");
-                    getDriver().waitForelementToBeClickable(UsersRolesLink);
-                    Thread.sleep(5000);
-                    UsersRolesLink.click();
-                    log_Info("Clicked on users and roles tab");
-                }
-                else
-                    throw new NoSuchElementException("");
-            } catch (NoSuchElementException e) {
-
-                if (!UsersRolesLink.isDisplayed()) {
-                    log_Info("Click on General Tab");
-                    getDriver().waitForelementToBeClickable(adminGeneralLink);
-                    adminGeneralLink.click();
-                    Thread.sleep(5000);
-                    getSession().log_Pass("General tab clicked");
-
-                    log_Info("Click on users and roles tab");
-                    getDriver().waitForelementToBeClickable(UsersRolesLink);
-                    Thread.sleep(5000);
-                    UsersRolesLink.click();
-                    log_Info("Clicked on users and roles tab");
-                }
-            }
-            return new UsersAndRolesPage();
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("Navigate To User And Roles Failed", ex);
-        }
-    }
-
-
 
 }

@@ -28,14 +28,15 @@ public class TC_53633_VerifyApprovingCaseSingleApprovalType extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"),data.get("EntityEntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToSecurityPage().validateCaseNotinitiatedState()
                     .sendingCaseForSingleApproval(data.get("BatchNAME"), data.get("USER"), data.get("EMAIL") )
                     .getHeader().goToApprovalPage().approvingCaseSingleApprover(data.get("CaseNameApprove"))
                     .getHeader().goToCasePage().searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToSecurityPage().verifyingApproveStatus();
+                    .getLeftMenu().goToSecurityPage().verifyingApproveStatus()
+                    .logout();
 
 
 

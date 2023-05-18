@@ -11,10 +11,10 @@ package com.ligl.DataManagement;
 
         import java.util.Hashtable;
 
-public class Retain_Config_TC extends TestBase {
+public class TC_GSuite_Preservation_WhenEditFirstLHN_RetainForFirstTime extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData" , description = "DataManagement")
-    public void Retain_Config_TC(Hashtable<String, String> data) throws Exception {
+    public void TC_GSuite_Preservation_WhenEditFirstLHN_RetainForFirstTime(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -59,8 +59,8 @@ public class Retain_Config_TC extends TestBase {
                     .checkingRetainRecordAddedPrevGrid(data.get("GMail_Cust_FullName"),data.get("GMail_DataSource"),data.get("LockCompletedStatus"),data.get("LockNotInitiateStatus"),data.get("PreviuosLHLDR"),data.get("PreviuosLHLKW"),data.get("LatestLHLDR"),data.get("LatestLHLKW"));
 
         } catch (Exception ex) {
-            session.log_Error("Retain_Config_TC Failed");
-            throw new Exception("Retain_Config_TC Failed", ex);
+            session.log_Error("TC_GSuite_Preservation_WhenEditFirstLHN_RetainForFirstTime Failed");
+            throw new Exception("TC_GSuite_Preservation_WhenEditFirstLHN_RetainForFirstTime Failed", ex);
         } finally {
             session.end();
         }

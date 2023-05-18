@@ -26,13 +26,12 @@ public class TC_44284_SendCaseForApproval_Test extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
-                    .searchcase(data.get("CaseName"))
+                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage()
                     .sendCaseForApproval(data.get("BatchName"),data.get("AppTemp"),data.get("AppUserName"))
-                    .getHeader().goToApprovalPage()
-                    .selectRecordInApprovalRequestsGrid(data.get("BatchName"))
-                    .approveCase(data.get("CaseBatchName"));
+                    .approvalHistoryCheck(data.get("Username"),"Pending Approval")
+                    .logout();
 
         }
         catch (Exception ex){

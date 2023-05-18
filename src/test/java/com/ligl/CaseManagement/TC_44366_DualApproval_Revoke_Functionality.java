@@ -27,19 +27,21 @@ public class TC_44366_DualApproval_Revoke_Functionality extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
-                    .searchcase("QA_CheckDueDate_Feb19")
-                    .GoToCase("QA_CheckDueDate_Feb19")
+                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .searchcase(data.get("CaseName"))
+                    .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToSecurityPage()
                     .revokeCase()
                     .approvalHistoryCheck(data.get("Username1"),"Not Initiated")
                     .getHeader().logout()
-                    .login(data.get("Username1"), data.get("Password1"),data.get("Entity"))
-                    .searchcase("QA_CheckDueDate_Feb19")
-                    .GoToCase("QA_CheckDueDate_Feb19")
+                    .navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username1"), data.get("Password1"),data.get("Entity"))
+                    .searchcase(data.get("CaseName"))
+                    .GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToSecurityPage()
-                    .approvalHistoryCheck(data.get("Username1"),"Not Initiated");
+                    .approvalHistoryCheck(data.get("Username1"),"Not Initiated")
+                    .logout();
         }catch (Exception ex){
             session.log_Error("TC_44366_DualApproval_Revoke_Functionality Failed");
             throw new Exception("Exception in TC_44366_DualApproval_Revoke_Functionality", ex);

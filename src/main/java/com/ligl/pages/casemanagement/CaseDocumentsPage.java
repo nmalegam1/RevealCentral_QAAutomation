@@ -113,6 +113,7 @@ public class CaseDocumentsPage extends LiglBaseSessionPage {
     public  ILiglPage datesIssuedFields(String issuedBy,String receivedBy,String issuedDate,String receivedDate) throws Exception{
         try {
             log_Info("datesIssuedFields() Started");
+            Thread.sleep(2000);
             EditBtn.click();
             boolean IB = IssuedBy.isEnabled();
             Boolean ID = IssuedDate.isEnabled();
@@ -127,15 +128,10 @@ public class CaseDocumentsPage extends LiglBaseSessionPage {
             System.out.println(IBY + " ," + IDY + ", " + RBY + "," + RDY);
             IssuedBy.sendKeys(issuedBy);
             ReceivedBy.sendKeys(receivedBy);
-            IssuedDate.click();
-            PrevMonth.click();
-            //PrevMonth.click();
             String issuedDateNew=issuedDate.replace("-","");
-            getCurrentDriver().findElement(By.xpath("//button[@aria-label='"+issuedDateNew+"']")).click();
-            ReceivedDate.click();
-            //PrevMonth.click();
+            IssuedDate.sendKeys(issuedDateNew);
             String receivedDateNew=receivedDate.replace("-","");
-            getCurrentDriver().findElement(By.xpath("//button[@aria-label='"+receivedDateNew+"']")).click();
+            ReceivedDate.sendKeys(receivedDateNew);
             UpdateBtn.click();
             log_Pass("Details Updated Successfully");
             return new CaseDocumentsPage();
@@ -151,6 +147,7 @@ public class CaseDocumentsPage extends LiglBaseSessionPage {
     public ILiglPage updateInEditDocument(String newDesc) throws Exception {
         try {
             log_Info("updateInEditDocument() Started");
+            Thread.sleep(3000);
             EditBtn.click();
             NoBtn.click();
             Description.clear();

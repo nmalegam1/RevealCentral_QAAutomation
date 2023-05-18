@@ -41,7 +41,8 @@ public class TC_57286_56639_NotesCreateEditDeleteforEnabledKeywords extends Test
                     .editNotes(data.get("EditRequestBy"),data.get("EditNotesContent"))
                     .validateDataInNotesGrid(data.get("FinalNotesContent"))
                     .NotesDelete(data.get("FinalNotesContent"))
-                    .validateDeletedNote(data.get("FinalNotesContent"));
+                    .validateDeletedNote(data.get("FinalNotesContent"))
+                    .logout();
 
 
         } catch (Exception ex) {

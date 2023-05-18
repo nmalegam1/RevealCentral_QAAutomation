@@ -300,7 +300,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     WebElement NoOfDays;
     @FindBy(id = "legal-hold-conguration-component-btn")
     WebElement DateRangeNextbtn;
-    @FindBy(id = "keyWords")
+    @FindBy(id = "keywords")
     WebElement KeyWordsFields;
     @FindBy(id = "legal-hold-configuration-backlhnName-btn")
     WebElement KeyWordNextBtn;
@@ -791,7 +791,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     public ILiglPage createLHWith_KW_DR(String lhName, String custTemp, String startDate, String endDate, String keyword) throws Exception {
         try {
             log_Info("createLHWith_KW_DR() is Started");
-            Thread.sleep(10000);
+            Thread.sleep(5000);
             AddLHN.click();
             Thread.sleep(5000);
             LHNNameField.sendKeys(lhName);
@@ -3455,7 +3455,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Name Of The Legal Hold Given");
 
-            //getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3488,7 +3488,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             QuestionaireDrpDwn.sendKeys(Keys.ENTER);
             getSession().log_Pass(" Selected Questionaire Template Drop Down");
 
-            //getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3509,7 +3509,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");                               //1
 
-            //getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3531,7 +3531,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");
 
-           // getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3554,7 +3554,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             getSession().log_Pass("Next Button clicked");
 
 
-            //getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3575,7 +3575,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");
 
-            //getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3598,7 +3598,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");
 
-            //getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3620,7 +3620,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Next Button clicked");
 
-            //getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3650,8 +3650,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(3000);
             StakeHolderQuestionaireTemplate.sendKeys(Keys.ENTER);
             getSession().log_Pass("Selected StakeHolder Questionaire Template Drop Down");
-
-
 
 
             getDriver().waitUntilSpinnerIsClosed();
@@ -4538,6 +4536,41 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             throw new Exception("Check That Newly Created Questionnaire Is Displaying Failed", ex);
         }
     }
+// Creation of Legal hold without filters DR & KW
+    public ILiglPage createLHWithOut_KW_DR(String lhName, String custTemp) throws Exception {
+        try {
+            log_Info("createLHWithOut_KW_DR() is Started");
+            AddLHN.click();
+            Thread.sleep(5000);
+            LHNNameField.sendKeys(lhName);
+            LHNNextBtn.click();
+            Thread.sleep(2000);
+            CustNoticeTemp.click();
+            Thread.sleep(2000);
+            Search.sendKeys(custTemp);
+            Thread.sleep(2000);
+            Search.sendKeys(Keys.ENTER);
+            CustodianNextBtn.click();
+            Thread.sleep(2000);
+            StakeNextBtn.click();
+            Thread.sleep(2000);
+            DateRangeNextbtn.click();
+            Thread.sleep(2000);
+            KeyWordNextBtn.click();
+            Thread.sleep(2000);
+            RemainderNextBtn.click();
+            LHNSaveBtn.click();
+            Thread.sleep(15000);
+            log_Pass("Legal hold successfully created without filters");
+
+            return new LegalHoldPage();
+        } catch (Exception ex) {
+            log_Error("createLHWithOut_KW_DR() is Failed");
+            throw new Exception("Exception in createLHWithOut_KW_DR()", ex);
+        }
+    }
+
+
     public ILiglPage legalHoldApprovalIrrespectiveOfApprovalConfig(String LHName,String LHAction,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
         try{
             log_Info("legalHoldApprovalIrrespectiveOfApprovalConfig() Started");

@@ -28,7 +28,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     WebElement SendForApprovalBtn;
     @FindBy(id="chk-all-case-casecustodians")
     WebElement SelectAllCustodiansCheckBox;
-    @FindBy(id="SelectAll-input")
+    @FindBy(xpath="//label[@for='SelectAll-input']//span")
     WebElement SelectAllDSTsCheckBox;
     @FindBy(id="chk-all-case-casedateranges")
     WebElement SelectAllDateRangesCheckBox;
@@ -211,6 +211,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     public ILiglPage sendingCaseForApproval() throws Exception {
 
         try {
+
             // validating the case Status In Rejected/Approved State And Approving The Case
 
             log_Info("Check The Status Of Case , It Should Be In Rejected State");
@@ -280,6 +281,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             log_Pass("All Credentials Required for Approval are Given");
             log_Info("Click send for Approval Button");
             SendForApprovalBtn.click();
+            Thread.sleep(5000);
             log_Pass("Case Sent for Approval");
             return new SecurityPage();
         }catch (Exception ex){
@@ -305,8 +307,10 @@ public class SecurityPage extends LiglBaseSessionPage {
             NextBtn.click();
             SelectAllDSTsCheckBox.click();
             NextBtn.click();
+            Thread.sleep(3000);
             SelectAllDateRangesCheckBox.click();
             NextBtn.click();
+            Thread.sleep(3000);
             SelectAllKeywordsCheckBox.click();
             NextBtn.click();
             BatchName.sendKeys(BchName);
@@ -636,7 +640,7 @@ public class SecurityPage extends LiglBaseSessionPage {
         }
     }
 
-    // Verify The Approval History Of The Case By Assigned Approvals
+                // Verify The Approval History Of The Case By Assigned Approvals
 
     public ILiglPage verifyApprovalHistoryStatus(String AssignedUser1,String Status1,String AssignedUser2,String Status2) throws Exception {
 
@@ -1378,8 +1382,9 @@ public class SecurityPage extends LiglBaseSessionPage {
             Assert.assertEquals(username,newUsrName);
             log_Info("User Name Updated Properly");
             Thread.sleep(2000);
-            String status=ApprovalStatus.getText();
+            String status=getCurrentDriver().findElement(By.xpath("//form//section//div[@class='pull-left']//span")).getText();
             Assert.assertEquals(status,Status);
+            Thread.sleep(3000);
             log_Info("Approval Status is Updated to '"+status+"' successfully");
 
             return new SecurityPage();
@@ -1462,6 +1467,36 @@ public class SecurityPage extends LiglBaseSessionPage {
             throw new Exception("Exception From sendCaseForApproval()", ex);
         }
     }
+    /**
+     * Checking Approval Status and Approving Case if Not Intiated
+     * @param BchName
+     * @param Apptemp
+     * @param UserName
+     * @param CaseNameApprove
+     * @return
+     * @throws Exception
+     */
+    public ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
+    try{
+        log_Info("caseApprovalIrrespectiveOfApprovalConfig() Started");
+        if(CaseApprovalStatus.getText().equals("Approved"))
+            return new SecurityPage();
+        else if(CaseApprovalStatus.getText().equals("Not Initiated"))
+        {
+            //sendCaseForApprovalWithAllScope(BchName,Apptemp,UserName);
+            ApprovalPage ap=new ApprovalPage();
+            getHeader().goToApprovalPage();
+            ap.approvingRejectedCase(CaseNameApprove);
+            getHeader().viewCase();
+            return new CaseSummaryPage();
+        }
+        else
+            return new SecurityPage();
+    }catch (Exception ex){
+        log_Error("caseApprovalIrrespectiveOfApprovalConfig() is Failed");
+        throw new Exception("Exception in caseApprovalIrrespectiveOfApprovalConfig()",ex);
+    }
+}
 
 
 
@@ -1665,38 +1700,6 @@ public class SecurityPage extends LiglBaseSessionPage {
         } catch (Exception e) {
             log_Error(e.getMessage());
             throw new RuntimeException(e);
-        }
-    }
-
-
-    /**
-     * Checking Approval Status and Approving Case if Not Intiated
-     * @param BchName
-     * @param Apptemp
-     * @param UserName
-     * @param CaseNameApprove
-     * @return
-     * @throws Exception
-     */
-    public ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
-        try{
-            log_Info("checkApprovalConfStatus() Started");
-            if(CaseApprovalStatus.getText().equals("Approved"))
-                return new SecurityPage();
-            else if(CaseApprovalStatus.getText().equals("Not Initiated"))
-            {
-                sendCaseForApprovalWithAllScope(BchName,Apptemp,UserName);
-                ApprovalPage ap=new ApprovalPage();
-                getHeader().goToApprovalPage();
-                ap.approvingRejectedCase(CaseNameApprove);
-                getHeader().viewCase();
-                return new CaseSummaryPage();
-            }
-            else
-                return new SecurityPage();
-        }catch (Exception ex){
-            log_Error("checkApprovalConfStatus() is Failed");
-            throw new Exception("Exception in checkApprovalConfStatus()",ex);
         }
     }
 }

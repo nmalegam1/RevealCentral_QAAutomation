@@ -28,7 +28,7 @@ public class TC_35057_VerifyFunctionalityOfCreatingKeywords extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
@@ -39,7 +39,8 @@ public class TC_35057_VerifyFunctionalityOfCreatingKeywords extends TestBase {
                     .getLeftMenu().navigateToKeyWordsPage()
                     .addKeywordsByBasic(data.get("Keywords1"))
                     .addKeywordsByBasic(data.get("Keywords1"))
-                    .validatingKeywordsByKeywordType();
+                    .validatingKeywordsByKeywordType()
+                    .logout();
 
 
         } catch (Exception ex) {

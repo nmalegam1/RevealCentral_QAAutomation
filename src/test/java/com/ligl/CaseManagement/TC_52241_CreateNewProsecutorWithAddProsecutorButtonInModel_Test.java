@@ -27,17 +27,19 @@ public class TC_52241_CreateNewProsecutorWithAddProsecutorButtonInModel_Test ext
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCourtPage()
+                    .addCourtToCase(data.get("CourtName"))
                     .searchCourt(data.get("CourtName"))
                     .navigateToProsecutor()
                     .createNewProsecutor(data.get("CounselFN"),data.get("CounselLN"))
                     .searchCourt(data.get("CourtName"))
                     .navigateToProsecutor()
-                    .validateProsecutorAddedToGrid(data.get("CounselFN"),data.get("CounselLN"));
+                    .validateProsecutorAddedToGrid(data.get("CounselFN"),data.get("CounselLN"))
+                    .logout();
 
         }catch (Exception | Error ex){
             throw new Exception("TC_52241_CreateNewProsecutorWithAddProsecutorButtonInModel_Test Failed");

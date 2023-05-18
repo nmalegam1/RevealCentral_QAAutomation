@@ -34,7 +34,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(id = "createNewContact")
     WebElement AddContactBtn;
 
-    @FindBy(xpath = "//button[@id='add-btn']")
+    @FindBy(id = "//button[@id='add-btn']")
     WebElement AddContact;
 
     @FindBy(id = "firstname")
@@ -115,7 +115,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(id = "third-party-add-counsel-inhouse-btn")
     WebElement CounselBtn;
 
-    @FindBy(xpath = "//span[contains(text(),'Contact')]/ancestor::div[@ref='eLabel']")
+    @FindBy(xpath = "//div[@col-id='ContactName']//div[@role='presentation']//span")
     WebElement ContactHeader;
 
     @FindBy(xpath = "//span[contains(text(),'Contact')]/ancestor::div[@ref='eLabel']/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
@@ -162,7 +162,9 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     WebElement Filter;
     @FindBy(css="input[placeholder='Filter...']")
     WebElement SearchBar;
-    @FindBy(xpath="//button[contains(text(),'In-House Counsel')]")
+    @FindBy(css="input[placeholder='Search']")
+    WebElement InhouseSearchBar;
+    @FindBy(id="inhouse-btn")
     WebElement AddInHouseCounsel;
     @FindBy(id="btn-addparty")
     WebElement CreatePartyBtn;
@@ -192,7 +194,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(PartyHeader).perform();
             log_Info("Hovered on Name Header");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
 
 
             log_Info("click on Party menu icon");
@@ -200,12 +202,15 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             log_Info("clicked on Party menu icon");
             log_Info("Click on Filter");
             getDriver().waitForelementToBeClickable(FilterIcon);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             FilterIcon.click();
             log_Info("Filter Clicked");
             getDriver().waitForelementToBeClickable(SearchBarIcon);
             Thread.sleep(5000);
             SearchBarIcon.sendKeys(PartyName);
+
+            getCurrentDriver().findElement(By.xpath("//div[@col-id='PartyName']//span[@title='"+PartyName+"']")).click();
+
             return new CaseOtherPartyPage();
 
         } catch (Exception | Error ex) {
@@ -238,59 +243,52 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage clickAddPartyBtns()throws Exception{
+        Thread.sleep(5000);
+        AddParty.click();
+        getSession().log_Pass("Clicked on Add Party Button");
+        log_Info("Click on Add Party Button Inside");
+
+        Thread.sleep(5000);
+        AddPropertyBtn.click();
+        getSession().log_Pass("Clicked on Add Party Button inside");
+        return new CaseOtherPartyPage();
+    }
     //  Process Of Creating New Party Through Other Party
 
     public ILiglPage addingNewParty(String PartyName, String PartyType, String Status, String Description) throws Exception {
 
         try {
 
-            log_Info("Click on Add Party Button");
-            getDriver().waitForelementToBeClickable(AddParty);
-            Thread.sleep(5000);
-            AddParty.click();
-            getSession().log_Pass("Clicked on Add Party Button");
-
-
-            log_Info("Click on Add Party Button Inside");
-            getDriver().waitForelementToBeClickable(AddPropertyBtn);
-            Thread.sleep(5000);
-            AddPropertyBtn.click();
-            getSession().log_Pass("Clicked on Add Party Button inside");
-
+            log_Info("addingNewParty() Started");
 
             log_Info("Click on Name TextBox In Party");
-            getDriver().waitForelementToBeClickable(NameParty);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             NameParty.sendKeys(PartyName);
             getSession().log_Pass("Clicked on Name TextBox In Party");
 
 
             log_Info("Click on Party Type Drop Down");
-            getDriver().waitForelementToBeClickable(PartyTypeDrpDwn);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             PartyTypeDrpDwn.sendKeys(PartyType);
-            Thread.sleep(3000);
+            Thread.sleep(2000);
             PartyTypeDrpDwn.sendKeys(Keys.ENTER);
             getSession().log_Pass("Clicked on Party Type Drop Down");
-            Thread.sleep(8000);
 
-            getDriver().waitForelementToBeClickable(PartyStatusDrpdwn);
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             PartyStatusDrpdwn.sendKeys(Status);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             PartyStatusDrpdwn.sendKeys(Keys.ENTER);
             getSession().log_Pass("Click on Status Drop Down");
 
             log_Info("Click on Description TextBox");
-            getDriver().waitForelementToBeClickable(DescriptionTextBox);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             DescriptionTextBox.sendKeys(Description);
             getSession().log_Pass("Clicked on Description TextBox");
 
 
             log_Info("Click On create button");
-            getDriver().waitForelementToBeClickable(CreateButton);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             CreateButton.click();
             log_Info("Clicked On create button");
             return new CaseOtherPartyPage();
@@ -303,7 +301,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
 
     // 4. Process Of Adding  Existing Party Through Other Party
 
-    public ILiglPage addingExistingParty(String PartyNameA,String PartyNew) throws Exception {
+    public ILiglPage addingExistingParty(String PartyName,String PartyType) throws Exception {
 
         try {
 
@@ -317,12 +315,12 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(PartyDropDown);
             Thread.sleep(5000);
             PartyDropDown.click();
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+PartyNameA+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//mat-option//span[contains(text(),'"+PartyType+"')]")).click();
             getSession().log_Pass("Clicked on Select Party Type Drop Down");
 
             Thread.sleep(5000);
-            //((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", NewParty);
-            getCurrentDriver().findElement(By.xpath("//div[contains(text(),'"+PartyNew+"')]")).click();
+            //((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", PartyNameA);
+            getCurrentDriver().findElement(By.xpath("//mat-radio-button//div[contains(text(),'"+PartyName+"')]")).click();
 
             log_Info("Click On Left Arrow Button ");
             getDriver().waitForelementToBeClickable(LeftArrow);
@@ -366,7 +364,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(AddContact);
             Thread.sleep(5000);
             AddContact.click();
-            getSession().log_Pass("Clicked On Add Contact icon ");
+            getSession().log_Pass("Clicked On Add Contact icon");
 
             log_Info("Click On First Name");
             getDriver().waitForelementToBeClickable(FirstNameBox);
@@ -1115,57 +1113,17 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
      * @return CaseOtherPartyPage
      * @throws Exception
      */
-    public ILiglPage createAndValidatePartyCreatedOrNot(String PartyName,String PartyType,String Desc) throws Exception {
+    public ILiglPage createAndValidatePartyCreatedOrNot(String PartyName,String PartyType,String Desc,String Status) throws Exception {
         try {
             log_Info("createAndValidatePartyCreatedOrNot() Started");
             AddParty.click();
             CreatePartyBtn.click();
-            addingNewParty(PartyName,PartyType,Desc);
+            addingNewParty(PartyName,PartyType,Status,Desc);
             validatePartyCreatedOrNot(PartyName);
             return new CaseOtherPartyPage();
         }catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("validatePartyCreatedOrNot() Failed", ex);
-        }
-    }
-    //  Process Of Creating New Party Through Other Party
-
-    public ILiglPage addingNewParty(String PartyName,String PartyType,String Description) throws Exception {
-
-        try {
-
-            log_Info("Click on Name TextBox In Party");
-            getDriver().waitForelementToBeClickable(NameParty);
-            Thread.sleep(5000);
-            NameParty.sendKeys(PartyName);
-            getSession().log_Pass("Clicked on Name TextBox In Party");
-
-
-            log_Info("Click on Party Type Drop Down");
-            getDriver().waitForelementToBeClickable(PartyTypeDrpDwn);
-            Thread.sleep(5000);
-            PartyTypeDrpDwn.sendKeys(PartyType);
-            Thread.sleep(2000);
-            PartyTypeDrpDwn.sendKeys(Keys.ENTER);
-            getSession().log_Pass("Clicked on Party Type Drop Down");
-
-
-            log_Info("Click on Description TextBox");
-            getDriver().waitForelementToBeClickable(DescriptionTextBox);
-            Thread.sleep(5000);
-            DescriptionTextBox.sendKeys(Description);
-            getSession().log_Pass("Clicked on Description TextBox");
-
-            log_Info("Click On create button");
-            getDriver().waitForelementToBeClickable(CreateButton);
-            Thread.sleep(5000);
-            CreateButton.click();
-            log_Info("Clicked On create button");
-            return new CaseOtherPartyPage();
-
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("addingNewParty() Failed", ex);
         }
     }
 
@@ -1246,7 +1204,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     public ILiglPage addExistingContact(String existingContact) throws Exception {
         try {
             log_Info("addExistingContact() Started");
-            AddContact.click();
+            AddContactBtn.click();
             ExistingContactsDropDown.click();
             Thread.sleep(3000);
             getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+existingContact+"')]")).click();
@@ -1280,6 +1238,8 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",AddInHouseCounsel);
             AddInHouseCounsel.click();
             Thread.sleep(5000);
+            InhouseSearchBar.sendKeys(Keys.ESCAPE);
+            Thread.sleep(3000);
             ExistingContDP.click();
             getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+ExistingInCounsel+"')]")).click();
             Thread.sleep(2000);

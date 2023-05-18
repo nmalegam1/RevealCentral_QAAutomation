@@ -11,10 +11,10 @@ package com.ligl.DataManagement;
 
         import java.util.Hashtable;
 
-public class TC_GSuite_SingleLHWithOnlyKeywordSingleOrMultiple extends TestBase {
+public class TC_GSuite_PreservationWithSingleLHWithOnlyKeywordMultiple extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData" ,description = "DataManagement")
-    public void TC_GSuite_SingleLHWithOnlyKeywordSingleOrMultiple(Hashtable<String, String> data) throws Exception {
+    public void TC_GSuite_PreservationWithSingleLHWithOnlyKeywordMultiple(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -36,6 +36,8 @@ public class TC_GSuite_SingleLHWithOnlyKeywordSingleOrMultiple extends TestBase 
                     .multipleCustodianSelect(data)
                     .getLeftMenu().navigateToDataSourcesPage()
                     .multipleDataSourceSelect(data)
+                    .getLeftMenu().goToSecurityPage()
+                    .caseApprovalIrrespectiveOfApprovalConfig(data.get("BchName"),data.get("Apptemp"),data.get("UserName"),data.get("CaseNameApprove"))
                     .getLeftMenu().goToLegalHoldPage()
                     .createLHWithOnlyKW(data.get("LHName"), data.get("CustTemp"), data.get("Keywords"))
                     .sendLHNToApproval(data.get("LHName"),data.get("LHAction"),data.get("EmailTemp"),data.get("ApproverUN"))
@@ -51,8 +53,8 @@ public class TC_GSuite_SingleLHWithOnlyKeywordSingleOrMultiple extends TestBase 
                     .goToDMLHScope()
                     .validateAndWaitForRecordsToCompleteLock(data.get("LockStatus"));
         } catch (Exception ex) {
-            session.log_Error("TC_GSuite_SingleLHWithOnlyKeywordSingleOrMultiple Failed");
-            throw new Exception("TC_GSuite_SingleLHWithOnlyKeywordSingleOrMultiple Failed", ex);
+            session.log_Error("TC_GSuite_PreservationWithSingleLHWithOnlyKeywordMultiple Failed");
+            throw new Exception("TC_GSuite_PreservationWithSingleLHWithOnlyKeywordMultiple Failed", ex);
         } finally {
             session.end();
         }

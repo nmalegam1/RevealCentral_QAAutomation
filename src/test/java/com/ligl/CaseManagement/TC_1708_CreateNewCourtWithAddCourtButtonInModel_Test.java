@@ -27,12 +27,12 @@ public class TC_1708_CreateNewCourtWithAddCourtButtonInModel_Test extends TestBa
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCourtPage()
-                    .createNewCourt(data.get("CourtName"), data.get("PartyType"), data.get("Description"))
+                    .createNewCourt(data.get("CourtName"), data.get("PartyType"), data.get("Description"),data.get("Status"))
                     .validateCourtAddedToGrid(data.get("CourtName"));
 
         } catch (Exception | Error ex) {

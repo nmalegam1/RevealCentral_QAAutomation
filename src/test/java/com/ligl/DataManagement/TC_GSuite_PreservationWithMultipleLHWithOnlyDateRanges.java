@@ -1,20 +1,20 @@
 package com.ligl.DataManagement;
 
-        import com.ligl.base.TestBase;
-        import com.ligl.base.pages.ILiglPage;
-        import com.ligl.dataprovider.TestDataProvider;
-        import com.ligl.pages.GoogleVaultPage;
-        import com.ligl.pages.LaunchPage;
-        import com.ligl.util.DataUtil;
-        import org.testng.SkipException;
-        import org.testng.annotations.Test;
+import com.ligl.base.TestBase;
+import com.ligl.base.pages.ILiglPage;
+import com.ligl.dataprovider.TestDataProvider;
+import com.ligl.pages.GoogleVaultPage;
+import com.ligl.pages.LaunchPage;
+import com.ligl.util.DataUtil;
+import org.testng.SkipException;
+import org.testng.annotations.Test;
 
-        import java.util.Hashtable;
+import java.util.Hashtable;
 
-public class TC_GSuite_SingleLHWithDRAndKeywordSingleOrMultiple extends TestBase {
+public class TC_GSuite_PreservationWithMultipleLHWithOnlyDateRanges extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData" ,description = "DataManagement")
-    public void TC_GSuite_SingleLHWithDRAndKeywordSingleOrMultiple(Hashtable<String, String> data) throws Exception {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData" , description = "DataManagement")
+    public void TC_GSuite_PreservationWithMultipleLHWithOnlyDateRanges(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -36,6 +36,8 @@ public class TC_GSuite_SingleLHWithDRAndKeywordSingleOrMultiple extends TestBase
                     .multipleCustodianSelect(data)
                     .getLeftMenu().navigateToDataSourcesPage()
                     .multipleDataSourceSelect(data)
+                    .getLeftMenu().goToSecurityPage()
+                    .caseApprovalIrrespectiveOfApprovalConfig(data.get("BchName"),data.get("Apptemp"),data.get("UserName"),data.get("CaseNameApprove"))
                     .getLeftMenu().goToLegalHoldPage()
                     .createLHWithOnlyDR(data.get("LHName"), data.get("CustTemp"), data.get("StartDate"), data.get("EndDate"))
                     .sendLHNToApproval(data.get("LHName"),data.get("LHAction"),data.get("EmailTemp"),data.get("ApproverUN"))
@@ -51,8 +53,8 @@ public class TC_GSuite_SingleLHWithDRAndKeywordSingleOrMultiple extends TestBase
                     .goToDMLHScope()
                     .validateAndWaitForRecordsToCompleteLock(data.get("LockStatus"));
         } catch (Exception ex) {
-            session.log_Error("TC_GSuite_SingleLHWithDRAndKeywordSingleOrMultiple Failed");
-            throw new Exception("TC_GSuite_SingleLHWithDRAndKeywordSingleOrMultiple Failed", ex);
+            session.log_Error("TC_GSuite_PreservationWithMultipleLHWithOnlyDateRanges Failed");
+            throw new Exception("TC_GSuite_PreservationWithMultipleLHWithOnlyDateRanges Failed", ex);
         } finally {
             session.end();
         }
