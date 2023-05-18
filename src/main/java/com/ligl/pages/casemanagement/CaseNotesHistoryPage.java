@@ -60,7 +60,7 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
     WebElement ChooseTOE;
     @FindBy(xpath = "//ancestor::div[@ref='eHeader']/span[2]")
     WebElement FilterTOE;
-    @FindBy(xpath = "//ancestor::div[@ref=\"eValue1\"]//input[@placeholder=\"Filter...\"]")
+    @FindBy(xpath = "//ancestor::div[@ref='eValue1']//input[@placeholder='Filter...']")
     WebElement SearchTOE;
     @FindBy(id= "selectType")
     public WebElement TypeofEventDrpdwn;

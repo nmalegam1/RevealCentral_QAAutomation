@@ -339,8 +339,6 @@ public class CaseCounselPage extends LiglBaseSessionPage {
 
             log_Info("Click and Select Law Firm Drop Down");
             Thread.sleep(5000);
-            SelectLawFirmDrpDwn.click();
-            Thread.sleep(5000);
             SelectLawFirmDrpDwn.sendKeys(OptionFromLawFirmDropDwn);
             Thread.sleep(5000);
             SelectLawFirmDrpDwn.sendKeys(Keys.ENTER);
@@ -465,8 +463,6 @@ public class CaseCounselPage extends LiglBaseSessionPage {
             getSession().log_Pass("Clicked on Add Outside Counsel Btn");
 
             log_Info("Click and Select Law Firm Drop Down");
-            Thread.sleep(5000);
-            SelectLawFirmDrpDwn.click();
             Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+PartyLawFirm+"')]")).click();
             getSession().log_Pass("Clicked and Selected Law Firm Drop Down");

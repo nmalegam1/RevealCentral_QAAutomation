@@ -26,8 +26,8 @@ public class DashboardPage extends LiglBaseSessionPage {
     @FindBy(id = "legal-hold-insights-tab")
     WebElement LegalHoldInsightsTab;
 
-    @FindBy(xpath = "//div[contains(text(),'Total Cases')]/ancestor::td//td[@class='tile-value']//div")
-    WebElement TotalCasesCount;
+    @FindBy(xpath = "//div[contains(text(),'Total Projects')]/ancestor::td//td[@class='tile-value']//div")
+    WebElement TotalProjectsCount;
 
     @FindBy(xpath = "//div[contains(text(),'Active  Custodians')]/ancestor::td//td[@class='tile-value']//div")
     WebElement ActiveCustodianCount;
@@ -205,8 +205,8 @@ public class DashboardPage extends LiglBaseSessionPage {
         try {
 
 
-            String TotalCases = TotalCasesCount.getText();
-            int TotalCASESCount = Integer.parseInt(TotalCases);
+            String TotalProjects = TotalProjectsCount.getText();
+            int TotalProjectsCounts = Integer.parseInt(TotalProjects);
 
             String TotalCustodians = ActiveCustodianCount.getText();
             int ActiveCUSTCount = Integer.parseInt(TotalCustodians);
@@ -224,7 +224,7 @@ public class DashboardPage extends LiglBaseSessionPage {
             String HostedExport = ExportSetHosted.getText();
             int HostedSet = Integer.parseInt(HostedExport);
 
-            log_Info("Total Number Of Cases  : " + TotalCASESCount);
+            log_Info("Total Number Of Projects  : " + TotalProjectsCounts);
             log_Info("Total Number Of Active Custodians  : " + ActiveCUSTCount);
             log_Info("Total Number Of Identified Datasources  : " + TotalIdentifiedDataSource);
             log_Info("Total Number Of Collected DataSources  : " + TotalCollectedDataSource);
@@ -248,10 +248,10 @@ public class DashboardPage extends LiglBaseSessionPage {
                     .getHeader().clearCaseFunctionality()
                     .getHeader().navigateToDashboardPage().clickOnGlobalInsightsTab();
 
-            String AfterTotalCases = TotalCasesCount.getText();
-            int AfterTotalCASESCount = Integer.parseInt(AfterTotalCases);
+            String AfterTotalProjects = TotalProjectsCount.getText();
+            int AfterTotalProjectsCount = Integer.parseInt(AfterTotalProjects);
 
-            log_Info("Total Number Of Active Cases  : " + AfterTotalCASESCount);
+            log_Info("Total Number Of Active Projects  : " + AfterTotalProjectsCount);
 
             String AfterTotalCustodians = ActiveCustodianCount.getText();
             int AfterActiveCUSTCount = Integer.parseInt(AfterTotalCustodians);
@@ -315,8 +315,8 @@ public class DashboardPage extends LiglBaseSessionPage {
         try {
 
 
-            String TotalCases = TotalCasesCount.getText();
-            int TotalCASESCount = Integer.parseInt(TotalCases);
+            String TotalProjects = TotalProjectsCount.getText();
+            int TotalProjectsCounts = Integer.parseInt(TotalProjects);
 
             String TotalCustodians = ActiveCustodianCount.getText();
             int ActiveCUSTCount = Integer.parseInt(TotalCustodians);
@@ -334,7 +334,7 @@ public class DashboardPage extends LiglBaseSessionPage {
             String TotalRemainder = TotalRemainderCount.getText();
             int TotalRemaindercount = Integer.parseInt(TotalRemainder);
 
-            log_Info("Total Number Of Cases  : " + TotalCASESCount);
+            log_Info("Total Number Of Projects  : " + TotalProjectsCounts);
             log_Info("Total Number Of Active Custodians  : " + ActiveCUSTCount);
             log_Info("Total Number Of Datasources  : " + TotalDataSourcecount);
             log_Info("Total Number Of LHN count  : " + TotalLHNcount);
@@ -469,8 +469,8 @@ public class DashboardPage extends LiglBaseSessionPage {
         try {
 
 
-            String TotalCases = TotalCasesCount.getText();
-            int TotalCASESCount = Integer.parseInt(TotalCases);
+            String TotalProjects = TotalProjectsCount.getText();
+            int TotalProjectsCounts = Integer.parseInt(TotalProjects);
 
             String TotalCustodians = ActiveCustodianCount.getText();
             int ActiveCUSTCount = Integer.parseInt(TotalCustodians);
@@ -490,7 +490,7 @@ public class DashboardPage extends LiglBaseSessionPage {
 
 
 
-            log_Info("Total Number Of Cases  : " + TotalCASESCount);
+            log_Info("Total Number Of Projects  : " + TotalProjectsCounts);
             log_Info("Total Number Of Active Custodians  : " + ActiveCUSTCount);
             log_Info("Total Number Of Datasources Identified  : " + TotalIdentifiedDataSourcecount);
             log_Info("Total Number Of Datasources Collected  : " + TotalCollectedDataSourcecount);
@@ -717,32 +717,32 @@ public class DashboardPage extends LiglBaseSessionPage {
         }
     }
 
-    public ILiglPage validateUserAccessCasesCountWhenUACsetToFalse(String USERname,String PASSword,String ENTITYSelection,String Title) throws Exception{
+    public ILiglPage validateUserAccessProjectsCountWhenUACsetToFalse(String USERname,String PASSword,String ENTITYSelection,String Title) throws Exception{
 
         try {
 
 
-            String TotalCasesEDISC = TotalCasesCount.getText();
-            int EDISCTotalCASESCount = Integer.parseInt(TotalCasesEDISC);
+            String TotalProjectsEDISC = TotalProjectsCount.getText();
+            int EDISCTotalProjectsCount = Integer.parseInt(TotalProjectsEDISC);
 
-            log_Info("Total Number Of Cases  : " + EDISCTotalCASESCount);
+            log_Info("Total Number Of Projects  : " + EDISCTotalProjectsCount);
 
             getHeader().logout()
                     .login(USERname,PASSword,ENTITYSelection)
                     .getHeader().navigateToDashboardPage()
                     .validateDashBoardPageURL(Title);
 
-            String TotalCasesSUPER = TotalCasesCount.getText();
-            int SUPERTotalCASESCount = Integer.parseInt(TotalCasesSUPER);
+            String TotalProjectsSUPER = TotalProjectsCount.getText();
+            int SUPERTotalProjectsCount = Integer.parseInt(TotalProjectsSUPER);
 
-            log_Info("Total Number Of Cases  : " + SUPERTotalCASESCount);
+            log_Info("Total Number Of Projects  : " + SUPERTotalProjectsCount);
 
 
             try {
 
-                if (EDISCTotalCASESCount == SUPERTotalCASESCount) {
+                if (EDISCTotalProjectsCount == SUPERTotalProjectsCount) {
 
-                    log_Pass("Total Count Of Cases In EDISC User And SUPER user Are EQUAL ");
+                    log_Pass("Total Count Of Projects In EDISC User And SUPER user Are EQUAL ");
                 }
             }
             catch(Exception e) {
@@ -753,7 +753,7 @@ public class DashboardPage extends LiglBaseSessionPage {
 
         }catch (Exception | Error ex){
             log_Error(ex.getMessage());
-            throw new Exception("validateUserAccessCasesCountWhenUACsetToFalse() Failed ", ex);
+            throw new Exception("validateUserAccessProjectsCountWhenUACsetToFalse() Failed ", ex);
         }
     }
 }

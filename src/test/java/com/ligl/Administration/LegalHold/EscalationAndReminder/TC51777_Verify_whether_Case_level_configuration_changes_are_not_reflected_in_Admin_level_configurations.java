@@ -25,8 +25,9 @@ public class TC51777_Verify_whether_Case_level_configuration_changes_are_not_ref
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     //Case level configuration
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("EmailId"), data.get("Password"), data.get("Entity"))
+                  /*  .navigateSSOLoginPage()
+                    .SSOLogin(data.get("EmailId"), data.get("Password"), data.get("Entity"))*/
+                    .login(data.get("EmailId"), data.get("Password"), data.get("Entity"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()

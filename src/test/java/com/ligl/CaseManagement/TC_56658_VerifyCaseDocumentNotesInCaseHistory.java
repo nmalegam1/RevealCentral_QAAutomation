@@ -26,7 +26,7 @@ public class TC_56658_VerifyCaseDocumentNotesInCaseHistory extends TestBase {
                 .login(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
                 .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                 .getLeftMenu()
-                .navigateToCaseDocumentsPage()
+                .navigateToProjectDocumentsPage()
                 .goToNotesPageFromDocuments()
                 .createNewNotes(data.get("RequestBy"), data.get("Notes"))
                 .getLeftMenu().navigateToNotesHistoryPage()

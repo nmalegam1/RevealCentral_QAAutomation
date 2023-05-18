@@ -13,7 +13,7 @@ import java.util.Hashtable;
 
 public class CaseDataSourcesPage extends LiglBaseSessionPage {
 
-    @FindBy(xpath = "//button[contains(text(),Save) and @type='submit']")
+    @FindBy(id = "data-sources-save-btn")
     WebElement SaveBtn;
 
     @FindBy(xpath = "//span[@title='Case Management']")

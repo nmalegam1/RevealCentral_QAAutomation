@@ -68,7 +68,7 @@ public class DMDSIPage extends LiglBaseSessionPage {
     WebElement CustomTab;
     @FindBy(id = "source-path")
     WebElement SourcePath;
-    @FindBy(id="datasourcetype-id")
+    @FindBy(id="dsi-datasource-type")
     WebElement CustomDSTDropdown;
     @FindBy(xpath = "//button[contains(text(),'Save')]")
     WebElement CustomSaveBtn;
@@ -87,6 +87,15 @@ public class DMDSIPage extends LiglBaseSessionPage {
     WebElement CustomKWDropdown;
     @FindBy(id="select-all-id")
     WebElement SelectAllCCDs;
+
+    @FindBy(id = "all-selected-records")
+    WebElement PleaseSelectDropdown;
+
+    @FindBy(xpath = "//select[@id='all-selected-records']//option[3]")
+    WebElement SelectedDropdown;
+
+    @FindBy(id = "selected-records-run")
+    WebElement SelectedRecordsRunBtn;
 
 
     public ILiglPage addDataSourceRecordToDSIGrid(String cust, String datasource, String DataHold,String DateRanges,String Keywords) throws Exception {
@@ -108,18 +117,20 @@ public class DMDSIPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(CustDropDown);
             Thread.sleep(5000);
             CustDropDown.sendKeys(Keys.ENTER);
+            Thread.sleep(5000);
             CustDropDown.sendKeys(cust);
 
             ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", GeneralBtn);
-            GeneralBtn.click();
-            log_Info("Clicked on Custodian Drop Down");
+           /* GeneralBtn.click();*/
+         /*   log_Info("Clicked on Custodian Drop Down");
 
-            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", GeneralBtn);
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", GeneralBtn);*/
 
             log_Info("Click on DataSource Drop Down");
             getDriver().waitForelementToBeClickable(DataSourceDropDown);
             Thread.sleep(5000);
             DataSourceDropDown.sendKeys(Keys.ENTER);
+            Thread.sleep(5000);
             DataSourceDropDown.sendKeys(datasource);
             log_Info("Clicked on DataSource Drop Down");
 
@@ -127,8 +138,8 @@ public class DMDSIPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(DataHoldScopeDD);
             Thread.sleep(5000);
             DataHoldScopeDD.sendKeys(Keys.ENTER);
+            Thread.sleep(5000);
             DataHoldScopeDD.sendKeys(DataHold);
-            GeneralBtn.click();
             log_Info("Clicked on DataHold Scope Drop Down");
 
 
@@ -146,7 +157,7 @@ public class DMDSIPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             KeyWordDrpDwn.sendKeys(Keywords);
             log_Info("Clicked on Keywords Drop Down");
-            
+
 
             log_Info("Click on Search Button");
             getDriver().waitForelementToBeClickable(SearchBtn);
@@ -161,12 +172,20 @@ public class DMDSIPage extends LiglBaseSessionPage {
             log_Info("Clicked on Selected Record Check Box");
 
 
-            log_Info("Click on Add Records To DSI Button");
-            getDriver().waitForelementToBeClickable(AddRecordToDSI);
+            log_Info("Click on Add To Identification DropDown");
+            getDriver().waitForelementToBeClickable(PleaseSelectDropdown);
             Thread.sleep(5000);
-            AddRecordToDSI.click();
+            PleaseSelectDropdown.click();
             Thread.sleep(5000);
-            log_Info("Clicked on Add Records To DSI Button");
+            SelectedDropdown.click();
+            Thread.sleep(5000);
+            log_Info("Clicked on Add To Identification DropDown");
+
+            log_Info("Click on Run Button");
+            getDriver().waitForelementToBeClickable(SelectedRecordsRunBtn);
+            Thread.sleep(5000);
+            SelectedRecordsRunBtn.click();
+            log_Info("Clicked on Run Button");
 
             return new DMDSIPage();
 

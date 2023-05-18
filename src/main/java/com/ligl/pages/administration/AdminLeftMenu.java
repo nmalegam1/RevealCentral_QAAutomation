@@ -2,6 +2,7 @@ package com.ligl.pages.administration;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.base.pages.LiglBasePage;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -109,22 +110,6 @@ public class AdminLeftMenu extends LiglBasePage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("Click On Admin LegalHold Link Failed", ex);
-        }
-    }
-
-
-    public ILiglPage navigateToUserAndRolesPage() throws Exception {
-        try {
-            getSession().log_Info("Navigate to 'Users And Roles' Page");
-            getDriver().waitForelementToBeClickable(UsersRolesLink);
-            UsersRolesLink.click();
-            getDriver().waitForAngularRequestsToComplete();
-            getDriver().waitUntilSpinnerIsClosed();
-            getSession().log_Pass("Navigated to 'Users And Roles' Page");
-            return new UsersAndRolesPage();
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("Navigate To User And Roles Failed", ex);
         }
     }
 
@@ -291,5 +276,44 @@ public class AdminLeftMenu extends LiglBasePage {
             throw new Exception("Navigate To Manage Display Content Page Failed", ex);
         }
     }
+
+    public ILiglPage navigateToUserAndRolesPage() throws Exception {
+        try {
+
+            try {
+                if (UsersRolesLink.isDisplayed()) {
+
+                    log_Info("Click on users and roles");
+                    getDriver().waitForelementToBeClickable(UsersRolesLink);
+                    Thread.sleep(5000);
+                    UsersRolesLink.click();
+                    log_Info("Clicked on users and roles tab");
+                }
+                else
+                    throw new NoSuchElementException("");
+            } catch (NoSuchElementException e) {
+
+                if (!UsersRolesLink.isDisplayed()) {
+                    log_Info("Click on General Tab");
+                    getDriver().waitForelementToBeClickable(adminGeneralLink);
+                    adminGeneralLink.click();
+                    Thread.sleep(5000);
+                    getSession().log_Pass("General tab clicked");
+
+                    log_Info("Click on users and roles tab");
+                    getDriver().waitForelementToBeClickable(UsersRolesLink);
+                    Thread.sleep(5000);
+                    UsersRolesLink.click();
+                    log_Info("Clicked on users and roles tab");
+                }
+            }
+            return new UsersAndRolesPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Navigate To User And Roles Failed", ex);
+        }
+    }
+
+
 
 }

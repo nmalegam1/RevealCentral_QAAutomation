@@ -156,7 +156,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             log_Info("Check Employee CheckBox");
             //getDriver().waitForelementToBeClickable(Employee);
-            getCurrentDriver().findElement(By.xpath("//span[@title='" + Email1 + "']/ancestor::div[@role='rowgroup']//div[@ref='eCheckbox']")).click();
+            getCurrentDriver().findElement(By.xpath("//span[@title='"+Email1+"']/ancestor::div[@role='row']//div[@col-id='FullName']//div[@ref='eCheckbox']")).click();
             log_Info("Employee checked");
 
             log_Info("Click Add To case Button");

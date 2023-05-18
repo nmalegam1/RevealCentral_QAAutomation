@@ -20,7 +20,7 @@ import java.util.Hashtable;
 //****************CasePage*******************
 
 public class DefaultLandingPage extends LiglBaseSessionPage {
-    @FindBy(xpath = "//button[@type=\"submit\"]")
+    @FindBy(xpath = "//button[@type='submit']")
     WebElement Notes_btn;
     @FindBy(id="sel-matter-type")
     WebElement CaseType;
@@ -63,7 +63,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(css = "input[placeholder='Filter...']")
     WebElement CaseSearchBar;
 
-    @FindBy(xpath = "//span[contains(text(),'Case Name')]/ancestor::div[@ref='eLabel']")
+    @FindBy(xpath = "//div[@col-id='Name']//span[@ref='eMenu']")
     WebElement CaseNameHeader;
     @FindBy(id="btn-save-and-add")
     WebElement SaveBtn;
@@ -454,13 +454,8 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     public ILiglPage searchcase(String CaseName) throws Exception {
 
         try {
-            waitForPageToLoad();
-            getDriver().waitUntilSpinnerIsClosed();
 
-            getDriver().waitUntilSpinnerIsClosed();
-            getDriver().waitForAngularRequestsToComplete();
 
-            getDriver().waitForelementToBeClickable(CaseNameHeader);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(CaseNameHeader).perform();
 

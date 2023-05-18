@@ -318,9 +318,8 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
     /**
      * SSO User creation
      */
-    public ILiglPage creatingSSOUser(
-            String email, String firstName, String middleName, String lastName, String role, String status
-    ) throws Exception {
+    public ILiglPage creatingSSOUser(String email, String firstName, String middleName, String lastName, String role, String status) throws Exception {
+
         try {
 
             log_Info("Enter the Email");

@@ -26,17 +26,11 @@ public class TC_60246_VerifyTheFieldValuesInEditRequest extends TestBase {
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .getHeader().goToGlobalRequestPage()
                     .searchForTheParticularTitleOfTheRequest(data.get("ReqTitle"))
                     .clickOnEditIconInTheGrid(data.get("ReqTitle"))
-                    .validateTheFieldValuesInAddRequestPopUp(data.get("ReqType"))
-                    .validateTheFieldValuesInAddRequestPopUp(data.get("ReqTitle"))
-                    .validateTheFieldValuesInAddRequestPopUp(data.get("ChooseCase"))
-                    .validateTheFieldValuesInAddRequestPopUp(data.get("ChooseUser"))
-                    .validateTheFieldValuesInAddRequestPopUp(data.get("Priority"))
-                    .validateTheFieldValuesInAddRequestPopUp(data.get("CompleteDate"));
+                    .validateTheFieldValuesInAddRequestPopUpThroughEditICON(data.get("ReqType"),data.get("ReqTitle"),data.get("ChooseCase"),data.get("ChooseUser"),data.get("Priority"),data.get("CompleteDate"));
 
 
         }catch (Exception ex){
