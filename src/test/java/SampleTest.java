@@ -35,12 +35,12 @@ public class SampleTest {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 		javascriptExecutor=(JavascriptExecutor) driver;
 		ngWebDriver=new NgWebDriver(javascriptExecutor);
-//		driver.get("https://rt.myligl.io/RT/#/login");
-//		String user="superuser1";
-//		String pw="Testing@123";
-		driver.get("https://in-opt-sit-01.in.vertical.com/SIT/#/login");
-		String user="nmalegamSITSuperUser";
-		String pw="Manual@456";
+		driver.get("https://rt.myligl.io/RT/#/login");
+		String user="superuser1";
+		String pw="Testing@123";
+//		driver.get("https://in-opt-sit-01.in.vertical.com/SIT/#/login");
+//		String user="nmalegamSITSuperUser";
+//		String pw="Manual@456";
 		ngWebDriver.waitForAngularRequestsToFinish();
 		WebElement username=driver.findElement(By.name("userName"));
 		WebElement password=driver.findElement(By.name("password"));
