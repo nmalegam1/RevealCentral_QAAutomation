@@ -28,7 +28,29 @@ public interface IWebConnector{
 	void validateLogin();
 	ILiglPage validateElementPresence(By locator);
 	void waitForAngularRequestsToComplete();
-
+	void waitUntilSpinnerIsClosed();
 	void waitForVisibilityOfElementLocated(By locator);
 	void waitForelementToBeClickable(WebElement element);
+
+	/*****************************************************************************/
+
+	void scrollToView(WebElement element) throws Exception;
+	void waitForMoveToElement(WebElement element) throws Exception;
+	WebElement customXpathBasedOnTextValue(String textValue) throws Exception;
+
+	void moveToRightInAngularTable(String number) throws Exception;
+	WebElement checkTheCheckBox(String textValue) throws Exception;
+
+	int maximumValueShouldNotExceed20Digits(String a1) throws Exception;
+
+	String removeSpecialCharacter(String convertString) throws Exception;
+
+	/******************************Data Base**********************************************/
+	boolean isSubstring(String main, String sub);
+
+	String concat(String stringOne,String stringTwo);
+
+	String sqlQueryForEmailTracker(String email, String subject) throws Exception;
+
+	String sqlQueryForEmailStatusLookID(String parentID, String name);
 }

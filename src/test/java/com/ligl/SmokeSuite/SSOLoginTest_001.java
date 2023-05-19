@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class SSOLoginTest_001 extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Smoke")
     public void SSOLoginTest_001(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -25,7 +25,7 @@ public class SSOLoginTest_001 extends TestBase {
                     .openBrowser("chrome")
                     .navigateURL()
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"))
+                    .SSOLogin(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
                     .getHeader().logout();
         } catch (Exception ex) {
             session.log_Error("NormalLoginTest_001 Failed");

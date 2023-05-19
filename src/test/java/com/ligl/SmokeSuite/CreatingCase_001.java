@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class CreatingCase_001 extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "Smoke")
     public void CreatingCase_001(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());
@@ -24,7 +24,7 @@ public class CreatingCase_001 extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"))
+                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .createNewCase(data)
                     .getHeader()
                     .logout();

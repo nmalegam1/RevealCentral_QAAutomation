@@ -58,6 +58,7 @@ public class LiglDriver extends LiglValidationDriver {
 			if (bName.equalsIgnoreCase("chrome")) {
 				ChromeOptions opt = new ChromeOptions();
 				opt.addArguments("--disable-notifications");
+				opt.addArguments("--remote-allow-origins=*");
 				opt.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true); //SIT Access
 				opt.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS,true); //SIT Access
 				driver = new EventFiringWebDriver(new ChromeDriver(opt));
@@ -77,9 +78,8 @@ public class LiglDriver extends LiglValidationDriver {
 	}
 
 	public void navigate(String url) {
-		log("URL"+url );
+		log("URL: "+url );
 		driver.get(url);
-		
 	}
 
 	public void quit() {

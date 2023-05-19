@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="RequestTracker" parallel="tests" thread-count="3">
+    <test name="CheckWhetherRequestCreatorAbleToAssigneeRequestToUser">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_26844_CheckWhetherRequestCreatorAbleToAssigneeRequestToUser"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="VerifyListOfColumnsInRequestTrackerGrid">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_36689_VerifyListOfColumnsInRequestTrackerGrid"/>
+        </classes>
+    </test>
+    <test name="VerifyRequestCreationProcessByClickingAddRequestBtn">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_36481_VerifyRequestCreationProcessByClickingAddRequestBtn"/>
+        </classes>
+    </test>
+    <test name="CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProgress">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_36700_CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProgress"/>
+        </classes>
+    </test>
+    <test name="VerifyThatNoEditIsAllowedForTheUserWhenRequestStatusIsClosed">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_36703_VerifyThatNoEditIsAllowedForTheUserWhenRequestStatusIsClosed"/>
+        </classes>
+    </test>
+    <test name="CheckWhetherNotificationIsDisplayedInAlertNotificationWhenRequestAssignedToUser">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_37353_CheckWhetherNotificationIsDisplayedInAlertNotificationWhenRequestAssignedToUser"/>
+        </classes>
+    </test>
+    <test name="CheckWhetherNotificationRedirectsToRequestListPageWhenUserWillClickOnRequestAlertNotification">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_37354_CheckWhetherNotificationRedirectsToRequestListPageWhenUserWillClickOnRequestAlertNotification"/>
+        </classes>
+    </test>
+    <test name="CheckWhetherUserAbleToAssigneTheRequestToRole">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_37356_CheckWhetherUserAbleToAssigneTheRequestToRole"/>
+        </classes>
+    </test>
+    <test name="CheckThatAllTheAccessedUsersForTheCaseShouldHaveAccessToThatRequest">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_37357_CheckThatAllTheAccessedUsersForTheCaseShouldHaveAccessToThatRequest"/>
+        </classes>
+    </test>
+    <test name="CheckWhetherDropDownsAreSearchableInCreationOfRequest">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_50535_CheckWhetherDropDownsAreSearchableInCreationOfRequest"/>
+        </classes>
+    </test>
+    <test name="CheckWhetherRequestCreatorAbleToAddTheMessagesForNewStateRequest">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_51886_CheckWhetherRequestCreatorAbleToAddTheMessagesForNewStateRequest"/>
+        </classes>
+    </test>
+
+</suite> <!-- Suite -->
