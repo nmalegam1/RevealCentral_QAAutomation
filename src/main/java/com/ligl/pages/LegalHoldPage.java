@@ -485,6 +485,15 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[contains(text(),'Escalation Configurations')]")
     public WebElement escalationConfigurationsLink;
 
+    @FindBy(xpath = "//a[contains(text(),'Reminders and Escalations')]")
+    WebElement RELink;
+
+    @FindBy(xpath = "//div[@class='modal-content']//app-add-edit-lhn-reminders-escalations//button[@id='add-edit-case-cancel-btn']")
+    WebElement RECancelBtn;
+
+    @FindBy(xpath = "//div[@class='modal-content']//app-add-edit-lhn-reminders-escalations//button[@id='add-edit-case-save-btn']")
+    WebElement REDoneBtn;
+
     // Sending Legal Hold For Approval
 
     public ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException {
@@ -1585,24 +1594,25 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     public ILiglPage searchRequiredLegalHoldName(String LHname) throws Exception {
         try {
             log_Info("searchRequiredLegalHoldName() Started");
+            getDriver().waitForAngularRequestsToComplete();
             log_Info("Hover on Name Header");
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(LHNAME).perform();
             log_Info("Hovered on Name Header");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             log_Info("Click On Legal Hold Name Menu");
             LHNameMenu.click();
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             log_Info("Clicked On Legal Hold Name Menu");
             log_Info("Click on Filter");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             Filter.click();
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             log_Info("Filter Clicked");
             log_Info("Enter LH name In The Search Bar");
             Searchbar.sendKeys(LHname);
-            Thread.sleep(10000);
+            Thread.sleep(3000);
             log_Info("Entered LH name In The Search Bar");
             return new LegalHoldPage();
 
@@ -4709,6 +4719,92 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         }catch(Exception ex){
             log_Error("chooseCustodianQuestionnaireTemplate() is failed");
             throw new Exception("Exception in chooseCustodianQuestionnaireTemplate() ");
+        }
+    }
+   // ---------------------------------------------------------------------------------------------------------
+
+
+    public ILiglPage clickOnRemainderAndEscalationLink() throws Exception {
+
+        try {
+
+            log_Info("clickOnRemainderAndEscalationLink() Started");
+            log_Info("click on Remainder And Escalation Link");
+            getDriver().waitForelementToBeClickable(RELink);
+            Thread.sleep(2000);
+            RELink.click();
+            Thread.sleep(5000);
+            getSession().log_Pass("clicked on Remainder And Escalation Link");
+            getDriver().waitUntilSpinnerIsClosed();
+
+            return new LegalHoldPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnRemainderAndEscalationLink() Failed", ex);
+        }
+    }
+
+    public ILiglPage clickOnCancelButtonInRemainderandEscalationTab() throws Exception {
+
+        try {
+
+            log_Info("clickOnCancelButtonInRemainderandEscalationTab() Started");
+            log_Info("click on Cancel Button");
+            getDriver().waitForelementToBeClickable(RECancelBtn);
+            Thread.sleep(2000);
+            RECancelBtn.click();
+            Thread.sleep(5000);
+            getSession().log_Pass("clicked on Cancel Button");
+            getDriver().waitUntilSpinnerIsClosed();
+
+            return new LegalHoldPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnCancelButtonInRemainderandEscalationTab() Failed", ex);
+        }
+    }
+
+    public ILiglPage clickOnDoneButtonInRemainderandEscalationTab() throws Exception {
+
+        try {
+
+            log_Info("clickOnDoneButtonInRemainderandEscalationTab() Started");
+            log_Info("click on Done Button");
+            getDriver().waitForelementToBeClickable(REDoneBtn);
+            Thread.sleep(2000);
+            REDoneBtn.click();
+            Thread.sleep(5000);
+            getSession().log_Pass("clicked on Done Button");
+            getDriver().waitUntilSpinnerIsClosed();
+
+            return new LegalHoldPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnDoneButtonInRemainderandEscalationTab() Failed", ex);
+        }
+    }
+
+    public ILiglPage clickOnEditLinkInLHScreen() throws Exception {
+
+        try {
+
+            log_Info("clickOnEditLinkInLHScreen() Started");
+            log_Info("click on Edit Icon In LH");
+            getDriver().waitForelementToBeClickable(EditICON);
+            Thread.sleep(2000);
+            EditICON.click();
+            Thread.sleep(5000);
+            getSession().log_Pass("clicked on Edit Icon In LH");
+            getDriver().waitUntilSpinnerIsClosed();
+
+            return new LegalHoldPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnEditLinkInLHScreen() Failed", ex);
         }
     }
 }

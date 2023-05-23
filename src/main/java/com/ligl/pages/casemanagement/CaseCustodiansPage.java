@@ -152,7 +152,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             log_Info("Filter Clicked");
             Thread.sleep(5000);
             log_Info("Enter Employee");
-            Searchbar.sendKeys("Email1");
+            Searchbar.sendKeys(Email1);
             Thread.sleep(5000);
             log_Info("Check Employee CheckBox");
             //getDriver().waitForelementToBeClickable(Employee);

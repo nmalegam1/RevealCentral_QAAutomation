@@ -1173,5 +1173,14 @@ public interface ILiglPage {
     ILiglPage chooseStakeHolderQuestionnaireTemplate(String StakeHolderQueTemplate)throws Exception;
     ILiglPage chooseStakeHolderTemplate(String StakeHolderTemplate)throws Exception;
     ILiglPage chooseCustodianQuestionnaireTemplate(String CustodianQuestionaireTemplate)throws Exception;
+
+    ILiglPage clickOnEditLinkInLHScreen() throws Exception;
+
+    ILiglPage clickOnDoneButtonInRemainderandEscalationTab() throws Exception;
+
+    ILiglPage clickOnCancelButtonInRemainderandEscalationTab() throws Exception;
+
+    ILiglPage clickOnRemainderAndEscalationLink() throws Exception;
+
 }
 
