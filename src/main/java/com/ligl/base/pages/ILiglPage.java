@@ -1166,6 +1166,13 @@ public interface ILiglPage {
     ILiglPage goToIdentification() throws Exception;
     ILiglPage goToCollection() throws Exception;
     ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(String Status) throws Exception;
+    ILiglPage lhnSave()throws Exception;
+    ILiglPage addLHNWithMandatoryFields(String lhName, String custTemp)throws Exception;
+    ILiglPage lhnCancel()throws Exception;
+    ILiglPage lhnOnFlyEdit()throws Exception;
+    ILiglPage chooseStakeHolderQuestionnaireTemplate(String StakeHolderQueTemplate)throws Exception;
+    ILiglPage chooseStakeHolderTemplate(String StakeHolderTemplate)throws Exception;
+    ILiglPage chooseCustodianQuestionnaireTemplate(String CustodianQuestionaireTemplate)throws Exception;
 
     ILiglPage clickOnEditLinkInLHScreen() throws Exception;
 

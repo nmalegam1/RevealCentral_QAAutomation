@@ -1897,4 +1897,11 @@ public class LiglBasePage implements ILiglPage {
 	}
 
 	public ILiglPage createLHWithOnlyKW(String lhName, String custTemp, String Keywords) throws Exception{return  null;}
+	public ILiglPage lhnSave()throws Exception{return null;}
+	public ILiglPage addLHNWithMandatoryFields(String lhName, String custTemp)throws Exception{return null;}
+	public ILiglPage lhnCancel()throws Exception{return null;}
+	public ILiglPage lhnOnFlyEdit()throws Exception{return null;}
+	public ILiglPage chooseStakeHolderQuestionnaireTemplate(String StakeHolderQueTemplate)throws Exception{return null;}
+	public ILiglPage chooseStakeHolderTemplate(String StakeHolderTemplate)throws Exception{return null;}
+	public ILiglPage chooseCustodianQuestionnaireTemplate(String CustodianQuestionaireTemplate)throws Exception{return null;}
 }
