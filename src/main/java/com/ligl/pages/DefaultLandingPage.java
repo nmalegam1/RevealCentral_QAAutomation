@@ -50,7 +50,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     WebElement RegionText;
     @FindBy(id="select-priority")
     WebElement Priority;
-    @FindBy(xpath="//div[@id='select-priority-panel']//mat-option[2]")
+    @FindBy(xpath="//input[@placeholder='Search']")
     WebElement SelPriority;
     @FindBy(xpath = "//textarea[@id='input-description-2']")
     WebElement Desc;
@@ -422,7 +422,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(Priority);
             Priority.click();
             Thread.sleep(5000);
-            SelPriority.click();
+            SelPriority.sendKeys(data.get("Priority"));
+            Thread.sleep(2000);
+            SelPriority.sendKeys(Keys.ENTER);
             log_Pass("Priority Selected");
             Thread.sleep(3000);
 

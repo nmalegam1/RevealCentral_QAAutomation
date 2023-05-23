@@ -30,8 +30,9 @@ public class Case_Create_ApproveFor_OnPremDST extends TestBase {
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                   /* .navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))*/
                     .createNewCase(data)
                     .getLeftMenu()
                     .navigateToCustodiansPage()
@@ -41,14 +42,7 @@ public class Case_Create_ApproveFor_OnPremDST extends TestBase {
                     .addOnpremDataSource(data.get("DataSource"))
                     .getLeftMenu()
                     .goToSecurityPage()
-                    .clickOnSendForApprovalButton()
-                    .clickOnCustodianCheckBoxForApproval(data.get("Emp"))
-                    .clickOnNextButtonForApproval()
-                    .selectOnpremDataSourceForApproval(data.get("ApprovalDataSource"))
-                    .sendingCaseForApprovalAfterAddingScopeItems(data.get("BatchName"),data.get("UserName"),data.get("EmailTemp"))
-                    .getHeader()
-                    .goToApprovalPage()
-                    .approvingCaseSingleApprover(data.get("CaseNameApprove"))
+                    .caseApprovalIrrespectiveOfApprovalConfig(data.get("BatchName"),data.get("EmailTemp"),data.get("UserName"),data.get("CaseNameApprove"))
                     .logout();
 
         } catch (Exception ex) {

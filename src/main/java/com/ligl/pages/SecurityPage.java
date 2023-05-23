@@ -24,7 +24,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Approved')]")
     WebElement ApprovedStatus;
 
-    @FindBy(id= "btn-send-for-approval")
+    @FindBy(id= "send-approval-btn")
     WebElement SendForApprovalBtn;
     @FindBy(id="chk-all-case-casecustodians")
     WebElement SelectAllCustodiansCheckBox;
@@ -37,7 +37,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//section//div[@class='pull-left']//span")
     WebElement CaseApprovalStatus;
 
-    @FindBy(id = "send-approval-btn")
+    @FindBy(id = "btn-send-for-approval")
     WebElement SendApprovalBtn;
 
     @FindBy(xpath = "//span[contains(text(),' Pending Approval ')]")
@@ -302,6 +302,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             log_Info("Click send for Approval Button");
             SendApprovalBtn.click();
             log_Pass("Send Approval btn Clicked");
+            Thread.sleep(5000);
             SelectAllCustodiansCheckBox.click();
             log_Info("Click next");
             NextBtn.click();
@@ -1479,11 +1480,12 @@ public class SecurityPage extends LiglBaseSessionPage {
     public ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
     try{
         log_Info("caseApprovalIrrespectiveOfApprovalConfig() Started");
+        ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendApprovalBtn);
         if(CaseApprovalStatus.getText().equals("Approved"))
             return new SecurityPage();
         else if(CaseApprovalStatus.getText().equals("Not Initiated"))
         {
-            //sendCaseForApprovalWithAllScope(BchName,Apptemp,UserName);
+            sendCaseForApprovalWithAllScope(BchName,Apptemp,UserName);
             ApprovalPage ap=new ApprovalPage();
             getHeader().goToApprovalPage();
             ap.approvingRejectedCase(CaseNameApprove);
