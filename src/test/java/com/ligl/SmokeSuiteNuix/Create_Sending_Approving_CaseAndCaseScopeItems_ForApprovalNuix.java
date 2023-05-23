@@ -54,22 +54,7 @@ public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalNuix exte
                     .addKeywordsByBasic(data.get("Keywords2"))
                     .getLeftMenu()
                     .goToSecurityPage()
-                    .clickOnSendForApprovalButton()
-                    .clickOnCustodianCheckBoxForApproval(data.get("Emp1"))
-                    .clickOnCustodianCheckBoxForApproval(data.get("Emp2"))
-                    .clickOnNextButtonForApproval()
-                    .clickOnDataSourceCheckBoxForApproval(data.get("DataSource1"))
-                    .clickOnDataSourceCheckBoxForApproval(data.get("DataSource2"))
-                    .clickOnNextButtonForApproval()
-                    .clickOnDateRangesCheckBoxForApproval(data.get("DateRange1"))
-                    .clickOnDateRangesCheckBoxForApproval(data.get("DateRange2"))
-                    .clickOnNextButtonForApproval()
-                    .clickOnKeywordsCheckBoxForApproval(data.get("KeyWords1"))
-                    .clickOnKeywordsCheckBoxForApproval(data.get("KeyWords2"))
-                    .sendingCaseForApprovalAfterAddingScopeItems(data.get("BatchName"),data.get("UserName"),data.get("EmailTemp"))
-                    .getHeader()
-                    .goToApprovalPage()
-                    .approvingCaseSingleApprover(data.get("CaseNameApprove"))
+                    .caseApprovalIrrespectiveOfApprovalConfig(data.get("BatchName"),data.get("EmailTemp"),data.get("UserName"),data.get("CaseNameApprove"))
                     .logout();
 
         }catch (Exception ex){

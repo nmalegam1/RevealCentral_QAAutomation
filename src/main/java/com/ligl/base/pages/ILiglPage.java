@@ -1166,5 +1166,14 @@ public interface ILiglPage {
     ILiglPage goToIdentification() throws Exception;
     ILiglPage goToCollection() throws Exception;
     ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(String Status) throws Exception;
+
+    ILiglPage clickOnEditLinkInLHScreen() throws Exception;
+
+    ILiglPage clickOnDoneButtonInRemainderandEscalationTab() throws Exception;
+
+    ILiglPage clickOnCancelButtonInRemainderandEscalationTab() throws Exception;
+
+    ILiglPage clickOnRemainderAndEscalationLink() throws Exception;
+
 }
 

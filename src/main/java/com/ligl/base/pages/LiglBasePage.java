@@ -1837,6 +1837,23 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validateTheFieldValuesInAddRequestPopUpThroughEditICON(String REQtype,String REQtitle,String ChooseCASE,String chooseUSER,String PRIORITY,String DATE) throws Exception{
 		return null;
 	}
+
+	public ILiglPage clickOnEditLinkInLHScreen() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnDoneButtonInRemainderandEscalationTab() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnCancelButtonInRemainderandEscalationTab() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnRemainderAndEscalationLink() throws Exception{
+		return null;
+	}
+
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;
