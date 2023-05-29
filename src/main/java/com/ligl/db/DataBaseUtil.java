@@ -2,6 +2,7 @@ package com.ligl.db;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
+import com.ligl.pages.casemanagement.CaseSummaryPage;
 import org.testng.Assert;
 
 import java.io.IOException;
@@ -16,16 +17,15 @@ import java.sql.ResultSet;
 //Connection-(SIT)
 //DB-(IND/US/Master)
 //Query-Employee/User&Roles/Case
-//Columns(CreatedOnTime/SentOnTime/Status/Id/Content)
+//Columns(EmailTrackerID/Status/Content)
 
 //Store the id- and then Compare the Content
 //Store the id- wait until Status success and Compare with Email
 
 public class DataBaseUtil extends LiglBaseSessionPage {
     Connection connection = null;
-    ResultSet resultSet;
     Statement sqlStatement;
-    DatabaseMetaData databaseMetaData;
+    ResultSet resultSet;
 
     public void dataBaseConnection(String selectDB) throws SQLException {
         getSession().log_Info("Connect to SQL Data Base");
@@ -33,33 +33,32 @@ public class DataBaseUtil extends LiglBaseSessionPage {
             switch (getSession().getGlobalData("DB_Server")) {
                 case "SIT_DB":
                     if (selectDB.equalsIgnoreCase("entityDB")) {
+                        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                         switch (getSession().getGlobalData("SelectEntityDB")) {
                             case "DB_IND":
                                 System.out.println("IND");
-                                String serverName_IN = "jdbc:sqlserver://" + getSession().getGlobalData("SIT_DB_Server") + ";";
-                                String databaseName_IN = "databaseName=" + getSession().getGlobalData("DataBase_IND") + ";";
-                                String dataBase_URL_IN = serverName_IN + databaseName_IN + "integratedSecurity=true";
-                                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                                String serverName_SIT_IN = getSession().getGlobalData("SIT_DB_Server");
+                                String databaseName_SIT_IN = "databaseName=" + getSession().getGlobalData("DataBase_IND");
+                                String dataBase_URL_SIT_IN = "jdbc:sqlserver://" + serverName_SIT_IN + ";" + databaseName_SIT_IN + ";" + "integratedSecurity=true";
                                 getSession().log_Info("Get the Current SQL server url");
-                                connection = DriverManager.getConnection(dataBase_URL_IN);
-                                getSession().log_Pass("Connected to SIT Data Base and URl is " + dataBase_URL_IN);
+                                connection = DriverManager.getConnection(dataBase_URL_SIT_IN);
+                                getSession().log_Pass("Connected to SIT Data Base and URl is " + dataBase_URL_SIT_IN);
                                 break;
                             case "DB_US":
                                 System.out.println("US");
-                                String serverName_US = "jdbc:sqlserver://" + getSession().getGlobalData("SIT_DB_Server") + ";";
-                                String databaseName_US = "databaseName=" + getSession().getGlobalData("DataBase_US") + ";";
-                                String dataBase_URL_US = serverName_US + databaseName_US + "integratedSecurity=true";
-                                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                                String serverName_SIT_US = getSession().getGlobalData("SIT_DB_Server");
+                                String databaseName_SIT_US = "databaseName=" + getSession().getGlobalData("DataBase_US");
+                                String dataBase_URL_SIT_US = "jdbc:sqlserver://" + serverName_SIT_US + ";" + databaseName_SIT_US + ";" + "integratedSecurity=true";
                                 getSession().log_Info("Get the Current SQL server url");
-                                connection = DriverManager.getConnection(dataBase_URL_US);
-                                getSession().log_Pass("Connected to SIT Data Base and URl is " + dataBase_URL_US);
+                                connection = DriverManager.getConnection(dataBase_URL_SIT_US);
+                                getSession().log_Pass("Connected to SIT Data Base and URl is " + dataBase_URL_SIT_US);
                                 break;
                         }
                     } else if (selectDB.equalsIgnoreCase("masterDB")) {
-                        String serverName_SIT = "jdbc:sqlserver://" + getSession().getGlobalData("SIT_DB_Server") + ";";
-                        String databaseName_SIT = "databaseName=" + getSession().getGlobalData("DataBase_Master") + ";";
-                        String dataBase_URL_SIT = serverName_SIT + databaseName_SIT + "integratedSecurity=true";
                         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                        String serverName_SIT = getSession().getGlobalData("SIT_DB_Server");
+                        String databaseName_SIT = "databaseName=" + getSession().getGlobalData("DataBase_Master");
+                        String dataBase_URL_SIT = "jdbc:sqlserver://" + serverName_SIT + ";" + databaseName_SIT + ";" + "integratedSecurity=true";
                         getSession().log_Info("Get the Current SQL server url");
                         connection = DriverManager.getConnection(dataBase_URL_SIT);
                         getSession().log_Pass("Connected to SIT Data Base and URl is " + dataBase_URL_SIT);
@@ -95,16 +94,28 @@ public class DataBaseUtil extends LiglBaseSessionPage {
         return this;
     }
 
+    public ILiglPage closeTheDBConnection() throws SQLException {
+        try {
+            getSession().log_Info("Close the DB Connection");
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+            getSession().log_Pass("Closed the DB Connection");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return this;
+    }
+
     public ILiglPage getEmailDeliveryStatusFromDB() throws SQLException {
         try {
             if (connection != null) {
-
                 //Email Tracker ID
                 getSession().log_Info("Get Email Tracker ID");
                 while (resultSet.next()) {
                     getSession().setRegressionData("DB_EmailTrackerID", resultSet.getString("EmailTrackerID"));
                 }
-                getSession().log_Pass("Email Tracker ID is" + getSession().getRegressionData("DB_EmailTrackerID"));
+                getSession().log_Pass("Email Tracker ID is " + getSession().getRegressionData("DB_EmailTrackerID"));
 
                 getSession().log_Info("Execute the Query with Email Tracker ID");
                 resultSet = sqlStatement.executeQuery("SELECT * FROM VERTICAL.EMAILTRACKER WHERE EmailTrackerID = " + getSession().getRegressionData("DB_EmailTrackerID"));
@@ -112,6 +123,9 @@ public class DataBaseUtil extends LiglBaseSessionPage {
 
                 getSession().log_Info("Get Email Status");
                 while (resultSet.next()) {
+                    String es = resultSet.getString("EmailStatus");
+                    getSession().setRegressionData("DB_EmailStatus", es);
+
                     getSession().log_Info("Wait for Email Status");
                     for (int i = 1; i <= 200; i++) {//total wait 50 min
                         try {
@@ -128,8 +142,8 @@ public class DataBaseUtil extends LiglBaseSessionPage {
                             }
                             resultSet = sqlStatement.executeQuery("SELECT * FROM VERTICAL.EMAILTRACKER WHERE EmailTrackerID = " + getSession().getRegressionData("DB_EmailTrackerID"));
                             while (resultSet.next()) {
-                                String es = resultSet.getString("EmailStatus");
-                                getSession().setRegressionData("DB_EmailStatus", es);
+                                String emailStatus = resultSet.getString("EmailStatus");
+                                getSession().setRegressionData("DB_EmailStatus", emailStatus);
                             }
                         } catch (Exception ex) {
                             log_Error("Waiting for Email Status Failed");
@@ -161,7 +175,7 @@ public class DataBaseUtil extends LiglBaseSessionPage {
         return this;
     }
 
-    public ILiglPage getContentResultsfromDBEmailTracker() throws SQLException{
+    public ILiglPage getContentResultsfromDBEmailTracker() throws SQLException {
         try {
             getSession().log_Info("Get the Content Results");
             resultSet = sqlStatement.executeQuery("SELECT * FROM VERTICAL.EMAILTRACKER WHERE EmailTrackerID = " + getSession().getRegressionData("DB_EmailTrackerID"));
@@ -179,142 +193,5 @@ public class DataBaseUtil extends LiglBaseSessionPage {
         }
         return this;
     }
-
-
-
-    public ILiglPage validateUseRolesData() throws Exception {
-        try {
-            //Employee Full Name
-            getSession().log_Info("Check 'User Name' in ContentResults");
-            Assert.assertEquals((getDriver().isSubstring(getSession().getRegressionData("DB_ContentResults"), getSession().getRegressionData("TC12160_UserName"))), true);
-            getSession().log_Pass("'User Name' available in ContentResults");
-
-            //Employee Email id
-            getSession().log_Info("Check 'Password' in ContentResults");
-            Assert.assertEquals((getDriver().isSubstring(getSession().getRegressionData("DB_ContentResults"), getSession().getRegressionData("TC12160_Password"))), true);
-            getSession().log_Pass("'Password' available in ContentResults");
-
-            return this;
-        } catch (Exception exception) {
-            log_Error(exception.getMessage());
-            throw new Exception("Validate Use and Roles Data Failed", exception);
-        }
-    }
-
-    public ILiglPage validateSSOUserData(String intendeduser, String userName) throws Exception {
-        try {
-            //intendeduser
-            getSession().log_Info("Check 'intendeduser' in ContentResults");
-            Assert.assertEquals((getDriver().isSubstring(getSession().getRegressionData("DB_ContentResults"), intendeduser)), true);
-            getSession().log_Pass("'intendeduser' available in ContentResults");
-
-            //username
-            getSession().log_Info("Check 'username' in ContentResults");
-            Assert.assertEquals((getDriver().isSubstring(getSession().getRegressionData("DB_ContentResults"), userName)), true);
-            getSession().log_Pass("'username' available in ContentResults");
-            return this;
-        } catch (Exception e) {
-            e.getMessage();
-            throw new Exception("Validate SSO User Data Failed", e);
-        }
-    }
-
-    public ILiglPage validateEmpData(String custodianName, String emailID) throws Exception {
-        try {
-            //intendeduser
-            //Custodian Name
-            getSession().log_Info("Check 'Custodian Name' in ContentResults");
-            Assert.assertEquals((getDriver().isSubstring(getSession().getRegressionData("DB_ContentResults"), custodianName)), true);
-            getSession().log_Pass("'Custodian Name' available in ContentResults");
-
-            //Employee Email id
-            getSession().log_Info("Check 'Employee Email I'd' in ContentResults");
-            Assert.assertEquals((getDriver().isSubstring(getSession().getRegressionData("DB_ContentResults"), emailID)), true);
-            getSession().log_Pass("'Employee Email I'd' available in ContentResults");
-
-            //Action
-            getSession().log_Info("Check 'Action' in ContentResults");
-            String actValue = getSession().getRegressionData("DB_ContentResults");
-            if (actValue.equalsIgnoreCase("Added")) {
-                Assert.assertEquals(getDriver().isSubstring(getSession().getRegressionData("DB_ContentResults"), "Added"), true);
-                getSession().log_Pass("'Added' Action available in ContentResults");
-            } else if (actValue.equalsIgnoreCase("Edited")) {
-                Assert.assertEquals(getDriver().isSubstring(getSession().getRegressionData("DB_ContentResults"), "Edited"), true);
-                getSession().log_Pass("'Edited' Action available in ContentResults");
-            }
-
-            //workflowstatus
-            getSession().log_Info("Check 'WorkFlow Status' in ContentResults");
-            if (actValue.equalsIgnoreCase("Added")) {
-                Assert.assertEquals(getDriver().isSubstring(getSession().getRegressionData("DB_ContentResults"), "Added"), true);
-                getSession().log_Pass("'Added' 'WorkFlow Status available in ContentResults");
-            } else if (actValue.equalsIgnoreCase("Edited")) {
-                Assert.assertEquals(getDriver().isSubstring(getSession().getRegressionData("DB_ContentResults"), "Edited"), true);
-                getSession().log_Pass("'Edited' 'WorkFlow Status available in ContentResults");
-            }
-            //Entity
-            getSession().log_Info("Check 'Entity' in ContentResults");
-            if (actValue.equalsIgnoreCase("New")){
-                Assert.assertEquals(getDriver().isSubstring(getSession().getRegressionData("DB_ContentResults"), "New"), true);
-            getSession().log_Pass("'Entity' available in ContentResults");
-            }
-            return this;
-        } catch (Exception exception) {
-            log_Error(exception.getMessage());
-            throw new Exception("Validating Emp Data Failed", exception);
-        }
-    }
-
-    public ILiglPage closeTheDBConnection() throws SQLException {
-        try {
-            getSession().log_Info("Close the DB Connection");
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
-            getSession().log_Pass("Closed the DB Connection");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return this;
-    }
-
-
-
-    //38005	Users & Roles-Check whether email is triggered to user when new SSO user is created
-    public ILiglPage checkEmailTriggeredToNewSSOUserCreation() throws Exception {
-        try {
-
-            dataBaseConnection(getSession().getRegressionData("DB_Master"));
-            executeSQL_Query(getDriver().sqlQueryForEmailTracker(getSession().getRegressionData("TC37985_SSOEmail"),
-                    "SIT-New SSO user login created for {intendeduser} with username as  {username} "));
-            getEmailDeliveryStatusFromDB();
-            getContentResultsfromDBEmailTracker();
-            validateSSOUserData(getDriver().concat(getSession().getRegressionData("TC37985_FirstName"),
-                    getSession().getRegressionData("TC37985_LastName")), getSession().getRegressionData("TC37985_SSOEmail"));
-
-            return this;
-        } catch (Exception exception) {
-            getSession().log_Error("Check Email Triggered To New SSO User Creation Failed");
-            throw new Exception("Check Email Triggered To New SSO User Creation", exception);
-        }
-    }
-
-    //38627	Email Templates-Employee Added /Edited- Check whether all applicable parameters are replacing with actual values in mail
-    public ILiglPage checkAllParametersReplacingWithActualValueWhenEmployeeAdded()throws Exception{
-        try {
-            dataBaseConnection(getSession().getRegressionData("DB_Entity"));
-            executeSQL_Query(getDriver().sqlQueryForEmailTracker("ssivaraju@ligl.io",
-                    "SIT-{Entity} Employee {action} to Lilac. "));
-            getEmailDeliveryStatusFromDB();
-            getContentResultsfromDBEmailTracker();
-            validateEmpData(getDriver().concat(getSession().getRegressionData("TC33890_FirstName"),
-                    getSession().getRegressionData("TC33890_LastName")), getSession().getRegressionData("TC333890_SSOEmail"));
-            return this;
-        } catch (Exception exception) {
-            getSession().log_Error("Check All Parameters Replacing With Actual Value When Employee Added Failed");
-            throw new Exception("Check All Parameters Replacing With Actual Value When Employee Added Creation", exception);
-        }
-    }
-
 
 }

@@ -1115,4 +1115,78 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
         }
     }
 
+    /*****************************************DB related test**************************************************/
+
+    public ILiglPage createNewProjectWithAllFields(Hashtable<String,String> data) throws Exception{
+        try{
+            Thread.sleep(25555);
+            getDriver().waitUntilSpinnerIsClosed();
+            log_Info("Click Project Case Button");
+            getDriver().waitForelementToBeClickable(createCaseBtn);
+            createCaseBtn.click();
+            log_Info(data.toString());
+
+            log_Info("Enter Project Type");
+            wait(2);
+            getDriver().waitForelementToBeClickable(CaseType);
+            CaseType.sendKeys(Keys.ENTER, data.get("ProjectType"), Keys.ENTER);
+            getDriver().waitForAngularRequestsToComplete();
+
+            log_Info("Enter RoleType");
+            getDriver().waitForelementToBeClickable(RoleType);
+            RoleType.sendKeys(Keys.ENTER, data.get("Role"), Keys.ENTER);
+            getDriver().waitForAngularRequestsToComplete();
+
+            log_Info("Enter Project Name");
+            getDriver().waitForelementToBeClickable(CaseName);
+            //CaseName.sendKeys(data.get("ProjectName"));
+            CaseName.sendKeys("QA_Automation_DBProject_QA05");
+
+            log_Info("Enter Work Flow Template");
+            getDriver().waitForelementToBeClickable(WFT);
+            WFT.sendKeys(Keys.ENTER, data.get("WFT"), Keys.ENTER);
+            getDriver().waitForAngularRequestsToComplete();
+
+            log_Info("Enter Case Settings Template");
+            getDriver().waitForelementToBeClickable(CST);
+            CST.sendKeys(Keys.ENTER,data.get("ProjectSetTemp"), Keys.ENTER);
+            getDriver().waitForAngularRequestsToComplete();
+
+            log_Info("Enter Entity");
+            getDriver().waitForelementToBeClickable(Entity);
+            Entity.sendKeys(Keys.ENTER,data.get("Entity"),Keys.ENTER);
+            getDriver().waitForAngularRequestsToComplete();
+
+            log_Info("Enter Region");
+            getDriver().waitForelementToBeClickable(Region);
+            Region.sendKeys(Keys.ENTER, data.get("Region"), Keys.ENTER);
+
+            log_Info("Enter Description");
+            getDriver().waitForelementToBeClickable(Desc);
+            Desc.sendKeys(data.get("Description"));
+
+            log_Info("Enter Priority");
+            getDriver().waitForelementToBeClickable(Priority);
+            String priorityNew = getDriver().removeSpecialCharacter(data.get("Priority"));
+            Priority.sendKeys(Keys.ENTER, priorityNew, Keys.ENTER);
+            log_Pass("Priority Selected");
+            Thread.sleep(3000);
+
+            //Due Date
+            String dueDateNew = getDriver().removeSpecialCharacter(data.get("DueDate"));
+            getCurrentDriver().findElement(By.id("input-due-date")).sendKeys(dueDateNew);
+
+            log_Pass("All Mandatory Fields Are Entered");
+            log_Info("Click Save Button");
+            SaveBtn.click();
+
+            wait(5);
+            return new CaseSummaryPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("Create New Case With All Fields Failed", ex);
+        }
+    }
+
 }

@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import java.util.Hashtable;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
@@ -1497,7 +1498,38 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
             return new EmployeeMasterPage();
         } catch (Exception e) {
             log_Error(e.getMessage());
-            throw new Exception("Availablity Of Optionl Fields Failed", e);
+            throw new Exception("Availability Of Optionl Fields Failed", e);
+        }
+    }
+
+    public ILiglPage getFieldsDataFromEmployee(Hashtable<String, String> data) throws Exception{
+        try{
+            clickOnImport();
+            clickOnAddEmployeeButton();
+            createNewEmployee(data.get("EmpID"), data.get("FirstName"), data.get("MiddleName"), data.get("LastName"), data.get("Alias"),
+                    data.get("Department"), "","","","","", data.get("Status"),
+                    "", data.get("EmpEmail"),"","","","","","",
+                    "","","", data.get("AccountType"), "","","",
+                    "","","","","","","",
+                    "","","","","");
+
+            wait(2);
+            clickOnEmployee();
+            searchAndSelectTheEmployee(data.get("Alias"));
+
+            String firstName = firstNameTxt.getAttribute("value");
+            String middleName = middileNameTxt.getAttribute("value");
+            String lastName = lastNameTXt.getAttribute("value");
+            String employeeName = firstName+" "+ middleName+" "+lastName;
+            getSession().setRegressionData("get_EmployeeFullName", employeeName);
+            nextBtn.click();
+            getSession().setRegressionData("get_EmployeeEmailID", empEmailTxt.getAttribute("value"));
+            cancelBtn.click();
+            wait(2);
+            return new EmployeeMasterPage();
+        }catch (Exception e) {
+            log_Error(e.getMessage());
+            throw new Exception("get All Employee Fields Data Failed", e);
         }
     }
 
