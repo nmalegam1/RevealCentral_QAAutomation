@@ -658,7 +658,7 @@ public interface ILiglPage {
 
     ILiglPage clickOnNextBtn1() throws Exception;
 
-    ILiglPage enterCustodianNoticeTemplate(String CustodianTemplate, String CustodianQuestionaireTemplate) throws Exception;
+    ILiglPage enterCustodianNoticeTemplate(String CustodianTemplate) throws Exception;
 
     ILiglPage enterNameOfTheLH(String LegalHoldname) throws Exception;
 
@@ -1166,5 +1166,45 @@ public interface ILiglPage {
     ILiglPage goToIdentification() throws Exception;
     ILiglPage goToCollection() throws Exception;
     ILiglPage validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(String Status) throws Exception;
+    ILiglPage lhnSave()throws Exception;
+    ILiglPage addLHNWithMandatoryFields(String lhName, String custTemp)throws Exception;
+    ILiglPage lhnCancel()throws Exception;
+    ILiglPage lhnOnFlyEdit()throws Exception;
+    ILiglPage chooseStakeHolderQuestionnaireTemplate(String StakeHolderQueTemplate)throws Exception;
+    ILiglPage chooseStakeHolderTemplate(String StakeHolderTemplate)throws Exception;
+    ILiglPage chooseCustodianQuestionnaireTemplate(String CustodianQuestionaireTemplate)throws Exception;
+
+    ILiglPage clickOnEditLinkInLHScreen() throws Exception;
+
+    ILiglPage clickOnDoneButtonInRemainderandEscalationTab() throws Exception;
+
+    ILiglPage clickOnCancelButtonInRemainderandEscalationTab() throws Exception;
+
+    ILiglPage clickOnRemainderAndEscalationLink() throws Exception;
+
+    ILiglPage editLHName(String lhName) throws Exception;
+
+    ILiglPage clickOnPreservationScopeLink() throws Exception;
+
+    ILiglPage enterLHDateRanges(String startdate,String enddate) throws Exception;
+
+    ILiglPage enterLHKeywords(String KeyWORDS) throws Exception;
+
+    ILiglPage clickOnDoneBtnInPreservationScopeScreen() throws Exception;
+
+    ILiglPage creatingNewTemplateByOnFlyEdit(String NewtempName, String subject, String content,String LHname) throws Exception;
+
+    /******************************************************************DB******************************************************************/
+
+    public ILiglPage getCaseFieldsDataInCaseSummaryPage() throws Exception;
+
+    public ILiglPage sendAllForCaseApproval(String batchName, String emailTemp, String approverName) throws Exception;
+
+    public ILiglPage createNewProjectWithAllFields(Hashtable<String,String> data) throws Exception;
+
+    public ILiglPage getFieldsDataFromSSOUserPopUp(Hashtable<String, String> data) throws Exception;
+
+    public ILiglPage getFieldsDataFromEmployee(Hashtable<String, String> data) throws Exception;
+
 }
 

@@ -1035,7 +1035,7 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
-	public ILiglPage enterCustodianNoticeTemplate(String CustodianTemplate,String CustodianQuestionaireTemplate) throws Exception{
+	public ILiglPage enterCustodianNoticeTemplate(String CustodianTemplate) throws Exception{
 		return null;
 	}
 
@@ -1837,6 +1837,53 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validateTheFieldValuesInAddRequestPopUpThroughEditICON(String REQtype,String REQtitle,String ChooseCASE,String chooseUSER,String PRIORITY,String DATE) throws Exception{
 		return null;
 	}
+
+	public ILiglPage clickOnEditLinkInLHScreen() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnDoneButtonInRemainderandEscalationTab() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnCancelButtonInRemainderandEscalationTab() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnRemainderAndEscalationLink() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnPreservationScopeLink() throws Exception{
+		return null;
+	}
+
+	public ILiglPage enterLHDateRanges(String startdate,String enddate) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enterLHKeywords(String KeyWORDS) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnDoneBtnInPreservationScopeScreen() throws Exception{
+		return null;
+	}
+
+	public ILiglPage creatingNewTemplateByOnFlyEdit(String NewtempName, String subject, String content,String LHname) throws Exception{
+		return null;
+	}
+
+	/******************************************************************DB******************************************************************/
+	public ILiglPage getCaseFieldsDataInCaseSummaryPage() throws Exception{return null;}
+	public ILiglPage sendAllForCaseApproval(String batchName, String emailTemp, String approverName) throws Exception{
+		return null;
+	}
+	public ILiglPage createNewProjectWithAllFields(Hashtable<String,String> data) throws Exception{return null;}
+	public ILiglPage getFieldsDataFromSSOUserPopUp(Hashtable<String, String> data) throws Exception{return null;}
+
+	public ILiglPage getFieldsDataFromEmployee(Hashtable<String, String> data) throws Exception{return null;}
+
 	public void waitForPageToLoad(){
 		JavascriptExecutor js = (JavascriptExecutor)getCurrentDriver();
 		int i=1;
@@ -1880,4 +1927,15 @@ public class LiglBasePage implements ILiglPage {
 	}
 
 	public ILiglPage createLHWithOnlyKW(String lhName, String custTemp, String Keywords) throws Exception{return  null;}
+	public ILiglPage lhnSave()throws Exception{return null;}
+	public ILiglPage addLHNWithMandatoryFields(String lhName, String custTemp)throws Exception{return null;}
+	public ILiglPage lhnCancel()throws Exception{return null;}
+	public ILiglPage lhnOnFlyEdit()throws Exception{return null;}
+	public ILiglPage chooseStakeHolderQuestionnaireTemplate(String StakeHolderQueTemplate)throws Exception{return null;}
+	public ILiglPage chooseStakeHolderTemplate(String StakeHolderTemplate)throws Exception{return null;}
+	public ILiglPage chooseCustodianQuestionnaireTemplate(String CustodianQuestionaireTemplate)throws Exception{return null;}
+
+	public ILiglPage editLHName(String lhName) throws Exception{
+		return null;
+	}
 }

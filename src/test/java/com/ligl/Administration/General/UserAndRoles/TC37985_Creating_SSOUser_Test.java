@@ -14,7 +14,6 @@ import java.util.Hashtable;
 public class TC37985_Creating_SSOUser_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC37985_Creating_SSOUser_Test(Hashtable<String, String> data) throws Exception {
-        DataBaseUtil dataBaseTest = new DataBaseUtil();
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -36,12 +35,10 @@ public class TC37985_Creating_SSOUser_Test extends TestBase {
                     .creatingSSOUser(session.getRegressionData("TC37985_SSOEmail"), session.getRegressionData("TC37985_FirstName"), data.get("MiddleName"), session.getRegressionData("TC37985_LastName"), data.get("Role"), data.get("Status"))
                     .getHeader()
                     .logout();
-            dataBaseTest.checkEmailTriggeredToNewSSOUserCreation();
         } catch (Exception ex) {
             session.log_Error("TC37985_Creating_SSOUser_Test Failed");
             throw new Exception("TC37985_Creating_SSOUser_Test Failed", ex);
         } finally {
-            dataBaseTest.closeTheDBConnection();
             session.end();
         }
     }

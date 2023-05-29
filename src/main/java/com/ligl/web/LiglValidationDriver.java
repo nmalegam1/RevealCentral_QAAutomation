@@ -65,7 +65,6 @@ public abstract class LiglValidationDriver implements IWebConnector {
         wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='ag-overlay ag-hidden']")));
     }
 
-
     public ILiglPage validateElementNotPresence(By locator) {
 
         if (isElementPresent(locator))
@@ -195,8 +194,8 @@ public abstract class LiglValidationDriver implements IWebConnector {
         return main.contains(sub);
     }
 
-    public String concat(String stringOne, String stringTwo) {
-        String fullString = stringOne + " " + stringTwo;
+    public String concat(String stringOne, String stringTwo, String stringThree) {
+        String fullString = stringOne + stringTwo + stringThree;
         return fullString;
     }
 
@@ -214,5 +213,4 @@ public abstract class LiglValidationDriver implements IWebConnector {
         String sql2 = "select * from metadata.Lookup where Name like '%" + name + "%' and ParentID = " + parentID + "";
         return sql2;
     }
-
 }
