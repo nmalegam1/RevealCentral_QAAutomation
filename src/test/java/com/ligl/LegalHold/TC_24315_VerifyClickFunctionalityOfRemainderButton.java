@@ -34,7 +34,8 @@ public class TC_24315_VerifyClickFunctionalityOfRemainderButton extends TestBase
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
-                    .clickOnAddNewLegalHoldButton()
+                    .addLHNWithMandatoryFields(data.get("LHname"), data.get("CustodianNoticeTemplate"))
+                    .clickOnRemainderAndEscalationLink()
                     .clickOnRemainderButtonInRemainderConfigTab(data.get("LHname"), data.get("CustodianNoticeTemplate"),data.get("StakeHolderNoticeTemplate"));
 
 

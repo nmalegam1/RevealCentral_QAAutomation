@@ -35,7 +35,7 @@ public class ApprovalCheck_TC extends TestBase {
                     .clickOnAddNewLegalHoldButton()
                     .enterNameOfTheLH(data.get("LHName"))
                     .clickOnNextBtn1()
-                    .enterCustodianNoticeTemplate(data.get("CustTemp"), data.get("CustQuestTemp"))
+                    //.enterCustodianNoticeTemplate(data.get("CustTemp"), data.get("CustQuestTemp"))
                     .clickOnNextBtn2()
                     .clickOnNextBtn3()
                     .clickOnNextBtn4()

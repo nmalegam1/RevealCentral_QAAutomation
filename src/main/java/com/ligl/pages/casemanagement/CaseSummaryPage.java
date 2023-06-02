@@ -11,6 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import java.util.List;
+
 public class CaseSummaryPage extends LiglBaseSessionPage {
 
     @FindBy(id = "btn-edit")
@@ -526,6 +528,43 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("verifyingCaseRoleIsNonEditable() Failed", ex);
+        }
+    }
+
+    /*************************************************Data Base********************************************************************/
+    //Get All Case Fields Data in Case Management Summary Page
+    public ILiglPage getCaseFieldsDataInCaseSummaryPage() throws Exception {
+        try {
+            List<WebElement> listItem = getCurrentDriver().findElements(By.xpath("//div[@class='row my-3']//section//span"));
+            String[] caseSummary = new String[listItem.size()];
+            for (int i = 0; i < listItem.size(); i++) {
+                String caseDetails = getCurrentDriver().findElement(By.xpath("//div[@class='row my-3']//section[" + (i + 1) + "]//span")).getText();
+                caseSummary[i] = caseDetails;
+            }
+            for (String listItem1 : caseSummary) {
+                System.out.println(listItem1);
+                for (int i = 0; i < listItem.size(); i++) {
+                    getSession().setRegressionData("get_Case_Role", caseSummary[0]);
+                    getSession().setRegressionData("get_Case_Name", caseSummary[1]);
+                    getSession().setRegressionData("get_Case_Prefix", caseSummary[2]);
+                    getSession().setRegressionData("get_Case_CreatedDate", caseSummary[3]);
+                    getSession().setRegressionData("get_Case_CreatedBy", caseSummary[4]);
+                    getSession().setRegressionData("get_Case_DueDate", caseSummary[5]);
+                    getSession().setRegressionData("get_Case_Status", caseSummary[6]);
+                    getSession().setRegressionData("get_Case_DocketNumber", caseSummary[7]);
+                    getSession().setRegressionData("get_Case_Priority", caseSummary[8]);
+                    getSession().setRegressionData("get_Case_Type", caseSummary[9]);
+                    getSession().setRegressionData("get_Case_WorkflowTemplate", caseSummary[10]);
+                    getSession().setRegressionData("get_Case_Entity", caseSummary[11]);
+                    getSession().setRegressionData("get_Case_Region", caseSummary[12]);
+                    getSession().setRegressionData("get_Case_SettingsTemplate", caseSummary[13]);
+                    getSession().setRegressionData("get_Case_CreatedByNonLegalUser", caseSummary[14]);
+                }
+            }
+            return new CaseSummaryPage();
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Getting the Case Fields Data in Case Management Summary Page Failed", ex);
         }
     }
 }

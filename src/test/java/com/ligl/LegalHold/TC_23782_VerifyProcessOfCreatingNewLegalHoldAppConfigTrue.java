@@ -29,13 +29,14 @@ public class TC_23782_VerifyProcessOfCreatingNewLegalHoldAppConfigTrue extends T
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    /*.navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))*/
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
-                    .clickOnAddNewLegalHoldButton()
-                    .createNewLegalHold(data.get("LHname"), data.get("CustodianNoticeTemplate"), data.get("CustodianQueTemplate"),data.get("StakeHolderNoticeTemplate"), data.get("StakeHolderQueTemplate") )
+                    .addLHNWithMandatoryFields(data.get("LHname"), data.get("CustodianNoticeTemplate"))
+                    .lhnSave()
                     .searchRequiredLegalHoldName(data.get("LHname")).validateLHNStatus(data.get("ApprovalStatus"));
 
 

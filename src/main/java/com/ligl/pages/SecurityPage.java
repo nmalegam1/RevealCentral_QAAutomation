@@ -24,7 +24,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Approved')]")
     WebElement ApprovedStatus;
 
-    @FindBy(id= "send-approval-btn")
+    @FindBy(id= "btn-send-for-approval")
     WebElement SendForApprovalBtn;
     @FindBy(id="chk-all-case-casecustodians")
     WebElement SelectAllCustodiansCheckBox;
@@ -37,7 +37,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//section//div[@class='pull-left']//span")
     WebElement CaseApprovalStatus;
 
-    @FindBy(id = "btn-send-for-approval")
+    @FindBy(id = "send-approval-btn")
     WebElement SendApprovalBtn;
 
     @FindBy(xpath = "//span[contains(text(),' Pending Approval ')]")
@@ -377,6 +377,8 @@ public class SecurityPage extends LiglBaseSessionPage {
 
         try {
 
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", SendForApprovalBtn);
 
             log_Info("Check The Status Of Case , It Should Be In Not Initiated State");
             boolean b1 = NotInitiatedStatus.isDisplayed();

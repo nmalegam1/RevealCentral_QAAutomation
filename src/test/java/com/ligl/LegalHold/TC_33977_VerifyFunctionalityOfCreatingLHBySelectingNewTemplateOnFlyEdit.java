@@ -34,8 +34,9 @@ public class TC_33977_VerifyFunctionalityOfCreatingLHBySelectingNewTemplateOnFly
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
-                    .clickOnAddNewLegalHoldButton()
-                    .createNewLHBySelectingTemplateOnFlyEdit(data.get("LHname"), data.get("CustodianNoticeTemplate"), data.get("NEWTemp"), data.get("SUBject"), data.get("CONtent") );
+                    .addLHNWithMandatoryFields(data.get("LHname"), data.get("CustodianNoticeTemplate"))
+                    .lhnOnFlyEdit()
+                    .creatingNewTemplateByOnFlyEdit( data.get("NEWTemp"), data.get("SUBject"), data.get("CONtent"),data.get("LHname"));
 
 
         } catch (Exception ex) {
