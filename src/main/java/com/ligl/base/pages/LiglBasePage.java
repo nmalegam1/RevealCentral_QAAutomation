@@ -1904,4 +1904,5 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage chooseStakeHolderQuestionnaireTemplate(String StakeHolderQueTemplate)throws Exception{return null;}
 	public ILiglPage chooseStakeHolderTemplate(String StakeHolderTemplate)throws Exception{return null;}
 	public ILiglPage chooseCustodianQuestionnaireTemplate(String CustodianQuestionaireTemplate)throws Exception{return null;}
+	public ILiglPage searchCustodian(String custodian)throws Exception{return null;}
 }

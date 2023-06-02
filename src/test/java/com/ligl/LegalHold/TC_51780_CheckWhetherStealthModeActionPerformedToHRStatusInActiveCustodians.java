@@ -27,7 +27,7 @@ public class TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCu
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToCustodiansPage()
@@ -38,7 +38,7 @@ public class TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCu
                     .searchLHNThroughEmail(data.get("CustMail"))
                     .clickOnActionDropDownAndRun(data.get("Action"))
                     .sendStealthMode()
-                    //.searchLHNThroughEmail("kkailasam@in.vertical.com")
+                    //.searchLHNThroughEmail(data.get("CustMail"))
                     .verifyRecordStatusInLHN(data.get("CustStatus"));
         } catch (Exception ex) {
             session.log_Error("TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians Failed");

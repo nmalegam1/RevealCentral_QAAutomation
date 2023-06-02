@@ -29,8 +29,8 @@ public class TC_51430_CheckAckModeColumnInMyHoldsTabUpdatingBasedOnAcknowledgmen
                     .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .getHeader().goToMyHoldsPage()
                     .firstSearch()
-                    .checkAckModeColumn(data.get("CaseName"),data.get("LHName1"),data.get("AckModeMail"))
-                    .checkAckModeColumn(data.get("CaseName"),data.get("LHName2"),data.get("AckModeApp"));
+                    .checkAckModeColumn(data.get("CaseNameEmail"),data.get("LHName1"),data.get("AckModeMail"))
+                    .checkAckModeColumn(data.get("CaseNameApp"),data.get("LHName2"),data.get("AckModeApp"));
         } catch (Exception ex) {
             session.log_Error("TC_51430_CheckAckModeColumnInMyHoldsTabUpdatingBasedOnAcknowledgmentMode Failed");
             throw new Exception("TC_51430_CheckAckModeColumnInMyHoldsTabUpdatingBasedOnAcknowledgmentMode Failed", ex);
