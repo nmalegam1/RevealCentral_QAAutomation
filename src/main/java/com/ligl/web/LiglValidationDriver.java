@@ -65,7 +65,6 @@ public abstract class LiglValidationDriver implements IWebConnector {
         wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='ag-overlay ag-hidden']")));
     }
 
-
     public ILiglPage validateElementNotPresence(By locator) {
 
         if (isElementPresent(locator))
@@ -195,8 +194,8 @@ public abstract class LiglValidationDriver implements IWebConnector {
         return main.contains(sub);
     }
 
-    public String concat(String stringOne, String stringTwo) {
-        String fullString = stringOne + " " + stringTwo;
+    public String concat(String stringOne, String stringTwo, String stringThree) {
+        String fullString = stringOne + stringTwo + stringThree;
         return fullString;
     }
 
@@ -215,4 +214,11 @@ public abstract class LiglValidationDriver implements IWebConnector {
         return sql2;
     }
 
+    public void minWait() {
+        try {
+            Thread.sleep(Integer.parseInt(getSession().getRegressionData("MinWait")));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

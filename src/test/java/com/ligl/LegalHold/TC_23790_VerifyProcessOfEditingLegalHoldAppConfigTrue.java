@@ -29,15 +29,17 @@ public class TC_23790_VerifyProcessOfEditingLegalHoldAppConfigTrue extends TestB
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    /*.navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))*/
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHname")).validateLHNStatus(data.get("ApprovalStatus"))
                     .clickOnEditButtonInLHNGrid()
-                    .clearActionInLegalHold()
-                    .createNewLegalHold(data.get("LHname1"), data.get("CustodianNoticeTemplate"), data.get("CustodianQueTemplate"),data.get("StakeHolderNoticeTemplate"), data.get("StakeHolderQueTemplate") )
+                    .editLHName(data.get("LHname1"))
+                    .enterCustodianNoticeTemplate(data.get("CustodianNoticeTemplate"))
+                    .lhnSave()
                     .clickOnRefreshButtonLHGrid()
                     .searchRequiredLegalHoldName(data.get("LHname1")).validateLHNStatus(data.get("ApprovalStatus"));
 

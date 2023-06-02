@@ -48,9 +48,11 @@ public interface IWebConnector{
 	/******************************Data Base**********************************************/
 	boolean isSubstring(String main, String sub);
 
-	String concat(String stringOne,String stringTwo);
+	String concat(String stringOne,String stringTwo,String stringThree);
 
 	String sqlQueryForEmailTracker(String email, String subject) throws Exception;
 
 	String sqlQueryForEmailStatusLookID(String parentID, String name);
+
+	void minWait();
 }

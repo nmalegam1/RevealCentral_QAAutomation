@@ -29,15 +29,19 @@ public class TC_34865_VerifyUserAbleToCreateFirstLHByDateRangeKeyWordsWhenAppCon
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    /*.navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))*/
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
-                    .clickOnAddNewLegalHoldButton()
-                    .createNewLegalHoldByDateRangeKeyWords(data.get("LHname"), data.get("CustodianNoticeTemplate"),data.get("StakeHolderNoticeTemplate"), data.get("StartDATE"), data.get("EndDATE"), data.get("NumberOFDAYS"), data.get("KEYwords"))
+                    .addLHNWithMandatoryFields(data.get("LHname"), data.get("CustodianNoticeTemplate"))
+                    .clickOnPreservationScopeLink()
+                    .enterLHDateRanges(data.get("StartDATE"), data.get("EndDATE"))
+                    .enterLHKeywords(data.get("KEYwords"))
+                    .clickOnDoneBtnInPreservationScopeScreen()
+                    .lhnSave()
                     .searchRequiredLegalHoldName(data.get("LHname")).validateLHNStatus(data.get("ApprovalStatus"));
-
 
 
         } catch (Exception ex) {

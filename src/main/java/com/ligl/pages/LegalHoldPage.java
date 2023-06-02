@@ -498,6 +498,23 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     @FindBy(id="escalation-sent-to")
     WebElement EscalationToBeSent;
 
+
+    @FindBy(xpath = "//div[@role='document']//input[@id='lhc-start-date']")
+    WebElement StartDATE;
+
+    @FindBy(xpath = "//div[@role='document']//input[@id='lhc-enddate']")
+    WebElement EndDATE;
+
+    @FindBy(xpath = "//div[@role='document']//input[@id='keyWords']")
+    WebElement KEYwords;
+
+    @FindBy(xpath = "//div[@class='modal-content']//app-add-edit-lhn-date-range-key-words//button[@id='add-edit-case-save-btn']")
+    WebElement PSDoneBtn;
+
+
+
+
+
     // Sending Legal Hold For Approval
 
     public ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException {
@@ -1692,11 +1709,9 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             log_Info("click On Action Drop Down");
             Thread.sleep(5000);
             ActionDrpDwn.sendKeys(Action1);
-            ActionDrpDwn.sendKeys(Keys.ENTER);
             log_Info("clicked On Action Drop Down");
             Thread.sleep(5000);
             log_Info("click On Run Button");
-            Thread.sleep(5000);
             RunButn.click();
             log_Info("clicked On Run Button");
             Thread.sleep(5000);
@@ -2674,6 +2689,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             log_Info("click On Template Drop Down");
             Thread.sleep(5000);
             CustodianReleaseTemplate.sendKeys(Template1);
+            Thread.sleep(5000);
             CustodianReleaseTemplate.sendKeys(Keys.ENTER);
             log_Info("clicked On Template Drop Down");
 
@@ -2839,24 +2855,25 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
     }
 
-    public ILiglPage clearActionInLegalHold() throws Exception {
+    public ILiglPage editLHName(String lhName) throws Exception {
 
 
         try {
 
-            log_Info("clearActionInLegalHold() Started");
-            log_Info("Perform Clear Action");
-            Thread.sleep(5000);
+            log_Info("editLHName() Started");
+            log_Info("clear LH Name In the Add LH Popup");
             NameOfTheLegalHold.clear();
-            Thread.sleep(5000);
-            log_Info("Performed On Clear Action");
+            log_Pass("cleared LH Name In the Add LH Popup");
+            Thread.sleep(2000);
+            log_Info("Enter LHN name");
+            NameOfTheLegalHold.sendKeys(lhName);
+            log_Info("LHN Name Entered");
             return new LegalHoldPage();
 
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("clearActionInLegalHold() Failed", ex);
+            throw new Exception("editLHName() Failed", ex);
         }
-
 
     }
 
@@ -3489,36 +3506,26 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         }
     }
 
-    public ILiglPage enterCustodianNoticeTemplate(String CustodianTemplate, String CustodianQuestionaireTemplate) throws Exception {
+    public ILiglPage enterCustodianNoticeTemplate(String CustodianTemplate) throws Exception {
 
         try {
 
 
             log_Info("enterCustodianNoticeTemplate() Started");
 
-            log_Info("Click on Choose Notice Template Dropdown");
+            log_Info("Click on Custodian Notice Template Dropdown");
             getDriver().waitForelementToBeClickable(ChooseNoticeTemplateDrpDwn);
             Thread.sleep(5000);
+            ChooseNoticeTemplateDrpDwn.click();
+            Thread.sleep(3000);
             ChooseNoticeTemplateDrpDwn.sendKeys(CustodianTemplate);
-            Thread.sleep(3000);
-            ChooseNoticeTemplateDrpDwn.sendKeys(Keys.ENTER);
-            getSession().log_Pass(" Choose Notice Template Dropdown clicked");
-
-            log_Info("Select Questionaire Template Drop Down");
-            getDriver().waitForelementToBeClickable(CustQuestionaireDrpDwn);
-            Thread.sleep(5000);
-            CustQuestionaireDrpDwn.sendKeys(CustodianQuestionaireTemplate);
-            Thread.sleep(3000);
-            CustQuestionaireDrpDwn.sendKeys(Keys.ENTER);
-            getSession().log_Pass(" Selected Questionaire Template Drop Down");
-
-            getDriver().waitUntilSpinnerIsClosed();
+            getSession().log_Pass(" Custodian Notice Template Dropdown clicked");
 
             return new LegalHoldPage();
 
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("createNewLegalHold() Failed", ex);
+            throw new Exception("enterCustodianNoticeTemplate() Failed", ex);
         }
     }
 
@@ -4626,6 +4633,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
            log_Info("lhnSave() Started");
             LHNSaveBtn.click();
             log_Pass("LHN Save button is clicked");
+            getDriver().waitForAngularRequestsToComplete();
             return new LegalHoldPage();
         }catch (Exception ex){
             log_Error("lhnSave() is failed");
@@ -4643,9 +4651,11 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     public ILiglPage addLHNWithMandatoryFields(String lhName, String custTemp)throws Exception{
         try{
             log_Info("addLHNWithMandatoryFields() Started");
+            getDriver().waitForAngularRequestsToComplete();
             AddLHN.click();
             log_Info("Add LHN Button clicked");
             log_Info("Enter LHN name");
+            Thread.sleep(5000);
             NameOfTheLegalHold.sendKeys(lhName);
             log_Info("LHN Name Entered");
             log_Info("click on Choose notice template dropdown");
@@ -4823,5 +4833,151 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             throw new Exception("clickOnDoneButtonInRemainderandEscalationTab() Failed", ex);
         }
     }
+
+    public ILiglPage clickOnEditLinkInLHScreen() throws Exception {
+
+        try {
+
+            log_Info("clickOnEditLinkInLHScreen() Started");
+            log_Info("click on Edit Icon In LH");
+            getDriver().waitForelementToBeClickable(EditICON);
+            Thread.sleep(2000);
+            EditICON.click();
+            Thread.sleep(5000);
+            getSession().log_Pass("clicked on Edit Icon In LH");
+            getDriver().waitUntilSpinnerIsClosed();
+
+            return new LegalHoldPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnEditLinkInLHScreen() Failed", ex);
+        }
+    }
+
+    public ILiglPage clickOnPreservationScopeLink() throws Exception {
+
+        try {
+
+            log_Info("clickOnPreservationScopeLink() Started");
+            log_Info("click on Preservation Scope Link");
+            getDriver().waitForelementToBeClickable(PSLink);
+            Thread.sleep(2000);
+            PSLink.click();
+            Thread.sleep(5000);
+            getSession().log_Pass("clicked on Preservation Scope Link");
+
+            return new LegalHoldPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnPreservationScopeLink() Failed", ex);
+        }
+    }
+
+    public ILiglPage enterLHDateRanges(String startdate,String enddate) throws Exception {
+
+        try {
+
+            log_Info("enterLHDateRanges() Started");
+            log_Info("Enter Start date");
+            Thread.sleep(2000);
+            StartDATE.sendKeys(startdate);
+            Thread.sleep(2000);
+            getSession().log_Pass("Entered Start date");
+            Thread.sleep(2000);
+            log_Info("Enter End date");
+            getDriver().waitForelementToBeClickable(EndDATE);
+            Thread.sleep(2000);
+            EndDATE.sendKeys(enddate);
+            Thread.sleep(2000);
+            getSession().log_Pass("Entered End date");
+
+
+            return new LegalHoldPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("enterLHDateRanges() Failed", ex);
+        }
+    }
+
+    public ILiglPage enterLHKeywords(String KeyWORDS) throws Exception {
+
+        try {
+
+            log_Info("enterLHKeywords() Started");
+            log_Info("Enter Keywords");
+            getDriver().waitForelementToBeClickable(KEYwords);
+            Thread.sleep(2000);
+            KEYwords.sendKeys(KeyWORDS);
+            Thread.sleep(2000);
+            KEYwords.sendKeys(Keys.ENTER);
+            getSession().log_Pass("Entered Keywords");
+            return new LegalHoldPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("enterLHKeywords() Failed", ex);
+        }
+    }
+
+    public ILiglPage clickOnDoneBtnInPreservationScopeScreen() throws Exception {
+
+        try {
+
+            log_Info("clickOnDoneBtnInPreservationScopeScreen() Started");
+            log_Info("click on Done Button");
+            getDriver().waitForelementToBeClickable(PSDoneBtn);
+            Thread.sleep(2000);
+            PSDoneBtn.click();
+            Thread.sleep(5000);
+            getSession().log_Pass("clicked on Done Button");
+            return new LegalHoldPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnDoneBtnInPreservationScopeScreen() Failed", ex);
+        }
+    }
+
+    public ILiglPage creatingNewTemplateByOnFlyEdit(String NewtempName, String subject, String content,String LHname) throws Exception {
+
+        try {
+
+            log_Info("creatingNewTemplateByOnFlyEdit() Started");
+
+            EmailTemplatePage pagev = new EmailTemplatePage();
+
+            pagev.editTempOnFly(NewtempName, subject, content);
+            Thread.sleep(3000);
+
+            String s = selectedTemplateName.getText();
+            Assert.assertEquals(s, NewtempName);
+            log_Pass("New Template edited on Fly is Updated in Template Dropdown");
+            Thread.sleep(2000);
+
+            lhnSave().searchRequiredLegalHoldName(LHname).clickOnEditButtonInLHNGrid();
+
+            Thread.sleep(2000);
+            String s1 = selectedTemplateName.getText();
+            Assert.assertEquals(s1, NewtempName);
+
+            log_Pass("The On Fly Edited Custodian Template is Updated To LHN");
+
+            return new LegalHoldPage();
+
+        } catch (Exception ex) {
+            log_Error("creatingNewTemplateByOnFlyEdit() is Failed");
+            throw new Exception("Exception in creatingNewTemplateByOnFlyEdit()", ex);
+        }
+    }
+
+
+
+
+
+
+
 }
 
