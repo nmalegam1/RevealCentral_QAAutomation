@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="RequestTracker">
+<suite name="RequestTracker" >
     <test name="CheckWhetherRequestCreatorAbleToAssigneeRequestToUser">
         <classes>
             <class name="com.ligl.RequestTracker.TC_26844_CheckWhetherRequestCreatorAbleToAssigneeRequestToUser"/>
         </classes>
     </test> <!-- Test -->
-    <test name="VerifyListOfColumnsInRequestTrackerGrid">
+    <test name="CheckWhetherNotificationIsDisplayedInAlertNotificationWhenRequestAssignedToUser">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_36689_VerifyListOfColumnsInRequestTrackerGrid"/>
+            <class name="com.ligl.RequestTracker.TC_37353_CheckWhetherNotificationIsDisplayedInAlertNotificationWhenRequestAssignedToUser"/>
         </classes>
     </test>
-    <test name="VerifyRequestCreationProcessByClickingAddRequestBtn">
+    <test name="CheckWhetherNotificationRedirectsToRequestListPageWhenUserWillClickOnRequestAlertNotification">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_36481_VerifyRequestCreationProcessByClickingAddRequestBtn"/>
+            <class name="com.ligl.RequestTracker.TC_37354_CheckWhetherNotificationRedirectsToRequestListPageWhenUserWillClickOnRequestAlertNotification"/>
         </classes>
     </test>
     <test name="CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProgress">
@@ -26,14 +26,14 @@
             <class name="com.ligl.RequestTracker.TC_36703_VerifyThatNoEditIsAllowedForTheUserWhenRequestStatusIsClosed"/>
         </classes>
     </test>
-    <test name="CheckWhetherNotificationIsDisplayedInAlertNotificationWhenRequestAssignedToUser">
+    <test name="VerifyListOfColumnsInRequestTrackerGrid">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_37353_CheckWhetherNotificationIsDisplayedInAlertNotificationWhenRequestAssignedToUser"/>
+            <class name="com.ligl.RequestTracker.TC_36689_VerifyListOfColumnsInRequestTrackerGrid"/>
         </classes>
     </test>
-    <test name="CheckWhetherNotificationRedirectsToRequestListPageWhenUserWillClickOnRequestAlertNotification">
+    <test name="VerifyRequestCreationProcessByClickingAddRequestBtn">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_37354_CheckWhetherNotificationRedirectsToRequestListPageWhenUserWillClickOnRequestAlertNotification"/>
+            <class name="com.ligl.RequestTracker.TC_36481_VerifyRequestCreationProcessByClickingAddRequestBtn"/>
         </classes>
     </test>
     <test name="CheckWhetherUserAbleToAssigneTheRequestToRole">
@@ -54,6 +54,31 @@
     <test name="CheckWhetherRequestCreatorAbleToAddTheMessagesForNewStateRequest">
         <classes>
             <class name="com.ligl.RequestTracker.TC_51886_CheckWhetherRequestCreatorAbleToAddTheMessagesForNewStateRequest"/>
+        </classes>
+    </test>
+    <test name="CheckWhetherUserAbleToSelfAssignTheRequest">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_36483_CheckWhetherUserAbleToSelfAssignTheRequest"/>
+        </classes>
+    </test>
+    <test name="VerifyWhetherTopLevelStatsAreUpdatedToTheCurrentStatusLikeNewProgressClose">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_36651_VerifyWhetherTopLevelStatsAreUpdatedToTheCurrentStatusLikeNewProgressClose"/>
+        </classes>
+    </test>
+    <test name="CheckWhetherNonApprovedCasesAreNotPopulatedInChooseCaseDropDownInCreateRequestPage">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_51983_CheckWhetherNonApprovedCasesAreNotPopulatedInChooseCaseDropDownInCreateRequestPage"/>
+        </classes>
+    </test>
+    <test name="VerifyTheFieldValuesInEditRequest">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_60246_VerifyTheFieldValuesInEditRequest"/>
+        </classes>
+    </test>
+    <test name="RequestTrackerJobQueueDisplayAtCaseLevelCheckWhetherSelectedCaseNameDisplayingInNonEditableModeByDefault">
+        <classes>
+            <class name="com.ligl.RequestTracker.TC_51414_RequestTrackerJobQueueDisplayAtCaseLevelCheckWhetherSelectedCaseNameDisplayingInNonEditableModeByDefault"/>
         </classes>
     </test>
 

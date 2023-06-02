@@ -1,12 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Smoke Suite">
-  <test name="Deleting In House Counsel">
-    <classes>
-      <class name="com.ligl.SmokeSuite.AdminLoginTest_001"/>
-      <class name="com.ligl.SmokeSuite.NormalLoginTest_001"/>
-        <class name="com.ligl.SmokeSuite.SSOLoginTest_001"/>
-        <class name="com.ligl.SmokeSuite.SearchingCase_001"/>
+<suite name=" Smoke Suite In NUIX And REL Processing">
+    <test name="AdminLoginTest_001">
+        <classes>
+            <class name="com.ligl.SmokeSuiteNuixCollection.AdminLoginTest_001"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Create A Case Adding Scope Items And Approving The Case Nuix UpTo Collection">
+        <classes>
+            <class name="com.ligl.SmokeSuiteNuixCollection.Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalCollection"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Initiate Auto Process For Records In Nuix Processing Up To Collection">
+        <classes>
+            <class name="com.ligl.SmokeSuiteNuixCollection.Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTestNuix"/>
         </classes>
     </test>
+
+    <test name="Create A Case Adding Scope Items And Approving The Case Nuix">
+        <classes>
+            <class name="com.ligl.SmokeSuiteNuix.Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalNuix"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Initiate Auto Process For Records In Nuix Processing">
+        <classes>
+            <class name="com.ligl.SmokeSuiteNuix.Initiate_AutoProcess_ForRecordUpto_NuixProcessing_SmokeTest"/>
+        </classes>
+    </test>
+
+    <test name="Create A Case Adding Scope Items And Approving The Case Relativity ">
+        <classes>
+            <class name="com.ligl.SmokeSuiteRelativity.Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalRel"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Initiate Auto Process For Records In Relativity Processing">
+        <classes>
+            <class name="com.ligl.SmokeSuiteRelativity.Initiate_AutoProcess_ForRecordUpto_RelativityProcessing_SmokeTest"/>
+        </classes>
+
+    </test>
+    <test name="Cas Create ApproveFor OnPremDST">
+        <classes>
+            <class name="com.ligl.SmokeSuiteRelativity.Case_Create_ApproveFor_OnPremDST"/>
+        </classes>
+    </test>
+    <test name="NetWorkShare AutoProcess Processing">
+        <classes>
+            <class name="com.ligl.SmokeSuiteRelativity.NetWorkShare_AutoProcess_Processing"/>
+        </classes>
+    </test>
+
 </suite> <!-- Suite -->

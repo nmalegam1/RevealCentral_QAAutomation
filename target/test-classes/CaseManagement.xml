@@ -182,6 +182,7 @@
     </classes>
   </test>
 
+  <!--Tej Test Cases-->
 
   <test name="VerifyColumnsInHistoryGrid">
     <classes>
@@ -269,4 +270,199 @@
     </classes>
   </test>
 
+  <!--vys Test Cases-->
+
+  <test name="TC 1227 AddCustodian Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1227_AddCustodian_Test"/>
+    </classes>
+  </test>
+  <test name="TC 28868 Active Inactive Custodians Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_28868_Active_Inactive_Custodians_Test"/>
+    </classes>
+  </test>
+  <test name="TC 1184 1193 AddEdit DataSources Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1184_1193_AddEdit_DataSources_Test"/>
+    </classes>
+  </test>
+  <test name="TC 7103 AddExistingContactsForSelectedParty Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_7103_AddExistingContactsForSelectedParty_Test"/>
+    </classes>
+  </test>
+  <test name="TC 7110 AddExistingInHouseCounselTo EnterpriseParty Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_7110_AddExistingInHouseCounselTo_EnterpriseParty_Test"/>
+    </classes>
+  </test>
+  <test name="TC 7126 AddExistingOutSideCounselToSelectedParty Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_7126_AddExistingOutSideCounselToSelectedParty_Test"/>
+    </classes>
+  </test>
+  <test name="TC_1603_AddExistingPartiesFromModel_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1603_AddExistingPartiesFromModel_Test"/>
+    </classes>
+  </test>
+  <test name="TC_1669_AddingOutsideCounselWithAddLawFirmButton_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1669_AddingOutsideCounselwithAddLawFirmButton_Test"/>
+    </classes>
+  </test>
+  <test name="TC_6484_Availability_FunctionalityOfFieldsInCreate_Edit_Documents_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_6484_Availability_FunctionalityOfFieldsInCreate_Edit_Documents_Test"/>
+    </classes>
+  </test>
+  <test name="TC_6499_Cancel_Update_ButtonsValidationInEditCaseDocuments_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_6499_Cancel_Update_ButtonsValidationInEditCaseDocuments_Test"/>
+    </classes>
+  </test>
+  <test name="TC_27274_CheckApproval_History_Security_BasedOnUsersActions_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_27274_CheckApproval_History_Security_BasedOnUsersActions_Test"/>
+    </classes>
+  </test>
+  <test name="TC_29642_CheckIsDueDateFieldOptionalInCreateEditCase_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_29642_CheckIsDueDateFieldOptinalInCreateEditCase_Test"/>
+    </classes>
+  </test>
+  <test name="TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test"/>
+    </classes>
+  </test>
+  <test name="TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveOfApprovalStatus_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStatus_Test"/>
+    </classes>
+  </test>
+  <test name="TC_1708_CreateNewCourtWithAddCourtButtonInModel_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1708_CreateNewCourtWithAddCourtButtonInModel_Test"/>
+    </classes>
+  </test>
+  <test name="TC_1718_CreateNewJudgeWithAddJudgeButtonInModel_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1718_CreateNewJudgeWithAddJudgeButtonInModel_Test"/>
+    </classes>
+  </test>
+  <test name="TC_1604_CreateNewPartyToCase_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_1604_CreateNewPartyToCase_Test"/>
+    </classes>
+  </test>
+  <test name="TC_52241_CreateNewProsecutorWithAddProsecutorButtonInModel_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_52241_CreateNewProsecutorWithAddProsecutorButtonInModel_Test"/>
+    </classes>
+  </test>
+  <test name="TC_52242_DeleteAssignedProsecutorForSelectedCourt_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_52242_DeleteAssignedProsecutorForSelectedCourt_Test"/>
+    </classes>
+  </test>
+  <test name="TC_44366_DualApproval_Revoke_Functionality">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_44366_DualApproval_Revoke_Functionality"/>
+    </classes>
+  </test>
+  <test name="TC_33336_EditWFTIrrespectiveWithApprovalStatus_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_33336_EditWFTIrrespectiveWithApprovalStatus_Test"/>
+    </classes>
+  </test>
+  <test name="TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_Test">
+        <classes>
+            <class name="com.ligl.CaseManagement.TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_Test"/>
+        </classes>
+    </test>
+  <test name="TC_44284_SendCaseForApproval_Test">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_44284_SendCaseForApproval_Test"/>
+    </classes>
+  </test>
+
+  <!--Nik test Cases-->
+
+  <test name="CaseApprovalReAssign">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_42956_CaseApprovalReAssign"/>
+    </classes>
+  </test>
+  <test name="CaseCreationwithInplace">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_42979_CaseCreationwithInplace"/>
+    </classes>
+  </test>
+  <test name="CaseCreationByUncheckingInplacepreservationCheckbox">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_42980_CaseCreationByUncheckingInplacepreservationCheckbox"/>
+    </classes>
+  </test>
+  <test name="InPlacePreservationIsNonEditableForApprovedCase">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_42992_InPlacePreservationIsNonEditableForApprovedCase"/>
+    </classes>
+  </test>
+  <test name="CaseApprovalRevoke">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_43245_CaseApprovalRevoke"/>
+    </classes>
+  </test>
+  <test name="CaseApprovalReassignForDualApproval">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_44367_CaseApprovalReassignForDualApproval"/>
+    </classes>
+  </test>
+  <test name="VerifyCaseRoleIsNonEditableForApprovedCase">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_52320_VerifyCaseRoleIsNonEditableForApprovedCase"/>
+    </classes>
+  </test>
+  <test name="CreatingNewNotesForCase">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55227_CreatingNewNotesForCase"/>
+    </classes>
+  </test>
+  <test name="EditNotes">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55178_EditNotes"/>
+    </classes>
+  </test>
+  <test name="DeleteNotes">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55239_DeleteNotes"/>
+    </classes>
+  </test>
+  <test name="EditNotesInCaseHistory">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55286_EditNotesInCaseHistory"/>
+    </classes>
+  </test>
+  <test name="DeleteNotesInCaseHistory">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55304_DeleteNotesInCaseHistory"/>
+    </classes>
+  </test>
+  <test name="DisplayingSelectedCaseNotesListInCaseHistory">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_55318_DisplayingSelectedCaseNotesListInCaseHistory"/>
+    </classes>
+  </test>
+  <test name="VerifyCaseDocumentNotesInCaseHistory">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_56658_VerifyCaseDocumentNotesInCaseHistory"/>
+    </classes>
+  </test>
+  <test name="VerifyDetailsColumnInCaseHistory">
+    <classes>
+      <class name="com.ligl.CaseManagement.TC_56659_VerifyDetailsColumnInCaseHistory"/>
+    </classes>
+  </test>
 </suite> <!-- Suite -->
