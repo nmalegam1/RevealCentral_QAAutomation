@@ -1181,6 +1181,7 @@ public interface ILiglPage {
     ILiglPage clickOnCancelButtonInRemainderandEscalationTab() throws Exception;
 
     ILiglPage clickOnRemainderAndEscalationLink() throws Exception;
+    ILiglPage searchCustodian(String custodian)throws Exception;
 
     ILiglPage editLHName(String lhName) throws Exception;
 

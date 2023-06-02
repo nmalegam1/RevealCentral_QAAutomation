@@ -499,9 +499,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
 
             log_Info("Select Particular Case Name");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             getCurrentDriver().findElement(By.linkText(CaseName)).click();
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             log_Info("Particular Case Name Is Selected");
             return new CaseSummaryPage();
 

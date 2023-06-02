@@ -1982,4 +1982,5 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage enterProjectType(String ProjectType) throws Exception{
 		return null;
 	}
+	public ILiglPage searchCustodian(String custodian)throws Exception{return null;}
 }
