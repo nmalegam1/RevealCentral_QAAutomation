@@ -27,7 +27,7 @@ public class TC_51783_CheckForReportingManagerFieldInEmployeeAdditionFields exte
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .getHeader().goToAdministrationPage()
                     .goToEmployeeMasterpage()
                     .checkReportingManagerFieldinAdditionalFields(data.get("CustMail"));

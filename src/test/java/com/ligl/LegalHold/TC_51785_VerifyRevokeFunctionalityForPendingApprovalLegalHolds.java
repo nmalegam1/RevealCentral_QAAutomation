@@ -27,7 +27,7 @@ public class TC_51785_VerifyRevokeFunctionalityForPendingApprovalLegalHolds exte
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToLegalHoldPage()
