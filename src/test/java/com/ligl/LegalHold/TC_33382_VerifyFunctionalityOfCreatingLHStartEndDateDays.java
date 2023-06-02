@@ -29,13 +29,18 @@ public class TC_33382_VerifyFunctionalityOfCreatingLHStartEndDateDays extends Te
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    /*.navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))*/
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
-                    .clickOnAddNewLegalHoldButton()
-                    .createNewLegalHoldByStartDateEndDateNumberOfDays(data.get("LHname"), data.get("CustodianNoticeTemplate"),data.get("StakeHolderNoticeTemplate"), data.get("StartDATE"), data.get("EndDATE"), data.get("NumberOFDAYS"))
+                    .addLHNWithMandatoryFields(data.get("LHname"), data.get("CustodianNoticeTemplate"))
+                    .clickOnPreservationScopeLink()
+                    .enterLHDateRanges(data.get("StartDATE"), data.get("EndDATE"))
+                    .enterLHKeywords(data.get("KEYwords"))
+                    .clickOnDoneBtnInPreservationScopeScreen()
+                    .lhnSave()
                     .searchRequiredLegalHoldName(data.get("LHname")).validateLHNStatus(data.get("ApprovalStatus"));
 
 

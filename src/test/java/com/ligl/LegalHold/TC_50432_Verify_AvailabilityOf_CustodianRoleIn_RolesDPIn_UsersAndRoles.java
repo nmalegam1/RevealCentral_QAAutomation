@@ -30,10 +30,11 @@ public class TC_50432_Verify_AvailabilityOf_CustodianRoleIn_RolesDPIn_UsersAndRo
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
                     .getHeader()
                     .goToAdministrationPage()
-                    .goToUsersRoles()
+                    .getAdminLeft()
+                    .navigateToUserAndRolesPage()
                     .checkCustodianRoleInUserCreationPopUp(data.get("Role"));
         } catch (Exception ex) {
             session.log_Error("TC_50432_Verify_AvailabilityOf_CustodianRoleIn_RolesDPIn_UsersAndRoles Failed");

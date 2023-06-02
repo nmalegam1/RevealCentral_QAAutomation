@@ -213,4 +213,12 @@ public abstract class LiglValidationDriver implements IWebConnector {
         String sql2 = "select * from metadata.Lookup where Name like '%" + name + "%' and ParentID = " + parentID + "";
         return sql2;
     }
+
+    public void minWait() {
+        try {
+            Thread.sleep(Integer.parseInt(getSession().getRegressionData("MinWait")));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

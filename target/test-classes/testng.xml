@@ -1,7 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="My Suite" >
- <suite-files>
-   <suite-file path="loginsuite.xml" />
-   <suite-file path="creationsuite.xml" />
- </suite-files>
+<suite name="Smoke Suite" >
+    <suite-files>
+        <suite-file path="SmokeSuiteNuixCollection.xml" />
+    </suite-files>
+
+    <suite-files>
+    <suite-file path="SmokeSuiteNuix.xml" />
+    </suite-files>
+
+    <suite-files>
+    <suite-file path="SmokeSuiteRelativity.xml" />
+    </suite-files>
 </suite>

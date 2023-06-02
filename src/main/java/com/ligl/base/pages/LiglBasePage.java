@@ -1938,4 +1938,49 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage editLHName(String lhName) throws Exception{
 		return null;
 	}
+
+	public ILiglPage createProjectWithBothMandatoryAndOptionalFields(Hashtable<String,String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnAddProjectButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnSaveAndAddDetailsButtonInAddProjectPopUp(String CaseNAME) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enterPriority(String PRIORITY) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enterRegion(String REGION) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enterEntity(String ENTITY) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enterProjectSettingTemplate(String PST) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enterDescription(String DESC) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enterProjectName(String PROJECT) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enterRole(String ROLE) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enterProjectType(String ProjectType) throws Exception{
+		return null;
+	}
+	public ILiglPage searchCustodian(String custodian)throws Exception{return null;}
 }

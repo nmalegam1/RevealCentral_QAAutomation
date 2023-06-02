@@ -1181,6 +1181,7 @@ public interface ILiglPage {
     ILiglPage clickOnCancelButtonInRemainderandEscalationTab() throws Exception;
 
     ILiglPage clickOnRemainderAndEscalationLink() throws Exception;
+    ILiglPage searchCustodian(String custodian)throws Exception;
 
     ILiglPage editLHName(String lhName) throws Exception;
 
@@ -1205,6 +1206,29 @@ public interface ILiglPage {
     public ILiglPage getFieldsDataFromSSOUserPopUp(Hashtable<String, String> data) throws Exception;
 
     public ILiglPage getFieldsDataFromEmployee(Hashtable<String, String> data) throws Exception;
+
+    ILiglPage createProjectWithBothMandatoryAndOptionalFields(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage clickOnAddProjectButton() throws Exception;
+
+    ILiglPage clickOnSaveAndAddDetailsButtonInAddProjectPopUp(String CaseNAME) throws Exception;
+
+    ILiglPage enterPriority(String PRIORITY) throws Exception;
+
+    ILiglPage enterRegion(String REGION) throws Exception;
+
+    ILiglPage enterEntity(String ENTITY) throws Exception;
+
+    ILiglPage enterProjectSettingTemplate(String PST) throws Exception;
+
+    ILiglPage enterDescription(String DESC) throws Exception;
+
+    ILiglPage enterProjectName(String PROJECT) throws Exception;
+
+    ILiglPage enterRole(String ROLE) throws Exception;
+
+    ILiglPage enterProjectType(String ProjectType) throws Exception;
+
 
 }
 

@@ -60,7 +60,7 @@ public class MyHoldsPage extends LiglBaseSessionPage {
     WebElement LHNNameHeader;
     @FindBy(id = "btn-refresh")
     WebElement RefreshBtn;
-    @FindBy(xpath = "//span[contains(text(),'Case Name')]/ancestor::div/span[@ref='eMenu']")
+    @FindBy(xpath = "//span[contains(text(),'Project Name')]/ancestor::div/span[@ref='eMenu']")
     WebElement CaseNamHeader;
     @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
     WebElement CaseNameFilter;
