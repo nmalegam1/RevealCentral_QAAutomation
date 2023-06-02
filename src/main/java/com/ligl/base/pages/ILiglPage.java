@@ -658,7 +658,7 @@ public interface ILiglPage {
 
     ILiglPage clickOnNextBtn1() throws Exception;
 
-    ILiglPage enterCustodianNoticeTemplate(String CustodianTemplate, String CustodianQuestionaireTemplate) throws Exception;
+    ILiglPage enterCustodianNoticeTemplate(String CustodianTemplate) throws Exception;
 
     ILiglPage enterNameOfTheLH(String LegalHoldname) throws Exception;
 
@@ -1182,6 +1182,52 @@ public interface ILiglPage {
 
     ILiglPage clickOnRemainderAndEscalationLink() throws Exception;
     ILiglPage searchCustodian(String custodian)throws Exception;
+
+    ILiglPage editLHName(String lhName) throws Exception;
+
+    ILiglPage clickOnPreservationScopeLink() throws Exception;
+
+    ILiglPage enterLHDateRanges(String startdate,String enddate) throws Exception;
+
+    ILiglPage enterLHKeywords(String KeyWORDS) throws Exception;
+
+    ILiglPage clickOnDoneBtnInPreservationScopeScreen() throws Exception;
+
+    ILiglPage creatingNewTemplateByOnFlyEdit(String NewtempName, String subject, String content,String LHname) throws Exception;
+
+    /******************************************************************DB******************************************************************/
+
+    public ILiglPage getCaseFieldsDataInCaseSummaryPage() throws Exception;
+
+    public ILiglPage sendAllForCaseApproval(String batchName, String emailTemp, String approverName) throws Exception;
+
+    public ILiglPage createNewProjectWithAllFields(Hashtable<String,String> data) throws Exception;
+
+    public ILiglPage getFieldsDataFromSSOUserPopUp(Hashtable<String, String> data) throws Exception;
+
+    public ILiglPage getFieldsDataFromEmployee(Hashtable<String, String> data) throws Exception;
+
+    ILiglPage createProjectWithBothMandatoryAndOptionalFields(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage clickOnAddProjectButton() throws Exception;
+
+    ILiglPage clickOnSaveAndAddDetailsButtonInAddProjectPopUp(String CaseNAME) throws Exception;
+
+    ILiglPage enterPriority(String PRIORITY) throws Exception;
+
+    ILiglPage enterRegion(String REGION) throws Exception;
+
+    ILiglPage enterEntity(String ENTITY) throws Exception;
+
+    ILiglPage enterProjectSettingTemplate(String PST) throws Exception;
+
+    ILiglPage enterDescription(String DESC) throws Exception;
+
+    ILiglPage enterProjectName(String PROJECT) throws Exception;
+
+    ILiglPage enterRole(String ROLE) throws Exception;
+
+    ILiglPage enterProjectType(String ProjectType) throws Exception;
 
 }
 
