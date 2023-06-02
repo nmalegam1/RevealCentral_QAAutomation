@@ -53,4 +53,6 @@ public interface IWebConnector{
 	String sqlQueryForEmailTracker(String email, String subject) throws Exception;
 
 	String sqlQueryForEmailStatusLookID(String parentID, String name);
+
+	void minWait();
 }

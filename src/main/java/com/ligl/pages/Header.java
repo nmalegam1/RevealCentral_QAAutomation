@@ -249,7 +249,7 @@ public class Header extends LiglBasePage {
 		try{
 			getSession().log_Info("Click on Administration Tab");
 			getDriver().waitForelementToBeClickable(AdministrationTab);
-			wait(2);
+			Thread.sleep(5000);
 			AdministrationTab.click();
 			getDriver().waitForAngularRequestsToComplete();
 			getSession().log_Pass("Clicked on Administration Tab");
