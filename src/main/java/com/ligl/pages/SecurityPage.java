@@ -1482,7 +1482,8 @@ public class SecurityPage extends LiglBaseSessionPage {
     public ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
     try{
         log_Info("caseApprovalIrrespectiveOfApprovalConfig() Started");
-        ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendApprovalBtn);
+        ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendForApprovalBtn);
+        Thread.sleep(5000);
         if(CaseApprovalStatus.getText().equals("Approved"))
             return new SecurityPage();
         else if(CaseApprovalStatus.getText().equals("Not Initiated"))

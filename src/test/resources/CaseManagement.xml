@@ -5,7 +5,7 @@
     <classes>
       <class name="com.ligl.CaseManagement.TC_7094_DeletingInHouseCounsel"/>
     </classes>
-  </test> <!-- Test -->
+  </test>
   <test name="Deleting Outside Counsel">
     <classes>
       <class name="com.ligl.CaseManagement.TC_7100_DeletingOutsideCounsel"/>

@@ -91,7 +91,7 @@ public class DMDSIPage extends LiglBaseSessionPage {
     @FindBy(id = "all-selected-records")
     WebElement PleaseSelectDropdown;
 
-    @FindBy(xpath = "//select[@id='all-selected-records']//option[3]")
+    @FindBy(xpath = "//select[@id='all-selected-records']//option[@value='Selected']")
     WebElement SelectedDropdown;
 
     @FindBy(id = "selected-records-run")
@@ -481,12 +481,21 @@ public class DMDSIPage extends LiglBaseSessionPage {
             log_Info("Clicked on Selected Record Check Box");
 
 
-            log_Info("Click on Add Records To DSI Button");
-            getDriver().waitForelementToBeClickable(AddRecordToDSI);
+            log_Info("Click on Add To Identification DropDown");
+            getDriver().waitForelementToBeClickable(PleaseSelectDropdown);
             Thread.sleep(5000);
-            AddRecordToDSI.click();
+            PleaseSelectDropdown.click();
             Thread.sleep(5000);
-            log_Info("Clicked on Add Records To DSI Button");
+            SelectedDropdown.click();
+            Thread.sleep(5000);
+            log_Info("Clicked on Add To Identification DropDown");
+
+            log_Info("Click on Run Button");
+            getDriver().waitForelementToBeClickable(SelectedRecordsRunBtn);
+            Thread.sleep(5000);
+            SelectedRecordsRunBtn.click();
+            Thread.sleep(3000);
+            log_Info("Clicked on Run Button");
 
             return new DMDSIPage();
 

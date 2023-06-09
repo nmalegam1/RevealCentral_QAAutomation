@@ -188,17 +188,17 @@ public class ContactMasterPage extends LiglBaseSessionPage {
 
     public ILiglPage goToEmployeeMasterpage() throws Exception {
         try {
-            log_Info("goToUsersRoles() Started");
+            log_Info("goToEmployeeMasterpage() Started");
             Thread.sleep(3000);
             GeneralTab.click();
             log_Info("General Tab Clicked");
             EmployeeMasterTab.click();
-            log_Pass("Navigated to Users and Roles tab");
+            log_Pass("Navigated to Employee master tab");
 
             return new EmployeeMasterPage();
         } catch (Exception ex) {
-            log_Error("goToUsersRoles() is Failed");
-            throw new Exception("Exception in goToUsersRoles()", ex);
+            log_Error("goToEmployeeMasterpage() is Failed");
+            throw new Exception("Exception in goToEmployeeMasterpage()", ex);
         }
     }
 

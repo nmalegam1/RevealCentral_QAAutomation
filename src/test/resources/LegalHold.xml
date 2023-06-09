@@ -1,46 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="LegalHold">
-    <test name="Process Of LH Edit Before LH Stealth">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_33904_VerifyProcessOfLHEditBeforeLHNSentStealthWhenAppConfigFalse"/>
-        </classes>
-    </test>
-    <test name="TC_56517_56518_LegalHoldNotesCreateAndEdit">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_56517_56518_LegalHoldNotesCreateAndEdit"/>
-        </classes>
-    </test>
-    <test name="TC_51803_56119_VerifyFirstCreatedLH_KW_DR_DisplayingDefaultAndDisabled_ForNextCreatedLHs">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_51803_56119_VerifyFirstCreatedLH_KW_DR_DisplayingDefaultAndDisabled_ForNextCreatedLHs"/>
-        </classes>
-    </test>
-    <test name="TC_51804_56120_VerifyDefaultLHN_DR_KW_DisplayingFromSecondRecordAreEditableInEdit_Irrespective_ApprovalStatus">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_51804_56120_VerifyDefaultLHN_DR_KW_DisplayingFromSecondRecordAreEditableInEdit_Irrespective_ApprovalStatus"/>
-        </classes>
-    </test>
-    <test name="TC_54625_54626_CheckNoDuplicateRecordsAfterResendActionForEscalationSent_RemainderSent_InLHNGrid">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_54625_54626_CheckNoDuplicateRecordsAfterResendActionForEscalationSent_RemainderSent_InLHNGrid"/>
-        </classes>
-    </test>
-    <test name="TC_56121_56126_VerifyLHN_DR_KW_GivenInFirstLHN_DisplayingByDefault_Disable_InNextCreatedLHN_Through_OnFlyEdit">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_56121_56126_VerifyLHN_DR_KW_GivenInFirstLHN_DisplayingByDefault_Disable_InNextCreatedLHN_Through_OnFlyEdit"/>
-        </classes>
-    </test>
-    <test name="TC_56122_56127_VerifyLHN_DR_KW_GivenInFirstLHN_DisplayingByDefault_Editable_InNextEditedLHN_Through_OnFlyEdit">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_56122_56127_VerifyLHN_DR_KW_GivenInFirstLHN_DisplayingByDefault_Editable_InNextEditedLHN_Through_OnFlyEdit"/>
-        </classes>
-    </test>
-</suite>
-<!--
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="LegalHold">
+<!--<suite name="LegalHold">
     <test name="Verify Columns In Custodian Grid">
         <classes>
             <class name="com.ligl.LegalHold.TC_1752_VerifyColumnsInLHNCustodianGrid"/>
@@ -71,11 +32,6 @@
             <class name="com.ligl.LegalHold.TC_20771_VerifyReleaseActionForLHNStatus"/>
         </classes>
     </test>
-    <test name="Verify Default Template In Release Popup">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_26247_VerifyDefaultTemplateInReleasePopup"/>
-        </classes>
-    </test>
     <test name="Process Of Creating LH When Config True">
         <classes>
             <class name="com.ligl.LegalHold.TC_23782_VerifyProcessOfCreatingNewLegalHoldAppConfigTrue"/>
@@ -99,11 +55,6 @@
     <test name="Default Escalation And Remainder Values">
         <classes>
             <class name="com.ligl.LegalHold.TC_24317_VerifyConfigValuesFromAdminEscalationRemainderDisplayingByDefault"/>
-        </classes>
-    </test>
-    <test name="TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians"/>
         </classes>
     </test>
     <test name="Process Of Editing Remainder And Escalation Values At Case Level">
@@ -156,6 +107,9 @@
             <class name="com.ligl.LegalHold.TC_56123_56124_VerifyUserAbleToCreateFirstLHByDateRangeKeyWordsWhenAppConfigFalseAndPopulatingSameForSecondLHInDisableMode"/>
         </classes>
     </test>
+
+    &lt;!&ndash;Tej Test Cases&ndash;&gt;
+
     <test name="TC_42960_VerifyReassignLHFunctionality">
         <classes>
             <class name="com.ligl.LegalHold.TC_42960_VerifyReassignLHFunctionality"/>
@@ -205,7 +159,10 @@
         <classes>
             <class name="com.ligl.LegalHold.TC_26247_VerifyDefaultTemplateInReleasePopup"/>
         </classes>
-    </test>
+    </test>-->
+
+    <!--vys Test Cases-->
+
     <test name="TC_50432_Verify_AvailabilityOf_CustodianRoleIn_RolesDPIn_UsersAndRoles">
         <classes>
             <class name="com.ligl.LegalHold.TC_50432_Verify_AvailabilityOf_CustodianRoleIn_RolesDPIn_UsersAndRoles"/>
@@ -296,4 +253,9 @@
             <class name="com.ligl.LegalHold.TC_56122_56127_VerifyLHN_DR_KW_GivenInFirstLHN_DisplayingByDefault_Editable_InNextEditedLHN_Through_OnFlyEdit"/>
         </classes>
     </test>
-</suite>-->
+    <test name="CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians"/>
+        </classes>
+    </test>
+</suite>
