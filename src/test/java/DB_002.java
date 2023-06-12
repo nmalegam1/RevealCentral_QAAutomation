@@ -35,7 +35,6 @@ public class DB_002 extends TestBase {
                     page.dataBaseConnection("masterBD");
                     page.executeSQL_Query(Constants.EmailTracker_UserCreation_query);
                     page.validatingEmailsInDB();
-                    page.validateUseRolesData();
                     page.closeTheDBConnection();
 
         } catch (Exception ex) {

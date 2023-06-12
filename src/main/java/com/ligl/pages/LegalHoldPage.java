@@ -756,11 +756,11 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     public ILiglPage sendLHNToApproval(String LHNName, String action, String emailTemp, String approver) throws Exception {
         try {
             log_Info("sendLHNToApproval() Started");
-            Thread.sleep(15000);
+            Thread.sleep(2000);
             searchRequiredLegalHoldName(LHNName);
             getCurrentDriver().findElement(By.xpath("//span[@title='" + LHNName + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
             clickOnActionDropDownAndRun(action);
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             EmailTemp.click();
             EmailTempSearch.sendKeys(emailTemp);
             Thread.sleep(3000);
@@ -768,6 +768,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             log_Pass("Email Template Drop Down is Searchable in LHN Approval Tab");
             Thread.sleep(3000);
             Approver.click();
+            Thread.sleep(2000);
             EmailTempSearch.sendKeys(approver);
             Thread.sleep(2000);
             EmailTempSearch.sendKeys(Keys.ENTER);
@@ -817,29 +818,15 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     public ILiglPage createLHWith_KW_DR(String lhName, String custTemp, String startDate, String endDate, String keyword) throws Exception {
         try {
             log_Info("createLHWith_KW_DR() is Started");
-            Thread.sleep(5000);
-            AddLHN.click();
-            Thread.sleep(5000);
-            NameOfTheLegalHold.sendKeys(lhName);
-            LHNNextBtn.click();
-            Thread.sleep(2000);
-            ChooseNoticeTemplateDrpDwn.click();
-            Thread.sleep(2000);
-            Search.sendKeys(custTemp);
-            Thread.sleep(2000);
-            Search.sendKeys(Keys.ENTER);
-            CustodianNextBtn.click();
-            Thread.sleep(2000);
-            StakeNextBtn.click();
-            Startdate.sendKeys(startDate);
-            EndDate.sendKeys(endDate);
-            DateRangeNextbtn.click();
-            Thread.sleep(3000);
-            KeyWordsFields.sendKeys(keyword);
-            KeyWordNextBtn.click();
-            Thread.sleep(3000);
-            RemainderNextBtn.click();
-            LHNSaveBtn.click();
+            Thread.sleep(10000);
+            clickOnAddNewLegalHoldButton();
+            enterNameOfTheLH(lhName);
+            enterCustodianNoticeTemplate(custTemp);
+            clickOnPreservationScopeLink();
+            enterLHDateRanges(startDate,endDate);
+            enterLHKeywords(keyword);
+            clickOnDoneBtnInPreservationScopeScreen();
+            lhnSave();
             Thread.sleep(15000);
 
             return new LegalHoldPage();
@@ -855,20 +842,11 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(10000);
             clickOnAddNewLegalHoldButton();
             enterNameOfTheLH(lhName);
-            clickOnNextBtn1();
-            ChooseNoticeTemplateDrpDwn.click();
-            Thread.sleep(2000);
-            Search.sendKeys(custTemp);
-            Thread.sleep(2000);
-            Search.sendKeys(Keys.ENTER);
-            clickOnNextBtn2();
-            clickOnNextBtn3();
-            clickOnNextBtn4();
-            KeyWordsFields.sendKeys(Keywords);
-            clickOnNextBtn5();
-            clickOnNextBtn6();
-            clickOnSaveBtn();
-            LHNSaveBtn.click();
+            enterCustodianNoticeTemplate(custTemp);
+            clickOnPreservationScopeLink();
+            enterLHKeywords(Keywords);
+            clickOnDoneBtnInPreservationScopeScreen();
+            lhnSave();
             Thread.sleep(15000);
 
             return new LegalHoldPage();
@@ -883,21 +861,11 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Thread.sleep(10000);
             clickOnAddNewLegalHoldButton();
             enterNameOfTheLH(lhName);
-            clickOnNextBtn1();
-            ChooseNoticeTemplateDrpDwn.click();
-            Thread.sleep(2000);
-            Search.sendKeys(custTemp);
-            Thread.sleep(2000);
-            Search.sendKeys(Keys.ENTER);
-            clickOnNextBtn2();
-            clickOnNextBtn3();
-            Startdate.sendKeys(startDate);
-            EndDate.sendKeys(endDate);
-            clickOnNextBtn4();
-            clickOnNextBtn5();
-            clickOnNextBtn6();
-            clickOnSaveBtn();
-            LHNSaveBtn.click();
+            enterCustodianNoticeTemplate(custTemp);
+            clickOnPreservationScopeLink();
+            enterLHDateRanges(startDate,endDate);
+            clickOnDoneBtnInPreservationScopeScreen();
+            lhnSave();
             Thread.sleep(15000);
 
             return new LegalHoldPage();
@@ -1650,7 +1618,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             log_Info("searchRequiredLegalHoldName() Started");
             getDriver().waitForAngularRequestsToComplete();
             log_Info("Hover on Name Header");
-            Thread.sleep(3000);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(LHNAME).perform();
             log_Info("Hovered on Name Header");
@@ -2121,9 +2088,9 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             log_Info("clickOnAddNewLegalHoldButton() Started");
             log_Info("Click on Add Legal Hold Button");
             getDriver().waitForelementToBeClickable(AddLHN);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             AddLHN.click();
-            Thread.sleep(5000);
+            Thread.sleep(1000);
             getSession().log_Pass("Add Legal Hold Button clicked");
             return new LegalHoldPage();
         } catch (Exception | Error ex) {
@@ -3491,12 +3458,10 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
             log_Info("Click on Name Of The Legal Hold");
             getDriver().waitForelementToBeClickable(NameOfTheLegalHold);
-            Thread.sleep(5000);
+            Thread.sleep(1000);
             NameOfTheLegalHold.sendKeys(LegalHoldname);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             getSession().log_Pass("Name Of The Legal Hold Given");
-
-            getDriver().waitUntilSpinnerIsClosed();
 
             return new LegalHoldPage();
 
@@ -3515,7 +3480,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
             log_Info("Click on Custodian Notice Template Dropdown");
             getDriver().waitForelementToBeClickable(ChooseNoticeTemplateDrpDwn);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             ChooseNoticeTemplateDrpDwn.click();
             Thread.sleep(3000);
             ChooseNoticeTemplateDrpDwn.sendKeys(CustodianTemplate);
@@ -3528,139 +3493,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             throw new Exception("enterCustodianNoticeTemplate() Failed", ex);
         }
     }
-
-    public ILiglPage clickOnNextBtn1() throws Exception {
-
-        try {
-
-            log_Info("Click on Next Button");
-            getDriver().waitForelementToBeClickable(NextButton1);
-            Thread.sleep(5000);
-            NextButton1.click();
-            Thread.sleep(5000);
-            getSession().log_Pass("Next Button clicked");                               //1
-
-            getDriver().waitUntilSpinnerIsClosed();
-
-            return new LegalHoldPage();
-
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("clickOnNextBtn1() Failed", ex);
-        }
-    }
-
-    public ILiglPage clickOnNextBtn2() throws Exception {
-
-        try {
-
-
-            log_Info("Click on Next Button");
-            getDriver().waitForelementToBeClickable(NextButton2);
-            Thread.sleep(5000);
-            NextButton2.click();
-            Thread.sleep(5000);
-            getSession().log_Pass("Next Button clicked");
-
-            getDriver().waitUntilSpinnerIsClosed();
-
-            return new LegalHoldPage();
-
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("clickOnNextBtn2() Failed", ex);
-        }
-    }
-
-    public ILiglPage clickOnNextBtn3() throws Exception {
-
-        try {
-
-
-            log_Info("Click on Next Button");
-            getDriver().waitForelementToBeClickable(NextButton3);
-            Thread.sleep(5000);
-            NextButton3.click();
-            Thread.sleep(5000);
-            getSession().log_Pass("Next Button clicked");
-
-
-            getDriver().waitUntilSpinnerIsClosed();
-
-            return new LegalHoldPage();
-
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("clickOnNextBtn3() Failed", ex);
-        }
-    }
-
-    public ILiglPage clickOnNextBtn4() throws Exception {
-
-        try {
-
-            log_Info("Click on Next Button");
-            getDriver().waitForelementToBeClickable(NextButton4);
-            Thread.sleep(5000);
-            NextButton4.click();
-            Thread.sleep(5000);
-            getSession().log_Pass("Next Button clicked");
-
-            getDriver().waitUntilSpinnerIsClosed();
-
-            return new LegalHoldPage();
-
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("clickOnNextBtn4() Failed", ex);
-        }
-    }
-
-
-    public ILiglPage clickOnNextBtn5() throws Exception {
-
-        try {
-
-
-            log_Info("Click on Next Button");
-            getDriver().waitForelementToBeClickable(NextButton5);
-            Thread.sleep(5000);
-            NextButton5.click();
-            Thread.sleep(5000);
-            getSession().log_Pass("Next Button clicked");
-
-            getDriver().waitUntilSpinnerIsClosed();
-
-            return new LegalHoldPage();
-
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("clickOnNextBtn5() Failed", ex);
-        }
-    }
-
-    public ILiglPage clickOnNextBtn6() throws Exception {
-
-        try {
-
-
-            log_Info("Click on Next Button");
-            getDriver().waitForelementToBeClickable(NextButton6);
-            Thread.sleep(5000);
-            NextButton6.click();
-            Thread.sleep(5000);
-            getSession().log_Pass("Next Button clicked");
-
-            getDriver().waitUntilSpinnerIsClosed();
-
-            return new LegalHoldPage();
-
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("clickOnNextBtn6() Failed", ex);
-        }
-    }
-
     public ILiglPage clickOnStakeHolderNoticeTemplate(String StakeHolderTemplate, String StakeHolderQueTemplate) throws Exception {
 
         try {
@@ -3713,42 +3545,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             throw new Exception("clickOnSaveBtn() Failed", ex);
         }
     }
-
-    public ILiglPage enterDateRanges(String Startdate, String Enddate, String Days) throws Exception {
-
-        try {
-
-            log_Info("Click on Start Date");
-            getDriver().waitForelementToBeClickable(StartDate);
-            Thread.sleep(5000);
-            StartDate.sendKeys(Startdate);
-            Thread.sleep(5000);
-            getSession().log_Pass("Clicked On Start Date");
-
-            log_Info("Click on End Date");
-            getDriver().waitForelementToBeClickable(EndDate);
-            Thread.sleep(5000);
-            EndDate.sendKeys(Enddate);
-            Thread.sleep(5000);
-            getSession().log_Pass("Clicked On End Date");
-
-            log_Info("Click on Number Of Days");
-            getDriver().waitForelementToBeClickable(NumberOfDays);
-            Thread.sleep(5000);
-            NumberOfDays.sendKeys(Days);
-            Thread.sleep(5000);
-            getSession().log_Pass("Clicked On Number Of Days");
-
-            getDriver().waitUntilSpinnerIsClosed();
-
-            return new LegalHoldPage();
-
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("createNewLegalHold() Failed", ex);
-        }
-    }
-
     public ILiglPage enterKeyWords(String keywords) throws Exception {
 
         try {
@@ -4861,10 +4657,9 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
             log_Info("clickOnPreservationScopeLink() Started");
             log_Info("click on Preservation Scope Link");
-            getDriver().waitForelementToBeClickable(PSLink);
             Thread.sleep(2000);
             PSLink.click();
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             getSession().log_Pass("clicked on Preservation Scope Link");
 
             return new LegalHoldPage();

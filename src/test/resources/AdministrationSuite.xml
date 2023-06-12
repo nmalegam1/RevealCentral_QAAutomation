@@ -1,522 +1,413 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Administration General/Legal Hold Test Suite">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Administration">
 
-    <!--Admin General-->
-    <!--User and Roles Page-->
+        <!--Admin General-->
+        <!--User and Roles Page-->
 
-    <test name="TC12160 Verify the process of creating Ligl user by selecting Ligl user option in +User modal with Manual Password">
+        <test name="TC12160 Verify the process of creating Ligl user by selecting Ligl user option in Add User modal with Manual Password">
         <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC12160_Create_Ligl_User_with_Manual_Password_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC12160_Create_Ligl_User_with_Manual_Password_Test"/>
         </classes>
-    </test>
-    <test name="TC22050-Ligl and SSO users- Check whether User is able to Accept EULA page for first time Login when Common Spirit Instance config is False">
+        </test>
+        <test name="TC22050-Ligl and SSO users- Check whether User is able to Accept EULA page for first time Login when Common Spirit Instance config is False">
         <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC22050_User_is_able_to_Accept_EULA_page_for_first_time_Login_when_CS_config_is_False_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC22050_User_is_able_to_Accept_EULA_page_for_first_time_Login_when_CS_config_is_False_Test"/>
         </classes>
-    </test>
+        </test>
 
-    <test name="TC22059 Verify the process of creating Ligl user by selecting Ligl user option in +User modal without selecting Manual Password">
+        <test name="TC22059 Verify the process of creating Ligl user by selecting Ligl user option in +User modal without selecting Manual Password">
         <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC22059_Create_Ligl_User_with_out_Manual_Password_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC22059_Create_Ligl_User_with_out_Manual_Password_Test"/>
         </classes>
-    </test>
-    <test name="TC37985 Verify the process of creating SSO user by selecting SSO user option in +User modal">
+        </test>
+        <test name="TC37985 Verify the process of creating SSO user by selecting SSO user option in +User modal">
         <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC37985_Creating_SSOUser_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC37985_Creating_SSOUser_Test"/>
         </classes>
-    </test>
+        </test>
 
-    <test name="TC12104 Ligl users- Verify the process of editing existing users by using Edit User button in grid">
+        <test name="TC12104 Ligl users- Verify the process of editing existing users by using Edit User button in grid">
         <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC12104_Editing_Ligl_and_SSO_Users_Test"/>
-        </classes>
-
-    </test>
-
-    <test name="TC25171 SSO User- Check whether 'Reset Password' button in grid is Click Disabled">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC25171_SSO_User_ResetPassword_button_Click_Disabled_in_UserRoles_grid_Test"/>
-        </classes>
-    </test>
-    <test name="TC22508 Check whether Password strength validation is displaying for fields when user enters weak password">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC22508_Password_Strength_Validation_when_User_Enters_Weak_Password_Test"/>
-        </classes>
-    </test>
-    <test name="TC22868 Verify that user should not be able to login with old password">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC22868_User_Should_not_be_able_to_Login_with_Old_Password_Test"/>
-        </classes>
-    </test>
-
-    <test name="TC21215 Check whether user is able to click 'Reset Password' button in grid and Manually Reset password successfully">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC21215_User_Able_to_click_ResetPassword_button_And_Reset_Password_Manually_for_Ligl_User_Test"/>
-        </classes>
-    </test>
-    <test name="TC21217 Admin Reset Password Manually- Verify whether user is able to login with New password">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC21217_User_able_Login_with_Admin_Reset_Password_Test"/>
-        </classes>
-    </test>
-    <test name="TC22518 Check whether Logged in user is able to Change Password after Admin Reset Password">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC22518_Logged_in_user_able_to_Change_Password_after_Admin_Reset_Password"/>
-        </classes>
-    </test>
-    <test name="TC22519 Check whether 'Change Password' option is present in User profile and user is able to again login succesfully with new password">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC22519_Change_Password_in_UserProfile_and_SameUser_Login_with_New_Password_Test"></class>
-        </classes>
-    </test>
-
-    <test name="TC51897 Verify the unavailability of 'Change Password' option in logged in SSO User profile icon">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test"/>
-        </classes>
-    </test>
-    <test name="TC28525 Ligl and SSO users Check whether user is able to change role to another role">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC28525_Ligl_and_SSO_Users_able_to_Change_Any_Role_Test"/>
-        </classes>
-    </test>
-    <test name="TC28525 Ligl and SSO users Check whether user is able to change role to no role">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC28525_Ligl_and_SSO_Users_able_to_Change_No_Role_Test"/>
-        </classes>
-    </test>
-    <test name="TC51900 Ligl User Create and Edit- Check duplicate validation message is displaying for 'Username' field">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_Ligl_User_Create_and_Edit_Test"/>
-        </classes>
-    </test>
-    <test name="TC51900 SSO Users Create and Edit- Check duplicate validation message is displaying for 'Username' field">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_SSO_User_Create_Edit_Test"/>
-        </classes>
-    </test>
-
-    <test name="TC28540 Check whether user is able to create new Ligl and SSO Users without choosing Role from 'Roles Assigned' dropdown">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC28540_Users_Able_to_create_new_Ligl_and_SSO_users_without_choosing_Role_Test"/>
-        </classes>
-    </test>
-    <test name="TC28551-Ligl Users - Check whether user is able to change the Status (Active/In-Active) any time">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC28551_Users_Able_to_Change_Status_Active_or_InActive_for_Ligl_and_SSO_Users_Test"/>
-        </classes>
-    </test>
-    <test name="TC28536-Ligl user- Check whether Alert should be displayed when No Role user logs in">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC28536_Check_that_Alert_should_be_displayed_when_NoRole_to_logged_in_user_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC12104_Editing_Ligl_and_SSO_Users_Test"/>
         </classes>
 
-    </test>
-    <test name="TC25196-Ligl User- Check whether user is able to click 'Reset Password' button in grid and Reset password without selecting 'Manual Password' checkbox by clicking 'Yes' button ">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC25196_User_Able_to_ResetPassword_And_without_Selecting_ManualPassword_checkbox_Test"/>
-        </classes>
-    </test>
-    <test name="TC28581-Ligl and SSO User- Check that Validation should be displayed in Login page when In-Active status user logs in">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC28581_Check_Validation_in_Login_page_when_InActive_status_LogsIn_Ligl_user_Test"/>
-        </classes>
-    </test>
-    <test name="TC28539-Ligl and SSO users- Check whether Logged in user is displaying with Assigned role after changing role of user">
-        <classes>
-            <class name="com.ligl.Administration.General.UserAndRoles.TC28539_Logged_in_user_is_displaying_with_Assigned_role_after_changing_the_role_Test"/>
-        </classes>
-    </test>
+        </test>
 
-    <!--Employee Master Page-->
+        <test name="TC25171 SSO User- Check whether 'Reset Password' button in grid is Click Disabled">
+        <classes>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC25171_SSO_User_ResetPassword_button_Click_Disabled_in_UserRoles_grid_Test"/>
+        </classes>
+        </test>
+        <test name="TC22508 Check whether Password strength validation is displaying for fields when user enters weak password">
+        <classes>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC22508_Password_Strength_Validation_when_User_Enters_Weak_Password_Test"/>
+        </classes>
+        </test>
+        <test name="TC22868 Verify that user should not be able to login with old password">
+        <classes>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC22868_User_Should_not_be_able_to_Login_with_Old_Password_Test"/>
+        </classes>
+        </test>
 
-    <test name="TC33890-Employee Master- Verify the process of Creating new Employee using +Employee button">
+        <test name="TC21215 Check whether user is able to click 'Reset Password' button in grid and Manually Reset password successfully">
         <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC33890_Creating_new_Employee_using_Employee_button_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC21215_User_Able_to_click_ResetPassword_button_And_Reset_Password_Manually_for_Ligl_User_Test"/>
         </classes>
-    </test>
-    <test name="TC40183 Create and Edit Employee- Verify user is able to save successfully without filling 'Title' field.">
+        </test>
+        <test name="TC21217 Admin Reset Password Manually- Verify whether user is able to login with New password">
         <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC40183_User_able_to_save_Employee_without_filling_Title_field_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC21217_User_able_Login_with_Admin_Reset_Password_Test"/>
         </classes>
-    </test>
-    <test name="TC40182 Create and Edit Employee- Verify 'Title' field is an optional field">
+        </test>
+        <test name="TC22518 Check whether Logged in user is able to Change Password after Admin Reset Password">
         <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC40182_Create_and_Edit_Employee_Check_Title_field_is_optional_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC22518_Logged_in_user_able_to_Change_Password_after_Admin_Reset_Password"/>
         </classes>
-    </test>
-    <test name="TC51896 Employee Edit- Verify whether mentioned fields are non-editable">
+        </test>
+        <test name="TC22519 Check whether 'Change Password' option is present in User profile and user is able to again login succesfully with new password">
         <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC51896_Employee_Edit_nonEditable_fields_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC22519_Change_Password_in_UserProfile_and_SameUser_Login_with_New_Password_Test"></class>
         </classes>
-    </test>
-    <test name="TC43113 Create and Edit Employee- Verify Maximum length of Mobile,Telephone and Fax numbers fields should not exceed 20 digits">
-        <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC43113_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_Test"/>
-        </classes>
-    </test>
-    <test name="TC35807 Create and Edit Employee- Check whether Designation is changed to 'Title'">
-        <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC35807_Check_that_Designation_field_changed_to_Title_Test"/>
-        </classes>
-    </test>
-    <test name="TC30468 Employee Edit- Verify whether 'HR Status' , 'Hire Date' , 'Terminated Date' fields are editable">
-        <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC30468_Employee_Edit_Verify_that_HRStatus_HireDate_TerminatedDate_fields_are_editable_Test"/>
-        </classes>
-    </test>
-    <test name="TC40180 Employee +Bulk Import- Check whether user is able to import employee without filling 'Title' field">
-        <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC40180_user_is_able_to_import_employee_without_filling_Title_field_Test"/>
-        </classes>
-    </test>
-    <test name="TC20363	Create and Edit Employee- Verify mentioned Optional dropdown fields are available and user is able to save successfully">
-        <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC20363_Verify_availability_of_Mentioned_Optional_Dropdown_Test"/>
-        </classes>
-    </test>
-    <test name="TC29212 Create and Edit Employee- Verify availability of Mentioned Optional Additional fields">
-        <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC29212_Verify_availability_of_Mentioned_Optional_Additional_fields_Test"/>
-        </classes>
-    </test>
-    <test name="TC56374 Employee Import-Verify the Functionality of Import employee by giving both Mandatory and Non Mandatory fields in Full Template">
-        <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC56374_Verify_user_able_to_import_Employee_by_giving_Both_Mandatory_and_Non_Mandatory_Fields_in_Full_Template_Test"/>
-        </classes>
-    </test>
-    <test name="TC56376 Employee Import-Verify whether user is able to import employee by giving all fields in Short Template">
-        <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC56376_Verify_user_able_to_import_Employee_by_giving_all_fields_in_Short_Template_Test"/>
-        </classes>
-    </test>
-    <test name="TC56372 Employee Import-Verify that user is able to import Employee by giving all mandatory fields in Full Template">
-        <classes>
-            <class name="com.ligl.Administration.General.EmployeeMaster.TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_Fields_in_Full_Template_Test"/>
-        </classes>
-    </test>
+        </test>
 
-    <!--Contact Master Page-->
+        <test name="TC51897 Verify the unavailability of 'Change Password' option in logged in SSO User profile icon">
+        <classes>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test"/>
+        </classes>
+        </test>
+        <test name="TC28525 Ligl and SSO users Check whether user is able to change role to another role">
+        <classes>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC28525_Ligl_and_SSO_Users_able_to_Change_Any_Role_Test"/>
+        </classes>
+        </test>
+        <test name="TC28525 Ligl and SSO users Check whether user is able to change role to no role">
+        <classes>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC28525_Ligl_and_SSO_Users_able_to_Change_No_Role_Test"/>
+        </classes>
+        </test>
+        <test name="TC51900 Ligl User Create and Edit- Check duplicate validation message is displaying for 'Username' field">
+        <classes>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_Ligl_User_Create_and_Edit_Test"/>
+        </classes>
+        </test>
+        <test name="TC51900 SSO Users Create and Edit- Check duplicate validation message is displaying for 'Username' field">
+        <classes>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_SSO_User_Create_Edit_Test"/>
+        </classes>
+        </test>
 
-    <test name="TC8712 Contact Master- Verify the process of Creating new contact using +Contact button">
+        <test name="TC28540 Check whether user is able to create new Ligl and SSO Users without choosing Role from 'Roles Assigned' dropdown">
         <classes>
-            <class name="com.ligl.Administration.General.ContactMaster.TC8712_Creat_new_contact_using_addContact_button_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC28540_Users_Able_to_create_new_Ligl_and_SSO_users_without_choosing_Role_Test"/>
         </classes>
-    </test>
-    <test name="TC7067Create and Edit Contact- Check whether Party names are displaying based on selected Contact type and Party type">
+        </test>
+        <test name="TC28551-Ligl Users - Check whether user is able to change the Status (Active/In-Active) any time">
         <classes>
-            <class name="com.ligl.Administration.General.ContactMaster.TC7067_Party_names_are_displaying_based_on_selected_Contact_type_and_Party_type_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC28551_Users_Able_to_Change_Status_Active_or_InActive_for_Ligl_and_SSO_Users_Test"/>
         </classes>
-    </test>
-    <test name="TC42959 Create and Edit Contact- Verify Maximum length of Mobile, Telephone and Fax numbers fields should not exceed 20 digits">
+        </test>
+        <test name="TC28536-Ligl user- Check whether Alert should be displayed when No Role user logs in">
         <classes>
-            <class name="com.ligl.Administration.General.ContactMaster.TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_Test"/>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC28536_Check_that_Alert_should_be_displayed_when_NoRole_to_logged_in_user_Test"/>
         </classes>
-    </test>
-    <test name="TC42982	Create and Edit Contact- Verify Mobile number field is an optional field">
-        <classes>
-            <class name="com.ligl.Administration.General.ContactMaster.TC42982_Verify_Mobile_number_field_optional_field_Test"/>
-        </classes>
-    </test>
-    <test name="TC7065	Create and Edit Contact- Check whether Party types are displaying based on selected Contact type">
-        <classes>
-            <class name="com.ligl.Administration.General.ContactMaster.TC7065_Check_Party_types_are_displaying_based_on_selected_Contact_type_Test"/>
-        </classes>
-    </test>
 
-    <!--Parties-->
+        </test>
+        <test name="TC25196-Ligl User- Check whether user is able to click 'Reset Password' button in grid and Reset password without selecting 'Manual Password' checkbox by clicking 'Yes' button ">
+        <classes>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC25196_User_Able_to_ResetPassword_And_without_Selecting_ManualPassword_checkbox_Test"/>
+        </classes>
+        </test>
+        <test name="TC28581-Ligl and SSO User- Check that Validation should be displayed in Login page when In-Active status user logs in">
+        <classes>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC28581_Check_Validation_in_Login_page_when_InActive_status_LogsIn_Ligl_user_Test"/>
+        </classes>
+        </test>
+        <test name="TC28539-Ligl and SSO users- Check whether Logged in user is displaying with Assigned role after changing role of user">
+        <classes>
+        <class name="com.ligl.Administration.General.UserAndRoles.TC28539_Logged_in_user_is_displaying_with_Assigned_role_after_changing_the_role_Test"/>
+        </classes>
+        </test>
 
-    <test name="TC8735 Parties- Verify the process of Creating new Party using +Party button">
-        <classes>
-            <class name="com.ligl.Administration.General.Parties.TC8735_Create_new_Party_by_using_Party_Button_Test"/>
-        </classes>
-    </test>
-    <test name="TC8746 Parties- Verify the process of Editing Party using Edit existing Party button in grid">
-        <classes>
-            <class name="com.ligl.Administration.General.Parties.TC8746_Edit_Existing_Party_using_Edit_button_in_grid_Test"/>
-        </classes>
-    </test>
-    <test name="TC42968 Parties- Verify Maximum length of Mobile, Telephone and Fax numbers fields should not exceed 20 digits">
-        <classes>
-            <class name="com.ligl.Administration.General.Parties.TC42968_Verify_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Parties_Test"/>
-        </classes>
-    </test>
+        <!--Employee Master Page-->
 
-    <!--Email Template Page-->
+        <test name="TC33890-Employee Master- Verify the process of Creating new Employee using +Employee button">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC33890_Creating_new_Employee_using_Employee_button_Test"/>
+        </classes>
+        </test>
+        <test name="TC40183 Create and Edit Employee- Verify user is able to save successfully without filling 'Title' field.">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC40183_User_able_to_save_Employee_without_filling_Title_field_Test"/>
+        </classes>
+        </test>
+        <test name="TC40182 Create and Edit Employee- Verify 'Title' field is an optional field">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC40182_Create_and_Edit_Employee_Check_Title_field_is_optional_Test"/>
+        </classes>
+        </test>
+        <test name="TC51896 Employee Edit- Verify whether mentioned fields are non-editable">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC51896_Employee_Edit_nonEditable_fields_Test"/>
+        </classes>
+        </test>
+        <test name="TC43113 Create and Edit Employee- Verify Maximum length of Mobile,Telephone and Fax numbers fields should not exceed 20 digits">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC43113_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_Test"/>
+        </classes>
+        </test>
+        <test name="TC35807 Create and Edit Employee- Check whether Designation is changed to 'Title'">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC35807_Check_that_Designation_field_changed_to_Title_Test"/>
+        </classes>
+        </test>
+        <test name="TC30468 Employee Edit- Verify whether 'HR Status' , 'Hire Date' , 'Terminated Date' fields are editable">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC30468_Employee_Edit_Verify_that_HRStatus_HireDate_TerminatedDate_fields_are_editable_Test"/>
+        </classes>
+        </test>
+        <test name="TC40180 Employee +Bulk Import- Check whether user is able to import employee without filling 'Title' field">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC40180_user_is_able_to_import_employee_without_filling_Title_field_Test"/>
+        </classes>
+        </test>
+        <test name="TC20363    Create and Edit Employee- Verify mentioned Optional dropdown fields are available and user is able to save successfully">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC20363_Verify_availability_of_Mentioned_Optional_Dropdown_Test"/>
+        </classes>
+        </test>
+        <test name="TC29212 Create and Edit Employee- Verify availability of Mentioned Optional Additional fields">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC29212_Verify_availability_of_Mentioned_Optional_Additional_fields_Test"/>
+        </classes>
+        </test>
+        <test name="TC56374 Employee Import-Verify the Functionality of Import employee by giving both Mandatory and Non Mandatory fields in Full Template">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC56374_Verify_user_able_to_import_Employee_by_giving_Both_Mandatory_and_Non_Mandatory_Fields_in_Full_Template_Test"/>
+        </classes>
+        </test>
+        <test name="TC56376 Employee Import-Verify whether user is able to import employee by giving all fields in Short Template">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC56376_Verify_user_able_to_import_Employee_by_giving_all_fields_in_Short_Template_Test"/>
+        </classes>
+        </test>
+        <test name="TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_Fields_in_Full_Template_Test">
+        <classes>
+        <class name="com.ligl.Administration.General.EmployeeMaster.TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_Fields_in_Full_Template_Test"/>
+        </classes>
+        </test>
 
-    <test name="TC1983 Email Templates- Verify the process of creating new template using +Template button for 'Case Approval' category.">
+        <!--Contact Master Page-->
+        <test name="TC8712_Creat_new_contact_using_addContact_button_Test">
         <classes>
-            <class name="com.ligl.Administration.General.EmailTemplates.TC1983_Creat_Template_using_addTemplate_button_for_CaseApproval_Template_Test"/>
+        <class name="com.ligl.Administration.General.ContactMaster.TC8712_Creat_new_contact_using_addContact_button_Test"/>
         </classes>
-    </test>
-    <test name="TC35048 Email Templates (System)- Verify the process of editing Subject and Content for mentioned email template categories.">
+        </test>
+        <test name="TC7067_Party_names_are_displaying_based_on_selected_Contact_type_and_Party_type_Test">
         <classes>
-            <class name="com.ligl.Administration.General.EmailTemplates.TC35048_Edit_Subject_and_Content_for_Mentioned_Email_Template_Categories_Test"/>
+        <class name="com.ligl.Administration.General.ContactMaster.TC7067_Party_names_are_displaying_based_on_selected_Contact_type_and_Party_type_Test"/>
         </classes>
-    </test>
-    <test name="TC35049 Email Templates (System)- Check that '+Template' and 'Delete' buttons are click disabled for mentioned email template categories">
+        </test>
+        <test name="TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Contact_Test">
         <classes>
-            <class name="com.ligl.Administration.General.EmailTemplates.TC35049_addTemplate_and_Delete_buttons_are_click_disabled_for_Mentioned_Email_Template_Categories_Test"/>
+        <class name="com.ligl.Administration.General.ContactMaster.TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Contact_Test"/>
         </classes>
-    </test>
+        </test>
+        <test name="TC42982_Verify_Mobile_number_field_optional_field_Test">
+        <classes>
+        <class name="com.ligl.Administration.General.ContactMaster.TC42982_Verify_Mobile_number_field_optional_field_Test"/>
+        </classes>
+        </test>
+        <test name="TC7065_Check_Party_types_are_displaying_based_on_selected_Contact_type_Test">
+        <classes>
+        <class name="com.ligl.Administration.General.ContactMaster.TC7065_Check_Party_types_are_displaying_based_on_selected_Contact_type_Test"/>
+        </classes>
+        </test>
 
-    <!--Case Settings Page-->
+       <!-- &lt;!&ndash;Parties&ndash;&gt;
 
-    <test name="TC21664 Case Settings- Verify the process of creating new Case settings template using +Template button">
+        <test name="TC8735 Parties- Verify the process of Creating new Party using +Party button">
         <classes>
-            <class name="com.ligl.Administration.General.CaseSettingsPage.TC21664_Creating_new_Case_settings_template_using_add_Template_button_Test"/>
+        <class name="com.ligl.Administration.General.Parties.TC8735_Create_new_Party_by_using_Party_Button_Test"/>
         </classes>
-    </test>
-    <test name="TC22060	Case Settings- Check whether newly created Case settings templates are populating in 'Case Settings Template' dropdown in +Case modal">
+        </test>
+        <test name="TC8746 Parties- Verify the process of Editing Party using Edit existing Party button in grid">
         <classes>
-            <class name="com.ligl.Administration.General.CaseSettingsPage.TC22060_Check_newly_created_CaseSettings_templates_are_populating_in_CaseSettingsTemplate_dropdown_in_Create_a_New_Case_Test"/>
+        <class name="com.ligl.Administration.General.Parties.TC8746_Edit_Existing_Party_using_Edit_button_in_grid_Test"/>
         </classes>
-    </test>
+        </test>
+        <test name="TC42968 Parties- Verify Maximum length of Mobile, Telephone and Fax numbers fields should not exceed 20 digits">
+        <classes>
+        <class name="com.ligl.Administration.General.Parties.TC42968_Verify_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Parties_Test"/>
+        </classes>
+        </test>-->
 
-    <!--Lookup Manager Page-->
+        <!--Email Template Page-->
 
-    <test name="TC54559 Requests-Check whether admin is able to create, edit the request type lookup value">
+        <test name="TC1983 Email Templates- Verify the process of creating new template using +Template button for 'Case Approval' category.">
         <classes>
-            <class name="com.ligl.Administration.General.LookManagerPage.TC54559_Check_admin_is_able_to_create_edit_the_RequestType_lookup_value_Test"/>
+        <class name="com.ligl.Administration.General.EmailTemplates.TC1983_Creat_Template_using_addTemplate_button_for_CaseApproval_Template_Test"/>
         </classes>
-    </test>
-    <test name="TC54587 Case-Check whether admin is able to create, edit the Entity and Sub Entity lookup value">
+        </test>
+        <test name="TC35048 Email Templates (System)- Verify the process of editing Subject and Content for mentioned email template categories.">
         <classes>
-            <class name="com.ligl.Administration.General.LookManagerPage.TC54587_Check_admin_is_able_to_create_edit_the_Entity_and_SubEntity_lookup_value_Test"/>
+        <class name="com.ligl.Administration.General.EmailTemplates.TC35048_Edit_Subject_and_Content_for_Mentioned_Email_Template_Categories_Test"/>
         </classes>
-    </test>
-    <test name="TC54576 Check whether admin is able to create or edit  the case type lookup value when cs config is false">
+        </test>
+        <test name="TC35049 Email Templates (System)- Check that '+Template' and 'Delete' buttons are click disabled for mentioned email template categories">
         <classes>
-            <class name="com.ligl.Administration.General.LookManagerPage.TC54576_Check_admin_is_able_to_Create_or_edit_the_Case_type_lookup_value_when_CS_config_is_false_Test"/>
+        <class name="com.ligl.Administration.General.EmailTemplates.TC35049_addTemplate_and_Delete_buttons_are_click_disabled_for_Mentioned_Email_Template_Categories_Test"/>
         </classes>
-    </test>
-    <test name="TC54560 Requests-Check whether the look up value is populated in create request pop up in Global requests">
-        <classes>
-            <class name="com.ligl.Administration.General.LookManagerPage.TC54560_Check_that_LookUp_value_is_populated_in_Create_request_in_Global_Requests_Test"/>
-        </classes>
-    </test>
-    <test name="TC54583 Check whether case type user defined look up value is populated in the case type dropdown in create case popup">
-        <classes>
-            <class name="com.ligl.Administration.General.LookManagerPage.TC54583_Check_that_CaseType_LookUp_value_is_populated_in_Case_Create_popup_Test"/>
-        </classes>
-    </test>
+        </test>
 
-    <!--Admin LegalHold-->
+        <!--Case Settings Page-->
 
-    <!--Stake Holder-->
+        <test name="TC21664 Case Settings- Verify the process of creating new Case settings template using +Template button">
+        <classes>
+        <class name="com.ligl.Administration.General.CaseSettingsPage.TC21664_Creating_new_Case_settings_template_using_add_Template_button_Test"/>
+        </classes>
+        </test>
+        <test name="TC22060    Case Settings- Check whether newly created Case settings templates are populating in 'Case Settings Template' dropdown in +Case modal">
+        <classes>
+        <class name="com.ligl.Administration.General.CaseSettingsPage.TC22060_Check_newly_created_CaseSettings_templates_are_populating_in_CaseSettingsTemplate_dropdown_in_Create_a_New_Case_Test"/>
+        </classes>
+        </test>
 
-    <test name="TC30545 Verify Create Stakeholders">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30545_Verify_Processes_of_Stakeholder_Creation"/>
-        </classes>
-    </test>
-    <test name="TC30545 Verify whether newly added stakeholders are displaying in Stakeholders list grid and Case LHN for Stakeholder grid">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30545_Verify_that_newly_added_stakeholders_are_displaying_in_Stakeholders_list_grid_and_Case_LHN_for_Stakeholder_grid"/>
-        </classes>
-    </test>
-    <test name="TC30551 Verify whether user is able to perform LHN actions to newly created stakeholders from Admin">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30551_Verify_User_able_to_perform_LHN_Actions_to_newly_created_stakeholders_from_Admin"/>
-        </classes>
-    </test>
-    <test name="TC51903 Stakeholders Create and Edit -Check for the duplicate validation message for Email-id field">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC51903_Check_the_Duplicate_Validation_Message_for_Email_field_in_Stakeholders_Create_and_Edit"/>
-        </classes>
-    </test>
-    <test name="TC37922 Delete Option-Verify the functionality of delete button in the grid">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC37922_Verify_functionality_of_delete_button_in_the_Stakeholder_grid"/>
-        </classes>
-    </test>
-    <test name="TC37930 Stakeholders Delete Option-Check whether deleted stakeholders are not displaying in grids(Case LHN Stakeholder/Admin Stakeholder)">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC37930_Check_that_Deleted_stakeholders_are_not_displaying_in_Stakeholders_list_grid_and_Case_LHN_for_Stakeholder_grid"/>
-        </classes>
-    </test>
+        <!--Lookup Manager Page-->
 
-    <!--Manage Question Bank-->
+        <test name="TC54559 Requests-Check whether admin is able to create, edit the request type lookup value">
+        <classes>
+        <class name="com.ligl.Administration.General.LookManagerPage.TC54559_Check_admin_is_able_to_create_edit_the_RequestType_lookup_value_Test"/>
+        </classes>
+        </test>
+        <test name="TC54587 Case-Check whether admin is able to create, edit the Entity and Sub Entity lookup value">
+        <classes>
+        <class name="com.ligl.Administration.General.LookManagerPage.TC54587_Check_admin_is_able_to_create_edit_the_Entity_and_SubEntity_lookup_value_Test"/>
+        </classes>
+        </test>
+        <test name="TC54576 Check whether admin is able to create or edit  the case type lookup value when cs config is false">
+        <classes>
+        <class name="com.ligl.Administration.General.LookManagerPage.TC54576_Check_admin_is_able_to_Create_or_edit_the_Case_type_lookup_value_when_CS_config_is_false_Test"/>
+        </classes>
+        </test>
+        <test name="TC54560 Requests-Check whether the look up value is populated in create request pop up in Global requests">
+        <classes>
+        <class name="com.ligl.Administration.General.LookManagerPage.TC54560_Check_that_LookUp_value_is_populated_in_Create_request_in_Global_Requests_Test"/>
+        </classes>
+        </test>
+        <test name="TC54583 Check whether case type user defined look up value is populated in the case type dropdown in create case popup">
+        <classes>
+        <class name="com.ligl.Administration.General.LookManagerPage.TC54583_Check_that_CaseType_LookUp_value_is_populated_in_Case_Create_popup_Test"/>
+        </classes>
+        </test>
 
-    <test name="TC20282 Verifying the functionality of Save button in Create and Edit +Questionnaire modal">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Edit_Questionnaire_modal"/>
-        </classes>
-    </test>
-    <test name="TC51773 Check whether 'Applies to' field is non-editable in Edit Question modal for Parent and Child questions">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Parent_and_Child_questions"/>
-        </classes>
-    </test>
-    <test name="TC50807 Display Parent to Child questions- Verify that Parent Question which is linked to Child Question is displaying in the Parent Question Column as 'Yes' for IsParent">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_displaying_in_ParentQuestion_and_Yes_for_IsParent_Columns"/>
-        </classes>
-    </test>
+        <!--Admin LegalHold-->
 
-    <!--Manage Questionnaire Templates Page-->
+        <!--Stake Holder-->
 
-    <test name="TC20723	Admin-Manage Questionnaire Templates-Verify the process of creating New template by choosing 'Create New Template' option from Add template button">
+        <test name="TC30545 Verify Create Stakeholders">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button"/>
+        <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30545_Verify_Processes_of_Stakeholder_Creation"/>
         </classes>
-    </test>
-    <test name="TC20792 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create New Template'">
+        </test>
+        <test name="TC30545 Verify whether newly added stakeholders are displaying in Stakeholders list grid and Case LHN for Stakeholder grid">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20792_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_New_Template"/>
+        <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30545_Verify_that_newly_added_stakeholders_are_displaying_in_Stakeholders_list_grid_and_Case_LHN_for_Stakeholder_grid"/>
         </classes>
-    </test>
-    <test name="TC38065 Admin-Manage Questionnaire Templates-Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
+        </test>
+        <test name="TC30551 Verify whether user is able to perform LHN actions to newly created stakeholders from Admin">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38065_Verify_the_process_creating_New_Template_by_choosing_Create_From_Existing_Template_from_Add_Template_button"/>
+        <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30551_Verify_User_able_to_perform_LHN_Actions_to_newly_created_stakeholders_from_Admin"/>
         </classes>
-    </test>
-    <test name="TC38068 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
+        </test>
+        <test name="TC51903 Stakeholders Create and Edit -Check for the duplicate validation message for Email-id field">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38068_Verify_that_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template"/>
+        <class name="com.ligl.Administration.LegalHold.Stakeholder.TC51903_Check_the_Duplicate_Validation_Message_for_Email_field_in_Stakeholders_Create_and_Edit"/>
         </classes>
-    </test>
-    <test name="TC20800 Admin-Manage Questionnaire Templates-Verifying the Functionality of Delink Option for a question in Questionnaire template">
+        </test>
+        <test name="TC37922 Delete Option-Verify the functionality of delete button in the grid">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20800_Verify_the_Functionality_of_Delink_Option_for_a_Question_in_Questionnaire_Template"/>
+        <class name="com.ligl.Administration.LegalHold.Stakeholder.TC37922_Verify_functionality_of_delete_button_in_the_Stakeholder_grid"/>
         </classes>
-    </test>
-    <test name="TC38072 Admin-Manage Questionnaire Templates- Verify that user is able to delink the Questions from the template created by choosing 'Create From Existing Template' option">
+        </test>
+        <test name="TC37930 Stakeholders Delete Option-Check whether deleted stakeholders are not displaying in grids(Case LHN Stakeholder/Admin Stakeholder)">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38072_Verify_user_able_to_delink_the_Questions_from_template_created_by_Create_From_Existing_Template"/>
+        <class name="com.ligl.Administration.LegalHold.Stakeholder.TC37930_Check_that_Deleted_stakeholders_are_not_displaying_in_Stakeholders_list_grid_and_Case_LHN_for_Stakeholder_grid"/>
         </classes>
-    </test>
-    <test name="TC38070 Admin-Manage Questionnaire Templates- Check whether newly created templates are populated under Questionnaire template dropdown for Custodian and Stakeholder Legalhold">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38070_Verify_newly_created_templates_populated_under_Custodian_and_stakeHolder_Questionnaire_template_dropdown"/>
-        </classes>
-    </test>
-    <test name="TC20802 Admin-Manage Questionnaire Templates-Verifying the functionality of Save button after editing the fields for a questionnaire template">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template"></class>
-        </classes>
-    </test>
+        </test>
 
-    <!--Escalation And Reminder Page-->
-    <test name="TC51777 Admin-Legal hold-Escalation and Reminder- Verify whether Case level configuration changes are not reflected in Admin level configurations">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.EscalationAndReminder.TC51777_Verify_whether_Case_level_configuration_changes_are_not_reflected_in_Admin_level_configurations"></class>
-        </classes>
-    </test>
+        <!--Manage Questionnaire Templates Page-->
 
-    <!--Manage Display Content page-->
-    <test name="TC36508 Admin- Manage Display Content- Check whether applicable parameters are only displayed to the value selected from the category dropdown">
+        <test name="TC20723    Admin-Manage Questionnaire Templates-Verify the process of creating New template by choosing 'Create New Template' option from Add template button">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageDisplayContent.TC36508_Check_applicable_Parameters_displayed_to_the_Value_selected_from_the_category_dropdown"/>
+        <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button"/>
         </classes>
-    </test>
+        </test>
+        <test name="TC20792 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create New Template'">
+        <classes>
+        <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20792_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_New_Template"/>
+        </classes>
+        </test>
+        <test name="TC38065 Admin-Manage Questionnaire Templates-Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
+        <classes>
+        <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38065_Verify_the_process_creating_New_Template_by_choosing_Create_From_Existing_Template_from_Add_Template_button"/>
+        </classes>
+        </test>
+        <test name="TC38068 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
+        <classes>
+        <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38068_Verify_that_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template"/>
+        </classes>
+        </test>
+        <test name="TC20800 Admin-Manage Questionnaire Templates-Verifying the Functionality of Delink Option for a question in Questionnaire template">
+        <classes>
+        <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20800_Verify_the_Functionality_of_Delink_Option_for_a_Question_in_Questionnaire_Template"/>
+        </classes>
+        </test>
+        <test name="TC38072 Admin-Manage Questionnaire Templates- Verify that user is able to delink the Questions from the template created by choosing 'Create From Existing Template' option">
+        <classes>
+        <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38072_Verify_user_able_to_delink_the_Questions_from_template_created_by_Create_From_Existing_Template"/>
+        </classes>
+        </test>
+        <test name="TC38070 Admin-Manage Questionnaire Templates- Check whether newly created templates are populated under Questionnaire template dropdown for Custodian and Stakeholder Legalhold">
+        <classes>
+        <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38070_Verify_newly_created_templates_populated_under_Custodian_and_stakeHolder_Questionnaire_template_dropdown"/>
+        </classes>
+        </test>
+        <test name="TC20802 Admin-Manage Questionnaire Templates-Verifying the functionality of Save button after editing the fields for a questionnaire template">
+        <classes>
+        <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template"></class>
+        </classes>
+        </test>
 
-    <!--Stake Holder-->
+        <!--Escalation And Reminder Page-->
+        <test name="TC51777 Admin-Legal hold-Escalation and Reminder- Verify whether Case level configuration changes are not reflected in Admin level configurations">
+        <classes>
+        <class name="com.ligl.Administration.LegalHold.EscalationAndReminder.TC51777_Verify_whether_Case_level_configuration_changes_are_not_reflected_in_Admin_level_configurations"></class>
+        </classes>
+        </test>
 
-    <test name="TC30545 Verify Create Stakeholders">
+        <!--Manage Display Content page-->
+        <test name="TC36508 Admin- Manage Display Content- Check whether applicable parameters are only displayed to the value selected from the category dropdown">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30545_Verify_Processes_of_Stakeholder_Creation"/>
+        <class name="com.ligl.Administration.LegalHold.ManageDisplayContent.TC36508_Check_applicable_Parameters_displayed_to_the_Value_selected_from_the_category_dropdown"/>
         </classes>
-    </test>
-    <test name="TC30545 Verify whether newly added stakeholders are displaying in Stakeholders list grid and Case LHN for Stakeholder grid">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30545_Verify_that_newly_added_stakeholders_are_displaying_in_Stakeholders_list_grid_and_Case_LHN_for_Stakeholder_grid"/>
-        </classes>
-    </test>
-    <test name="TC30551 Verify whether user is able to perform LHN actions to newly created stakeholders from Admin">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC30551_Verify_User_able_to_perform_LHN_Actions_to_newly_created_stakeholders_from_Admin"/>
-        </classes>
-    </test>
-    <test name="TC51903 Stakeholders Create and Edit -Check for the duplicate validation message for Email-id field">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC51903_Check_the_Duplicate_Validation_Message_for_Email_field_in_Stakeholders_Create_and_Edit"/>
-        </classes>
-    </test>
-    <test name="TC37922 Delete Option-Verify the functionality of delete button in the grid">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC37922_Verify_functionality_of_delete_button_in_the_Stakeholder_grid"/>
-        </classes>
-    </test>
-    <test name="TC37930 Stakeholders Delete Option-Check whether deleted stakeholders are not displaying in grids(Case LHN Stakeholder/Admin Stakeholder)">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.Stakeholder.TC37930_Check_that_Deleted_stakeholders_are_not_displaying_in_Stakeholders_list_grid_and_Case_LHN_for_Stakeholder_grid"/>
-        </classes>
-    </test>
+        </test>
 
-    <!--Manage Question Bank-->
+        <!--Manage Question Bank-->
 
-    <test name="TC20282 Verifying the functionality of Save button in Create and Edit +Questionnaire modal">
+        <test name="TC20282 Verifying the functionality of Save button in Create and Edit +Questionnaire modal">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Edit_Questionnaire_modal"/>
+        <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC20282_Verifying_the_functionality_of_Save_button_in_Create_and_Edit_Questionnaire_modal"/>
         </classes>
-    </test>
-    <test name="TC51773 Check whether 'Applies to' field is non-editable in Edit Question modal for Parent and Child questions">
+        </test>
+        <test name="TC51773 Check whether 'Applies to' field is non-editable in Edit Question modal for Parent and Child questions">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Parent_and_Child_questions"/>
+        <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Parent_and_Child_questions"/>
         </classes>
-    </test>
-    <test name="TC50807 Display Parent to Child questions- Verify that Parent Question which is linked to Child Question is displaying in the Parent Question Column as 'Yes' for IsParent">
+        </test>
+        <test name="TC50807 Display Parent to Child questions- Verify that Parent Question which is linked to Child Question is displaying in the Parent Question Column as 'Yes' for IsParent">
         <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_displaying_in_ParentQuestion_and_Yes_for_IsParent_Columns"/>
+        <class name="com.ligl.Administration.LegalHold.ManageQuestionBank.TC50807_Verify_ParentQuestion_which_is_Linked_to_ChildQuestion_is_displaying_in_ParentQuestion_and_Yes_for_IsParent_Columns"/>
         </classes>
-    </test>
-
-    <!--Manage Questionnaire Templates Page-->
-
-    <test name="TC20723	Admin-Manage Questionnaire Templates-Verify the process of creating New template by choosing 'Create New Template' option from Add template button">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20723_Verify_the_process_creating_New_Template_by_choosing_Create_New_Template_from_Add_Template_button"/>
-        </classes>
-    </test>
-    <test name="TC20792 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create New Template'">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20792_Verify_Functionality_of_Add_Questions_Button_for_a_template_created_by_choosing_Create_New_Template"/>
-        </classes>
-    </test>
-    <test name="TC38065 Admin-Manage Questionnaire Templates-Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38065_Verify_the_process_creating_New_Template_by_choosing_Create_From_Existing_Template_from_Add_Template_button"/>
-        </classes>
-    </test>
-    <test name="TC38068 Verifying the Functionality of 'Add Questions Button' for a template created by choosing 'Create From Existing Template'">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38068_Verify_that_Add_Questions_Button_for_a_template_created_by_choosing_Create_From_Existing_Template"/>
-        </classes>
-    </test>
-    <test name="TC20800 Admin-Manage Questionnaire Templates-Verifying the Functionality of Delink Option for a question in Questionnaire template">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20800_Verify_the_Functionality_of_Delink_Option_for_a_Question_in_Questionnaire_Template"/>
-        </classes>
-    </test>
-    <test name="TC38072 Admin-Manage Questionnaire Templates- Verify that user is able to delink the Questions from the template created by choosing 'Create From Existing Template' option">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38072_Verify_user_able_to_delink_the_Questions_from_template_created_by_Create_From_Existing_Template"/>
-        </classes>
-    </test>
-    <test name="TC38070 Admin-Manage Questionnaire Templates- Check whether newly created templates are populated under Questionnaire template dropdown for Custodian and Stakeholder Legalhold">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC38070_Verify_newly_created_templates_populated_under_Custodian_and_stakeHolder_Questionnaire_template_dropdown"/>
-        </classes>
-    </test>
-    <test name="TC20802 Admin-Manage Questionnaire Templates-Verifying the functionality of Save button after editing the fields for a questionnaire template">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates.TC20802_Verify_the_Functionality_of_Save_Button_after_Editing_the_fields_for_a_Questionnaire_Template"></class>
-        </classes>
-    </test>-->
-
-    <!--Escalation And Reminder Page-->
-    <test name="TC51777 Admin-Legal hold-Escalation and Reminder- Verify whether Case level configuration changes are not reflected in Admin level configurations">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.EscalationAndReminder.TC51777_Verify_whether_Case_level_configuration_changes_are_not_reflected_in_Admin_level_configurations"></class>
-        </classes>
-    </test>
-
-    <!--Manage Display Content page-->
-    <test name="TC36508 Admin- Manage Display Content- Check whether applicable parameters are only displayed to the value selected from the category dropdown">
-        <classes>
-            <class name="com.ligl.Administration.LegalHold.ManageDisplayContent.TC36508_Check_applicable_Parameters_displayed_to_the_Value_selected_from_the_category_dropdown"/>
-        </classes>
-    </test>
-</suite>
+        </test>
+        </suite> <!-- Suite -->

@@ -11,9 +11,9 @@ import com.ligl.dataprovider.TestDataProvider;
 import com.ligl.pages.LaunchPage;
 import com.ligl.util.DataUtil;
 
-public class TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_Test extends TestBase{
+public class TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Contact_Test extends TestBase{
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_Test(Hashtable<String, String> data) throws Exception{
+    public void TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Contact_Test(Hashtable<String, String> data) throws Exception{
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -35,8 +35,8 @@ public class TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers
                     .getHeader()
                     .logout();
         }catch (Exception ex) {
-            session.log_Error("TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_Test");
-            throw new Exception("TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_Test", ex);
+            session.log_Error("TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Contact_Test");
+            throw new Exception("TC42959_Maximum_20_digits_allow_in_Mobile_Telephone_and_Fax_numbers_fields_in_Contact_Test", ex);
         }finally {
             session.end();
         }

@@ -1285,10 +1285,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             log_Info("Enter Region");
             getDriver().waitForelementToBeClickable(Region);
+            Thread.sleep(2000);
             Region.click();
             Thread.sleep(1000);
             RegionText.sendKeys(data.get("Region"));
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             RegionText.sendKeys(Keys.ENTER);
             log_Pass("Entered Region");
 
