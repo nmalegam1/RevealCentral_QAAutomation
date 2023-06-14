@@ -79,7 +79,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(xpath= "//mat-select[@title='select-law-firm-third-party']")
     WebElement LawFirmDrpDwn;
 
-    @FindBy(xpath = "//*[@id='description']")
+    @FindBy(xpath = "//input[@id='description']")
     WebElement DescriptionTextBox;
 
 

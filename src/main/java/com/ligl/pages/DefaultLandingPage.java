@@ -1,5 +1,6 @@
 package com.ligl.pages;
 
+import com.ligl.base.pages.Constants;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.base.pages.LiglBasePage;
 import com.ligl.pages.casemanagement.CaseCounselPage;
@@ -145,11 +146,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='CreatedByName']//span[@class='ellipsisAgGrid']")
     WebElement CreatedByColData;
-    @FindBy(id = "input-dynamic-column-2")
+    @FindBy(id = "input-dynamic-column-1")
     WebElement CostCentre;
-    @FindBy(id="input-dynamic-column-3")
+    @FindBy(id="input-dynamic-column-2")
     WebElement CaseAlias;
-    @FindBy(id="select-dynamic-column-1")
+    @FindBy(id="select-dynamic-column-3")
     WebElement AddDropDown;
     @FindBy(xpath = "//span[contains(text(),'Region is required')]")
     WebElement RegionReqValidation;
@@ -191,6 +192,12 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//input[@id='input-dynamic-column-5']")
     WebElement ProjectRetirementDate;
+
+    @FindBy(xpath = "//app-error-message[@class='ng-star-inserted']//div//span")
+    WebElement ProjectNameErrorMsg;
+
+    @FindBy(xpath = "//button[contains(text(),'Save')]")
+    WebElement EditPopUpSaveBtn;
 
 
     /**
@@ -364,7 +371,6 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
 
             log_Info("createNewCase() Started");
-            Thread.sleep(3000);
             log_Info("Click Create Case Button");
             createCaseBtn.click();
             log_Info(data.toString());
@@ -372,19 +378,19 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(CaseType);
             CaseType.click();
             Thread.sleep(1000);
-            CaseTypeText.sendKeys(data.get("CaseType"));
+            CaseTypeText.sendKeys(data.get("ProjectTYPE"));
             Thread.sleep(1000);
             CaseTypeText.sendKeys(Keys.ENTER);
             log_Info("Enter RoleType");
             getDriver().waitForelementToBeClickable(RoleType);
             RoleType.click();
             Thread.sleep(1000);
-            RoleTypeText.sendKeys(data.get("Role"));
+            RoleTypeText.sendKeys(data.get("ROLE"));
             Thread.sleep(1000);
             RoleTypeText.sendKeys(Keys.ENTER);
             log_Info("Enter CaseName");
             getDriver().waitForelementToBeClickable(CaseName);
-            CaseName.sendKeys(data.get("CaseName"));
+            CaseName.sendKeys(data.get("PROJECT"));
 
 
             log_Info("Enter Work Flow Template");
@@ -400,7 +406,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(CST);
             CST.click();
             Thread.sleep(1000);
-            CSTText.sendKeys(data.get("CaseSetTemp"));
+            CSTText.sendKeys(data.get("PST"));
             Thread.sleep(1000);
             CSTText.sendKeys(Keys.ENTER);
             Thread.sleep(1000);
@@ -409,7 +415,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(Entity);
             Entity.click();
             Thread.sleep(1000);
-            EntityText.sendKeys(data.get("Entity"));
+            EntityText.sendKeys(data.get("ENTITY"));
             Thread.sleep(1000);
             EntityText.sendKeys(Keys.ENTER);
             Thread.sleep(1000);
@@ -418,7 +424,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(Region);
             Region.click();
             Thread.sleep(1000);
-            RegionText.sendKeys(data.get("Region"));
+            RegionText.sendKeys(data.get("REGION"));
             Thread.sleep(1000);
             RegionText.sendKeys(Keys.ENTER);
             log_Info("Region Entered");
@@ -426,13 +432,13 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             log_Info("Enter Description");
             getDriver().waitForelementToBeClickable(Desc);
-            Desc.sendKeys(data.get("Description"));
+            Desc.sendKeys(data.get("DESC"));
 
             log_Info("Enter Priority");
             getDriver().waitForelementToBeClickable(Priority);
             Priority.click();
             Thread.sleep(1000);
-            SelPriority.sendKeys(data.get("Priority"));
+            SelPriority.sendKeys(data.get("PRIORITY"));
             Thread.sleep(1000);
             SelPriority.sendKeys(Keys.ENTER);
             log_Pass("Priority Selected");
@@ -443,7 +449,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             SaveBtn.click();
             log_Pass("Save button Clicked");
             String b= NewlyCreatedCaseName.getAttribute("title");
-            Assert.assertEquals(data.get("CaseName"),b);
+            Assert.assertEquals(data.get("PROJECT"),b);
             log_Pass("Case Created Successfully");
             return new CaseSummaryPage();
         }
@@ -1217,7 +1223,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(1000);
             CaseType.click();
             Thread.sleep(1000);
-            CaseTypeText.sendKeys(data.get("CaseType"));
+            CaseTypeText.sendKeys(data.get("ProjectTYPE"));
             Thread.sleep(1000);
             CaseTypeText.sendKeys(Keys.ENTER);
             log_Pass("Entered Case Type");
@@ -1226,7 +1232,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(RoleType);
             RoleType.click();
             Thread.sleep(1000);
-            RoleTypeText.sendKeys(data.get("Role"));
+            RoleTypeText.sendKeys(data.get("ROLE"));
             Thread.sleep(1000);
             RoleTypeText.sendKeys(Keys.ENTER);
             log_Pass("Entered Role Type");
@@ -1234,13 +1240,13 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("Enter CaseName");
             getDriver().waitForelementToBeClickable(CaseName);
             Thread.sleep(1000);
-            CaseName.sendKeys(data.get("CaseName"));
+            CaseName.sendKeys(data.get("PROJECT"));
             log_Pass("Entered CaseName");
 
             log_Info("Enter Project Due Date");
             getDriver().waitForelementToBeClickable(DUEDATE);
             Thread.sleep(1000);
-            DUEDATE.sendKeys(data.get("DueDate"));
+            DUEDATE.sendKeys(data.get("DUEDATE"));
             log_Pass("Entered Project Due Date");
 
             log_Info("Enter Docket Number");
@@ -1252,7 +1258,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("Enter Description");
             getDriver().waitForelementToBeClickable(Desc);
             Thread.sleep(1000);
-            Desc.sendKeys(data.get("Description"));
+            Desc.sendKeys(data.get("DESC"));
             log_Pass("Entered Description");
 
 
@@ -1269,7 +1275,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(CST);
             CST.click();
             Thread.sleep(1000);
-            CSTText.sendKeys(data.get("CaseSetTemp"));
+            CSTText.sendKeys(data.get("PST"));
             Thread.sleep(1000);
             CSTText.sendKeys(Keys.ENTER);
             log_Pass("Entered Case Settings Template");
@@ -1278,16 +1284,16 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(Entity);
             Entity.click();
             Thread.sleep(1000);
-            EntityText.sendKeys(data.get("Entity"));
+            EntityText.sendKeys(data.get("ENTITY"));
             Thread.sleep(1000);
             EntityText.sendKeys(Keys.ENTER);
             log_Pass("Entered Entity");
 
             log_Info("Enter Region");
             getDriver().waitForelementToBeClickable(Region);
+            Thread.sleep(3000);
             Region.click();
-            Thread.sleep(1000);
-            RegionText.sendKeys(data.get("Region"));
+            RegionText.sendKeys(data.get("REGION"));
             Thread.sleep(1000);
             RegionText.sendKeys(Keys.ENTER);
             log_Pass("Entered Region");
@@ -1296,7 +1302,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(Priority);
             Priority.click();
             Thread.sleep(1000);
-            SelPriority.sendKeys(data.get("Priority"));
+            SelPriority.sendKeys(data.get("PRIORITY"));
             Thread.sleep(1000);
             SelPriority.sendKeys(Keys.ENTER);
             log_Pass("Priority Selected");
@@ -1348,7 +1354,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             SaveBtn.click();
             log_Pass("Save button Clicked");
             String b= NewlyCreatedCaseName.getAttribute("title");
-            Assert.assertEquals(data.get("CaseName"),b);
+            Assert.assertEquals(data.get("PROJECT"),b);
             log_Pass("Case Created Successfully");
             return new CaseSummaryPage();
         }
@@ -1479,10 +1485,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             log_Info("Enter Region");
             getDriver().waitForelementToBeClickable(Region);
+            Thread.sleep(2000);
             Region.click();
             Thread.sleep(1000);
             RegionText.sendKeys(REGION);
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             RegionText.sendKeys(Keys.ENTER);
             log_Pass("Entered Region");
 
@@ -1523,7 +1530,18 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(SaveBtn);
             Thread.sleep(1000);
             SaveBtn.click();
-            log_Pass("Clicked On Save Button");
+            Thread.sleep(2000);
+
+            try{
+                if (SaveBtn.isDisplayed())
+                    SaveBtn.click();
+                log_Pass("Clicked On Save Button");
+            }
+            catch (Exception ex){
+                log_Pass("Save Button Is Clicked");
+
+            }
+
             String b= NewlyCreatedCaseName.getAttribute("title");
             Assert.assertEquals(CaseNAME,b);
             log_Pass("Case Created Successfully");
@@ -1550,5 +1568,248 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             throw new Exception("Exception in clickOnAddProjectButton()", ex);
         }
     }
+
+    public ILiglPage createProjectWhenProjectSettingTemplateFieldIsDisabled(Hashtable<String,String> data) throws Exception {
+
+        try {
+
+            log_Info("createProjectWhenProjectSettingTemplateFieldIsDisabled() Started");
+            log_Info(data.toString());
+            clickOnAddProjectButton()
+                    .enterProjectType(data.get("ProjectTYPE"))
+                    .enterRole(data.get("ROLE")).enterProjectName(data.get("PROJECT"))
+                    .enterEntity(data.get("ENTITY")).enterRegion(data.get("REGION")).enterPriority(data.get("PRIORITY")).enterDescription(data.get("DESC"))
+                    .clickOnSaveAndAddDetailsButtonInAddProjectPopUp(data.get("PROJECT"));
+
+            return new CaseSummaryPage();
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in createProjectWhenProjectSettingTemplateFieldIsDisabled()", ex);
+        }
+    }
+
+
+    public ILiglPage createProjectWhenRegionFieldIsDisabled(Hashtable<String,String> data) throws Exception {
+
+        try {
+
+            log_Info("createProjectWhenCaseSettingTemplateFieldIsDisabled() Started");
+            log_Info(data.toString());
+            clickOnAddProjectButton()
+                    .enterProjectType(data.get("ProjectTYPE"))
+                    .enterRole(data.get("ROLE")).enterProjectName(data.get("PROJECT"))
+                    .enterProjectSettingTemplate(data.get("PST")).enterEntity(data.get("ENTITY")).enterRegion(data.get("REGION")).enterPriority(data.get("PRIORITY")).enterDescription(data.get("DESC"))
+                    .clickOnSaveAndAddDetailsButtonInAddProjectPopUp(data.get("PROJECT"));
+
+            return new CaseSummaryPage();
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in createProjectWhenRegionFieldIsDisabled()", ex);
+        }
+    }
+
+    public ILiglPage verifyProjectNameFieldValidationSpecialCharactersAllowedAndNotAllowed(Hashtable<String,String> data) throws Exception {
+
+        try {
+
+            log_Info("verifyProjectNameFieldValidationSpecialCharactersAllowedAndNotAllowed() Started");
+            log_Info(data.toString());
+            clickOnAddProjectButton()
+                    .enterProjectType(data.get("ProjectTYPE"))
+                    .enterRole(data.get("ROLE")).enterProjectName(data.get("PROJECT"))
+                    .enterProjectSettingTemplate(data.get("PST"))
+                    .enterEntity(data.get("ENTITY"))
+                    .enterRegion(data.get("REGION"))
+                    .enterPriority(data.get("PRIORITY"))
+                    .enterDescription(data.get("DESC"))
+                    .clickOnSaveAndAddDetailsButton()
+                    .validateProjectNameFieldErrorMessage()
+                    .performClearActionInTheProjectNameField()
+                    .enterProjectName(data.get("PROJECT1"))
+                    .clickOnSaveAndAddDetailsButtonInAddProjectPopUp(data.get("PROJECT1"));
+
+            return new CaseSummaryPage();
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in verifyProjectNameFieldValidationSpecialCharactersAllowedAndNotAllowed()", ex);
+        }
+    }
+
+    public ILiglPage clickOnSaveAndAddDetailsButton() throws Exception {
+
+        try {
+
+            log_Info("clickOnSaveAndAddDetailsButton() Started");
+            log_Info("Click On Save Button");
+            getDriver().waitForelementToBeClickable(SaveBtn);
+            Thread.sleep(1000);
+            SaveBtn.click();
+            log_Pass("Clicked On Save Button");
+
+            return new DefaultLandingPage();
+
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in clickOnSaveAndAddDetailsButton()", ex);
+        }
+    }
+
+    public ILiglPage performClearActionInTheProjectNameField() throws Exception {
+
+        try {
+
+            log_Info("performClearActionInTheProjectNameField() Started");
+            log_Info("Click On Project Name And Perform Clear Functionality In The Field");
+            getDriver().waitForelementToBeClickable(CaseName);
+            Thread.sleep(1000);
+            CaseName.clear();
+            log_Pass("Clicked On Project Name And Performed Clear Functionality In The Field");
+
+            return new DefaultLandingPage();
+
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in performClearActionInTheProjectNameField()", ex);
+        }
+    }
+
+    public ILiglPage validateProjectNameFieldErrorMessage() throws Exception {
+
+        try {
+
+            log_Info("validateProjectNameFieldErrorMessage() Started");
+            String s1 = ProjectNameErrorMsg.getText();
+            String s2 = (Constants.ProjectSpecialChar_ErrorMessage);
+
+            if(s1.equals(s2)){
+                log_Pass("Error Message Displayed And Validated The Special Characters");
+            }
+            else {
+                throw new Exception("Error Message not Displayed As It Allows Specified Special characters");
+            }
+
+            return new DefaultLandingPage();
+
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in validateProjectNameFieldErrorMessage()", ex);
+        }
+    }
+
+    public ILiglPage verifyUserCanChooseAnyDateInDueDateWhileProjectCreateOrEdit(Hashtable<String,String> data) throws Exception {
+
+        try {
+
+            log_Info("verifyUserCanChooseAnyDateInDueDateWhileProjectCreateOrEdit() Started");
+            log_Info(data.toString());
+            clickOnAddProjectButton()
+                    .enterProjectType(data.get("ProjectTYPE"))
+                    .enterRole(data.get("ROLE")).enterProjectName(data.get("PROJECT"))
+                    .enterProjectSettingTemplate(data.get("PST"))
+                    .enterEntity(data.get("ENTITY"))
+                    .enterRegion(data.get("REGION"))
+                    .enterProjectDueDate(data.get("DUEdatePast"))
+                    .enterPriority(data.get("PRIORITY"))
+                    .enterDescription(data.get("DESC"))
+                    .clickOnSaveAndAddDetailsButtonInAddProjectPopUp(data.get("PROJECT"))
+                    .clickOnProjectEditButton()
+                    .performClearActionInProjectDueDate()
+                    .enterProjectDueDateWhileEditing(data.get("DUEdateCurrent"))
+                    .clickOnSaveButtonFromEditPopUpInCaseSummaryPage();
+
+            return new CaseSummaryPage();
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in verifyUserCanChooseAnyDateInDueDateWhileProjectCreateOrEdit()", ex);
+        }
+    }
+
+    public ILiglPage  enterProjectDueDate(String DueDate) throws Exception {
+
+        try {
+
+            log_Info("Enter Project Due Date");
+            getDriver().waitForelementToBeClickable(DUEDATE);
+            Thread.sleep(1000);
+            DUEDATE.sendKeys(DueDate);
+            Thread.sleep(1000);
+            DUEDATE.sendKeys(Keys.ENTER);
+            log_Pass("Entered Project Due Date");
+
+            return new DefaultLandingPage();
+
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in enterProjectDueDate()", ex);
+        }
+    }
+
+    public ILiglPage clickOnChooseColumnsInProjectGrid() throws Exception {
+
+        try {
+
+            log_Info("clickOnChooseColumnsInProjectGrid() Started");
+            log_Info("Click On Choose Column Menu");
+            getDriver().waitForelementToBeClickable(ChooseColumnsMenuCase);
+            Thread.sleep(2000);
+            ChooseColumnsMenuCase.click();
+            Thread.sleep(2000);
+            log_Pass("Clicked On Choose Columns Menu");
+
+            return this;
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnChooseColumnsInProjectGrid() Failed",ex);
+        }
+
+    }
+
+    public ILiglPage searchForTheRequiredColumnsThroughChooseColumn(String RequiredColumn1) throws Exception {
+
+        try {
+
+            log_Info("searchForTheRequiredColumnsThroughChooseColumn() Started");
+            log_Info("Enter The Required Column In Search Bar");
+            getDriver().waitForelementToBeClickable(ChooseColumnsSearch);
+            ChooseColumnsSearch.sendKeys(RequiredColumn1);
+            Thread.sleep(1000);
+            log_Pass("Entered The Required Column In Search Bar");
+
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+RequiredColumn1+"')]")).click();
+
+            return this;
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("searchForTheRequiredColumnsThroughChooseColumn() Failed",ex);
+        }
+
+    }
+
+    public ILiglPage performClearActionInSearchBarInChooseColumn() throws Exception {
+
+        try {
+
+            log_Info("performClearActionInSearchBarInChooseColumn() Started");
+            log_Info("Clear The Required Column Name In Search Bar");
+            getDriver().waitForelementToBeClickable(ChooseColumnsSearch);
+            ChooseColumnsSearch.clear();
+            Thread.sleep(1000);
+            log_Pass("Cleared The Required Column Name In Search Bar");
+
+            return this;
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("performClearActionInSearchBarInChooseColumn() Failed",ex);
+        }
+
+    }
+
+
+
+
+
 
 }

@@ -3,6 +3,7 @@ package com.ligl.pages.casemanagement;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
 import com.ligl.pages.NotesPage;
+import com.ligl.pages.datamanagement.DMDSIPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -211,6 +212,31 @@ public class CaseDocumentsPage extends LiglBaseSessionPage {
         getDriver().waitForelementToBeClickable(NotesBtn);
         NotesBtn.click();
         return new NotesPage();
+    }
+
+    public ILiglPage validateEditButtonInDisableMode() throws Exception {
+
+        try {
+
+            log_Info("validateEditButtonInDisableMode() Started");
+            log_Info("Validate The Edit Button In Disable Or Not");
+            Thread.sleep(2000);
+            EditBtn.click();
+            Thread.sleep(1000);
+
+            if (EditBtn.isEnabled()){
+                throw new Exception("Edit Button Is In Enable Mode");
+            }
+            else {
+                log_Pass("Edit Button Is In Disable Mode");
+            }
+            return new CaseDocumentsPage();
+
+        } catch (Exception ex) {
+            log_Error("validateEditButtonInDisableMode() Failed");
+            throw new Exception("Exception in validateEditButtonInDisableMode()", ex);
+        }
+
     }
 
 }

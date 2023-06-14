@@ -26,7 +26,8 @@ public class TC_7100_DeletingOutsideCounsel extends TestBase {
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToCaseCounselPage()
                     .addDeleteOutsideCounselToCase(data.get("OptionFromLawFirmDropDwn"), data.get("SelectAvailableLawfirm"))

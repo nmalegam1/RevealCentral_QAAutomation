@@ -31,7 +31,7 @@ public class TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields extend
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .createProjectWithBothMandatoryAndOptionalFields(data)
-                    .validateCreatedCase(data.get("CaseName"));
+                    .validateCreatedCase(data.get("PROJECT"));
 
         } catch (Exception ex) {
             session.log_Error("TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields Failed");

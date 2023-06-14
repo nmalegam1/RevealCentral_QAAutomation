@@ -40,7 +40,7 @@ public class TC_56123_56124_VerifyUserAbleToCreateFirstLHByDateRangeKeyWordsWhen
                     .createNewLegalHoldByDateRangeKeyWords(data.get("LHname"), data.get("CustodianNoticeTemplate"),data.get("StakeHolderNoticeTemplate"), data.get("StartDATE"), data.get("EndDATE"), data.get("NumberOFDAYS"), data.get("KEYwords"))
                     .searchRequiredLegalHoldName(data.get("LHname")).validateLHNStatus(data.get("ApprovalStatus"))
                     .clickOnAddNewLegalHoldButton().enterNameOfTheLH(data.get("LHname1"))
-                    .clickOnNextBtn1().enterCustodianNoticeTemplate(data.get("CustodianNoticeTemplate"), data.get("CustodianQueTemplate") )
+                    .clickOnNextBtn1().enterCustodianNoticeTemplate(data.get("CustodianNoticeTemplate"))
                     .clickOnNextBtn2().clickOnStakeHolderNoticeTemplate(data.get("StakeHolderNoticeTemplate"), data.get("StakeHolderQueTemplate"))
                     .clickOnNextBtn3().validateTheDRandKWInDisableMode().clickOnNextBtn5().clickOnNextBtn6().clickOnSaveBtn();
 

@@ -3,6 +3,7 @@ package com.ligl.pages.datamanagement;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
 import com.ligl.pages.casemanagement.CaseCustodiansPage;
+import com.ligl.pages.casemanagement.CaseDocumentsPage;
 import org.apache.poi.hssf.record.PageBreakRecord;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -96,6 +97,9 @@ public class DMDSIPage extends LiglBaseSessionPage {
 
     @FindBy(id = "selected-records-run")
     WebElement SelectedRecordsRunBtn;
+
+    @FindBy(xpath = "//span[contains(text(),'Add/View')]")
+    WebElement AddAndViewBtnInGrid;
 
 
     public ILiglPage addDataSourceRecordToDSIGrid(String cust, String datasource, String DataHold,String DateRanges,String Keywords) throws Exception {
@@ -628,6 +632,25 @@ public class DMDSIPage extends LiglBaseSessionPage {
         }catch(Exception ex){
             log_Error("verifyNonApprovedScopeInCustomTab() Failed");
             throw new Exception("Exception in verifyNonApprovedScopeInCustomTab()",ex);
+        }
+    }
+
+    public ILiglPage clickOnAddAndViewLinkInDSI() throws Exception {
+        try {
+
+            log_Info("clickOnAddAndViewLinkInDSI() Started");
+            log_Info("Click On Add/View Link In The Grid");
+            getDriver().waitForelementToBeClickable(AddAndViewBtnInGrid);
+            Thread.sleep(1000);
+            AddAndViewBtnInGrid.click();
+            Thread.sleep(1000);
+            log_Pass("Clicked On Add/View Link In The Grid");
+
+            return new CaseDocumentsPage();
+
+        } catch (Exception ex) {
+            log_Error("clickOnAddAndViewLinkInDSI() Failed");
+            throw new Exception("Exception in clickOnAddAndViewLinkInDSI()", ex);
         }
     }
 }

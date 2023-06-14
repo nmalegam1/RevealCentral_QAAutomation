@@ -27,7 +27,8 @@ public class TC_29642_CheckIsDueDateFieldOptinalInCreateEditCase_Test extends Te
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .createNewCase(data)
                     .editDueDate(data.get("DueDate"))
                     .logout();
