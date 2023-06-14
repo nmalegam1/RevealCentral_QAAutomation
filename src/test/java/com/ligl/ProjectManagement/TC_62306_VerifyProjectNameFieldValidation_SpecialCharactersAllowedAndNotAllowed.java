@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields extends TestBase {
+public class TC_62306_VerifyProjectNameFieldValidation_SpecialCharactersAllowedAndNotAllowed extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "ProjectManagement")
-    public void TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields(Hashtable<String, String> data) throws Exception {
+    public void TC_62306_VerifyProjectNameFieldValidation_SpecialCharactersAllowedAndNotAllowed(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -30,12 +30,12 @@ public class TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields extend
                     .navigateURL()
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
-                    .createProjectWithBothMandatoryAndOptionalFields(data)
-                    .validateCreatedCase(data.get("PROJECT"));
+                    .verifyProjectNameFieldValidationSpecialCharactersAllowedAndNotAllowed(data)
+                    .validateCreatedCase(data.get("PROJECT1"));
 
         } catch (Exception ex) {
-            session.log_Error("TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields Failed");
-            throw new Exception("TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields Failed", ex);
+            session.log_Error("TC_62306_VerifyProjectNameFieldValidation_SpecialCharactersAllowedAndNotAllowed Failed");
+            throw new Exception("TC_62306_VerifyProjectNameFieldValidation_SpecialCharactersAllowedAndNotAllowed Failed", ex);
         } finally
         {
             session.end();

@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields extends TestBase {
+public class TC_61619_VerifyUserShouldBeAbleToCreateProjectWhen_Region_FieldDisabled extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "ProjectManagement")
-    public void TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields(Hashtable<String, String> data) throws Exception {
+    public void TC_61619_VerifyUserShouldBeAbleToCreateProjectWhen_Region_FieldDisabled(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -30,12 +30,12 @@ public class TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields extend
                     .navigateURL()
                     .navigateSSOLoginPage()
                     .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
-                    .createProjectWithBothMandatoryAndOptionalFields(data)
+                    .createProjectWhenRegionFieldIsDisabled(data)
                     .validateCreatedCase(data.get("PROJECT"));
 
         } catch (Exception ex) {
-            session.log_Error("TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields Failed");
-            throw new Exception("TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields Failed", ex);
+            session.log_Error("TC_61619_VerifyUserShouldBeAbleToCreateProjectWhen_Region_FieldDisabled Failed");
+            throw new Exception("TC_61619_VerifyUserShouldBeAbleToCreateProjectWhen_Region_FieldDisabled Failed", ex);
         } finally
         {
             session.end();
