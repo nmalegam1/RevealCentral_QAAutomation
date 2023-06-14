@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Dashboards" >
+    <test name="TC_7878_CaseInsightsVerifyTheStatsInSummaryTiles">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_7878_CaseInsightsVerifyTheStatsInSummaryTiles"/>
+        </classes>
+    </test>
+    <test name="TC_15216_ProcessInsightsVerifyTheStatsInSummaryTiles">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_15216_ProcessInsightsVerifyTheStatsInSummaryTiles"/>
+        </classes>
+    </test>
+    <test name="TC_15572_52354_VerifyThatTopStatsMatchWithGridStatsWhenUserAccessibleCasesConfigSetToFalse">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_15572_52354_VerifyThatTopStatsMatchWithGridStatsWhenUserAccessibleCasesConfigSetToFalse"/>
+        </classes>
+    </test>
+    <test name="TC_16120_LegalHoldInsightsVerifyTheStatsInSummaryTiles">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_16120_LegalHoldInsightsVerifyTheStatsInSummaryTiles"/>
+        </classes>
+    </test>
+    <test name="TC_27224_27226_RelativityProccessing_CaseInsights_VerifyTheDataInInventoryTileAndPublishTileTest">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_27224_27226_RelativityProccessing_CaseInsights_VerifyTheDataInInventoryTileAndPublishTileTest"/>
+        </classes>
+    </test>
+    <test name="TC_27239_27240_RelativityProccessing_ProcessInsights_VerifyTheDataInInventoryTileAndPublishTileTest">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_27239_27240_RelativityProccessing_ProcessInsights_VerifyTheDataInInventoryTileAndPublishTileTest"/>
+        </classes>
+    </test>
+    <test name="TC_27793_VerifyTheFunctionalityOfSelectCaseButtonInAllTheDashboardPages">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_27793_VerifyTheFunctionalityOfSelectCaseButtonInAllTheDashboardPages"/>
+        </classes>
+    </test>
+    <test name="TC_28287_GlobalInsights_VerifyTheDataInPageWithoutSelectingCaseTest">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_28287_GlobalInsights_VerifyTheDataInPageWithoutSelectingCaseTest"/>
+        </classes>
+    </test>
+    <test name="TC_28570_VerifyTheNavigationProcessOfClickingClearCaseOptionInDashboards">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_28570_VerifyTheNavigationProcessOfClickingClearCaseOptionInDashboards"/>
+        </classes>
+    </test>
+    <test name="TC_46012_CaseInsights_VerifyTheAvailabilityFunctionalityFromToDateFieldsAndApplyButton">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_46012_CaseInsights_VerifyTheAvailabilityFunctionalityFromToDateFieldsAndApplyButton"/>
+        </classes>
+    </test>
+    <test name="TC_46080_LegalHoldInsights_VerifyTheAvailabilityFunctionalityOfFromToDateFieldsAndApplyButton">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_46080_LegalHoldInsights_VerifyTheAvailabilityFunctionalityOfFromToDateFieldsAndApplyButton"/>
+        </classes>
+    </test>
+    <test name="TC_46091_ProcessInsights_VerifyTheAvailabilityAndFunctionalityOfFromAndToDateFieldsAndApplyButtonTest">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_46091_ProcessInsights_VerifyTheAvailabilityAndFunctionalityOfFromAndToDateFieldsAndApplyButtonTest"/>
+        </classes>
+    </test>
+    <test name="TC_52352_VerifyTheAvailabilityAndClickFunctionalityOfPrintButtonTest">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_52352_VerifyTheAvailabilityAndClickFunctionalityOfPrintButtonTest"/>
+        </classes>
+    </test>
+    <test name="TC_52353_VerifyNumberOfCasesAssignedToLoggedUserAreOnlyDisplayingWhenUserAccessibleCasesConfigSetToTrue">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_52353_VerifyNumberOfCasesAssignedToLoggedUserAreOnlyDisplayingWhenUserAccessibleCasesConfigSetToTrue"/>
+        </classes>
+    </test>
+    <test name="TC_52358_VerifyTheAvailabilityAndClickFunctionalityOfClearAllButtonTest">
+        <classes>
+            <class name="com.ligl.Dashboards.TC_52358_VerifyTheAvailabilityAndClickFunctionalityOfClearAllButtonTest"/>
+        </classes>
+    </test>
+</suite> <!-- Suite -->

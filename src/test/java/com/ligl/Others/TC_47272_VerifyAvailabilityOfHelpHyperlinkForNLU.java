@@ -27,7 +27,7 @@ public class TC_47272_VerifyAvailabilityOfHelpHyperlinkForNLU extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .verifyAvailabilityOfHelpLinkInCaseListPage();
 
         } catch (Exception ex) {

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Others">
+
+   <!-- <test name="AboutVerifyTheFormatOfVersionTest">
+        <classes>
+            <class name="com.ligl.Others.TC_16097_AboutVerifyTheFormatOfVersionTest"/>
+        </classes>
+    </test>
+
+    <test name="VerifyTheProcessOfCreatingNewTimeDetailUsingTimeDetailButtonTest">
+        <classes>
+            <class name="com.ligl.Others.TC_12356_VerifyTheProcessOfCreatingNewTimeDetailUsingTimeDetailButtonTest"/>
+        </classes>
+    </test>
+
+    <test name="VerifyTheProcessOfEditingExistingTimeDetailsIGridUsingEditButtonInGridTest">
+        <classes>
+            <class name="com.ligl.Others.TC_12375_TimeTracker_VerifyTheProcessOfEditingExistingTimeDetailsIGridUsingEditButtonInGridTest"/>
+        </classes>
+    </test>
+
+    <test name="VerifyThatTimeDetailsEffortHoursShouldNotExceed24hrsForADayTest">
+        <classes>
+            <class name="com.ligl.Others.TC_12383_TimeTracker_VerifyThatTimeDetailsEffortHoursShouldNotExceed24hrsForADayTest"/>
+        </classes>
+    </test>
+
+    <test name="VerifyWhetherUserIsAbleToSwitchRegionWithoutLoggingOutTest">
+        <classes>
+            <class name="com.ligl.Others.TC_28855_RegionSwitch_VerifyWhetherUserIsAbleToSwitchRegionWithoutLoggingOutTest"/>
+        </classes>
+    </test>
+    <test name="CheckWhetherNLRIsAbleToCreateCaseSuccessfullyTest">
+        <classes>
+            <class name="com.ligl.Others.TC_55339_CheckWhetherNLRIsAbleToCreateCaseSuccessfullyTest"/>
+        </classes>
+    </test>
+    <test name="VerifyTheProcessOfCreatingUserWithRoleERMGTest">
+        <classes>
+            <class name="com.ligl.Others.TC_35011_VerifyTheProcessOfCreatingUserWithRoleERMGTest"/>
+        </classes>
+    </test>
+    <test name="VerifyTheProcessOfCreatingUserWithRoleExecutiveTest">
+        <classes>
+            <class name="com.ligl.Others.TC_34374_VerifyTheProcessOfCreatingUserWithRoleExecutiveTest"/>
+        </classes>
+    </test>
+    <test name="VerifyTheProcessOfCreatingUserWithRoleOutsideCounselTest">
+        <classes>
+            <class name="com.ligl.Others.TC_32757_VerifyTheProcessOfCreatingUserWithRoleOutsideCounselTest"/>
+        </classes>
+    </test>
+    <test name="VerifyTheProcessOfCreatingSSOUserWithNonLegalUserRoleTest">
+        <classes>
+            <class name="com.ligl.Others.TC_44840_NonLegalUsers_VerifyTheProcessOfCreatingSSOUserWithNonLegalUserRoleTest"/>
+        </classes>
+    </test>
+    <test name="VerifyTheFunctionalityOfChangePriorityActionTest">
+        <classes>
+            <class name="com.ligl.Others.TC_16485_JobQueue_ActiveTab_VerifyTheFunctionalityOfChangePriorityActionTest"/>
+        </classes>
+    </test>
+
+    <test name="VerifyTheFunctionalityOfRetryFailedActionBySelectingSingleOrMultipleRecordsTest">
+        <classes>
+            <class name="com.ligl.Others.TC_16488_JobQueue_ActiveTab_VerifyTheFunctionalityOfRetryFailedActionBySelectingSingleOrMultipleRecordsTest"/>
+        </classes>
+    </test>
+
+    <test name="VerifyTheAvailabilityOfExportButtonInJobManagerCompletedAGGridTest">
+        <classes>
+            <class name="com.ligl.Others.TC_55960_JobManager_VerifyTheAvailabilityOfExportButtonInJobManagerCompletedAGGridTest"/>
+        </classes>
+    </test>
+
+    <test name="CheckWhetherNLRIsAbleToApproveCasesFromApprovalTabTest">
+        <classes>
+            <class name="com.ligl.Others.TC_55360_CheckWhetherNLRIsAbleToApproveCasesFromApprovalTabTest"/>
+        </classes>
+    </test>-->
+
+    <test name="TC_44843_LoginAsSSONonLegalUser">
+        <classes>
+            <class name="com.ligl.Others.TC_44843_LoginAsSSONonLegalUser"/>
+        </classes>
+    </test>
+
+    <test name="TC_44892_CreateEditOfEmployeeIsDisabledForNonLegalUser">
+        <classes>
+            <class name="com.ligl.Others.TC_44892_CreateEditOfEmployeeIsDisabledForNonLegalUser"/>
+        </classes>
+    </test>
+
+    <test name="TC_47268_VerifyUnavailabilityOfSecurityTabForNLU">
+        <classes>
+            <class name="com.ligl.Others.TC_47268_VerifyUnavailabilityOfSecurityTabForNLU"/>
+        </classes>
+    </test>
+
+    <test name="TC_47272_VerifyAvailabilityOfHelpHyperlinkForNLU">
+        <classes>
+            <class name="com.ligl.Others.TC_47272_VerifyAvailabilityOfHelpHyperlinkForNLU"/>
+        </classes>
+    </test>
+
+</suite>

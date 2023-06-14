@@ -25,7 +25,7 @@ public class TC37930_Check_that_Deleted_stakeholders_are_not_displaying_in_Stake
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     //Admin-Legal Hold
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
