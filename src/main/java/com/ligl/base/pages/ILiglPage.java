@@ -1229,7 +1229,85 @@ public interface ILiglPage {
 
     ILiglPage enterProjectType(String ProjectType) throws Exception;
 
-    ILiglPage loginWithLiglorSSOUser(String IsSSOLogin,String ssoUserName, String ssoPassWord,String EntitySelection,String UserName, String PassWord) throws Exception;
+    ILiglPage createProjectWhenProjectSettingTemplateFieldIsDisabled(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage createProjectWhenRegionFieldIsDisabled(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage verifyProjectNameFieldValidationSpecialCharactersAllowedAndNotAllowed(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage clickOnSaveAndAddDetailsButton() throws Exception;
+
+    ILiglPage performClearActionInTheProjectNameField() throws Exception;
+
+    ILiglPage validateProjectNameFieldErrorMessage() throws Exception;
+
+    ILiglPage verifyUserCanChooseAnyDateInDueDateWhileProjectCreateOrEdit(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage enterProjectDueDate(String DueDate) throws Exception;
+
+    ILiglPage performClearActionInProjectDueDate() throws Exception;
+
+    ILiglPage clickOnProjectEditButton() throws Exception;
+
+    ILiglPage clickOnSaveButtonFromEditPopUpInCaseSummaryPage() throws Exception;
+
+    ILiglPage  enterProjectDueDateWhileEditing(String DueDate) throws Exception;
+
+    ILiglPage verifyMandatoryFieldsAreEditableInEditProjectPopUpUntillProjectApproved(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage validateTheEditedDetailsInEditProjectPopUpInProjectSummary(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage secondSearchInNotesGrid(String NotesContent) throws Exception;
+
+    ILiglPage loginWithLiglorSSOUser(String UserName, String PassWord,String EntitySelection,String IsSSOLogin,String ssoUserName, String ssoPassWord) throws Exception;
+
+    ILiglPage clickOnChooseColumnsInProjectGrid() throws Exception;
+
+    ILiglPage searchForTheRequiredColumnsThroughChooseColumn(String RequiredColumn1) throws Exception;
+
+    ILiglPage performClearActionInSearchBarInChooseColumn() throws Exception;
+
+    ILiglPage validateTheMandatoryAndOptionalFieldDetailsInProjectSummary(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage clickOnAddAndViewLinkInDSI() throws Exception;
+
+    ILiglPage validateEditButtonInDisableMode() throws Exception;
+
+    ILiglPage searchingRequriedCounsel(String Email1) throws Exception;
+
+    ILiglPage clickingOnNotesIcon() throws Exception;
+
+    ILiglPage toggleToOutSideCounsel() throws Exception;
+
+    ILiglPage clickOnAddOutsideCounsel() throws Exception;
+
+    ILiglPage selectALawfirmFromDropdown(String PartyLawFirm) throws Exception;
+
+    ILiglPage selectAvailableLawFirms(String ExistingLawFirm) throws Exception;
+
+    ILiglPage clickOnSaveButtonInAddOutsideCounselPopUp() throws Exception;
+
+    ILiglPage searchRequiredOutsideCounselInOutsideCounselGrid(String OutSideCounsel) throws Exception;
+
+    ILiglPage secondSearchRequiredOutsideCounselInOutsideCounselGrid(String OutSideCounsel) throws Exception;
+
+    ILiglPage clickOnAddLawFirmButtonInAddOutsideCounselPopUp() throws Exception;
+
+    ILiglPage createNewLawFirmInAddLawFirmPopUp(String FirstName,String PartyType,String Status,String Description) throws Exception;
+
+    ILiglPage clickOnAddCounselButtonInAddOutsideCounselPopUp() throws Exception;
+
+    ILiglPage createNewCounselInAddOutsideCounselPopUp(String FirstName, String LastName) throws Exception;
+
+    ILiglPage movingTheCursorToTheRightPosition() throws Exception;
+
+    ILiglPage deleteCourt(String CourtName) throws Exception;
+
+    ILiglPage secondSearchCourt(String Court) throws Exception;
+
+    ILiglPage clickingOnNotesIconInCourtGrid() throws Exception;
+
+    ILiglPage clickOnRefreshButtonInNotesGrid() throws Exception;
 
 }
 

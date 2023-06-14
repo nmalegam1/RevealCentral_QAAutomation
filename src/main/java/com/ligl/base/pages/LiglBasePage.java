@@ -1984,7 +1984,153 @@ public class LiglBasePage implements ILiglPage {
 	}
 	public ILiglPage searchCustodian(String custodian)throws Exception{return null;}
 
-	public ILiglPage loginWithLiglorSSOUser(String IsSSOLogin,String ssoUserName, String ssoPassWord,String EntitySelection,String UserName, String PassWord) throws Exception{
+	public ILiglPage createProjectWhenProjectSettingTemplateFieldIsDisabled(Hashtable<String,String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage createProjectWhenRegionFieldIsDisabled(Hashtable<String,String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyProjectNameFieldValidationSpecialCharactersAllowedAndNotAllowed(Hashtable<String,String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnSaveAndAddDetailsButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage performClearActionInTheProjectNameField() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateProjectNameFieldErrorMessage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyUserCanChooseAnyDateInDueDateWhileProjectCreateOrEdit(Hashtable<String,String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage enterProjectDueDate(String DueDate) throws Exception{
+		return null;
+	}
+
+	public ILiglPage performClearActionInProjectDueDate() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnProjectEditButton() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnSaveButtonFromEditPopUpInCaseSummaryPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage  enterProjectDueDateWhileEditing(String DueDate) throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyMandatoryFieldsAreEditableInEditProjectPopUpUntillProjectApproved(Hashtable<String,String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateTheEditedDetailsInEditProjectPopUpInProjectSummary(Hashtable<String,String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage secondSearchInNotesGrid(String NotesContent) throws Exception{
+		return null;
+	}
+
+	public ILiglPage loginWithLiglorSSOUser(String UserName, String PassWord,String EntitySelection,String IsSSOLogin,String ssoUserName, String ssoPassWord) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnChooseColumnsInProjectGrid() throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchForTheRequiredColumnsThroughChooseColumn(String RequiredColumn1) throws Exception{
+		return null;
+	}
+
+	public ILiglPage performClearActionInSearchBarInChooseColumn() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateTheMandatoryAndOptionalFieldDetailsInProjectSummary(Hashtable<String,String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnAddAndViewLinkInDSI() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateEditButtonInDisableMode() throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchingRequriedCounsel(String Email1) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickingOnNotesIcon() throws Exception{
+		return null;
+	}
+
+	public ILiglPage toggleToOutSideCounsel() throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnAddOutsideCounsel() throws Exception{
+		return null;
+	}
+	public ILiglPage selectALawfirmFromDropdown(String PartyLawFirm) throws Exception{
+		return null;
+	}
+	public ILiglPage selectAvailableLawFirms(String ExistingLawFirm) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnSaveButtonInAddOutsideCounselPopUp() throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchRequiredOutsideCounselInOutsideCounselGrid(String OutSideCounsel) throws Exception{
+		return null;
+	}
+
+	public ILiglPage secondSearchRequiredOutsideCounselInOutsideCounselGrid(String OutSideCounsel) throws Exception{
+		return null;
+	}
+	public ILiglPage clickOnAddLawFirmButtonInAddOutsideCounselPopUp() throws Exception{
+		return null;
+	}
+	public ILiglPage createNewLawFirmInAddLawFirmPopUp(String FirstName,String PartyType,String Status,String Description) throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnAddCounselButtonInAddOutsideCounselPopUp() throws Exception{
+		return null;
+	}
+	public ILiglPage createNewCounselInAddOutsideCounselPopUp(String FirstName, String LastName) throws Exception{
+		return null;
+	}
+	public ILiglPage movingTheCursorToTheRightPosition() throws Exception{
+		return null;
+	}
+	public ILiglPage deleteCourt(String CourtName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage secondSearchCourt(String Court) throws Exception{
+		return null;
+	}
+	public ILiglPage clickingOnNotesIconInCourtGrid() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickOnRefreshButtonInNotesGrid() throws Exception{
 		return null;
 	}
 }

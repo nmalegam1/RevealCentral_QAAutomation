@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields extends TestBase {
+public class TC_62320_VerifyThatAllFieldsIncludingAdditionalFieldsAreDisplayingWithRespectiveValuesInProjectSummaryPage extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "ProjectManagement")
-    public void TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields(Hashtable<String, String> data) throws Exception {
+    public void TC_62320_VerifyThatAllFieldsIncludingAdditionalFieldsAreDisplayingWithRespectiveValuesInProjectSummaryPage(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -28,14 +28,15 @@ public class TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields extend
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .createProjectWithBothMandatoryAndOptionalFields(data)
-                    .validateCreatedCase(data.get("PROJECT"));
+                    .validateCreatedCase(data.get("PROJECT"))
+                    .validateTheMandatoryAndOptionalFieldDetailsInProjectSummary(data);
+
 
         } catch (Exception ex) {
-            session.log_Error("TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields Failed");
-            throw new Exception("TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields Failed", ex);
+            session.log_Error("TC_62320_VerifyThatAllFieldsIncludingAdditionalFieldsAreDisplayingWithRespectiveValuesInProjectSummaryPage Failed");
+            throw new Exception("TC_62320_VerifyThatAllFieldsIncludingAdditionalFieldsAreDisplayingWithRespectiveValuesInProjectSummaryPage Failed", ex);
         } finally
         {
             session.end();

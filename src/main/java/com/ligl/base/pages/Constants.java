@@ -57,5 +57,7 @@ public class Constants {
 
 	public static final String EmailTracker_UserCreation_query ="SELECT TOP 1 * FROM VERTICAL.EMAILTRACKER WHERE TOADDRESS LIKE '%EmailTracker_001@LIGL.IO%' AND SUBJECT LIKE '%SIT-New User Created through Manual Password for {username}%' ORDER BY 1 DESC";
 
+	public static final String ProjectSpecialChar_ErrorMessage = "Projectname cannot contain Special Characters like ! / @ # $ % ^ *";
+
 
 }

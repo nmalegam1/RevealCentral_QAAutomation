@@ -258,6 +258,4 @@ public class LoginPage extends LiglBasePage {
 			throw new Exception("loginWithLiglorSSOUser() failed", ex);
 		}
 	}
-
-
 }
