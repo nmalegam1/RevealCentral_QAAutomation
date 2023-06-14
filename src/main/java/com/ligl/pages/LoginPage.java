@@ -237,4 +237,27 @@ public class LoginPage extends LiglBasePage {
 		}
 	}
 
+	public ILiglPage loginWithLiglorSSOUser(String IsSSOLogin,String ssoUserName, String ssoPassWord,String EntitySelection,String UserName, String PassWord) throws Exception {// 20 elements
+		try {
+
+			log_Info("loginWithLiglorSSOUser() Started");
+
+			if (IsSSOLogin.equals("Y")) {
+
+				navigateSSOLoginPage();
+				SSOLoginPage sso=new SSOLoginPage();
+				sso.SSOLogin(ssoUserName,ssoPassWord,EntitySelection);
+			}
+			else{
+				login(UserName,PassWord,EntitySelection);
+			}
+			return new DefaultLandingPage();
+
+		} catch (Exception | Error ex) {
+			log_Error(ex.getMessage());
+			throw new Exception("loginWithLiglorSSOUser() failed", ex);
+		}
+	}
+
+
 }

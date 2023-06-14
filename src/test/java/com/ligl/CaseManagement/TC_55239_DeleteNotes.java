@@ -25,7 +25,7 @@ public class TC_55239_DeleteNotes extends TestBase {
 
                 .openBrowser("chrome")
                 .navigateURL()
-                .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                 .searchcase(data.get("CaseName"))
                 .goToNotesPage()
                 .notesSearchFilter(data.get("NotesDescription"))

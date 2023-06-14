@@ -27,7 +27,7 @@ public class TC_32796_CheckUserCanEditAdditionalFieldsIrrespectiveofApprovalStat
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("ApprovedCaseName"))
                     .GoToCase(data.get("ApprovedCaseName"))
                     .editAdditionalFields(data.get("Cost centre"), data.get("Case Alias"), data.get("AddDP"))

@@ -28,7 +28,7 @@ public class TC_7094_DeletingInHouseCounsel extends TestBase {
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToCaseCounselPage()
                     .addInhouseCounselToCase(data.get("Email1"), data.get("CounselName"))

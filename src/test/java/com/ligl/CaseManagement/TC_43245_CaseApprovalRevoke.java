@@ -26,7 +26,7 @@ public class TC_43245_CaseApprovalRevoke extends TestBase {
 
                 .openBrowser("chrome")
                 .navigateURL()
-                .login(data.get("UserName"),data.get("Password"),data.get("EntitySelection"))
+                .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                 .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                 .getLeftMenu()
                 .goToSecurityPage()

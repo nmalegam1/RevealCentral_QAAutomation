@@ -28,9 +28,7 @@ public class TC_45515_VerifyingCaseAdditionalFieldsAreDisplayingInCaseListGrid e
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
-                    /*.navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))*/
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .verifyAdditionalFieldsInCasePopup(data.get("AddField1"),data.get("AddField2"),data.get("AddField3"),data.get("AddField5"))
                     .logout();
 

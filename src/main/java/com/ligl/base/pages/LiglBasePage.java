@@ -1983,4 +1983,8 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 	public ILiglPage searchCustodian(String custodian)throws Exception{return null;}
+
+	public ILiglPage loginWithLiglorSSOUser(String IsSSOLogin,String ssoUserName, String ssoPassWord,String EntitySelection,String UserName, String PassWord) throws Exception{
+		return null;
+	}
 }
