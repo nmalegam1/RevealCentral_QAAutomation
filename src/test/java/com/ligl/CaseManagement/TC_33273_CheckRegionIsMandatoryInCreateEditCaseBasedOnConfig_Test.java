@@ -27,8 +27,7 @@ public class TC_33273_CheckRegionIsMandatoryInCreateEditCaseBasedOnConfig_Test e
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .checkRegionIsMandatory(data)
                     .logout();
         } catch (Exception ex) {

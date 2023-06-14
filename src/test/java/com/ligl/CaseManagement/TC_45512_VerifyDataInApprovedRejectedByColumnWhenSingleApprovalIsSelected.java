@@ -23,12 +23,12 @@ public class TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSe
                 // skip-testng
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
+            // Create new template using +template button for case approval category
 
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName"))
                     .clickAndChooseColumnsInCaseGrid()
                     .verifyChooseColumnsDataInCaseGrid(data.get("ApprovedBySingle"),data.get("ApprovalTypeSingle"))

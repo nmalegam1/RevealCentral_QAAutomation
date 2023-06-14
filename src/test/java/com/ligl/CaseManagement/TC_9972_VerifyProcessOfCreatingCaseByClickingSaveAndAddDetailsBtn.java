@@ -28,8 +28,7 @@ public class TC_9972_VerifyProcessOfCreatingCaseByClickingSaveAndAddDetailsBtn e
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .createNewCase(data)
                     .validateCreatedCase(data.get("CaseName"));
 

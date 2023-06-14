@@ -292,8 +292,8 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             }
 
             for (int j = 0; j < listItem.size(); j++) {
-                String Status = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
-                getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='WorkFlowStatusReason']")).click();
+                String Status = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='DataHoldStatusName']//span[@class='ellipsisAgGrid']")).getText();
+                getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DataHoldStatusName']")).click();
                 for (int i = 0; i < 16; i++) {
                     Actions ac = new Actions(getCurrentDriver());
                     ac.sendKeys(Keys.ARROW_LEFT).perform();

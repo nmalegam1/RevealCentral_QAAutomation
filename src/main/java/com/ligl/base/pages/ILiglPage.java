@@ -1308,5 +1308,6 @@ public interface ILiglPage {
     ILiglPage clickingOnNotesIconInCourtGrid() throws Exception;
 
     ILiglPage clickOnRefreshButtonInNotesGrid() throws Exception;
+
 }
 

@@ -24,7 +24,7 @@ public class TC_44367_CaseApprovalReassignForDualApproval extends TestBase {
         ILiglPage page = new LaunchPage()
                 .openBrowser("chrome")
                 .navigateURL()
-                .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                 .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                 .getLeftMenu().goToSecurityPage()
                 .validateCasePendingForApprovalState()

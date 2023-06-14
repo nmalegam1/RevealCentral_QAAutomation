@@ -25,7 +25,7 @@ public class TC_56659_VerifyDetailsColumnInCaseHistory extends TestBase {
 
                 .openBrowser("chrome")
                 .navigateURL()
-                .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                 .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                 .getLeftMenu().navigateToNotesHistoryPage()
                 .TypeofEventSearchFilter(data.get("TypeofEvent"))

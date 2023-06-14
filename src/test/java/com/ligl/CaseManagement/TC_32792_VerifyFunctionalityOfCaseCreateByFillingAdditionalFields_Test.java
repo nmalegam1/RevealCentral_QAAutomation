@@ -27,8 +27,7 @@ public class TC_32792_VerifyFunctionalityOfCaseCreateByFillingAdditionalFields_T
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .caseCreateWithAdditionalFields(data)
                     .logout();
         } catch (Exception ex) {

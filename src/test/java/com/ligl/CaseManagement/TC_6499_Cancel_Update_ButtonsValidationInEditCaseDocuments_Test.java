@@ -26,9 +26,8 @@ public class TC_6499_Cancel_Update_ButtonsValidationInEditCaseDocuments_Test ext
             }
             ILiglPage Ref = new LaunchPage()
                     .openBrowser(data.get("Browser"))
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
-                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .navigateURL()
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
