@@ -24,7 +24,7 @@ public class TC54576_Check_admin_is_able_to_Create_or_edit_the_Case_type_lookup_
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

@@ -15,7 +15,7 @@ public class TC29212_Verify_availability_of_Mentioned_Optional_Additional_fields
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

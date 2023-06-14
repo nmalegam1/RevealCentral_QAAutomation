@@ -24,7 +24,7 @@ public class TC40183_User_able_to_save_Employee_without_filling_Title_field_Test
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

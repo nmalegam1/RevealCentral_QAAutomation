@@ -26,7 +26,7 @@ public class TC_51983_CheckWhetherNonApprovedCasesAreNotPopulatedInChooseCaseDro
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader().goToGlobalRequestPage().clickOnAddRequestButton()
                     .clickOnChooseACaseDropDown()
                     .validatingNonApprovedCasesInCaseDropDown(data.get("CaseName1"))

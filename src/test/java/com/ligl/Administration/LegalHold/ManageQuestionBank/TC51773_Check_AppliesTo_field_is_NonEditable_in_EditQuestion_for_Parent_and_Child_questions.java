@@ -24,7 +24,7 @@ public class TC51773_Check_AppliesTo_field_is_NonEditable_in_EditQuestion_for_Pa
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

@@ -26,7 +26,7 @@ public class TC_36651_VerifyWhetherTopLevelStatsAreUpdatedToTheCurrentStatusLike
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader().goToGlobalRequestPage()
                     .checkAndValidateTheCountOfRequestUnderNewInProgressCloseStats(data.get("ReqType"), data.get("ReqTitle"), data.get("ChooseCase"), data.get("ChooseUser"), data.get("Priority"), data.get("CompleteDate"), data.get("AdditionalText"), data.get("Status1"), data.get("Status2") );
 

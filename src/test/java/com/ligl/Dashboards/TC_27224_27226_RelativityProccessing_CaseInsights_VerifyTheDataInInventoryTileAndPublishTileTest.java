@@ -26,7 +26,7 @@ public class TC_27224_27226_RelativityProccessing_CaseInsights_VerifyTheDataInIn
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"),data.get("Password"),data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getHeader().navigateToDashboardPage()
                     .checkAndValidateTheCountOfTheCaseInsightsStats(data.get("Email"),data.get("Emp"),data.get("EMAIL"),data.get("EMP"), data.get("DataSource"),data.get("SourcePath"),data.get("DataHold"),data.get("CollectionStatus"), data.get("Pstatus"));

@@ -24,7 +24,7 @@ public class TC25171_SSO_User_ResetPassword_button_Click_Disabled_in_UserRoles_g
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

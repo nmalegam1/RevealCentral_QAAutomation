@@ -26,8 +26,7 @@ public class TC_50441_CheckSSOUserAutoCreateWithCustRoleWhenNonLegalFeatureDisab
             ILiglPage Launch = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     //.acceptLicense()
                     .getHeader()
                     .checkLoggedInUser(data.get("Username"),data.get("Role"));

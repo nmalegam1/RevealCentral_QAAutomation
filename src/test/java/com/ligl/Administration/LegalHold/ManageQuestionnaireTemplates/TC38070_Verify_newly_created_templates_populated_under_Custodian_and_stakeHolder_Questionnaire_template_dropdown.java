@@ -24,8 +24,7 @@ public class TC38070_Verify_newly_created_templates_populated_under_Custodian_an
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("EmailId"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     //Admin-ManageQuestionnaire
                     .getHeader()
                     .goToAdministrationPage()

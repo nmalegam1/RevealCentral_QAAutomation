@@ -25,7 +25,7 @@ public class TC30545_Verify_that_newly_added_stakeholders_are_displaying_in_Stak
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     //Admin-Legal Hold
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

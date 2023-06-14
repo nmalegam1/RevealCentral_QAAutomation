@@ -24,10 +24,7 @@ public class TC51777_Verify_whether_Case_level_configuration_changes_are_not_ref
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    //Case level configuration
-                  /*  .navigateSSOLoginPage()
-                    .SSOLogin(data.get("EmailId"), data.get("Password"), data.get("Entity"))*/
-                    .login(data.get("EmailId"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()

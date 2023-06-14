@@ -26,8 +26,7 @@ public class TC_51804_56120_VerifyDefaultLHN_DR_KW_DisplayingFromSecondRecordAre
             ILiglPage Launch = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToLegalHoldPage()
                     .editLHNCreatedWithDRKW(data.get("LHName1"),data.get("LHName2"),data.get("CustNoticeTemp"),data.get("StartDate"),data.get("EndDate"),data.get("KeyWord"));

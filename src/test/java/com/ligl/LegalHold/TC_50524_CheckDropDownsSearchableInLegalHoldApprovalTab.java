@@ -26,8 +26,7 @@ public class TC_50524_CheckDropDownsSearchableInLegalHoldApprovalTab extends Tes
             ILiglPage Launch = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToLegalHoldPage()
                     .sendLHNToApproval(data.get("LHName"),data.get("DPAction"),data.get("EmailTemp"),data.get("Approver"));

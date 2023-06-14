@@ -26,7 +26,7 @@ public class TC_28287_GlobalInsights_VerifyTheDataInPageWithoutSelectingCaseTest
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"),data.get("Password"),data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader().navigateToDashboardPage()
                     .clickOnGlobalInsightsTab()
                     .validateDashBoardPageURL(data.get("TITLE1"))
