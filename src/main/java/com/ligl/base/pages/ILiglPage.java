@@ -1309,5 +1309,11 @@ public interface ILiglPage {
 
     ILiglPage clickOnRefreshButtonInNotesGrid() throws Exception;
 
+    ILiglPage createNewCaseSP(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage validatingAlreadyAddedInHouseCounselsAreDisplayingInEmployeeMasterGrid(String Email1) throws Exception;
+
+    ILiglPage clickingOnNotesIconInOtherPartyGrid() throws Exception;
+
 }
 

@@ -2,6 +2,7 @@ package com.ligl.pages.casemanagement;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
+import com.ligl.pages.NotesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -34,7 +35,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(id = "createNewContact")
     WebElement AddContactBtn;
 
-    @FindBy(id = "//button[@id='add-btn']")
+    @FindBy(xpath = "//button[@id='add-btn']")
     WebElement AddContact;
 
     @FindBy(id = "firstname")
@@ -182,6 +183,9 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[@id='select-contacts-dpdwn-panel']//input[@type='text']")
     WebElement ExistingLawFirmSearchBar;
 
+    @FindBy(xpath = "//div[@col-id='Notes']//button")
+    WebElement NotesIcon;
+
 
 
     // Process Of Searching A Particular Party Through Filter
@@ -315,12 +319,12 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(PartyDropDown);
             Thread.sleep(5000);
             PartyDropDown.click();
-            getCurrentDriver().findElement(By.xpath("//mat-option//span[contains(text(),'"+PartyType+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//mat-option//span[contains(text(),'"+PartyName+"')]")).click();
             getSession().log_Pass("Clicked on Select Party Type Drop Down");
 
             Thread.sleep(5000);
             //((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", PartyNameA);
-            getCurrentDriver().findElement(By.xpath("//mat-radio-button//div[contains(text(),'"+PartyName+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//mat-radio-button//div[contains(text(),'"+PartyType+"')]")).click();
 
             log_Info("Click On Left Arrow Button ");
             getDriver().waitForelementToBeClickable(LeftArrow);
@@ -1282,6 +1286,25 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
         }catch (Exception | Error ex){
             log_Error(ex.getMessage());
             throw new Exception("addExistingOutCounsel() Failed", ex);
+        }
+    }
+
+    public ILiglPage clickingOnNotesIconInOtherPartyGrid() throws Exception {
+
+        try {
+            log_Info("clickingOnNotesIcon() Started");
+            log_Info("click on Notes Icon");
+            Thread.sleep(2000);
+            NotesIcon.click();
+            log_Pass("Clicked on Notes Icon");
+
+            return new NotesPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickingONNotesIcon() Failed");
+
+
         }
     }
 }

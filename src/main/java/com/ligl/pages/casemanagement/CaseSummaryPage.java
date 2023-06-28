@@ -375,7 +375,7 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
             boolean b5 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("PST1") + "')]")).isDisplayed();
             boolean b6 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("ENTITY1")+ "')]")).isDisplayed();
             boolean b7 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("REGION1")+ "')]")).isDisplayed();
-            boolean b8 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("PRIORITY1")+ "')]")).isDisplayed();
+            boolean b8 = getCurrentDriver().findElement(By.xpath("//label[contains(text(),'Priority')]/ancestor::section//span[contains(text(),'"+data.get("PRIORITY1")+"')]")).isDisplayed();
             Thread.sleep(1000);
             System.out.println(b1);
             System.out.println(b2);
@@ -793,8 +793,8 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
 
             boolean b12 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("CostCenter")+ "')]")).isDisplayed();
             boolean b13 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("ProjectAlias") + "')]")).isDisplayed();
-            boolean b14 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("RetirementDate1")+ "')]")).isDisplayed();
-            boolean b15 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("AddDP1")+ "')]")).isDisplayed();
+            boolean b14 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("RetirementDate")+ "')]")).isDisplayed();
+            boolean b15 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("AddDP")+ "')]")).isDisplayed();
             boolean b16 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("INPLACECHCK")+ "')]")).isDisplayed();
 
             Thread.sleep(1000);
@@ -819,6 +819,75 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("validateTheMandatoryAndOptionalFieldDetailsInProjectSummary() Failed", ex);
+        }
+    }
+
+    public ILiglPage verifyingCaseFieldsAreEditable(String CaseTypeDrpDwn, String CaseName1, String CaseSettingTemplateDrpDwn) throws Exception {
+
+        try {
+
+            log_Info("Click On Edit Button");
+            getDriver().waitForelementToBeClickable(EditBtn);
+            Thread.sleep(5000);
+            EditBtn.click();
+            log_Info("Click On Edit Button");
+
+
+            log_Info("Click On Case Type Drop Down");
+            Thread.sleep(5000);
+            CaseType.sendKeys(CaseTypeDrpDwn);
+            Thread.sleep(5000);
+            CaseType.sendKeys(Keys.ENTER);
+            getSession().log_Pass("Clicked On Case Type Drop Down");
+
+            log_Info("Click On Case Name");
+            Thread.sleep(5000);
+            CaseName.clear();
+            Thread.sleep(5000);
+            CaseName.sendKeys(CaseName1);
+            getSession().log_Pass("Clicked On Case Name");
+
+            log_Info("Click On Case Type Drop Down");
+            Thread.sleep(5000);
+            CST.sendKeys(CaseSettingTemplateDrpDwn);
+            Thread.sleep(5000);
+            CST.sendKeys(Keys.ENTER);
+            getSession().log_Pass("Clicked On Case Type Drop Down");
+
+
+            log_Info("Click On Save Button");
+            getDriver().waitForelementToBeClickable(SaveBtn);
+            Thread.sleep(5000);
+            SaveBtn.click();
+            getSession().log_Pass("Clicked On Save Button");
+            return new CaseSummaryPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyingCaseFieldsAreEditable() Failed", ex);
+        }
+    }
+
+    public ILiglPage verifyingCaseFieldsAreEdited(String CaseTypeDrpDwn, String CaseName1, String CaseSettingTemplateDrpDwn) throws Exception {
+
+        try {
+            log_Info("Check The Case Details Are Edited");
+            boolean a1 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + CaseTypeDrpDwn + "')]")).isDisplayed();
+            boolean a2 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + CaseName1 + "')]")).isDisplayed();
+            boolean a3 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + CaseSettingTemplateDrpDwn + "')]")).isDisplayed();
+            System.out.println(a1);
+            System.out.println(a2);
+            System.out.println(a3);
+            Thread.sleep(5000);
+            Assert.assertEquals(true, a1);
+            Assert.assertEquals(true, a2);
+            Assert.assertEquals(true, a3);
+            return new CaseSummaryPage();
+
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyingCaseFieldsAreEdited() Failed", ex);
         }
     }
 

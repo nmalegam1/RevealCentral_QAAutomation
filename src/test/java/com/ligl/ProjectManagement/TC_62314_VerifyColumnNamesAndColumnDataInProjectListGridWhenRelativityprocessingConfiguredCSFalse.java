@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_62314_VerifyColumnNamesAndColumnDataInProjectListGridWhenRelativityprocessingConfiguredCSFalse extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "ProjectManagement")
     public void TC_62314_VerifyColumnNamesAndColumnDataInProjectListGridWhenRelativityprocessingConfiguredCSFalse(Hashtable<String, String> data) throws Exception {
 
         try {

@@ -993,11 +993,57 @@ public class CaseCounselPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage validatingAlreadyAddedInHouseCounselsAreDisplayingInEmployeeMasterGrid(String Email1) throws Exception {
+
+        try {
+
+            log_Info("Click on Add In-House Counsel Button");
+            getDriver().waitForelementToBeClickable(InHouseCounselBtn);
+            Thread.sleep(5000);
+            InHouseCounselBtn.click();
+            Thread.sleep(5000);
+            getSession().log_Pass("Clicked on Add In-House Counsel Button");
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", NameHeaderscroll);
+
+            log_Info("Hover on Name Header");
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(NameHeader).perform();
+            log_Info("Hovered on Name Header");
+            Thread.sleep(5000);
 
 
+            log_Info("click on email menu icon");
+            EmailMenu.click();
+            log_Info("clicked on email menu icon");
+
+            log_Info("Click on Filter");
+            getDriver().waitForelementToBeClickable(filter);
+            Thread.sleep(5000);
+            filter.click();
+            log_Info("Filter Clicked");
+
+            log_Info("Enter Employee from search bar");
+            getDriver().waitForelementToBeClickable(Searchbar);
+            Thread.sleep(5000);
+            Searchbar.sendKeys(Email1);
+            log_Info("Entered Employee from search bar");
 
 
+            log_Info("Validating already Added In-house Counsel are not displaying in Employee master grid");
+            Thread.sleep(5000);
+            boolean a1 = getCurrentDriver().findElement(By.xpath("//app-custom-no-rows-overlay[@class='ng-star-inserted']//div[contains(text(),' No data available...')]")).isDisplayed();
+            Assert.assertEquals(true, a1);
+            log_Pass("Validated already Added In-house Counsel are not displaying in Employee master grid");
 
+            return new CaseCounselPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validatingAlreadyAddedInHouseCounselsAreDisplayingInEmployeeMasterGrid() Failed", ex);
+
+        }
+    }
 
 }
 

@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_33780_VerifyUserAbleToEditMandatoryFieldsInProjectEditPopUpUntilProjectApprovedExcept_OurRole_Field extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "ProjectManagement")
     public void TC_33780_VerifyUserAbleToEditMandatoryFieldsInProjectEditPopUpUntilProjectApprovedExcept_OurRole_Field(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -27,8 +27,7 @@ public class TC_33780_VerifyUserAbleToEditMandatoryFieldsInProjectEditPopUpUntil
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .createNewCase(data)
                     .clickOnProjectEditButton()
                     .verifyMandatoryFieldsAreEditableInEditProjectPopUpUntillProjectApproved(data)

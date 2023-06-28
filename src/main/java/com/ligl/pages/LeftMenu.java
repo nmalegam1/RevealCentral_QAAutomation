@@ -193,6 +193,8 @@ public class LeftMenu extends LiglBasePage {
     }
 
     public ILiglPage goToCaseManagement() throws InterruptedException {
+        Thread.sleep(5000);
+        ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", CaseManage);
         CaseManage.click();
         return new CaseSummaryPage();
     }

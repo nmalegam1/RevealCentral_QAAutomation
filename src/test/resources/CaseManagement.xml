@@ -11,11 +11,6 @@
       <class name="com.ligl.CaseManagement.TC_7100_DeletingOutsideCounsel"/>
     </classes>
   </test>
-  <test name="Create New Outside Counsel">
-    <classes>
-      <class name="com.ligl.CaseManagement.TC_7102_CreateNewOutsideCounsel"/>
-    </classes>
-  </test>
   <test name="Create New Contact Selected Party">
     <classes>
       <class name="com.ligl.CaseManagement.TC_7107_CreateNewContactSelectedParty"/>
@@ -191,7 +186,7 @@
   </test> <!-- Test -->
   <test name="VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected">
     <classes>
-      <class name="com.ligl.CaseManagement.TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected"/>
+      <class name="com.ligl.ProjectManagement.TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected"/>
     </classes>
   </test>
   <test name="VerifyDataInApprovedRejectedByColumnWhenDualBothApprovalIsSelected">
@@ -241,7 +236,7 @@
   </test>
   <test name="VerifyUserIsAbleToViewCaseDocumentInNewTab">
     <classes>
-      <class name="com.ligl.CaseManagement.TC_10305_VerifyUserIsAbleToViewCaseDocumentInNewTab"/>
+      <class name="com.ligl.ProjectManagement.TC_10305_VerifyUserIsAbleToViewCaseDocumentInNewTab"/>
     </classes>
   </test>
   <test name="VerifyProcessOfCreatingCaseByClickingSaveAndAddDetailsBtn">

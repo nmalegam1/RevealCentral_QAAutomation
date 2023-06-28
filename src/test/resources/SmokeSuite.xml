@@ -49,5 +49,10 @@
             <class name="com.ligl.SmokeSuiteRelativity.NetWorkShare_AutoProcess_Processing"/>
         </classes>
     </test>
+    <test name="Collection_AutoProcess_NetWorkShare">
+        <classes>
+            <class name="com.ligl.SmokeSuiteRelativity.Collection_AutoProcess_NetWorkShare"/>
+        </classes>
+    </test>
 
 </suite> <!-- Suite -->
