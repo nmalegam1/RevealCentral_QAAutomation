@@ -23,8 +23,7 @@ public class TC22060_Check_newly_created_CaseSettings_templates_are_populating_i
             }
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
-                    .navigateURL().navigateSSOLoginPage()
-                    .SSOLogin(data.get("EmailId"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .checkNewlyCreatedCaseSettingTemplatePopulatedInCaseSettingsTemplateDropDown(data.get("CaseSettingsTemplate"))
                     .getHeader()
                     .logout();

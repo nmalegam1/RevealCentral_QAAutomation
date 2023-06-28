@@ -26,7 +26,7 @@ public class TC_52353_VerifyNumberOfCasesAssignedToLoggedUserAreOnlyDisplayingWh
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"),data.get("Password"),data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchLastDateModifiedColumnAndValidateTheCountInDashBoard(data.get("Comparison"), data.get("Date"),data.get("Month"), data.get("Year"),data.get("TITLE1"));
 
 

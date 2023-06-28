@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="LegalHold">
-<!--<suite name="LegalHold">
     <test name="Verify Columns In Custodian Grid">
         <classes>
             <class name="com.ligl.LegalHold.TC_1752_VerifyColumnsInLHNCustodianGrid"/>
         </classes>
-    </test> &lt;!&ndash; Test &ndash;&gt;
+    </test>
     <test name="Verify Columns In StakeHolder Grid">
         <classes>
             <class name="com.ligl.LegalHold.TC_3204_VerifyColumnsInLHNStakeholderGrid"/>
@@ -17,7 +16,7 @@
             <class name="com.ligl.LegalHold.TC_14720_VerifyDataSentByDateInLHNforCustodianAndStakeholder"/>
         </classes>
     </test>
-    <test name="Verify Response LHN Questionaire">
+    <test name="Verify Response LHN Questionnaire">
         <classes>
             <class name="com.ligl.LegalHold.TC_14780_VerifyResponsesForLHNQuestionaire"/>
         </classes>
@@ -30,6 +29,11 @@
     <test name="Verify Release Action For LHN Status">
         <classes>
             <class name="com.ligl.LegalHold.TC_20771_VerifyReleaseActionForLHNStatus"/>
+        </classes>
+    </test>
+    <test name="Verify Default Template In Release Popup">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_26247_VerifyDefaultTemplateInReleasePopup"/>
         </classes>
     </test>
     <test name="Process Of Creating LH When Config True">
@@ -55,6 +59,11 @@
     <test name="Default Escalation And Remainder Values">
         <classes>
             <class name="com.ligl.LegalHold.TC_24317_VerifyConfigValuesFromAdminEscalationRemainderDisplayingByDefault"/>
+        </classes>
+    </test>
+    <test name="TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians"/>
         </classes>
     </test>
     <test name="Process Of Editing Remainder And Escalation Values At Case Level">
@@ -102,14 +111,21 @@
             <class name="com.ligl.LegalHold.TC_33837_CheckApprovalHistoryAndStatusColumnsNotDisplayWhenLHConfigFalse"/>
         </classes>
     </test>
+    <test name="Process Of verifying PDF file in Acknowledge page for Custodian">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF"/>
+        </classes>
+    </test>
+    <test name="Process Of verifying PDF file in Acknowledge page for Stakeholder">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_33401_LHNforStakeHolderVerifyAcknowledgePageInPDF"/>
+        </classes>
+    </test>
     <test name="Process Of Checking The First LH Date Range And Populating Same For Second LH">
         <classes>
             <class name="com.ligl.LegalHold.TC_56123_56124_VerifyUserAbleToCreateFirstLHByDateRangeKeyWordsWhenAppConfigFalseAndPopulatingSameForSecondLHInDisableMode"/>
         </classes>
     </test>
-
-    &lt;!&ndash;Tej Test Cases&ndash;&gt;
-
     <test name="TC_42960_VerifyReassignLHFunctionality">
         <classes>
             <class name="com.ligl.LegalHold.TC_42960_VerifyReassignLHFunctionality"/>
@@ -159,10 +175,7 @@
         <classes>
             <class name="com.ligl.LegalHold.TC_26247_VerifyDefaultTemplateInReleasePopup"/>
         </classes>
-    </test>-->
-
-    <!--vys Test Cases-->
-
+    </test>
     <test name="TC_50432_Verify_AvailabilityOf_CustodianRoleIn_RolesDPIn_UsersAndRoles">
         <classes>
             <class name="com.ligl.LegalHold.TC_50432_Verify_AvailabilityOf_CustodianRoleIn_RolesDPIn_UsersAndRoles"/>
@@ -251,11 +264,6 @@
     <test name="TC_56122_56127_VerifyLHN_DR_KW_GivenInFirstLHN_DisplayingByDefault_Editable_InNextEditedLHN_Through_OnFlyEdit">
         <classes>
             <class name="com.ligl.LegalHold.TC_56122_56127_VerifyLHN_DR_KW_GivenInFirstLHN_DisplayingByDefault_Editable_InNextEditedLHN_Through_OnFlyEdit"/>
-        </classes>
-    </test>
-    <test name="CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians"/>
         </classes>
     </test>
 </suite>

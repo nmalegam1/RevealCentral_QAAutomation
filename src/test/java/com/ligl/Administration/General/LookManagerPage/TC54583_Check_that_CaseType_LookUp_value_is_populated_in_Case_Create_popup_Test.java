@@ -24,8 +24,7 @@ public class TC54583_Check_that_CaseType_LookUp_value_is_populated_in_Case_Creat
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("EmailId"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .checkNewlyCreatedLookupPopulatedInCaseTypeDropDown(data.get("CaseType"))
                     .getHeader()
                     .logout();
