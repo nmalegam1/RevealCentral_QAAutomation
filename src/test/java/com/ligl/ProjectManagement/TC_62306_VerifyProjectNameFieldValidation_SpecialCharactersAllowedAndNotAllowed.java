@@ -28,8 +28,7 @@ public class TC_62306_VerifyProjectNameFieldValidation_SpecialCharactersAllowedA
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .verifyProjectNameFieldValidationSpecialCharactersAllowedAndNotAllowed(data)
                     .validateCreatedCase(data.get("PROJECT1"));
 

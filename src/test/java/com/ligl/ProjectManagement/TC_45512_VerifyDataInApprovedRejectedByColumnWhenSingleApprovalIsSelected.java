@@ -1,4 +1,4 @@
-package com.ligl.CaseManagement;
+package com.ligl.ProjectManagement;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "ProjectManagement")
     public void TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected(Hashtable<String, String> data) throws Exception {
 
         try {
@@ -23,7 +23,7 @@ public class TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSe
                 // skip-testng
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
-            // Create new template using +template button for case approval category
+
 
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")

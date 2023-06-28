@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ProjectManagement">
+    <test name="CreateProjectByFillingBothMandatoryandOptionalFields">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_9972_CreateProjectByFillingBothMandatoryandOptionalFields"/>
+        </classes>
+    </test>
+    <test name="VerifyUserShouldBeAbleToCreateProjectWhen_CaseSettingsTemplate_FieldDisabled">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_61616_VerifyUserShouldBeAbleToCreateProjectWhen_CaseSettingsTemplate_FieldDisabled"/>
+        </classes>
+    </test>
+    <test name="VerifyUserShouldBeAbleToCreateProjectWhen_Region_FieldDisabled">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_61619_VerifyUserShouldBeAbleToCreateProjectWhen_Region_FieldDisabled"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToEditMandatoryFieldsInProjectEditPopUpUntilProjectApprovedExcept_OurRole_Field">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_33780_VerifyUserAbleToEditMandatoryFieldsInProjectEditPopUpUntilProjectApprovedExcept_OurRole_Field"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectNameFieldValidation_SpecialCharactersAllowedAndNotAllowed">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_62306_VerifyProjectNameFieldValidation_SpecialCharactersAllowedAndNotAllowed"/>
+        </classes>
+    </test>
+    <test name="VerifyUserCanChooseAnyDate_PastAndCurrent_DateInDueDateFieldInProjectCreateOredit">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_60305_VerifyUserCanChooseAnyDate_PastAndCurrent_DateInDueDateFieldInProjectCreateOredit"/>
+        </classes>
+    </test>
+    <test name="VerifyOneOrMoreNotesCanBe_Created_Edited_Deleted_ForEachProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_55227_178_239_VerifyOneOrMoreNotesCanBe_Created_Edited_Deleted_ForEachProject"/>
+        </classes>
+    </test>
+    <test name="VerifyColumnNamesAndColumnDataInProjectListGridWhenNUIXprocessingConfiguredCSFalse">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_62312_VerifyColumnNamesAndColumnDataInProjectListGridWhenNUIXprocessingConfiguredCSFalse"/>
+        </classes>
+    </test>
+    <test name="VerifyColumnNamesAndColumnDataInProjectListGridWhenRelativityprocessingConfiguredCSFalse">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_62314_VerifyColumnNamesAndColumnDataInProjectListGridWhenRelativityprocessingConfiguredCSFalse"/>
+        </classes>
+    </test>
+    <test name="VerifyThatAllFieldsIncludingAdditionalFieldsAreDisplayingWithRespectiveValuesInProjectSummaryPage">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_62320_VerifyThatAllFieldsIncludingAdditionalFieldsAreDisplayingWithRespectiveValuesInProjectSummaryPage"/>
+        </classes>
+    </test>
+    <test name="VerifyEditButtonShouldBeDisabledForDocumentsCreatedFromIdentifactionGrid_ChainOfCustody">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_27929_VerifyEditButtonShouldBeDisabledForDocumentsCreatedFromIdentifactionGrid_ChainOfCustody"/>
+        </classes>
+    </test>
+    <test name="VerifyOneOrMoreNotesCanBeCreatedForEachProjectDocument">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_56652_VerifyOneOrMoreNotesCanBeCreatedForEachProjectDocument"/>
+        </classes>
+    </test>
+    <test name="VerifyNotesCanBeUpdatedForEachProjectDocument">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_56684_VerifyNotesCanBeUpdatedForEachProjectDocument"/>
+        </classes>
+    </test>
+    <test name="VerifyNotesCanBeDeletedForEachProjectDocument">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_56685_VerifyNotesCanBeDeletedForEachProjectDocument"/>
+        </classes>
+    </test>
+    <test name="VerifyUserShouldAbleToAddInhouseCounselsToProjectUsingAddInhouseCounselButtonFromEmployeeMasterGridIrrespectiveOfHRStatus">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_17036_VerifyUserShouldAbleToAddInhouseCounselsToProjectUsingAddInhouseCounselButtonFromEmployeeMasterGridIrrespectiveOfHRStatus"/>
+        </classes>
+    </test>
+    <test name="VerifyNotesCanBeUpdatedForEachInhouseCounsel">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_57295_VerifyNotesCanBeUpdatedForEachInhouseCounsel"/>
+        </classes>
+    </test>
+    <test name="VerifyNotesCanBeDeletedForEachInHouseCounsel">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_57302_VerifyNotesCanBeDeletedForEachInHouseCounsel"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToAddOneOrMoreExistingOutsideCounselsFromModalByClickingAddOutsideCounselButton">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_1669_VerifyUserAbleToAddOneOrMoreExistingOutsideCounselsFromModalByClickingAddOutsideCounselButton"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToCreateNewLawfirmAndCreateCounselForNewlyCreatedLawfirm">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_7102_VerifyUserAbleToCreateNewLawfirmAndCreateCounselForNewlyCreatedLawfirm"/>
+        </classes>
+    </test>
+    <test name="VerifyOneorMoreNotesCanBeCreatedForEachOutsideCounsel">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_57291_VerifyOneorMoreNotesCanBeCreatedForEachOutsideCounsel"/>
+        </classes>
+    </test>
+    <test name="VerifyNotesCanBeUpdatedForEachOutsideCounsel">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_57301_VerifyNotesCanBeUpdatedForEachOutsideCounsel"/>
+        </classes>
+    </test>
+    <test name="VerifyNotesCanBeDeletedForEachOutsideCounsel">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_57303_VerifyNotesCanBeDeletedForEachOutsideCounsel"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToDeleteAddedCourtToProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_1711_VerifyUserAbleToDeleteAddedCourtToProject"/>
+        </classes>
+    </test>
+    <test name="VerifyOneorMoreNotesCanBeCreatedForEachCourt">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_57402_VerifyOneorMoreNotesCanBeCreatedForEachCourt"/>
+        </classes>
+    </test>
+    <test name="VerifyNotesCanBeUpdatedForEachCourt">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_57403_VerifyNotesCanBeUpdatedForEachCourt"/>
+        </classes>
+    </test>
+    <test name="VerifyNotesCanBeDeletedForEachCourt">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_62423_VerifyNotesCanBeDeletedForEachCourt"/>
+        </classes>
+    </test>
+    <test name="VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected"/>
+        </classes>
+    </test>
+    <test name="VerifyUserIsAbleToViewCaseDocumentInNewTab">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_10305_VerifyUserIsAbleToViewCaseDocumentInNewTab"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToAddOneOrMoreExistingPartiesFromModalByClickingAddPartyButton">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_1603_VerifyUserAbleToAddOneOrMoreExistingPartiesFromModalByClickingAddPartyButton"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToCreateNewPartyFromProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_1604_VerifyUserAbleToCreateNewPartyFromProject"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToAddOneorMoreExistingCourtsToProjectFromAddCourtModal">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_1707_VerifyUserAbleToAddOneorMoreExistingCourtsToProjectFromAddCourtModal"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToCreateNewCourtFromProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_1708_VerifyUserAbleToCreateNewCourtFromProject"/>
+        </classes>
+    </test>
+    <test name="VeirfyUserAbleToAddExistingJudgesForCourt">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_1717_VeirfyUserAbleToAddExistingJudgesForCourt"/>
+        </classes>
+    </test>
+    <test name="VeirfyUserAbleToCreateNewJudgeForCourtFromProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_1718_VeirfyUserAbleToCreateNewJudgeForCourtFromProject"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToAddExistingProsecutorsForCourt">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_1731_VerifyUserAbleToAddExistingProsecutorsForCourt"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToDeleteAddedInhouseCounselsToProjectAndDeletedCounselsShouldNotDisplayInGrid">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_7094_VerifyUserAbleToDeleteAddedInhouseCounselsToProjectAndDeletedCounselsShouldNotDisplayInGrid"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToDeleteOutsideCounselAddedToProjectAndDeletedCounselsShouldNotDisplayInGrid">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_7100_VerifyUserAbleToDeleteOutsideCounselAddedToProjectAndDeletedCounselsShouldNotDisplayInGrid"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToAddExistingContactsForParty">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_7103_VerifyUserAbleToAddExistingContactsForParty"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToCreateNewContactsFromProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_7107_VerifyUserAbleToCreateNewContactsFromProject"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToAddExistingInhouseCounselsToProjectOnlyIfPartyTypeIs_Enterprise">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_7110_VerifyUserAbleToAddExistingInhouseCounselsToProjectOnlyIfPartyTypeIs_Enterprise"/>
+        </classes>
+    </test>
+    <test name="TC_7121_VerifyAddInhouseCounselButtonIsDisabledForPartyTypesOtherThan_Enterprise">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_7121_VerifyAddInhouseCounselButtonIsDisabledForPartyTypesOtherThan_Enterprise"/>
+        </classes>
+    </test>
+    <test name="VerifyUserIsAbleToAddOneorMoreExistingOutsideCounselsToOtherPartyFromModal">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_7126_VerifyUserIsAbleToAddOneorMoreExistingOutsideCounselsToOtherPartyFromModal"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToCreateNewOutsideCounselFromProjectOtherParty">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_7128_VerifyUserAbleToCreateNewOutsideCounselFromProjectOtherParty"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToDeleteAddedPartyToProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_10329_VerifyUserAbleToDeleteAddedPartyToProject"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToDeactivateCustodianWithProjectCustodianStatus_Active_and_ActivateCustodianWithprojectCustodianStatus_InActive">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_28868_VerifyUserAbleToDeactivateCustodianWithProjectCustodianStatus_Active_and_ActivateCustodianWithprojectCustodianStatus_InActive"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToAddCustodiansToProjectFromEmployeeMasterGridUsingAddCustodianButtonByApplyingMultipleFilters">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_32718_VerifyUserAbleToAddCustodiansToProjectFromEmployeeMasterGridUsingAddCustodianButtonByApplyingMultipleFilters"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToCreateAnyNumberOfDaterangesForProjectUsingAddDaterangesButton">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_35027_VerifyUserAbleToCreateAnyNumberOfDaterangesForProjectUsingAddDaterangesButton"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToCreateNewProsecutorsFromProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_52241_VerifyUserAbleToCreateNewProsecutorsFromProject"/>
+        </classes>
+    </test>
+    <test name="VerifyDaterangesCanBeEnabledorDisabledByClickingToggleButton">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_52366_VerifyDaterangesCanBeEnabledorDisabledByClickingToggleButton"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAs_Single">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_53633_VerifyProjectApprovalProcessByChoosingApprovalTypeAs_Single"/>
+        </classes>
+    </test>
+    <test name="VerifyNotesCanBeEditedSuccessfullyFromHistoryGrid">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_55286_VerifyNotesCanBeEditedSuccessfullyFromHistoryGrid"/>
+        </classes>
+    </test>
+    <test name="VerifyNotesCanBeDeletedSuccessfullyFromHistoryGrid">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_55304_VerifyNotesCanBeDeletedSuccessfullyFromHistoryGrid"/>
+        </classes>
+    </test>
+    <test name="VerifyOneOrMoreNotesCanBeCreatedForEachInhouseCounsel">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_57290_VerifyOneOrMoreNotesCanBeCreatedForEachInhouseCounsel"/>
+        </classes>
+    </test>
+    <test name="VerifyOneOrMoreNotesCanBeCreatedForEachParty">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_57398_VerifyOneOrMoreNotesCanBeCreatedForEachParty"/>
+        </classes>
+    </test>
+    <test name="VerifyNotesCanBeUpdatedForEachParty">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_57400_VerifyNotesCanBeUpdatedForEachParty"/>
+        </classes>
+    </test>
+    <test name="VerifyAlreadyAddedInhouseCounselsAreNotDisplayingInEmployeeMasterGridWhenNavigatedFromAddInhouseCounsel">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_62432_VerifyAlreadyAddedInhouseCounselsAreNotDisplayingInEmployeeMasterGridWhenNavigatedFromAddInhouseCounsel"/>
+        </classes>
+    </test>
+</suite> <!-- Suite -->

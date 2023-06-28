@@ -1,4 +1,4 @@
-package com.ligl.CaseManagement;
+package com.ligl.ProjectManagement;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_10305_VerifyUserIsAbleToViewCaseDocumentInNewTab extends TestBase {
+public class TC_1731_VerifyUserAbleToAddExistingProsecutorsForCourt extends TestBase {
 
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "CaseManagement")
-    public void TC_10305_VerifyUserIsAbleToViewCaseDocumentInNewTab(Hashtable<String, String> data) throws Exception {
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "ProjectManagement")
+    public void TC_1731_VerifyUserAbleToAddExistingProsecutorsForCourt(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -23,7 +23,7 @@ public class TC_10305_VerifyUserIsAbleToViewCaseDocumentInNewTab extends TestBas
                 // skip-testng
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
-            // Create new template using +template button for case approval category
+
 
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
@@ -31,14 +31,16 @@ public class TC_10305_VerifyUserIsAbleToViewCaseDocumentInNewTab extends TestBas
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
-                    .goToCaseDocument()
-                    .searchRequiredCaseDocument(data.get("CaseDocument"))
-                    .clickOnCaseDocument(data.get("CaseDocument"));
+                    .navigateToCourtPage()
+                    .addCourtToCase(data.get("AvailableCourt"))
+                    .searchingAddedCourt(data.get("AvailableCourt"))
+                    .navigateAndAddProsecutor(data.get("AvailableCourt"), data.get("AvailableProsecutor1"), data.get("AvailableProsecutor2"), data.get("AvailableProsecutor3"), data.get("AvailableProsecutor4"))
+                    .validateProsecutors(data.get("AvailableProsecutor1"), data.get("AvailableProsecutor2"), data.get("AvailableProsecutor3"), data.get("AvailableProsecutor4"));
 
 
         } catch (Exception ex) {
-            session.log_Error("TC_10305_VerifyUserIsAbleToViewCaseDocumentInNewTab Failed");
-            throw new Exception("TC_10305_VerifyUserIsAbleToViewCaseDocumentInNewTab Failed", ex);
+            session.log_Error("TC_1731_VerifyUserAbleToAddExistingProsecutorsForCourt Failed");
+            throw new Exception("TC_1731_VerifyUserAbleToAddExistingProsecutorsForCourt Failed", ex);
         } finally {
             session.end();
         }

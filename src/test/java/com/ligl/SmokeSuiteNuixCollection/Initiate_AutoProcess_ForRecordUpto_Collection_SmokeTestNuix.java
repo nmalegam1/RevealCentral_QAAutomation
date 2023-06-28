@@ -30,9 +30,8 @@ public class Initiate_AutoProcess_ForRecordUpto_Collection_SmokeTestNuix extends
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
-                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
+                    .searchcase(data.get("PROJECT")).GoToCase(data.get("PROJECT"))
                     .getLeftMenu()
                     .goToDSIPage()
                     .addDataSourceRecordToDSIGrid(data.get("Emp1"),data.get("Datasource1"), data.get("DataHold"), data.get("DateRange1"), data.get("KeyWords1") )

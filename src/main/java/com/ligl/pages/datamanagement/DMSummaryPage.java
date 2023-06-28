@@ -2,6 +2,7 @@ package com.ligl.pages.datamanagement;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
+import net.bytebuddy.asm.Advice;
 import org.apache.maven.surefire.shade.booter.org.apache.commons.lang3.ObjectUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -173,7 +174,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
 
                     Thread.sleep(30000);
                     for (int j = 0; j < listItem.size(); j++) {
-                        String actualValue = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
+                        String actualValue = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
 
                         if (actualValue.equalsIgnoreCase(Status)) {
                             y++;
@@ -182,7 +183,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
                             y++;
                             z++;
                         }
-                        if(listItem.size() == y){
+                        if (listItem.size() == y) {
                             getSession().takeScreenShot();
                             break Outer;
                         }
@@ -400,6 +401,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
                         if (actualValue.contains("Failed")) {
                             y++;
                             z++;
+
                         }
                         if (listItem.size() == y) {
                             getSession().takeScreenShot();
@@ -416,6 +418,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
                 }
 
             }
+
 
             for (int j = 0; j < listItem.size(); j++) {
                 String Status1 = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='DataHoldStatusName']//span[@class='ellipsisAgGrid']")).getText();

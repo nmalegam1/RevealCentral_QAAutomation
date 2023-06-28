@@ -2133,4 +2133,15 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage clickOnRefreshButtonInNotesGrid() throws Exception{
 		return null;
 	}
+
+	public ILiglPage createNewCaseSP(Hashtable<String,String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validatingAlreadyAddedInHouseCounselsAreDisplayingInEmployeeMasterGrid(String Email1) throws Exception{
+		return null;
+	}
+	public ILiglPage clickingOnNotesIconInOtherPartyGrid() throws Exception{
+		return null;
+	}
 }

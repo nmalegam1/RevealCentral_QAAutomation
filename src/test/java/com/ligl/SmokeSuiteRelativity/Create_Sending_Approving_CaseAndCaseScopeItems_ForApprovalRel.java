@@ -28,12 +28,10 @@ public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalRel exten
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
-                    /*.searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))*/
-                    /*.navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))*/
-                    .createNewCase(data)
-                    .getLeftMenu()
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
+                    .searchcase(data.get("PROJECT")).GoToCase(data.get("PROJECT"))
+                   /* .createNewCase(data)*/
+                   /* .getLeftMenu()
                     .navigateToCustodiansPage()
                     .addCustodianToCaseAtOneTime(data.get("Email1"))
                     .clickOnTheCutsodianCheckBox(data.get("Emp1"))
@@ -45,7 +43,7 @@ public class Create_Sending_Approving_CaseAndCaseScopeItems_ForApprovalRel exten
                     .navigateToDataSourcesPage()
                     .addingDataSource(data.get("Datasource1"))
                     .addingDataSource(data.get("Datasource2"))
-                    .clickOnSaveButton()
+                    .clickOnSaveButton()*/
                     .getLeftMenu()
                     .navigateToDateRangesPage()
                     .addDateRanges(data.get("StartDate1"), data.get("EndDate1"), data.get("DescriptionBox"))

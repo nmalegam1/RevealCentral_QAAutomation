@@ -146,11 +146,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='CreatedByName']//span[@class='ellipsisAgGrid']")
     WebElement CreatedByColData;
-    @FindBy(id = "input-dynamic-column-1")
+    @FindBy(id = "input-dynamic-column-2")
     WebElement CostCentre;
-    @FindBy(id="input-dynamic-column-2")
+    @FindBy(id="input-dynamic-column-3")
     WebElement CaseAlias;
-    @FindBy(id="select-dynamic-column-3")
+    @FindBy(id="select-dynamic-column-1")
     WebElement AddDropDown;
     @FindBy(xpath = "//span[contains(text(),'Region is required')]")
     WebElement RegionReqValidation;
@@ -199,6 +199,20 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[contains(text(),'Save')]")
     WebElement EditPopUpSaveBtn;
 
+    @FindBy(id = "case-company")
+    WebElement CompanyName;
+
+    @FindBy(xpath = "//div[@id='case-company-panel']//input[@type='text']")
+    WebElement CompanyNameTxt;
+
+    @FindBy(id = "case-client")
+    WebElement ClientName;
+
+    @FindBy(xpath = "//div[@id='case-client-panel']//input[@type='text']")
+    WebElement ClientNameTxt;
+
+    @FindBy(xpath = "//div[@col-id='Name']//span[@ref='eMenu']")
+    WebElement ProjectNameMenu;
 
     /**
      * Method to Check the Region Field in Case Creation isMandatory
@@ -479,7 +493,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             log_Info("pointed mouse to the case name");
             log_Info("click on case search menu");
-            CaseSearchMenu.click();
+            ProjectNameMenu.click();
             log_Info("clicked on case search menu");
             log_Info("click on case filter");
             CaseSearchFilter.click();
@@ -919,10 +933,16 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("Enter Priority");
             getDriver().waitForelementToBeClickable(Priority);
             Priority.click();
-            Thread.sleep(5000);
-            SelPriority.click();
+            Thread.sleep(1000);
+            SelPriority.sendKeys(data.get("PRIORITY"));
+            Thread.sleep(1000);
+            SelPriority.sendKeys(Keys.ENTER);
             log_Pass("Priority Selected");
-            Thread.sleep(3000);
+            Thread.sleep(1000);
+
+
+
+
             log_Pass("All Mandatory Fields Are Entered");
             log_Info("Click on more button");
             MoreBtn.click();
@@ -1103,10 +1123,12 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("Enter Priority");
             getDriver().waitForelementToBeClickable(Priority);
             Priority.click();
-            Thread.sleep(5000);
-            SelPriority.click();
+            Thread.sleep(1000);
+            SelPriority.sendKeys(data.get("PRIORITY"));
+            Thread.sleep(1000);
+            SelPriority.sendKeys(Keys.ENTER);
             log_Pass("Priority Selected");
-            Thread.sleep(3000);
+            Thread.sleep(1000);
 
             MoreBtn.click();
             log_Info("check for inplace preservation check box selected or not");
@@ -1805,6 +1827,119 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             throw new Exception("performClearActionInSearchBarInChooseColumn() Failed",ex);
         }
 
+    }
+
+    public ILiglPage createNewCaseSP(Hashtable<String,String> data) throws Exception {
+
+        try {
+
+            log_Info("createNewCaseSP() Started");
+            log_Info("Click On Add Project Button");
+            Thread.sleep(2000);
+            createCaseBtn.click();
+            log_Pass("Clicked On Add Project Button");
+
+            log_Info(data.toString());
+
+            log_Info("Enter Company Name");
+            CompanyName.click();
+            Thread.sleep(2000);
+            CompanyNameTxt.sendKeys(data.get("COMPANY"));
+            Thread.sleep(2000);
+            CompanyNameTxt.sendKeys(Keys.ENTER);
+            log_Pass("Entered Company Name");
+
+            log_Info("Enter Client Name");
+            ClientName.click();
+            Thread.sleep(2000);
+            ClientNameTxt.sendKeys(data.get("CLIENT"));
+            Thread.sleep(2000);
+            ClientNameTxt.sendKeys(Keys.ENTER);
+            log_Pass("Entered Client Name");
+
+            log_Info("Enter CaseType");
+            getDriver().waitForelementToBeClickable(CaseType);
+            CaseType.click();
+            Thread.sleep(1000);
+            CaseTypeText.sendKeys(data.get("ProjectTYPE"));
+            Thread.sleep(1000);
+            CaseTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter RoleType");
+            getDriver().waitForelementToBeClickable(RoleType);
+            RoleType.click();
+            Thread.sleep(1000);
+            RoleTypeText.sendKeys(data.get("ROLE"));
+            Thread.sleep(1000);
+            RoleTypeText.sendKeys(Keys.ENTER);
+            log_Info("Enter CaseName");
+            getDriver().waitForelementToBeClickable(CaseName);
+            CaseName.sendKeys(data.get("PROJECT"));
+
+
+            log_Info("Enter Work Flow Template");
+            getDriver().waitForelementToBeClickable(WFT);
+            WFT.click();
+            Thread.sleep(1000);
+            WFTText.sendKeys(data.get("WFT"));
+            Thread.sleep(1000);
+            WFTText.sendKeys(Keys.ENTER);
+            Thread.sleep(3000);
+
+            log_Info("Enter Case Settings Template");
+            getDriver().waitForelementToBeClickable(CST);
+            CST.click();
+            Thread.sleep(1000);
+            CSTText.sendKeys(data.get("PST"));
+            Thread.sleep(1000);
+            CSTText.sendKeys(Keys.ENTER);
+            Thread.sleep(1000);
+
+            log_Info("Enter Entity");
+            getDriver().waitForelementToBeClickable(Entity);
+            Entity.click();
+            Thread.sleep(1000);
+            EntityText.sendKeys(data.get("ENTITY"));
+            Thread.sleep(1000);
+            EntityText.sendKeys(Keys.ENTER);
+            Thread.sleep(1000);
+
+            log_Info("Enter Region");
+            getDriver().waitForelementToBeClickable(Region);
+            Region.click();
+            Thread.sleep(1000);
+            RegionText.sendKeys(data.get("REGION"));
+            Thread.sleep(1000);
+            RegionText.sendKeys(Keys.ENTER);
+            log_Info("Region Entered");
+            Thread.sleep(1000);
+
+            log_Info("Enter Description");
+            getDriver().waitForelementToBeClickable(Desc);
+            Desc.sendKeys(data.get("DESC"));
+
+            log_Info("Enter Priority");
+            getDriver().waitForelementToBeClickable(Priority);
+            Priority.click();
+            Thread.sleep(1000);
+            SelPriority.sendKeys(data.get("PRIORITY"));
+            Thread.sleep(1000);
+            SelPriority.sendKeys(Keys.ENTER);
+            log_Pass("Priority Selected");
+            Thread.sleep(1000);
+
+            log_Pass("All Mandatory Fields Are Entered");
+            log_Info("Click Save Button");
+            SaveBtn.click();
+            log_Pass("Save button Clicked");
+            String b= NewlyCreatedCaseName.getAttribute("title");
+            Assert.assertEquals(data.get("PROJECT"),b);
+            log_Pass("Case Created Successfully");
+
+            return new CaseSummaryPage();
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in createNewCaseSP()", ex);
+        }
     }
 
 

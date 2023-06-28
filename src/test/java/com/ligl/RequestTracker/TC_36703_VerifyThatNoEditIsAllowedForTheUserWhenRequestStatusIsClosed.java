@@ -26,8 +26,7 @@ public class TC_36703_VerifyThatNoEditIsAllowedForTheUserWhenRequestStatusIsClos
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader().goToGlobalRequestPage()
                     .searchForTheParticularTitleOfTheRequest(data.get("ReqTitle"))
                     .moveToTheParticularColumn(data.get("ReqTitle"))

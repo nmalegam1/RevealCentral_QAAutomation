@@ -134,12 +134,12 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(AddCust);
             AddCust.click();
 
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", EmpMail);
+
             log_Info("Hover on Name Header");
             Thread.sleep(5000);
-            //getDriver().waitForelementToBeClickable(Name);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(EmpMail).perform();
-            //log_Info("Hovered on Name Header");
             Thread.sleep(5000);
 
             EmpMail.click();
@@ -155,7 +155,6 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             Searchbar.sendKeys(Email1);
             Thread.sleep(5000);
             log_Info("Check Employee CheckBox");
-            //getDriver().waitForelementToBeClickable(Employee);
             getCurrentDriver().findElement(By.xpath("//span[@title='"+Email1+"']/ancestor::div[@role='row']//div[@col-id='FullName']//div[@ref='eCheckbox']")).click();
             log_Info("Employee checked");
 
@@ -169,50 +168,6 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             log_Error(ex.getMessage());
             throw new Exception("addCustodianToCase() Failed", ex);
         }
-            /*log_Info("Click Add Custodian Button");
-            getDriver().waitForelementToBeClickable(AddCust);
-            Thread.sleep(5000);
-            AddCust.click();
-            Thread.sleep(5000);
-            getSession().log_Pass("Add Custodians button clicked");
-
-            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", EmployeeStatusHeader);
-
-
-            log_Info("Hover on Name Header");
-            getDriver().waitForelementToBeClickable(EmailName);
-            Actions ac = new Actions(getCurrentDriver());
-            ac.moveToElement(EmailName).perform();
-            log_Info("Hovered on Name Header");
-            Thread.sleep(5000);
-
-            EmailMenuu.click();
-            log_Info("Menu clicked");
-
-            log_Info("Click on Filter");
-            Thread.sleep(2000);
-            Filter.click();
-            log_Info("Filter Clicked");
-            Thread.sleep(2000);
-            log_Info("Enter Employee");
-            Searchbar.sendKeys(Email1);
-            Thread.sleep(2000);
-            log_Info("Check Employee CheckBox");
-            Thread.sleep(2000);
-            getCurrentDriver().findElement(By.xpath("//span[@title='"+Email1+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
-            log_Info("Employee checked");
-
-            log_Info("Click Add To case Button");
-            getDriver().waitForelementToBeClickable(AddToCase);
-            AddToCase.click();
-            getCurrentDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            getSession().log_Pass("Add To Case Button clicked");
-            return new CaseCustodiansPage();
-
-        }catch (Exception | Error ex){
-            log_Error(ex.getMessage());
-            throw new Exception("addCustodianToCase() Failed",ex);*/
-
     }
     public ILiglPage multipleCustodianSelect(Hashtable<String, String> data)throws Exception{
         try{

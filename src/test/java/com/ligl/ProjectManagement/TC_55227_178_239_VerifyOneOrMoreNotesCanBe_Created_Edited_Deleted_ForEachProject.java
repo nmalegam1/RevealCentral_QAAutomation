@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_55227_178_239_VerifyOneOrMoreNotesCanBe_Created_Edited_Deleted_ForEachProject extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData",description = "ProjectManagement")
     public void TC_55227_178_239_VerifyOneOrMoreNotesCanBe_Created_Edited_Deleted_ForEachProject(Hashtable<String,String> data) throws Exception{
         try {
             session.log_Info(data.toString());

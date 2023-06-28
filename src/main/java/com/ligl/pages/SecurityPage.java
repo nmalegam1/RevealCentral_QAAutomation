@@ -70,16 +70,16 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(id = "approval-subType")
     WebElement ApprovalSubType;
 
-    @FindBy(xpath = "//div[@class='approval-history-body']/table/tbody/tr/td[position()=1] ")
+    @FindBy(xpath = "//div[@ref='eBodyViewport']//div[@role='rowgroup']//div[@role='row'][1]//div[@col-id='UserName']//span//span//span")
     WebElement AssignedUserName;
 
-    @FindBy(xpath = "//div[@class='approval-history-body']/table/tbody/tr/td[position()=2]")
+    @FindBy(xpath = "//div[@ref='eBodyViewport']//div[@role='rowgroup']//div[@role='row'][1]//div[@col-id='ApprovalStatus']//span//span//span")
     WebElement StatusOfUser;
 
-    @FindBy(xpath = "//div[@class='approval-history-body']/table/tbody/tr[position()=2]/td[position()=1]")
+    @FindBy(xpath = "//div[@ref='eBodyViewport']//div[@role='rowgroup']//div[@role='row'][2]//div[@col-id='UserName']//span//span//span")
     WebElement AssignedUserName1;
 
-    @FindBy(xpath = "//div[@class='approval-history-body']/table/tbody/tr[position()=2]/td[position()=2]")
+    @FindBy(xpath = "//div[@ref='eBodyViewport']//div[@role='rowgroup']//div[@role='row'][2]//div[@col-id='ApprovalStatus']//span//span//span")
     WebElement StatusOfUser1;
 
     @FindBy(xpath = "//button[contains(text(),'Next')]")
@@ -300,7 +300,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     public ILiglPage sendCaseForApprovalWithAllScope(String BchName,String Apptemp,String UserName) throws Exception {
         try {
             log_Info("Click send for Approval Button");
-            SendApprovalBtn.click();
+            SendForApprovalBtn.click();
             log_Pass("Send Approval btn Clicked");
             Thread.sleep(5000);
             SelectAllCustodiansCheckBox.click();
@@ -329,7 +329,8 @@ public class SecurityPage extends LiglBaseSessionPage {
             ApproverName.sendKeys(Keys.ENTER);
             log_Pass("All Credentials Required for Approval are Given");
             log_Info("Click send for Approval Button");
-            SendForApprovalBtn.click();
+            SendApprovalBtn.click();
+            Thread.sleep(5000);
             log_Pass("Case Sent for Approval");
             return new SecurityPage();
         }catch (Exception ex){
@@ -444,6 +445,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
 
             log_Info("Click on Send For Approval Button");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendForApprovalBtn);
             getDriver().waitForelementToBeClickable(SendForApprovalBtn);
             Thread.sleep(3000);
             SendForApprovalBtn.click();
@@ -563,6 +565,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
 
             log_Info("Click on Send For Approval Button");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendForApprovalBtn);
             getDriver().waitForelementToBeClickable(SendForApprovalBtn);
             Thread.sleep(3000);
             SendForApprovalBtn.click();

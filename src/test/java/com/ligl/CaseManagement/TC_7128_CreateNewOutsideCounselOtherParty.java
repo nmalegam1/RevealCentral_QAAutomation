@@ -32,6 +32,7 @@ public class TC_7128_CreateNewOutsideCounselOtherParty extends TestBase {
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().goToOtherPartyPage()
+                    .clickAddPartyBtns()
                     .addingNewParty(data.get("PartyName"), data.get("PartyType"), data.get("Status"), data.get("Description"))
                     .searchingParty(data.get("PartyName"))
                     .createOtherPartyNewOutsideCounsel(data.get("PartyName"), data.get("NameTextBox"), data.get("PartyDrpDwn"), data.get("Description"), data.get("Status"), data.get("FirstName"), data.get("LastName"))

@@ -30,9 +30,7 @@ public class Case_Create_ApproveFor_OnPremDST extends TestBase {
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
-                   /* .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))*/
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .createNewCase(data)
                     .getLeftMenu()
                     .navigateToCustodiansPage()

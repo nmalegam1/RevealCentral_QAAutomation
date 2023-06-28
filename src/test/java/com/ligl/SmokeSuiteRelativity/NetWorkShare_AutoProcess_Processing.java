@@ -30,9 +30,8 @@ public class NetWorkShare_AutoProcess_Processing extends TestBase {
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
-                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
+                    .searchcase(data.get("PROJECT")).GoToCase(data.get("PROJECT"))
                     .getLeftMenu()
                     .goToDSIPage()
                     .addingDSToDSIThroughCustom(data.get("Emp"),data.get("Datasource"),data.get("SourcePath"), data.get("DataHold"))
