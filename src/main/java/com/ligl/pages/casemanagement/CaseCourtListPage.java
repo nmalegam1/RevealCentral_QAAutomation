@@ -65,7 +65,7 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
     @FindBy(xpath="//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='PartyName']//span[@class='ellipsisAgGrid']")
     WebElement CourtNameColData;
 
-    @FindBy(xpath="//button[contains(text(),'Judge')]")
+    @FindBy(id = "add-judge-btn")
     WebElement AddJudgeBtn;
 
     @FindBy(css = "input[placeholder='Filter...']")
@@ -345,6 +345,8 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
         try {
 
 
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", AddJudgeBtn);
+
             log_Info("clickOnAddJudgeButton() started");
             getDriver().waitForelementToBeClickable(AddJudgeBtn);
             Thread.sleep(3000);
@@ -497,7 +499,10 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
      */
     public ILiglPage createNewJudge(String conJudgeFN,String conJudgeLN) throws Exception {
         try{
+
+
             log_Info("createNewJudge() started");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", AddJudgeBtn);
             AddJudgeBtn.click();
             CreateCourt.click();
             CaseOtherPartyPage COPP=new CaseOtherPartyPage();
@@ -520,6 +525,8 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
      */
     public ILiglPage validateJudgeAddedToGrid(String conFN,String conLN) throws Exception{
         try{
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", AddJudgeBtn);
             log_Info("Call searchJudge Method");
             searchJudge(conFN,conLN);
             log_Info("Judge Record Searched");

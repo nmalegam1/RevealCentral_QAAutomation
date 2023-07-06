@@ -1710,4 +1710,25 @@ public class SecurityPage extends LiglBaseSessionPage {
             throw new RuntimeException(e);
         }
     }
+
+    public ILiglPage projectAndScopeItemsSendingForApproval(String Emp1,String DataSource1,String DateRange1,String KeyWords1,String BATCHname,String UserName ,String EmailTemplate) throws Exception{
+
+        try{
+            clickOnSendForApprovalButton()
+                    .clickOnCustodianCheckBoxForApproval(Emp1)
+                    .clickOnNextButtonForApproval()
+                    .clickOnDataSourceCheckBoxForApproval(DataSource1)
+                    .clickOnNextButtonForApproval()
+                    .clickOnDateRangesCheckBoxForApproval(DateRange1)
+                    .clickOnNextButtonForApproval()
+                    .clickOnKeywordsCheckBoxForApproval(KeyWords1)
+                    .sendingCaseForApprovalAfterAddingScopeItems(BATCHname,UserName,EmailTemplate);
+
+            return new SecurityPage();
+
+        }catch (Exception ex){
+            log_Error("projectAndScopeItemsSendingForApproval() is Failed");
+            throw new Exception("Exception in projectAndScopeItemsSendingForApproval()",ex);
+        }
+    }
 }

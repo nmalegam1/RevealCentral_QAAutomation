@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import javax.xml.stream.events.StartDocument;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class DashboardPage extends LiglBaseSessionPage {
 
@@ -72,10 +73,10 @@ public class DashboardPage extends LiglBaseSessionPage {
     WebElement ApplyButton;
 
 
-    @FindBy(xpath = "//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-0']//button[@aria-label='Open calendar']")
+    @FindBy(xpath = "//div//mat-label[contains(text(),'Start Date')]/ancestor::mat-form-field//div//button[@aria-label='Open calendar']")
     WebElement StartDateCalendar;
 
-    @FindBy(xpath = "//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-1']//button[@aria-label='Open calendar']")
+    @FindBy(xpath = "//div//mat-label[contains(text(),'End Date')]/ancestor::mat-form-field//div//button[@aria-label='Open calendar']")
     WebElement EndDateCalendar;
 
     @FindBy(xpath = "//button[@aria-label='Choose month and year']")
@@ -611,7 +612,6 @@ public class DashboardPage extends LiglBaseSessionPage {
         try {
 
             getSession().log_Info("Enter The Start Date");
-            getDriver().waitForAngularRequestsToComplete();
             getDriver().waitForelementToBeClickable(StartDateCalendar);
             Thread.sleep(5000);
             StartDateCalendar.click();
@@ -646,6 +646,7 @@ public class DashboardPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(ApplyButton);
             Thread.sleep(2000);
             ApplyButton.click();
+            getDriver().maxWait();
             getSession().log_Pass("Clicked On The Apply Button");
 
             return new DashboardPage();
@@ -662,9 +663,8 @@ public class DashboardPage extends LiglBaseSessionPage {
 
             getSession().log_Info("Click On Print Button");
             getDriver().waitForAngularRequestsToComplete();
-            getDriver().waitForelementToBeClickable(PrintButton);
-            Thread.sleep(5000);
-            PrintButton.click();
+            getDriver().waitForelementToBeClickable(PrintButton);//waitForPageToLoad();
+            getDriver().maxWait();
             getSession().log_Pass("Clicked On Print Button");
 
             return new DashboardPage();
@@ -679,6 +679,7 @@ public class DashboardPage extends LiglBaseSessionPage {
 
         try {
 
+            log_Info("validateThePrintButtonFunctionality() Started");
             ArrayList<String> tabs2 = new ArrayList<String>(getCurrentDriver().getWindowHandles());
             getCurrentDriver().switchTo().window(tabs2.get(1));
             if(getCurrentDriver().getCurrentUrl().contains("chrome://print/"))
@@ -717,43 +718,187 @@ public class DashboardPage extends LiglBaseSessionPage {
         }
     }
 
-    public ILiglPage validateUserAccessProjectsCountWhenUACsetToFalse(String USERname,String PASSword,String ENTITYSelection,String Title) throws Exception{
+    public ILiglPage validateTheDataWhenFromAndToDatesAreAdjusted(String SYEAR,String SMONTH,String SDATE,String EYEAR,String EMONTH,String EDATE) throws Exception{
 
         try {
 
+            String TotalProjects = TotalProjectsCount.getText();
+            int TotalProjectsCounts = Integer.parseInt(TotalProjects);
 
-            String TotalProjectsEDISC = TotalProjectsCount.getText();
-            int EDISCTotalProjectsCount = Integer.parseInt(TotalProjectsEDISC);
+            String TotalCustodians = ActiveCustodianCount.getText();
+            int ActiveCUSTCount = Integer.parseInt(TotalCustodians);
 
-            log_Info("Total Number Of Projects  : " + EDISCTotalProjectsCount);
 
-            getHeader().logout()
-                    .login(USERname,PASSword,ENTITYSelection)
-                    .getHeader().navigateToDashboardPage()
-                    .validateDashBoardPageURL(Title);
+            String TotalDataSourceIdentified = DataSourceIdentifiedCount.getText();
+            int TotalIdentifiedDataSource = Integer.parseInt(TotalDataSourceIdentified);
 
-            String TotalProjectsSUPER = TotalProjectsCount.getText();
-            int SUPERTotalProjectsCount = Integer.parseInt(TotalProjectsSUPER);
+            String TotalDataSourceCollected = DataSourceCollectedCount.getText();
+            int TotalCollectedDataSource = Integer.parseInt(TotalDataSourceCollected);
 
-            log_Info("Total Number Of Projects  : " + SUPERTotalProjectsCount);
+            String IngestedVolume = VolumeIngested.getText();
+            int TotalVolume = Integer.parseInt(IngestedVolume);
+
+            String HostedExport = ExportSetHosted.getText();
+            int HostedSet = Integer.parseInt(HostedExport);
+
+            log_Info("Total Number Of Projects  : " + TotalProjectsCounts);
+            log_Info("Total Number Of Active Custodians  : " + ActiveCUSTCount);
+            log_Info("Total Number Of Identified Datasources  : " + TotalIdentifiedDataSource);
+            log_Info("Total Number Of Collected DataSources  : " + TotalCollectedDataSource);
+            log_Info("Total Number Of Volume  : " + TotalVolume);
+            log_Info("Total Number Of Hosted Set  : " + HostedSet);
+
+            checkAndValidateTheFunctionalityOfFromToDateAndApplyButton(SYEAR,SMONTH,SDATE,EYEAR,EMONTH,EDATE);
+
+
+            String AfterTotalProjects = TotalProjectsCount.getText();
+            int AfterTotalProjectsCount = Integer.parseInt(AfterTotalProjects);
+
+            log_Info("Total Number Of Active Projects  : " + AfterTotalProjectsCount);
+
+            String AfterTotalCustodians = ActiveCustodianCount.getText();
+            int AfterActiveCUSTCount = Integer.parseInt(AfterTotalCustodians);
+
+            log_Info("Total Number Of Active Custodians  : " + AfterActiveCUSTCount);
+
+            String AfterTotalDataSourceIdentified = DataSourceIdentifiedCount.getText();
+            int AfterTotalIdentifiedDataSource = Integer.parseInt(AfterTotalDataSourceIdentified);
+
+            log_Info("Total Number Of DataSources Identified  : " + AfterTotalIdentifiedDataSource);
+
+            String AfterTotalDataSourceCollected = DataSourceCollectedCount.getText();
+            int AfterTotalCollectedDataSource = Integer.parseInt(AfterTotalDataSourceCollected);
+
+            log_Info("Total Number Of DataSources Collected  : " + AfterTotalCollectedDataSource);
+
+            String AfterTotalIngestedVolume = VolumeIngested.getText();
+            int AfterTotalVolume = Integer.parseInt(AfterTotalIngestedVolume);
+
+            log_Info("Total Volume Of Data Ingested  : " + AfterTotalVolume);
+
+            String AfterTotalHostedExport = ExportSetHosted.getText();
+            int AfterHostedSetData = Integer.parseInt(AfterTotalHostedExport);
+
+            log_Info("Total Hosted Set Data  : " + AfterHostedSetData);
 
 
             try {
 
-                if (EDISCTotalProjectsCount == SUPERTotalProjectsCount) {
+                if (AfterTotalProjectsCount >= TotalProjectsCounts) {
 
-                    log_Pass("Total Count Of Projects In EDISC User And SUPER user Are EQUAL ");
+                    log_Pass("Total Count Of Projects Incremented");
+                } else {
+                    throw new Exception("Count Mismatch");
+                }
+
+                if (AfterActiveCUSTCount >= ActiveCUSTCount) {
+
+                    log_Pass("Total Count Of Custodian Incremented");
+                } else {
+                    throw new Exception("Count Mismatch");
+                }
+
+                if (AfterTotalIdentifiedDataSource >= TotalIdentifiedDataSource) {
+
+                    log_Pass("Total Count Of Datasource Identified Incremented");
+                } else {
+                    throw new Exception("Count Mismatch");
+                }
+
+                if (AfterTotalCollectedDataSource >= TotalCollectedDataSource) {
+
+                    log_Pass("Total Count Of DataSource Collected Incremented");
+                } else {
+                    throw new Exception("Count Mismatch");
+                }
+
+                if (AfterTotalVolume >= TotalVolume) {
+
+                    log_Pass("Total Count Of DataSource Collected Incremented");
+                } else {
+                    throw new Exception("Count Mismatch");
+                }
+
+                if (AfterHostedSetData >= HostedSet) {
+
+                    log_Pass("Total Count Of Hosting Set Data Incremented");
+                } else {
+                    throw new Exception("Count Mismatch");
+                }
+
+            }catch(Exception e) {
+                log_Error("Either Total Count Or New Count Are Same");
+            }
+            return new DashboardPage();
+
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("validateTheDataWhenFromAndToDatesAreAdjusted() Failed ", ex);
+        }
+    }
+
+    public ILiglPage verifyTheDataInProcessInsightsWhenProjectContextIsNotSetWhenDefaultDatesAreSelected(Hashtable<String, String> data,String Emp) throws Exception{
+
+        try {
+
+
+            String TotalProjects = TotalProjectsCount.getText();
+            int TotalProjectsCounts = Integer.parseInt(TotalProjects);
+
+            String TotalCustodians = ActiveCustodianCount.getText();
+            int ActiveCUSTCount = Integer.parseInt(TotalCustodians);
+
+
+            log_Info("Total Number Of Projects  : " + TotalProjectsCounts);
+            log_Info("Total Number Of Active Custodians  : " + ActiveCUSTCount);
+
+
+            getHeader().goToCasePage().createNewCase(data)
+                    .getLeftMenu().navigateToCustodiansPage()
+                    .addCustodianToCase(Emp)
+                    .getHeader().clearCaseFunctionality()
+                    .navigateToDashboardPage().clickOnProcessInsightsTab();
+
+            String AfterTotalProjects = TotalProjectsCount.getText();
+            int AfterTotalCountProject = Integer.parseInt(AfterTotalProjects);
+
+            log_Info("Total Number Of Projects  : " + AfterTotalCountProject);
+
+
+            String AfterTotalCustodians = ActiveCustodianCount.getText();
+            int AfterActiveCUSTCount = Integer.parseInt(AfterTotalCustodians);
+
+            log_Info("Total Number Of Active Custodians  : " + AfterActiveCUSTCount);
+
+            try {
+
+                if (AfterTotalCountProject == TotalProjectsCounts + 1) {
+
+                    log_Pass("Total Count Of Projects Incremented");
                 }
             }
             catch(Exception e) {
-                log_Error("Total Count In Both Users Are Not Same");
+                log_Error("Either Total Count Or New Count Not Incremented");
+            }
+
+
+            try {
+
+                if (AfterActiveCUSTCount == ActiveCUSTCount + 1) {
+
+                    log_Pass("Total Count Of Custodians Incremented");
+                }
+            }
+            catch(Exception e) {
+                log_Error("Either Total Count Or New Count Not Incremented");
             }
 
             return new DashboardPage();
 
         }catch (Exception | Error ex){
             log_Error(ex.getMessage());
-            throw new Exception("validateUserAccessProjectsCountWhenUACsetToFalse() Failed ", ex);
+            throw new Exception("verifyTheDataInProcessInsightsWhenProjectContextIsNotSetWhenDefaultDatesAreSelected() Failed ", ex);
         }
     }
 }

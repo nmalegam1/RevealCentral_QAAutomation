@@ -91,7 +91,7 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
     @FindBy(xpath = "//button[@title='View']")
     WebElement ViewBtn;
 
-    @FindBy(id = "role-opt")
+    @FindBy(xpath = "//mat-radio-button[@id='role-opt']//label//span//span[2]")
     WebElement RoleRadioBtn;
 
     @FindBy(id = "back-btn-add-view-requests")
@@ -329,7 +329,7 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
             Thread.sleep(5000);
             Assert.assertEquals(true, a1);
             Assert.assertEquals(true, a2);
-           // Assert.assertEquals(true, a3);
+            Assert.assertEquals(true, a3);
             Assert.assertEquals(true, a4);
             Assert.assertEquals(true, a5);
             Assert.assertEquals(true, a6);
@@ -600,11 +600,9 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
             ChooseACaseDrpDwn.sendKeys(CaseDropDown);
             Thread.sleep(5000);
             ChooseACaseDrpDwn.sendKeys(Keys.ENTER);
-            getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Clicked On The Choose A Case Drop Down");
 
             getSession().log_Info("Click On The Role Type Radio Button ");
-            getDriver().waitForelementToBeClickable(RoleRadioBtn);
             Thread.sleep(5000);
             RoleRadioBtn.click();
             getDriver().waitForAngularRequestsToComplete();
@@ -1093,6 +1091,25 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
             throw new Exception("validateListOfColumnsInTheRequestPage() Failed ", ex);
         }
     }
+
+    public ILiglPage moveBackToTheRequiredColumn() throws Exception{
+
+        try{
+
+            Actions ac = new Actions(getCurrentDriver());
+            for (int i = 0; i < 11; i++) {
+
+                ac.sendKeys(Keys.ARROW_LEFT).perform();
+            }
+
+            return new GlobalRequestPage();
+
+        }catch (Exception ex){
+            log_Error("moveBackToTheRequiredColumn() is Failed");
+            throw new Exception("Exception in moveBackToTheRequiredColumn()");
+        }
+    }
+
 }
 
 

@@ -1099,7 +1099,7 @@ public interface ILiglPage {
     ILiglPage validateUserAccessCasesCountWhenUACsetToFalse(String USERname,String PASSword,String ENTITYSelection,String Title) throws Exception;
 
 
-    ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title) throws Exception;
+    ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title,String SYEAR,String SMONTH,String SDATE) throws Exception;
 
 
 
@@ -1315,5 +1315,28 @@ public interface ILiglPage {
 
     ILiglPage clickingOnNotesIconInOtherPartyGrid() throws Exception;
 
+    ILiglPage projectAndScopeItemsSendingForApproval(String Emp1,String DataSource1,String DateRange1,String KeyWords1,String BATCHname,String UserName ,String EmailTemplate) throws Exception;
+
+    ILiglPage validateBatchForProjectApprovalStatus() throws Exception;
+
+    ILiglPage searchRequiredProjectBatch(String BatchName) throws Exception;
+
+    ILiglPage validateProjectKeywordsAreInApprovedState() throws Exception;
+
+    ILiglPage validateProjectDateRangessAreInApprovedState() throws Exception;
+
+    ILiglPage validateProjectDataSourcesAreInApprovedState() throws Exception;
+
+    ILiglPage validateProjectCustodiansAreInApprovedState() throws Exception;
+
+    ILiglPage validateProjectDetailsAreInApprovedStateInApprovalPage() throws Exception;
+
+    ILiglPage moveBackToTheRequiredColumn() throws Exception;
+
+    ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoardWhenUACIsFALSE(String Comparator,String Date,String Month,String Year,String Title,String SYEAR,String SMONTH,String SDATE) throws Exception;
+
+    ILiglPage verifyTheDataInProcessInsightsWhenProjectContextIsNotSetWhenDefaultDatesAreSelected(Hashtable<String, String> data,String Emp) throws Exception;
+
+    ILiglPage validateTheDataWhenFromAndToDatesAreAdjusted(String SYEAR,String SMONTH,String SDATE,String EYEAR,String EMONTH,String EDATE) throws Exception;
 }
 

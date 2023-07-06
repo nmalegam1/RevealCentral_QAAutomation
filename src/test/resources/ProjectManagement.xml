@@ -198,7 +198,7 @@
     </test>
     <test name="VerifyUserAbleToAddExistingInhouseCounselsToProjectOnlyIfPartyTypeIs_Enterprise">
         <classes>
-            <class name="com.ligl.ProjectManagement.TC_7110_VerifyUserAbleToAddExistingInhouseCounselsToProjectOnlyIfPartyTypeIs_Enterprise"/>
+            <class name="com.ligl.ProjectManagement.TC_7110_VerifyUserAbleToCreateInhouseCounselsFromProjectForPartyType_Enterprise_AndAbleToAddExistingInhouseCounselsToProjectOnlyIfPartyTypeIs_Enterprise"/>
         </classes>
     </test>
     <test name="TC_7121_VerifyAddInhouseCounselButtonIsDisabledForPartyTypesOtherThan_Enterprise">

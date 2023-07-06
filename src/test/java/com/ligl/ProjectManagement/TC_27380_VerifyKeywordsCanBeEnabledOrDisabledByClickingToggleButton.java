@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_10329_VerifyUserAbleToDeleteAddedPartyToProject extends TestBase {
+public class TC_27380_VerifyKeywordsCanBeEnabledOrDisabledByClickingToggleButton extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "ProjectManagement")
-    public void TC_10329_VerifyUserAbleToDeleteAddedPartyToProject(Hashtable<String, String> data) throws Exception {
+    public void TC_27380_VerifyKeywordsCanBeEnabledOrDisabledByClickingToggleButton(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -23,7 +23,7 @@ public class TC_10329_VerifyUserAbleToDeleteAddedPartyToProject extends TestBase
                 // skip-testng
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
-            // Create new template using +template button for case approval category
+
 
             ILiglPage page = new LaunchPage()
 
@@ -32,15 +32,16 @@ public class TC_10329_VerifyUserAbleToDeleteAddedPartyToProject extends TestBase
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
-                    .goToOtherPartyPage()
-                    .clickAddPartyBtns()
-                    .addingNewParty(data.get("PartyName"), data.get("PartyType"), data.get("Status"), data.get("Description"))
-                    .deletingAddedParty(data.get("PartyName"))
-                    .validatedeletedparty(data.get("PartyName"));
+                    .navigateToKeyWordsPage()
+                    .addKeywordsByCustom(data.get("Keywords1"), data.get("DataSource1"))
+                    .addKeywordsByCustom(data.get("Keywords1"), data.get("DataSource1"))
+                    .enableAndDisableKeywords(data.get("Status1"))
+                    .validateEnableAndDisableKeywords(data.get("Status2"));
+
 
         } catch (Exception ex) {
-            session.log_Error("TC_10329_VerifyUserAbleToDeleteAddedPartyToProject Failed");
-            throw new Exception("TC_10329_VerifyUserAbleToDeleteAddedPartyToProject Failed", ex);
+            session.log_Error("TC_27380_VerifyKeywordsCanBeEnabledOrDisabledByClickingToggleButton Failed");
+            throw new Exception("TC_27380_VerifyKeywordsCanBeEnabledOrDisabledByClickingToggleButton Failed", ex);
         } finally {
             session.end();
         }

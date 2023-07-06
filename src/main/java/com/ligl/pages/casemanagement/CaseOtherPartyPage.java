@@ -11,6 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import javax.inject.Inject;
 import javax.naming.Name;
 import java.util.concurrent.TimeUnit;
 
@@ -186,6 +187,12 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[@col-id='Notes']//button")
     WebElement NotesIcon;
 
+    @FindBy(xpath = "//div[contains(text(),'Counsel Related Information')]")
+    WebElement HeaderContactName;
+
+    @FindBy(xpath = "//div[contains(text(),' List of Other Party Contact ')]")
+    WebElement OtherPartyContactHeader;
+
 
 
     // Process Of Searching A Particular Party Through Filter
@@ -323,7 +330,6 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getSession().log_Pass("Clicked on Select Party Type Drop Down");
 
             Thread.sleep(5000);
-            //((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", PartyNameA);
             getCurrentDriver().findElement(By.xpath("//mat-radio-button//div[contains(text(),'"+PartyType+"')]")).click();
 
             log_Info("Click On Left Arrow Button ");
@@ -357,6 +363,9 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//span[@title='"+PartyNew+"']//span")).click();
             getSession().log_Pass("Clicked On Party Name");
+
+            Thread.sleep(2000);
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", OtherPartyContactHeader);
 
             log_Info("Click On Add Contact Button");
             getDriver().waitForelementToBeClickable(AddContactBtn);
@@ -576,8 +585,6 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getSession().log_Pass("Clicked On Party Name");
 
             ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", AddInHouseCounselBtn);
-
-
 
             log_Info("Hover on Name Header");
             Actions ac = new Actions(getCurrentDriver());
@@ -1207,7 +1214,10 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
      */
     public ILiglPage addExistingContact(String existingContact) throws Exception {
         try {
+
             log_Info("addExistingContact() Started");
+            Thread.sleep(2000);
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", HeaderContactName);
             AddContactBtn.click();
             ExistingContactsDropDown.click();
             Thread.sleep(3000);
@@ -1219,7 +1229,6 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             Filter.click();
             SearchBar.sendKeys(existingContact);
             Thread.sleep(3000);
-            //((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", SearchedContact);
             boolean b = getCurrentDriver().findElement(By.cssSelector("span[title='"+existingContact+"']")).isDisplayed();
             Assert.assertEquals(true, b);
             log_Info("Contact Added Succesfully");
@@ -1241,11 +1250,14 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             log_Info("addExistingInHouseCounselToParty() Started");
             ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",AddInHouseCounsel);
             AddInHouseCounsel.click();
+           /* Thread.sleep(5000);
+            InhouseSearchBar.sendKeys(Keys.ESCAPE);*/
+         /*   Thread.sleep(3000);
+            ExistingContDP.click();*/
+            InhouseSearchBar.sendKeys(ExistingInCounsel);
             Thread.sleep(5000);
-            InhouseSearchBar.sendKeys(Keys.ESCAPE);
-            Thread.sleep(3000);
-            ExistingContDP.click();
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+ExistingInCounsel+"')]")).click();
+            InhouseSearchBar.sendKeys(Keys.ENTER);
+            /*getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+ExistingInCounsel+"')]")).click();*/
             Thread.sleep(2000);
             InHouseAssignBTN.click();
             Thread.sleep(2000);

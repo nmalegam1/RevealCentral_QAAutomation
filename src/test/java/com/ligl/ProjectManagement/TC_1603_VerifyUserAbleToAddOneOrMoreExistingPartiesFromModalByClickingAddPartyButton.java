@@ -30,7 +30,7 @@ public class TC_1603_VerifyUserAbleToAddOneOrMoreExistingPartiesFromModalByClick
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToOtherPartyPage()
-                    .addingExistingParty(data.get("PartyName"), data.get("PartyType"))
+                    .addingExistingParty(data.get("PartyType"), data.get("PartyName"))
                     .validatePartyCreatedOrNot(data.get("PartyName"));
 
         } catch (Exception ex) {

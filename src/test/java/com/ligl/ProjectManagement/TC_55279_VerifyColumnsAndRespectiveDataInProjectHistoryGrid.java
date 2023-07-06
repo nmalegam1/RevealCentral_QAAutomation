@@ -10,34 +10,37 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_7103_VerifyUserAbleToAddExistingContactsForParty extends TestBase {
+public class TC_55279_VerifyColumnsAndRespectiveDataInProjectHistoryGrid extends TestBase {
+
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "ProjectManagement")
-    public void TC_7103_VerifyUserAbleToAddExistingContactsForParty(Hashtable<String, String> data) throws Exception {
+    public void TC_55279_VerifyColumnsAndRespectiveDataInProjectHistoryGrid(Hashtable<String, String> data) throws Exception {
+
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
-                // skip in extent rep
-                session.skipTest("Skipping the test as Runmode was NO");
-                //skip - testng
-                throw new SkipException("Skipping the test as Runmode was NO");
+                // skip in extent report
+                session.skipTest("skipping the test as runmode was no");
+                // skip-testng
+                throw new SkipException("Skipping the test as Runmode Was No");
             }
+
+
             ILiglPage page = new LaunchPage()
 
-                    .openBrowser(data.get("Browser"))
+                    .openBrowser("chrome")
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().goToOtherPartyPage()
-                    .addingExistingParty(data.get("PartyType"), data.get("PartyName"))
-                    .searchingParty(data.get("PartyName"))
-                    .addExistingContact(data.get("ExistingContact"));
+                    .getLeftMenu().navigateToNotesHistoryPage()
+                    .verifyColumnsInNotesHistoryGrid()
+                    .logout();
+
 
         } catch (Exception ex) {
-            session.log_Error("TC_7103_VerifyUserAbleToAddExistingContactsForParty Failed");
-            throw new Exception("TC_7103_VerifyUserAbleToAddExistingContactsForParty Failed", ex);
+            session.log_Error("TC_55279_VerifyColumnsAndRespectiveDataInProjectHistoryGrid Failed");
+            throw new Exception("TC_55279_VerifyColumnsAndRespectiveDataInProjectHistoryGrid Failed", ex);
         } finally {
             session.end();
         }
     }
 }
-

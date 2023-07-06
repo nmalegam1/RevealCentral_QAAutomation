@@ -23,7 +23,7 @@ public class TC_55279_VerifyColumnsInHistoryGrid extends TestBase {
                 // skip-testng
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
-            // Create new template using +template button for case approval category
+
 
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
