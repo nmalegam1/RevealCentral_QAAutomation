@@ -126,7 +126,7 @@ public class CaseKeywordsPage extends LiglBaseSessionPage {
             getSession().log_Pass("Clicked on Key Words Text Box");
 
             log_Info("Click on Custom Radio Box");
-            getDriver().waitForelementToBeClickable(BasicRadioBox);
+            getDriver().waitForelementToBeClickable(CustomRadioBox);
             Thread.sleep(5000);
             CustomRadioBox.click();
             getSession().log_Pass("Clicked on Custom Radio Box");

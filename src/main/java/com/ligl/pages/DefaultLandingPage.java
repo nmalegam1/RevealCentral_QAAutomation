@@ -178,7 +178,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//label[@class='matchresults']//b")
     WebElement CasesCount;
 
-    @FindBy(xpath = "//div[contains(text(),'Total Cases')]/ancestor::td//td[@class='tile-value']//div")
+    @FindBy(xpath = "//div[contains(text(),'Total Projects')]/ancestor::td//td[@class='tile-value']//div")
     WebElement CasesCountInDashBoard;
 
     @FindBy(xpath = "//div[@ref='eDateInput']//input[@ref='eInput']")
@@ -213,6 +213,18 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@col-id='Name']//span[@ref='eMenu']")
     WebElement ProjectNameMenu;
+
+    @FindBy(xpath = "//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-0']//button[@aria-label='Open calendar']")
+    WebElement StartDateCalendar;
+
+    @FindBy(xpath = "//mat-datepicker-toggle[@data-mat-calendar='mat-datepicker-1']//button[@aria-label='Open calendar']")
+    WebElement EndDateCalendar;
+
+    @FindBy(xpath = "//button[@aria-label='Choose month and year']")
+    WebElement AYearTabInCalendar;
+
+    @FindBy(id = "apply-filter")
+    WebElement ApplyButtonInDB;
 
     /**
      * Method to Check the Region Field in Case Creation isMandatory
@@ -965,7 +977,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
         }
 
     }
-    public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title) throws Exception {
+    public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title,String SYEAR,String SMONTH,String SDATE) throws Exception {
 
         try {
 
@@ -1024,6 +1036,30 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getHeader().navigateToDashboardPage()
                     .validateDashBoardPageURL(Title);
 
+            getSession().log_Info("Enter The Start Date");
+            getDriver().waitForAngularRequestsToComplete();
+            getDriver().waitForelementToBeClickable(StartDateCalendar);
+            Thread.sleep(5000);
+            StartDateCalendar.click();
+            Thread.sleep(2000);
+            AYearTabInCalendar.click();
+            Thread.sleep(2000);
+            getCurrentDriver().findElement(By.xpath("//button[@aria-label='"+SYEAR+"']")).click();
+            Thread.sleep(2000);
+            getCurrentDriver().findElement(By.xpath("//div[contains(text(),'"+SMONTH+"')]")).click();
+            Thread.sleep(2000);
+            getCurrentDriver().findElement(By.xpath("//button[@aria-label='"+SDATE+"']//div")).click();
+            Thread.sleep(2000);
+            getSession().log_Pass("Entered The Start Date");
+
+
+            getSession().log_Info("Click On The Apply Button");
+            getDriver().waitForelementToBeClickable(ApplyButtonInDB);
+            Thread.sleep(2000);
+            ApplyButtonInDB.click();
+            getDriver().maxWait();
+            getSession().log_Pass("Clicked On The Apply Button");
+
             String CasesCountDB = CasesCountInDashBoard.getText();
             int CASESCountDB = Integer.parseInt(CasesCountDB);
 
@@ -1035,9 +1071,14 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
                     log_Pass("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are EQUAL ");
                 }
+                else
+                {
+                    throw new Exception("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are NOT EQUAL");
+                }
             }
             catch(Exception e) {
                 log_Error("Total Count In Both Pages Are Not Equal");
+                throw new Exception("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are NOT EQUAL");
             }
 
             return  new DashboardPage();
@@ -1942,9 +1983,117 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoardWhenUACIsFALSE(String Comparator,String Date,String Month,String Year,String Title,String SYEAR,String SMONTH,String SDATE) throws Exception {
+
+        try {
+
+            getDriver().waitUntilSpinnerIsClosed();
+            getDriver().waitForAngularRequestsToComplete();
+
+            getDriver().waitForelementToBeClickable(LastDateModifiedHeader);
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(LastDateModifiedHeader).perform();
+            log_Info("pointed mouse To The Date Modifier Menu");
+
+
+            log_Info("click on Date Modifier Menu");
+            DateModifierMenu.click();
+            log_Info("clicked on Date Modifier Menu");
+
+
+            log_Info("click on Date Modifier filter");
+            CaseSearchFilter.click();
+            log_Info("clicked on Date Modifier filter");
+
+
+            log_Info("click On Date Modifier Dropdown");
+            ComparatorDropDown.click();
+            Thread.sleep(3000);
+            log_Info("clicked On Date Modifier Dropdown");
+            Thread.sleep(3000);
+            log_Info("click On Date Modifier Dropdown Value");
+            Thread.sleep(3000);
+            getCurrentDriver().findElement(By.xpath("//div[@role='option']//span[contains(text(),'"+Comparator+"')]")).click();
+            Thread.sleep(2000);
+            log_Info("clicked On Date Modifier Dropdown Value ");
+            log_Info("Enter The Date In The Bar");
+            DateFormat.click();
+            Thread.sleep(2000);
+            DateFormat.sendKeys(Date);
+            Thread.sleep(2000);
+            DateFormat.sendKeys(Month);
+            Thread.sleep(2000);
+            DateFormat.sendKeys(Year);
+            Thread.sleep(2000);
+            log_Info("Entered The Date In The Bar");
+            log_Info("Click On Apply Button");
+            ApplyButton.click();
+            Thread.sleep(2000);
+            log_Info("Clicked On Apply Button");
+            Thread.sleep(5000);
 
 
 
+            String CasesCOUNT = CasesCount.getText();
+            int CasescountDL = Integer.parseInt(CasesCOUNT);
+
+            log_Info("Total Number Of Cases  : " + CasescountDL);
+
+            getHeader().navigateToDashboardPage()
+                    .validateDashBoardPageURL(Title);
+
+            getSession().log_Info("Enter The Start Date");
+            getDriver().waitForAngularRequestsToComplete();
+            getDriver().waitForelementToBeClickable(StartDateCalendar);
+            Thread.sleep(5000);
+            StartDateCalendar.click();
+            Thread.sleep(2000);
+            AYearTabInCalendar.click();
+            Thread.sleep(2000);
+            getCurrentDriver().findElement(By.xpath("//button[@aria-label='"+SYEAR+"']")).click();
+            Thread.sleep(2000);
+            getCurrentDriver().findElement(By.xpath("//div[contains(text(),'"+SMONTH+"')]")).click();
+            Thread.sleep(2000);
+            getCurrentDriver().findElement(By.xpath("//button[@aria-label='"+SDATE+"']//div")).click();
+            Thread.sleep(2000);
+            getSession().log_Pass("Entered The Start Date");
 
 
+            getSession().log_Info("Click On The Apply Button");
+            getDriver().waitForelementToBeClickable(ApplyButtonInDB);
+            Thread.sleep(2000);
+            ApplyButtonInDB.click();
+            getDriver().maxWait();
+            getSession().log_Pass("Clicked On The Apply Button");
+
+            String CasesCountDB = CasesCountInDashBoard.getText();
+            int CASESCountDB = Integer.parseInt(CasesCountDB);
+
+            log_Info("Total Number Of Cases  : " + CASESCountDB);
+
+            try {
+
+                if (CasescountDL != CASESCountDB) {
+
+                    log_Pass("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are NOT EQUAL");
+                }
+                else
+                {
+                    throw new Exception("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are EQUAL ");
+                }
+            }
+            catch(Exception e) {
+                log_Error("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are EQUAL ");
+                throw new Exception("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are EQUAL");
+            }
+
+            return  new DashboardPage();
+
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("searchLastDateModifiedColumnAndValidateTheCountInDashBoardWhenUACIsFALSE() Failed",ex);
+        }
+
+    }
 }

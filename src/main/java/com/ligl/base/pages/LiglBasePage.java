@@ -1807,7 +1807,7 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
-	public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title) throws Exception{
+	public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title,String SYEAR,String SMONTH,String SDATE) throws Exception{
 		return null;
 	}
 
@@ -2142,6 +2142,49 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 	public ILiglPage clickingOnNotesIconInOtherPartyGrid() throws Exception{
+		return null;
+	}
+	public ILiglPage projectAndScopeItemsSendingForApproval(String Emp1,String DataSource1,String DateRange1,String KeyWords1,String BATCHname,String UserName ,String EmailTemplate) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateBatchForProjectApprovalStatus() throws Exception{
+		return null;
+	}
+	public ILiglPage searchRequiredProjectBatch(String BatchName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateProjectKeywordsAreInApprovedState() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateProjectDateRangessAreInApprovedState() throws Exception{
+		return null;
+	}
+	public ILiglPage validateProjectDataSourcesAreInApprovedState() throws Exception{
+		return null;
+	}
+	public ILiglPage validateProjectCustodiansAreInApprovedState() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateProjectDetailsAreInApprovedStateInApprovalPage() throws Exception{
+		return null;
+	}
+
+	public ILiglPage moveBackToTheRequiredColumn() throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoardWhenUACIsFALSE(String Comparator,String Date,String Month,String Year,String Title,String SYEAR,String SMONTH,String SDATE) throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyTheDataInProcessInsightsWhenProjectContextIsNotSetWhenDefaultDatesAreSelected(Hashtable<String, String> data,String Emp) throws Exception{
+		return null;
+	}
+	public ILiglPage validateTheDataWhenFromAndToDatesAreAdjusted(String SYEAR,String SMONTH,String SDATE,String EYEAR,String EMONTH,String EDATE) throws Exception{
 		return null;
 	}
 }

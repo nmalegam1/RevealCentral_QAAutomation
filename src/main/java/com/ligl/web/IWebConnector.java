@@ -55,4 +55,8 @@ public interface IWebConnector{
 	String sqlQueryForEmailStatusLookID(String parentID, String name);
 
 	void minWait();
+
+	void moderateWait();
+
+	void maxWait();
 }

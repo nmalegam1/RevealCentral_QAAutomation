@@ -29,10 +29,9 @@ public class TC_7126_VerifyUserIsAbleToAddOneorMoreExistingOutsideCounselsToOthe
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToOtherPartyPage()
-                    .addingExistingParty(data.get("PartyName"), "Government")
+                    .addingExistingParty(data.get("PartyType"), data.get("PartyName"))
                     .searchingParty(data.get("PartyName"))
                     .addExistingOutCounsel(data.get("ExistingLawFirm"), data.get("SelectedLawFirmSubEntities"))
-                    //.searchingOutSideCounsel(data.get("SelectedLawFirmSubEntities"))
                     .validateAddedOutsideCounsel(data.get("SelectedLawFirmSubEntities"));
         } catch (Exception ex) {
             session.log_Error("TC_7126_VerifyUserIsAbleToAddOneorMoreExistingOutsideCounselsToOtherPartyFromModal Failed");

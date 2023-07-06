@@ -221,4 +221,19 @@ public abstract class LiglValidationDriver implements IWebConnector {
             e.printStackTrace();
         }
     }
+
+    public void moderateWait() {
+        try {
+            Thread.sleep(Integer.parseInt(getSession().getRegressionData("MedWait")));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    public void maxWait() {
+        try {
+            Thread.sleep(Integer.parseInt(getSession().getRegressionData("MaxWait")));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
