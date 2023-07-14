@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_52352_ProjectInsights_VerifyThePrintButtonFunctionality extends TestBase {
+public class TC_27228_ProjectInsights_VerifyTheSummaryTilesInProjectInsightsWhenTheProcessingIsRelativity extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData",description = "Dashboards")
-    public void TC_52352_ProjectInsights_VerifyThePrintButtonFunctionality(Hashtable<String,String> data) throws Exception {
+    public void TC_27228_ProjectInsights_VerifyTheSummaryTilesInProjectInsightsWhenTheProcessingIsRelativity(Hashtable<String,String> data) throws Exception {
         try{
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -30,16 +30,14 @@ public class TC_52352_ProjectInsights_VerifyThePrintButtonFunctionality extends 
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getHeader().navigateToDashboardPage()
                     .validateDashBoardPageURL(data.get("TITLE1"))
-                    .clickOnPrintButton()
-                    .validateThePrintButtonFunctionality();
+                    .checkAndValidateTheCountOfTheCaseInsightsStats(data.get("Email"),data.get("Emp"),data.get("EMAIL"),data.get("EMP"), data.get("DataSource"),data.get("SourcePath"),data.get("DataHold"),data.get("CollectionStatus"), data.get("Pstatus"));
 
 
         }catch (Exception ex){
-            session.log_Error("TC_52352_ProjectInsights_VerifyThePrintButtonFunctionality Failed");
-            throw new Exception("Exception in TC_52352_ProjectInsights_VerifyThePrintButtonFunctionality", ex);
+            session.log_Error("TC_27228_ProjectInsights_VerifyTheSummaryTilesInProjectInsightsWhenTheProcessingIsRelativity Failed");
+            throw new Exception("Exception in TC_27228_ProjectInsights_VerifyTheSummaryTilesInProjectInsightsWhenTheProcessingIsRelativity", ex);
         }finally {
             session.end();
         }
     }
 }
-

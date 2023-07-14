@@ -2187,4 +2187,37 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validateTheDataWhenFromAndToDatesAreAdjusted(String SYEAR,String SMONTH,String SDATE,String EYEAR,String EMONTH,String EDATE) throws Exception{
 		return null;
 	}
+
+	public ILiglPage validateRevokeButtonFunctionality(String a,String b) throws Exception{
+		return null;
+	}
+	public ILiglPage performReAssignFunctionalityForTheProject(String EMAIL,String USER) throws Exception{
+		return null;
+	}
+	public ILiglPage validateReAssignButtonFunctionality(String AssignedUser,String Status) throws Exception{
+		return null;
+	}
+
+	public ILiglPage createRequestByFillingOnlyMandatoryFieldsInTheAddRequestPopUp(String RequestType,String REQTitle,String CaseDropDown) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateClearFilterFunctionalityInLegalHoldInsights(String SYEAR,String SMONTH,String SDATE,String EYEAR, String EMONTH,String EDATE) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateClearFilterFunctionalityInGlobalInsights(String selectYear,String selectVaue) throws Exception{
+		return null;
+	}
+	public ILiglPage validateClearFilterFunctionalityInProductionInsights() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateClearFilterFunctionalityInProcessInsights(String SYEAR,String SMONTH,String SDATE,String EYEAR, String EMONTH,String EDATE) throws Exception{
+		return null;
+	}
+
+	public ILiglPage checkAndValidateTheCountOfTheProcessInsightsStats(String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus) throws Exception{
+		return null;
+	}
 }

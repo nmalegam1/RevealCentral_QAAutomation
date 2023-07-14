@@ -1517,6 +1517,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             ReAssignBtn.click();
             Thread.sleep(5000);
             log_Pass("ReAssigned button is clicked");
+
             log_Info("Click on Email Template Drop down");
             getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
             Thread.sleep(5000);
@@ -1729,6 +1730,107 @@ public class SecurityPage extends LiglBaseSessionPage {
         }catch (Exception ex){
             log_Error("projectAndScopeItemsSendingForApproval() is Failed");
             throw new Exception("Exception in projectAndScopeItemsSendingForApproval()",ex);
+        }
+    }
+
+
+    public ILiglPage validateRevokeButtonFunctionality(String a,String b) throws Exception {
+
+        try {
+
+            log_Info("validateRevokeButtonFunctionality() Started");
+            validateCasePendingForApprovalState();
+            log_Info("Display The Send For Approval Button In The Page");
+            boolean a1 = SendForApprovalBtn.isDisplayed();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(true, a1);
+
+            log_Info("Validate The Approval History Grid Updated With The Revoke Action");
+            String a2,b2;
+            a2= AssignedUserName.getText();
+            b2= StatusOfUser.getText();
+            Assert.assertEquals(a2,a);
+            Assert.assertEquals(b2,b);
+
+            return new SecurityPage();
+
+        } catch (Exception ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Exception From validateRevokeCaseForSingleApproval()", ex);
+        }
+    }
+
+    public ILiglPage validateReAssignButtonFunctionality(String AssignedUser,String Status) throws Exception{
+
+        try{
+
+            log_Info("validateReAssignButtonFunctionality() Started");
+            validateCasePendingForApprovalState();
+            log_Info("Validate The ReAssign And Revoke Buttons");
+            boolean a1 = ReAssignBtn.isDisplayed();
+            boolean a2 = RevokeBtn.isDisplayed();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            System.out.println(a2);
+            Thread.sleep(5000);
+            Assert.assertEquals(true,a1);
+            Assert.assertEquals(true,a2);
+
+            log_Info("Validate The Approval History Grid Updated With The ReAssign Action");
+            validateReassignForSingleApproval(AssignedUser,Status);
+
+
+            return new SecurityPage();
+
+        } catch (Exception ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Exception From validateReAssignButtonFunctionality()", ex);
+        }
+    }
+
+    public ILiglPage performReAssignFunctionalityForTheProject(String EMAIL,String USER) throws Exception{
+
+        try{
+
+            log_Info("performReAssignFunctionalityForTheProject() Started");
+            log_Info("Click On ReAssign Button");
+            Thread.sleep(5000);
+            ReAssignBtn.click();
+            Thread.sleep(5000);
+            log_Pass("ReAssigned button is clicked");
+
+            log_Info("Click on Email Template Drop down");
+            getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
+            Thread.sleep(5000);
+            TemplateNameDrpDwn.sendKeys(EMAIL);
+            Thread.sleep(3000);
+            TemplateNameDrpDwn.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Email Template Drop down");
+            log_Info("template selected");
+
+            log_Info("Click on Select Approval  Drop down");
+            getDriver().waitForelementToBeClickable(SelectApprovalDrpDwn);
+            Thread.sleep(3000);
+            SelectApprovalDrpDwn.sendKeys(USER);
+            Thread.sleep(3000);
+            SelectApprovalDrpDwn.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Select Approval  Drop down");
+            log_Pass("All Credentials Required for Approval are Given");
+
+            log_Info("Click on Send For Approval Button");
+            getDriver().waitForelementToBeClickable(SendApprovalBtn);
+            Thread.sleep(3000);
+            SendApprovalBtn.click();
+            getDriver().maxWait();
+            log_Info("Clicked on Send For Approval Button");
+
+            return new SecurityPage();
+
+        } catch (Exception ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Exception From performReAssignFunctionalityForTheProject()", ex);
         }
     }
 }
