@@ -1110,6 +1110,53 @@ public class GlobalRequestPage extends LiglBaseSessionPage{
         }
     }
 
+    public ILiglPage createRequestByFillingOnlyMandatoryFieldsInTheAddRequestPopUp(String RequestType,String REQTitle,String CaseDropDown) throws Exception{
+
+        try {
+
+            log_Info("createRequestByFillingOnlyMandatoryFieldsInTheAddRequestPopUp() Started");
+            getSession().log_Info("Click On 'Request Type' Drop Down");
+            getDriver().waitForelementToBeClickable(reqTypeDrpDwn);
+            getDriver().waitForAngularRequestsToComplete();
+            reqTypeDrpDwn.sendKeys(RequestType);
+            Thread.sleep(3000);
+            reqTypeDrpDwn.sendKeys(Keys.ENTER);
+            getSession().log_Pass("Clicked On 'Request Type' Drop Down");
+
+            getSession().log_Info("Click On Request Title Text Box");
+            getDriver().waitForelementToBeClickable(RequestTitle);
+            getDriver().waitForAngularRequestsToComplete();
+            RequestTitle.sendKeys(REQTitle);
+            getSession().log_Pass("Clicked On Request Title Text Box");
+
+            getSession().log_Info("Click On The Choose A Case Drop Down");
+            getDriver().waitForelementToBeClickable(ChooseACaseDrpDwn);
+            getDriver().waitForAngularRequestsToComplete();
+            ChooseACaseDrpDwn.sendKeys(CaseDropDown);
+            Thread.sleep(3000);
+            ChooseACaseDrpDwn.sendKeys(Keys.ENTER);
+            getSession().log_Pass("Clicked On The Choose A Case Drop Down");
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",ReqSaveBtn);
+
+            getSession().log_Info("Click On The Save Button");
+            getDriver().waitForelementToBeClickable(ReqSaveBtn);
+            getDriver().waitForAngularRequestsToComplete();
+            ReqSaveBtn.click();
+            getSession().log_Pass("Clicked On The Save Button");
+
+            getSession().log_Info("Click On OK Button");
+            getDriver().waitForelementToBeClickable(OKbutton);
+            OKbutton.click();
+            getSession().log_Pass("Clicked On Button Button");
+            return new GlobalRequestPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("createRequestByFillingOnlyMandatoryFieldsInTheAddRequestPopUp() Failed ", ex);
+        }
+    }
+
 }
 
 

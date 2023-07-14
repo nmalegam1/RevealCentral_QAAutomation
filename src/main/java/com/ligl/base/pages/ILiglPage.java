@@ -1338,5 +1338,27 @@ public interface ILiglPage {
     ILiglPage verifyTheDataInProcessInsightsWhenProjectContextIsNotSetWhenDefaultDatesAreSelected(Hashtable<String, String> data,String Emp) throws Exception;
 
     ILiglPage validateTheDataWhenFromAndToDatesAreAdjusted(String SYEAR,String SMONTH,String SDATE,String EYEAR,String EMONTH,String EDATE) throws Exception;
+
+    ILiglPage validateRevokeButtonFunctionality(String a,String b) throws Exception;
+
+    ILiglPage performReAssignFunctionalityForTheProject(String EMAIL,String USER) throws Exception;
+
+    ILiglPage validateReAssignButtonFunctionality(String AssignedUser,String Status) throws Exception;
+
+    ILiglPage createRequestByFillingOnlyMandatoryFieldsInTheAddRequestPopUp(String RequestType,String REQTitle,String CaseDropDown) throws Exception;
+
+    ILiglPage validateClearFilterFunctionalityInLegalHoldInsights(String SYEAR,String SMONTH,String SDATE,String EYEAR, String EMONTH,String EDATE) throws Exception;
+
+    ILiglPage validateClearFilterFunctionalityInGlobalInsights(String selectYear,String selectVaue) throws Exception;
+
+    ILiglPage validateClearFilterFunctionalityInProductionInsights() throws Exception;
+
+    ILiglPage validateClearFilterFunctionalityInProcessInsights(String SYEAR,String SMONTH,String SDATE,String EYEAR, String EMONTH,String EDATE) throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfTheProcessInsightsStats(String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus) throws Exception;
+
+
+
+
 }
 
