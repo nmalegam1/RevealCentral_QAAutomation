@@ -36,11 +36,6 @@
             <class name="com.ligl.ProjectManagement.TC_55227_178_239_VerifyOneOrMoreNotesCanBe_Created_Edited_Deleted_ForEachProject"/>
         </classes>
     </test>
-    <test name="VerifyColumnNamesAndColumnDataInProjectListGridWhenNUIXprocessingConfiguredCSFalse">
-        <classes>
-            <class name="com.ligl.ProjectManagement.TC_62312_VerifyColumnNamesAndColumnDataInProjectListGridWhenNUIXprocessingConfiguredCSFalse"/>
-        </classes>
-    </test>
     <test name="VerifyColumnNamesAndColumnDataInProjectListGridWhenRelativityprocessingConfiguredCSFalse">
         <classes>
             <class name="com.ligl.ProjectManagement.TC_62314_VerifyColumnNamesAndColumnDataInProjectListGridWhenRelativityprocessingConfiguredCSFalse"/>
@@ -279,6 +274,101 @@
     <test name="VerifyAlreadyAddedInhouseCounselsAreNotDisplayingInEmployeeMasterGridWhenNavigatedFromAddInhouseCounsel">
         <classes>
             <class name="com.ligl.ProjectManagement.TC_62432_VerifyAlreadyAddedInhouseCounselsAreNotDisplayingInEmployeeMasterGridWhenNavigatedFromAddInhouseCounsel"/>
+        </classes>
+    </test>
+    <test name="VerifyColumnsAndRespectiveDataInProjectHistoryGrid">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_55279_VerifyColumnsAndRespectiveDataInProjectHistoryGrid"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToCreateAnyNumberOfKeywordsForProjectUsingAddKeywordsButtonByChoosingBasicOption">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_35057_VerifyUserAbleToCreateAnyNumberOfKeywordsForProjectUsingAddKeywordsButtonByChoosingBasicOption"/>
+        </classes>
+    </test>
+    <test name="VerifyUserAbleToCreateAnyNumberOfKeywordsForProjectUsingAddKeywordsButtonByChoosingCustomOption">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_35058_VerifyUserAbleToCreateAnyNumberOfKeywordsForProjectUsingAddKeywordsButtonByChoosingCustomOption"/>
+        </classes>
+    </test>
+    <test name="VerifyKeywordsCanBeEnabledOrDisabledByClickingToggleButton">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_27380_VerifyKeywordsCanBeEnabledOrDisabledByClickingToggleButton"/>
+        </classes>
+    </test>
+    <test name="VerifyThatProjectAndScopeItemsCanBeSentForApprovalWhenProjectApprovalConfig_True">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_52336_VerifyThatProjectAndScopeItemsCanBeSentForApprovalWhenProjectApprovalConfig_True"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualBoth_WhenBothApproversApproveTheProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_53635_VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualBoth_WhenBothApproversApproveTheProject"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualBoth_WhenApprover1_ApprovesAndApprover2_RejectsTheProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_63866_VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualBoth_WhenApprover1_ApprovesAndApprover2_RejectsTheProject"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualBoth_WhenApprover1_RejectsAndApprover2_ApprovesTheProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_63867_VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualBoth_WhenApprover1_RejectsAndApprover2_ApprovesTheProject"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualBoth_WhenBothApproversRejectsTheProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_63868_VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualBoth_WhenBothApproversRejectsTheProject"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualLinear_WhenBothApproversApproveTheProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_53637_VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualLinear_WhenBothApproversApproveTheProject"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualLinear_WhenApprover1_ApprovesAndApprover2_RejectsTheProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_63864_VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualLinear_WhenApprover1_ApprovesAndApprover2_RejectsTheProject"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualLinear_WhenApprover1_RejectsTheProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_63865_VerifyProjectApprovalProcessByChoosingApprovalTypeAs_DualLinear_WhenApprover1_RejectsTheProject"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAsDualEitherWhenBothApproversApproveTheProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_53636_VerifyProjectApprovalProcessByChoosingApprovalTypeAsDualEitherWhenBothApproversApproveTheProject"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAsDualEitherWhenApprover1_ApprovesAndApprover2_RejectsTheProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_63861_VerifyProjectApprovalProcessByChoosingApprovalTypeAsDualEitherWhenApprover1_ApprovesAndApprover2_RejectsTheProject"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAsDualEither_WhenApprover1_RejectsAndApprover2_ApprovesTheProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_63862_VerifyProjectApprovalProcessByChoosingApprovalTypeAsDualEither_WhenApprover1_RejectsAndApprover2_ApprovesTheProject"/>
+        </classes>
+    </test>
+    <test name="VerifyProjectApprovalProcessByChoosingApprovalTypeAsDualEitherWhenBothTheApproversRejectsTheProject">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_63863_VerifyProjectApprovalProcessByChoosingApprovalTypeAsDualEitherWhenBothTheApproversRejectsTheProject"/>
+        </classes>
+    </test>
+    <test name="VerifyRevokeButtonFunctionalityWhenProjectIsInPendingApprovalState">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_43245_VerifyRevokeButtonFunctionalityWhenProjectIsInPendingApprovalState"/>
+        </classes>
+    </test>
+    <test name="VerifyReassignButtonFunctionalityWhenProjectIsInPendingApprovalState">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_42956_VerifyReassignButtonFunctionalityWhenProjectIsInPendingApprovalState"/>
+        </classes>
+    </test>
+    <test name="VerifyUserShouldBeAbleToSendScopeItemsForApprovalByClickingSelectAllAboveEachGridInSendForApprovalPopup">
+        <classes>
+            <class name="com.ligl.ProjectManagement.TC_62366_VerifyUserShouldBeAbleToSendScopeItemsForApprovalByClickingSelectAllAboveEachGridInSendForApprovalPopup"/>
         </classes>
     </test>
 </suite> <!-- Suite -->

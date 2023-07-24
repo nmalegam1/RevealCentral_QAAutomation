@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_42956_VerifyReassignButtonFunctionalityWhenProjectIsInPendingApprovalState extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData",description = "ProjectManagement")
     public void TC_42956_VerifyReassignButtonFunctionalityWhenProjectIsInPendingApprovalState(Hashtable<String,String> data) throws Exception {
 
         try{

@@ -34,7 +34,7 @@ public class TC_27380_VerifyKeywordsCanBeEnabledOrDisabledByClickingToggleButton
                     .getLeftMenu()
                     .navigateToKeyWordsPage()
                     .addKeywordsByCustom(data.get("Keywords1"), data.get("DataSource1"))
-                    .addKeywordsByCustom(data.get("Keywords1"), data.get("DataSource1"))
+                    .addKeywordsByCustom(data.get("Keywords2"), data.get("DataSource1"))
                     .enableAndDisableKeywords(data.get("Status1"))
                     .validateEnableAndDisableKeywords(data.get("Status2"));
 

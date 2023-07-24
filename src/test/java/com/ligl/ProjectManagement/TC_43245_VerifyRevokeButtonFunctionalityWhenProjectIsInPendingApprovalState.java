@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Hashtable;
 
 public class TC_43245_VerifyRevokeButtonFunctionalityWhenProjectIsInPendingApprovalState extends TestBase {
-    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData")
+    @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData",description = "ProjectManagement")
     public void TC_43245_VerifyRevokeButtonFunctionalityWhenProjectIsInPendingApprovalState(Hashtable<String, String> data) throws Exception {
 
         try {

@@ -322,6 +322,25 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage validateSecondSearchAddedCourts(String CourtAdded) throws Exception{
+
+        try {
+            log_Info("validateAddedCourts() started");
+            secondSearchCourt(CourtAdded);
+            log_Info("Filtered Added court to case");
+            String test=CourtNameColData.getText();
+            Assert.assertEquals(test,CourtAdded);
+            log_Info("Added court is displaying in grid");
+            log_Info("validateAddedCourts() completed");
+            return new CaseCourtListPage();
+
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateAddedCourts() Failed", ex);
+        }
+    }
+
     public ILiglPage clickOnCourtName(String CourtName1) throws Exception {
 
         try {
@@ -708,7 +727,7 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
             DltConfirmBtn.click();
             Thread.sleep(1000);
             log_Info("Clicked On Yes Button In PopUp");
-            secondSearchCourt(CourtName);
+            searchingAddedCourtAfterDeleting(CourtName);
             Thread.sleep(2000);
             NDAinGrid.isEnabled();
             log_Pass("Record Deleted Successfully");
@@ -723,11 +742,9 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
     public ILiglPage secondSearchCourt(String Court) throws Exception {
         try{
             log_Info("secondSearchCourt() started");
-            log_Info("Click On Court Header");
-            CourtHeader.click();
-            log_Pass("Clicked On Court Header");
-            Thread.sleep(2000);
+            log_Info("Clear Data In Search Bar");
             SearchBar.clear();
+            log_Info("Cleared Data In Search Bar");
             Thread.sleep(2000);
             SearchBar.sendKeys(Court);
             log_Pass("Searched The Required Court");
@@ -757,6 +774,33 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
             throw new Exception("clickingOnNotesIconInCourtGrid() Failed");
 
 
+        }
+    }
+
+    public ILiglPage searchingAddedCourtAfterDeleting(String AvailableCourt) throws Exception {
+
+        try {
+
+            log_Info("click on Court Menu icon");
+            CourtMenuIcon.click();
+            getDriver().minWait();
+            log_Info("clicked on Court Menu icon");
+
+            log_Info("Clear Court From Search Bar");
+            CourtSearchBar.clear();
+            log_Info("Cleared Court From Search Bar");
+
+            log_Info("Enter Court Name from search bar");
+            getDriver().waitForelementToBeClickable(CourtSearchBar);
+            Thread.sleep(5000);
+            CourtSearchBar.sendKeys(AvailableCourt);
+            log_Info("Entered Court Name from search bar");
+            Thread.sleep(5000);
+            return new CaseCourtListPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("searchingAddedCourt() Failed",ex);
         }
     }
 }

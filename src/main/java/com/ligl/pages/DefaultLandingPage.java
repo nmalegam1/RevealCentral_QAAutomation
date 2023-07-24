@@ -24,9 +24,9 @@ import java.util.Hashtable;
 public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement Notes_btn;
-    @FindBy(id="sel-matter-type")
+    @FindBy(id="sel-matter-typemattertype")
     WebElement CaseType;
-    @FindBy(xpath="//div[@id='sel-matter-type-panel']//input[@type='text']")
+    @FindBy(xpath="//div[@id='sel-matter-typemattertype-panel']//input[@type='text']")
     WebElement CaseTypeText;
     @FindBy(id="sel-role-type")
     WebElement RoleType;
@@ -146,11 +146,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='CreatedByName']//span[@class='ellipsisAgGrid']")
     WebElement CreatedByColData;
-    @FindBy(id = "input-dynamic-column-2")
+    @FindBy(id = "input-dynamic-column-1")
     WebElement CostCentre;
-    @FindBy(id="input-dynamic-column-3")
+    @FindBy(id="input-dynamic-column-2")
     WebElement CaseAlias;
-    @FindBy(id="select-dynamic-column-1")
+    @FindBy(id="select-dynamic-column-3")
     WebElement AddDropDown;
     @FindBy(xpath = "//span[contains(text(),'Region is required')]")
     WebElement RegionReqValidation;

@@ -1,85 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="RequestTracker" >
-    <test name="CheckWhetherRequestCreatorAbleToAssigneeRequestToUser">
+    <test name="GlobalLevel_VerifyWhetherRequestCanBeAssignedToUser">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_26844_CheckWhetherRequestCreatorAbleToAssigneeRequestToUser"/>
+            <class name="com.ligl.RequestTrackerNew.TC_26844_GlobalLevel_VerifyWhetherRequestCanBeAssignedToUser"/>
         </classes>
     </test> <!-- Test -->
-    <test name="CheckWhetherNotificationIsDisplayedInAlertNotificationWhenRequestAssignedToUser">
+    <test name="Alert_CheckWhetherNotificationIsDisplayedInAlertNotificationWhenRequestIsAssignedToUser">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_37353_CheckWhetherNotificationIsDisplayedInAlertNotificationWhenRequestAssignedToUser"/>
+            <class name="com.ligl.RequestTrackerNew.TC_37353_Alert_CheckWhetherNotificationIsDisplayedInAlertNotificationWhenRequestIsAssignedToUser"/>
         </classes>
     </test>
-    <test name="CheckWhetherNotificationRedirectsToRequestListPageWhenUserWillClickOnRequestAlertNotification">
+    <test name="Alert_CheckWhetherNotificationRedirectsToRequestListPageWhenUserClickOnRequestAlertNotification">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_37354_CheckWhetherNotificationRedirectsToRequestListPageWhenUserWillClickOnRequestAlertNotification"/>
+            <class name="com.ligl.RequestTrackerNew.TC_37354_Alert_CheckWhetherNotificationRedirectsToRequestListPageWhenUserClickOnRequestAlertNotification"/>
         </classes>
     </test>
-    <test name="CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProgress">
+    <test name="GlobalLevel_VerifyUserAbleToCreateRequestByFillingAllFields_Mandatory_and_Optional">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_36700_CheckWhetherUserableToAddMessagesWhenRequestStatusIsInProgress"/>
+            <class name="com.ligl.RequestTrackerNew.TC_36481_GlobalLevel_VerifyUserAbleToCreateRequestByFillingAllFields_Mandatory_and_Optional"/>
         </classes>
     </test>
-    <test name="VerifyThatNoEditIsAllowedForTheUserWhenRequestStatusIsClosed">
+    <test name="36703_GlobalLevel_VerifyWhetherNoEditIsAllowedWhenaRequestIsInClosedState">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_36703_VerifyThatNoEditIsAllowedForTheUserWhenRequestStatusIsClosed"/>
+            <class name="com.ligl.RequestTrackerNew.TC_36703_GlobalLevel_VerifyWhetherNoEditIsAllowedWhenaRequestIsInClosedState"/>
         </classes>
     </test>
-    <test name="VerifyListOfColumnsInRequestTrackerGrid">
+    <test name="GlobalLevel_VerifyWhetherRequestCanBeAssignedToRole">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_36689_VerifyListOfColumnsInRequestTrackerGrid"/>
+            <class name="com.ligl.RequestTrackerNew.TC_37356_GlobalLevel_VerifyWhetherRequestCanBeAssignedToRole"/>
         </classes>
     </test>
     <test name="VerifyRequestCreationProcessByClickingAddRequestBtn">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_36481_VerifyRequestCreationProcessByClickingAddRequestBtn"/>
+            <class name="com.ligl.RequestTrackerNew.TC_36483_GlobalLevel_VerifyWhetherUserIsAbleToAssignRequestToSelf"/>
         </classes>
     </test>
-    <test name="CheckWhetherUserAbleToAssigneTheRequestToRole">
+    <test name="GlobalLevel_VerifyWhetherUserAbleToAddMessagesWhenRequestIsInNewAndInProgressState">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_37356_CheckWhetherUserAbleToAssigneTheRequestToRole"/>
+            <class name="com.ligl.RequestTrackerNew.TC_51886_GlobalLevel_VerifyWhetherUserAbleToAddMessagesWhenRequestIsInNewAndInProgressState"/>
         </classes>
     </test>
-    <test name="CheckThatAllTheAccessedUsersForTheCaseShouldHaveAccessToThatRequest">
+    <test name="GlobalLevel_VerifyTheListOfColumnsAlongWithDataInRequestTrackerAGGrid">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_37357_CheckThatAllTheAccessedUsersForTheCaseShouldHaveAccessToThatRequest"/>
+            <class name="com.ligl.RequestTrackerNew.TC_36689_GlobalLevel_VerifyTheListOfColumnsAlongWithDataInRequestTrackerAGGrid"/>
         </classes>
     </test>
-    <test name="CheckWhetherDropDownsAreSearchableInCreationOfRequest">
+    <test name="GlobalLevel_VerifyWhetherTopLevelStatsAreUpdatedForTotal_New_Inprogress_ClosedRequests">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_50535_CheckWhetherDropDownsAreSearchableInCreationOfRequest"/>
+            <class name="com.ligl.RequestTrackerNew.TC_36651_GlobalLevel_VerifyWhetherTopLevelStatsAreUpdatedForTotal_New_Inprogress_ClosedRequests"/>
         </classes>
     </test>
-    <test name="CheckWhetherRequestCreatorAbleToAddTheMessagesForNewStateRequest">
+    <test name="GlobalLevel_VerifyUserIsAbleToCreateRequestByFillingOnlyMandatoryFields">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_51886_CheckWhetherRequestCreatorAbleToAddTheMessagesForNewStateRequest"/>
+            <class name="com.ligl.RequestTrackerNew.TC_61570_GlobalLevel_VerifyUserIsAbleToCreateRequestByFillingOnlyMandatoryFields"/>
         </classes>
     </test>
-    <test name="CheckWhetherUserAbleToSelfAssignTheRequest">
+    <test name="GlobalLevel_VerifyWhetherNonApproved_NotInitiated_PendingApproval_Rejected_ArchivedAndObsoletedProjectsAreNotPopulatingInTheChooseProjectDropdownInCreateRequestPage">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_36483_CheckWhetherUserAbleToSelfAssignTheRequest"/>
+            <class name="com.ligl.RequestTrackerNew.TC_51983_GlobalLevel_VerifyWhetherNonApproved_NotInitiated_PendingApproval_Rejected_ArchivedAndObsoletedProjectsAreNotPopulatingInTheChooseProjectDropdownInCreateRequestPage"/>
         </classes>
     </test>
-    <test name="VerifyWhetherTopLevelStatsAreUpdatedToTheCurrentStatusLikeNewProgressClose">
+    <test name="GlobalLevel_CheckWhetherDropdownsAreSearchableInCreateAndEditOfRequest">
         <classes>
-            <class name="com.ligl.RequestTracker.TC_36651_VerifyWhetherTopLevelStatsAreUpdatedToTheCurrentStatusLikeNewProgressClose"/>
+            <class name="com.ligl.RequestTrackerNew.TC_50535_GlobalLevel_CheckWhetherDropdownsAreSearchableInCreateAndEditOfRequest"/>
         </classes>
     </test>
-    <test name="CheckWhetherNonApprovedCasesAreNotPopulatedInChooseCaseDropDownInCreateRequestPage">
-        <classes>
-            <class name="com.ligl.RequestTracker.TC_51983_CheckWhetherNonApprovedCasesAreNotPopulatedInChooseCaseDropDownInCreateRequestPage"/>
-        </classes>
-    </test>
-    <test name="VerifyTheFieldValuesInEditRequest">
-        <classes>
-            <class name="com.ligl.RequestTracker.TC_60246_VerifyTheFieldValuesInEditRequest"/>
-        </classes>
-    </test>
-    <test name="RequestTrackerJobQueueDisplayAtCaseLevelCheckWhetherSelectedCaseNameDisplayingInNonEditableModeByDefault">
-        <classes>
-            <class name="com.ligl.RequestTracker.TC_51414_RequestTrackerJobQueueDisplayAtCaseLevelCheckWhetherSelectedCaseNameDisplayingInNonEditableModeByDefault"/>
-        </classes>
-    </test>
-
 </suite> <!-- Suite -->

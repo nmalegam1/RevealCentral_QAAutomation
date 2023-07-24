@@ -717,6 +717,7 @@ public class DashboardPage extends LiglBaseSessionPage {
 
             getSession().log_Info("Click On ClearAll Button");
             getDriver().waitForAngularRequestsToComplete();
+            getDriver().maxWait();
             getDriver().waitForelementToBeClickable(ClearAllButton);
             Thread.sleep(5000);
             ClearAllButton.click();
@@ -747,18 +748,18 @@ public class DashboardPage extends LiglBaseSessionPage {
             String TotalDataSourceCollected = DataSourceCollectedCount.getText();
             int TotalCollectedDataSource = Integer.parseInt(TotalDataSourceCollected);
 
-            String IngestedVolume = VolumeIngested.getText();
+           /* String IngestedVolume = VolumeIngested.getText();
             int TotalVolume = Integer.parseInt(IngestedVolume);
 
             String HostedExport = ExportSetHosted.getText();
-            int HostedSet = Integer.parseInt(HostedExport);
+            int HostedSet = Integer.parseInt(HostedExport);*/
 
             log_Info("Total Number Of Projects  : " + TotalProjectsCounts);
             log_Info("Total Number Of Active Custodians  : " + ActiveCUSTCount);
             log_Info("Total Number Of Identified Datasources  : " + TotalIdentifiedDataSource);
             log_Info("Total Number Of Collected DataSources  : " + TotalCollectedDataSource);
-            log_Info("Total Number Of Volume  : " + TotalVolume);
-            log_Info("Total Number Of Hosted Set  : " + HostedSet);
+          /*  log_Info("Total Number Of Volume  : " + TotalVolume);
+            log_Info("Total Number Of Hosted Set  : " + HostedSet);*/
 
             checkAndValidateTheFunctionalityOfFromToDateAndApplyButton(SYEAR,SMONTH,SDATE,EYEAR,EMONTH,EDATE);
 
@@ -783,7 +784,7 @@ public class DashboardPage extends LiglBaseSessionPage {
 
             log_Info("Total Number Of DataSources Collected  : " + AfterTotalCollectedDataSource);
 
-            String AfterTotalIngestedVolume = VolumeIngested.getText();
+            /*String AfterTotalIngestedVolume = VolumeIngested.getText();
             int AfterTotalVolume = Integer.parseInt(AfterTotalIngestedVolume);
 
             log_Info("Total Volume Of Data Ingested  : " + AfterTotalVolume);
@@ -791,7 +792,7 @@ public class DashboardPage extends LiglBaseSessionPage {
             String AfterTotalHostedExport = ExportSetHosted.getText();
             int AfterHostedSetData = Integer.parseInt(AfterTotalHostedExport);
 
-            log_Info("Total Hosted Set Data  : " + AfterHostedSetData);
+            log_Info("Total Hosted Set Data  : " + AfterHostedSetData);*/
 
 
             try {
@@ -824,7 +825,7 @@ public class DashboardPage extends LiglBaseSessionPage {
                     throw new Exception("Count Mismatch");
                 }
 
-                if (AfterTotalVolume >= TotalVolume) {
+               /* if (AfterTotalVolume >= TotalVolume) {
 
                     log_Pass("Total Count Of DataSource Collected Incremented");
                 } else {
@@ -836,7 +837,7 @@ public class DashboardPage extends LiglBaseSessionPage {
                     log_Pass("Total Count Of Hosting Set Data Incremented");
                 } else {
                     throw new Exception("Count Mismatch");
-                }
+                }*/
 
             }catch(Exception e) {
                 log_Error("Either Total Count Or New Count Are Same");

@@ -23,13 +23,13 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
     @FindBy(id = "select-statusstatus")
     WebElement StatusDrpDwn;
 
-    @FindBy(xpath = "//button[contains(text(),'Save')]")
+    @FindBy(xpath = "//button[contains(text(),'SAVE')]")
     WebElement SaveBtn;
 
     @FindBy(xpath = "//label[contains(text(),'Status')]")
     WebElement StatusName;
 
-    @FindBy(id = "sel-matter-type")
+    @FindBy(id = "sel-matter-typemattertype")
     WebElement CaseType;
 
     @FindBy(id = "input-case-name")

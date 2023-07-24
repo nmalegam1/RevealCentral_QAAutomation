@@ -228,7 +228,7 @@ public class CaseKeywordsPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Clicked Scroll Bar And Move Right");
 
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Status1+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Status1+"')]/ancestor::div[@row-index='0']//div[@col-id='IsActionEnabled']")).click();
             getSession().log_Pass("Clicked On Enable Button In The Grid");
             return new CaseKeywordsPage();
 
@@ -261,7 +261,7 @@ public class CaseKeywordsPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getSession().log_Pass("Clicked Scroll Bar And Move Right");
 
-            boolean a1 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Status2+"')]")).isDisplayed();
+            boolean a1 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Status2+"')]/ancestor::div[@row-index='0']//div[@col-id='IsActionEnabled']")).isDisplayed();
             System.out.println(a1);
             Thread.sleep(3000);
             Assert.assertEquals(true, a1);

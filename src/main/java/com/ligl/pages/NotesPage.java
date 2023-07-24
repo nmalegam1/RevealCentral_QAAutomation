@@ -3,6 +3,7 @@ package com.ligl.pages;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.casemanagement.CaseDateRangesPage;
 import com.paulhammant.ngwebdriver.ByAngularModel;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -70,6 +71,9 @@ public class NotesPage extends LiglBaseSessionPage {
 
     @FindBy(id = "btn-refresh")
     WebElement RefreshButton;
+
+    @FindBy(xpath = "//mat-select[@id='sel-matterTypeofEvent']")
+    WebElement TypeOfEvent;
 
 
     public ILiglPage NewTabFunction() {
@@ -143,6 +147,13 @@ public class NotesPage extends LiglBaseSessionPage {
             addNotesbtn.click();
             log_Info("Create new notes button clicked");
 
+            if(TypeOfEvent.isEnabled()){
+
+                TypeOfEvent.click();
+                Thread.sleep(1000);
+                getCurrentDriver().findElement((By.xpath("//div[@id='sel-matterTypeofEvent-panel']//mat-option[2]"))).sendKeys(Keys.ENTER);
+            }
+
             log_Info("click on Requestedby field textbox");
             getDriver().waitForelementToBeClickable(RequestBytxtbox);
             Thread.sleep(1000);
@@ -189,6 +200,14 @@ public class NotesPage extends LiglBaseSessionPage {
             Editbtn.click();
             log_Info("Edit note button is Clicked");
             Thread.sleep(5000);
+
+            if(TypeOfEvent.isEnabled()){
+
+                TypeOfEvent.click();
+                Thread.sleep(1000);
+                getCurrentDriver().findElement((By.xpath("//div[@id='sel-matterTypeofEvent-panel']//mat-option[2]"))).sendKeys(Keys.ENTER);
+            }
+
             RequestBytxtbox.clear();
             log_Info("Requested By field is cleared");
             RequestBytxtbox.sendKeys(RequestBy);
@@ -209,6 +228,8 @@ public class NotesPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             log_Info("clicked on Save button in edit note popup");
             log_Pass("editNotes() Completed");
+
+            clickOnRefreshButtonInNotesGrid();
 
             Thread.sleep(3000);
             ActionColumn.click();

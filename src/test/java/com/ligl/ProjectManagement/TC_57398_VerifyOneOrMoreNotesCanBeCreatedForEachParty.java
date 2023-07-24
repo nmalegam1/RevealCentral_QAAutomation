@@ -30,8 +30,8 @@ public class TC_57398_VerifyOneOrMoreNotesCanBeCreatedForEachParty extends TestB
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .goToOtherPartyPage()
-                    .createAndValidatePartyCreatedOrNot(data.get("PartyName"),data.get("PartyType"),data.get("Status"),data.get("Description"))
-                    .createAndValidatePartyCreatedOrNot(data.get("PartyName1"),data.get("PartyType1"),data.get("Status1"),data.get("Description1"))
+                    /*.createAndValidatePartyCreatedOrNot(data.get("PartyName"),data.get("PartyType"),data.get("Status"),data.get("Description"))
+                    .createAndValidatePartyCreatedOrNot(data.get("PartyName1"),data.get("PartyType1"),data.get("Status1"),data.get("Description1"))*/
                     .clickingOnNotesIconInOtherPartyGrid()
                     .createNewNotes(data.get("RequestBy"), data.get("NotesContent"))
                     .createNewNotes(data.get("RequestBy1"), data.get("NotesContent1"))

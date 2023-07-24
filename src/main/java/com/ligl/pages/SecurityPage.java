@@ -198,10 +198,10 @@ public class SecurityPage extends LiglBaseSessionPage {
     WebElement ApprovalUserName;
     @FindBy(id = "send-approval-btn")
     WebElement SaveBtn;
-    @FindBy(xpath = "//button[contains(text(),'Revoke')]")
+    @FindBy(id = "revoke-btn")
     WebElement RevokeBtn;
 
-    @FindBy(xpath = "//button[contains(text(),'ReAssign')]")
+    @FindBy(id = "reassign-btn")
     WebElement ReAssignBtn;
 
 
