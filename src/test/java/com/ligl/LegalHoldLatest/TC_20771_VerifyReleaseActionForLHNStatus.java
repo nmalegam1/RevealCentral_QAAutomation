@@ -1,4 +1,4 @@
-package com.ligl.LegalHold;
+package com.ligl.LegalHoldLatest;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;

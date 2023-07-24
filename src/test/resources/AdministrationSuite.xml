@@ -5,133 +5,130 @@
        <!-- Admin General
         User and Roles Page-->
 
-        <test name="TC12160 Verify the process of creating Ligl user by selecting Ligl user option in Add User modal with Manual Password">
+        <test name="TC1983_Create_Template_using_addTemplate_button_for_CaseApproval_Template_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC12160_Create_Ligl_User_with_Manual_Password_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC1983_Create_Template_using_addTemplate_button_for_CaseApproval_Template_Test"/>
         </classes>
         </test>
-        <test name="TC22050-Ligl and SSO users- Check whether User is able to Accept EULA page for first time Login when Common Spirit Instance config is False">
+        <test name="TC8712_Create_new_contact_For_any_party_type_using_addContact_button_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC22050_User_is_able_to_Accept_EULA_page_for_first_time_Login_when_CS_config_is_False_Test"/>
-        </classes>
-        </test>
-
-        <test name="TC22059 Verify the process of creating Ligl user by selecting Ligl user option in +User modal without selecting Manual Password">
-        <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC22059_Create_Ligl_User_with_out_Manual_Password_Test"/>
-        </classes>
-        </test>
-        <test name="TC37985 Verify the process of creating SSO user by selecting SSO user option in +User modal">
-        <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC37985_Creating_SSOUser_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC8712_Create_new_contact_For_any_party_type_using_addContact_button_Test"/>
         </classes>
         </test>
 
-        <test name="TC12104 Ligl users- Verify the process of editing existing users by using Edit User button in grid">
+        <test name="TC8735_Create_new_Party_by_using_Party_Button_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC12104_Editing_Ligl_and_SSO_Users_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC8735_Create_new_Party_by_using_Party_Button_Test"/>
+        </classes>
+        </test>
+        <test name="TC8746_Edit_Existing_Party_using_Edit_button_in_grid_Test">
+        <classes>
+        <class name="com.ligl.AdminLatest.Genral.TC8746_Edit_Existing_Party_using_Edit_button_in_grid_Test"/>
+        </classes>
+        </test>
+
+        <test name="TC12104_Editing_Ligl_and_SSO_Users_Test">
+        <classes>
+        <class name="com.ligl.AdminLatest.Genral.TC12104_Editing_Ligl_and_SSO_Users_Test"/>
         </classes>
 
         </test>
 
-        <test name="TC25171 SSO User- Check whether 'Reset Password' button in grid is Click Disabled">
+        <test name="TC21215_User_Able_to_click_ResetPassword_button_And_Reset_Password_Manually_for_Ligl_User_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC25171_SSO_User_ResetPassword_button_Click_Disabled_in_UserRoles_grid_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC21215_User_Able_to_click_ResetPassword_button_And_Reset_Password_Manually_for_Ligl_User_Test"/>
         </classes>
         </test>
-        <test name="TC22508 Check whether Password strength validation is displaying for fields when user enters weak password">
+        <test name="TC21664_22859_Creating_new_Case_settings_template_using_add_Template_button_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC22508_Password_Strength_Validation_when_User_Enters_Weak_Password_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC21664_22859_Creating_new_Case_settings_template_using_add_Template_button_Test"/>
         </classes>
         </test>
-        <test name="TC22868 Verify that user should not be able to login with old password">
+        <test name="TC22519_Change_Password_in_UserProfile_and_SameUser_Login_with_New_Password_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC22868_User_Should_not_be_able_to_Login_with_Old_Password_Test"/>
-        </classes>
-        </test>
-
-        <test name="TC21215 Check whether user is able to click 'Reset Password' button in grid and Manually Reset password successfully">
-        <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC21215_User_Able_to_click_ResetPassword_button_And_Reset_Password_Manually_for_Ligl_User_Test"/>
-        </classes>
-        </test>
-        <test name="TC21217 Admin Reset Password Manually- Verify whether user is able to login with New password">
-        <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC21217_User_able_Login_with_Admin_Reset_Password_Test"/>
-        </classes>
-        </test>
-        <test name="TC22518 Check whether Logged in user is able to Change Password after Admin Reset Password">
-        <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC22518_Logged_in_user_able_to_Change_Password_after_Admin_Reset_Password"/>
-        </classes>
-        </test>
-        <test name="TC22519 Check whether 'Change Password' option is present in User profile and user is able to again login succesfully with new password">
-        <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC22519_Change_Password_in_UserProfile_and_SameUser_Login_with_New_Password_Test"></class>
+        <class name="com.ligl.AdminLatest.Genral.TC22519_Change_Password_in_UserProfile_and_SameUser_Login_with_New_Password_Test"/>
         </classes>
         </test>
 
-        <test name="TC51897 Verify the unavailability of 'Change Password' option in logged in SSO User profile icon">
+        <test name="TC28525_Ligl_and_SSO_Users_able_to_Change_No_Role_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC28525_Ligl_and_SSO_Users_able_to_Change_No_Role_Test"/>
         </classes>
         </test>
-        <test name="TC28525 Ligl and SSO users Check whether user is able to change role to another role">
+        <test name="TC28536_Check_that_Alert_should_be_displayed_when_NoRole_to_logged_in_user_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC28525_Ligl_and_SSO_Users_able_to_Change_Any_Role_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC28536_Check_that_Alert_should_be_displayed_when_NoRole_to_logged_in_user_Test"/>
         </classes>
         </test>
-        <test name="TC28525 Ligl and SSO users Check whether user is able to change role to no role">
+        <test name="TC28540_Users_Able_to_create_new_Ligl_and_SSO_users_without_choosing_Role_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC28525_Ligl_and_SSO_Users_able_to_Change_No_Role_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC28540_Users_Able_to_create_new_Ligl_and_SSO_users_without_choosing_Role_Test"/>
         </classes>
         </test>
-        <test name="TC51900 Ligl User Create and Edit- Check duplicate validation message is displaying for 'Username' field">
+        <test name="TC28551_Users_Able_to_Change_Status_Active_or_InActive_for_Ligl_and_SSO_Users_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_Ligl_User_Create_and_Edit_Test"/>
-        </classes>
-        </test>
-        <test name="TC51900 SSO Users Create and Edit- Check duplicate validation message is displaying for 'Username' field">
-        <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC51900_Check_Duplicate_Validation_Message_is_Displaying_When_SSO_User_Create_Edit_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC28551_Users_Able_to_Change_Status_Active_or_InActive_for_Ligl_and_SSO_Users_Test"></class>
         </classes>
         </test>
 
-        <test name="TC28540 Check whether user is able to create new Ligl and SSO Users without choosing Role from 'Roles Assigned' dropdown">
+        <test name="TC33890_Creating_new_Employee_using_Employee_button_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC28540_Users_Able_to_create_new_Ligl_and_SSO_users_without_choosing_Role_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC33890_Creating_new_Employee_using_Employee_button_Test"/>
         </classes>
         </test>
-        <test name="TC28551-Ligl Users - Check whether user is able to change the Status (Active/In-Active) any time">
+        <test name="TC35048_Edit_Subject_and_Content_for_Mentioned_Email_Template_Categories_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC28551_Users_Able_to_Change_Status_Active_or_InActive_for_Ligl_and_SSO_Users_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC35048_Edit_Subject_and_Content_for_Mentioned_Email_Template_Categories_Test"/>
         </classes>
         </test>
-        <test name="TC28536-Ligl user- Check whether Alert should be displayed when No Role user logs in">
+        <test name="TC35049_addTemplate_and_Delete_buttons_are_click_disabled_for_Mentioned_Email_Template_Categories_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC28536_Check_that_Alert_should_be_displayed_when_NoRole_to_logged_in_user_Test"/>
-        </classes>
-
-        </test>
-        <test name="TC25196-Ligl User- Check whether user is able to click 'Reset Password' button in grid and Reset password without selecting 'Manual Password' checkbox by clicking 'Yes' button ">
-        <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC25196_User_Able_to_ResetPassword_And_without_Selecting_ManualPassword_checkbox_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC35049_addTemplate_and_Delete_buttons_are_click_disabled_for_Mentioned_Email_Template_Categories_Test"/>
         </classes>
         </test>
-        <test name="TC28581-Ligl and SSO User- Check that Validation should be displayed in Login page when In-Active status user logs in">
+        <test name="TC37985_Creating_SSOUser_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC28581_Check_Validation_in_Login_page_when_InActive_status_LogsIn_Ligl_user_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC37985_Creating_SSOUser_Test"/>
         </classes>
         </test>
-        <test name="TC28539-Ligl and SSO users- Check whether Logged in user is displaying with Assigned role after changing role of user">
+        <test name="TC51896_Employee_Edit_nonEditable_fields_Test">
         <classes>
-        <class name="com.ligl.Administration.General.UserAndRoles.TC28539_Logged_in_user_is_displaying_with_Assigned_role_after_changing_the_role_Test"/>
+        <class name="com.ligl.AdminLatest.Genral.TC51896_Employee_Edit_nonEditable_fields_Test"/>
         </classes>
         </test>
 
-        <!--Employee Master Page-->
+        <test name="TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test">
+        <classes>
+        <class name="com.ligl.AdminLatest.Genral.TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test"/>
+        </classes>
+        </test>
+        <test name="TC54559_Check_admin_is_able_to_create_edit_the_RequestType_lookup_value_Test">
+        <classes>
+        <class name="com.ligl.AdminLatest.Genral.TC54559_Check_admin_is_able_to_create_edit_the_RequestType_lookup_value_Test"/>
+        </classes>
+        </test>
+        <test name="TC54576_Check_admin_is_able_to_Create_or_edit_the_Case_type_lookup_value_when_CS_config_is_false_Test">
+        <classes>
+        <class name="com.ligl.AdminLatest.Genral.TC54576_Check_admin_is_able_to_Create_or_edit_the_Case_type_lookup_value_when_CS_config_is_false_Test"/>
+        </classes>
+        </test>
+        <test name="TC54587_Check_admin_is_able_to_create_edit_the_Entity_and_SubEntity_lookup_value_Test ">
+        <classes>
+        <class name="com.ligl.AdminLatest.Genral.TC54587_Check_admin_is_able_to_create_edit_the_Entity_and_SubEntity_lookup_value_Test"/>
+        </classes>
+        </test>
+        <test name="TC56374_Verify_user_able_to_import_Employee_by_giving_Both_Mandatory_and_Non_Mandatory_Fields_in_Full_Template_Test">
+        <classes>
+        <class name="com.ligl.AdminLatest.Genral.TC56374_Verify_user_able_to_import_Employee_by_giving_Both_Mandatory_and_Non_Mandatory_Fields_in_Full_Template_Test"/>
+        </classes>
+        </test>
+        <test name="TC56376_Verify_user_able_to_import_Employee_by_giving_all_fields_in_Short_Template_Test">
+        <classes>
+        <class name="com.ligl.AdminLatest.Genral.TC56376_Verify_user_able_to_import_Employee_by_giving_all_fields_in_Short_Template_Test"/>
+        </classes>
+        </test>
 
-        <test name="TC33890-Employee Master- Verify the process of Creating new Employee using +Employee button">
+       <!-- <test name="TC33890-Employee Master- Verify the process of Creating new Employee using +Employee button">
         <classes>
         <class name="com.ligl.Administration.General.EmployeeMaster.TC33890_Creating_new_Employee_using_Employee_button_Test"/>
         </classes>
@@ -197,7 +194,7 @@
         </classes>
         </test>
 
-        <!--Contact Master Page-->
+        &lt;!&ndash;Contact Master Page&ndash;&gt;
         <test name="TC8712_Creat_new_contact_using_addContact_button_Test">
         <classes>
         <class name="com.ligl.Administration.General.ContactMaster.TC8712_Creat_new_contact_using_addContact_button_Test"/>
@@ -224,7 +221,7 @@
         </classes>
         </test>
 
-       <!-- &lt;!&ndash;Parties&ndash;&gt;-->
+       &lt;!&ndash; &lt;!&ndash;Parties&ndash;&gt;&ndash;&gt;
 
         <test name="TC8735 Parties- Verify the process of Creating new Party using +Party button">
         <classes>
@@ -242,7 +239,7 @@
         </classes>
         </test>
 
-        <!--Email Template Page-->
+        &lt;!&ndash;Email Template Page&ndash;&gt;
 
         <test name="TC1983 Email Templates- Verify the process of creating new template using +Template button for 'Case Approval' category.">
         <classes>
@@ -260,7 +257,7 @@
         </classes>
         </test>
 
-        <!--Case Settings Page-->
+        &lt;!&ndash;Case Settings Page&ndash;&gt;
 
         <test name="TC21664 Case Settings- Verify the process of creating new Case settings template using +Template button">
         <classes>
@@ -273,7 +270,7 @@
         </classes>
         </test>
 
-        <!--Lookup Manager Page-->
+        &lt;!&ndash;Lookup Manager Page&ndash;&gt;
 
         <test name="TC54559 Requests-Check whether admin is able to create, edit the request type lookup value">
         <classes>
@@ -300,7 +297,7 @@
         <class name="com.ligl.Administration.General.LookManagerPage.TC54583_Check_that_CaseType_LookUp_value_is_populated_in_Case_Create_popup_Test"/>
         </classes>
         </test>
-
+-->
         <!--Admin LegalHold-->
 
         <!--Stake Holder-->

@@ -1,4 +1,4 @@
-package com.ligl.LegalHold;
+package com.ligl.LegalHoldLatest;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian extends TestBase {
+public class TC_51805_VerifyColumnsInLegalHoldGrid extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData", description = "LegalHold")
-    public void TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian(Hashtable<String,String> data) throws Exception {
+    public void TC_51805_VerifyColumnsInLegalHoldGrid(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());
 
@@ -27,23 +27,16 @@ public class TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCu
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
-                    .searchcase(data.get("CaseName"))
-                    .GoToCase(data.get("CaseName"))
+                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToLegalHoldPage()
-                    .searchRequiredLegalHoldName(data.get("LHName"))
-                    .goToLegalHold(data.get("LHName"))
-                    .searchLHNThroughEmail(data.get("CustMail"))
-                    .clickOnActionDropDownAndRun(data.get("Action"))
-                    .checkUnableToSetStealthModeToDeactiveCust(data.get("CustMail"))
-                    .verifyRecordStatusInLHNSH(data.get("CustStatus"));
+                    .verifyColumnsInLegalHoldGrid();
         } catch (Exception ex) {
-            session.log_Error("TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian Failed");
-            throw new Exception("TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian Failed", ex);
+            session.log_Error("TC_51805_VerifyColumnsInLegalHoldGrid Failed");
+            throw new Exception("TC_51805_VerifyColumnsInLegalHoldGrid Failed", ex);
         } finally {
             session.end();
         }
     }
 }
-
 
 

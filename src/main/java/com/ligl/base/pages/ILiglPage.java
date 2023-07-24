@@ -529,7 +529,7 @@ public interface ILiglPage {
 
     ILiglPage editLegalHoldWhenOnFlyIsFalse(String EditedLegalHoldname, String CustodianQTemplate, String LHname) throws Exception;
 
-    ILiglPage createNewLegalHoldWhenOnFlyIsFalse(String LegalHoldname, String CustodianTemplate, String CustodianQuestionaireTemplate, String StakeHolderTemplate, String StakeHolderQueTemplate) throws Exception;
+    ILiglPage createNewLegalHoldWhenOnFlyIsFalse(String LegalHoldname, String CustodianTemplate, String CustodianQuestionaireTemplate, String StakeHolderTemplate, String StakeHolderQueTemplate, String startdate,String enddate,String keyword) throws Exception;
 
     ILiglPage validateAddedCourts(String CourtAdded) throws Exception;
 

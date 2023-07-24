@@ -779,7 +779,7 @@ public class LiglBasePage implements ILiglPage {
 		return null;
 	}
 
-	public ILiglPage createNewLegalHoldWhenOnFlyIsFalse(String LegalHoldname, String CustodianTemplate, String CustodianQuestionaireTemplate, String StakeHolderTemplate, String StakeHolderQueTemplate) throws Exception{
+	public ILiglPage createNewLegalHoldWhenOnFlyIsFalse(String LegalHoldname, String CustodianTemplate, String CustodianQuestionaireTemplate, String StakeHolderTemplate, String StakeHolderQueTemplate, String startdate,String enddate,String keyword) throws Exception{
 		return null;
 	}
 

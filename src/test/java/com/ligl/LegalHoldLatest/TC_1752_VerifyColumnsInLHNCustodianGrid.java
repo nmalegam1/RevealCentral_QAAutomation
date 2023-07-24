@@ -1,4 +1,4 @@
-package com.ligl.LegalHold;
+package com.ligl.LegalHoldLatest;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF extends TestBase {
+public class TC_1752_VerifyColumnsInLHNCustodianGrid extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
-    public void TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF(Hashtable<String, String> data) throws Exception {
+    public void TC_1752_VerifyColumnsInLHNCustodianGrid(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -24,26 +24,23 @@ public class TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF extends TestBase
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
 
+            // Verifying The Columns In The LHN Custodian Grid
 
             ILiglPage page = new LaunchPage()
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
+                    .loginWithLiglorSSOUser("N",data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
-                    .searchRequiredLegalHoldName(data.get("LHname"))
-                    .goToRequiredLegalHoldName(data.get("LHname"))
-                    .clickOnChooseColumnMenu()
-                    .searchTheColumnsInColumnMenuInLHGrid(data.get("Column"))
-                    .selectTheColumnCheckBox(data.get("Column"))
-                    .clickOnChooseColumnMenu().clickOnTheDownloadLHNLink();
+                    .searchRequiredLegalHoldName(data.get("LHname1")).goToRequiredLegalHoldName(data.get("LHname1"))
+                    .verifyColumnsInLHNCustodianGrid();
 
 
         } catch (Exception ex) {
-            session.log_Error("TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF Failed");
-            throw new Exception("TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF Failed", ex);
+            session.log_Error("TC_1752_VerifyColumnsInLHNCustodianGrid Failed");
+            throw new Exception("TC_1752_VerifyColumnsInLHNCustodianGrid Failed", ex);
         } finally {
             session.end();
         }

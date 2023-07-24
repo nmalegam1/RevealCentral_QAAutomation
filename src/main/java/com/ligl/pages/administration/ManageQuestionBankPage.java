@@ -85,7 +85,7 @@ public class ManageQuestionBankPage extends LiglBaseSessionPage {
     @FindBy(xpath = "(//span[@class='ag-header-cell-text'][normalize-space()='Question Title'])[3]")
     public WebElement parentQuestionTitleColumn;
 
-    @FindBy(xpath = "(//span[@ref='eMenu'])[6]")
+    @FindBy(xpath = "//div[@class='modal-content']//app-questionnaire-list//div[@col-id='QuestionnaireText']//span")
     public WebElement MenuBtn;
 
     public ILiglPage refreshTheManageQuestionBankPage() throws Exception {
@@ -164,13 +164,14 @@ public class ManageQuestionBankPage extends LiglBaseSessionPage {
     public ILiglPage searchParentQuestion(String parentQuestion) throws Exception {
         try {
             getSession().log_Info("Hover on 'Questionnaire Title'");
-            getDriver().waitForelementToBeClickable(parentQuestionTitleColumn);
+            /*getDriver().waitForelementToBeClickable(parentQuestionTitleColumn);
             getDriver().waitForMoveToElement(parentQuestionTitleColumn);
             getSession().log_Pass("Hovered on Questionnaire Title");
 
             getSession().log_Info("Click on Menu");
-            getDriver().waitForelementToBeClickable(MenuBtn);
-            getDriver().waitForMoveToElement(MenuBtn);
+            getDriver().waitForMoveToElement(MenuBtn);*/
+           /* getDriver().waitForelementToBeClickable(MenuBtn);
+            getDriver().waitForMoveToElement(MenuBtn);*/
             MenuBtn.click();
             getSession().log_Pass("Clicked on Menu");
 

@@ -8,7 +8,7 @@
     </test>
     <test name="Verify Columns In StakeHolder Grid">
         <classes>
-            <class name="com.ligl.LegalHold.TC_3204_VerifyColumnsInLHNStakeholderGrid"/>
+            <class name="com.ligl.LegalHoldLatest.TC_3204_VerifyColumnsInLHNStakeholderGrid"/>
         </classes>
     </test>
     <test name="Verify Data Sent And Date In The Grid">
@@ -28,7 +28,7 @@
     </test>
     <test name="Verify Release Action For LHN Status">
         <classes>
-            <class name="com.ligl.LegalHold.TC_20771_VerifyReleaseActionForLHNStatus"/>
+            <class name="com.ligl.LegalHoldLatest.TC_20771_VerifyReleaseActionForLHNStatus"/>
         </classes>
     </test>
     <test name="Verify Default Template In Release Popup">
@@ -63,7 +63,7 @@
     </test>
     <test name="TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians">
         <classes>
-            <class name="com.ligl.LegalHold.TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians"/>
+            <class name="com.ligl.LegalHoldLatest.TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians"/>
         </classes>
     </test>
     <test name="Process Of Editing Remainder And Escalation Values At Case Level">
@@ -73,7 +73,7 @@
     </test>
     <test name="TC_29354_VerifyWhetherRevokeAllowedForHrInActiveCustodian">
         <classes>
-            <class name="com.ligl.LegalHold.TC_29354_VerifyWhetherRevokeAllowedForHrInActiveCustodian"/>
+            <class name="com.ligl.LegalHoldLatest.TC_29354_VerifyWhetherRevokeAllowedForHrInActiveCustodian"/>
         </classes>
     </test>
     <test name="Process Of Creating LH By Start And End Date">
@@ -103,7 +103,7 @@
     </test>
     <test name="Process Of Creating LH ON Fly Edit">
         <classes>
-            <class name="com.ligl.LegalHold.TC_33977_VerifyFunctionalityOfCreatingLHBySelectingNewTemplateOnFlyEdit"/>
+            <class name="com.ligl.LegalHoldLatest.TC_33977_VerifyFunctionalityOfCreatingLHBySelectingNewTemplateOnFlyEdit"/>
         </classes>
     </test>
     <test name="Process Of Checking The Approval History And Status Columns">
@@ -138,7 +138,7 @@
     </test>
     <test name="TC_44414_ReDesignOfLHApprovalPage">
         <classes>
-            <class name="com.ligl.LegalHold.TC_44414_ReDesignOfLHApprovalPage"/>
+            <class name="com.ligl.LegalHoldLatest.TC_44414_ReDesignOfLHApprovalPage"/>
         </classes>
     </test>
     <test name="TC_49664_49665_LHAckFromMyHoldsGridAndValidationOfData">
@@ -148,7 +148,7 @@
     </test>
     <test name="TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold">
         <classes>
-            <class name="com.ligl.LegalHold.TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold"/>
+            <class name="com.ligl.LegalHoldLatest.TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold"/>
         </classes>
     </test>
     <test name="TC_56517_56518_LegalHoldNotesCreateAndEdit">
@@ -158,17 +158,17 @@
     </test>
     <test name="TC_56147_LHCreateWhenOnFlyIsFalse">
         <classes>
-            <class name="com.ligl.LegalHold.TC_56147_LHCreateWhenOnFlyIsFalse"/>
+            <class name="com.ligl.LegalHoldLatest.TC_56147_LHCreateWhenOnFlyIsFalse"/>
         </classes>
     </test>
     <test name="TC_56146_LHEditWhenOnFlyIsFalse">
         <classes>
-            <class name="com.ligl.LegalHold.TC_56146_LHEditWhenOnFlyIsFalse"/>
+            <class name="com.ligl.LegalHoldLatest.TC_56146_LHEditWhenOnFlyIsFalse"/>
         </classes>
     </test>
     <test name="TC_27959_VerifySendButtonFunctionalityInTestMailPopup">
         <classes>
-            <class name="com.ligl.LegalHold.TC_27959_VerifySendButtonFunctionalityInTestMailPopup"/>
+            <class name="com.ligl.LegalHoldLatest.TC_27959_VerifySendButtonFunctionalityInTestMailPopup"/>
         </classes>
     </test>
     <test name="TC_26247_VerifyDefaultTemplateInReleasePopup">
@@ -218,7 +218,7 @@
     </test>
     <test name="TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian">
         <classes>
-            <class name="com.ligl.LegalHold.TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian"/>
+            <class name="com.ligl.LegalHoldLatest.TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian"/>
         </classes>
     </test>
     <test name="TC_51793_VerifyTabs_FieldsAvailableInLegalHoldModal">

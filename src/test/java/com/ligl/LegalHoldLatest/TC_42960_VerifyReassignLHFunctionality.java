@@ -1,4 +1,4 @@
-package com.ligl.LegalHold;
+package com.ligl.LegalHoldLatest;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,10 +10,11 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_56147_LHCreateWhenOnFlyIsFalse extends TestBase
+public class TC_42960_VerifyReassignLHFunctionality extends TestBase
 {
+
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
-    public void TC_56147_LHCreateWhenOnFlyIsFalse(Hashtable<String, String> data) throws Exception
+    public void TC_42960_VerifyReassignLHFunctionality(Hashtable<String, String> data) throws Exception
     {
         try {
             session.log_Info(data.toString());
@@ -29,19 +30,21 @@ public class TC_56147_LHCreateWhenOnFlyIsFalse extends TestBase
                     .openBrowser("chrome")
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
+                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToLegalHoldPage()
-                    .clickOnAddNewLegalHoldButton()
-                    .createNewLegalHoldWhenOnFlyIsFalse(data.get("LHname"), data.get("CustodianTemp"), data.get("CustodianQTemp"), data.get("StakeHolderTemp"), data.get("StakeHolderQTemp"))
-                    .verifyCreatedLegalHoldIsDisplayed(data.get("LHname"));
+                    .searchRequiredLegalHoldName(data.get("LHname"))
+                    .validateLHStatus(data.get("Status"))
+                    .clickOnLHCheckbox(data.get("LHname"))
+                    .clickOnActionDropDownAndRun(data.get("Action1"))
+                    .selectTemplateAndApproverAndClickOnSendBtn(data.get("Template1"),data.get("ApproverName"))
+                    .secondSearch(data.get("LHname"))
+                    .validateLHStatus(data.get("Status"));
 
-        }
-        catch (Exception ex)
-        {
-            session.log_Error("TC_56147_LHCreateWhenOnFlyIsFalse");
-            throw new Exception("TC_56147_LHCreateWhenOnFlyIsFalse Failed", ex);
-        }
-        finally
-        {
+
+        }catch (Exception ex){
+            session.log_Error("TC_42960_VerifyReassignLHFunctionality");
+            throw new Exception("TC_42960_VerifyReassignLHFunctionality Failed", ex);
+        }finally {
             session.end();
         }
     }
