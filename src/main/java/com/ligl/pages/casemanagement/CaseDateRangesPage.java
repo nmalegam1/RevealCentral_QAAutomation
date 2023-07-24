@@ -28,7 +28,7 @@ public class CaseDateRangesPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//input[@name='endDate']")
     WebElement EndDate;
 
-    @FindBy(xpath = "//button[contains(text(),' Save ')]")
+    @FindBy(id = "add-edit-case-save-btn")
     WebElement SaveBtn;
 
     @FindBy(xpath = "//span[@title='DR1']")

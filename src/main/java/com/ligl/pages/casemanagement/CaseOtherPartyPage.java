@@ -70,10 +70,8 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(id = "party-name")
     WebElement NameParty;
 
-    @FindBy(id = "sel-party-type")
+    @FindBy(id = "sel-party-typepartyUUID")
     WebElement PartyTypeDrpDwn;
-
-    //@FindBy(xpath = "//div[@id='sel-party-type-panel']//input[@type='text']")
 
     @FindBy(xpath = "//mat-select[@title='mat-select']")
     WebElement PartyTypeSearchBar;
@@ -88,7 +86,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[@title='Create 109']//span")
     WebElement PartyName4;
 
-    @FindBy(xpath = "//button[contains(text(),'In-House Counsel')]")
+    @FindBy(id = "inhouse-btn")
     WebElement AddInHouseCounselBtn;
 
     @FindBy(xpath = "//button[@id='add-counsel-inhouse-btn']")
@@ -107,7 +105,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(id = "add-lawfirm-outside-btn")
     WebElement AddLawFirmBtn;
 
-    @FindBy(id = "party-add-select-status")
+    @FindBy(id = "party-add-select-statusstatusUUID")
     WebElement StatusDropDown;
 
     @FindBy(xpath = "//mat-select[@title='select-law-firm-third-party']")
@@ -143,9 +141,9 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Law Firm')]/ancestor::div[@ref='eLabel']/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
     WebElement OutSideCounselLawFirmMenu;
 
-    @FindBy(id = "party-add-select-status")
+    @FindBy(id = "party-add-select-statusstatusUUID")
     WebElement PartyStatusDrpdwn;
-    @FindBy(xpath = "//button[contains(text(),'Outside Counsel')]")
+    @FindBy(id = "add-case-doc-btn-thirdparty-new")
     WebElement AddOutSideCounsel;
     @FindBy(xpath="//mat-select[@title='select-law-firm-third-party']")
     WebElement LawFirmDP;

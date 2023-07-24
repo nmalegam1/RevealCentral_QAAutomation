@@ -35,7 +35,9 @@ public class TC_1707_VerifyUserAbleToAddOneorMoreExistingCourtsToProjectFromAddC
                     .addCourtToCase(data.get("CourtName1"))
                     .addCourtToCase(data.get("CourtName2"))
                     .addCourtToCase(data.get("CourtName3"))
-                    .validateAddedCourts(data.get("CourtName1"));
+                    .validateAddedCourts(data.get("CourtName1"))
+                    .validateSecondSearchAddedCourts(data.get("CourtName2"))
+                    .validateSecondSearchAddedCourts(data.get("CourtName3"));
 
         } catch (Exception ex) {
             session.log_Error("TC_1707_VerifyUserAbleToAddOneorMoreExistingCourtsToProjectFromAddCourtModal Failed");

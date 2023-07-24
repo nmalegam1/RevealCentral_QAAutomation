@@ -134,10 +134,10 @@ public class CaseCounselPage extends LiglBaseSessionPage {
     @FindBy(id = "back-btn-employeemaster")
     WebElement BackButton;
 
-    @FindBy(xpath = "//div[contains(text(),'Employment status for the selected employee(s) are InActive, Do you want to add them?')]")
+    @FindBy(xpath = "//p[contains(text(),'Employment status for the selected employee(s) are InActive, Do you want to add them?')]")
     WebElement InactiveAlertPopUp;
 
-    @FindBy(xpath = "//button[contains(text(),'Proceed')]")
+    @FindBy(xpath = "//button[contains(text(),'PROCEED')]")
     WebElement ProceedBtn;
 
     @FindBy(xpath = "//span[contains(text(),'Email')]/ancestor::div[@ref='eLabel']/ancestor::div[@class='ag-cell-label-container']//span")
@@ -152,10 +152,10 @@ public class CaseCounselPage extends LiglBaseSessionPage {
     @FindBy(id = "party-name")
     WebElement FirstNameInAddLawFirmPopUp;
 
-    @FindBy(id = "sel-party-type")
+    @FindBy(id = "sel-party-typepartyUUID")
     WebElement PartyTypeDrpDwnInAddLawFirmPopUp;
 
-    @FindBy(id = "party-add-select-status")
+    @FindBy(id = "party-add-select-statusstatusUUID")
     WebElement StatusDrpDwnInAddLawFirmPopUp;
 
 
@@ -164,6 +164,9 @@ public class CaseCounselPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//input[@placeholder='Search']")
     WebElement PartyTypeSearch;
+
+    @FindBy(id = "btn-clear-inhousecounsel")
+    WebElement ClearFilterInhouseScreen;
 
 
 
@@ -176,6 +179,7 @@ public class CaseCounselPage extends LiglBaseSessionPage {
         try {
 
             log_Info("Click on Add In-House Counsel Button");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", ClearFilterInhouseScreen);
             getDriver().waitForelementToBeClickable(InHouseCounselBtn);
             Thread.sleep(5000);
             InHouseCounselBtn.click();
@@ -209,7 +213,7 @@ public class CaseCounselPage extends LiglBaseSessionPage {
 
             log_Info("select Employee checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//span[@title='" + CounselName + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
+            getCurrentDriver().findElement(By.xpath("//span[@title='"+ CounselName +"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
             log_Info("selected Employee checkbox");
 
             log_Info("Click Add To case Button");
@@ -234,6 +238,7 @@ public class CaseCounselPage extends LiglBaseSessionPage {
 
 
             log_Info("Click on Add In-House Counsel Button");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", ClearFilterInhouseScreen);
             getDriver().waitForelementToBeClickable(InHouseCounselBtn);
             Thread.sleep(5000);
             InHouseCounselBtn.click();

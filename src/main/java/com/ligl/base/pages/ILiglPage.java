@@ -1357,7 +1357,9 @@ public interface ILiglPage {
 
     ILiglPage checkAndValidateTheCountOfTheProcessInsightsStats(String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus) throws Exception;
 
+    ILiglPage validateSecondSearchAddedCourts(String CourtAdded) throws Exception;
 
+    ILiglPage searchingAddedCourtAfterDeleting(String AvailableCourt) throws Exception;
 
 
 }

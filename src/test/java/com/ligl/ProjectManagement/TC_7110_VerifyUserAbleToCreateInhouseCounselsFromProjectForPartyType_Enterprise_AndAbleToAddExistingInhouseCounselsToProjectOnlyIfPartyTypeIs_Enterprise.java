@@ -26,7 +26,7 @@ public class TC_7110_VerifyUserAbleToCreateInhouseCounselsFromProjectForPartyTyp
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
-                    /*.searchcase(data.get("PROJECT1")).GoToCase(data.get("PROJECT1"))
+                    .searchcase(data.get("PROJECT1")).GoToCase(data.get("PROJECT1"))
                     .getLeftMenu()
                     .goToOtherPartyPage()
                     .addingExistingParty(data.get("PartyType"),data.get("PartyName"))
@@ -34,11 +34,11 @@ public class TC_7110_VerifyUserAbleToCreateInhouseCounselsFromProjectForPartyTyp
                     .createNewInHouseCounselForEnterpriseParty(data.get("PartyName"),data.get("FirstName"),data.get("LastName"))
                     .searchingInHouseCounsel(data.get("PartyName"),data.get("InHouseCounselName"))
                     .validateAddedInHouseCounsel(data.get("InHouseCounselName"))
-                    .getHeader().goToCasePage()*/
+                    .getHeader().goToCasePage()
                     .searchcase(data.get("PROJECT2")).GoToCase(data.get("PROJECT2"))
                     .getLeftMenu()
                     .goToOtherPartyPage()
-                    /*.addingExistingParty(data.get("PartyType"),data.get("PartyName"))*/
+                    .addingExistingParty(data.get("PartyType"),data.get("PartyName"))
                     .searchingParty(data.get("PartyName"))
                     .addExistingInHouseCounselToParty(data.get("InHouseCounselName"));
 

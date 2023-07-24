@@ -2220,4 +2220,12 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage checkAndValidateTheCountOfTheProcessInsightsStats(String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus) throws Exception{
 		return null;
 	}
+
+	public ILiglPage validateSecondSearchAddedCourts(String CourtAdded) throws Exception{
+		return null;
+	}
+
+	public ILiglPage searchingAddedCourtAfterDeleting(String AvailableCourt) throws Exception{
+		return null;
+	}
 }
