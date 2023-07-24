@@ -1,4 +1,4 @@
-package com.ligl.LegalHold;
+package com.ligl.LegalHoldLatest;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians extends TestBase {
+public class TC_50524_CheckDropDownsSearchableInLegalHoldApprovalTab_And_SendLH_ForApproval extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData", description = "LegalHold")
-    public void TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians(Hashtable<String,String> data) throws Exception {
+    public void TC_50524_CheckDropDownsSearchableInLegalHoldApprovalTab_And_SendLH_ForApproval(Hashtable<String,String> data) throws Exception {
         try {
             session.log_Info(data.toString());
 
@@ -27,21 +27,13 @@ public class TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCu
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
-                    .searchcase(data.get("CaseName"))
-                    .GoToCase(data.get("CaseName"))
-                    .getLeftMenu().navigateToCustodiansPage()
-                    .addInActiveEMPToCase(data.get("CustMail"))
+                    .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToLegalHoldPage()
-                    .searchRequiredLegalHoldName(data.get("LHName"))
-                    .goToLegalHold(data.get("LHName"))
-                    .searchLHNThroughEmail(data.get("CustMail"))
-                    .clickOnActionDropDownAndRun(data.get("Action"))
-                    .sendStealthMode()
-                    //.searchLHNThroughEmail(data.get("CustMail"))
-                    .verifyRecordStatusInLHN(data.get("CustStatus"));
+                    .sendLHNToApproval(data.get("LHName"),data.get("DPAction"),data.get("EmailTemp"),data.get("Approver"));
+
         } catch (Exception ex) {
-            session.log_Error("TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians Failed");
-            throw new Exception("TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians Failed", ex);
+            session.log_Error("TC_50524_CheckDropDownsSearchableInLegalHoldApprovalTab_And_SendLH_ForApproval Failed");
+            throw new Exception("TC_50524_CheckDropDownsSearchableInLegalHoldApprovalTab_And_SendLH_ForApproval Failed", ex);
         } finally {
             session.end();
         }

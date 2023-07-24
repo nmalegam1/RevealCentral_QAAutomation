@@ -101,6 +101,7 @@ public class EmailTemplatePage extends LiglBaseSessionPage {
                                             String content) throws Exception {
         try {
             //Select Email Template Category
+            Thread.sleep(5000);
             getSession().log_Info("Select Email Template Category");
             js.executeScript("window.scrollBy(0,-500)");
             getDriver().waitForelementToBeClickable(emailTemplateCategoryDrpDwn);
@@ -170,6 +171,7 @@ public class EmailTemplatePage extends LiglBaseSessionPage {
         try {
             //Select Email Template Category
             getSession().log_Info("Select Email Template Category");
+            wait(3);
             js.executeScript("window.scrollBy(0,-500)");
             getDriver().waitForelementToBeClickable(emailTemplateCategoryDrpDwn);
             emailTemplateCategoryDrpDwn.click();
@@ -241,8 +243,9 @@ public class EmailTemplatePage extends LiglBaseSessionPage {
         try {
             //Select Email Template Category
             getSession().log_Info("Select Email Template Category");
-            js.executeScript("window.scrollBy(0,-500)");
-            getDriver().waitForelementToBeClickable(emailTemplateCategoryDrpDwn);
+            wait(5);
+            js.executeScript("window.scrollBy(0,-300)");
+           // getDriver().waitForelementToBeClickable(emailTemplateCategoryDrpDwn);
             emailTemplateCategoryDrpDwn.click();
             drpDwnSearchBar.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
             drpDwnSearchBar.sendKeys(emailTemplateCategory);

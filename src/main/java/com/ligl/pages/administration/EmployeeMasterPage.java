@@ -22,7 +22,7 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Email')]/ancestor::div[@ref='eLabel']")
     WebElement EmailName;
 
-    @FindBy(xpath = "//*[@id=\"content\"]/div[2]/div[2]/ag-grid-angular/div/div[2]/div[2]/div[1]/div[2]/div/div/div[5]/div[3]/span/span")
+    @FindBy(xpath = "//div[@col-id='Email']//div//span[@role='presentation']")
     WebElement EmailMenuu;//Doubt
 
     @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
@@ -31,7 +31,7 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//input[@placeholder='Filter...']")
     WebElement Searchbar;
 
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy(xpath = "//button//i[@class='lnr lnr-pencil']")
     WebElement EditIcon;
 
     @FindBy(id = "select-employement-status")
@@ -320,26 +320,24 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
         try {
 
             log_Info("Click On The Employee Status Drop Down");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             EmployeeStatus.sendKeys(Estatus);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             EmployeeStatus.sendKeys(Keys.ENTER);
             getSession().log_Pass("Clicked On The Employee Status Drop Down");
 
             log_Info("Click On The Next Button");
-            Thread.sleep(5000);
             NextBtn.click();
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             getSession().log_Pass("Clicked On The Next Button");
 
             log_Info("Click On The Next Button");
-            Thread.sleep(5000);
             NextBtn.click();
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             getSession().log_Pass("Clicked On The Next Button");
 
             log_Info("Click On The Save Button");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             SaveBtn.click();
             Thread.sleep(5000);
             getSession().log_Pass("Clicked On The Save Button");

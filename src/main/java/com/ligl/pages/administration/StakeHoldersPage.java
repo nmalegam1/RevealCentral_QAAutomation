@@ -51,7 +51,7 @@ public class StakeHoldersPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[contains(text(),'Yes')]")
     public WebElement yesBtn;
 
-    @FindBy(xpath = "//button[contains(text(),'Save')]")
+    @FindBy(xpath = "//button[contains(text(),'SAVE')]")
     public WebElement saveBtn;
 
     @FindBy(xpath = "//span[@ref='eText'][normalize-space()='Email']")
@@ -193,8 +193,7 @@ public class StakeHoldersPage extends LiglBaseSessionPage {
 
             //Save
             getSession().log_Info("Click on 'Save' Button");
-            getDriver().waitForMoveToElement(saveBtn);
-            getDriver().waitForelementToBeClickable(saveBtn);
+            wait(2);
             saveBtn.click();
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Clicked On 'Save' Button");
@@ -323,6 +322,7 @@ public class StakeHoldersPage extends LiglBaseSessionPage {
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Clicked On 'Yes' Button");
 
+            wait(3);
             Assert.assertEquals(recordUpdateValidation.getText(), "Records are updated");
 
             return new StakeHoldersPage();

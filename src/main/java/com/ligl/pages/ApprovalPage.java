@@ -23,8 +23,8 @@ public class ApprovalPage extends LiglBaseSessionPage {
     @FindBy(id = "appr-reject-btn")
     WebElement RejectBtn;
 
-    @FindBy(xpath = "//mat-panel-title[contains(text(),'Case Details')]")
-    WebElement CaseDetails;
+    @FindBy(xpath = "//mat-panel-title[contains(text(),'Project Details')]")
+    WebElement ProjectDetails;
 
     @FindBy(xpath = "//mat-panel-title[contains(text(),' Legal Hold Details ')]")
     WebElement CaseLHDetails;
@@ -233,15 +233,16 @@ public class ApprovalPage extends LiglBaseSessionPage {
             try {
                 Thread.sleep(5000);
                 log_Info("Click on Case Details Accordion");
-                getDriver().waitForelementToBeClickable(CaseDetails);
+                getDriver().waitForelementToBeClickable(ProjectDetails);
                 waitForPageToLoad();
                 Thread.sleep(5000);
-                CaseDetails.click();
+                ProjectDetails.click();
                 getSession().log_Pass("Clicked on Case Details Accordion");
                 Thread.sleep(5000);
                 log_Info("Click on Legal hold Details Accordion");
                 getDriver().waitForelementToBeClickable(CaseLHDetails);
                 waitForPageToLoad();
+                ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", ApproveBtn);
                 Thread.sleep(5000);
                 CaseLHDetails.click();
                 getSession().log_Pass("Clicked on Legal hold Details Accordion");

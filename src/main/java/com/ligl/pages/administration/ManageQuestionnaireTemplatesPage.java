@@ -11,7 +11,7 @@ import org.testng.Assert;
 import java.util.Hashtable;
 
 public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
-    @FindBy(xpath = "//button[contains(text(), 'Add Template')]")
+    @FindBy(xpath = "//button[contains(text(), 'ADD TEMPLATE')]")
     public WebElement addTemplateBtn;
 
     @FindBy(xpath = "//div[@class='cdk-overlay-container']//button//span[.='Create New Template']")
@@ -268,11 +268,11 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
     public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable<String, String> data) throws Exception {
         try {
             //Search the Question
-            selectQuestion.searchParentQuestion(data.get("addQuestion"));
+            selectQuestion.searchParentQuestion(data.get("AddQuestion"));
 
             //Select the Question
             getSession().log_Info("Click On Question check box");
-            getDriver().checkTheCheckBox(data.get("addQuestion")).click();
+            getDriver().checkTheCheckBox(data.get("AddQuestion")).click();
             getSession().log_Pass("Clicked On Question check box");
 
             //Click on AddToTemplate Button
@@ -284,9 +284,9 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
 
             //Verify that add question displaying in grid
             getSession().log_Info("Verify that add question displaying in grid");
-            searchTheQuestionInManageQuestionTemplate(data.get("addQuestion"));
+            searchTheQuestionInManageQuestionTemplate(data.get("AddQuestion"));
             String question = questionnaireTitleColumn.getText();
-            Assert.assertEquals(question, data.get("addQuestion"));
+            Assert.assertEquals(question, data.get("AddQuestion"));
             getSession().log_Pass("Verify that add question displaying in grid");
 
             getSession().takeScreenShot();

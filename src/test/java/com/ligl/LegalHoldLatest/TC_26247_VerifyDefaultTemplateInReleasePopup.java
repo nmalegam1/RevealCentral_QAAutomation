@@ -1,4 +1,4 @@
-package com.ligl.LegalHold;
+package com.ligl.LegalHoldLatest;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,11 +10,11 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_27959_VerifySendButtonFunctionalityInTestMailPopup extends TestBase
+public class TC_26247_VerifyDefaultTemplateInReleasePopup extends TestBase
 {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
-    public void TC_27959_VerifySendButtonFunctionalityInTestMailPopup(Hashtable<String, String> data) throws Exception
+    public void TC_26247_VerifyDefaultTemplateInReleasePopup(Hashtable<String, String> data) throws Exception
     {
         try {
             session.log_Info(data.toString());
@@ -33,12 +33,16 @@ public class TC_27959_VerifySendButtonFunctionalityInTestMailPopup extends TestB
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHname"))
-                    .sendBtnInTestMail();
+                    .clickOnApprovedLH(data.get("LHname"))
+                    .searchRequiredLHNStatus(data.get("Status"))
+                    .clickOnLHCheckbox(data.get("Custodian"))
+                    .clickOnActionDropDownAndRun(data.get("Action"))
+                    .validateDisplayOfDefaultTemplateInLHReleasePopup(data.get("DefaultTemplate"));
 
 
         }catch (Exception ex){
-            session.log_Error("TC_27959_VerifySendButtonFunctionalityInTestMailPopup");
-            throw new Exception("TC_27959_VerifySendButtonFunctionalityInTestMailPopup Failed", ex);
+            session.log_Error("TC_26247_VerifyDefaultTemplateInReleasePopup");
+            throw new Exception("TC_26247_VerifyDefaultTemplateInReleasePopup Failed", ex);
         }finally {
             session.end();
         }

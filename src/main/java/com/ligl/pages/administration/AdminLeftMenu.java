@@ -27,7 +27,7 @@ public class AdminLeftMenu extends LiglBasePage {
     @FindBy(xpath = "//span[@title='Contacts Master']")
     public WebElement contactsMasterLink;
 
-    @FindBy(xpath = "//span[@title='Employee Master']")
+    @FindBy(xpath = "//span[@title='Employee Directory']")
     public WebElement employeeMasterLink;
 
     @FindBy(xpath = "//span[@title='Parties']")

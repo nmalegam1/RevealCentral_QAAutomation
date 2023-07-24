@@ -1,4 +1,4 @@
-package com.ligl.LegalHold;
+package com.ligl.LegalHoldLatest;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF extends TestBase {
+public class TC_33850_VerifyLHApprovalProcessWhenApprovalConfigTrue extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
-    public void TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF(Hashtable<String, String> data) throws Exception {
+    public void TC_33850_VerifyLHApprovalProcessWhenApprovalConfigTrue(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -31,19 +31,13 @@ public class TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF extends TestBase
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu()
-                    .navigateToLegalHoldPage()
-                    .searchRequiredLegalHoldName(data.get("LHname"))
-                    .goToRequiredLegalHoldName(data.get("LHname"))
-                    .clickOnChooseColumnMenu()
-                    .searchTheColumnsInColumnMenuInLHGrid(data.get("Column"))
-                    .selectTheColumnCheckBox(data.get("Column"))
-                    .clickOnChooseColumnMenu().clickOnTheDownloadLHNLink();
+                    .getHeader().goToApprovalPage().approvingCaseSingleApprover(data.get("BatchName"));
+
 
 
         } catch (Exception ex) {
-            session.log_Error("TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF Failed");
-            throw new Exception("TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF Failed", ex);
+            session.log_Error("TC_33850_VerifyLHApprovalProcessWhenApprovalConfigTrue Failed");
+            throw new Exception("TC_33850_VerifyLHApprovalProcessWhenApprovalConfigTrue Failed", ex);
         } finally {
             session.end();
         }

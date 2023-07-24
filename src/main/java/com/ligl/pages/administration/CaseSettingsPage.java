@@ -2,6 +2,7 @@ package com.ligl.pages.administration;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -86,11 +87,12 @@ public class CaseSettingsPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(clientTemplateIdDrpDwn);
             clientTemplateIdDrpDwn.click();
             drpDwnSearchBar.sendKeys(clientTemplateId);
-            getDriver().customXpathBasedOnTextValue(clientTemplateId).click();
+            Thread.sleep(2000);
+            drpDwnSearchBar.sendKeys(Keys.ENTER);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("ClientTemplateId Selected");
 
-            //Processing Profiles
+            /*//Processing Profiles
             getSession().log_Info("Select Processing Profiles");
             getDriver().scrollToView(processingProfileDrpDwn);
             getDriver().waitForelementToBeClickable(processingProfileDrpDwn);
@@ -99,7 +101,7 @@ public class CaseSettingsPage extends LiglBaseSessionPage {
             getDriver().customXpathBasedOnTextValue(processingProfiles).click();
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Processing Profiles Selected");
-
+*/
             getSession().log_Info("Click on 'Save' Button");
             getDriver().waitForelementToBeClickable(saveBtn);
             saveBtn.click();

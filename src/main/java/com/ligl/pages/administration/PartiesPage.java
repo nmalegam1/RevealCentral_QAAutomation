@@ -32,13 +32,13 @@ public class PartiesPage extends LiglBaseSessionPage {
     @FindBy(id = "party-name")
     public WebElement partyNameTXt;
 
-    @FindBy(id = "sel-party-type")
+    @FindBy(id = "sel-party-typepartyUUID")
     public WebElement partyTypeDrpDwn;
 
     @FindBy(id = "department")
     public WebElement departmentTxt;
 
-    @FindBy(id = "party-add-select-status")
+    @FindBy(id = "party-add-select-statusstatusUUID")
     public WebElement statusDrpDwn;
 
     @FindBy(id = "description")

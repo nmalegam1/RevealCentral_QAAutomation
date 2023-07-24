@@ -1,4 +1,4 @@
-package com.ligl.LegalHold;
+package com.ligl.LegalHoldLatest;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,11 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold extends TestBase
+public class TC_56147_LHCreateWhenOnFlyAndLHApprovalIsFalse_ByFillingAllFields extends TestBase
 {
-
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
-    public void TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold(Hashtable<String, String> data) throws Exception
+    public void TC_56147_LHCreateWhenOnFlyAndLHApprovalIsFalse_ByFillingAllFields(Hashtable<String, String> data) throws Exception
     {
         try {
             session.log_Info(data.toString());
@@ -32,17 +31,18 @@ public class TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold extend
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu().navigateToLegalHoldPage()
-                    .searchRequiredLegalHoldName(data.get("LHname"))
-                    .clickOnApprovedLH(data.get("LHname"))
-                    .switchOnToTheStakeHolderTab()
-                    .clickOnCreateStakeHolderBtnInLH(data.get("FirstName"),data.get("LastName"),data.get("StakeDepartment"),data.get("StakeEmailID"),data.get("StakeCategoryValue"))
-                    .verifyStakeholderEmailIsDisplayed(data.get("StakeEmailID"));
+                    .clickOnAddNewLegalHoldButton()
+                    .createNewLegalHoldWhenOnFlyIsFalse(data.get("LHname"), data.get("CustodianTemp"), data.get("CustodianQTemp"), data.get("StakeHolderTemp"), data.get("StakeHolderQTemp"),data.get("StartDate"), data.get("EndDate"), data.get("KeyWord"))
+                    .verifyCreatedLegalHoldIsDisplayed(data.get("LHname"));
 
-
-        }catch (Exception ex){
-            session.log_Error("TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold");
-            throw new Exception("TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold Failed", ex);
-        }finally {
+        }
+        catch (Exception ex)
+        {
+            session.log_Error("TC_56147_LHCreateWhenOnFlyAndLHApprovalIsFalse_ByFillingAllFields");
+            throw new Exception("TC_56147_LHCreateWhenOnFlyAndLHApprovalIsFalse_ByFillingAllFields Failed", ex);
+        }
+        finally
+        {
             session.end();
         }
     }

@@ -1,4 +1,4 @@
-package com.ligl.Administration.LegalHold.ManageQuestionnaireTemplates;
+package com.ligl.AdminLatest.LegalHold;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -24,7 +24,8 @@ public class TC38065_Verify_the_process_creating_New_Template_by_choosing_Create
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
+                    //.loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
+                    .adminLogin(data.get("Username"), data.get("Password"),data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

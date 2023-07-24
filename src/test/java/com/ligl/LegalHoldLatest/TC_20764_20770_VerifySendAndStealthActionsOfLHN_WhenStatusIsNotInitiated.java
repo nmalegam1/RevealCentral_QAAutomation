@@ -1,4 +1,4 @@
-package com.ligl.LegalHold;
+package com.ligl.LegalHoldLatest;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_29354_VerifyWhetherRevokeAllowedForHrInActiveCustodian extends TestBase {
+public class TC_20764_20770_VerifySendAndStealthActionsOfLHN_WhenStatusIsNotInitiated extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
-    public void TC_29354_VerifyWhetherRevokeAllowedForHrInActiveCustodian(Hashtable<String, String> data) throws Exception {
+    public void TC_20764_20770_VerifySendAndStealthActionsOfLHN_WhenStatusIsNotInitiated(Hashtable<String, String> data) throws Exception {
 
         try {
             session.log_Info(data.toString());
@@ -24,34 +24,33 @@ public class TC_29354_VerifyWhetherRevokeAllowedForHrInActiveCustodian extends T
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
 
+            // Verifying The Columns In The LHN Custodian Grid
 
             ILiglPage page = new LaunchPage()
-
 
                     .openBrowser("chrome")
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().navigateToLegalHoldPage()
-                    .searchRequiredLegalHoldName(data.get("LHname")).goToRequiredLegalHoldName(data.get("LHname"))
+                    .getLeftMenu()
+                    .navigateToLegalHoldPage()
+                    .searchRequiredLegalHoldName(data.get("LHname1")).goToRequiredLegalHoldName(data.get("LHname1"))
                     .searchActionThroughEmail(data.get("Email"))
                     .clickOnActionDropDownAndRun(data.get("Action1"))
-                    .clickOnSendButton()
-                    .validateLHNStatus(data.get("LHNstatus"))
-                    .getHeader().goToAdministrationPage().navigateToEmployeeMasterPage()
-                    .searchActionThroughEmail(data.get("Email")).performEditAction(data.get("Employee")).editEmployeeStatus(data.get("EmpStatus"))
-                    .getHeader().viewCase().getHeader().navigateToLegalHoldPage()
-                    .searchRequiredLegalHoldName(data.get("LHname")).goToRequiredLegalHoldName(data.get("LHname"))
-                    .searchActionThroughEmail(data.get("Email"))
+                    .validateRecordWhenLHNStatusIsInNotintiatedState(data.get("Status1"))
                     .clickOnActionDropDownAndRun(data.get("Action2"))
-                    .validateLHNStatus(data.get("LHNstatus1"));
-
-
+                    .validateRecordWhenLHNStatusIsInNotintiatedState(data.get("Status1"))
+                    .switchOnToTheStakeHolderTab()
+                    .searchActionThroughEmail(data.get("Email"))
+                    .clickOnActionDropDownAndRunInStakeHolder(data.get("Action1"))
+                    .validateRecordWhenLHNStatusIsInNotintiatedState(data.get("Status1"))
+                    .clickOnActionDropDownAndRunInStakeHolder(data.get("Action2"))
+                    .validateRecordWhenLHNStatusIsInNotintiatedState(data.get("Status1"));
 
 
         } catch (Exception ex) {
-            session.log_Error("TC_29354_VerifyWhetherRevokeAllowedForHrInActiveCustodian Failed");
-            throw new Exception("TC_29354_VerifyWhetherRevokeAllowedForHrInActiveCustodian Failed", ex);
+            session.log_Error("TC_20764_20770_VerifySendAndStealthActionsOfLHN_WhenStatusIsNotInitiated Failed");
+            throw new Exception("TC_20764_20770_VerifySendAndStealthActionsOfLHN_WhenStatusIsNotInitiated Failed", ex);
         } finally {
             session.end();
         }

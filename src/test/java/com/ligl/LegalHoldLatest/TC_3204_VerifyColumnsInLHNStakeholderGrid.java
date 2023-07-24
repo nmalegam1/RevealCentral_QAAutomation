@@ -1,4 +1,4 @@
-package com.ligl.LegalHold;
+package com.ligl.LegalHoldLatest;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.ILiglPage;
@@ -10,40 +10,38 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_56146_LHEditWhenOnFlyIsFalse extends TestBase
-{
+public class TC_3204_VerifyColumnsInLHNStakeholderGrid extends TestBase {
+
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
-    public void TC_56146_LHEditWhenOnFlyIsFalse(Hashtable<String, String> data) throws Exception
-    {
+    public void TC_3204_VerifyColumnsInLHNStakeholderGrid(Hashtable<String, String> data) throws Exception {
+
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
-                // skip in extent report
+
                 session.skipTest("skipping the test as runmode was no");
-                // skip-testng
+
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
-            // Check That Any Added Custodian Should Not Be Displayed In LHN Or In DSI Page Untill Approved
+
+            // Verifying The Columns In The LHN Custodian Grid
 
             ILiglPage page = new LaunchPage()
+
                     .openBrowser("chrome")
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu().navigateToLegalHoldPage()
-                    .searchRequiredLegalHoldName(data.get("LHname"))
-                    .editLegalHoldWhenOnFlyIsFalse(data.get("EditedLegalHoldname") ,data.get("EditCustQTemplate"),data.get("LHname"))
-                    .clickOnLegalholdGridRefreshButton()
-                    .verifyEditedLegalHoldIsDisplayed(data.get("CompleteLHName"));
+                    .getLeftMenu()
+                    .navigateToLegalHoldPage()
+                    .searchRequiredLegalHoldName(data.get("LHname1")).goToRequiredLegalHoldName(data.get("LHname1"))
+                    .verifyColumnsInLHNStakeHolderGrid();
 
-        }
-        catch (Exception ex)
-        {
-            session.log_Error("TC_56146_LHEditWhenOnFlyIsFalse");
-            throw new Exception("TC_56146_LHEditWhenOnFlyIsFalse Failed", ex);
-        }
-        finally
-        {
+
+        } catch (Exception ex) {
+            session.log_Error("TC_3204_VerifyColumnsInLHNStakeholderGrid Failed");
+            throw new Exception("TC_3204_VerifyColumnsInLHNStakeholderGrid Failed", ex);
+        } finally {
             session.end();
         }
     }
