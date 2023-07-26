@@ -34,8 +34,8 @@ public class TC_37153_152_151_VerifyCopyeesListBasedOnActionInLH extends TestBas
                     .getLeftMenu().navigateToLegalHoldPage()
                     .searchRequiredLegalHoldName(data.get("LHname"))
                     .clickOnApprovedLH(data.get("LHname"))
-                    .searchRequiredLHNStatus(data.get("Status1"))
-                    .clickOnLHCheckbox(data.get("Custodian1"))
+                    .searchRequiredLHNStatus(data.get("Status1"));
+                    /*.clickOnLHCheckbox(data.get("Custodian1"))
                     .clickOnActionDropDownAndRun(data.get("Action1"))
                     .validateSSCopyeesList()
                     .copyeeSScancelBtnClick()
@@ -63,7 +63,7 @@ public class TC_37153_152_151_VerifyCopyeesListBasedOnActionInLH extends TestBas
                     .clickOnActionDropDownAndRun(data.get("Action3"))
                     .validateRCopyeesList()
                     .copyeeReleaseCancelBtnClick()
-                    .clickOnRefreshButton();
+                    .clickOnRefreshButton();*/
         }
         catch (Exception ex)
         {

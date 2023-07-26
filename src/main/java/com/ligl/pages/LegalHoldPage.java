@@ -518,68 +518,13 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     // Sending Legal Hold For Approval
 
     public ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException {
-        log_Info("Click on LHN ");
-        Thread.sleep(15000);
-        LHN.click();
-        waitForPageToLoad();
-
-        getCurrentDriver().findElement(By.xpath("//span[@title='" + CustName + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
-        SelectAction.click();
-        SelectAction.sendKeys("Send");
-        SelectAction.sendKeys(Keys.ENTER);
-        RunBtn.click();
-        Thread.sleep(3000);
+        log_Info("sendLHNToCustodian");
+        UnCheckAll.click();
+        log_Info("Click on Send Btn");
+        SendBtn.click();
+        log_Pass("LHN sent to custodian");
         return new LegalHoldPage();
     }
-
-    public ILiglPage sendingLegalHoldForApproval() throws InterruptedException {
-
-
-        log_Info("Click on LegalHoldName");
-        getDriver().waitForelementToBeClickable(LegalHoldName);
-        Thread.sleep(3000);
-        LegalHoldName.click();
-        getSession().log_Pass("LegalHoldName clicked");
-
-        log_Info("Click on Select Action Drop Down");
-        getDriver().waitForelementToBeClickable(SelectActionDrpDwn);
-        Thread.sleep(3000);
-        SelectActionDrpDwn.sendKeys("Send");
-        SelectActionDrpDwn.sendKeys(Keys.ENTER);
-        getSession().log_Pass("Select Action Drop Down clicked");
-
-        log_Info("Click on Run Button");
-        getDriver().waitForelementToBeClickable(RunBtn);
-        Thread.sleep(3000);
-        RunBtn.click();
-        getSession().log_Pass("Run Button clicked");
-
-
-        log_Info("Click on Select Email Template DrpDown");
-        getDriver().waitForelementToBeClickable(SelectEmailTemplateDrpDwn);
-        Thread.sleep(3000);
-        SelectEmailTemplateDrpDwn.sendKeys("Case Legal hold Approval");
-        SelectEmailTemplateDrpDwn.sendKeys(Keys.ENTER);
-        getSession().log_Pass("Clicked on Select Email Template DrpDown");
-
-        log_Info("Click on Select Approval DrpDown");
-        getDriver().waitForelementToBeClickable(SelectEmailTemplateDrpDwn);
-        Thread.sleep(3000);
-        SelectApprovalDrpDwn.sendKeys("A Vinay-superuser");
-        SelectApprovalDrpDwn.sendKeys(Keys.ENTER);
-        getSession().log_Pass("Clicked on Select Approval DrpDown");
-
-        log_Info("Click on Send For Approval Button");
-        getDriver().waitForelementToBeClickable(SendForApproveBtn);
-        Thread.sleep(3000);
-        SendForApproveBtn.click();
-        Thread.sleep(5000);
-        getSession().log_Pass("Clicked on Send For Approval Button ");
-        return new LegalHoldPage();
-
-
-    }
-
     public ILiglPage goToLegalHold(String LHname) throws Exception {
         try {
             log_Info("goToRequiredLegalHoldName() Started");
@@ -1560,19 +1505,19 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(EmpMail).perform();
             log_Info("Hovered on Name Header");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
 
             EmpMail.click();
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             log_Info("Menu clicked");
 
             log_Info("Click on Filter");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             Filter.click();
             log_Info("Filter Clicked");
 
             log_Info("Enter Employee");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             Searchbar.sendKeys(Email1);
             log_Info("Check Employee CheckBox");
             getCurrentDriver().findElement(By.xpath("//span[@title='" + Email1 + "']/ancestor::div[@role='rowgroup']//div[@ref='eCheckbox']")).click();
@@ -1596,7 +1541,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             log_Info("Check The Status of LegalHold");
             boolean a1 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + Status + "')]")).isDisplayed();
             System.out.println(a1);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             Assert.assertEquals(true, a1);
             return new LegalHoldPage();
 
@@ -1914,9 +1859,9 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             log_Info("Last name entered successfully");
 
             log_Info("click On Department dropdown field");
-            StakeDept.click();
-            DeptSearchBar.sendKeys(StakeDepartment);
-            Thread.sleep(5000);
+            //StakeDept.click();
+            StakeDept.sendKeys(StakeDepartment);
+            Thread.sleep(2000);
             StakeDept.sendKeys(Keys.ENTER);
             log_Info("Department selected successfully");
 
@@ -2582,7 +2527,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             log_Info("click On Refresh Button");
             Thread.sleep(5000);
             RefreshBtnStakeHolder.click();
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             log_Info("clicked On Refresh Button");
             return new LegalHoldPage();
 

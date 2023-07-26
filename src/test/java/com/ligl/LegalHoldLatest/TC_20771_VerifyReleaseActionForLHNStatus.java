@@ -33,7 +33,8 @@ public class TC_20771_VerifyReleaseActionForLHNStatus extends TestBase {
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
-                    .searchRequiredLegalHoldName(data.get("LHname1")).goToRequiredLegalHoldName(data.get("LHname1"))
+                    .searchRequiredLegalHoldName(data.get("LHname1")).
+                    goToRequiredLegalHoldName(data.get("LHname1"))
                     .searchActionThroughEmail(data.get("Email1"))
                     .validateLHNStatus(data.get("LHNstatus1"))
                     .clickOnActionDropDownAndRun(data.get("Action1"))

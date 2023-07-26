@@ -3,7 +3,7 @@
 <suite name="LegalHold">
     <test name="Verify Columns In Custodian Grid">
         <classes>
-            <class name="com.ligl.LegalHold.TC_1752_VerifyColumnsInLHNCustodianGrid"/>
+            <class name="com.ligl.LegalHoldLatest.TC_1752_VerifyColumnsInLHNCustodianGrid"/>
         </classes>
     </test>
     <test name="Verify Columns In StakeHolder Grid">
@@ -11,64 +11,24 @@
             <class name="com.ligl.LegalHoldLatest.TC_3204_VerifyColumnsInLHNStakeholderGrid"/>
         </classes>
     </test>
-    <test name="Verify Data Sent And Date In The Grid">
+    <test name="TC_20764_20770_VerifySendAndStealthActionsOfLHN_WhenStatusIsNotInitiated">
         <classes>
-            <class name="com.ligl.LegalHold.TC_14720_VerifyDataSentByDateInLHNforCustodianAndStakeholder"/>
+            <class name="com.ligl.LegalHoldLatest.TC_20764_20770_VerifySendAndStealthActionsOfLHN_WhenStatusIsNotInitiated"/>
         </classes>
     </test>
-    <test name="Verify Response LHN Questionnaire">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_14780_VerifyResponsesForLHNQuestionaire"/>
-        </classes>
-    </test>
-    <test name="Verify Send Stealth Action When LHN Status IS In Not-Initiated State">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_20764_20770_VerifySendStealthActionLHNStatusInNotInitiated"/>
-        </classes>
-    </test>
-    <test name="Verify Release Action For LHN Status">
+    <test name="TC_20771_VerifyReleaseActionForLHNStatus">
         <classes>
             <class name="com.ligl.LegalHoldLatest.TC_20771_VerifyReleaseActionForLHNStatus"/>
         </classes>
     </test>
-    <test name="Verify Default Template In Release Popup">
+    <test name="TC_26247_VerifyDefaultTemplateInReleasePopup">
         <classes>
-            <class name="com.ligl.LegalHold.TC_26247_VerifyDefaultTemplateInReleasePopup"/>
+            <class name="com.ligl.LegalHoldLatest.TC_26247_VerifyDefaultTemplateInReleasePopup"/>
         </classes>
     </test>
-    <test name="Process Of Creating LH When Config True">
+    <test name="TC_27959_VerifySendButtonFunctionalityInTestMailPopup">
         <classes>
-            <class name="com.ligl.LegalHold.TC_23782_VerifyProcessOfCreatingNewLegalHoldAppConfigTrue"/>
-        </classes>
-    </test>
-    <test name="Process Of Editing LH">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_23790_VerifyProcessOfEditingLegalHoldAppConfigTrue"/>
-        </classes>
-    </test>
-    <test name="Verify The Click Functionality Of Remainder Button">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_24315_VerifyClickFunctionalityOfRemainderButton"/>
-        </classes>
-    </test>
-    <test name="Verify The Click Functionality Of Escalation Button">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_24316_VerifyClickFunctionalityOfEscalationButton"/>
-        </classes>
-    </test>
-    <test name="Default Escalation And Remainder Values">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_24317_VerifyConfigValuesFromAdminEscalationRemainderDisplayingByDefault"/>
-        </classes>
-    </test>
-    <test name="TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians">
-        <classes>
-            <class name="com.ligl.LegalHoldLatest.TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians"/>
-        </classes>
-    </test>
-    <test name="Process Of Editing Remainder And Escalation Values At Case Level">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_24326_24327_VerifyUserAbleToEditRemainderEscalationConfigFieldsAtCaseLevel"/>
+            <class name="com.ligl.LegalHoldLatest.TC_27959_VerifySendButtonFunctionalityInTestMailPopup"/>
         </classes>
     </test>
     <test name="TC_29354_VerifyWhetherRevokeAllowedForHrInActiveCustodian">
@@ -76,47 +36,87 @@
             <class name="com.ligl.LegalHoldLatest.TC_29354_VerifyWhetherRevokeAllowedForHrInActiveCustodian"/>
         </classes>
     </test>
-    <test name="Process Of Creating LH By Start And End Date">
+    <test name="TC_33837_CheckApprovalHistory_StatusColumnsNotDisplay_and_Status_Approved_WhenLHConfigFalse">
         <classes>
-            <class name="com.ligl.LegalHold.TC_33382_VerifyFunctionalityOfCreatingLHStartEndDateDays"/>
+            <class name="com.ligl.LegalHoldLatest.TC_33837_CheckApprovalHistory_StatusColumnsNotDisplay_and_Status_Approved_WhenLHConfigFalse"/>
         </classes>
     </test>
-    <test name="Process Of Checking The Approval Process Of LH">
+    <test name="TC_33850_VerifyLHApprovalProcessWhenApprovalConfigTrue">
         <classes>
-            <class name="com.ligl.LegalHold.TC_33850_VerifyLHApprovalProcessWhenApprovalConfigTrue"/>
+            <class name="com.ligl.LegalHoldLatest.TC_33850_VerifyLHApprovalProcessWhenApprovalConfigTrue"/>
         </classes>
     </test>
-    <test name="Process Of Create First LH With Date Range And Keywords">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_34865_VerifyUserAbleToCreateFirstLHByDateRangeKeyWordsWhenAppConfigTrue"/>
-        </classes>
-    </test>
-    <test name="Process Of Checking The Preview Option In The Accordion In Approval Page ">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_33858_CheckWhetherAllLHDetailsWithPreviewOptionInAccordionApprovalRequestPage"/>
-        </classes>
-    </test>
-    <test name="Process Of LH Edit Before LH Stealth">
-        <classes>
-            <class name="com.ligl.LegalHold.TC_33904_VerifyProcessOfLHEditBeforeLHNSentStealthWhenAppConfigFalse"/>
-        </classes>
-    </test>
-    <test name="Process Of Creating LH ON Fly Edit">
+    <test name="TC_33977_VerifyFunctionalityOfCreatingLHBySelectingNewTemplateOnFlyEdit">
         <classes>
             <class name="com.ligl.LegalHoldLatest.TC_33977_VerifyFunctionalityOfCreatingLHBySelectingNewTemplateOnFlyEdit"/>
         </classes>
     </test>
-    <test name="Process Of Checking The Approval History And Status Columns">
+    <test name="TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold">
         <classes>
-            <class name="com.ligl.LegalHold.TC_33837_CheckApprovalHistoryAndStatusColumnsNotDisplayWhenLHConfigFalse"/>
+            <class name="com.ligl.LegalHoldLatest.TC_37050_StakeholderCreationBySelectingCategoryFromLegalHold"/>
         </classes>
     </test>
-    <test name="Process Of verifying PDF file in Acknowledge page for Custodian">
+    <test name="TC_37153_152_151_VerifyCopyeesListBasedOnActionInLH">
         <classes>
-            <class name="com.ligl.LegalHold.TC_33397_LHNforCustodianVerifyAcknowledgePageInPDF"/>
+            <class name="com.ligl.LegalHoldLatest.TC_37153_152_151_VerifyCopyeesListBasedOnActionInLH"/>
         </classes>
     </test>
-    <test name="Process Of verifying PDF file in Acknowledge page for Stakeholder">
+    <test name="TC_42960_VerifyReassignLHFunctionality">
+        <classes>
+            <class name="com.ligl.LegalHoldLatest.TC_42960_VerifyReassignLHFunctionality"/>
+        </classes>
+    </test>
+    <test name="TC_44414_ReDesignOfLHApprovalPage">
+        <classes>
+            <class name="com.ligl.LegalHoldLatest.TC_44414_ReDesignOfLHApprovalPage"/>
+        </classes>
+    </test>
+    <test name="TC_50524_CheckDropDownsSearchableInLegalHoldApprovalTab_And_SendLH_ForApproval">
+        <classes>
+            <class name="com.ligl.LegalHoldLatest.TC_50524_CheckDropDownsSearchableInLegalHoldApprovalTab_And_SendLH_ForApproval"/>
+        </classes>
+    </test>
+    <test name="TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians">
+        <classes>
+            <class name="com.ligl.LegalHoldLatest.TC_51780_CheckWhetherStealthModeActionPerformedToHRStatusInActiveCustodians"/>
+        </classes>
+    </test>
+    <test name="TC_51785_VerifyRevokeFunctionalityForPendingApprovalLegalHolds">
+        <classes>
+            <class name="com.ligl.LegalHoldLatest.TC_51785_VerifyRevokeFunctionalityForPendingApprovalLegalHolds"/>
+        </classes>
+    </test>
+    <test name="TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian">
+        <classes>
+            <class name="com.ligl.LegalHoldLatest.TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian"/>
+        </classes>
+    </test>
+    <test name="TC_51803_56119_VerifyFirstCreatedLH_KW_DR_DisplayingDefaultAndDisabled_ForNextCreatedLHs">
+        <classes>
+            <class name="com.ligl.LegalHoldLatest.TC_51803_56119_VerifyFirstCreatedLH_KW_DR_DisplayingDefaultAndDisabled_ForNextCreatedLHs"/>
+        </classes>
+    </test>
+    <test name="TC_51805_VerifyColumnsInLegalHoldGrid">
+        <classes>
+            <class name="com.ligl.LegalHoldLatest.TC_51805_VerifyColumnsInLegalHoldGrid"/>
+        </classes>
+    </test>
+    <test name="TC_56146_LHEditWhenOnFlyIsFalse">
+        <classes>
+            <class name="com.ligl.LegalHoldLatest.TC_56146_LHEditWhenOnFlyIsFalse"/>
+        </classes>
+    </test>
+    <test name="TC_56147_LHCreateWhenOnFlyAndLHApprovalIsFalse_ByFillingAllFields">
+        <classes>
+            <class name="com.ligl.LegalHoldLatest.TC_56147_LHCreateWhenOnFlyAndLHApprovalIsFalse_ByFillingAllFields"/>
+        </classes>
+    </test>
+    <test name="TC_56517_56518_LegalHoldNotesCreateAndEdit">
+        <classes>
+            <class name="com.ligl.LegalHold.TC_56517_56518_LegalHoldNotesCreateAndEdit"/>
+        </classes>
+    </test>
+    <!--<test name="Process Of verifying PDF file in Acknowledge page for Stakeholder">
         <classes>
             <class name="com.ligl.LegalHold.TC_33401_LHNforStakeHolderVerifyAcknowledgePageInPDF"/>
         </classes>
@@ -265,5 +265,5 @@
         <classes>
             <class name="com.ligl.LegalHold.TC_56122_56127_VerifyLHN_DR_KW_GivenInFirstLHN_DisplayingByDefault_Editable_InNextEditedLHN_Through_OnFlyEdit"/>
         </classes>
-    </test>
+    </test>-->
 </suite>
