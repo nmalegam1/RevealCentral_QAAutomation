@@ -3,6 +3,7 @@ package com.ligl.pages.casemanagement;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
 import com.ligl.pages.NotesPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,7 +37,7 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
     @FindBy(xpath = "//span[contains(text(),'Role')]/ancestor::div[@ref='eLabel']")
     WebElement Role;
 
-    @FindBy(xpath = "//span[contains(text(),'Type of Event')]/ancestor::div[@ref='eLabel']")
+    @FindBy(id = "sel-matterTypeofEvent")
     WebElement TypeOfEvent;
 
     @FindBy(xpath = "//span[contains(text(),'Status')]/ancestor::div[@ref='eLabel']")
@@ -159,6 +160,14 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
             Editbtn.click();
             Thread.sleep(5000);
             log_Info("Edit note button is Clicked");
+
+            if(TypeOfEvent.isEnabled()){
+
+                TypeOfEvent.click();
+                Thread.sleep(1000);
+                getCurrentDriver().findElement((By.xpath("//div[@id='sel-matterTypeofEvent-panel']//mat-option[2]"))).sendKeys(Keys.ENTER);
+            }
+
             Thread.sleep(5000);
             RequestBytxtbox.clear();
             Thread.sleep(2000);
