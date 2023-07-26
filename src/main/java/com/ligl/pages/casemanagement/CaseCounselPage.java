@@ -42,7 +42,7 @@ public class CaseCounselPage extends LiglBaseSessionPage {
     WebElement Searchbar;
 
 
-    @FindBy(id = "edit-btn")
+    @FindBy(xpath = "//button[contains(text(),' ADD TO PROJECT ')]")
     WebElement AddToCase;
 
     @FindBy(xpath = "//i[@class='fa fa-trash']")
@@ -181,7 +181,7 @@ public class CaseCounselPage extends LiglBaseSessionPage {
             log_Info("Click on Add In-House Counsel Button");
             ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", ClearFilterInhouseScreen);
             getDriver().waitForelementToBeClickable(InHouseCounselBtn);
-            Thread.sleep(5000);
+            getDriver().maxWait();
             InHouseCounselBtn.click();
             Thread.sleep(5000);
             getSession().log_Pass("Clicked on Add In-House Counsel Button");
@@ -218,7 +218,7 @@ public class CaseCounselPage extends LiglBaseSessionPage {
 
             log_Info("Click Add To case Button");
             getDriver().waitForelementToBeClickable(AddToCase);
-            getCurrentDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            getDriver().maxWait();
             AddToCase.click();
             getCurrentDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             getSession().log_Pass("Add To Case Button clicked");
@@ -276,7 +276,7 @@ public class CaseCounselPage extends LiglBaseSessionPage {
 
             log_Info("Click Add To case Button");
             getDriver().waitForelementToBeClickable(AddToCase);
-            getCurrentDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            getDriver().maxWait();
             AddToCase.click();
             getCurrentDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             getSession().log_Pass("Add To Case Button clicked");

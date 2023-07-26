@@ -37,7 +37,6 @@ public class TC_42960_VerifyReassignLHFunctionality extends TestBase
                     .clickOnLHCheckbox(data.get("LHname"))
                     .clickOnActionDropDownAndRun(data.get("Action1"))
                     .selectTemplateAndApproverAndClickOnSendBtn(data.get("Template1"),data.get("ApproverName"))
-                    .secondSearch(data.get("LHname"))
                     .validateLHStatus(data.get("Status"));
 
 
