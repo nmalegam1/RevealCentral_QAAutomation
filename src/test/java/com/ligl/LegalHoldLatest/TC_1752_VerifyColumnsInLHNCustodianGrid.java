@@ -30,7 +30,7 @@ public class TC_1752_VerifyColumnsInLHNCustodianGrid extends TestBase {
 
                     .openBrowser("chrome")
                     .navigateURL()
-                    .loginWithLiglorSSOUser("N",data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()

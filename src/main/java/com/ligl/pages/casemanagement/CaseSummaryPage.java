@@ -750,7 +750,7 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
             boolean b5 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("PST") + "')]")).isDisplayed();
             boolean b6 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("ENTITY")+ "')]")).isDisplayed();
             boolean b7 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("REGION")+ "')]")).isDisplayed();
-            boolean b8 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("PRIORITY")+ "')]")).isDisplayed();
+            boolean b8 = getCurrentDriver().findElement(By.xpath("//label[contains(text(),'Priority')]/ancestor::section//span[contains(text(),'"+data.get("PRIORITY")+"')]")).isDisplayed();
             boolean b9 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("WFT")+ "')]")).isDisplayed();
             boolean b10 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("DUEDATE1")+ "')]")).isDisplayed();
             boolean b11 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("DocketNumber")+ "')]")).isDisplayed();
@@ -793,7 +793,7 @@ public class CaseSummaryPage extends LiglBaseSessionPage {
 
             boolean b12 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("CostCenter")+ "')]")).isDisplayed();
             boolean b13 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("ProjectAlias") + "')]")).isDisplayed();
-            boolean b14 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("RetirementDate")+ "')]")).isDisplayed();
+            boolean b14 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("RetirementDate1")+ "')]")).isDisplayed();
             boolean b15 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("AddDP")+ "')]")).isDisplayed();
             boolean b16 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" +data.get("INPLACECHCK")+ "')]")).isDisplayed();
 

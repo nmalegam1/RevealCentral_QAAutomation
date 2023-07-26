@@ -31,8 +31,7 @@ public class TC_33977_VerifyFunctionalityOfCreatingLHBySelectingNewTemplateOnFly
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
-                    .getLeftMenu()
-                    .navigateToLegalHoldPage()
+                    .getLeftMenu().navigateToLegalHoldPage()
                     .addLHNWithMandatoryFields(data.get("LHname"), data.get("CustodianNoticeTemplate"))
                     .lhnOnFlyEdit()
                     .creatingNewTemplateByOnFlyEdit(data.get("NEWTemp"), data.get("SUBject"), data.get("CONtent"),data.get("LHname"));

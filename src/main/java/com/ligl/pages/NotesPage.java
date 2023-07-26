@@ -34,7 +34,7 @@ public class NotesPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[@role='presentation']//div[@row-index='0']//div[@col-id='Notes']")
     WebElement Notes_row;
 
-    @FindBy(xpath = "//button[@title='Edit']")
+    @FindBy(xpath = "//button[@aria-label='pencil']//i")
     WebElement Editbtn;
     @FindBy(xpath = "//button[@title='Delete']")
     WebElement Deletebtn;
@@ -196,7 +196,7 @@ public class NotesPage extends LiglBaseSessionPage {
             }
             getDriver().waitForelementToBeClickable(Editbtn);
             log_Pass("Clicking on Edit note button");
-            Thread.sleep(5000);
+            getDriver().maxWait();
             Editbtn.click();
             log_Info("Edit note button is Clicked");
             Thread.sleep(5000);

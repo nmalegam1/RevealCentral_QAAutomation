@@ -31,6 +31,12 @@ public class TC_33850_VerifyLHApprovalProcessWhenApprovalConfigTrue extends Test
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
+                    .getLeftMenu().navigateToLegalHoldPage()
+                    .clickOnAddNewLegalHoldButton()
+                    .enterNameOfTheLH(data.get("LHname"))
+                    .enterCustodianNoticeTemplate(data.get("CUSTNOTICETEMPLATE"))
+                    .clickOnSaveBtn()
+                    .sendLHNToApproval(data.get("LHname"), data.get("Action"),data.get("EmailTemplate"), data.get("ApproverName") )
                     .getHeader().goToApprovalPage().approvingCaseSingleApprover(data.get("BatchName"));
 
 

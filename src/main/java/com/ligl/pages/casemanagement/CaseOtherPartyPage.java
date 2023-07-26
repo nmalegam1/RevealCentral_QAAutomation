@@ -99,7 +99,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(id = "outsideRadio-button")
     WebElement OutsideBtn;
 
-    @FindBy(xpath = "//button[contains(text(),'Outside Counsel')]")
+    @FindBy(xpath = "//button[contains(text(),'OUTHOUSE COUNSEL')]")
     WebElement AddOutsideCounselBtn;
 
     @FindBy(id = "add-lawfirm-outside-btn")
