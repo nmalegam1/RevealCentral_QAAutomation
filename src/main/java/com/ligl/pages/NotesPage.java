@@ -34,7 +34,7 @@ public class NotesPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[@role='presentation']//div[@row-index='0']//div[@col-id='Notes']")
     WebElement Notes_row;
 
-    @FindBy(xpath = "//button[@aria-label='pencil']//i")
+    @FindBy(xpath = "//button[@title='Edit']//i")
     WebElement Editbtn;
     @FindBy(xpath = "//button[@title='Delete']")
     WebElement Deletebtn;

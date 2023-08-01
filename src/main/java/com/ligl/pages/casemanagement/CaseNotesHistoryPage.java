@@ -17,10 +17,10 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
     WebElement Notes;
     @FindBy(id = "btn-save-and-add")
     WebElement SaveBtn;
-    @FindBy(xpath = "//div[@row-id='0']//*[@title=\"View\"]")
+    @FindBy(xpath = "//button[@title='View']//i")
     WebElement Editbtn;
     //@FindBy(id = "DELETE")
-    @FindBy(xpath = "//div[@row-id='0']//*[@title=\"Delete\"]")
+    @FindBy(xpath = "//button[@title='Delete']//i")
     WebElement Deletebtn;
 
     @FindBy(xpath ="//button[contains(text(),'Yes')]")

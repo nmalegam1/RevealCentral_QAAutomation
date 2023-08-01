@@ -82,7 +82,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[@ref='eBodyViewport']//div[@role='rowgroup']//div[@role='row'][2]//div[@col-id='ApprovalStatus']//span//span//span")
     WebElement StatusOfUser1;
 
-    @FindBy(xpath = "//button[contains(text(),'Next')]")
+    @FindBy(xpath = "//button[contains(text(),'NEXT')]")
     WebElement NextBtn;
     @FindBy(id="On-Prem-button")
     WebElement OnpremDSTab;
@@ -693,6 +693,8 @@ public class SecurityPage extends LiglBaseSessionPage {
 
         try {
 
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendForApprovalBtn);
+
 
             log_Info("Click on Send For Approval Button");
             getDriver().waitForelementToBeClickable(SendForApprovalBtn);
@@ -713,12 +715,12 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Gmail Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GmailCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.id(GmailCheck)).click();
             log_Info("Clicked on Gmail Checkbox");
 
             log_Info("Click on Google Drive Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GoogleDriveCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.id(GoogleDriveCheck)).click();
             log_Info("Clicked on Google Drive Checkbox");
 
 
@@ -871,6 +873,8 @@ public class SecurityPage extends LiglBaseSessionPage {
         try {
 
 
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendForApprovalBtn);
+
             log_Info("Click on Send For Approval Button");
             getDriver().waitForelementToBeClickable(SendForApprovalBtn);
             Thread.sleep(3000);
@@ -890,12 +894,12 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Gmail Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GmailCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.id(GmailCheck)).click();
             log_Info("Clicked on Gmail Checkbox");
 
             log_Info("Click on Google Drive Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GoogleDriveCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.id(GoogleDriveCheck)).click();
             log_Info("Clicked on Google Drive Checkbox");
 
             log_Info("Click on Next Button");
@@ -1122,7 +1126,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on The Required DataSource Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='" + DataSource1 + "']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.id(DataSource1)).click();
             log_Info("Click on The Required DataSource Checkbox");
             return new SecurityPage();
 

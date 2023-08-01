@@ -215,9 +215,9 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             FilterIcon.click();
             log_Info("Filter Clicked");
             getDriver().waitForelementToBeClickable(SearchBarIcon);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             SearchBarIcon.sendKeys(PartyName);
-
+            Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//div[@col-id='PartyName']//span[@title='"+PartyName+"']")).click();
 
             return new CaseOtherPartyPage();

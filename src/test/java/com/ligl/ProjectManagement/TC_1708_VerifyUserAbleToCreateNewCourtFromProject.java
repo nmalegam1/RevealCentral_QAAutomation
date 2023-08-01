@@ -29,8 +29,8 @@ public class TC_1708_VerifyUserAbleToCreateNewCourtFromProject extends TestBase 
                     .GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCourtPage()
-                    .createNewCourt(data.get("CourtName"), data.get("PartyType"), data.get("Description"),data.get("Status"));
-                    /*.validateCourtAddedToGrid(data.get("CourtName"));*/
+                    .createNewCourt(data.get("CourtName"), data.get("PartyType"), data.get("Description"),data.get("Status"))
+                    .validateCourtAddedToGrid(data.get("CourtName"));
 
         } catch (Exception ex) {
             session.log_Error("TC_1708_VerifyUserAbleToCreateNewCourtFromProject Failed");

@@ -29,6 +29,7 @@ public class TC_62432_VerifyAlreadyAddedInhouseCounselsAreNotDisplayingInEmploye
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
+                   /* .searchcase(data.get("PROJECT")).GoToCase(data.get("PROJECT"))*/
                     .createNewCase(data)
                     .getLeftMenu().goToCaseCounselPage()
                     .addInhouseCounselToCase(data.get("Email1"), data.get("CounselName"))
