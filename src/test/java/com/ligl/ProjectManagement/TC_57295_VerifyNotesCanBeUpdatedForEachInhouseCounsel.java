@@ -40,8 +40,8 @@ public class TC_57295_VerifyNotesCanBeUpdatedForEachInhouseCounsel extends TestB
                     .editNotes(data.get("REQBY3"), data.get("NOTES3"))
                     .validateDataInNotesGrid(data.get("NOTES3"))
                     .secondSearchInNotesGrid(data.get("NOTES2"))
-                    .editNotes(data.get("REQBY4"), data.get("NOTES4"));
-                    /*.validateDataInNotesGrid(data.get("NOTES4"));*/
+                    .editNotes(data.get("REQBY4"), data.get("NOTES4"))
+                    .validateDataInNotesGrid(data.get("NOTES4"));
 
         } catch (Exception ex) {
             session.log_Error("TC_57295_VerifyNotesCanBeUpdatedForEachInhouseCounsel Failed");

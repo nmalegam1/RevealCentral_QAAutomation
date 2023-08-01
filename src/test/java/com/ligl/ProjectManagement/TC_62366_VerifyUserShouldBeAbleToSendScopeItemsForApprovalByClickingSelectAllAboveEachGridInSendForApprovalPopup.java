@@ -28,6 +28,7 @@ public class TC_62366_VerifyUserShouldBeAbleToSendScopeItemsForApprovalByClickin
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"), data.get("SSOUsername"), data.get("SSOPassword"), data.get("EntitySelection"), data.get("Username"), data.get("Password"))
                     .createNewCase(data)
+                   /* .searchcase(data.get("PROJECT")).GoToCase(data.get("PROJECT"))*/
                     .getLeftMenu()
                     .navigateToCustodiansPage()
                     .addCustodianToCase(data.get("Email1"))

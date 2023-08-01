@@ -26,16 +26,16 @@ public class TC_57290_VerifyOneOrMoreNotesCanBeCreatedForEachInhouseCounsel exte
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
-                    /*.createNewCase(data)*/
-                    .searchcase(data.get("PROJECT")).GoToCase(data.get("PROJECT"))
+                    .createNewCase(data)
+                   /* .searchcase(data.get("PROJECT")).GoToCase(data.get("PROJECT"))*/
                     .getLeftMenu().goToCaseCounselPage()
-                    /*.addInhouseCounselToCase(data.get("Email1"), data.get("CounselName"))
-                    .addInhouseCounselToCase(data.get("Email2"), data.get("CounselName2"))*/
+                    .addInhouseCounselToCase(data.get("Email1"), data.get("CounselName"))
+                    .addInhouseCounselToCase(data.get("Email2"), data.get("CounselName2"))
 
                     .searchingRequriedCounsel(data.get("Email1"))
                     .clickingOnNotesIcon()
-                    /*.createNewNotes(data.get("RequestBy"),data.get("NotesContent"))
-                    .createNewNotes(data.get("RequestBy1"),data.get("NotesContent1"))*/
+                    .createNewNotes(data.get("RequestBy"),data.get("NotesContent"))
+                    .createNewNotes(data.get("RequestBy1"),data.get("NotesContent1"))
                     .validateDataInNotesGrid(data.get("NotesContent"))
                     .validateDataInNotesGrid(data.get("NotesContent1"))
 

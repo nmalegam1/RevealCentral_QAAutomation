@@ -1839,7 +1839,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(1000);
             log_Pass("Entered The Required Column In Search Bar");
 
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+RequiredColumn1+"')]")).click();
+           /* getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+RequiredColumn1+"')]")).click();*/
 
             return this;
 
