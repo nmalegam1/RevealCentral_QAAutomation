@@ -23,7 +23,7 @@ public class PartiesPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[contains(text(),'Address')]")
     public WebElement addressLink;
 
-    @FindBy(xpath = "//button[normalize-space()='Next']")
+    @FindBy(id = "createHoldBtn")
     public WebElement nextBtn;
 
     @FindBy(xpath = "//button[normalize-space()='Cancel']")
