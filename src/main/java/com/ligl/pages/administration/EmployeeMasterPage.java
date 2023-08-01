@@ -246,6 +246,12 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
         try {
 
             log_Info("Hover on Name Header");
+            getCurrentDriver().findElement(By.xpath("//div[@col-id='FullName']")).click();
+            for (int i = 0; i < 5; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
             getDriver().waitForelementToBeClickable(EmailName);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(EmailName).perform();

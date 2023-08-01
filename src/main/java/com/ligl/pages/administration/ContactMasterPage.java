@@ -477,14 +477,14 @@ public class ContactMasterPage extends LiglBaseSessionPage {
             wait(1);
             getSession().log_Pass("Clicked on Next Button");
 
-            //Address Line 1
+            /*//Address Line 1
             getSession().log_Info("Enter Address Line1");
             addressLine1Txt.sendKeys(addressLine1);
             getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Address Line1 Entered");
+            getSession().log_Pass("Address Line1 Entered");*/
 
             //Address Line 2
-            getSession().log_Info("Enter Address Line2");
+           /* getSession().log_Info("Enter Address Line2");
             addressLine2Txt.sendKeys(addressLine2);
             getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Address Line2 Entered");
@@ -520,7 +520,7 @@ public class ContactMasterPage extends LiglBaseSessionPage {
             String zipNew = zip.replace("*", ""); //remove special character
             zipTxt.sendKeys(zipNew);
             getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("ZIP Entered");
+            getSession().log_Pass("ZIP Entered");*/
 
             //Save
             getSession().log_Info("Click on 'Create' Button");

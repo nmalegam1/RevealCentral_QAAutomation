@@ -268,11 +268,11 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
     public ILiglPage addQuestionToManageQuestionnaireTemplate(Hashtable<String, String> data) throws Exception {
         try {
             //Search the Question
-            selectQuestion.searchParentQuestion(data.get("AddQuestion"));
+            selectQuestion.searchParentQuestion(data.get("addQuestion"));
 
             //Select the Question
             getSession().log_Info("Click On Question check box");
-            getDriver().checkTheCheckBox(data.get("AddQuestion")).click();
+            getDriver().checkTheCheckBox(data.get("addQuestion")).click();
             getSession().log_Pass("Clicked On Question check box");
 
             //Click on AddToTemplate Button
@@ -284,9 +284,9 @@ public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
 
             //Verify that add question displaying in grid
             getSession().log_Info("Verify that add question displaying in grid");
-            searchTheQuestionInManageQuestionTemplate(data.get("AddQuestion"));
+            searchTheQuestionInManageQuestionTemplate(data.get("addQuestion"));
             String question = questionnaireTitleColumn.getText();
-            Assert.assertEquals(question, data.get("AddQuestion"));
+            Assert.assertEquals(question, data.get("addQuestion"));
             getSession().log_Pass("Verify that add question displaying in grid");
 
             getSession().takeScreenShot();

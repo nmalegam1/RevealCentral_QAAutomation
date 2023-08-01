@@ -37,15 +37,27 @@ public class TC_20764_20770_VerifySendAndStealthActionsOfLHN_WhenStatusIsNotInit
                     .searchRequiredLegalHoldName(data.get("LHname1")).goToRequiredLegalHoldName(data.get("LHname1"))
                     .searchActionThroughEmail(data.get("Email"))
                     .clickOnActionDropDownAndRun(data.get("Action1"))
-                    .validateRecordWhenLHNStatusIsInNotintiatedState(data.get("Status1"))
+                    .sendLHNToCustodian(data.get("Email"))
+                    .validateLHStatus(data.get("Status1"))
+                    .refreshLHN()
+                    .searchActionThroughEmail(data.get("Email"))
+                    .clickOnActionDropDownAndRun(data.get("Action3"))
+                    .refreshLHN()
+                    .searchActionThroughEmail(data.get("Email"))
                     .clickOnActionDropDownAndRun(data.get("Action2"))
-                    .validateRecordWhenLHNStatusIsInNotintiatedState(data.get("Status1"))
+                    .sendStealthMode()
+                    .validateLHStatus(data.get("Status2"))
                     .switchOnToTheStakeHolderTab()
                     .searchActionThroughEmail(data.get("Email"))
                     .clickOnActionDropDownAndRunInStakeHolder(data.get("Action1"))
-                    .validateRecordWhenLHNStatusIsInNotintiatedState(data.get("Status1"))
+                    .validateLHStatus(data.get("Status1"))
+                    .clickOnRefreshButtonStakeHolder()
+                    .searchActionThroughEmail(data.get("Email"))
+                    .clickOnActionDropDownAndRun(data.get("Action3"))
+                    .clickOnRefreshButtonStakeHolder()
+                    .searchActionThroughEmail(data.get("Email"))
                     .clickOnActionDropDownAndRunInStakeHolder(data.get("Action2"))
-                    .validateRecordWhenLHNStatusIsInNotintiatedState(data.get("Status1"));
+                    .validateLHStatus(data.get("Status2"));
 
 
         } catch (Exception ex) {

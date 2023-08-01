@@ -32,8 +32,8 @@ public class TC_44414_ReDesignOfLHApprovalPage extends TestBase
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader().goToApprovalPage()
                     .clickOnPendingLHNameInAppPage(data.get("CaseLHname"))
-                    .validateCaseLHDetailsInAppPage(data.get("OnlyLHname"));
-                    //.clickOnApproveBtnInAppPage();
+                    .validateCaseLHDetailsInAppPage(data.get("OnlyLHname"))
+                    .clickOnApproveBtnInAppPage();
 
 
         }catch (Exception ex){
