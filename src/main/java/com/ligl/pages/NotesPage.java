@@ -146,13 +146,13 @@ public class NotesPage extends LiglBaseSessionPage {
             Thread.sleep(1000);
             addNotesbtn.click();
             log_Info("Create new notes button clicked");
-
+/*
             if(TypeOfEvent.isEnabled()){
 
                 TypeOfEvent.click();
                 Thread.sleep(1000);
                 getCurrentDriver().findElement((By.xpath("//div[@id='sel-matterTypeofEvent-panel']//mat-option[2]"))).sendKeys(Keys.ENTER);
-            }
+            }*/
 
             log_Info("click on Requestedby field textbox");
             getDriver().waitForelementToBeClickable(RequestBytxtbox);
@@ -201,12 +201,12 @@ public class NotesPage extends LiglBaseSessionPage {
             log_Info("Edit note button is Clicked");
             Thread.sleep(5000);
 
-            if(TypeOfEvent.isEnabled()){
+           /* if(TypeOfEvent.isEnabled()){
 
                 TypeOfEvent.click();
                 Thread.sleep(1000);
                 getCurrentDriver().findElement((By.xpath("//div[@id='sel-matterTypeofEvent-panel']//mat-option[2]"))).sendKeys(Keys.ENTER);
-            }
+            }*/
 
             RequestBytxtbox.clear();
             log_Info("Requested By field is cleared");
@@ -343,6 +343,8 @@ public class NotesPage extends LiglBaseSessionPage {
         try {
 
             Thread.sleep(3000);
+            Notes_row.click();
+            log_Pass("Clicked on Notes");
 
             for (int i = 0; i < 8; i++)
             {

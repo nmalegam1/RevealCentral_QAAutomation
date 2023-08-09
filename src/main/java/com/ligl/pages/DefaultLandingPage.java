@@ -226,6 +226,15 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(id = "apply-filter")
     WebElement ApplyButtonInDB;
 
+    @FindBy(xpath = "//div[contains(text(),'Project name already exist')]")
+    WebElement DuplicateERROR;
+
+    @FindBy(xpath = "//button[contains(text(),'OK')]")
+    WebElement OKBUTTON;
+
+    @FindBy(xpath = "//span[contains(text(),' Project Name Already Exists')]")
+    WebElement ProjectFieldValidationMessage;
+
     /**
      * Method to Check the Region Field in Case Creation isMandatory
      * @param data
@@ -2095,5 +2104,67 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             throw new Exception("searchLastDateModifiedColumnAndValidateTheCountInDashBoardWhenUACIsFALSE() Failed",ex);
         }
 
+    }
+
+    public ILiglPage validatingTheErrorMessageWhileCreatingTheDuplicateProjectNames(Hashtable<String,String> data) throws Exception {
+
+        try {
+
+            log_Info("validatingTheErrorMessageWhileCreatingTheDuplicateProjectNames() Started");
+            log_Info("Check The Validation PopUp");
+            boolean a1 = DuplicateERROR.isDisplayed();
+            System.out.println(a1);
+            Assert.assertEquals(true, a1);
+            getDriver().minWait();
+            log_Pass("Checked The Validation PopUp");
+
+            log_Info("Click On OK button In The Error PopUp");
+            getDriver().waitForelementToBeClickable(OKBUTTON);
+            OKBUTTON.click();
+            getDriver().minWait();
+            log_Pass("Clicked On OK button In The Error PopUp");
+
+            log_Info(data.toString());
+
+            enterDescription(data.get("DESC")).enterProjectSettingTemplate(data.get("PST")).enterEntity(data.get("ENTITY")).enterRegion(data.get("REGION")).enterPriority(data.get("PRIORITY"))
+                            .validateTheSaveAndAddDetailsButtonIsInDisableModeInAddProjectPopUp();
+
+
+            log_Info("Check The Field Validation Under The Project Name");
+            getDriver().minWait();
+            boolean a2 = ProjectFieldValidationMessage.isDisplayed();
+            System.out.println(a2);
+            Assert.assertEquals(true, a2);
+            log_Pass("Checked The Field Validation Under The Project Name");
+
+
+            return new DefaultLandingPage();
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validatingTheErrorMessageWhileCreatingTheDuplicateProjectNames() Failed",ex);
+        }
+
+    }
+
+    public ILiglPage validateTheSaveAndAddDetailsButtonIsInDisableModeInAddProjectPopUp() throws Exception {
+
+        try {
+
+            log_Info("validateTheSaveAndAddDetailsButtonIsInDisableModeInAddProjectPopUp() Started");
+
+                if (SaveBtn.isEnabled()) {
+                    SaveBtn.click();
+                    throw new Exception("Save And Add Details Button Is In Enable Mode");
+                }
+                else {
+                    log_Pass("Save And Add Details Button Is In Disable Mode");
+                }
+            return this;
+
+        }
+        catch (Exception ex){
+            throw new Exception("Exception in validateTheSaveAndAddDetailsButtonIsInDisableModeInAddProjectPopUp()", ex);
+        }
     }
 }

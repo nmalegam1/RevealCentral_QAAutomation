@@ -108,7 +108,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
     WebElement YesBtn;
     @FindBy(id = "refresh-button")
     WebElement RefreshBtn;
-    @FindBy(xpath = "//button[contains(text(),'Proceed')]")
+    @FindBy(xpath = "//button[contains(text(),'PROCEED')]")
     WebElement InactEmpProceed;
 
     @FindBy(xpath="//button[@aria-label='Columns']")
@@ -353,7 +353,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
         log_Info("addInActiveEMPToCase() Started");
         InactEmpProceed.click();
         Thread.sleep(3000);
-        return new LegalHoldPage();
+        return new CaseCustodiansPage();
     }
     /**
      * Method to Search The Particular Custodian in Grid
@@ -365,7 +365,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
         try{
             log_Info("searchCustodian() Started");
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
                 if (Searchbar.isDisplayed()) {
                     Searchbar.clear();
                     Searchbar.sendKeys(Custodian);
@@ -373,18 +373,18 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             }catch(Exception ex){
                 CustEmailHeader.click();
             }
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             try {
                 if(Searchbar.isDisplayed()) {
                     Searchbar.clear();
                     Searchbar.sendKeys(Custodian);
                 }
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             }catch(Exception ex){
 
                 Filter.click();
                 Searchbar.sendKeys(Custodian);
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             }
             return new CaseCustodiansPage();
         }catch (Exception ex){
@@ -799,7 +799,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             for (int i = 0; i < 8; i++) {
                 ac.sendKeys(Keys.TAB).perform();
             }
-            //((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", CaseCustodianStatusHeader);
+
             getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+CustStatus+"')]")).isDisplayed();
             Thread.sleep(4000);
             for (int i = 0; i < 8; i++) {

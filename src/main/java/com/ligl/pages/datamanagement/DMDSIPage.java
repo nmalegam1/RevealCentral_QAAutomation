@@ -24,11 +24,11 @@ import java.security.InvalidKeyException;
 public class DMDSIPage extends LiglBaseSessionPage {
     @FindBy(id = "add-datasource")
     WebElement AddDSBtn;
-    @FindBy(id = "dsi-custodian")
+    @FindBy(id = "dsi-custodiancustodian")
     WebElement CustDropDown;
-    @FindBy(id = "dsi-datasource-type")
+    @FindBy(id = "dsi-datasource-typedatasourceType")
     WebElement DataSourceDropDown;
-    @FindBy(id = "dsi-DHScope-id")
+    @FindBy(id = "dsi-DHScope-iddataHoldScope")
     WebElement DataHoldScopeDD;
 
     @FindBy(id = "dsi-daterange-id")
@@ -39,7 +39,7 @@ public class DMDSIPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//span[contains(text(),' None')]")
     WebElement DataHoldNone;
-    @FindBy(xpath = "//button[contains(text(),'Search')]")
+    @FindBy(xpath = "//button[contains(text(),'SEARCH')]")
     WebElement SearchBtn;
     @FindBy(id = "btn-yes")
     WebElement AutomateYesBtn;
@@ -51,7 +51,7 @@ public class DMDSIPage extends LiglBaseSessionPage {
     WebElement DSIGridCheckBox;
     @FindBy(id = "Add-records-to-dsi")
     WebElement AddRecordToDSI;
-    @FindBy(xpath = "//button[contains(text(),'Automate')]")
+    @FindBy(xpath = "//button[contains(text(),'AUTOMATE')]")
     WebElement AutomateBtn;
 
     @FindBy(id = "General-button")
@@ -69,11 +69,11 @@ public class DMDSIPage extends LiglBaseSessionPage {
     WebElement CustomTab;
     @FindBy(id = "source-path")
     WebElement SourcePath;
-    @FindBy(id="dsi-datasource-type")
+    @FindBy(id="dsi-datasource-typedatasourceType")
     WebElement CustomDSTDropdown;
-    @FindBy(xpath = "//button[contains(text(),'Save')]")
+    @FindBy(xpath = "//button[contains(text(),'SAVE')]")
     WebElement CustomSaveBtn;
-    @FindBy(xpath = "//button[contains(text(),'Proceed')]")
+    @FindBy(xpath = "//button[contains(text(),'PROCEED')]")
     WebElement CustomProceedBtn;
     @FindBy(id="btn-ok")
     WebElement ConfirmationBtn;
