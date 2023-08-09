@@ -2228,4 +2228,6 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage searchingAddedCourtAfterDeleting(String AvailableCourt) throws Exception{
 		return null;
 	}
+	public ILiglPage revokeReassignNotInitiatedLH() throws Exception{return null;}
+	public ILiglPage checkActiveUserInLHApprovalDP(String UserName) throws Exception{return null;}
 }
