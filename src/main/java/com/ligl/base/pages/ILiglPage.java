@@ -1360,7 +1360,7 @@ public interface ILiglPage {
     ILiglPage validateSecondSearchAddedCourts(String CourtAdded) throws Exception;
 
     ILiglPage searchingAddedCourtAfterDeleting(String AvailableCourt) throws Exception;
-
-
+    ILiglPage revokeReassignNotInitiatedLH() throws Exception;
+    ILiglPage checkActiveUserInLHApprovalDP(String UserName) throws Exception;
 }
 
