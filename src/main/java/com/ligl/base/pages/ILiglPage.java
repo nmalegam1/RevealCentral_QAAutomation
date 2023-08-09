@@ -1385,5 +1385,7 @@ public interface ILiglPage {
 
     ILiglPage verifyJudgesAndProsecutorsShouldDisplayForTheRespectiveCourt(String existingJudge,String existingProsecutor) throws Exception;
 
+    ILiglPage revokeReassignNotInitiatedLH() throws Exception;
+    ILiglPage checkActiveUserInLHApprovalDP(String UserName) throws Exception;
 }
 

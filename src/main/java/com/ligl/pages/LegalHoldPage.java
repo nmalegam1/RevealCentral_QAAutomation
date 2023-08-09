@@ -81,7 +81,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     @FindBy(id = "btn-nextlhnTemp")
     WebElement NextBtn;
 
-    @FindBy(id = "lhcNoticeTemplateLHNCustodianTemplateUniqueID")
+    @FindBy(id = "lhcNoticeTemplate")
     WebElement ChooseNoticeTemplateDrpDwn;
 
     @FindBy(xpath = "//*[@id='mat-option-7']/span")
@@ -98,9 +98,6 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
     @FindBy(id = "template-name")
     WebElement SelectEmailTemplateDrpDwn;
-
-    @FindBy(id = "select-approver")
-    WebElement SelectApprovalDrpDwn;
 
     @FindBy(id = "send-approval-btn")
     WebElement SendForApproveBtn;
@@ -497,11 +494,10 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     WebElement EscalationMailTemp;
     @FindBy(id="escalation-sent-to")
     WebElement EscalationToBeSent;
-
-
+    @FindBy(xpath = "//button[contains(text(),'OK')]")
+    WebElement PopupOKBtn;
     @FindBy(xpath = "//div[@role='document']//input[@id='lhc-start-date']")
     WebElement StartDATE;
-
     @FindBy(xpath = "//div[@role='document']//input[@id='lhc-enddate']")
     WebElement EndDATE;
 
@@ -1557,31 +1553,33 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     public ILiglPage searchRequiredLegalHoldName(String LHname) throws Exception {
         try {
             log_Info("searchRequiredLegalHoldName() Started");
-            getDriver().waitForAngularRequestsToComplete();
-            log_Info("Hover on Name Header");
-            Actions ac = new Actions(getCurrentDriver());
-            ac.moveToElement(LHNAME).perform();
-            log_Info("Hovered on Name Header");
-            Thread.sleep(2000);
-            log_Info("Click On Legal Hold Name Menu");
+        try {
+            Thread.sleep(8000);
+            if (Searchbar.isDisplayed()) {
+                Searchbar.clear();
+                Searchbar.sendKeys(LHname);
+            }
+        }catch(Exception ex){
             LHNameMenu.click();
-            Thread.sleep(3000);
-            log_Info("Clicked On Legal Hold Name Menu");
-            log_Info("Click on Filter");
-            Thread.sleep(2000);
-            Filter.click();
-            Thread.sleep(3000);
-            log_Info("Filter Clicked");
-            log_Info("Enter LH name In The Search Bar");
-            Searchbar.sendKeys(LHname);
-            Thread.sleep(5000);
-            log_Info("Entered LH name In The Search Bar");
-            return new LegalHoldPage();
-
-        } catch (Exception | Error ex) {
-            log_Error(ex.getMessage());
-            throw new Exception("searchRequiredLegalHoldName() Failed", ex);
         }
+        Thread.sleep(3000);
+        try {
+            if(Searchbar.isDisplayed()) {
+                Searchbar.clear();
+                Searchbar.sendKeys(LHname);
+            }
+            Thread.sleep(3000);
+        }catch(Exception ex){
+
+            Filter.click();
+            Searchbar.sendKeys(LHname);
+            Thread.sleep(8000);
+        }
+        return new LegalHoldPage();
+    }catch (Exception ex){
+        log_Error("searchRequiredLegalHoldName() failed");
+        throw new Exception("Exception in searchRequiredLegalHoldName()");
+    }
     }
 
 
@@ -1633,6 +1631,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     public ILiglPage clickOnLHCheckbox(String LHname) throws Exception {
         try {
             log_Info("Check Legal hold name CheckBox");
+            Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//span[@title='" + LHname + "']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
             Thread.sleep(5000);
             log_Info("Legal hold name checked");
@@ -1643,6 +1642,17 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage revokeReassignNotInitiatedLH() throws Exception {
+        try {
+            log_Info("revokeReassignNotInitiatedLH() started");
+            PopupOKBtn.click();
+            log_Pass("Unable to send ReAssign / Revoke for");
+            return new LegalHoldPage();
+        } catch (Exception ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnLHCheckbox() Failed", ex);
+        }
+    }
     public ILiglPage selectTemplateAndApproverAndClickOnSendBtn(String Template1, String ApproverName) throws Exception {
         try {
             log_Info("selectTemplateAndApproverAndClickOnSendBtn() Started");
@@ -2057,10 +2067,9 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             enterCustodianNoticeTemplate(CustodianTemplate);
             getSession().log_Pass(" Choose Notice Template Dropdown clicked");
 
-            try {
-                log_Info("Started checking unavailability of on fly edit button for Custodian");
-                OnFlyEdit.isDisplayed();
-            } catch (Exception ex) {
+            if(OnFlyEdit.isDisplayed())
+                throw new Exception("On Fly edit button is displaying even disabled in DB");
+            else{
                 log_Info("on fly edit button for Custodian is not displaying");
             }
 
@@ -2083,6 +2092,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             clickOnDoneBtnInPreservationScopeScreen();
             log_Info("Click on Save Button");
             getDriver().waitForelementToBeClickable(LHNSaveBtn);
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", LHNSaveBtn);
             Thread.sleep(3000);
             LHNSaveBtn.click();
             Thread.sleep(5000);
@@ -4397,6 +4407,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         try{
             log_Info("chooseCustodianQuestionnaireTemplate() Started");
             CustQuestionaireDrpDwn.sendKeys(CustodianQuestionaireTemplate);
+            Thread.sleep(2000);
             CustQuestionaireDrpDwn.sendKeys(Keys.ENTER);
             Thread.sleep(2000);
             log_Pass("Selected custodian Questionaire Template Drop Down");
@@ -4607,6 +4618,17 @@ public class LegalHoldPage extends LiglBaseSessionPage {
         } catch (Exception ex) {
             log_Error("creatingNewTemplateByOnFlyEdit() is Failed");
             throw new Exception("Exception in creatingNewTemplateByOnFlyEdit()", ex);
+        }
+    }
+    public ILiglPage checkActiveUserInLHApprovalDP(String UserName) throws Exception{
+        try{
+            log_Info("checkActiveUserInLHApprovalDP() Started");
+            SelectLHApprover.click();
+            EmailTempSearch.sendKeys(UserName);
+            return new LegalHoldPage();
+        }catch (Exception ex){
+            log_Error("checkActiveUserInLHApprovalDP() is Failed");
+            throw new Exception("Exception in checkActiveUserInLHApprovalDP()", ex);
         }
     }
 }

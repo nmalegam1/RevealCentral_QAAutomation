@@ -2275,4 +2275,6 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage verifyJudgesAndProsecutorsShouldDisplayForTheRespectiveCourt(String existingJudge,String existingProsecutor) throws Exception{
 		return null;
 	}
+	public ILiglPage revokeReassignNotInitiatedLH() throws Exception{return null;}
+	public ILiglPage checkActiveUserInLHApprovalDP(String UserName) throws Exception{return null;}
 }
