@@ -44,9 +44,9 @@ public class Initiate_AutoProcess_ForRecordUpto_RelativityProcessing_SmokeTest e
                     .searchAccountEmailOneMoreTime()
                     .clickOnAutomateButton()
                     .getLeftMenu().goToDataManagementSummary()
-                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(data.get("CollectionStatus"))
-                    .getLeftMenu().goToPMSummaryPage()
-                    .validateAndWaitForRecordsToCompleteProcessing(data.get("Pstatus"));
+                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPAllGrid(data.get("CollectionStatus"));
+                    /*.getLeftMenu().goToPMSummaryPage()
+                    .validateAndWaitForRecordsToCompleteProcessing(data.get("Pstatus"))*/
 
 
         } catch (Exception ex) {

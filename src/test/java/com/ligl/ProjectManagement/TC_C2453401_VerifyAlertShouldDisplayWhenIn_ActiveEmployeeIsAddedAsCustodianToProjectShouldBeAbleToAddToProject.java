@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC_1603_VerifyUserAbleToAddOneOrMoreExistingPartiesFromModalByClickingAddPartyButton extends TestBase {
+public class TC_C2453401_VerifyAlertShouldDisplayWhenIn_ActiveEmployeeIsAddedAsCustodianToProjectShouldBeAbleToAddToProject extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "ProjectManagement")
-    public void TC_1603_VerifyUserAbleToAddOneOrMoreExistingPartiesFromModalByClickingAddPartyButton(Hashtable<String, String> data) throws Exception {
+    public void TC_C2453401_VerifyAlertShouldDisplayWhenIn_ActiveEmployeeIsAddedAsCustodianToProjectShouldBeAbleToAddToProject(Hashtable<String, String> data) throws Exception {
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -21,25 +21,21 @@ public class TC_1603_VerifyUserAbleToAddOneOrMoreExistingPartiesFromModalByClick
                 //skip - testng
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
-            ILiglPage Launch = new LaunchPage()
+            ILiglPage page = new LaunchPage()
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
                     .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName"))
                     .GoToCase(data.get("CaseName"))
-                    .getLeftMenu()
-                    .goToOtherPartyPage()
-                    .addingExistingParty(data.get("PartyType1"), data.get("PartyName1"))
-                    .addingExistingParty(data.get("PartyType2"), data.get("PartyName2"))
-                    .searchingParty(data.get("PartyName1"))
-                    .validatePartyInTheOtherPartyScreenAfterAddingThroughAddPartyButton(data.get("PartyName1"))
-                    .secondSearchPartyInOtherPartyGrid(data.get("PartyName2"))
-                    .validatePartyInTheOtherPartyScreenAfterAddingThroughAddPartyButton(data.get("PartyName2"));
+                    .getLeftMenu().navigateToCustodiansPage()
+                    .addInActiveEMPToCase(data.get("Custodian"))
+                    .validateCustodianAddedToGrid(data.get("Custodian"));
+
 
         } catch (Exception ex) {
-            session.log_Error("TC_1603_VerifyUserAbleToAddOneOrMoreExistingPartiesFromModalByClickingAddPartyButton Failed");
-            throw new Exception("TC_1603_VerifyUserAbleToAddOneOrMoreExistingPartiesFromModalByClickingAddPartyButton Failed", ex);
+            session.log_Error("TC_C2453401_VerifyAlertShouldDisplayWhenIn_ActiveEmployeeIsAddedAsCustodianToProjectShouldBeAbleToAddToProject Failed");
+            throw new Exception("Exception in TC_C2453401_VerifyAlertShouldDisplayWhenIn_ActiveEmployeeIsAddedAsCustodianToProjectShouldBeAbleToAddToProject", ex);
         } finally {
             session.end();
         }

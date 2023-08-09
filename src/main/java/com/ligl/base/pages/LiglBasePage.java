@@ -2228,6 +2228,53 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage searchingAddedCourtAfterDeleting(String AvailableCourt) throws Exception{
 		return null;
 	}
+
+	public ILiglPage validatingTheErrorMessageWhileCreatingTheDuplicateProjectNames(Hashtable<String,String> data) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateTheSaveAndAddDetailsButtonIsInDisableModeInAddProjectPopUp() throws Exception{
+		return null;
+	}
+
+	public ILiglPage clickingOnClearFilterButtonInOtherPartyScreen() throws Exception{
+		return null;
+	}
+
+	public ILiglPage validatePartyInTheOtherPartyScreenAfterAddingThroughAddPartyButton(String PartyName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage secondSearchPartyInOtherPartyGrid(String PartyName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage validateCustStatus(String CustStatus) throws Exception{
+		return null;
+	}
+
+	public ILiglPage deleteAddedJudgeForTheRespectiveCourt() throws Exception{
+		return null;
+	}
+
+	public ILiglPage deleteContactsAddedForRespectiveParty(String ContactName) throws Exception{
+		return null;
+	}
+
+	public ILiglPage verifyContactsAndCounselsShouldDisplayForTheRespectiveParty(String existingContact,String existingCounsel) throws Exception{
+		return null;
+	}
+
+	public ILiglPage secondSearchForTheOutsideCounsel(String OutsideCounsel) throws Exception{
+		return null;
+	}
+
+	public ILiglPage deleteOutsideCounselForTheRespectiveParty(String OutsideCounsel) throws Exception{
+		return null;
+	}
+	public ILiglPage verifyJudgesAndProsecutorsShouldDisplayForTheRespectiveCourt(String existingJudge,String existingProsecutor) throws Exception{
+		return null;
+	}
 	public ILiglPage revokeReassignNotInitiatedLH() throws Exception{return null;}
 	public ILiglPage checkActiveUserInLHApprovalDP(String UserName) throws Exception{return null;}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SIT-Execution" >
+<suite name="SIT-Execution" parallel="tests" thread-count="3">
     <suite-files>
         <suite-file path="ProjectManagement.xml" />
     </suite-files>

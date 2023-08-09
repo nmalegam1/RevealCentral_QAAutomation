@@ -1360,6 +1360,31 @@ public interface ILiglPage {
     ILiglPage validateSecondSearchAddedCourts(String CourtAdded) throws Exception;
 
     ILiglPage searchingAddedCourtAfterDeleting(String AvailableCourt) throws Exception;
+
+    ILiglPage validatingTheErrorMessageWhileCreatingTheDuplicateProjectNames(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage validateTheSaveAndAddDetailsButtonIsInDisableModeInAddProjectPopUp() throws Exception;
+
+    ILiglPage clickingOnClearFilterButtonInOtherPartyScreen() throws Exception;
+
+    ILiglPage validatePartyInTheOtherPartyScreenAfterAddingThroughAddPartyButton(String PartyName) throws Exception;
+
+    ILiglPage secondSearchPartyInOtherPartyGrid(String PartyName) throws Exception;
+
+    ILiglPage validateCustStatus(String CustStatus) throws Exception;
+
+    ILiglPage deleteAddedJudgeForTheRespectiveCourt() throws Exception;
+
+    ILiglPage deleteContactsAddedForRespectiveParty(String ContactName) throws Exception;
+
+    ILiglPage verifyContactsAndCounselsShouldDisplayForTheRespectiveParty(String existingContact,String existingCounsel) throws Exception;
+
+    ILiglPage secondSearchForTheOutsideCounsel(String OutsideCounsel) throws Exception;
+
+    ILiglPage deleteOutsideCounselForTheRespectiveParty(String OutsideCounsel) throws Exception;
+
+    ILiglPage verifyJudgesAndProsecutorsShouldDisplayForTheRespectiveCourt(String existingJudge,String existingProsecutor) throws Exception;
+
     ILiglPage revokeReassignNotInitiatedLH() throws Exception;
     ILiglPage checkActiveUserInLHApprovalDP(String UserName) throws Exception;
 }
