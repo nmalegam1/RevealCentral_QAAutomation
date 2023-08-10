@@ -13,6 +13,7 @@ import java.util.Hashtable;
 public class AdminLoginTest_001 extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "Smoke")
     public void AdminLoginTest_001(Hashtable<String,String> data) throws Exception {
+        testCaseId="2452788";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -25,7 +26,7 @@ public class AdminLoginTest_001 extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
                     .validateAdminRole()
                     .getHeader()
                     .logout();

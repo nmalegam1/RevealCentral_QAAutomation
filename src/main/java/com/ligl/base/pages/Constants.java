@@ -44,8 +44,14 @@ public class Constants {
 	public static final String TCID = "TCID";
 	public static final String RUNMODE = "Runmode";
 
+	//TestRail
+	public static String testRail_RunId="6110";
+	public static String testRail_UserName="test@revealdata.com";
+	public static String testRail_Password="Password1!";
+	public static String testRailEngineURL="https://brainspace.testrail.net/";
+	public static int testRailStatus_Pass=1;
+	public static int testRailStatus_Fail=5;
 	//Import Employee exel file
-
 	public static final String ImportXLSX_ShortTemplate = System.getProperty("user.dir")+"\\importEmpTemplates\\ImportXLSX_ShortTemplate.xlsx";
 	public static final String ImportXLSX_Template_FullTemplate = System.getProperty("user.dir")+"\\importEmpTemplates\\ImportXLSX_Template.xlsx";
 	public static final String ImportXLSX_Template_Title_Optional = System.getProperty("user.dir")+"\\importEmpTemplates\\ImportXLSX_Template_Title_Optional.xlsx";
