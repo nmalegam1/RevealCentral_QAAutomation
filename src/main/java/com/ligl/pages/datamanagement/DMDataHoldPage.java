@@ -469,7 +469,10 @@ public class DMDataHoldPage extends LiglBaseSessionPage {
 
                     }
                 }
-
+                else {
+                    log_Error("The Replaced Record Is Not In Red Colour");
+                    throw new Exception("The Replaced Record Is Not In Red Colour");
+                }
             return new DMDataHoldPage();
                     }
         catch(Exception ex){

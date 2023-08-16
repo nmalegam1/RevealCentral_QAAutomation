@@ -318,6 +318,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             TemplateNameDrpDwn.click();
             Thread.sleep(4000);
             EmailTempText.sendKeys(Apptemp);
+            getDriver().minWait();
             EmailTempText.sendKeys(Keys.ENTER);
             Thread.sleep(3000);
             log_Info("Case Approval Temp selected");

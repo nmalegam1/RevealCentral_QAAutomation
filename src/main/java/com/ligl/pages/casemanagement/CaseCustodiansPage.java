@@ -133,6 +133,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             log_Info("Click Add Custodian Button");
             getDriver().waitForelementToBeClickable(AddCust);
             AddCust.click();
+            getDriver().moderateWait();
 
             ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", EmpMail);
 

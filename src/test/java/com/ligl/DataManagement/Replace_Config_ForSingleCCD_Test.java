@@ -26,9 +26,7 @@ public class Replace_Config_ForSingleCCD_Test extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
-                    /*.navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))*/
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
@@ -36,10 +34,10 @@ public class Replace_Config_ForSingleCCD_Test extends TestBase {
                     .getLeftMenu().navigateToDataSourcesPage()
                     .multipleDataSourceSelect(data)
                     .getLeftMenu().goToSecurityPage()
-                    .caseApprovalIrrespectiveOfApprovalConfig(data.get("BchName"),data.get("Apptemp"),data.get("UserName"),data.get("CaseNameApprove"))
+                    .caseApprovalIrrespectiveOfApprovalConfig(data.get("BchName"),data.get("PJApptemp"),data.get("ApproverUN"),data.get("CaseNameApprove"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
-                    .createLHWith_KW_DR(data.get("LHName"),data.get("CustodianTemplate"),data.get("startDate"),data.get("endDate"),data.get("keyword"))
+                    .createLHWith_KW_DR(data.get("LHName"),data.get("CustTemp"),data.get("StartDate"),data.get("EndDate"),data.get("Keyword"))
                     .legalHoldApprovalIrrespectiveOfApprovalConfig(data.get("LHName"),data.get("LHAction"),data.get("EmailTemp"),data.get("ApproverUN"),data.get("CaseLHN"))
                     .getLeftMenu().goToDSIPage()
                     .multipleCCDsSelect(data)
@@ -47,18 +45,18 @@ public class Replace_Config_ForSingleCCD_Test extends TestBase {
                     .clickOnAutomateButton()
                     .getLeftMenu().goToDataManagementSummary()
                     .goToDMLHScope()
-                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPLHScopeGrid(data.get("Status"))
+                    .validateAndWaitForRecordsToCompleteLockOrCollectionInIPPLHScopeGrid(data.get("LockCompletedStatus"))
                     .getLeftMenu()
                     .goToPreservation()
                     .goToPreservationLHScope()
-                    .searchCCDWithCustNameAndDSName(data.get("CustFullName"),data.get("DataSource"))
+                    .searchCCDWithCustNameAndDSName(data.get("GMail_Cust_FullName"),data.get("GMail_DataSource"))
                     .checkResultsCount()
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
                     .editLH_DR_KW(data.get("LHName"),data.get("NewStartDate"),data.get("NewEndDate"),data.get("NewKeyword"))
                     .getLeftMenu().goToPreservation()
                     .goToPreservationLHScope()
-                    .checkingSingleCCDRecordIsReplacedWithLatestFilters(data.get("CustFullName"),data.get("DataSource"),data.get("Status"),data.get("LockNotInitiateStatus"),data.get("ExpectedLHLDR"),data.get("ExpectedLHLKW"));
+                    .checkingSingleCCDRecordIsReplacedWithLatestFilters(data.get("GMail_Cust_FullName"),data.get("GMail_DataSource"),data.get("LockCompletedStatus"),data.get("LockNotInitiateStatus"),data.get("LatestLHLDR"),data.get("LatestLHLKW"));
 
         } catch (Exception ex) {
             session.log_Error("Replace_Config_ForSingleCCD_Test Failed");

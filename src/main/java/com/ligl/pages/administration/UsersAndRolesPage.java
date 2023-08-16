@@ -42,9 +42,8 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
     WebElement roleAssigDropDown;
     @FindBy(id = "role-sel-inputstatus")
     WebElement statusDropDown;
-    @FindBy(id = "usr-name-input")
+    @FindBy(xpath = "//input[@formcontrolname='email']")
     WebElement userNameTxtBox;
-
     @FindBy(xpath = "//span[@class='mat-checkbox-inner-container']")
     WebElement manualPwdChk;
     @FindBy(id = "password-input")

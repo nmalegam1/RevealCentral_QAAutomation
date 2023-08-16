@@ -24,7 +24,7 @@ public class TC_20764_20770_VerifySendAndStealthActionsOfLHN_WhenStatusIsNotInit
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
 
-            // Verifying The Columns In The LHN Custodian Grid
+
 
             ILiglPage page = new LaunchPage()
 
@@ -34,25 +34,25 @@ public class TC_20764_20770_VerifySendAndStealthActionsOfLHN_WhenStatusIsNotInit
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToLegalHoldPage()
-                    .searchRequiredLegalHoldName(data.get("LHname1")).goToRequiredLegalHoldName(data.get("LHname1"))
-                    .searchActionThroughEmail(data.get("Email"))
+                    .searchRequiredLegalHoldName(data.get("LHname1"))
+                    .goToRequiredLegalHoldName(data.get("LHname1"))
+                    .searchActionThroughEmail(data.get("Email1"))
                     .clickOnActionDropDownAndRun(data.get("Action1"))
-                    .sendLHNToCustodian(data.get("Email"))
+                    .sendLHNToCustodian()
                     .validateLHStatus(data.get("Status1"))
                     .refreshLHN()
-                    .searchActionThroughEmail(data.get("Email"))
-                    .clickOnActionDropDownAndRun(data.get("Action3"))
-                    .refreshLHN()
-                    .searchActionThroughEmail(data.get("Email"))
+                    .searchActionThroughEmail(data.get("Email2"))
                     .clickOnActionDropDownAndRun(data.get("Action2"))
                     .sendStealthMode()
                     .validateLHStatus(data.get("Status2"))
+
                     .switchOnToTheStakeHolderTab()
-                    .searchActionThroughEmail(data.get("Email"))
+
+                    .searchActionThroughEmail(data.get("Email1"))
                     .clickOnActionDropDownAndRunInStakeHolder(data.get("Action1"))
                     .validateLHStatus(data.get("Status1"))
                     .clickOnRefreshButtonStakeHolder()
-                    .searchActionThroughEmail(data.get("Email"))
+                    .searchActionThroughEmail(data.get("Email2"))
                     .clickOnActionDropDownAndRun(data.get("Action3"))
                     .clickOnRefreshButtonStakeHolder()
                     .searchActionThroughEmail(data.get("Email"))

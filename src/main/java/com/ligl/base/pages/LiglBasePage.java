@@ -499,7 +499,7 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validateProsecutorAddedToGrid(String FirstName,String LastName) throws Exception{return null;}
 	public ILiglPage searchProsecutor(String s1, String s2) throws Exception{return null;}
 	public  ILiglPage deleteProsecutor(String FirstName, String LastName) throws Exception{return null;}
-	public ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException{return null;}
+	public ILiglPage sendLHNToCustodian() throws InterruptedException{return null;}
 	public ILiglPage activeInactiveCustodians(String s1,String s2)throws Exception{return null;}
 	public ILiglPage deActivateActiveCustodian(String s1,String s2)throws Exception{return null;}
 	public ILiglPage editDueDate(String s)throws Exception{return null;}
