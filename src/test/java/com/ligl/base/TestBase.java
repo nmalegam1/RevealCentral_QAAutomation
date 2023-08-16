@@ -40,10 +40,13 @@ public class TestBase {
     @AfterMethod
     public void updateResultsToTestRail(ITestResult result) throws APIException, IOException {
         if (session.getGlobalData("TestRailUpdate").toLowerCase().contentEquals("yes")) {
-            if (result.getStatus() == ITestResult.SUCCESS)
-                TestRailManager.addResultsForTestCase(testCaseId, TestRailManager.testRailPass, "");
-            else if (result.getStatus() == ITestResult.FAILURE)
-                TestRailManager.addResultsForTestCase(testCaseId, TestRailManager.testRailFail, "");
+            String[] listOfTestCases = testCaseId.split("[,]");
+            for (String tcId : listOfTestCases) {
+                if (result.getStatus() == ITestResult.SUCCESS)
+                    TestRailManager.addResultsForTestCase(tcId, TestRailManager.testRailPass, "");
+                else if (result.getStatus() == ITestResult.FAILURE)
+                    TestRailManager.addResultsForTestCase(tcId, TestRailManager.testRailFail, "");
+            }
         }
     }
 }

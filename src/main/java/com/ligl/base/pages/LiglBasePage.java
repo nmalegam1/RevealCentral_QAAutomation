@@ -499,6 +499,12 @@ public class LiglBasePage implements ILiglPage {
 	public ILiglPage validateProsecutorAddedToGrid(String FirstName,String LastName) throws Exception{return null;}
 	public ILiglPage searchProsecutor(String s1, String s2) throws Exception{return null;}
 	public  ILiglPage deleteProsecutor(String FirstName, String LastName) throws Exception{return null;}
+
+	@Override
+	public ILiglPage sendLHNToCustodian() throws InterruptedException {
+		return null;
+	}
+
 	public ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException{return null;}
 	public ILiglPage activeInactiveCustodians(String s1,String s2)throws Exception{return null;}
 	public ILiglPage deActivateActiveCustodian(String s1,String s2)throws Exception{return null;}
@@ -2277,4 +2283,12 @@ public class LiglBasePage implements ILiglPage {
 	}
 	public ILiglPage revokeReassignNotInitiatedLH() throws Exception{return null;}
 	public ILiglPage checkActiveUserInLHApprovalDP(String UserName) throws Exception{return null;}
+
+	public ILiglPage RCLogin(String userType, String entity) throws Exception{
+		return null;
+	}
+
+	public ILiglPage loginWithSSOUser(String Entity) throws InterruptedException{
+		return null;
+	}
 }
