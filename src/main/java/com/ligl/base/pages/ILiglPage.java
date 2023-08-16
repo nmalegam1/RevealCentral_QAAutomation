@@ -39,17 +39,13 @@ public interface ILiglPage {
     ILiglPage validateAdminRole() throws Exception;
 
     ILiglPage login(String userName, String password, String Entity) throws Exception;
-
     ILiglPage adminLogin(String userName, String password, String entity) throws Exception;
-
+    ILiglPage RCLogin(String userType, String entity) throws Exception;
     ILiglPage navigateSSOLoginPage();
-
     ILiglPage SSOLogin(String userName, String password, String Entity) throws InterruptedException;
-
+    ILiglPage loginWithSSOUser(String Entity) throws InterruptedException;
     ILiglPage selectEntity(String entity);
-
     ILiglPage createNewCase(Hashtable<String, String> data) throws Exception;
-
     ILiglPage clickClearFilterBtn();
 
     // Ligl - session pages
@@ -58,7 +54,6 @@ public interface ILiglPage {
     ILiglPage validateCaseNotinitiatedState() throws Exception;
 
     void log_Info(String message);
-
 
     ILiglPage multipleCustodianSelect(Hashtable<String, String> data)throws Exception;
     ILiglPage multipleDataSourceSelect(Hashtable<String, String> data)throws Exception;

@@ -13,6 +13,8 @@ import java.util.Hashtable;
 public class AdminLoginTest_001 extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "Smoke")
     public void AdminLoginTest_001(Hashtable<String,String> data) throws Exception {
+        //testCaseId will be respective TestRail Case id for the test case we can find from Master Suite
+        testCaseId="2452788";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -21,16 +23,14 @@ public class AdminLoginTest_001 extends TestBase {
                 //skip - testng
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
-
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .adminLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    //.adminLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .RCLogin(data.get("LoginUser"), data.get("Entity"))
                     .validateAdminRole()
                     .getHeader()
                     .logout();
-
-
         }catch (Exception ex){
             session.log_Error("AdminLoginTest_001 Failed");
             throw new Exception("AdminLoginTest_001 Failed", ex);
