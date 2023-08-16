@@ -14,7 +14,7 @@ public class AdminLoginTest_001 extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData", description = "Smoke")
     public void AdminLoginTest_001(Hashtable<String,String> data) throws Exception {
         //testCaseId will be respective TestRail Case id for the test case we can find from Master Suite
-        testCaseId="2452788";
+        testCaseId="2452788,8786768,6757657";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
