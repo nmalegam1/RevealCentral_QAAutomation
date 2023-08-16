@@ -300,7 +300,7 @@ public interface ILiglPage {
 
     ILiglPage deleteProsecutor(String FirstName, String LastName) throws Exception;
 
-    ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException;
+    ILiglPage sendLHNToCustodian() throws InterruptedException;
 
     ILiglPage deActivateActiveCustodian(String s1, String s2) throws Exception;
 

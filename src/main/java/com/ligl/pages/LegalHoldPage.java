@@ -271,7 +271,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     WebElement MailSubject;
     @FindBy(css = "div[role='textbox']")
     WebElement MailContent;
-    @FindBy(xpath = "//mat-select[@id='lhcNoticeTemplateLHNCustodianTemplateUniqueID']//span")
+    @FindBy(xpath = "//mat-select[@id='lhcNoticeTemplate']//span")
     WebElement selectedTemplateName;
     @FindBy(id = "legal-hold-configuration-btn")
     WebElement CustodianNextBtn;
@@ -513,7 +513,7 @@ public class LegalHoldPage extends LiglBaseSessionPage {
 
     // Sending Legal Hold For Approval
 
-    public ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException {
+    public ILiglPage sendLHNToCustodian() throws InterruptedException {
         log_Info("sendLHNToCustodian");
         UnCheckAll.click();
         log_Info("Click on Send Btn");
@@ -1105,42 +1105,35 @@ public class LegalHoldPage extends LiglBaseSessionPage {
     public ILiglPage editLH_DR_KW(String lhName1,String startDate, String endDate, String keyword)throws Exception{
         try{
             log_Info("editLH_DR_KW() Started");
-            Thread.sleep(8000);
+            wait(20);
             EditLHN.click();
             Thread.sleep(8000);
-            LHNNextBtn.click();
-            Thread.sleep(2000);
-            CustodianNextBtn.click();
-            Thread.sleep(2000);
-            StakeNextBtn.click();
+            clickOnPreservationScopeLink();
             Thread.sleep(2000);
 
-            Startdate.click();
-            Startdate.sendKeys(Keys.ESCAPE);
-            Startdate.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-            Startdate.sendKeys(startDate);
-            Startdate.sendKeys(Keys.TAB);
+            StartDATE.click();
+            StartDATE.sendKeys(Keys.ESCAPE);
+            StartDATE.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+            StartDATE.sendKeys(startDate);
+            StartDATE.sendKeys(Keys.TAB);
 
-            EndDate.click();
-            EndDate.sendKeys(Keys.ESCAPE);
-            EndDate.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-            EndDate.sendKeys(endDate);
-            EndDate.sendKeys(Keys.TAB);
+            EndDATE.click();
+            EndDATE.sendKeys(Keys.ESCAPE);
+            EndDATE.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+            EndDATE.sendKeys(endDate);
+            EndDATE.sendKeys(Keys.TAB);
 
-            DateRangeNextbtn.click();
             Thread.sleep(2000);
-            WebElement keyWordsForm = getCurrentDriver().findElement(By.xpath("//mat-chip-list[@id='mat-chip-list-0']"));
+            WebElement keyWordsForm = getCurrentDriver().findElement(By.xpath("//div[@class='modal-content']//mat-chip-list[@formcontrolname='KeyWords']"));
             keyWordsForm.click();
             List<WebElement> listItem = keyWordsForm.findElements(By.xpath("//mat-chip"));
             for (int i = 0; i < listItem.size(); i++) {
                 keyWordsForm.sendKeys(Keys.BACK_SPACE);
             }
             Thread.sleep(3000);
-            KeyWordsFields.sendKeys(keyword);
-            Thread.sleep(2000);
-            KeyWordNextBtn.click();
-            Thread.sleep(2000);
-            RemainderNextBtn.click();
+            KEYwords.sendKeys(keyword);
+
+            clickOnDoneBtnInPreservationScopeScreen();
             Thread.sleep(2000);
             LHNSaveBtn.click();
             Thread.sleep(15000);
@@ -4605,11 +4598,13 @@ public class LegalHoldPage extends LiglBaseSessionPage {
             log_Pass("New Template edited on Fly is Updated in Template Dropdown");
             Thread.sleep(2000);
 
-           lhnSave();/*.searchRequiredLegalHoldName(LHname).clickOnEditButtonInLHNGrid();
+           lhnSave();
+        searchRequiredLegalHoldName(LHname);
+        clickOnEditButtonInLHNGrid();
 
             Thread.sleep(2000);
             String s1 = selectedTemplateName.getText();
-            Assert.assertEquals(s1, NewtempName);*/
+            Assert.assertEquals(s1, NewtempName);
 
             log_Pass("The On Fly Edited Custodian Template is Updated To LHN");
 

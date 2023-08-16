@@ -41,6 +41,8 @@ public class TC12104_Editing_Ligl_and_SSO_Users_Test extends TestBase {
                             data.get("EditMiddleName"), data.get("EditLastName"), data.get("EditRole"), data.get("EditStatus"))
                     .getHeader()
                     .logout();
+
+
         } catch (Exception ex) {
             session.log_Error("TC12104_Editing_Ligl_and_SSO_Users_Test Failed");
             throw new Exception("TC12104_Editing_Ligl_and_SSO_Users_Test Failed", ex);
