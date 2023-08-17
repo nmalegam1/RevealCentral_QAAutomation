@@ -10,9 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC37985_Creating_SSOUser_Test extends TestBase {
+public class Create_Template_using_addTemplate_button_for_CaseApproval_Template_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC37985_Creating_SSOUser_Test(Hashtable<String, String> data) throws Exception {
+    public void Create_Template_using_addTemplate_button_for_CaseApproval_Template_Test(Hashtable<String, String> data) throws Exception{
+        testCaseId="2453817";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -22,19 +23,22 @@ public class TC37985_Creating_SSOUser_Test extends TestBase {
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
             ILiglPage page = new LaunchPage()
-                    .openBrowser("chrome")
+                    .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("Entity"),data.get("Username"), data.get("Password"))
+                    .RCLogin(data.get("LoginUser"), data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .navigateToUserAndRolesPage()
-                    .clickOnAddUserButton()
-                    .creatingSSOUser(data.get("Email"), data.get("FirstName"), data.get("MiddleName"), data.get("LastName"), data.get("Role"), data.get("Status"));
-        } catch (Exception ex) {
-            session.log_Error("TC37985_Creating_SSOUser_Test Failed");
-            throw new Exception("TC37985_Creating_SSOUser_Test Failed", ex);
-        } finally {
+                    .navigateToEmailTemplatesPage()
+                    .createNewEmailTemplate(data.get("EmailTemplateCategory"), data.get("EmailTemplateName"),
+                            data.get("Subject"), data.get("Content"))
+                    .getHeader()
+                    .logout();
+
+        }catch (Exception ex){
+            session.log_Error("TC1983_Create_Template_using_addTemplate_button_for_CaseApproval_Template_Test");
+            throw new Exception("TC1983_Create_Template_using_addTemplate_button_for_CaseApproval_Template_Test Failed", ex);
+        }finally {
             session.end();
         }
     }

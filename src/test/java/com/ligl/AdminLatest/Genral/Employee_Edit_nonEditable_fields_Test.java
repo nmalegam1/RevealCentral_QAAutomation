@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-
-public class TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test extends TestBase {
+public class Employee_Edit_nonEditable_fields_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test(Hashtable<String, String> data) throws Exception {
+    public void Employee_Edit_nonEditable_fields_Test(Hashtable<String, String> data) throws Exception {
+        testCaseId="2453833";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -23,17 +23,23 @@ public class TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_ic
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
             ILiglPage page = new LaunchPage()
-                    .openBrowser("chrome")
+                    .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("Entity"),data.get("Username"), data.get("Password"))
+                    .RCLogin(data.get("LoginUser"), data.get("Entity"))
                     .getHeader()
-                    .unavailabilityOfChangePasswordOption()
+                    .goToAdministrationPage()
+                    .getAdminLeft()
+                    .navigateToEmployeeMaster()
+                    .searchAndSelectTheEmployee(data.get("SearchEmployeeAlias"))
+                    .empNonEditableFields()
+                    .getHeader()
                     .logout();
         } catch (Exception ex) {
-            session.log_Error("TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test Failed");
-            throw new Exception("TC51897_Unavailability_of_ChangePassword_Logged_SSO_User_Profile_icon_Test Failed", ex);
+            session.log_Error("TC51896_Employee_Edit_nonEditable_fields_Test");
+            throw new Exception("TC51896_Employee_Edit_nonEditable_fields_Test", ex);
         } finally {
             session.end();
         }
     }
+
 }

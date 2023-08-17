@@ -15,6 +15,7 @@ public class TC_56147_LHCreateWhenOnFlyAndLHApprovalIsFalse_ByFillingAllFields e
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_56147_LHCreateWhenOnFlyAndLHApprovalIsFalse_ByFillingAllFields(Hashtable<String, String> data) throws Exception
     {
+        testCaseId="2454256";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

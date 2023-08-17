@@ -1,4 +1,4 @@
-package com.ligl.Administration.General.EmployeeMaster;
+package com.ligl.AdminLatest.Genral;
 
 import com.ligl.base.TestBase;
 import com.ligl.base.pages.Constants;
@@ -11,9 +11,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_Fields_in_Full_Template_Test extends TestBase {
+public class Verify_user_able_to_import_Employee_by_giving_all_fields_in_Short_Template_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_Fields_in_Full_Template_Test(Hashtable<String, String> data) throws Exception {
+    public void Verify_user_able_to_import_Employee_by_giving_all_fields_in_Short_Template_Test(Hashtable<String, String> data) throws Exception {
+        testCaseId="2453843";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -25,18 +26,18 @@ public class TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
+                    .RCLogin(data.get("LoginUser"), data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
                     .navigateToEmployeeMaster()
                     .clickOnImport()
-                    .employeeBulkImport(Constants.ImportXLSX_Template_Only_Mandatory_Field)
+                    .employeeBulkImport(Constants.ImportXLSX_ShortTemplate)
                     .getHeader()
                     .logout();
         } catch (Exception ex) {
-            session.log_Error("TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_Fields_in_Full_Template_Test Failed");
-            throw new Exception("TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_Fields_in_Full_Template_Test Failed", ex);
+            session.log_Error("TC56376_Verify_user_able_to_import_Employee_by_giving_all_fields_in_Short_Template_Test Failed");
+            throw new Exception("TC56376_Verify_user_able_to_import_Employee_by_giving_all_fields_in_Short_Template_Test Failed", ex);
         } finally {
             session.end();
         }

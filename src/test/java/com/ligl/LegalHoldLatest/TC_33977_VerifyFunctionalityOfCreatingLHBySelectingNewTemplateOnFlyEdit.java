@@ -14,7 +14,7 @@ public class TC_33977_VerifyFunctionalityOfCreatingLHBySelectingNewTemplateOnFly
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_33977_VerifyFunctionalityOfCreatingLHBySelectingNewTemplateOnFlyEdit(Hashtable<String, String> data) throws Exception {
-
+        testCaseId="2454188,2454163";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

@@ -12,10 +12,10 @@ package com.ligl.LegalHoldLatest;
 
 public class TC_C2454273_VerifyLegalholdCanRejected extends TestBase
 {
-
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_C2454273_VerifyLegalholdCanRejected(Hashtable<String, String> data) throws Exception
     {
+        testCaseId="2454273";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

@@ -16,6 +16,7 @@ public class TC_42960_VerifyReassignLHFunctionality extends TestBase
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_42960_VerifyReassignLHFunctionality(Hashtable<String, String> data) throws Exception
     {
+        testCaseId="2454175";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

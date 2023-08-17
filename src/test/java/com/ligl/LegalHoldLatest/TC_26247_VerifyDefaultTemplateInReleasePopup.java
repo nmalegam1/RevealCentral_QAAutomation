@@ -16,6 +16,7 @@ public class TC_26247_VerifyDefaultTemplateInReleasePopup extends TestBase
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_26247_VerifyDefaultTemplateInReleasePopup(Hashtable<String, String> data) throws Exception
     {
+        testCaseId="2454167";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

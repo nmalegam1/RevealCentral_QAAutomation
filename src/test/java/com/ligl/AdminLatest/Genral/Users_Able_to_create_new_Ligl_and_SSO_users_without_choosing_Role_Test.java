@@ -10,9 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC28540_Users_Able_to_create_new_Ligl_and_SSO_users_without_choosing_Role_Test extends TestBase {
+public class Users_Able_to_create_new_Ligl_and_SSO_users_without_choosing_Role_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC28540_Users_Able_to_create_new_Ligl_and_SSO_users_without_choosing_Role_Test(Hashtable<String, String> data) throws Exception {
+    public void Users_Able_to_create_new_Ligl_and_SSO_users_without_choosing_Role_Test(Hashtable<String, String> data) throws Exception {
+        testCaseId="2454631";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -24,7 +25,7 @@ public class TC28540_Users_Able_to_create_new_Ligl_and_SSO_users_without_choosin
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("Entity"),data.get("Username"), data.get("Password"))
+                    .RCLogin(data.get("LoginUser"), data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

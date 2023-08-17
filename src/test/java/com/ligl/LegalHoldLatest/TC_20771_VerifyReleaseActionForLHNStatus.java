@@ -14,7 +14,7 @@ public class TC_20771_VerifyReleaseActionForLHNStatus extends TestBase {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_20771_VerifyReleaseActionForLHNStatus(Hashtable<String, String> data) throws Exception {
-
+        testCaseId="2454162";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

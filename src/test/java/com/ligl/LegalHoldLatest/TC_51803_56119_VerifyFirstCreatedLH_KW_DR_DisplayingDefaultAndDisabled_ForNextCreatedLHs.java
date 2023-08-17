@@ -13,9 +13,9 @@ import java.util.Hashtable;
 public class TC_51803_56119_VerifyFirstCreatedLH_KW_DR_DisplayingDefaultAndDisabled_ForNextCreatedLHs extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData", description = "LegalHold")
     public void TC_51803_56119_VerifyFirstCreatedLH_KW_DR_DisplayingDefaultAndDisabled_ForNextCreatedLHs(Hashtable<String,String> data) throws Exception {
+        testCaseId="2454180,2454184";
         try {
             session.log_Info(data.toString());
-
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
                 // skip in extent rep
                 session.skipTest("Skipping the test as Runmode was NO");

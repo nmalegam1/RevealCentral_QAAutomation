@@ -16,6 +16,7 @@ public class TC_C2454258_AbletoCreateLegalholdByfillingMandatoryFieldsWithMaximu
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_C2454258_AbletoCreateLegalholdByfillingMandatoryFieldsWithMaximumNumberofCharactersWhenLHApprovalisTrueAndOnFlyEditIsFalse(Hashtable<String, String> data) throws Exception
     {
+        testCaseId="2454258";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
