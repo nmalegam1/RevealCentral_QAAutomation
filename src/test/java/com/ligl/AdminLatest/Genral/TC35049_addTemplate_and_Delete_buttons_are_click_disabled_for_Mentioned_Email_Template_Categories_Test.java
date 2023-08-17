@@ -13,6 +13,7 @@ import java.util.Hashtable;
 public class TC35049_addTemplate_and_Delete_buttons_are_click_disabled_for_Mentioned_Email_Template_Categories_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC35049_addTemplate_and_Delete_buttons_are_click_disabled_for_Mentioned_Email_Template_Categories_Test(Hashtable<String, String> data) throws Exception {
+        testCaseId="2454100";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

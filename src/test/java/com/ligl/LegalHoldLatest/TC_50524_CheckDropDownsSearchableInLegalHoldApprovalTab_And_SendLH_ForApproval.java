@@ -13,9 +13,9 @@ import java.util.Hashtable;
 public class TC_50524_CheckDropDownsSearchableInLegalHoldApprovalTab_And_SendLH_ForApproval extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData", description = "LegalHold")
     public void TC_50524_CheckDropDownsSearchableInLegalHoldApprovalTab_And_SendLH_ForApproval(Hashtable<String,String> data) throws Exception {
+        testCaseId="2454288";
         try {
             session.log_Info(data.toString());
-
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
                 // skip in extent rep
                 session.skipTest("Skipping the test as Runmode was NO");

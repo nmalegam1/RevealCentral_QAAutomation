@@ -10,9 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC28551_Users_Able_to_Change_Status_Active_or_InActive_for_Ligl_and_SSO_Users_Test extends TestBase {
+public class Users_Able_to_Change_Status_Active_or_InActive_for_Ligl_and_SSO_Users_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC28551_Users_Able_to_Change_Status_Active_or_InActive_for_Ligl_and_SSO_Users_Test(Hashtable<String, String> data) throws Exception {
+    public void Users_Able_to_Change_Status_Active_or_InActive_for_Ligl_and_SSO_Users_Test(Hashtable<String, String> data) throws Exception {
+        testCaseId="2453832";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -24,7 +25,7 @@ public class TC28551_Users_Able_to_Change_Status_Active_or_InActive_for_Ligl_and
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("Entity"),data.get("Username"), data.get("Password"))
+                    .RCLogin(data.get("LoginUser"), data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

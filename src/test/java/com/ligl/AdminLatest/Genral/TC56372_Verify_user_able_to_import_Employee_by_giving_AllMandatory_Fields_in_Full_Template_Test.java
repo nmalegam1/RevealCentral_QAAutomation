@@ -1,6 +1,7 @@
 package com.ligl.AdminLatest.Genral;
 
 import com.ligl.base.TestBase;
+import com.ligl.base.pages.Constants;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.dataprovider.TestDataProvider;
 import com.ligl.pages.LaunchPage;
@@ -10,15 +11,16 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC8735_Create_new_Party_by_using_Party_Button_Test extends TestBase {
+public class TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_Fields_in_Full_Template_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC8735_Create_new_Party_by_using_Party_Button_Test(Hashtable<String, String> data) throws Exception{
+    public void TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_Fields_in_Full_Template_Test(Hashtable<String, String> data) throws Exception {
+        testCaseId="2453842";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
                 // skip in extent rep
                 session.skipTest("Skipping the test as Runmode was NO");
-                //skip - testng
+                //skip - testing
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
             ILiglPage page = new LaunchPage()
@@ -28,19 +30,16 @@ public class TC8735_Create_new_Party_by_using_Party_Button_Test extends TestBase
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .navigateToPartiesPage()
-                    .clickOnAddPartyButton()
-                    .craeteNewParty(data.get("Name"), data.get("PartyType"), data.get("Department"), data.get("Status"), data.get("Description"),
-                            data.get("Website"), data.get("Email"), data.get("Phone"), data.get("Telephone"), data.get("Fax"), data.get("AddressLine1"),
-                            data.get("AddressLine2"),data.get("AddressLine3"), data.get("Country"), data.get("State"), data.get("City"), data.get("Zip"))
+                    .navigateToEmployeeMaster()
+                    .clickOnImport()
+                    .employeeBulkImport(Constants.ImportXLSX_Template_Only_Mandatory_Field)
                     .getHeader()
                     .logout();
-        }catch (Exception exception){
-            session.log_Error("TC8735_Create_new_Party_by_using_Party_Button_Test");
-            throw new Exception("TC8735_Create_new_Party_by_using_Party_Button_Test Failed", exception);
-        }finally {
+        } catch (Exception ex) {
+            session.log_Error("TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_Fields_in_Full_Template_Test Failed");
+            throw new Exception("TC56372_Verify_user_able_to_import_Employee_by_giving_AllMandatory_Fields_in_Full_Template_Test Failed", ex);
+        } finally {
             session.end();
         }
     }
-
 }

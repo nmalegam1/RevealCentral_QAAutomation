@@ -13,7 +13,7 @@ import java.util.Hashtable;
 public class TC21664_22859_Creating_new_Case_settings_template_using_add_Template_button_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData",description = "Administration")
     public void TC21664_22859_Creating_new_Case_settings_template_using_add_Template_button_Test(Hashtable<String, String> data) throws Exception {
-
+        testCaseId="2453721";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

@@ -13,6 +13,7 @@ import java.util.Hashtable;
 public class TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData", description = "LegalHold")
     public void TC_51789_VerifyUserIsUnableToSend_StealthModeActionForDeactivatedCustodian(Hashtable<String,String> data) throws Exception {
+        testCaseId="2454786";
         try {
             session.log_Info(data.toString());
 

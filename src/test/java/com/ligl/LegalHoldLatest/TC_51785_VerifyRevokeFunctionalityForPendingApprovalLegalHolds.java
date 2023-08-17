@@ -13,6 +13,7 @@ import java.util.Hashtable;
 public class TC_51785_VerifyRevokeFunctionalityForPendingApprovalLegalHolds extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class,dataProvider = "getData", description = "LegalHold")
     public void TC_51785_VerifyRevokeFunctionalityForPendingApprovalLegalHolds(Hashtable<String,String> data) throws Exception {
+        testCaseId="2454271";
         try {
             session.log_Info(data.toString());
 

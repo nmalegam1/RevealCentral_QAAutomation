@@ -13,6 +13,7 @@ import java.util.Hashtable;
 public class TC54576_Check_admin_is_able_to_Create_or_edit_the_Case_type_lookup_value_when_CS_config_is_false_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC54576_Check_admin_is_able_to_Create_or_edit_the_Case_type_lookup_value_when_CS_config_is_false_Test(Hashtable<String, String> data) throws Exception {
+        testCaseId="2453788,2453789";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
