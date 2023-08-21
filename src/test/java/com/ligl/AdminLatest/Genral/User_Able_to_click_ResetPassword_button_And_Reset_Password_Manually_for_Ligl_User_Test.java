@@ -10,9 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC51896_Employee_Edit_nonEditable_fields_Test extends TestBase {
+public class User_Able_to_click_ResetPassword_button_And_Reset_Password_Manually_for_Ligl_User_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC51896_Employee_Edit_nonEditable_fields_Test(Hashtable<String, String> data) throws Exception {
+    public void User_Able_to_click_ResetPassword_button_And_Reset_Password_Manually_for_Ligl_User_Test(Hashtable<String, String> data) throws Exception{
+        testCaseId="2453823";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -22,24 +23,24 @@ public class TC51896_Employee_Edit_nonEditable_fields_Test extends TestBase {
                 throw new SkipException("Skipping the test as Runmode was NO");
             }
             ILiglPage page = new LaunchPage()
-                    .openBrowser(data.get("Browser"))
+                    .openBrowser("chrome")
                     .navigateURL()
-                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("Entity"),data.get("Username"), data.get("Password"))
+                    .RCLogin(data.get("LoginUser"), data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()
-                    .navigateToEmployeeMaster()
-                    .searchAndSelectTheEmployee(data.get("SearchEmployeeAlias"))
-                    .empNonEditableFields()
+                    .navigateToUserAndRolesPage()
+                    .searchTheUser(data.get("SelectUser"))
+                    .scrollToRightToDoActionInUsers(data.get("SelectUser"))
+                    .adminResetPassword(data.get("ConformManualPawdReset"),
+                            data.get("PasswordToRest"), data.get("ConfirmPasswordToRest"))
                     .getHeader()
                     .logout();
-
-        } catch (Exception ex) {
-            session.log_Error("TC51896_Employee_Edit_nonEditable_fields_Test");
-            throw new Exception("TC51896_Employee_Edit_nonEditable_fields_Test", ex);
+        }catch (Exception ex) {
+            session.log_Error("TC21215_User_Able_to_click_ResetPassword_button_And_Reset_Password_Manually_for_Ligl_User_Test Failed");
+            throw new Exception("TC21215_User_Able_to_click_ResetPassword_button_And_Reset_Password_Manually_for_Ligl_User_Test Failed", ex);
         } finally {
             session.end();
         }
     }
-
 }

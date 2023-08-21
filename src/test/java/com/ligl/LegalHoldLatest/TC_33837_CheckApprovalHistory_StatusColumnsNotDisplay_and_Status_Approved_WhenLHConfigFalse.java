@@ -14,7 +14,7 @@ public class TC_33837_CheckApprovalHistory_StatusColumnsNotDisplay_and_Status_Ap
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_33837_CheckApprovalHistory_StatusColumnsNotDisplay_and_Status_Approved_WhenLHConfigFalse(Hashtable<String, String> data) throws Exception {
-
+        testCaseId="2454170";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

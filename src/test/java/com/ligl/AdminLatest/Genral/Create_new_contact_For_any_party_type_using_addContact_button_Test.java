@@ -10,9 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC8712_Create_new_contact_For_any_party_type_using_addContact_button_Test extends TestBase {
+public class Create_new_contact_For_any_party_type_using_addContact_button_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC8712_Create_new_contact_For_any_party_type_using_addContact_button_Test(Hashtable<String, String> data) throws Exception{
+    public void Create_new_contact_For_any_party_type_using_addContact_button_Test(Hashtable<String, String> data) throws Exception{
+        testCaseId="2453818";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -24,7 +25,7 @@ public class TC8712_Create_new_contact_For_any_party_type_using_addContact_butto
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
+                    .RCLogin(data.get("LoginUser"), data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .clickOnAddContactButton()

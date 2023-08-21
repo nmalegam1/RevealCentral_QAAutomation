@@ -14,7 +14,7 @@ public class TC_20764_20770_VerifySendAndStealthActionsOfLHN_WhenStatusIsNotInit
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_20764_20770_VerifySendAndStealthActionsOfLHN_WhenStatusIsNotInitiated(Hashtable<String, String> data) throws Exception {
-
+        testCaseId="2454161,2454160";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

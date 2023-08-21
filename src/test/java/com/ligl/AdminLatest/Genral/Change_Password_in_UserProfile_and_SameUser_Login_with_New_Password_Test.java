@@ -10,9 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC22519_Change_Password_in_UserProfile_and_SameUser_Login_with_New_Password_Test extends TestBase {
+public class Change_Password_in_UserProfile_and_SameUser_Login_with_New_Password_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC22519_Change_Password_in_UserProfile_and_SameUser_Login_with_New_Password_Test(Hashtable<String, String> data) throws Exception {
+    public void Change_Password_in_UserProfile_and_SameUser_Login_with_New_Password_Test(Hashtable<String, String> data) throws Exception {
+        testCaseId="2454785";
         try{
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

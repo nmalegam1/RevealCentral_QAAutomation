@@ -10,9 +10,10 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC33890_Creating_new_Employee_using_Employee_button_Test extends TestBase {
+public class Creating_new_Employee_using_Employee_button_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC33890_Creating_new_Employee_using_Employee_button_Test(Hashtable<String, String> data) throws Exception {
+    public void Creating_new_Employee_using_Employee_button_Test(Hashtable<String, String> data) throws Exception {
+        testCaseId="2453834";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
@@ -24,7 +25,7 @@ public class TC33890_Creating_new_Employee_using_Employee_button_Test extends Te
             ILiglPage page = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("Entity"),data.get("Username"), data.get("Password"))
+                    .RCLogin(data.get("LoginUser"), data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

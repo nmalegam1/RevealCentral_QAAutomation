@@ -13,6 +13,7 @@ import java.util.Hashtable;
 public class TC35048_Edit_Subject_and_Content_for_Mentioned_Email_Template_Categories_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
     public void TC35048_Edit_Subject_and_Content_for_Mentioned_Email_Template_Categories_Test(Hashtable<String, String> data) throws Exception{
+        testCaseId="2453835";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

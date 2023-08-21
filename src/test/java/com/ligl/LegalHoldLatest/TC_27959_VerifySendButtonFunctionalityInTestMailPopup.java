@@ -16,6 +16,7 @@ public class TC_27959_VerifySendButtonFunctionalityInTestMailPopup extends TestB
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_27959_VerifySendButtonFunctionalityInTestMailPopup(Hashtable<String, String> data) throws Exception
     {
+        testCaseId="2454204";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

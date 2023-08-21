@@ -15,6 +15,7 @@ public class TC_56517_56518_LegalHoldNotesCreateAndEdit extends TestBase
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_56517_56518_LegalHoldNotesCreateAndEdit(Hashtable<String, String> data) throws Exception
     {
+        testCaseId="2454189,2454190";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

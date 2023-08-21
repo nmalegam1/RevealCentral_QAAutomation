@@ -10,10 +10,11 @@ import org.testng.annotations.Test;
 
 import java.util.Hashtable;
 
-public class TC12104_Editing_Ligl_and_SSO_Users_Test extends TestBase {
+public class Editing_Ligl_and_SSO_Users_Test extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "Administration")
-    public void TC12104_Editing_Ligl_and_SSO_Users_Test(Hashtable<String, String> data) throws Exception {
+    public void Editing_Ligl_and_SSO_Users_Test(Hashtable<String, String> data) throws Exception {
         try {
+            testCaseId="2453821";
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
                 // skip in extent rep
@@ -24,7 +25,7 @@ public class TC12104_Editing_Ligl_and_SSO_Users_Test extends TestBase {
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .adminLogin(data.get("Username"),"Vertical.321",data.get("Entity"))
+                    .RCLogin(data.get("LoginUser"), data.get("Entity"))
                     .getHeader()
                     .goToAdministrationPage()
                     .getAdminLeft()

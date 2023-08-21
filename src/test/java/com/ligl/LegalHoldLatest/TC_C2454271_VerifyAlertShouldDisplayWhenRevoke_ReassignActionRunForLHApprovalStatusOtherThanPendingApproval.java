@@ -12,10 +12,10 @@ package com.ligl.LegalHoldLatest;
 
 public class TC_C2454271_VerifyAlertShouldDisplayWhenRevoke_ReassignActionRunForLHApprovalStatusOtherThanPendingApproval extends TestBase
 {
-
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_C2454271_VerifyAlertShouldDisplayWhenRevoke_ReassignActionRunForLHApprovalStatusOtherThanPendingApproval(Hashtable<String, String> data) throws Exception
     {
+        testCaseId="2454271";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {

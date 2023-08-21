@@ -309,7 +309,7 @@ public class LoginPage extends LiglBasePage {
             return new LiglBasePage();
         } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("Admin login failed", ex);
+            throw new Exception("Reveal Central login is failed", ex);
         }
     }
 }

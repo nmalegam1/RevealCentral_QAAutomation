@@ -16,6 +16,7 @@ public class TC_44414_ReDesignOfLHApprovalPage extends TestBase
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "getData", description = "LegalHold")
     public void TC_44414_ReDesignOfLHApprovalPage(Hashtable<String, String> data) throws Exception
     {
+        testCaseId="2454176";
         try {
             session.log_Info(data.toString());
             if (!new DataUtil().isRunnable(testName, xls) || data.get("Runmode").equals("N")) {
