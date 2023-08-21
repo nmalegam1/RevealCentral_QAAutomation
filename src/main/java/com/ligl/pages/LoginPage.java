@@ -266,9 +266,12 @@ public class LoginPage extends LiglBasePage {
                 userNameTxt.sendKeys(getSession().getGlobalData("Admin_UserName"));
                 getSession().log_Pass("user name entered");
                 log_Info("Enter Password");
+                //getSession().failTest("failed action");
                 getDriver().waitForelementToBeClickable(passwordTxt);
                 passwordTxt.sendKeys(getSession().getGlobalData("Admin_Password"));
                 log_Pass("password entered");
+                //getSession().log_Pass("password entered");
+                //log("Click SignIn button");
                 signInBtn.click();
                 getSession().log_Pass("Clicked signin button");
                 getDriver().waitForAngularRequestsToComplete();
@@ -297,7 +300,7 @@ public class LoginPage extends LiglBasePage {
                 navigateSSOLoginPage();
                 SSOLoginPage sso = new SSOLoginPage();
                 sso.loginWithSSOUser(entity);
-                return new DefaultLandingPage();
+                return  new DefaultLandingPage();
             } else if (userType.toLowerCase().contentEquals("superuser")) {
                 login(getSession().getGlobalData("Superuser_UserName"), getSession().getGlobalData("Superuser_Password"), entity);
             } else {
