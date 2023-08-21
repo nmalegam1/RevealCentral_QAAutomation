@@ -300,6 +300,7 @@ public class LoginPage extends LiglBasePage {
                 navigateSSOLoginPage();
                 SSOLoginPage sso = new SSOLoginPage();
                 sso.loginWithSSOUser(entity);
+                return  new DefaultLandingPage();
             } else if (userType.toLowerCase().contentEquals("superuser")) {
                 login(getSession().getGlobalData("Superuser_UserName"), getSession().getGlobalData("Superuser_Password"), entity);
             } else {

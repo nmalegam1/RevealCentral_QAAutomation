@@ -3,92 +3,92 @@
 <suite name="Dashboards" >
     <test name="ProjectInsights_VerifyTheDataInTopTilesWhenDefaultDatesAreSelected">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_7878_ProjectInsights_VerifyTheDataInTopTilesWhenDefaultDatesAreSelected"/>
+            <class name="com.ligl.DashboardsNew.ProjectInsights_VerifyTheDataInTopTilesWhenDefaultDatesAreSelected"/>
         </classes>
     </test>
     <test name="ProcessInsights_VerifyTheClearFilterFunctionlaity">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_15186_ProcessInsights_VerifyTheClearFilterFunctionlaity"/>
+            <class name="com.ligl.DashboardsNew.ProcessInsights_VerifyTheClearFilterFunctionlaity"/>
         </classes>
     </test>
     <test name="ProcessInsights_VerifyDataInTopTilesWhenProjectContextIsNotSetAndDefaultDatesAreSelected">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_15216_ProcessInsights_VerifyDataInTopTilesWhenProjectContextIsNotSetAndDefaultDatesAreSelected"/>
+            <class name="com.ligl.DashboardsNew.ProcessInsights_VerifyDataInTopTilesWhenProjectContextIsNotSetAndDefaultDatesAreSelected"/>
         </classes>
     </test>
     <test name="LegalHoldInsights_VerifyTheClearFilterFunctionality">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_16117_LegalHoldInsights_VerifyTheClearFilterFunctionality"/>
+            <class name="com.ligl.DashboardsNew.LegalHoldInsights_VerifyTheClearFilterFunctionality"/>
         </classes>
     </test>
     <test name="ReviewInsights_VerifyTheClearAllFunctionality">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_17475_ReviewInsights_VerifyTheClearAllFunctionality"/>
+            <class name="com.ligl.DashboardsNew.ReviewInsights_VerifyTheClearAllFunctionality"/>
         </classes>
     </test>
     <test name="ProductionInsights_VerifyTheClearAllFunctionality">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_25255_ProductionInsights_VerifyTheClearAllFunctionality"/>
+            <class name="com.ligl.DashboardsNew.ProductionInsights_VerifyTheClearAllFunctionality"/>
         </classes>
     </test>
     <test name="ProjectInsights_VerifyTheSummaryTilesInProjectInsightsWhenTheProcessingIsRelativity">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_27228_ProjectInsights_VerifyTheSummaryTilesInProjectInsightsWhenTheProcessingIsRelativity"/>
+            <class name="com.ligl.DashboardsNew.ProjectInsights_VerifyTheSummaryTilesInProjectInsightsWhenTheProcessingIsRelativity"/>
         </classes>
     </test>
     <test name="Relativity_ProcessInsights_CheckTheDataInSummaryTiles">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_27238_Relativity_ProcessInsights_CheckTheDataInSummaryTiles"/>
+            <class name="com.ligl.DashboardsNew.Relativity_ProcessInsights_CheckTheDataInSummaryTiles"/>
         </classes>
     </test>
     <test name="VerifyTheFunctionalityOfSelectProjectOptionFromDashboard">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_27793_VerifyTheFunctionalityOfSelectProjectOptionFromDashboard"/>
+            <class name="com.ligl.DashboardsNew.VerifyTheFunctionalityOfSelectProjectOptionFromDashboard"/>
         </classes>
     </test>
     <test name="GlobalInsights_VerifyTheDataInTopTilesWhenProjectContextIsNotSet">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_28289_GlobalInsights_VerifyTheDataInTopTilesWhenProjectContextIsNotSet"/>
+            <class name="com.ligl.DashboardsNew.GlobalInsights_VerifyTheDataInTopTilesWhenProjectContextIsNotSet"/>
         </classes>
     </test>
     <test name="GlobalInsights_VerifyTheClearAllFunctionality">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_28296_GlobalInsights_VerifyTheClearAllFunctionality"/>
+            <class name="com.ligl.DashboardsNew.GlobalInsights_VerifyTheClearAllFunctionality"/>
         </classes>
     </test>
     <test name="GlobalInsights_VerifyThePrintFunctionality">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_28297_GlobalInsights_VerifyThePrintFunctionality"/>
+            <class name="com.ligl.DashboardsNew.GlobalInsights_VerifyThePrintFunctionality"/>
         </classes>
     </test>
     <test name="VerifyTheFunctionalityOfClearProjectOptionFromDashboard">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_28570_VerifyTheFunctionalityOfClearProjectOptionFromDashboard"/>
+            <class name="com.ligl.DashboardsNew.VerifyTheFunctionalityOfClearProjectOptionFromDashboard"/>
         </classes>
     </test>
     <test name="ProcessInsigts_VerifyTheDataInDashboardWhenFromAndToDatesAreAdjusted">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_46091_ProcessInsigts_VerifyTheDataInDashboardWhenFromAndToDatesAreAdjusted"/>
+            <class name="com.ligl.DashboardsNew.ProcessInsigts_VerifyTheDataInDashboardWhenFromAndToDatesAreAdjusted"/>
         </classes>
     </test>
     <test name="ProjectInsights_LegalHoldInsights_ProcessInsights_ReviewInsights_ProductionInsights_VerifyThePrintButtonFunctionality">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_52352_ProjectInsights_LegalHoldInsights_ProcessInsights_ReviewInsights_ProductionInsights_VerifyThePrintButtonFunctionality"/>
+            <class name="com.ligl.DashboardsNew.ProjectInsights_LegalHoldInsights_ProcessInsights_ReviewInsights_ProductionInsights_VerifyThePrintButtonFunctionality"/>
         </classes>
     </test>
     <test name="ProjectInsights_VerifyThatTheDashboardDisplaysProjectThatAreAccessibleForLoggedInUserWhenUserAccessProjectIsTrue">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_52353_ProjectInsights_VerifyThatTheDashboardDisplaysProjectThatAreAccessibleForLoggedInUserWhenUserAccessProjectIsTrue"/>
+            <class name="com.ligl.DashboardsNew.ProjectInsights_VerifyThatTheDashboardDisplaysProjectThatAreAccessibleForLoggedInUserWhenUserAccessProjectIsTrue"/>
         </classes>
     </test>
     <test name="ProjectInsights_VerifyThatTheDashboardDisplaysAllTheProjectsIrrespectiveOfAccessForLoggedInUserWhenUserAccessCasesIsFalse">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_52354_ProjectInsights_VerifyThatTheDashboardDisplaysAllTheProjectsIrrespectiveOfAccessForLoggedInUserWhenUserAccessCasesIsFalse"/>
+            <class name="com.ligl.DashboardsNew.ProjectInsights_VerifyThatTheDashboardDisplaysAllTheProjectsIrrespectiveOfAccessForLoggedInUserWhenUserAccessCasesIsFalse"/>
         </classes>
     </test>
     <test name="ProjectInsights_VerifyTheClearAllButtonFunctionality">
         <classes>
-            <class name="com.ligl.DashboardsNew.TC_52358_ProjectInsights_VerifyTheClearAllButtonFunctionality"/>
+            <class name="com.ligl.DashboardsNew.ProjectInsights_VerifyTheClearAllButtonFunctionality"/>
         </classes>
     </test>
 </suite> <!-- Suite -->
