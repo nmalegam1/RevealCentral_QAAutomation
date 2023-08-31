@@ -74,6 +74,9 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
     @FindBy(xpath = "//span[contains(text(),'Result(s)')]/ancestor::div[@class='table-header-action-item-list']//b")
     WebElement Results;
 
+    @FindBy(xpath = "//app-smart-select[@placeholderlabel='All']")
+    WebElement TOEDropDownDefaultValue;
+
 
 
     public ILiglPage verifyColumnsInNotesHistoryGrid() throws Exception {
@@ -283,6 +286,25 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
         log_Error(ex.getMessage());
         throw new Exception("detailsColumnData()", ex);
 
+        }
+    }
+    public ILiglPage ValidateDefaultValueInTypeofEventDropdown(String DropDownValue) throws Exception {
+
+        try {
+
+            log_Info("Validating The TYPEOFEVENT drop down default value ALL is displaying");
+            boolean a1 = getCurrentDriver().findElement(By.xpath("//app-smart-select[@aria-label='NotesSelect']//mat-select[@id='selectType']//span[contains(text(),'"+DropDownValue+"')]")).isDisplayed();
+            System.out.println(a1);
+            getDriver().minWait();
+            Assert.assertEquals(true, a1);
+            log_Pass("Validated The TYPEOFEVENT dropdown default value ALL is displaying");
+
+            return new CaseNotesHistoryPage();
+
+        }
+        catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("ValidateDefaultValueInTypeofEventDropdown()", ex);
         }
     }
 }

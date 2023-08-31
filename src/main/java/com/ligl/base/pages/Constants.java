@@ -45,7 +45,7 @@ public class Constants {
 	public static final String RUNMODE = "Runmode";
 
 	//TestRail
-	public static String testRail_RunId="6110";
+	public static String testRail_RunId="6205";
 	public static String testRail_UserName="test@revealdata.com";
 	public static String testRail_Password="Password1!";
 	public static String testRailEngineURL="https://brainspace.testrail.net/";
