@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 public class ReviewInsights_VerifyTheClearAllFunctionality extends TestBase {
     @Test(dataProviderClass = TestDataProvider.class , dataProvider = "getData",description = "Dashboards")
-    public void TC_17475_ReviewInsights_VerifyTheClearAllFunctionality(Hashtable<String,String> data) throws Exception {
+    public void ReviewInsights_VerifyTheClearAllFunctionality(Hashtable<String,String> data) throws Exception {
          testCaseId="2453871";
         try{
             session.log_Info(data.toString());

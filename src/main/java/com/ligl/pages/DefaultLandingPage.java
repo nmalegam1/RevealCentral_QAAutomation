@@ -18,41 +18,43 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Hashtable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //****************CasePage*******************
 
 public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement Notes_btn;
-    @FindBy(id="sel-matter-typemattertype")
+    @FindBy(id = "sel-matter-typemattertype")
     WebElement CaseType;
-    @FindBy(xpath="//div[@id='sel-matter-typemattertype-panel']//input[@type='text']")
+    @FindBy(xpath = "//div[@id='sel-matter-typemattertype-panel']//input[@type='text']")
     WebElement CaseTypeText;
-    @FindBy(id="sel-role-type")
+    @FindBy(id = "sel-role-type")
     WebElement RoleType;
-    @FindBy(xpath="//div[@id='sel-role-type-panel']//input[@type='text']")
+    @FindBy(xpath = "//div[@id='sel-role-type-panel']//input[@type='text']")
     WebElement RoleTypeText;
-    @FindBy(id="input-case-name")
+    @FindBy(id = "input-case-name")
     WebElement CaseName;
-    @FindBy(id="select-workflow-template")
+    @FindBy(id = "select-workflow-template")
     WebElement WFT;
-    @FindBy(xpath="//div[@id='select-workflow-template-panel']//input[@type='text']")
+    @FindBy(xpath = "//div[@id='select-workflow-template-panel']//input[@type='text']")
     WebElement WFTText;
-    @FindBy(id="select-optimum-setting")
+    @FindBy(id = "select-optimum-setting")
     WebElement CST;
-    @FindBy(xpath="//div[@id='select-optimum-setting-panel']//input[@type='text']")
+    @FindBy(xpath = "//div[@id='select-optimum-setting-panel']//input[@type='text']")
     WebElement CSTText;
     @FindBy(id = "select-org")
     WebElement Entity;
-    @FindBy(xpath="//div[@id='select-org-panel']//input[@type='text']")
+    @FindBy(xpath = "//div[@id='select-org-panel']//input[@type='text']")
     WebElement EntityText;
     @FindBy(id = "select-sub-org")
     WebElement Region;
-    @FindBy(xpath="//div[@id='select-sub-org-panel']//input[@type='text']")
+    @FindBy(xpath = "//div[@id='select-sub-org-panel']//input[@type='text']")
     WebElement RegionText;
-    @FindBy(id="select-priority")
+    @FindBy(id = "select-priority")
     WebElement Priority;
-    @FindBy(xpath="//input[@placeholder='Search']")
+    @FindBy(xpath = "//input[@placeholder='Search']")
     WebElement SelPriority;
     @FindBy(xpath = "//textarea[@id='input-description-2']")
     WebElement Desc;
@@ -67,7 +69,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//div[@col-id='Name']//span[@ref='eMenu']")
     WebElement CaseNameHeader;
-    @FindBy(id="btn-save-and-add")
+    @FindBy(id = "btn-save-and-add")
     WebElement SaveBtn;
     @FindBy(xpath = "//span[@class='menu-item-parent']/ancestor::a[@ng-click='vmBase.resetMouseHoverPopUp()']//span")
     WebElement NewlyCreatedCaseName;
@@ -86,7 +88,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(id = "btn-refresh")
     WebElement refreshBtn;
 
-    @FindBy(id="CaseListColumns")
+    @FindBy(id = "CaseListColumns")
     WebElement ChooseColumnsMenuCase;
 
     @FindBy(xpath = "//input[@aria-label='Filter Columns Input']")
@@ -103,10 +105,10 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='ApprovalType']//span[@class='ellipsisAgGrid']")
     WebElement ApprovalTypeColData;
 
-    @FindBy(id="btn-custom")
+    @FindBy(id = "btn-custom")
     WebElement MoreBtn;
 
-    @FindBy(id="Column2")
+    @FindBy(id = "Column2")
     WebElement AdditionalField1;
 
     @FindBy(xpath = "//div[@id='Column3']//span[@class='label-txt ng-star-inserted']")
@@ -118,10 +120,10 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[@id='Column31']//span[@class='label-txt ng-star-inserted']")
     WebElement AdditionalField4;
 
-    @FindBy(id="Column10")
+    @FindBy(id = "Column10")
     WebElement AdditionalField5;
 
-    @FindBy(id="btn-create-cancel")
+    @FindBy(id = "btn-create-cancel")
     WebElement CancelBtn;
 
     @FindBy(xpath = "//button[contains(text(),'Yes')]")
@@ -148,16 +150,16 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     WebElement CreatedByColData;
     @FindBy(id = "input-dynamic-column-1")
     WebElement CostCentre;
-    @FindBy(id="input-dynamic-column-2")
+    @FindBy(id = "input-dynamic-column-2")
     WebElement CaseAlias;
-    @FindBy(id="select-dynamic-column-3")
+    @FindBy(id = "select-dynamic-column-3")
     WebElement AddDropDown;
     @FindBy(xpath = "//span[contains(text(),'Region is required')]")
     WebElement RegionReqValidation;
     @FindBy(id = "input-dynamic-column-4")
     WebElement inplace_checkbox;
 
-    @FindBy(id="filedownload-btn")
+    @FindBy(id = "filedownload-btn")
     WebElement HelpLink;
 
     @FindBy(xpath = "//*[@id='input-dynamic-column-4']/label/span[1]/input")
@@ -237,12 +239,13 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
     /**
      * Method to Check the Region Field in Case Creation isMandatory
+     *
      * @param data
      * @return
      * @throws Exception
      */
-    public ILiglPage checkRegionIsMandatory(Hashtable<String,String> data) throws Exception{
-        try{
+    public ILiglPage checkRegionIsMandatory(Hashtable<String, String> data) throws Exception {
+        try {
             log_Info("checkRegionIsMan() Started");
             Thread.sleep(3000);
             log_Info("Click Create Case Button");
@@ -298,23 +301,24 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Pass("All Mandatory Fields Are Entered");
             log_Info("Click Save Button");
             SaveBtn.click();
-            boolean b=RegionReqValidation.isDisplayed();
-            Assert.assertEquals(b,true);
+            boolean b = RegionReqValidation.isDisplayed();
+            Assert.assertEquals(b, true);
             log_Pass("Region Field is Mandatory");
             return new CaseSummaryPage();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in checkRegionIsMan()", ex);
         }
     }
 
     /**
      * Method to Create Case by filling Additional Fields
+     *
      * @param data
      * @return
      * @throws Exception
      */
-    public ILiglPage caseCreateWithAdditionalFields(Hashtable<String,String> data) throws Exception{
-        try{
+    public ILiglPage caseCreateWithAdditionalFields(Hashtable<String, String> data) throws Exception {
+        try {
             log_Info("caseAdditionalFields() Started");
             Thread.sleep(3000);
             log_Info("Click Create Case Button");
@@ -385,23 +389,23 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(3000);
             AddDropDown.click();
             Thread.sleep(3000);
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+data.get("AddDP")+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + data.get("AddDP") + "')]")).click();
             Thread.sleep(3000);
             log_Info("Click Save Button");
             SaveBtn.click();
             log_Pass("Save button Clicked");
-            String b= NewlyCreatedCaseName.getAttribute("title");
-            Assert.assertEquals(data.get("CaseName"),b);
+            String b = NewlyCreatedCaseName.getAttribute("title");
+            Assert.assertEquals(data.get("CaseName"), b);
             log_Pass("Case Created Successfully");
             return new CaseSummaryPage();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             log_Error("caseAdditionalFields() Failed");
-            throw new Exception("Exception in caseAdditionalFields()",ex);
+            throw new Exception("Exception in caseAdditionalFields()", ex);
         }
     }
 
     //Create NewCase
-    public ILiglPage createNewCase(Hashtable<String,String> data) throws Exception {
+    public ILiglPage createNewCase(Hashtable<String, String> data) throws Exception {
         try {
 
 
@@ -483,17 +487,16 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("Click Save Button");
             SaveBtn.click();
             log_Pass("Save button Clicked");
-            String b= NewlyCreatedCaseName.getAttribute("title");
-            Assert.assertEquals(data.get("PROJECT"),b);
+            String b = NewlyCreatedCaseName.getAttribute("title");
+            Assert.assertEquals(data.get("PROJECT"), b);
             log_Pass("Case Created Successfully");
             return new CaseSummaryPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in createNewCase()", ex);
         }
     }
 
-                //Clear Filter
+    //Clear Filter
 
     public ILiglPage clickClearFilterBtn() {
         log_Info("Click Clear Filter Button");
@@ -524,9 +527,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("recieved case name to the search bar");
             return this;
 
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("searchcase() Failed",ex);
+            throw new Exception("searchcase() Failed", ex);
         }
 
     }
@@ -546,9 +549,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("Particular Case Name Is Selected");
             return new CaseSummaryPage();
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("GoToCase() Failed ",ex);
+            throw new Exception("GoToCase() Failed ", ex);
         }
     }
 
@@ -569,19 +572,18 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             CaseNameHeader.click();
             getDriver().waitUntilSpinnerIsClosed();
-            for (int i = 0; i < 8; i++)
-            {
+            for (int i = 0; i < 8; i++) {
                 Actions ac = new Actions(getCurrentDriver());
                 ac.sendKeys(Keys.TAB).perform();
             }
             String s = CreatedByColData.getText();
-            Assert.assertEquals(s,CreatedByName);
+            Assert.assertEquals(s, CreatedByName);
             log_Info("Created By Column data is displaying as expected");
             return this;
 
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("verifyCreatedByColDataInCaseGrid() Failed",ex);
+            throw new Exception("verifyCreatedByColDataInCaseGrid() Failed", ex);
         }
 
     }
@@ -610,9 +612,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             ChooseColumnsMenuCase.click();
             return this;
 
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("clickAndChooseColumnsInCaseGrid() Failed",ex);
+            throw new Exception("clickAndChooseColumnsInCaseGrid() Failed", ex);
         }
 
     }
@@ -622,23 +624,23 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
         try {
             log_Info("verifyChooseColumnsDataInCaseGrid() started");
             String a = ApprovedOrRejectedByColData.getText();
-            Assert.assertEquals(a,ApprovedOrRejectedExpected);
+            Assert.assertEquals(a, ApprovedOrRejectedExpected);
             log_Info("Approved or Rejected By Column data is displaying as expected");
 
             String b = ApprovalTypeColData.getText();
-            Assert.assertEquals(b,ApprovalTypeExpected);
+            Assert.assertEquals(b, ApprovalTypeExpected);
             log_Info("Approval Type Column data is displaying as expected");
             log_Pass("verifyChooseColumnsDataInCaseGrid() completed");
             return this;
 
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("verifyChooseColumnsDataInCaseGrid() Failed",ex);
+            throw new Exception("verifyChooseColumnsDataInCaseGrid() Failed", ex);
         }
 
     }
 
-    public ILiglPage verifyAdditionalFieldsInCasePopup(String AddField1,String AddField2,String AddField3,String AddField5) throws Exception {
+    public ILiglPage verifyAdditionalFieldsInCasePopup(String AddField1, String AddField2, String AddField3, String AddField5) throws Exception {
 
         try {
             log_Info("verifyAdditionalFieldsInCasePopup() started");
@@ -689,13 +691,13 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(3000);
 
             ChooseColumnsSearch.sendKeys(AddField3);
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+ AddField3 + "')]/ancestor::div[@role='treeitem']//input")).click();
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + AddField3 + "')]/ancestor::div[@role='treeitem']//input")).click();
             log_Info("AddField3 is checked");
             ChooseColumnsSearch.clear();
             Thread.sleep(5000);
 
             ChooseColumnsSearch.sendKeys(AddField5);
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+AddField5 + "')]/ancestor::div[@role='treeitem']//input")).click();
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + AddField5 + "')]/ancestor::div[@role='treeitem']//input")).click();
             log_Info("AddField5 is checked");
             ChooseColumnsSearch.clear();
             Thread.sleep(3000);
@@ -715,8 +717,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             CaseNameHeader.click();
             getDriver().waitUntilSpinnerIsClosed();
-            for (int i = 0; i < 11; i++)
-            {
+            for (int i = 0; i < 11; i++) {
                 Actions ac = new Actions(getCurrentDriver());
                 ac.sendKeys(Keys.TAB).perform();
             }
@@ -737,9 +738,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Pass("verifyAdditionalFieldsInCasePopup() completed successfully");
             return this;
 
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("verifyAdditionalFieldsInCasePopup() Failed",ex);
+            throw new Exception("verifyAdditionalFieldsInCasePopup() Failed", ex);
         }
 
     }
@@ -750,7 +751,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
      * TC54583 Check whether case type user defined look up value is populated in the case type dropdown in create case popup
      */
 
-    public ILiglPage checkNewlyCreatedLookupPopulatedInCaseTypeDropDown(String caseType) throws Exception{
+    public ILiglPage checkNewlyCreatedLookupPopulatedInCaseTypeDropDown(String caseType) throws Exception {
         try {
             //Case Button
             getSession().log_Info("Click On '+Case' Button");
@@ -792,7 +793,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             getDriver().waitUntilSpinnerIsClosed();
 
             return new DefaultLandingPage();
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("Check Lookup Populated In Case Type DropDown Failed", ex);
         }
@@ -840,29 +841,28 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             throw new Exception(" check Newly Created CaseSetting Template Test failed", ex);
         }
     }
-//Verify availability of Help hyperlink in case list page for NLU
-    public ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception{
+
+    //Verify availability of Help hyperlink in case list page for NLU
+    public ILiglPage verifyAvailabilityOfHelpLinkInCaseListPage() throws Exception {
 
         try {
             Thread.sleep(5000);
-            try
-            {
+            try {
                 log_Info("Started checking availability of Help hyperlink in case list page");
-                boolean a=HelpLink.isDisplayed();
+                boolean a = HelpLink.isDisplayed();
                 System.out.println(a);
-                if(a==true) {
+                if (a == true) {
                     log_Info("Help link is displaying");
-                }}
-            catch (Exception ex)
-            {
+                }
+            } catch (Exception ex) {
                 log_Error("Help link is not displaying");
             }
             Thread.sleep(5000);
             return new DefaultLandingPage();
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("verifyAvailabilityOfHelpLinkInCaseListPage() Failed",ex);
+            throw new Exception("verifyAvailabilityOfHelpLinkInCaseListPage() Failed", ex);
         }
     }
 
@@ -883,7 +883,8 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             throw new RuntimeException(e);
         }
     }
-    public ILiglPage createCaseWithoutInplacePreservation(Hashtable<String,String> data) throws Exception {
+
+    public ILiglPage createCaseWithoutInplacePreservation(Hashtable<String, String> data) throws Exception {
         try {
 
             log_Info("createNewCase() Started");
@@ -962,8 +963,6 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(1000);
 
 
-
-
             log_Pass("All Mandatory Fields Are Entered");
             log_Info("Click on more button");
             MoreBtn.click();
@@ -986,7 +985,8 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
         }
 
     }
-    public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title,String SYEAR,String SMONTH,String SDATE) throws Exception {
+
+    public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator, String Date, String Month, String Year, String Title, String SYEAR, String SMONTH, String SDATE) throws Exception {
 
         try {
 
@@ -1016,7 +1016,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(3000);
             log_Info("click On Date Modifier Dropdown Value");
             Thread.sleep(3000);
-            getCurrentDriver().findElement(By.xpath("//div[@role='option']//span[contains(text(),'"+Comparator+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//div[@role='option']//span[contains(text(),'" + Comparator + "')]")).click();
             Thread.sleep(2000);
             log_Info("clicked On Date Modifier Dropdown Value ");
             log_Info("Enter The Date In The Bar");
@@ -1036,7 +1036,6 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
 
 
-
             String CasesCOUNT = CasesCount.getText();
             int CasescountDL = Integer.parseInt(CasesCOUNT);
 
@@ -1053,11 +1052,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(2000);
             AYearTabInCalendar.click();
             Thread.sleep(2000);
-            getCurrentDriver().findElement(By.xpath("//button[@aria-label='"+SYEAR+"']")).click();
+            getCurrentDriver().findElement(By.xpath("//button[@aria-label='" + SYEAR + "']")).click();
             Thread.sleep(2000);
-            getCurrentDriver().findElement(By.xpath("//div[contains(text(),'"+SMONTH+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//div[contains(text(),'" + SMONTH + "')]")).click();
             Thread.sleep(2000);
-            getCurrentDriver().findElement(By.xpath("//button[@aria-label='"+SDATE+"']//div")).click();
+            getCurrentDriver().findElement(By.xpath("//button[@aria-label='" + SDATE + "']//div")).click();
             Thread.sleep(2000);
             getSession().log_Pass("Entered The Start Date");
 
@@ -1079,29 +1078,26 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
                 if (CasescountDL == CASESCountDB) {
 
                     log_Pass("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are EQUAL ");
-                }
-                else
-                {
+                } else {
                     throw new Exception("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are NOT EQUAL");
                 }
-            }
-            catch(Exception e) {
+            } catch (Exception e) {
                 log_Error("Total Count In Both Pages Are Not Equal");
                 throw new Exception("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are NOT EQUAL");
             }
 
-            return  new DashboardPage();
+            return new DashboardPage();
 
 
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("searchLastDateModifiedColumn() Failed",ex);
+            throw new Exception("searchLastDateModifiedColumn() Failed", ex);
         }
 
     }
 
 
-    public ILiglPage createNewCaseWithInPlacePreservation(Hashtable<String,String> data) throws Exception {
+    public ILiglPage createNewCaseWithInPlacePreservation(Hashtable<String, String> data) throws Exception {
         try {
 
 
@@ -1193,20 +1189,19 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("Click Save Button");
             SaveBtn.click();
             log_Pass("Save button Clicked");
-            String b= NewlyCreatedCaseName.getAttribute("title");
-            Assert.assertEquals(data.get("CaseName"),b);
+            String b = NewlyCreatedCaseName.getAttribute("title");
+            Assert.assertEquals(data.get("CaseName"), b);
             log_Pass("Case Created Successfully");
             return new CaseSummaryPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in createNewCase()", ex);
         }
     }
 
     /*****************************************DB related test**************************************************/
 
-    public ILiglPage createNewProjectWithAllFields(Hashtable<String,String> data) throws Exception{
-        try{
+    public ILiglPage createNewProjectWithAllFields(Hashtable<String, String> data) throws Exception {
+        try {
             Thread.sleep(25555);
             getDriver().waitUntilSpinnerIsClosed();
             log_Info("Click Project Case Button");
@@ -1237,12 +1232,12 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             log_Info("Enter Case Settings Template");
             getDriver().waitForelementToBeClickable(CST);
-            CST.sendKeys(Keys.ENTER,data.get("ProjectSetTemp"), Keys.ENTER);
+            CST.sendKeys(Keys.ENTER, data.get("ProjectSetTemp"), Keys.ENTER);
             getDriver().waitForAngularRequestsToComplete();
 
             log_Info("Enter Entity");
             getDriver().waitForelementToBeClickable(Entity);
-            Entity.sendKeys(Keys.ENTER,data.get("Entity"),Keys.ENTER);
+            Entity.sendKeys(Keys.ENTER, data.get("Entity"), Keys.ENTER);
             getDriver().waitForAngularRequestsToComplete();
 
             log_Info("Enter Region");
@@ -1271,7 +1266,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             wait(5);
             return new CaseSummaryPage();
 
-        }catch (Exception | Error ex){
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
             throw new Exception("Create New Case With All Fields Failed", ex);
         }
@@ -1280,7 +1275,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
     /*****************************************End To End Testing**************************************************/
 
 
-    public ILiglPage createProjectWithBothMandatoryAndOptionalFields(Hashtable<String,String> data) throws Exception {
+    public ILiglPage createProjectWithBothMandatoryAndOptionalFields(Hashtable<String, String> data) throws Exception {
         try {
 
 
@@ -1380,7 +1375,6 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Pass("Priority Selected");
 
 
-
             log_Info("Click On More Button");
             MoreBtn.click();
             Thread.sleep(1000);
@@ -1403,7 +1397,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("Click On Add Drop Down");
             AddDropDown.click();
             Thread.sleep(1000);
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+data.get("AddDP")+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'" + data.get("AddDP") + "')]")).click();
             Thread.sleep(1000);
             log_Pass("Clicked On Add Drop Down");
 
@@ -1425,12 +1419,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("Click Save Button");
             SaveBtn.click();
             log_Pass("Save button Clicked");
-            String b= NewlyCreatedCaseName.getAttribute("title");
-            Assert.assertEquals(data.get("PROJECT"),b);
+            String b = NewlyCreatedCaseName.getAttribute("title");
+            Assert.assertEquals(data.get("PROJECT"), b);
             log_Pass("Case Created Successfully");
             return new CaseSummaryPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in createProjectWithBothMandatoryAndOptionalFields()", ex);
         }
     }
@@ -1451,8 +1444,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
 
             return new DefaultLandingPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in enterProjectType()", ex);
         }
     }
@@ -1472,11 +1464,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
 
             return new DefaultLandingPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in enterRole)", ex);
         }
     }
+
     public ILiglPage enterProjectName(String PROJECT) throws Exception {
 
         try {
@@ -1488,8 +1480,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Pass("Entered CaseName");
 
             return new DefaultLandingPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in enterRole()", ex);
         }
     }
@@ -1505,8 +1496,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Pass("Entered Description");
 
             return new DefaultLandingPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in enterDescription()", ex);
         }
     }
@@ -1525,8 +1515,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Pass("Entered Case Settings Template");
 
             return new DefaultLandingPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in enterProjectSettingTemplate()", ex);
         }
     }
@@ -1545,8 +1534,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Pass("Entered Entity");
 
             return new DefaultLandingPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in enterEntity()", ex);
         }
     }
@@ -1567,8 +1555,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
 
             return new DefaultLandingPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in enterRegion()", ex);
         }
     }
@@ -1588,8 +1575,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
 
             return new DefaultLandingPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in enterPriority()", ex);
         }
     }
@@ -1604,23 +1590,21 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             SaveBtn.click();
             Thread.sleep(2000);
 
-            try{
+            try {
                 if (SaveBtn.isDisplayed())
                     SaveBtn.click();
                 log_Pass("Clicked On Save Button");
-            }
-            catch (Exception ex){
+            } catch (Exception ex) {
                 log_Pass("Save Button Is Clicked");
 
             }
 
-            String b= NewlyCreatedCaseName.getAttribute("title");
-            Assert.assertEquals(CaseNAME,b);
+            String b = NewlyCreatedCaseName.getAttribute("title");
+            Assert.assertEquals(CaseNAME, b);
             log_Pass("Case Created Successfully");
             return new CaseSummaryPage();
 
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in clickOnSaveAndAddDetailsButtonInAddProjectPopUp()", ex);
         }
     }
@@ -1635,13 +1619,12 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Pass("Clicked On Add Project Button");
 
             return new DefaultLandingPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in clickOnAddProjectButton()", ex);
         }
     }
 
-    public ILiglPage createProjectWhenProjectSettingTemplateFieldIsDisabled(Hashtable<String,String> data) throws Exception {
+    public ILiglPage createProjectWhenProjectSettingTemplateFieldIsDisabled(Hashtable<String, String> data) throws Exception {
 
         try {
 
@@ -1654,14 +1637,13 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
                     .clickOnSaveAndAddDetailsButtonInAddProjectPopUp(data.get("PROJECT"));
 
             return new CaseSummaryPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in createProjectWhenProjectSettingTemplateFieldIsDisabled()", ex);
         }
     }
 
 
-    public ILiglPage createProjectWhenRegionFieldIsDisabled(Hashtable<String,String> data) throws Exception {
+    public ILiglPage createProjectWhenRegionFieldIsDisabled(Hashtable<String, String> data) throws Exception {
 
         try {
 
@@ -1674,13 +1656,12 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
                     .clickOnSaveAndAddDetailsButtonInAddProjectPopUp(data.get("PROJECT"));
 
             return new CaseSummaryPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in createProjectWhenRegionFieldIsDisabled()", ex);
         }
     }
 
-    public ILiglPage verifyProjectNameFieldValidationSpecialCharactersAllowedAndNotAllowed(Hashtable<String,String> data) throws Exception {
+    public ILiglPage verifyProjectNameFieldValidationSpecialCharactersAllowedAndNotAllowed(Hashtable<String, String> data) throws Exception {
 
         try {
 
@@ -1701,8 +1682,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
                     .clickOnSaveAndAddDetailsButtonInAddProjectPopUp(data.get("PROJECT1"));
 
             return new CaseSummaryPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in verifyProjectNameFieldValidationSpecialCharactersAllowedAndNotAllowed()", ex);
         }
     }
@@ -1720,8 +1700,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             return new DefaultLandingPage();
 
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in clickOnSaveAndAddDetailsButton()", ex);
         }
     }
@@ -1739,8 +1718,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             return new DefaultLandingPage();
 
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in performClearActionInTheProjectNameField()", ex);
         }
     }
@@ -1753,22 +1731,20 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             String s1 = ProjectNameErrorMsg.getText();
             String s2 = (Constants.ProjectSpecialChar_ErrorMessage);
 
-            if(s1.equals(s2)){
+            if (s1.equals(s2)) {
                 log_Pass("Error Message Displayed And Validated The Special Characters");
-            }
-            else {
+            } else {
                 throw new Exception("Error Message not Displayed As It Allows Specified Special characters");
             }
 
             return new DefaultLandingPage();
 
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in validateProjectNameFieldErrorMessage()", ex);
         }
     }
 
-    public ILiglPage verifyUserCanChooseAnyDateInDueDateWhileProjectCreateOrEdit(Hashtable<String,String> data) throws Exception {
+    public ILiglPage verifyUserCanChooseAnyDateInDueDateWhileProjectCreateOrEdit(Hashtable<String, String> data) throws Exception {
 
         try {
 
@@ -1790,13 +1766,12 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
                     .clickOnSaveButtonFromEditPopUpInCaseSummaryPage();
 
             return new CaseSummaryPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in verifyUserCanChooseAnyDateInDueDateWhileProjectCreateOrEdit()", ex);
         }
     }
 
-    public ILiglPage  enterProjectDueDate(String DueDate) throws Exception {
+    public ILiglPage enterProjectDueDate(String DueDate) throws Exception {
 
         try {
 
@@ -1810,8 +1785,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             return new DefaultLandingPage();
 
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in enterProjectDueDate()", ex);
         }
     }
@@ -1830,9 +1804,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             return this;
 
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("clickOnChooseColumnsInProjectGrid() Failed",ex);
+            throw new Exception("clickOnChooseColumnsInProjectGrid() Failed", ex);
         }
 
     }
@@ -1848,13 +1822,13 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(1000);
             log_Pass("Entered The Required Column In Search Bar");
 
-           /* getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+RequiredColumn1+"')]")).click();*/
+            /* getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+RequiredColumn1+"')]")).click();*/
 
             return this;
 
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("searchForTheRequiredColumnsThroughChooseColumn() Failed",ex);
+            throw new Exception("searchForTheRequiredColumnsThroughChooseColumn() Failed", ex);
         }
 
     }
@@ -1872,14 +1846,14 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             return this;
 
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("performClearActionInSearchBarInChooseColumn() Failed",ex);
+            throw new Exception("performClearActionInSearchBarInChooseColumn() Failed", ex);
         }
 
     }
 
-    public ILiglPage createNewCaseSP(Hashtable<String,String> data) throws Exception {
+    public ILiglPage createNewCaseSP(Hashtable<String, String> data) throws Exception {
 
         try {
 
@@ -1981,18 +1955,17 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info("Click Save Button");
             SaveBtn.click();
             log_Pass("Save button Clicked");
-            String b= NewlyCreatedCaseName.getAttribute("title");
-            Assert.assertEquals(data.get("PROJECT"),b);
+            String b = NewlyCreatedCaseName.getAttribute("title");
+            Assert.assertEquals(data.get("PROJECT"), b);
             log_Pass("Case Created Successfully");
 
             return new CaseSummaryPage();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in createNewCaseSP()", ex);
         }
     }
 
-    public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoardWhenUACIsFALSE(String Comparator,String Date,String Month,String Year,String Title,String SYEAR,String SMONTH,String SDATE) throws Exception {
+    public ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoardWhenUACIsFALSE(String Comparator, String Date, String Month, String Year, String Title, String SYEAR, String SMONTH, String SDATE) throws Exception {
 
         try {
 
@@ -2022,7 +1995,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(3000);
             log_Info("click On Date Modifier Dropdown Value");
             Thread.sleep(3000);
-            getCurrentDriver().findElement(By.xpath("//div[@role='option']//span[contains(text(),'"+Comparator+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//div[@role='option']//span[contains(text(),'" + Comparator + "')]")).click();
             Thread.sleep(2000);
             log_Info("clicked On Date Modifier Dropdown Value ");
             log_Info("Enter The Date In The Bar");
@@ -2042,7 +2015,6 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
 
 
-
             String CasesCOUNT = CasesCount.getText();
             int CasescountDL = Integer.parseInt(CasesCOUNT);
 
@@ -2059,11 +2031,11 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             Thread.sleep(2000);
             AYearTabInCalendar.click();
             Thread.sleep(2000);
-            getCurrentDriver().findElement(By.xpath("//button[@aria-label='"+SYEAR+"']")).click();
+            getCurrentDriver().findElement(By.xpath("//button[@aria-label='" + SYEAR + "']")).click();
             Thread.sleep(2000);
-            getCurrentDriver().findElement(By.xpath("//div[contains(text(),'"+SMONTH+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//div[contains(text(),'" + SMONTH + "')]")).click();
             Thread.sleep(2000);
-            getCurrentDriver().findElement(By.xpath("//button[@aria-label='"+SDATE+"']//div")).click();
+            getCurrentDriver().findElement(By.xpath("//button[@aria-label='" + SDATE + "']//div")).click();
             Thread.sleep(2000);
             getSession().log_Pass("Entered The Start Date");
 
@@ -2085,28 +2057,25 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
                 if (CasescountDL != CASESCountDB) {
 
                     log_Pass("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are NOT EQUAL");
-                }
-                else
-                {
+                } else {
                     throw new Exception("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are EQUAL ");
                 }
-            }
-            catch(Exception e) {
+            } catch (Exception e) {
                 log_Error("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are EQUAL ");
                 throw new Exception("Total Count Of Cases In DefaultLanding Page And Dash Board Page Are EQUAL");
             }
 
-            return  new DashboardPage();
+            return new DashboardPage();
 
 
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("searchLastDateModifiedColumnAndValidateTheCountInDashBoardWhenUACIsFALSE() Failed",ex);
+            throw new Exception("searchLastDateModifiedColumnAndValidateTheCountInDashBoardWhenUACIsFALSE() Failed", ex);
         }
 
     }
 
-    public ILiglPage validatingTheErrorMessageWhileCreatingTheDuplicateProjectNames(Hashtable<String,String> data) throws Exception {
+    public ILiglPage validatingTheErrorMessageWhileCreatingTheDuplicateProjectNames(Hashtable<String, String> data) throws Exception {
 
         try {
 
@@ -2127,7 +2096,7 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
             log_Info(data.toString());
 
             enterDescription(data.get("DESC")).enterProjectSettingTemplate(data.get("PST")).enterEntity(data.get("ENTITY")).enterRegion(data.get("REGION")).enterPriority(data.get("PRIORITY"))
-                            .validateTheSaveAndAddDetailsButtonIsInDisableModeInAddProjectPopUp();
+                    .validateTheSaveAndAddDetailsButtonIsInDisableModeInAddProjectPopUp();
 
 
             log_Info("Check The Field Validation Under The Project Name");
@@ -2140,9 +2109,9 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             return new DefaultLandingPage();
 
-        }catch (Exception | Error ex) {
+        } catch (Exception | Error ex) {
             log_Error(ex.getMessage());
-            throw new Exception("validatingTheErrorMessageWhileCreatingTheDuplicateProjectNames() Failed",ex);
+            throw new Exception("validatingTheErrorMessageWhileCreatingTheDuplicateProjectNames() Failed", ex);
         }
 
     }
@@ -2153,18 +2122,60 @@ public class DefaultLandingPage extends LiglBaseSessionPage {
 
             log_Info("validateTheSaveAndAddDetailsButtonIsInDisableModeInAddProjectPopUp() Started");
 
-                if (SaveBtn.isEnabled()) {
-                    SaveBtn.click();
-                    throw new Exception("Save And Add Details Button Is In Enable Mode");
-                }
-                else {
-                    log_Pass("Save And Add Details Button Is In Disable Mode");
-                }
+            if (SaveBtn.isEnabled()) {
+                SaveBtn.click();
+                throw new Exception("Save And Add Details Button Is In Enable Mode");
+            } else {
+                log_Pass("Save And Add Details Button Is In Disable Mode");
+            }
             return this;
 
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception("Exception in validateTheSaveAndAddDetailsButtonIsInDisableModeInAddProjectPopUp()", ex);
         }
+    }
+
+    public ILiglPage validateProjectPrefixIsAutogeneratedInAlphaNumericFormat(Hashtable<String, String> data) throws Exception {
+
+        try {
+
+            log_Info("validateProjectPrefixIsAutogeneratedInAlphaNumericFormat() Started");
+            log_Info(data.toString());
+            clickOnAddProjectButton()
+                    .enterProjectType(data.get("ProjectTYPE"))
+                    .enterRole(data.get("ROLE")).enterProjectName(data.get("PROJECT"))
+                    .enterProjectSettingTemplate(data.get("PST"));
+
+            log_Info("Check The Autogenerated Alpha Numeric Value In The Field");
+            getDriver().minWait();
+
+            String s = getCurrentDriver().findElement(By.xpath("//input[@id='input-prefix']")).getAttribute("value");
+
+            String regex = "^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9]+$";
+
+            Pattern p = Pattern.compile(regex);
+
+            if (s == null) {
+                throw new Exception("The Prefix Alpha Numeric Value Is Empty");
+            }
+
+            Matcher m = p.matcher(s);
+            m.matches();
+            log_Pass("The Alpha Numeric Value Contains Correctly");
+
+                     enterEntity(data.get("ENTITY"))
+                    .enterRegion(data.get("REGION"))
+                    .enterPriority(data.get("PRIORITY"))
+                    .enterDescription(data.get("DESC"))
+                    .clickOnSaveAndAddDetailsButton();
+
+
+            return new CaseSummaryPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateProjectPrefixIsAutogeneratedInAlphaNumericFormat() Failed", ex);
+        }
+
     }
 }

@@ -302,7 +302,8 @@ public class LoginPage extends LiglBasePage {
                 sso.loginWithSSOUser(entity);
                 return  new DefaultLandingPage();
             } else if (userType.toLowerCase().contentEquals("superuser")) {
-                login(getSession().getGlobalData("Superuser_UserName"), getSession().getGlobalData("Superuser_Password"), entity);
+                login(getSession().getGlobalData("Superuser_UserName"), getSession().getGlobalData("Superuser_Password"),getSession().getGlobalData("Custom_Entity"));
+                return  new DefaultLandingPage();
             } else {
                 log_Error("Invalid user passed in TestData Sheet");
             }
