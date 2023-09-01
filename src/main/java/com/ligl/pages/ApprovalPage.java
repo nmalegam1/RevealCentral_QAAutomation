@@ -1,6 +1,7 @@
 package com.ligl.pages;
 
 import com.ligl.base.pages.ILiglPage;
+import com.ligl.pages.casemanagement.CaseOtherPartyPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -9,24 +10,6 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 public class ApprovalPage extends LiglBaseSessionPage {
-
-    @FindBy(css = "span[class='ag-icon ag-icon-menu']")
-    WebElement ApproveNameMenu;
-
-    @FindBy(xpath = "//span[contains(text(),'Name')]/ancestor::div[@ref='eLabel']")
-    WebElement ApproveNameHeader;
-
-    @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
-    WebElement ApproveSearchFilter;
-
-    @FindBy(css = "input[placeholder='Filter...']")
-    WebElement ApproveSearchBar;
-
-    @FindBy(xpath = "//*[@id='content']/article/div[2]/div[2]/ag-grid-angular/div/div[6]/div/div[1]/span[2]")
-    WebElement Filter;
-
-    @FindBy(id = "ag-1912-input")
-    WebElement SearchBar;
 
     @FindBy(xpath = "//span[@title='QA_Nov24v5 - LHNLIGLv']")
     WebElement LegalHoldName;
@@ -37,14 +20,11 @@ public class ApprovalPage extends LiglBaseSessionPage {
     @FindBy(id = "send-approval-btn")
     WebElement SaveBtn;
 
-    @FindBy(xpath = "//span[@title='QA_Jan3v4-Batch1']")
-    WebElement CaseName;
-
     @FindBy(id = "appr-reject-btn")
     WebElement RejectBtn;
 
-    @FindBy(xpath = "//mat-panel-title[contains(text(),'Case Details')]")
-    WebElement CaseDetails;
+    @FindBy(xpath = "//mat-panel-title[contains(text(),'Project Details')]")
+    WebElement ProjectDetails;
 
     @FindBy(xpath = "//mat-panel-title[contains(text(),' Legal Hold Details ')]")
     WebElement CaseLHDetails;
@@ -61,7 +41,50 @@ public class ApprovalPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//button[contains(text(),'Close')]")
     WebElement CloseBtn;
 
-    // Approving The Legal Hold
+    @FindBy(xpath = "//div[@col-id='EntityStatusName']//span[contains(text(),'Approved')]")
+    WebElement BatchApprovedStatus;
+
+    @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
+    WebElement FilterIcon;
+
+    @FindBy(xpath = "//span[contains(text(),'Name')]/ancestor::div[@ref='eLabel']/span")
+    WebElement PartyHeader;
+
+    @FindBy(css = "span[class='ag-icon ag-icon-menu']")
+    WebElement MenuIcon;
+
+    @FindBy(css = "input[placeholder='Filter...']")
+    WebElement SearchBarIcon;
+
+    @FindBy(xpath = "//div[@role='region']//section[@id='approvalStatus']//span[contains(text(),'Approved')]")
+    WebElement ProjectDetailsApproved;
+
+    @FindBy(xpath = "//mat-panel-title[contains(text(),'Data Sources')]")
+    WebElement DataSourcesAcc;
+
+    @FindBy(xpath = "//mat-panel-title[contains(text(),'Custodians')]")
+    WebElement CustodianAcc;
+
+    @FindBy(xpath = "//mat-panel-title[contains(text(),'Date Ranges')]")
+    WebElement DateRangesAcc;
+
+    @FindBy(xpath = "//mat-panel-title[contains(text(),'Keywords')]")
+    WebElement KeywordsAcc;
+
+    @FindBy(xpath = "//form[@id='approvalCustodianForm']//section[@id='approvalstatus-party-name']//p")
+    WebElement CustodianApprovalStatus;
+
+    @FindBy(xpath = "//form[@id='approvalDateRangesForm']//section[@id='common-approval-status-start-date']//p")
+    WebElement DataSourcesApprovalStatus;
+
+    @FindBy(xpath = "//form[@id='row-approvalDateRangesForm']//section[@id='common-approval-status-end-date']//p")
+    WebElement DateRangesApprovalStatus;
+
+    @FindBy(xpath = "//form[@id='keywordsForm']//td[5]//p")
+    WebElement KeywordsApprovalStatus;
+
+
+
 
     public ILiglPage approvingLegalHold() throws InterruptedException {
 
@@ -210,15 +233,16 @@ public class ApprovalPage extends LiglBaseSessionPage {
             try {
                 Thread.sleep(5000);
                 log_Info("Click on Case Details Accordion");
-                getDriver().waitForelementToBeClickable(CaseDetails);
+                getDriver().waitForelementToBeClickable(ProjectDetails);
                 waitForPageToLoad();
                 Thread.sleep(5000);
-                CaseDetails.click();
+                ProjectDetails.click();
                 getSession().log_Pass("Clicked on Case Details Accordion");
                 Thread.sleep(5000);
                 log_Info("Click on Legal hold Details Accordion");
                 getDriver().waitForelementToBeClickable(CaseLHDetails);
                 waitForPageToLoad();
+                ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", ApproveBtn);
                 Thread.sleep(5000);
                 CaseLHDetails.click();
                 getSession().log_Pass("Clicked on Legal hold Details Accordion");
@@ -269,7 +293,203 @@ public class ApprovalPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage validateBatchForProjectApprovalStatus() throws Exception {
+
+        try {
+            log_Info("validateBatchForProjectApprovalStatus() Started");
+            Thread.sleep(5000);
+            if(BatchApprovedStatus.isDisplayed()){
+                log_Pass("The Assigned Project Batch Is In Approved State");
+            }
+            else {
+                throw new Exception("Assigned Project Batch Is Not In Approved State");
+            }
+
+            return  new ApprovalPage();
+        }
+        catch (Exception | Error ex)
+        {
+            log_Error(ex.getMessage());
+            throw new Exception("validateBatchForProjectApprovalStatus() Failed", ex);
+        }
+    }
+
+    public ILiglPage searchRequiredProjectBatch(String BatchName) throws Exception {
+
+        try {
 
 
+            log_Info("searchRequiredProjectBatch() Started");
+            log_Info("Hover on Name Header");
+            Actions ac = new Actions(getCurrentDriver());
+            ac.moveToElement(PartyHeader).perform();
+            log_Info("Hovered on Name Header");
+            Thread.sleep(2000);
+
+            log_Info("click on Party menu icon");
+            MenuIcon.click();
+            log_Info("clicked on Party menu icon");
+            log_Info("Click on Filter");
+            getDriver().waitForelementToBeClickable(FilterIcon);
+            Thread.sleep(2000);
+            FilterIcon.click();
+            log_Info("Filter Clicked");
+            getDriver().waitForelementToBeClickable(SearchBarIcon);
+            Thread.sleep(5000);
+            SearchBarIcon.sendKeys(BatchName);
+            Thread.sleep(20000);
+
+            validateBatchForProjectApprovalStatus();
+
+            getCurrentDriver().findElement(By.xpath("//div[@col-id='Name']//span[@title='"+BatchName+"']")).click();
+
+            return new ApprovalPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("searchRequiredProjectBatch() Failed", ex);
+
+        }
+    }
+
+    public ILiglPage validateProjectDetailsAreInApprovedStateInApprovalPage() throws Exception {
+
+        try {
+
+
+            log_Info("validateProjectDetailsAreInApprovedStateInApprovalPage() Started");
+            Thread.sleep(2000);
+
+            if (ProjectDetailsApproved.isDisplayed()){
+                log_Pass("Project Is In Approved State In Approval Page Details");
+            }
+            else {
+                throw new Exception("Project Is In Not Approved State");
+            }
+            return new ApprovalPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateProjectDetailsAreInApprovedStateInApprovalPage() Failed", ex);
+
+        }
+    }
+
+    public ILiglPage validateProjectCustodiansAreInApprovedState() throws Exception {
+
+        try {
+
+
+            log_Info("validateProjectCustodiansAreInApprovedState() Started");
+            Thread.sleep(2000);
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", ApproveBtn);
+            log_Info("Click on Custodian Accordian Grid");
+            getDriver().waitForelementToBeClickable(CustodianAcc);
+            CustodianAcc.click();
+            Thread.sleep(2000);
+            log_Pass("Clicked On Custodian Accordian Grid");
+
+            if (CustodianApprovalStatus.isDisplayed()){
+                log_Pass("Project Custodians Are In Approved State In Approval Page Details");
+            }
+            else {
+                throw new Exception("Project Custodians Are In Not Approved State");
+            }
+            return new ApprovalPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateProjectCustodiansAreInApprovedState() Failed", ex);
+
+        }
+    }
+
+    public ILiglPage validateProjectDataSourcesAreInApprovedState() throws Exception {
+
+        try {
+
+
+            log_Info("validateProjectDataSourcesAreInApprovedState() Started");
+            Thread.sleep(2000);
+
+            log_Info("Click on DataSources Accordian Grid");
+            getDriver().waitForelementToBeClickable(DataSourcesAcc);
+            DataSourcesAcc.click();
+            Thread.sleep(2000);
+            log_Pass("Clicked On DataSources Accordian Grid");
+
+            if (DataSourcesApprovalStatus.isDisplayed()){
+                log_Pass("Project DataSources Is In Approved State In Approval Page Details");
+            }
+            else {
+                throw new Exception("Project DataSources Is In Not Approved State");
+            }
+            return new ApprovalPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateProjectDataSourcesAreInApprovedState() Failed", ex);
+
+        }
+    }
+
+    public ILiglPage validateProjectDateRangessAreInApprovedState() throws Exception {
+
+        try {
+
+
+            log_Info("validateProjectDateRangessAreInApprovedState() Started");
+            Thread.sleep(2000);
+
+            log_Info("Click on DateRanges Accordian Grid");
+            getDriver().waitForelementToBeClickable(DateRangesAcc);
+            DateRangesAcc.click();
+            Thread.sleep(2000);
+            log_Pass("Clicked On DateRanges Accordian Grid");
+
+            if (DateRangesApprovalStatus.isDisplayed()){
+                log_Pass("Project DateRanges Is In Approved State In Approval Page Details");
+            }
+            else {
+                throw new Exception("Project DateRanges Is In Not Approved State");
+            }
+            return new ApprovalPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateProjectDateRangessAreInApprovedState() Failed", ex);
+
+        }
+    }
+
+    public ILiglPage validateProjectKeywordsAreInApprovedState() throws Exception {
+
+        try {
+
+
+            log_Info("validateProjectKeywordsAreInApprovedState() Started");
+            Thread.sleep(2000);
+
+            log_Info("Click on Keywords Accordian Grid");
+            getDriver().waitForelementToBeClickable(DataSourcesAcc);
+            KeywordsAcc.click();
+            Thread.sleep(2000);
+            log_Pass("Clicked On Keywords Accordian Grid");
+
+            if (KeywordsApprovalStatus.isDisplayed()){
+                log_Pass("Project Keywords Is In Approved State In Approval Page Details");
+            }
+            else {
+                throw new Exception("Project Keywords Is In Not Approved State");
+            }
+            return new ApprovalPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateProjectKeywordsAreInApprovedState() Failed", ex);
+
+        }
+    }
 
 }

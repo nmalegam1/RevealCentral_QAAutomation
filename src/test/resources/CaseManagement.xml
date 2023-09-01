@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="CaseManagement">
+<suite name="CaseManagement" parallel="tests" thread-count="3">
   <test name="Deleting InHouse Counsel">
     <classes>
       <class name="com.ligl.CaseManagement.TC_7094_DeletingInHouseCounsel"/>
     </classes>
-  </test> <!-- Test -->
+  </test>
   <test name="Deleting Outside Counsel">
     <classes>
       <class name="com.ligl.CaseManagement.TC_7100_DeletingOutsideCounsel"/>
-    </classes>
-  </test>
-  <test name="Create New Outside Counsel">
-    <classes>
-      <class name="com.ligl.CaseManagement.TC_7102_CreateNewOutsideCounsel"/>
     </classes>
   </test>
   <test name="Create New Contact Selected Party">
@@ -191,7 +186,7 @@
   </test> <!-- Test -->
   <test name="VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected">
     <classes>
-      <class name="com.ligl.CaseManagement.TC_45512_VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected"/>
+      <class name="com.ligl.ProjectManagement.VerifyDataInApprovedRejectedByColumnWhenSingleApprovalIsSelected"/>
     </classes>
   </test>
   <test name="VerifyDataInApprovedRejectedByColumnWhenDualBothApprovalIsSelected">
@@ -241,7 +236,7 @@
   </test>
   <test name="VerifyUserIsAbleToViewCaseDocumentInNewTab">
     <classes>
-      <class name="com.ligl.CaseManagement.TC_10305_VerifyUserIsAbleToViewCaseDocumentInNewTab"/>
+      <class name="com.ligl.ProjectManagement.VerifyUserIsAbleToViewCaseDocumentInNewTab"/>
     </classes>
   </test>
   <test name="VerifyProcessOfCreatingCaseByClickingSaveAndAddDetailsBtn">

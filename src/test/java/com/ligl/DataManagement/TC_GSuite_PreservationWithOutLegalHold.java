@@ -25,11 +25,11 @@ public class TC_GSuite_PreservationWithOutLegalHold extends TestBase {
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
             ILiglPage page = new LaunchPage()
-                    .openBrowser("chrome")
+                    .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
-                    //.navigateSSOLoginPage()
-                    //.SSOLogin(session.getRegressionData("Username"), session.getRegressionData("Password"),session.getRegressionData("EntitySelection"))
+                    //.login(data.get("Username"),data.get("Password"),data.get("EntitySelection"))
+                    .navigateSSOLoginPage()
+                    .SSOLogin(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()
@@ -43,7 +43,6 @@ public class TC_GSuite_PreservationWithOutLegalHold extends TestBase {
                     .selectAllCCDs()
                     .clickOnAutomateButton()
                     .getLeftMenu().goToDataManagementSummary()
-                    .goToDMLHScope()
                     .validateAndWaitForRecordsToCompleteLock(data.get("LockStatus"));
         } catch (Exception ex) {
             session.log_Error("TC_GSuite_PreservationWithOutLegalHold Failed");

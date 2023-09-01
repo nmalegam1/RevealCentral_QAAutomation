@@ -23,12 +23,12 @@ public class TC_35057_VerifyFunctionalityOfCreatingKeywords extends TestBase {
                 // skip-testng
                 throw new SkipException("Skipping the test as Runmode Was No");
             }
-            // Create new template using +template button for case approval category
+
 
             ILiglPage page = new LaunchPage()
                     .openBrowser("chrome")
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getLeftMenu()
                     .navigateToCustodiansPage()

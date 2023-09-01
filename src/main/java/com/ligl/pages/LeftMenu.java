@@ -193,6 +193,8 @@ public class LeftMenu extends LiglBasePage {
     }
 
     public ILiglPage goToCaseManagement() throws InterruptedException {
+        Thread.sleep(5000);
+        ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", CaseManage);
         CaseManage.click();
         return new CaseSummaryPage();
     }
@@ -304,11 +306,11 @@ public class LeftMenu extends LiglBasePage {
             DataManagement.click();
             getSession().log_Pass("Clicked on Data Management");
 
-            log_Info("Click on Identification");
+            log_Info("Click on Preservation");
             getDriver().waitForelementToBeClickable(Preservation);
             Thread.sleep(5000);
             Preservation.click();
-            getSession().log_Pass("Clicked on Identification");
+            getSession().log_Pass("Clicked on Preservation");
             return new DMDataHoldPage();
 
         } catch (Exception | Error ex) {

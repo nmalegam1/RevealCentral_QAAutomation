@@ -2,6 +2,7 @@ package com.ligl.pages.casemanagement;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
+import com.ligl.pages.NotesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -64,7 +65,7 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
     @FindBy(xpath="//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='PartyName']//span[@class='ellipsisAgGrid']")
     WebElement CourtNameColData;
 
-    @FindBy(xpath="//button[contains(text(),'Judge')]")
+    @FindBy(id = "add-judge-btn")
     WebElement AddJudgeBtn;
 
     @FindBy(css = "input[placeholder='Filter...']")
@@ -73,7 +74,7 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
     WebElement Filter;
 
-    @FindBy(xpath="//span[contains(text(),'Jury')]/ancestor::div[@ref='eLabel']/span")
+    @FindBy(xpath="//div[contains(text(),'Judge/Judiciary Bench')]")
     WebElement JudgeHeader;
     @FindBy(id="btn-court")
     WebElement CreateCourt;
@@ -89,6 +90,18 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
     WebElement NoDataInProsecutor;
     @FindBy(xpath = "//button[contains(text(),'Yes')]")
     WebElement DltConfirmBtn;
+
+    @FindBy(xpath = "//button[@title='Delete']//i")
+    WebElement CourtDeleteBtn;
+
+    @FindBy(xpath = "//div[@class='judicialPage']//button[@title='Delete']//i")
+    WebElement JudgeDeleteBtn;
+
+    @FindBy(xpath = "//div[contains(text(),'No data available...')]")
+    WebElement NDAinGrid;
+
+    @FindBy(xpath = "//div[@col-id='Notes']//button")
+    WebElement NotesIcon;
 
 
     //  10.Adding Particular Court To Case Through Add Court Button
@@ -312,6 +325,25 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
         }
     }
 
+    public ILiglPage validateSecondSearchAddedCourts(String CourtAdded) throws Exception{
+
+        try {
+            log_Info("validateAddedCourts() started");
+            secondSearchCourt(CourtAdded);
+            log_Info("Filtered Added court to case");
+            String test=CourtNameColData.getText();
+            Assert.assertEquals(test,CourtAdded);
+            log_Info("Added court is displaying in grid");
+            log_Info("validateAddedCourts() completed");
+            return new CaseCourtListPage();
+
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("validateAddedCourts() Failed", ex);
+        }
+    }
+
     public ILiglPage clickOnCourtName(String CourtName1) throws Exception {
 
         try {
@@ -334,6 +366,8 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
 
         try {
 
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", AddJudgeBtn);
 
             log_Info("clickOnAddJudgeButton() started");
             getDriver().waitForelementToBeClickable(AddJudgeBtn);
@@ -457,14 +491,22 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
     public ILiglPage searchCourt(String Court) throws Exception {
         try{
             log_Info("searchCourt() started");
+            log_Info("Click On Court Header");
             CourtHeader.click();
-            //Menu.click();
-            Filter.click();
-            SearchBar.sendKeys(Court);
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Court+"')]")).click();
+            log_Pass("Clicked On Court Header");
             Thread.sleep(2000);
-            //CourtRecord.click();
+            log_Info("Click On Filter Icon");
+            Filter.click();
+            log_Pass("Clicked On Filter Icon");
+            Thread.sleep(2000);
+            log_Info("Search The Required Court");
+            SearchBar.sendKeys(Court);
+            log_Pass("Searched The Required Court");
+            Thread.sleep(2000);
+            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+Court+"')]")).click();
+
             return new CaseCourtListPage();
+
         }catch(Exception | Error ex){
             log_Error("searchCourt() Failed");
             throw new Exception("Exception in searchCourt()",ex);
@@ -479,7 +521,10 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
      */
     public ILiglPage createNewJudge(String conJudgeFN,String conJudgeLN) throws Exception {
         try{
+
+
             log_Info("createNewJudge() started");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", AddJudgeBtn);
             AddJudgeBtn.click();
             CreateCourt.click();
             CaseOtherPartyPage COPP=new CaseOtherPartyPage();
@@ -502,6 +547,8 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
      */
     public ILiglPage validateJudgeAddedToGrid(String conFN,String conLN) throws Exception{
         try{
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", AddJudgeBtn);
             log_Info("Call searchJudge Method");
             searchJudge(conFN,conLN);
             log_Info("Judge Record Searched");
@@ -656,8 +703,9 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
      */
     public ILiglPage searchJudge(String conFN,String conLN) throws Exception{
         try{
+
+            getDriver().moderateWait();
             JuryHeader.click();
-            //Menu.click();
             Filter.click();
             String s=(conFN+" "+conLN);
             SearchBar.sendKeys(s);
@@ -665,6 +713,153 @@ public class CaseCourtListPage extends LiglBaseSessionPage {
         }catch (Exception | Error ex){
             log_Error("searchJudge() is Failed");
             throw new Exception("Exception in searchJudge()", ex);
+        }
+    }
+
+    public ILiglPage deleteCourt(String CourtName) throws Exception{
+        try{
+
+            log_Info("deleteCourt() Started");
+            Thread.sleep(1000);
+            log_Info("Click On Delete Button");
+            CourtDeleteBtn.click();
+            Thread.sleep(1000);
+            log_Pass("Clicked On Delete Button");
+            Thread.sleep(1000);
+            log_Info("Click On Yes Button In PopUp");
+            Thread.sleep(1000);
+            DltConfirmBtn.click();
+            Thread.sleep(1000);
+            log_Info("Clicked On Yes Button In PopUp");
+            searchingAddedCourtAfterDeleting(CourtName);
+            Thread.sleep(2000);
+            NDAinGrid.isEnabled();
+            log_Pass("Record Deleted Successfully");
+            return new CaseCourtListPage();
+
+        }catch (Exception | Error ex){
+            log_Error("deleteCourt Failed");
+            throw new Exception("Exception in deleteCourt()",ex);
+        }
+    }
+
+    public ILiglPage secondSearchCourt(String Court) throws Exception {
+        try{
+            log_Info("secondSearchCourt() started");
+            log_Info("Clear Data In Search Bar");
+            SearchBar.clear();
+            log_Info("Cleared Data In Search Bar");
+            Thread.sleep(2000);
+            SearchBar.sendKeys(Court);
+            log_Pass("Searched The Required Court");
+            Thread.sleep(2000);
+
+            return new CaseCourtListPage();
+
+        }catch(Exception | Error ex){
+            log_Error("searchCourt() Failed");
+            throw new Exception("Exception in searchCourt()",ex);
+        }
+    }
+
+    public ILiglPage clickingOnNotesIconInCourtGrid() throws Exception {
+
+        try {
+            log_Info("clickingOnNotesIcon() Started");
+            log_Info("click on Notes Icon");
+            Thread.sleep(2000);
+            NotesIcon.click();
+            log_Pass("Clicked on Notes Icon");
+
+            return new NotesPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickingOnNotesIconInCourtGrid() Failed");
+
+
+        }
+    }
+
+    public ILiglPage searchingAddedCourtAfterDeleting(String AvailableCourt) throws Exception {
+
+        try {
+
+            log_Info("click on Court Menu icon");
+            CourtMenuIcon.click();
+            getDriver().minWait();
+            log_Info("clicked on Court Menu icon");
+
+            log_Info("Clear Court From Search Bar");
+            CourtSearchBar.clear();
+            log_Info("Cleared Court From Search Bar");
+
+            log_Info("Enter Court Name from search bar");
+            getDriver().waitForelementToBeClickable(CourtSearchBar);
+            Thread.sleep(5000);
+            CourtSearchBar.sendKeys(AvailableCourt);
+            log_Info("Entered Court Name from search bar");
+            Thread.sleep(5000);
+            return new CaseCourtListPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("searchingAddedCourt() Failed",ex);
+        }
+    }
+
+    public ILiglPage deleteAddedJudgeForTheRespectiveCourt() throws Exception{
+        try{
+
+            log_Info("deleteAddedJudgeForTheRespectiveCourt() Started");
+            log_Info("Click On Delete Button In Judge Grid");
+            getDriver().waitForelementToBeClickable(JudgeDeleteBtn);
+            JudgeDeleteBtn.click();
+            getDriver().moderateWait();
+            log_Pass("Clicked On Delete Button In Judge Grid");
+
+            log_Info("Click On Yes Button In PopUp");
+            getDriver().waitForelementToBeClickable(DltConfirmBtn);
+            DltConfirmBtn.click();
+            getDriver().minWait();
+            log_Info("Clicked On Yes Button In PopUp");
+
+            return new CaseCourtListPage();
+
+        }catch (Exception | Error ex){
+            log_Error("deleteCourt Failed");
+            throw new Exception("Exception in deleteAddedJudgeForTheRespectiveCourt()",ex);
+        }
+    }
+
+
+    public ILiglPage verifyJudgesAndProsecutorsShouldDisplayForTheRespectiveCourt(String existingJudge,String existingProsecutor) throws Exception {
+        try {
+
+            log_Info("verifyJudgesAndProsecutorsShouldDisplayForTheRespectiveCourt() Started");
+            getDriver().minWait();
+           ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", JudgeHeader);
+
+            log_Info("Validate The Judges Are Displaying For The Respective Party");
+            getDriver().moderateWait();
+            boolean a1 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+existingJudge+"')]")).isDisplayed();
+            Assert.assertEquals(true, a1);
+            System.out.println(a1);
+            log_Pass("Validated The Judges Are Displaying For The Respective Court");
+
+            getDriver().moderateWait();
+           ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", ProsecutorHeader);
+            log_Info("Validate The Prosecutors Are Displaying For The Respective Court");
+            boolean a2 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+existingProsecutor+"')]")).isDisplayed();
+            Assert.assertEquals(true, a2);
+            System.out.println(a2);
+            log_Pass("Validated The Prosecutors Are Displaying For The Respective Court");
+
+            return new CaseCourtListPage();
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyJudgesAndProsecutorsShouldDisplayForTheRespectiveCourt() Failed", ex);
         }
     }
 }

@@ -39,17 +39,13 @@ public interface ILiglPage {
     ILiglPage validateAdminRole() throws Exception;
 
     ILiglPage login(String userName, String password, String Entity) throws Exception;
-
     ILiglPage adminLogin(String userName, String password, String entity) throws Exception;
-
+    ILiglPage RCLogin(String userType, String entity) throws Exception;
     ILiglPage navigateSSOLoginPage();
-
     ILiglPage SSOLogin(String userName, String password, String Entity) throws InterruptedException;
-
+    ILiglPage loginWithSSOUser(String Entity) throws InterruptedException;
     ILiglPage selectEntity(String entity);
-
     ILiglPage createNewCase(Hashtable<String, String> data) throws Exception;
-
     ILiglPage clickClearFilterBtn();
 
     // Ligl - session pages
@@ -58,7 +54,6 @@ public interface ILiglPage {
     ILiglPage validateCaseNotinitiatedState() throws Exception;
 
     void log_Info(String message);
-
 
     ILiglPage multipleCustodianSelect(Hashtable<String, String> data)throws Exception;
     ILiglPage multipleDataSourceSelect(Hashtable<String, String> data)throws Exception;
@@ -305,7 +300,7 @@ public interface ILiglPage {
 
     ILiglPage deleteProsecutor(String FirstName, String LastName) throws Exception;
 
-    ILiglPage sendLHNToCustodian(String CustName) throws InterruptedException;
+    ILiglPage sendLHNToCustodian() throws InterruptedException;
 
     ILiglPage deActivateActiveCustodian(String s1, String s2) throws Exception;
 
@@ -529,7 +524,7 @@ public interface ILiglPage {
 
     ILiglPage editLegalHoldWhenOnFlyIsFalse(String EditedLegalHoldname, String CustodianQTemplate, String LHname) throws Exception;
 
-    ILiglPage createNewLegalHoldWhenOnFlyIsFalse(String LegalHoldname, String CustodianTemplate, String CustodianQuestionaireTemplate, String StakeHolderTemplate, String StakeHolderQueTemplate) throws Exception;
+    ILiglPage createNewLegalHoldWhenOnFlyIsFalse(String LegalHoldname, String CustodianTemplate, String CustodianQuestionaireTemplate, String StakeHolderTemplate, String StakeHolderQueTemplate, String startdate,String enddate,String keyword) throws Exception;
 
     ILiglPage validateAddedCourts(String CourtAdded) throws Exception;
 
@@ -1099,7 +1094,7 @@ public interface ILiglPage {
     ILiglPage validateUserAccessCasesCountWhenUACsetToFalse(String USERname,String PASSword,String ENTITYSelection,String Title) throws Exception;
 
 
-    ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title) throws Exception;
+    ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoard(String Comparator,String Date,String Month,String Year,String Title,String SYEAR,String SMONTH,String SDATE) throws Exception;
 
 
 
@@ -1229,6 +1224,168 @@ public interface ILiglPage {
 
     ILiglPage enterProjectType(String ProjectType) throws Exception;
 
+    ILiglPage createProjectWhenProjectSettingTemplateFieldIsDisabled(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage createProjectWhenRegionFieldIsDisabled(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage verifyProjectNameFieldValidationSpecialCharactersAllowedAndNotAllowed(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage clickOnSaveAndAddDetailsButton() throws Exception;
+
+    ILiglPage performClearActionInTheProjectNameField() throws Exception;
+
+    ILiglPage validateProjectNameFieldErrorMessage() throws Exception;
+
+    ILiglPage verifyUserCanChooseAnyDateInDueDateWhileProjectCreateOrEdit(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage enterProjectDueDate(String DueDate) throws Exception;
+
+    ILiglPage performClearActionInProjectDueDate() throws Exception;
+
+    ILiglPage clickOnProjectEditButton() throws Exception;
+
+    ILiglPage clickOnSaveButtonFromEditPopUpInCaseSummaryPage() throws Exception;
+
+    ILiglPage  enterProjectDueDateWhileEditing(String DueDate) throws Exception;
+
+    ILiglPage verifyMandatoryFieldsAreEditableInEditProjectPopUpUntillProjectApproved(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage validateTheEditedDetailsInEditProjectPopUpInProjectSummary(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage secondSearchInNotesGrid(String NotesContent) throws Exception;
+
+    ILiglPage loginWithLiglorSSOUser(String UserName, String PassWord,String EntitySelection,String IsSSOLogin,String ssoUserName, String ssoPassWord) throws Exception;
+
+    ILiglPage clickOnChooseColumnsInProjectGrid() throws Exception;
+
+    ILiglPage searchForTheRequiredColumnsThroughChooseColumn(String RequiredColumn1) throws Exception;
+
+    ILiglPage performClearActionInSearchBarInChooseColumn() throws Exception;
+
+    ILiglPage validateTheMandatoryAndOptionalFieldDetailsInProjectSummary(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage clickOnAddAndViewLinkInDSI() throws Exception;
+
+    ILiglPage validateEditButtonInDisableMode() throws Exception;
+
+    ILiglPage searchingRequriedCounsel(String Email1) throws Exception;
+
+    ILiglPage clickingOnNotesIcon() throws Exception;
+
+    ILiglPage toggleToOutSideCounsel() throws Exception;
+
+    ILiglPage clickOnAddOutsideCounsel() throws Exception;
+
+    ILiglPage selectALawfirmFromDropdown(String PartyLawFirm) throws Exception;
+
+    ILiglPage selectAvailableLawFirms(String ExistingLawFirm) throws Exception;
+
+    ILiglPage clickOnSaveButtonInAddOutsideCounselPopUp() throws Exception;
+
+    ILiglPage searchRequiredOutsideCounselInOutsideCounselGrid(String OutSideCounsel) throws Exception;
+
+    ILiglPage secondSearchRequiredOutsideCounselInOutsideCounselGrid(String OutSideCounsel) throws Exception;
+
+    ILiglPage clickOnAddLawFirmButtonInAddOutsideCounselPopUp() throws Exception;
+
+    ILiglPage createNewLawFirmInAddLawFirmPopUp(String FirstName,String PartyType,String Status,String Description) throws Exception;
+
+    ILiglPage clickOnAddCounselButtonInAddOutsideCounselPopUp() throws Exception;
+
+    ILiglPage createNewCounselInAddOutsideCounselPopUp(String FirstName, String LastName) throws Exception;
+
+    ILiglPage movingTheCursorToTheRightPosition() throws Exception;
+
+    ILiglPage deleteCourt(String CourtName) throws Exception;
+
+    ILiglPage secondSearchCourt(String Court) throws Exception;
+
+    ILiglPage clickingOnNotesIconInCourtGrid() throws Exception;
+
+    ILiglPage clickOnRefreshButtonInNotesGrid() throws Exception;
+
+    ILiglPage createNewCaseSP(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage validatingAlreadyAddedInHouseCounselsAreDisplayingInEmployeeMasterGrid(String Email1) throws Exception;
+
+    ILiglPage clickingOnNotesIconInOtherPartyGrid() throws Exception;
+
+    ILiglPage projectAndScopeItemsSendingForApproval(String Emp1,String DataSource1,String DateRange1,String KeyWords1,String BATCHname,String UserName ,String EmailTemplate) throws Exception;
+
+    ILiglPage validateBatchForProjectApprovalStatus() throws Exception;
+
+    ILiglPage searchRequiredProjectBatch(String BatchName) throws Exception;
+
+    ILiglPage validateProjectKeywordsAreInApprovedState() throws Exception;
+
+    ILiglPage validateProjectDateRangessAreInApprovedState() throws Exception;
+
+    ILiglPage validateProjectDataSourcesAreInApprovedState() throws Exception;
+
+    ILiglPage validateProjectCustodiansAreInApprovedState() throws Exception;
+
+    ILiglPage validateProjectDetailsAreInApprovedStateInApprovalPage() throws Exception;
+
+    ILiglPage moveBackToTheRequiredColumn() throws Exception;
+
+    ILiglPage searchLastDateModifiedColumnAndValidateTheCountInDashBoardWhenUACIsFALSE(String Comparator,String Date,String Month,String Year,String Title,String SYEAR,String SMONTH,String SDATE) throws Exception;
+
+    ILiglPage verifyTheDataInProcessInsightsWhenProjectContextIsNotSetWhenDefaultDatesAreSelected(Hashtable<String, String> data,String Emp) throws Exception;
+
+    ILiglPage validateTheDataWhenFromAndToDatesAreAdjusted(String SYEAR,String SMONTH,String SDATE,String EYEAR,String EMONTH,String EDATE) throws Exception;
+
+    ILiglPage validateRevokeButtonFunctionality(String a,String b) throws Exception;
+
+    ILiglPage performReAssignFunctionalityForTheProject(String EMAIL,String USER) throws Exception;
+
+    ILiglPage validateReAssignButtonFunctionality(String AssignedUser,String Status) throws Exception;
+
+    ILiglPage createRequestByFillingOnlyMandatoryFieldsInTheAddRequestPopUp(String RequestType,String REQTitle,String CaseDropDown) throws Exception;
+
+    ILiglPage validateClearFilterFunctionalityInLegalHoldInsights(String SYEAR,String SMONTH,String SDATE,String EYEAR, String EMONTH,String EDATE) throws Exception;
+
+    ILiglPage validateClearFilterFunctionalityInGlobalInsights(String selectYear,String selectVaue) throws Exception;
+
+    ILiglPage validateClearFilterFunctionalityInProductionInsights() throws Exception;
+
+    ILiglPage validateClearFilterFunctionalityInProcessInsights(String SYEAR,String SMONTH,String SDATE,String EYEAR, String EMONTH,String EDATE) throws Exception;
+
+    ILiglPage checkAndValidateTheCountOfTheProcessInsightsStats(String Email,String Emp,String EMAIL,String EMP, String DataSource,String SourcePath,String DataHold,String CollectionStatus) throws Exception;
+
+    ILiglPage validateSecondSearchAddedCourts(String CourtAdded) throws Exception;
+
+    ILiglPage searchingAddedCourtAfterDeleting(String AvailableCourt) throws Exception;
+
+    ILiglPage validatingTheErrorMessageWhileCreatingTheDuplicateProjectNames(Hashtable<String,String> data) throws Exception;
+
+    ILiglPage validateTheSaveAndAddDetailsButtonIsInDisableModeInAddProjectPopUp() throws Exception;
+
+    ILiglPage clickingOnClearFilterButtonInOtherPartyScreen() throws Exception;
+
+    ILiglPage validatePartyInTheOtherPartyScreenAfterAddingThroughAddPartyButton(String PartyName) throws Exception;
+
+    ILiglPage secondSearchPartyInOtherPartyGrid(String PartyName) throws Exception;
+
+    ILiglPage validateCustStatus(String CustStatus) throws Exception;
+
+    ILiglPage deleteAddedJudgeForTheRespectiveCourt() throws Exception;
+
+    ILiglPage deleteContactsAddedForRespectiveParty(String ContactName) throws Exception;
+
+    ILiglPage verifyContactsAndCounselsShouldDisplayForTheRespectiveParty(String existingContact,String existingCounsel) throws Exception;
+
+    ILiglPage secondSearchForTheOutsideCounsel(String OutsideCounsel) throws Exception;
+
+    ILiglPage deleteOutsideCounselForTheRespectiveParty(String OutsideCounsel) throws Exception;
+
+    ILiglPage verifyJudgesAndProsecutorsShouldDisplayForTheRespectiveCourt(String existingJudge,String existingProsecutor) throws Exception;
+
+    ILiglPage revokeReassignNotInitiatedLH() throws Exception;
+    ILiglPage checkActiveUserInLHApprovalDP(String UserName) throws Exception;
+
+    ILiglPage ValidateDefaultValueInTypeofEventDropdown(String DropDownValue) throws Exception;
+
+    ILiglPage validateProjectPrefixIsAutogeneratedInAlphaNumericFormat(Hashtable<String, String> data) throws Exception;
 
 }
 

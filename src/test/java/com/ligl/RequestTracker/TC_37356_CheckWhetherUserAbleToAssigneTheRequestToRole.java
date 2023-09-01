@@ -26,7 +26,7 @@ public class TC_37356_CheckWhetherUserAbleToAssigneTheRequestToRole extends Test
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader().goToGlobalRequestPage().clickOnAddRequestButton()
                     .addAllDetailsInTheAddRequestPopUpByAssigningToRole(data.get("ReqType"), data.get("ReqTitle"), data.get("ChooseCase"), data.get("ChooseUser"), data.get("Priority"), data.get("CompleteDate"), data.get("AdditionalText") )
                     .validateCreatedRequestInTheGlobalRequestGrid(data.get("ReqTitle"));

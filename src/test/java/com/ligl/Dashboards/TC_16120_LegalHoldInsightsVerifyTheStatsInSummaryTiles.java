@@ -26,8 +26,7 @@ public class TC_16120_LegalHoldInsightsVerifyTheStatsInSummaryTiles extends Test
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getHeader().navigateToDashboardPage().clickOnLegalHoldInsightsTab()
                     .checkAndValidateTheCountOfTheLegalHoldInsightsStats(data.get("Email"),data.get("Emp"),data.get("EMAIL"),data.get("EMP"), data.get("DataSource"),data.get("SourcePath"),data.get("DataHold"),data.get("CollectionStatus"), data.get("LHname"), data.get("Action"));

@@ -1,14 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Smoke Suite" >
+<suite name="SIT-Execution" parallel="tests" thread-count="3">
     <suite-files>
-        <suite-file path="SmokeSuiteNuixCollection.xml" />
+        <suite-file path="ProjectManagement.xml" />
     </suite-files>
 
     <suite-files>
-    <suite-file path="SmokeSuiteNuix.xml" />
+    <suite-file path="RequestTracker.xml" />
     </suite-files>
 
     <suite-files>
-    <suite-file path="SmokeSuiteRelativity.xml" />
+    <suite-file path="Dashboards.xml" />
     </suite-files>
 </suite>

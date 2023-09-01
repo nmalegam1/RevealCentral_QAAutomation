@@ -302,11 +302,11 @@ public class LookupManagerPage extends LiglBaseSessionPage {
             }
 
             // Grid Refresh
-            getSession().log_Info("Click on Grid Refresh Button");
+            /*getSession().log_Info("Click on Grid Refresh Button");
             getDriver().waitForelementToBeClickable(gridRefreshBtn);
             gridRefreshBtn.click();
             getDriver().waitForAngularRequestsToComplete();
-            getSession().log_Pass("Clicked on Grid Refresh Button");
+            getSession().log_Pass("Clicked on Grid Refresh Button");*/
 
             wait(4);
             return new LookupManagerPage();

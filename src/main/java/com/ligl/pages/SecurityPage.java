@@ -70,19 +70,19 @@ public class SecurityPage extends LiglBaseSessionPage {
     @FindBy(id = "approval-subType")
     WebElement ApprovalSubType;
 
-    @FindBy(xpath = "//div[@class='approval-history-body']/table/tbody/tr/td[position()=1] ")
+    @FindBy(xpath = "//div[@ref='eBodyViewport']//div[@role='rowgroup']//div[@role='row'][1]//div[@col-id='UserName']//span//span//span")
     WebElement AssignedUserName;
 
-    @FindBy(xpath = "//div[@class='approval-history-body']/table/tbody/tr/td[position()=2]")
+    @FindBy(xpath = "//div[@ref='eBodyViewport']//div[@role='rowgroup']//div[@role='row'][1]//div[@col-id='ApprovalStatus']//span//span//span")
     WebElement StatusOfUser;
 
-    @FindBy(xpath = "//div[@class='approval-history-body']/table/tbody/tr[position()=2]/td[position()=1]")
+    @FindBy(xpath = "//div[@ref='eBodyViewport']//div[@role='rowgroup']//div[@role='row'][2]//div[@col-id='UserName']//span//span//span")
     WebElement AssignedUserName1;
 
-    @FindBy(xpath = "//div[@class='approval-history-body']/table/tbody/tr[position()=2]/td[position()=2]")
+    @FindBy(xpath = "//div[@ref='eBodyViewport']//div[@role='rowgroup']//div[@role='row'][2]//div[@col-id='ApprovalStatus']//span//span//span")
     WebElement StatusOfUser1;
 
-    @FindBy(xpath = "//button[contains(text(),'Next')]")
+    @FindBy(xpath = "//button[contains(text(),'NEXT')]")
     WebElement NextBtn;
     @FindBy(id="On-Prem-button")
     WebElement OnpremDSTab;
@@ -198,10 +198,10 @@ public class SecurityPage extends LiglBaseSessionPage {
     WebElement ApprovalUserName;
     @FindBy(id = "send-approval-btn")
     WebElement SaveBtn;
-    @FindBy(xpath = "//button[contains(text(),'Revoke')]")
+    @FindBy(id = "revoke-btn")
     WebElement RevokeBtn;
 
-    @FindBy(xpath = "//button[contains(text(),'ReAssign')]")
+    @FindBy(id = "reassign-btn")
     WebElement ReAssignBtn;
 
 
@@ -300,7 +300,7 @@ public class SecurityPage extends LiglBaseSessionPage {
     public ILiglPage sendCaseForApprovalWithAllScope(String BchName,String Apptemp,String UserName) throws Exception {
         try {
             log_Info("Click send for Approval Button");
-            SendApprovalBtn.click();
+            SendForApprovalBtn.click();
             log_Pass("Send Approval btn Clicked");
             Thread.sleep(5000);
             SelectAllCustodiansCheckBox.click();
@@ -318,6 +318,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             TemplateNameDrpDwn.click();
             Thread.sleep(4000);
             EmailTempText.sendKeys(Apptemp);
+            getDriver().minWait();
             EmailTempText.sendKeys(Keys.ENTER);
             Thread.sleep(3000);
             log_Info("Case Approval Temp selected");
@@ -329,7 +330,8 @@ public class SecurityPage extends LiglBaseSessionPage {
             ApproverName.sendKeys(Keys.ENTER);
             log_Pass("All Credentials Required for Approval are Given");
             log_Info("Click send for Approval Button");
-            SendForApprovalBtn.click();
+            SendApprovalBtn.click();
+            Thread.sleep(5000);
             log_Pass("Case Sent for Approval");
             return new SecurityPage();
         }catch (Exception ex){
@@ -444,6 +446,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
 
             log_Info("Click on Send For Approval Button");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendForApprovalBtn);
             getDriver().waitForelementToBeClickable(SendForApprovalBtn);
             Thread.sleep(3000);
             SendForApprovalBtn.click();
@@ -563,6 +566,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
 
             log_Info("Click on Send For Approval Button");
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendForApprovalBtn);
             getDriver().waitForelementToBeClickable(SendForApprovalBtn);
             Thread.sleep(3000);
             SendForApprovalBtn.click();
@@ -690,6 +694,8 @@ public class SecurityPage extends LiglBaseSessionPage {
 
         try {
 
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendForApprovalBtn);
+
 
             log_Info("Click on Send For Approval Button");
             getDriver().waitForelementToBeClickable(SendForApprovalBtn);
@@ -710,12 +716,12 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Gmail Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GmailCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.id(GmailCheck)).click();
             log_Info("Clicked on Gmail Checkbox");
 
             log_Info("Click on Google Drive Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GoogleDriveCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.id(GoogleDriveCheck)).click();
             log_Info("Clicked on Google Drive Checkbox");
 
 
@@ -868,6 +874,8 @@ public class SecurityPage extends LiglBaseSessionPage {
         try {
 
 
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendForApprovalBtn);
+
             log_Info("Click on Send For Approval Button");
             getDriver().waitForelementToBeClickable(SendForApprovalBtn);
             Thread.sleep(3000);
@@ -887,12 +895,12 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on Gmail Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GmailCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.id(GmailCheck)).click();
             log_Info("Clicked on Gmail Checkbox");
 
             log_Info("Click on Google Drive Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='"+GoogleDriveCheck+"']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.id(GoogleDriveCheck)).click();
             log_Info("Clicked on Google Drive Checkbox");
 
             log_Info("Click on Next Button");
@@ -1119,7 +1127,7 @@ public class SecurityPage extends LiglBaseSessionPage {
 
             log_Info("Click on The Required DataSource Checkbox");
             Thread.sleep(5000);
-            getCurrentDriver().findElement(By.xpath("//div[text()='" + DataSource1 + "']//../..//div[@class='sourceChkbxDiv']")).click();
+            getCurrentDriver().findElement(By.id(DataSource1)).click();
             log_Info("Click on The Required DataSource Checkbox");
             return new SecurityPage();
 
@@ -1482,7 +1490,8 @@ public class SecurityPage extends LiglBaseSessionPage {
     public ILiglPage caseApprovalIrrespectiveOfApprovalConfig(String BchName,String Apptemp,String UserName,String CaseNameApprove) throws Exception{
     try{
         log_Info("caseApprovalIrrespectiveOfApprovalConfig() Started");
-        ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendApprovalBtn);
+        ((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", SendForApprovalBtn);
+        Thread.sleep(5000);
         if(CaseApprovalStatus.getText().equals("Approved"))
             return new SecurityPage();
         else if(CaseApprovalStatus.getText().equals("Not Initiated"))
@@ -1513,6 +1522,7 @@ public class SecurityPage extends LiglBaseSessionPage {
             ReAssignBtn.click();
             Thread.sleep(5000);
             log_Pass("ReAssigned button is clicked");
+
             log_Info("Click on Email Template Drop down");
             getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
             Thread.sleep(5000);
@@ -1704,6 +1714,128 @@ public class SecurityPage extends LiglBaseSessionPage {
         } catch (Exception e) {
             log_Error(e.getMessage());
             throw new RuntimeException(e);
+        }
+    }
+
+    public ILiglPage projectAndScopeItemsSendingForApproval(String Emp1,String DataSource1,String DateRange1,String KeyWords1,String BATCHname,String UserName ,String EmailTemplate) throws Exception{
+
+        try{
+            clickOnSendForApprovalButton()
+                    .clickOnCustodianCheckBoxForApproval(Emp1)
+                    .clickOnNextButtonForApproval()
+                    .clickOnDataSourceCheckBoxForApproval(DataSource1)
+                    .clickOnNextButtonForApproval()
+                    .clickOnDateRangesCheckBoxForApproval(DateRange1)
+                    .clickOnNextButtonForApproval()
+                    .clickOnKeywordsCheckBoxForApproval(KeyWords1)
+                    .sendingCaseForApprovalAfterAddingScopeItems(BATCHname,UserName,EmailTemplate);
+
+            return new SecurityPage();
+
+        }catch (Exception ex){
+            log_Error("projectAndScopeItemsSendingForApproval() is Failed");
+            throw new Exception("Exception in projectAndScopeItemsSendingForApproval()",ex);
+        }
+    }
+
+
+    public ILiglPage validateRevokeButtonFunctionality(String a,String b) throws Exception {
+
+        try {
+
+            log_Info("validateRevokeButtonFunctionality() Started");
+            validateCasePendingForApprovalState();
+            log_Info("Display The Send For Approval Button In The Page");
+            boolean a1 = SendForApprovalBtn.isDisplayed();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            Thread.sleep(5000);
+            Assert.assertEquals(true, a1);
+
+            log_Info("Validate The Approval History Grid Updated With The Revoke Action");
+            String a2,b2;
+            a2= AssignedUserName.getText();
+            b2= StatusOfUser.getText();
+            Assert.assertEquals(a2,a);
+            Assert.assertEquals(b2,b);
+
+            return new SecurityPage();
+
+        } catch (Exception ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Exception From validateRevokeCaseForSingleApproval()", ex);
+        }
+    }
+
+    public ILiglPage validateReAssignButtonFunctionality(String AssignedUser,String Status) throws Exception{
+
+        try{
+
+            log_Info("validateReAssignButtonFunctionality() Started");
+            validateCasePendingForApprovalState();
+            log_Info("Validate The ReAssign And Revoke Buttons");
+            boolean a1 = ReAssignBtn.isDisplayed();
+            boolean a2 = RevokeBtn.isDisplayed();
+            Thread.sleep(5000);
+            System.out.println(a1);
+            System.out.println(a2);
+            Thread.sleep(5000);
+            Assert.assertEquals(true,a1);
+            Assert.assertEquals(true,a2);
+
+            log_Info("Validate The Approval History Grid Updated With The ReAssign Action");
+            validateReassignForSingleApproval(AssignedUser,Status);
+
+
+            return new SecurityPage();
+
+        } catch (Exception ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Exception From validateReAssignButtonFunctionality()", ex);
+        }
+    }
+
+    public ILiglPage performReAssignFunctionalityForTheProject(String EMAIL,String USER) throws Exception{
+
+        try{
+
+            log_Info("performReAssignFunctionalityForTheProject() Started");
+            log_Info("Click On ReAssign Button");
+            Thread.sleep(5000);
+            ReAssignBtn.click();
+            Thread.sleep(5000);
+            log_Pass("ReAssigned button is clicked");
+
+            log_Info("Click on Email Template Drop down");
+            getDriver().waitForelementToBeClickable(TemplateNameDrpDwn);
+            Thread.sleep(5000);
+            TemplateNameDrpDwn.sendKeys(EMAIL);
+            Thread.sleep(3000);
+            TemplateNameDrpDwn.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Email Template Drop down");
+            log_Info("template selected");
+
+            log_Info("Click on Select Approval  Drop down");
+            getDriver().waitForelementToBeClickable(SelectApprovalDrpDwn);
+            Thread.sleep(3000);
+            SelectApprovalDrpDwn.sendKeys(USER);
+            Thread.sleep(3000);
+            SelectApprovalDrpDwn.sendKeys(Keys.ENTER);
+            log_Info("Clicked on Select Approval  Drop down");
+            log_Pass("All Credentials Required for Approval are Given");
+
+            log_Info("Click on Send For Approval Button");
+            getDriver().waitForelementToBeClickable(SendApprovalBtn);
+            Thread.sleep(3000);
+            SendApprovalBtn.click();
+            getDriver().maxWait();
+            log_Info("Clicked on Send For Approval Button");
+
+            return new SecurityPage();
+
+        } catch (Exception ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("Exception From performReAssignFunctionalityForTheProject()", ex);
         }
     }
 }

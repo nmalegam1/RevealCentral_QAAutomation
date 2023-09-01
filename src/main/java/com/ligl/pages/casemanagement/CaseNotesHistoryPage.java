@@ -3,6 +3,7 @@ package com.ligl.pages.casemanagement;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
 import com.ligl.pages.NotesPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,10 +17,10 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
     WebElement Notes;
     @FindBy(id = "btn-save-and-add")
     WebElement SaveBtn;
-    @FindBy(xpath = "//div[@row-id='0']//*[@title=\"View\"]")
+    @FindBy(xpath = "//button[@title='View']//i")
     WebElement Editbtn;
     //@FindBy(id = "DELETE")
-    @FindBy(xpath = "//div[@row-id='0']//*[@title=\"Delete\"]")
+    @FindBy(xpath = "//button[@title='Delete']//i")
     WebElement Deletebtn;
 
     @FindBy(xpath ="//button[contains(text(),'Yes')]")
@@ -36,7 +37,7 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
     @FindBy(xpath = "//span[contains(text(),'Role')]/ancestor::div[@ref='eLabel']")
     WebElement Role;
 
-    @FindBy(xpath = "//span[contains(text(),'Type of Event')]/ancestor::div[@ref='eLabel']")
+    @FindBy(id = "sel-matterTypeofEvent")
     WebElement TypeOfEvent;
 
     @FindBy(xpath = "//span[contains(text(),'Status')]/ancestor::div[@ref='eLabel']")
@@ -72,6 +73,9 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
     WebElement DetailsColValue;
     @FindBy(xpath = "//span[contains(text(),'Result(s)')]/ancestor::div[@class='table-header-action-item-list']//b")
     WebElement Results;
+
+    @FindBy(xpath = "//app-smart-select[@placeholderlabel='All']")
+    WebElement TOEDropDownDefaultValue;
 
 
 
@@ -159,6 +163,14 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
             Editbtn.click();
             Thread.sleep(5000);
             log_Info("Edit note button is Clicked");
+
+            if(TypeOfEvent.isEnabled()){
+
+                TypeOfEvent.click();
+                Thread.sleep(1000);
+                getCurrentDriver().findElement((By.xpath("//div[@id='sel-matterTypeofEvent-panel']//mat-option[2]"))).sendKeys(Keys.ENTER);
+            }
+
             Thread.sleep(5000);
             RequestBytxtbox.clear();
             Thread.sleep(2000);
@@ -274,6 +286,25 @@ public class CaseNotesHistoryPage extends LiglBaseSessionPage
         log_Error(ex.getMessage());
         throw new Exception("detailsColumnData()", ex);
 
+        }
+    }
+    public ILiglPage ValidateDefaultValueInTypeofEventDropdown(String DropDownValue) throws Exception {
+
+        try {
+
+            log_Info("Validating The TYPEOFEVENT drop down default value ALL is displaying");
+            boolean a1 = getCurrentDriver().findElement(By.xpath("//app-smart-select[@aria-label='NotesSelect']//mat-select[@id='selectType']//span[contains(text(),'"+DropDownValue+"')]")).isDisplayed();
+            System.out.println(a1);
+            getDriver().minWait();
+            Assert.assertEquals(true, a1);
+            log_Pass("Validated The TYPEOFEVENT dropdown default value ALL is displaying");
+
+            return new CaseNotesHistoryPage();
+
+        }
+        catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("ValidateDefaultValueInTypeofEventDropdown()", ex);
         }
     }
 }

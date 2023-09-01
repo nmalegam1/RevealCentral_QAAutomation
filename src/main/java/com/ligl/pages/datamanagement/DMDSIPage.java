@@ -3,6 +3,7 @@ package com.ligl.pages.datamanagement;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
 import com.ligl.pages.casemanagement.CaseCustodiansPage;
+import com.ligl.pages.casemanagement.CaseDocumentsPage;
 import org.apache.poi.hssf.record.PageBreakRecord;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -23,11 +24,11 @@ import java.security.InvalidKeyException;
 public class DMDSIPage extends LiglBaseSessionPage {
     @FindBy(id = "add-datasource")
     WebElement AddDSBtn;
-    @FindBy(id = "dsi-custodian")
+    @FindBy(id = "dsi-custodiancustodian")
     WebElement CustDropDown;
-    @FindBy(id = "dsi-datasource-type")
+    @FindBy(id = "dsi-datasource-typedatasourceType")
     WebElement DataSourceDropDown;
-    @FindBy(id = "dsi-DHScope-id")
+    @FindBy(id = "dsi-DHScope-iddataHoldScope")
     WebElement DataHoldScopeDD;
 
     @FindBy(id = "dsi-daterange-id")
@@ -38,7 +39,7 @@ public class DMDSIPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//span[contains(text(),' None')]")
     WebElement DataHoldNone;
-    @FindBy(xpath = "//button[contains(text(),'Search')]")
+    @FindBy(xpath = "//button[contains(text(),'SEARCH')]")
     WebElement SearchBtn;
     @FindBy(id = "btn-yes")
     WebElement AutomateYesBtn;
@@ -50,7 +51,7 @@ public class DMDSIPage extends LiglBaseSessionPage {
     WebElement DSIGridCheckBox;
     @FindBy(id = "Add-records-to-dsi")
     WebElement AddRecordToDSI;
-    @FindBy(xpath = "//button[contains(text(),'Automate')]")
+    @FindBy(xpath = "//button[contains(text(),'AUTOMATE')]")
     WebElement AutomateBtn;
 
     @FindBy(id = "General-button")
@@ -68,11 +69,11 @@ public class DMDSIPage extends LiglBaseSessionPage {
     WebElement CustomTab;
     @FindBy(id = "source-path")
     WebElement SourcePath;
-    @FindBy(id="dsi-datasource-type")
+    @FindBy(id="dsi-datasource-typedatasourceType")
     WebElement CustomDSTDropdown;
-    @FindBy(xpath = "//button[contains(text(),'Save')]")
+    @FindBy(xpath = "//button[contains(text(),'SAVE')]")
     WebElement CustomSaveBtn;
-    @FindBy(xpath = "//button[contains(text(),'Proceed')]")
+    @FindBy(xpath = "//button[contains(text(),'PROCEED')]")
     WebElement CustomProceedBtn;
     @FindBy(id="btn-ok")
     WebElement ConfirmationBtn;
@@ -91,11 +92,14 @@ public class DMDSIPage extends LiglBaseSessionPage {
     @FindBy(id = "all-selected-records")
     WebElement PleaseSelectDropdown;
 
-    @FindBy(xpath = "//select[@id='all-selected-records']//option[3]")
+    @FindBy(xpath = "//select[@id='all-selected-records']//option[@value='Selected']")
     WebElement SelectedDropdown;
 
     @FindBy(id = "selected-records-run")
     WebElement SelectedRecordsRunBtn;
+
+    @FindBy(xpath = "//span[contains(text(),'Add/View')]")
+    WebElement AddAndViewBtnInGrid;
 
 
     public ILiglPage addDataSourceRecordToDSIGrid(String cust, String datasource, String DataHold,String DateRanges,String Keywords) throws Exception {
@@ -481,12 +485,21 @@ public class DMDSIPage extends LiglBaseSessionPage {
             log_Info("Clicked on Selected Record Check Box");
 
 
-            log_Info("Click on Add Records To DSI Button");
-            getDriver().waitForelementToBeClickable(AddRecordToDSI);
+            log_Info("Click on Add To Identification DropDown");
+            getDriver().waitForelementToBeClickable(PleaseSelectDropdown);
             Thread.sleep(5000);
-            AddRecordToDSI.click();
+            PleaseSelectDropdown.click();
             Thread.sleep(5000);
-            log_Info("Clicked on Add Records To DSI Button");
+            SelectedDropdown.click();
+            Thread.sleep(5000);
+            log_Info("Clicked on Add To Identification DropDown");
+
+            log_Info("Click on Run Button");
+            getDriver().waitForelementToBeClickable(SelectedRecordsRunBtn);
+            Thread.sleep(5000);
+            SelectedRecordsRunBtn.click();
+            Thread.sleep(3000);
+            log_Info("Clicked on Run Button");
 
             return new DMDSIPage();
 
@@ -628,6 +641,25 @@ public class DMDSIPage extends LiglBaseSessionPage {
         }catch(Exception ex){
             log_Error("verifyNonApprovedScopeInCustomTab() Failed");
             throw new Exception("Exception in verifyNonApprovedScopeInCustomTab()",ex);
+        }
+    }
+
+    public ILiglPage clickOnAddAndViewLinkInDSI() throws Exception {
+        try {
+
+            log_Info("clickOnAddAndViewLinkInDSI() Started");
+            log_Info("Click On Add/View Link In The Grid");
+            getDriver().waitForelementToBeClickable(AddAndViewBtnInGrid);
+            Thread.sleep(1000);
+            AddAndViewBtnInGrid.click();
+            Thread.sleep(1000);
+            log_Pass("Clicked On Add/View Link In The Grid");
+
+            return new CaseDocumentsPage();
+
+        } catch (Exception ex) {
+            log_Error("clickOnAddAndViewLinkInDSI() Failed");
+            throw new Exception("Exception in clickOnAddAndViewLinkInDSI()", ex);
         }
     }
 }

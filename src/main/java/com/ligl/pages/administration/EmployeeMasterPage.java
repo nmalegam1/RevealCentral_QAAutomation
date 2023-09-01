@@ -4,6 +4,7 @@ import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
 import com.ligl.pages.casemanagement.CaseCustodiansPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -21,7 +22,7 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Email')]/ancestor::div[@ref='eLabel']")
     WebElement EmailName;
 
-    @FindBy(xpath = "//*[@id=\"content\"]/div[2]/div[2]/ag-grid-angular/div/div[2]/div[2]/div[1]/div[2]/div/div/div[5]/div[3]/span/span")
+    @FindBy(xpath = "//div[@col-id='Email']//div//span[@role='presentation']")
     WebElement EmailMenuu;//Doubt
 
     @FindBy(xpath = "//div[@role='menu']//span[@aria-label='filter']/span")
@@ -30,7 +31,7 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//input[@placeholder='Filter...']")
     WebElement Searchbar;
 
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy(xpath = "//button//i[@class='lnr lnr-pencil']")
     WebElement EditIcon;
 
     @FindBy(id = "select-employement-status")
@@ -226,6 +227,14 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//label[@for='title']//span[@class='mat-form-field-required-marker']")
     public WebElement titleOptionalMark;
+    @FindBy(xpath = "//div[contains(text(),'Address')]")
+    WebElement AddressTab;
+    @FindBy(id = "more-button")
+    WebElement MoreBtn;
+    @FindBy(css = "i[class='lnr lnr-pencil']")
+    WebElement EditBtn;
+    @FindBy(xpath = "//span[contains(text(),'Email')]/ancestor::div[@ref='eLabel']/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
+    WebElement EmpMail;
 
     Actions ac = new Actions(getCurrentDriver());
 
@@ -237,6 +246,12 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
         try {
 
             log_Info("Hover on Name Header");
+            getCurrentDriver().findElement(By.xpath("//div[@col-id='FullName']")).click();
+            for (int i = 0; i < 5; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
             getDriver().waitForelementToBeClickable(EmailName);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(EmailName).perform();
@@ -311,26 +326,24 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
         try {
 
             log_Info("Click On The Employee Status Drop Down");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             EmployeeStatus.sendKeys(Estatus);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             EmployeeStatus.sendKeys(Keys.ENTER);
             getSession().log_Pass("Clicked On The Employee Status Drop Down");
 
             log_Info("Click On The Next Button");
-            Thread.sleep(5000);
             NextBtn.click();
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             getSession().log_Pass("Clicked On The Next Button");
 
             log_Info("Click On The Next Button");
-            Thread.sleep(5000);
             NextBtn.click();
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             getSession().log_Pass("Clicked On The Next Button");
 
             log_Info("Click On The Save Button");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             SaveBtn.click();
             Thread.sleep(5000);
             getSession().log_Pass("Clicked On The Save Button");
@@ -1544,7 +1557,52 @@ public class EmployeeMasterPage extends LiglBaseSessionPage {
         return new EmployeeMasterPage();
     }
 
+    public ILiglPage checkReportingManagerFieldinAdditionalFields(String custodianMail) throws Exception {
+        try {
+            log_Info("checkReportingManagerFieldinAdditionalFields() Started");
+            searchEmployeeInGrid(custodianMail);
+            getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='FullName']//span[@class='ellipsisAgGrid']")).click();
 
+            Actions ac = new Actions(getCurrentDriver());
+            for (int i = 0; i < 8; i++) {
+                ac.sendKeys(Keys.TAB).perform();
+            }
+            EditBtn.click();
+            AddressTab.click();
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", MoreBtn);
+            MoreBtn.click();
+            getCurrentDriver().findElement(By.xpath("//mat-form-field[@appearance='fill']/ancestor::div//span[contains(text(),'Reporting Manager')]")).isDisplayed();
+
+            return new EmployeeMasterPage();
+        } catch (Exception ex) {
+            log_Error("checkReportingManagerFieldinAdditionalFields() Failed");
+            throw new Exception("Exception in checkReportingManagerFieldinAdditionalFields()", ex);
+        }
+    }
+
+    public ILiglPage searchEmployeeInGrid(String custodianMail) throws Exception {
+        try {
+            log_Info("searchEmployeeInGrid() Started");
+            EmpMail.click();
+
+            Thread.sleep(5000);
+            log_Info("Menu clicked");
+            log_Info("Click on Filter");
+            Thread.sleep(5000);
+            Filter.click();
+            log_Info("Filter Clicked");
+            Thread.sleep(5000);
+            log_Info("Enter Employee");
+            Searchbar.sendKeys(custodianMail);
+            Thread.sleep(5000);
+            log_Info("Check Employee CheckBox");
+
+            return new EmployeeMasterPage();
+        } catch (Exception ex) {
+            log_Error("searchEmployeeInGrid() Failed");
+            throw new Exception("Exception in searchEmployeeInGrid()", ex);
+        }
+    }
 }
 
 

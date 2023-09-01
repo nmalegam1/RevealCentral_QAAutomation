@@ -26,7 +26,7 @@ public class TC_51430_CheckAckModeColumnInMyHoldsTabUpdatingBasedOnAcknowledgmen
             ILiglPage Launch = new LaunchPage()
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"), data.get("Password"),data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader().goToMyHoldsPage()
                     .firstSearch()
                     .checkAckModeColumn(data.get("CaseNameEmail"),data.get("LHName1"),data.get("AckModeMail"))

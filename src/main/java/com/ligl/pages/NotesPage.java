@@ -3,6 +3,7 @@ package com.ligl.pages;
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.casemanagement.CaseDateRangesPage;
 import com.paulhammant.ngwebdriver.ByAngularModel;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -30,10 +31,10 @@ public class NotesPage extends LiglBaseSessionPage {
     WebElement Notes_filter;
     @FindBy(xpath = "//div[@role='presentation']//input[@placeholder='Filter...']")
     WebElement Notes_Search;
-    @FindBy(xpath = "//div[@role=\"presentation\"]//div[@row-index=\"0\"]//div[@col-id=\"Notes\"]")
+    @FindBy(xpath = "//div[@role='presentation']//div[@row-index='0']//div[@col-id='Notes']")
     WebElement Notes_row;
 
-    @FindBy(xpath = "//button[@title='Edit']")
+    @FindBy(xpath = "//button[@title='Edit']//i")
     WebElement Editbtn;
     @FindBy(xpath = "//button[@title='Delete']")
     WebElement Deletebtn;
@@ -68,6 +69,12 @@ public class NotesPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Action')]")
     WebElement ActionColumn;
 
+    @FindBy(id = "btn-refresh")
+    WebElement RefreshButton;
+
+    @FindBy(xpath = "//mat-select[@id='sel-matterTypeofEvent']")
+    WebElement TypeOfEvent;
+
 
     public ILiglPage NewTabFunction() {
 
@@ -86,23 +93,23 @@ public class NotesPage extends LiglBaseSessionPage {
         try{
 
             log_Info("choose notes");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(ChooseNotes).perform();
             getDriver().waitForelementToBeClickable(ChooseNotes);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             ChooseNotes.click();
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             log_Info("click on notes");
             Notes_filter.click();
             log_Info("Click on Search");
             log_Info("enter key");
-            Thread.sleep(6000);
-            Notes_Search.sendKeys(name);
             Thread.sleep(5000);
+            Notes_Search.sendKeys(name);
+            Thread.sleep(10000);
             Notes_row.click();
             log_Pass("Clicked on Notes");
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             return new NotesPage();
         }catch (Exception ex){
             throw new Exception("Exception in NotesSearchFilter()", ex);
@@ -121,7 +128,7 @@ public class NotesPage extends LiglBaseSessionPage {
             String s2=NotesContent;
             System.out.println(s1.equals(s2));
             log_Info("Notes is Displaying in grid");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             return new NotesPage();
 
         } catch (Exception ex)
@@ -133,28 +140,40 @@ public class NotesPage extends LiglBaseSessionPage {
     public ILiglPage createNewNotes(String RequestBy,String NotesContent) throws Exception {
         try {
 
+            log_Info("createNewNotes() Started");
             log_Info("Click on create new notes button");
+            getDriver().waitForelementToBeClickable(addNotesbtn);
+            Thread.sleep(1000);
             addNotesbtn.click();
             log_Info("Create new notes button clicked");
-            Thread.sleep(5000);
-            log_Info("clicking on Requested by field textbox");
+/*
+            if(TypeOfEvent.isEnabled()){
+
+                TypeOfEvent.click();
+                Thread.sleep(1000);
+                getCurrentDriver().findElement((By.xpath("//div[@id='sel-matterTypeofEvent-panel']//mat-option[2]"))).sendKeys(Keys.ENTER);
+            }*/
+
+            log_Info("click on Requestedby field textbox");
             getDriver().waitForelementToBeClickable(RequestBytxtbox);
-            log_Info("clicked on Requested by field textbox");
+            Thread.sleep(1000);
             RequestBytxtbox.sendKeys(RequestBy);
-            log_Info("Data entered in Requested by field");
-            Thread.sleep(5000);
-            log_Info("clicking on Notes text editor field");
+            log_Info("Clicked On Requestedby field");
+
+            log_Info("click on Notes text editor field");
             Notes.click();
             log_Info("clicked on Notes text editor field");
+            Thread.sleep(1000);
             Notes.sendKeys(NotesContent);
             log_Info("Notes content is entered");
+
             log_Info("clicking on Save button in create note popup");
             getDriver().waitForelementToBeClickable(SaveBtn);
+            Thread.sleep(1000);
             SaveBtn.click();
             log_Info("clicked on Save button in create note popup");
+
             return new NotesPage();
-
-
         }
         catch (Exception ex) {
             throw new Exception("Exception in CreateNewNotes()", ex);
@@ -167,6 +186,7 @@ public class NotesPage extends LiglBaseSessionPage {
         try {
 
             log_Pass("Moving to click edit note button in grid");
+            Thread.sleep(5000);
             NotesHeader.click();
 
             for (int i = 0; i < 8; i++)
@@ -176,10 +196,18 @@ public class NotesPage extends LiglBaseSessionPage {
             }
             getDriver().waitForelementToBeClickable(Editbtn);
             log_Pass("Clicking on Edit note button");
-            Thread.sleep(5000);
+            getDriver().maxWait();
             Editbtn.click();
             log_Info("Edit note button is Clicked");
             Thread.sleep(5000);
+
+           /* if(TypeOfEvent.isEnabled()){
+
+                TypeOfEvent.click();
+                Thread.sleep(1000);
+                getCurrentDriver().findElement((By.xpath("//div[@id='sel-matterTypeofEvent-panel']//mat-option[2]"))).sendKeys(Keys.ENTER);
+            }*/
+
             RequestBytxtbox.clear();
             log_Info("Requested By field is cleared");
             RequestBytxtbox.sendKeys(RequestBy);
@@ -200,6 +228,16 @@ public class NotesPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             log_Info("clicked on Save button in edit note popup");
             log_Pass("editNotes() Completed");
+
+            clickOnRefreshButtonInNotesGrid();
+
+            Thread.sleep(3000);
+            ActionColumn.click();
+            for (int i = 0; i < 5; i++)
+            {
+                Actions ac = new Actions(getCurrentDriver());
+                ac.sendKeys(Keys.TAB).perform();
+            }
             return new NotesPage();
         }
         catch (Exception ex)
@@ -244,7 +282,7 @@ public class NotesPage extends LiglBaseSessionPage {
     public ILiglPage validateDeletedNote(String NotesContent) throws Exception{
         try {
             log_Info("verify No data available text in Grid");
-            notesSecondSearch(NotesContent);
+            secondSearchInNotesGrid(NotesContent);
             boolean a1 = Nodata.isDisplayed();
             Thread.sleep(5000);
             System.out.println(a1);
@@ -305,6 +343,8 @@ public class NotesPage extends LiglBaseSessionPage {
         try {
 
             Thread.sleep(3000);
+            Notes_row.click();
+            log_Pass("Clicked on Notes");
 
             for (int i = 0; i < 8; i++)
             {
@@ -318,6 +358,7 @@ public class NotesPage extends LiglBaseSessionPage {
             Thread.sleep(3000);
             log_Info("Delete button is Clicked");
             Yesbtn.click();
+            Thread.sleep(5000);
             log_Info("Yes button is Clicked");
             log_Pass("NotesDelete() Completed");
 
@@ -338,5 +379,41 @@ public class NotesPage extends LiglBaseSessionPage {
 
         }
     }
+
+    public ILiglPage secondSearchInNotesGrid(String NotesContent) throws Exception {
+        try {
+
+            log_Info("secondSearchInNotesGrid() Started");
+            NotesColumnMenu.click();
+            Thread.sleep(2000);
+            Searchbar.clear();
+            Thread.sleep(1000);
+            Searchbar.sendKeys(NotesContent);
+            log_Info("Data is filtered");
+            log_Pass("secondSearchInNotesGrid() completed");
+
+            return new NotesPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("secondSearchInNotesGrid() Failed", ex);    }}
+
+
+    public ILiglPage clickOnRefreshButtonInNotesGrid() throws Exception {
+        try {
+
+            log_Info("clickOnRefreshButtonInNotesGrid() Started");
+            log_Info("Click On Refresh Button");
+            Thread.sleep(2000);
+            RefreshButton.click();
+            Thread.sleep(5000);
+            log_Pass("Clicked On Refresh Button");
+            log_Pass("clickOnRefreshButtonInNotesGrid() completed");
+
+            return new NotesPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickOnRefreshButtonInNotesGrid() Failed", ex);    }}
 
 }

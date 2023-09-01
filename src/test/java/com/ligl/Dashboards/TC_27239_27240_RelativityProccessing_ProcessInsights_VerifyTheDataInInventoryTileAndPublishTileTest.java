@@ -26,7 +26,7 @@ public class TC_27239_27240_RelativityProccessing_ProcessInsights_VerifyTheDataI
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .login(data.get("Username"),data.get("Password"),data.get("Entity"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .searchcase(data.get("CaseName")).GoToCase(data.get("CaseName"))
                     .getHeader().navigateToDashboardPage()
                     .clickOnProcessInsightsTab()

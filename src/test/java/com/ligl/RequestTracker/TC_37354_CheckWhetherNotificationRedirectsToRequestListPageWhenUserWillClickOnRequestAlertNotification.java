@@ -26,8 +26,7 @@ public class TC_37354_CheckWhetherNotificationRedirectsToRequestListPageWhenUser
 
                     .openBrowser(data.get("Browser"))
                     .navigateURL()
-                    .navigateSSOLoginPage()
-                    .SSOLogin(data.get("Username"), data.get("Password"), data.get("EntitySelection"))
+                    .loginWithLiglorSSOUser(data.get("IsSSOLogin"),data.get("SSOUsername"), data.get("SSOPassword"),data.get("EntitySelection"),data.get("Username"), data.get("Password"))
                     .getHeader().clickOnNotificationIcon().validateReqAlertInTheNotificationIcon(data.get("AssignedRequest"))
                     .clickOnTheRequestAlertInTheNotificationIcon(data.get("AssignedRequest"), data.get("PAGEtitle") );
 

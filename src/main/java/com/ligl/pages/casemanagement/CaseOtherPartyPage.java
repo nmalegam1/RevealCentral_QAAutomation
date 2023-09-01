@@ -2,6 +2,7 @@ package com.ligl.pages.casemanagement;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
+import com.ligl.pages.NotesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -10,6 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import javax.inject.Inject;
 import javax.naming.Name;
 import java.util.concurrent.TimeUnit;
 
@@ -34,7 +36,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(id = "createNewContact")
     WebElement AddContactBtn;
 
-    @FindBy(id = "//button[@id='add-btn']")
+    @FindBy(xpath = "//button[@id='add-btn']")
     WebElement AddContact;
 
     @FindBy(id = "firstname")
@@ -68,10 +70,8 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(id = "party-name")
     WebElement NameParty;
 
-    @FindBy(id = "sel-party-type")
+    @FindBy(id = "sel-party-typepartyUUID")
     WebElement PartyTypeDrpDwn;
-
-    //@FindBy(xpath = "//div[@id='sel-party-type-panel']//input[@type='text']")
 
     @FindBy(xpath = "//mat-select[@title='mat-select']")
     WebElement PartyTypeSearchBar;
@@ -79,14 +79,14 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(xpath= "//mat-select[@title='select-law-firm-third-party']")
     WebElement LawFirmDrpDwn;
 
-    @FindBy(xpath = "//*[@id='description']")
+    @FindBy(xpath = "//input[@id='description']")
     WebElement DescriptionTextBox;
 
 
     @FindBy(xpath = "//span[@title='Create 109']//span")
     WebElement PartyName4;
 
-    @FindBy(xpath = "//button[contains(text(),'In-House Counsel')]")
+    @FindBy(id = "inhouse-btn")
     WebElement AddInHouseCounselBtn;
 
     @FindBy(xpath = "//button[@id='add-counsel-inhouse-btn']")
@@ -99,13 +99,13 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(id = "outsideRadio-button")
     WebElement OutsideBtn;
 
-    @FindBy(xpath = "//button[contains(text(),'Outside Counsel')]")
+    @FindBy(xpath = "//button[contains(text(),'OUTSIDE COUNSEL')]")
     WebElement AddOutsideCounselBtn;
 
     @FindBy(id = "add-lawfirm-outside-btn")
     WebElement AddLawFirmBtn;
 
-    @FindBy(id = "party-add-select-status")
+    @FindBy(id = "party-add-select-statusstatusUUID")
     WebElement StatusDropDown;
 
     @FindBy(xpath = "//mat-select[@title='select-law-firm-third-party']")
@@ -141,9 +141,9 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//span[contains(text(),'Law Firm')]/ancestor::div[@ref='eLabel']/ancestor::div[@class='ag-cell-label-container ag-header-cell-sorted-none']//span")
     WebElement OutSideCounselLawFirmMenu;
 
-    @FindBy(id = "party-add-select-status")
+    @FindBy(id = "party-add-select-statusstatusUUID")
     WebElement PartyStatusDrpdwn;
-    @FindBy(xpath = "//button[contains(text(),'Outside Counsel')]")
+    @FindBy(id = "add-case-doc-btn-thirdparty-new")
     WebElement AddOutSideCounsel;
     @FindBy(xpath="//mat-select[@title='select-law-firm-third-party']")
     WebElement LawFirmDP;
@@ -182,6 +182,27 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
     @FindBy(xpath = "//div[@id='select-contacts-dpdwn-panel']//input[@type='text']")
     WebElement ExistingLawFirmSearchBar;
 
+    @FindBy(xpath = "//div[@col-id='Notes']//button")
+    WebElement NotesIcon;
+
+    @FindBy(xpath = "//div[contains(text(),'Counsel Related Information')]")
+    WebElement HeaderContactName;
+
+    @FindBy(id = "clear-filter-btn")
+    WebElement CLEARFILTERbtn;
+
+    @FindBy(xpath = "//div[contains(text(),' List of Other Party Contact ')]")
+    WebElement OtherPartyContactHeader;
+
+    @FindBy(xpath = "//div[contains(text(),'Counsel Related Information')]")
+    WebElement CounselRelatedHeader;
+
+    @FindBy(xpath = "//button[contains(text(),'Yes')]")
+    WebElement DltConfirmBtn;
+
+    @FindBy(xpath = "//div[contains(text(),'No data available...')]")
+    WebElement NDAinGrid;
+
 
 
     // Process Of Searching A Particular Party Through Filter
@@ -206,9 +227,9 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             FilterIcon.click();
             log_Info("Filter Clicked");
             getDriver().waitForelementToBeClickable(SearchBarIcon);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             SearchBarIcon.sendKeys(PartyName);
-
+            Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//div[@col-id='PartyName']//span[@title='"+PartyName+"']")).click();
 
             return new CaseOtherPartyPage();
@@ -277,7 +298,7 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
 
             Thread.sleep(3000);
             PartyStatusDrpdwn.sendKeys(Status);
-            Thread.sleep(2000);
+            Thread.sleep(5000);
             PartyStatusDrpdwn.sendKeys(Keys.ENTER);
             getSession().log_Pass("Click on Status Drop Down");
 
@@ -315,12 +336,11 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getDriver().waitForelementToBeClickable(PartyDropDown);
             Thread.sleep(5000);
             PartyDropDown.click();
-            getCurrentDriver().findElement(By.xpath("//mat-option//span[contains(text(),'"+PartyType+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//mat-option//span[contains(text(),'"+PartyName+"')]")).click();
             getSession().log_Pass("Clicked on Select Party Type Drop Down");
 
             Thread.sleep(5000);
-            //((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", PartyNameA);
-            getCurrentDriver().findElement(By.xpath("//mat-radio-button//div[contains(text(),'"+PartyName+"')]")).click();
+            getCurrentDriver().findElement(By.xpath("//mat-radio-button//div[contains(text(),'"+PartyType+"')]")).click();
 
             log_Info("Click On Left Arrow Button ");
             getDriver().waitForelementToBeClickable(LeftArrow);
@@ -353,6 +373,9 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             Thread.sleep(5000);
             getCurrentDriver().findElement(By.xpath("//span[@title='"+PartyNew+"']//span")).click();
             getSession().log_Pass("Clicked On Party Name");
+
+            Thread.sleep(2000);
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", OtherPartyContactHeader);
 
             log_Info("Click On Add Contact Button");
             getDriver().waitForelementToBeClickable(AddContactBtn);
@@ -572,8 +595,6 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             getSession().log_Pass("Clicked On Party Name");
 
             ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", AddInHouseCounselBtn);
-
-
 
             log_Info("Hover on Name Header");
             Actions ac = new Actions(getCurrentDriver());
@@ -1203,7 +1224,10 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
      */
     public ILiglPage addExistingContact(String existingContact) throws Exception {
         try {
+
             log_Info("addExistingContact() Started");
+            Thread.sleep(2000);
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", HeaderContactName);
             AddContactBtn.click();
             ExistingContactsDropDown.click();
             Thread.sleep(3000);
@@ -1215,7 +1239,6 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             Filter.click();
             SearchBar.sendKeys(existingContact);
             Thread.sleep(3000);
-            //((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", SearchedContact);
             boolean b = getCurrentDriver().findElement(By.cssSelector("span[title='"+existingContact+"']")).isDisplayed();
             Assert.assertEquals(true, b);
             log_Info("Contact Added Succesfully");
@@ -1237,11 +1260,14 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             log_Info("addExistingInHouseCounselToParty() Started");
             ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);",AddInHouseCounsel);
             AddInHouseCounsel.click();
+           /* Thread.sleep(5000);
+            InhouseSearchBar.sendKeys(Keys.ESCAPE);*/
+         /*   Thread.sleep(3000);
+            ExistingContDP.click();*/
+            InhouseSearchBar.sendKeys(ExistingInCounsel);
             Thread.sleep(5000);
-            InhouseSearchBar.sendKeys(Keys.ESCAPE);
-            Thread.sleep(3000);
-            ExistingContDP.click();
-            getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+ExistingInCounsel+"')]")).click();
+            InhouseSearchBar.sendKeys(Keys.ENTER);
+            /*getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+ExistingInCounsel+"')]")).click();*/
             Thread.sleep(2000);
             InHouseAssignBTN.click();
             Thread.sleep(2000);
@@ -1284,4 +1310,192 @@ public class CaseOtherPartyPage extends LiglBaseSessionPage {
             throw new Exception("addExistingOutCounsel() Failed", ex);
         }
     }
+
+    public ILiglPage clickingOnNotesIconInOtherPartyGrid() throws Exception {
+
+        try {
+            log_Info("clickingOnNotesIcon() Started");
+            log_Info("click on Notes Icon");
+            Thread.sleep(2000);
+            NotesIcon.click();
+            log_Pass("Clicked on Notes Icon");
+
+            return new NotesPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickingONNotesIcon() Failed");
+
+
+        }
+    }
+
+    public ILiglPage clickingOnClearFilterButtonInOtherPartyScreen() throws Exception {
+
+        try {
+            log_Info("clickingOnClearFilterButtonInOtherPartyScreen() Started");
+            log_Info("click on Clear Filter Button");
+            getDriver().moderateWait();
+            getDriver().waitForelementToBeClickable(CLEARFILTERbtn);
+            CLEARFILTERbtn.click();
+            log_Pass("clicked on Clear Filter Button");
+
+            return new CaseOtherPartyPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("clickingOnClearFilterButtonInOtherPartyScreen() Failed");
+
+
+        }
+    }
+
+    public ILiglPage validatePartyInTheOtherPartyScreenAfterAddingThroughAddPartyButton(String PartyName) throws Exception{
+        try{
+            log_Info("validatePartyInTheOtherPartyScreenAfterAddingThroughAddPartyButton() Started");
+            boolean b = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+PartyName+"')]")) .isDisplayed();
+            Assert.assertEquals(true, b);
+            log_Pass("Created New party Added To Grid SuccessFully");
+            return new CaseOtherPartyPage();
+        }catch (Exception ex){
+            throw new Exception("Exception in validatePartyInTheOtherPartyScreenAfterAddingThroughAddPartyButton()",ex);
+        }
+    }
+
+    public ILiglPage secondSearchPartyInOtherPartyGrid(String PartyName) throws Exception {
+
+        try {
+
+            log_Info("secondSearchPartyInOtherPartyGrid() Started");
+            log_Info("click on Party menu icon");
+            MenuIcon.click();
+            log_Info("clicked on Party menu icon");
+            getDriver().minWait();
+            log_Info("clear Party Name From The Search Bar");
+            getDriver().waitForelementToBeClickable(SearchBarIcon);
+            SearchBarIcon.clear();
+            log_Pass("cleared Party Name From The Search Bar");
+            getDriver().minWait();
+            log_Info("search Party Name From The Search Bar");
+            SearchBarIcon.sendKeys(PartyName);
+            Thread.sleep(5000);
+            log_Pass("searched Party Name From The Search Bar");
+            getCurrentDriver().findElement(By.xpath("//div[@col-id='PartyName']//span[@title='"+PartyName+"']")).click();
+
+            return new CaseOtherPartyPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("secondSearchPartyInOtherPartyGrid() Failed", ex);
+
+        }
+    }
+
+    public ILiglPage deleteContactsAddedForRespectiveParty(String ContactName) throws Exception {
+
+        try {
+
+            log_Info("deleteContactsAddedForRespectiveParty() Started");
+            log_Info("Click Delete icon");
+            Thread.sleep(5000);
+            getCurrentDriver().findElement(By.xpath("//app-third-party-contacts-main[@class='ng-star-inserted']//span[@title='"+ContactName+"']/ancestor::div[@role='row']//button")).click();
+            getSession().log_Pass("Clicked Delete icon");
+
+            log_Info("Click On Yes Button");
+            getDriver().waitForelementToBeClickable(YesBtn);
+            Thread.sleep(5000);
+            YesBtn.click();
+            getSession().log_Pass("Clicked On Yes Button");
+            return new CaseOtherPartyPage();
+
+        } catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("deleteContactsAddedForRespectiveParty() Failed", ex);
+
+        }
+    }
+
+    public ILiglPage verifyContactsAndCounselsShouldDisplayForTheRespectiveParty(String existingContact,String existingCounsel) throws Exception {
+        try {
+
+            log_Info("verifyContactsAndCounselsShouldDisplayForTheRespectiveParty() Started");
+            getDriver().minWait();
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", HeaderContactName);
+            log_Info("Validate The Contacts Are Displaying For The Respective Party");
+            getDriver().moderateWait();
+
+            boolean a1 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+existingContact+"')]")).isDisplayed();
+            Assert.assertEquals(true, a1);
+            System.out.println(a1);
+
+            log_Pass("Validated The Contacts Are Displaying For The Respective Party");
+            getDriver().moderateWait();
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(false);", CounselRelatedHeader);
+            log_Info("Validate The Counsels Are Displaying For The Respective Party");
+            boolean a2 = getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+existingCounsel+"')]")).isDisplayed();
+            Assert.assertEquals(true, a2);
+            System.out.println(a2);
+            log_Pass("Validated The Counsel Are Displaying For The Respective Party");
+
+            return new CaseOtherPartyPage();
+
+        }catch (Exception | Error ex) {
+            log_Error(ex.getMessage());
+            throw new Exception("verifyContactsAndCounselsShouldDisplayForTheRespectiveParty() Failed", ex);
+        }
+    }
+
+    public ILiglPage deleteOutsideCounselForTheRespectiveParty(String OutsideCounsel) throws Exception{
+
+        try{
+
+            log_Info("deleteOutsideCounselForTheRespectiveParty() Started");
+            getDriver().minWait();
+            getCurrentDriver().findElement(By.xpath("//span[@title='"+OutsideCounsel+"']/ancestor::div[@role='row']//button//i")).click();
+            Thread.sleep(3000);
+            DltConfirmBtn.click();
+            getDriver().maxWait();
+            secondSearchForTheOutsideCounsel(OutsideCounsel);
+
+            log_Info("Check The Grid For The Added Outside Counsels");
+            boolean a1 = NodataAvailable.isDisplayed();
+            System.out.println(a1);
+            getDriver().moderateWait();
+            Assert.assertEquals(true, a1);
+
+
+            return new CaseOtherPartyPage();
+
+        }catch (Exception | Error ex){
+            log_Error("deleteOutsideCounselForTheRespectiveParty Failed");
+            throw new Exception("Exception in deleteOutsideCounselForTheRespectiveParty()",ex);
+        }
+    }
+
+    public ILiglPage secondSearchForTheOutsideCounsel(String OutsideCounsel) throws Exception{
+
+        try {
+
+            log_Info("secondSearchForTheOutsideCounsel() Started");
+            log_Info("click on email menu icon");
+            getDriver().minWait();
+            OutSideCounselLawFirmMenu.click();
+            log_Info("clicked on email menu icon");
+
+            log_Info("Clear And Enter Outside Counsel From The Search Bar");
+            getDriver().waitForelementToBeClickable(SearchBarIcon);
+            SearchBarIcon.clear();
+            Thread.sleep(5000);
+            SearchBarIcon.sendKeys(OutsideCounsel);
+            Thread.sleep(5000);
+            log_Info("Cleared And Entered Outside Counsel From The Search Bar");
+
+            return new CaseOtherPartyPage();
+
+        }catch (Exception | Error ex){
+            log_Error(ex.getMessage());
+            throw new Exception("secondSearchForTheOutsideCounsel() Failed",ex);
+        }
+    }
+
 }

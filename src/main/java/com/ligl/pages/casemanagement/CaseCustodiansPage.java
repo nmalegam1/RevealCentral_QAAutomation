@@ -108,7 +108,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
     WebElement YesBtn;
     @FindBy(id = "refresh-button")
     WebElement RefreshBtn;
-    @FindBy(xpath = "//button[contains(text(),'Proceed')]")
+    @FindBy(xpath = "//button[contains(text(),'PROCEED')]")
     WebElement InactEmpProceed;
 
     @FindBy(xpath="//button[@aria-label='Columns']")
@@ -133,13 +133,14 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             log_Info("Click Add Custodian Button");
             getDriver().waitForelementToBeClickable(AddCust);
             AddCust.click();
+            getDriver().moderateWait();
+
+            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", EmpMail);
 
             log_Info("Hover on Name Header");
             Thread.sleep(5000);
-            //getDriver().waitForelementToBeClickable(Name);
             Actions ac = new Actions(getCurrentDriver());
             ac.moveToElement(EmpMail).perform();
-            //log_Info("Hovered on Name Header");
             Thread.sleep(5000);
 
             EmpMail.click();
@@ -155,7 +156,6 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             Searchbar.sendKeys(Email1);
             Thread.sleep(5000);
             log_Info("Check Employee CheckBox");
-            //getDriver().waitForelementToBeClickable(Employee);
             getCurrentDriver().findElement(By.xpath("//span[@title='"+Email1+"']/ancestor::div[@role='row']//div[@col-id='FullName']//div[@ref='eCheckbox']")).click();
             log_Info("Employee checked");
 
@@ -169,50 +169,6 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             log_Error(ex.getMessage());
             throw new Exception("addCustodianToCase() Failed", ex);
         }
-            /*log_Info("Click Add Custodian Button");
-            getDriver().waitForelementToBeClickable(AddCust);
-            Thread.sleep(5000);
-            AddCust.click();
-            Thread.sleep(5000);
-            getSession().log_Pass("Add Custodians button clicked");
-
-            ((JavascriptExecutor) getCurrentDriver()).executeScript("arguments[0].scrollIntoView(true);", EmployeeStatusHeader);
-
-
-            log_Info("Hover on Name Header");
-            getDriver().waitForelementToBeClickable(EmailName);
-            Actions ac = new Actions(getCurrentDriver());
-            ac.moveToElement(EmailName).perform();
-            log_Info("Hovered on Name Header");
-            Thread.sleep(5000);
-
-            EmailMenuu.click();
-            log_Info("Menu clicked");
-
-            log_Info("Click on Filter");
-            Thread.sleep(2000);
-            Filter.click();
-            log_Info("Filter Clicked");
-            Thread.sleep(2000);
-            log_Info("Enter Employee");
-            Searchbar.sendKeys(Email1);
-            Thread.sleep(2000);
-            log_Info("Check Employee CheckBox");
-            Thread.sleep(2000);
-            getCurrentDriver().findElement(By.xpath("//span[@title='"+Email1+"']/ancestor::div[@ref='eCellWrapper']//div[@ref='eCheckbox']")).click();
-            log_Info("Employee checked");
-
-            log_Info("Click Add To case Button");
-            getDriver().waitForelementToBeClickable(AddToCase);
-            AddToCase.click();
-            getCurrentDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            getSession().log_Pass("Add To Case Button clicked");
-            return new CaseCustodiansPage();
-
-        }catch (Exception | Error ex){
-            log_Error(ex.getMessage());
-            throw new Exception("addCustodianToCase() Failed",ex);*/
-
     }
     public ILiglPage multipleCustodianSelect(Hashtable<String, String> data)throws Exception{
         try{
@@ -398,7 +354,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
         log_Info("addInActiveEMPToCase() Started");
         InactEmpProceed.click();
         Thread.sleep(3000);
-        return new LegalHoldPage();
+        return new CaseCustodiansPage();
     }
     /**
      * Method to Search The Particular Custodian in Grid
@@ -410,7 +366,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
         try{
             log_Info("searchCustodian() Started");
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
                 if (Searchbar.isDisplayed()) {
                     Searchbar.clear();
                     Searchbar.sendKeys(Custodian);
@@ -418,18 +374,18 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             }catch(Exception ex){
                 CustEmailHeader.click();
             }
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             try {
                 if(Searchbar.isDisplayed()) {
                     Searchbar.clear();
                     Searchbar.sendKeys(Custodian);
                 }
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             }catch(Exception ex){
 
                 Filter.click();
                 Searchbar.sendKeys(Custodian);
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             }
             return new CaseCustodiansPage();
         }catch (Exception ex){
@@ -844,7 +800,7 @@ public class CaseCustodiansPage extends LiglBaseSessionPage {
             for (int i = 0; i < 8; i++) {
                 ac.sendKeys(Keys.TAB).perform();
             }
-            //((JavascriptExecutor)getCurrentDriver()).executeScript("arguments[0].scrollIntoView();", CaseCustodianStatusHeader);
+
             getCurrentDriver().findElement(By.xpath("//span[contains(text(),'"+CustStatus+"')]")).isDisplayed();
             Thread.sleep(4000);
             for (int i = 0; i < 8; i++) {

@@ -2,6 +2,7 @@ package com.ligl.pages.datamanagement;
 
 import com.ligl.base.pages.ILiglPage;
 import com.ligl.pages.LiglBaseSessionPage;
+import net.bytebuddy.asm.Advice;
 import org.apache.maven.surefire.shade.booter.org.apache.commons.lang3.ObjectUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -45,7 +46,6 @@ public class DMSummaryPage extends LiglBaseSessionPage {
 
     @FindBy(xpath = "//span[@class='viewTextPlace']")
     WebElement LHScopePopupText;
-
 
 
     // For Single Record Waiting For The Collection Completed Status
@@ -94,54 +94,58 @@ public class DMSummaryPage extends LiglBaseSessionPage {
 
     /**
      * Gets Collection Size
+     *
      * @return
      * @throws Exception
      */
-    public String getCollectionSize()throws Exception{
-        try{
+    public String getCollectionSize() throws Exception {
+        try {
             log_Info("getCollectionSize() Started");
-            String CollectioSize=null;
-           // WebElement test = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']"));
+            String CollectioSize = null;
+            // WebElement test = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']"));
             List<WebElement> listItem = getCurrentDriver().findElements(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']"));
-            for(WebElement rows :listItem){
-               List<WebElement> RowList = rows.findElements(By.xpath("//div[@role='gridcell'][@col-id='SizeWithUnit']//span[@class='ellipsisAgGrid']"));
-               for(WebElement size:RowList){
-                   CollectioSize=size.getText();
-               }
+            for (WebElement rows : listItem) {
+                List<WebElement> RowList = rows.findElements(By.xpath("//div[@role='gridcell'][@col-id='SizeWithUnit']//span[@class='ellipsisAgGrid']"));
+                for (WebElement size : RowList) {
+                    CollectioSize = size.getText();
+                }
             }
             return CollectioSize;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             log_Error("getCollectionSize() Failed");
             throw new Exception("Exception in getCollectionSize()", ex);
         }
     }
 
-    public String getCollectionCount()throws Exception{
-        try{
+    public String getCollectionCount() throws Exception {
+        try {
             log_Info("getCollectionCount() Started");
-            String CollectioSize=null;
+            String CollectioSize = null;
             // WebElement test = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']"));
             List<WebElement> listItem = getCurrentDriver().findElements(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']"));
-            for(WebElement rows :listItem){
+            for (WebElement rows : listItem) {
                 List<WebElement> RowList = rows.findElements(By.xpath("//div[@role='gridcell'][@col-id='ItemCount']//span[@class='ellipsisAgGrid']"));
-                for(WebElement size:RowList){
-                    CollectioSize=size.getText();
+                for (WebElement size : RowList) {
+                    CollectioSize = size.getText();
                 }
             }
             return CollectioSize;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             log_Error("getCollectionCount() Failed");
             throw new Exception("Exception in getCollectionCount()", ex);
         }
     }
-    public ILiglPage goToDMLHScope(){
+
+    public ILiglPage goToDMLHScope() {
         log_Info("goToDMLHScope() Started");
         DMLHScopeBTN.click();
         log_Info("Navigated to IPP-LegalHoldScope tab in Data Management");
         return new DMSummaryPage();
     }
+
     /**
      * Wait and Validate CCDs Status
+     *
      * @param Status
      * @return DMSummaryPage
      * @throws Exception
@@ -173,7 +177,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
 
                     Thread.sleep(30000);
                     for (int j = 0; j < listItem.size(); j++) {
-                        String actualValue = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
+                        String actualValue = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
 
                         if (actualValue.equalsIgnoreCase(Status)) {
                             y++;
@@ -182,13 +186,13 @@ public class DMSummaryPage extends LiglBaseSessionPage {
                             y++;
                             z++;
                         }
-                        if(listItem.size() == y){
+                        if (listItem.size() == y) {
                             getSession().takeScreenShot();
                             break Outer;
                         }
                     }
-                    z=0;
-                    y=0;
+                    z = 0;
+                    y = 0;
                     RefreshBtn.click();
 
 
@@ -199,29 +203,28 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             }
 
             for (int j = 0; j < listItem.size(); j++) {
-                String Status1 = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
+                String Status1 = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
                 getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='WorkFlowStatusReason']")).click();
                 for (int i = 0; i < 16; i++) {
                     Actions ac = new Actions(getCurrentDriver());
                     ac.sendKeys(Keys.ARROW_LEFT).perform();
                 }
-                String DataSource = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='DataSourceTypeName']//span[@class='ellipsisAgGrid']")).getText();
+                String DataSource = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='DataSourceTypeName']//span[@class='ellipsisAgGrid']")).getText();
                 getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DataSourceTypeName']")).click();
                 for (int i = 0; i < 16; i++) {
                     Actions ac = new Actions(getCurrentDriver());
                     ac.sendKeys(Keys.TAB).perform();
                 }
-                if(Status1.contains("Failed")) {
+                if (Status1.contains("Failed")) {
                     String FailedReason = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='WorkFlowStatusReason']//span[@class='ellipsisAgGrid']")).getText();
-                    log_Info("Status of '" + DataSource + "' is '" + Status1 + "' with Reason '"+FailedReason+"' ");
-                }
-                else{
-                    log_Info("Status of '"+DataSource+"' is '"+Status1+"' ");
+                    log_Info("Status of '" + DataSource + "' is '" + Status1 + "' with Reason '" + FailedReason + "' ");
+                } else {
+                    log_Info("Status of '" + DataSource + "' is '" + Status1 + "' ");
                 }
             }
-            if (z==listItem.size()) {
+            if (z == listItem.size()) {
                 getSession().takeScreenShot();
-                return new DMSummaryPage();
+                throw new Exception("All Records Are In Failed State-Terminating The Process");
 
             }
 
@@ -235,6 +238,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
 
     /**
      * Wait and Validate CCDs Status
+     *
      * @param LockStatus
      * @return DMSummaryPage
      * @throws Exception
@@ -266,7 +270,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
 
                     Thread.sleep(30000);
                     for (int j = 0; j < listItem.size(); j++) {
-                        String actualValue = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='DataHoldStatusName']//span[@class='ellipsisAgGrid']")).getText();
+                        String actualValue = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='DataHoldStatusName']//span[@class='ellipsisAgGrid']")).getText();
 
                         if (actualValue.equalsIgnoreCase(LockStatus)) {
                             y++;
@@ -275,13 +279,13 @@ public class DMSummaryPage extends LiglBaseSessionPage {
                             y++;
                             z++;
                         }
-                        if(listItem.size() == y){
+                        if (listItem.size() == y) {
                             getSession().takeScreenShot();
                             break Outer;
                         }
                     }
-                    z=0;
-                    y=0;
+                    z = 0;
+                    y = 0;
                     RefreshBtn.click();
 
 
@@ -292,27 +296,26 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             }
 
             for (int j = 0; j < listItem.size(); j++) {
-                String Status = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='WorkFlowStatusName']//span[@class='ellipsisAgGrid']")).getText();
-                getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='WorkFlowStatusReason']")).click();
+                String Status = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='DataHoldStatusName']//span[@class='ellipsisAgGrid']")).getText();
+                getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DataHoldStatusName']")).click();
                 for (int i = 0; i < 16; i++) {
                     Actions ac = new Actions(getCurrentDriver());
                     ac.sendKeys(Keys.ARROW_LEFT).perform();
                 }
-                String DataSource = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='DataSourceTypeName']//span[@class='ellipsisAgGrid']")).getText();
+                String DataSource = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='DataSourceTypeName']//span[@class='ellipsisAgGrid']")).getText();
                 getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']//div[@col-id='DataSourceTypeName']")).click();
                 for (int i = 0; i < 16; i++) {
                     Actions ac = new Actions(getCurrentDriver());
                     ac.sendKeys(Keys.TAB).perform();
                 }
-                if(Status.contains("Failed")) {
+                if (Status.contains("Failed")) {
                     String FailedReason = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='WorkFlowStatusReason']//span[@class='ellipsisAgGrid']")).getText();
-                    log_Info("Status of '" + DataSource + "' is '" + Status + "' with Reason '"+FailedReason+"' ");
-                }
-                else{
-                    log_Info("Status of '"+DataSource+"' is '"+Status+"' ");
+                    log_Info("Status of '" + DataSource + "' is '" + Status + "' with Reason '" + FailedReason + "' ");
+                } else {
+                    log_Info("Status of '" + DataSource + "' is '" + Status + "' ");
                 }
             }
-            if (z==listItem.size()) {
+            if (z == listItem.size()) {
                 getSession().takeScreenShot();
                 return new DMSummaryPage();
 
@@ -326,7 +329,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
         }
     }
 
-    public ILiglPage noteColStats()throws Exception{
+    public ILiglPage noteColStats() throws Exception {
         try {
             log_Info("noteColStats() Started");
             String ColCount = UIColCount.getText();
@@ -335,10 +338,10 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             getSession().setGlobalData("GmailSize", ColSize);
             log_Pass("UI Collection Stats are Noted in Global Properties Successfully");
             return new DMSummaryPage();
-        } catch (Exception ex){
-        log_Error("noteColStats() is Started");
-        throw new Exception("Exception in noteColStats()",ex);
-    }
+        } catch (Exception ex) {
+            log_Error("noteColStats() is Started");
+            throw new Exception("Exception in noteColStats()", ex);
+        }
     }
 
     public ILiglPage validateCollectionStats() throws Exception {
@@ -358,8 +361,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             }
 
             return new DMSummaryPage();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             log_Error("validateCollectionStats() Failed");
             throw new Exception("validateCollectionStats()", ex);
         }
@@ -400,6 +402,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
                         if (actualValue.contains("Failed")) {
                             y++;
                             z++;
+
                         }
                         if (listItem.size() == y) {
                             getSession().takeScreenShot();
@@ -416,6 +419,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
                 }
 
             }
+
 
             for (int j = 0; j < listItem.size(); j++) {
                 String Status1 = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='DataHoldStatusName']//span[@class='ellipsisAgGrid']")).getText();
@@ -450,8 +454,10 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             throw new Exception("validateAndWaitForRecordsToCompleteLockOrCollectionInIPPLHScopeGrid()", ex);
         }
     }
+
     /**
      * To Validate LKW hyperlink popup values for CCD record in Data Management summary-Legal hold scope grid
+     *
      * @param ExpectedLHLKW
      * @return Data management Summary grid
      * @throws Exception
@@ -461,18 +467,17 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             log_Info("validateLHKW() started");
             WebElement test = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']"));
             List<WebElement> listItem = test.findElements(By.xpath("div[@role='row']"));
-            for(int j= 0;j < listItem.size(); j++)
-            {
-            getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='KeyWordName']//span[@class='ellipsistextoverflow' and @title='LKW']")).click();
-            String LHLKW = LHScopePopupText.getText();
-            if (LHLKW.contains(ExpectedLHLKW)) {
-                log_Pass("CCD Record is Populated with Latest LH LKW as Expected");
+            for (int j = 0; j < listItem.size(); j++) {
+                getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='KeyWordName']//span[@class='ellipsistextoverflow' and @title='LKW']")).click();
+                String LHLKW = LHScopePopupText.getText();
+                if (LHLKW.contains(ExpectedLHLKW)) {
+                    log_Pass("CCD Record is Populated with Latest LH LKW as Expected");
+                } else {
+                    log_Error("CCD Record is not Populated with Latest LH LKW as Expected");
+                    throw new Exception("CCD Record is not Populated with Latest LH LKW as Expected");
+                }
+                ScopPopupCloseBtn.click();
             }
-            else{
-                log_Error("CCD Record is not Populated with Latest LH LKW as Expected");
-                throw new Exception("CCD Record is not Populated with Latest LH LKW as Expected");
-            }
-            ScopPopupCloseBtn.click();}
             return new DMSummaryPage();
         } catch (Exception ex) {
             log_Error("validateLHKW() is Failed");
@@ -482,6 +487,7 @@ public class DMSummaryPage extends LiglBaseSessionPage {
 
     /**
      * To Validate LDR hyperlink popup values for CCD record in Data Management summary-Legal hold scope grid
+     *
      * @param ExpectedLHLDR
      * @return Data management Summary grid
      * @throws Exception
@@ -491,18 +497,17 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             log_Info("validateLHDR() started");
             WebElement test = getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']"));
             List<WebElement> listItem = test.findElements(By.xpath("div[@role='row']"));
-            for(int j= 0;j < listItem.size(); j++)
-            {
-                getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='DateRangeName']//span[@class='ellipsistextoverflow' and @title='LDR']")).click();
-                String LHLDR=LHScopePopupText.getText();
+            for (int j = 0; j < listItem.size(); j++) {
+                getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='DateRangeName']//span[@class='ellipsistextoverflow' and @title='LDR']")).click();
+                String LHLDR = LHScopePopupText.getText();
                 if (LHLDR.contains(ExpectedLHLDR)) {
                     log_Pass("CCD Record is Populated with Latest LH LDR as Expected");
-                }
-                else{
+                } else {
                     log_Error("CCD Record is not Populated with Latest LH LDR as Expected");
                     throw new Exception("CCD Record is not Populated with Latest LH LDR as Expected");
                 }
-                ScopPopupCloseBtn.click();}
+                ScopPopupCloseBtn.click();
+            }
             return new DMSummaryPage();
         } catch (Exception ex) {
             log_Error("validateLHDR() is Failed");
@@ -518,25 +523,21 @@ public class DMSummaryPage extends LiglBaseSessionPage {
             List<WebElement> listItem = test.findElements(By.xpath("div[@role='row']"));
             log_Info("validateGSuiteDST_LockWithSingleLegalHoldWithoutFilters() started");
 
-            for(int j= 0;j < listItem.size(); j++)
-            {
-                if(getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='PreservationDateRangeName']//span[@title='null']")).isDisplayed())
-            {
-                log_Pass("Preservation Daterange Column is displaying as Null as expected");
-                Thread.sleep(2000);
+            for (int j = 0; j < listItem.size(); j++) {
+                if (getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='PreservationDateRangeName']//span[@title='null']")).isDisplayed()) {
+                    log_Pass("Preservation Daterange Column is displaying as Null as expected");
+                    Thread.sleep(2000);
+                } else {
+                    log_Error("Preservation Daterange Column is not displaying as Null");
+                }
+                if (getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row'][" + (j + 1) + "]//div[@col-id='PreservationKeyWordName']//span[@title='null']")).isDisplayed()) {
+                    log_Pass("Preservation Keyword Column is displaying as Null as expected");
+                    Thread.sleep(2000);
+                } else {
+                    log_Error("Preservation Keyword Column is not displaying as Null");
+                }
+                Thread.sleep(3000);
             }
-            else
-            {
-                log_Error("Preservation Daterange Column is not displaying as Null");
-            }
-            if(getCurrentDriver().findElement(By.xpath("//div[@ref='eCenterContainer']//div[@role='row']["+(j+1)+"]//div[@col-id='PreservationKeyWordName']//span[@title='null']")).isDisplayed()){
-                log_Pass("Preservation Keyword Column is displaying as Null as expected");
-                Thread.sleep(2000);
-            }
-            else
-            {
-                log_Error("Preservation Keyword Column is not displaying as Null");
-            }Thread.sleep(3000);}
             return new DMSummaryPage();
         } catch (Exception ex) {
             log_Error("validateLHDRInDataSummaryGrid() is Failed");
@@ -544,8 +545,4 @@ public class DMSummaryPage extends LiglBaseSessionPage {
         }
     }
 
-
 }
-
-
-

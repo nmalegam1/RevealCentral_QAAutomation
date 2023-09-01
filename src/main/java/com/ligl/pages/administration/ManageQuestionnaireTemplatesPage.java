@@ -11,7 +11,7 @@ import org.testng.Assert;
 import java.util.Hashtable;
 
 public class ManageQuestionnaireTemplatesPage extends LiglBaseSessionPage {
-    @FindBy(xpath = "//button[contains(text(), 'Add Template')]")
+    @FindBy(xpath = "//button[contains(text(), 'ADD TEMPLATE')]")
     public WebElement addTemplateBtn;
 
     @FindBy(xpath = "//div[@class='cdk-overlay-container']//button//span[.='Create New Template']")

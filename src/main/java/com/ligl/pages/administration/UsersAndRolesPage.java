@@ -42,9 +42,8 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
     WebElement roleAssigDropDown;
     @FindBy(id = "role-sel-inputstatus")
     WebElement statusDropDown;
-    @FindBy(id = "usr-name-input")
+    @FindBy(xpath = "//input[@formcontrolname='email']")
     WebElement userNameTxtBox;
-
     @FindBy(xpath = "//span[@class='mat-checkbox-inner-container']")
     WebElement manualPwdChk;
     @FindBy(id = "password-input")
@@ -77,7 +76,7 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
     WebElement sucessAlert;
     @FindBy(xpath = "//button[@title='Reset Password']")
     WebElement restPasswordBtn;
-    @FindBy(xpath = "//button[@class='btn primary-button ng-star-inserted'][contains(text(), 'Yes')]")
+    @FindBy(xpath = "//button[@class='reveal-button-secondary ng-star-inserted'][contains(text(),'Yes')]")
     WebElement restPassEmailBtn;
     @FindBy(xpath = "//button[contains(text(), 'Ok')]")
     WebElement PsswdResetOk;
@@ -155,8 +154,7 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
         log_Info("Enter the User Name");
         wait(1);
         Searchbar.sendKeys(selectUser);
-        filter.click();
-        wait(3);
+        wait(2);
         getSession().log_Pass("Entered the User Name");
 
         return new UsersAndRolesPage();
@@ -239,6 +237,7 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
             statusDropDown.sendKeys(status);
             wait(1);
             statusDropDown.sendKeys(Keys.ENTER);
+            wait(1);
             getSession().log_Pass("Selected the User Status and Status is " + status);
             //Manual Password Check
             if (passWordConfirmation.contains("Yes")) {
@@ -358,6 +357,7 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
             statusDropDown.sendKeys(status);
             wait(1);
             statusDropDown.sendKeys(Keys.ENTER);
+            wait(1);
             getSession().log_Pass("Selected the User Status and Status is " + status);
 
             //Save
@@ -453,7 +453,7 @@ public class UsersAndRolesPage extends LiglBaseSessionPage {
             statusDropDown.sendKeys(editStatus);
             wait(1);
             statusDropDown.sendKeys(Keys.ENTER);
-            getDriver().waitForAngularRequestsToComplete();
+            //getDriver().waitForAngularRequestsToComplete();
             getSession().log_Pass("Selected the User Status and Status is " + editStatus.toUpperCase());
             //Save or Cancle
             if (userEditingConfirmation.contains("Save")) {
